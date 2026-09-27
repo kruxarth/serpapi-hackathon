@@ -1,0 +1,6 @@
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Obvious placeholders used in tests and examples"
+regexes = ['''fakekey-not-real-[a-z]+''', '''your-serpapi-key-here''']

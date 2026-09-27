@@ -1,0 +1,26 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Local data: cache, ledger, case list, pseudonym salt (contains personal data)
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node / builds
+node_modules/
+web/dist/
+extension/dist/
+*.zip
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

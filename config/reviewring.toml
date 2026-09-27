@@ -1,0 +1,145 @@
+# ReviewRing tunables. Every (tunable) default from the spec lives here.
+# A gitignored data/config.toml can override any key locally.
+
+[budget]
+monthly_cap = 250            # free plan
+hourly_cap = 50              # free plan, rolling 60 minutes
+per_analysis_cap = 32
+retry_delay_seconds = 30     # 5xx / timeout: retry once after this, then pause
+request_timeout_seconds = 60
+
+[collection]
+n_reviews = 88               # newest target reviews: 8 + 4 x 20
+k1 = 8                       # round-1 reviewers
+baseline = 2                 # B: random baseline reviewers
+k2 = 15                      # round-2 reviewers
+history_concurrency = 3
+seed = 20261010
+
+[resolve]
+short_link_timeout_seconds = 10
+short_link_max_redirects = 10
+name_search_candidates = 5
+user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36"
+
+[priority]
+in_burst = 3
+rating_matches_direction = 2
+thin_reviewer = 2            # reviewer has <= thin_reviews_max total reviews
+thin_reviews_max = 5
+zero_photos = 1
+short_text = 1
+duplicate_cluster = 2
+local_guide = 0
+round2_near_days = 3
+
+[text]
+ngram = 3
+near_duplicate_similarity = 0.65
+near_duplicate_min_chars = 30
+short_max_chars = 40
+stock_phrase_min_accounts = 10
+stock_phrase_max_connected_share = 0.20
+
+[bursts]
+min_reviews = 10
+min_span_days = 2
+window_days = 3
+window_min_reviews = 5
+poisson_p = 0.001
+direction_share = 0.90
+max_rounds = 3
+negative_bursts = true
+
+[young]
+min_total_reviews = 50
+short_span_days = 30
+short_span_max_total = 200
+
+[surprise]
+near_km = 5
+mid_km = 50
+near_factor = 0.2
+mid_factor = 0.5
+far_factor = 1.0
+no_coords_factor = 0.5
+popular_factor = 0.1
+other_factor = 1.0
+popular_last_words = [
+  "attraction", "airport", "station", "mall", "park", "temple", "mosque",
+  "church", "cathedral", "gurudwara", "gurdwara", "shrine", "dargah",
+  "monument", "landmark", "museum", "fort", "palace", "stadium", "beach",
+  "lake", "zoo", "university",
+]
+popular_exclusions = ["police station", "fire station"]
+
+[edges]
+min_weight = 2.0
+min_non_popular_shared = 2
+# [max precision days, coincidence c] checked in order
+timing = [[2, 1.0], [14, 0.6], [60, 0.2]]
+
+[groups]
+louvain_min_size = 8
+louvain_max_density = 0.5
+prune_min_edges = 2
+prune_share = 0.30
+core_min_members = 3
+core_share = 0.30
+far_km = 50
+episode_precision_days = 14
+episode_gap_days = 21
+trip_max_span_km = 600
+trip_concentration_below = 0.3
+trip_five_star_share_below = 0.9
+trip_indicators_needed = 2
+ring_min_size = 4
+ring_min_density = 0.5
+ring_min_core_places = 2
+ring_min_far_areas = 2
+possible_ring_min_size = 3
+
+[confidence]
+density = 0.20
+core_places = 0.15
+core_places_full = 6
+dispersion = 0.15
+far_areas_full = 4
+type_diversity = 0.10
+type_groups_full = 4
+concentration = 0.15
+concentration_full = 0.3
+timing = 0.15
+member_signals = 0.10
+member_signals_min = 2
+
+[signals]
+thin_max_reviews = 5
+thin_max_level = 2
+monotony_min_reviews = 10
+monotony_share = 0.95
+multi_city_days = 7
+multi_city_min_areas = 3
+multi_city_min_km = 300
+same_day_min_occasions = 2
+same_day_min_km = 500
+short_text_share = 0.60
+
+[level]
+high_confidence = 0.7
+high_ring_share = 0.10
+elevated_suspicious_share = 0.15
+
+[areas]
+cluster_radius_km = 50
+
+[llm]
+base_url = "https://api.deepseek.com"
+model = "deepseek-chat"      # verify against DeepSeek docs at M10
+temperature = 0
+paraphrase_signal = false    # A8, off by default
+
+[server]
+host = "127.0.0.1"
+port = 8765
+dev_origins = ["http://localhost:5173", "http://127.0.0.1:5173"]
