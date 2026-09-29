@@ -247,6 +247,15 @@ class Gateway:
             self._account = _AccountSnapshot(fetched_at=self._clock(), data=stripped)
         return stripped
 
+    def use_account(self, data: dict[str, Any], fetched_at: datetime) -> None:
+        """Reuse a recent Account API snapshot instead of calling it again."""
+        with self._lock:
+            self._account = _AccountSnapshot(fetched_at=fetched_at, data=strip_account(data))
+
+    @property
+    def account(self) -> dict[str, Any] | None:
+        return dict(self._account.data) if self._account else None
+
     def _billed_since(self, since: datetime, analysis_id: str | None = None) -> list[datetime]:
         sql = "SELECT timestamp FROM ledger WHERE status IN ('ok', 'empty') AND timestamp >= ?"
         args: list[Any] = [db.iso(since)]

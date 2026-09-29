@@ -33,6 +33,14 @@ def build_report(analysis_id: str, inp: AnalysisInput, mode: str, conn=None) -> 
         "missing": state.get("missing", {}),
         "coords_source": state.get("coords_source"),
     }
+    names: dict[str, str] = {}
+    for r in inp.target_reviews:
+        if r.contributor_id and r.reviewer_name:
+            names[r.contributor_id] = r.reviewer_name
+    for cid, c in inp.contributors.items():
+        if c.name:
+            names[cid] = c.name
+    report["names"] = names  # local only; stripped by pseudonymization
     report["budget"] = {k: budget[k] for k in ("month_remaining", "hour_remaining", "monthly_cap", "hourly_cap")}
     selection = state.get("selection") or {}
     ranked_not_checked = max(0, int(selection.get("candidates", 0)) - len(inp.expansions))
@@ -40,13 +48,18 @@ def build_report(analysis_id: str, inp: AnalysisInput, mode: str, conn=None) -> 
     return report
 
 
-def finish_analysis(analysis_id: str, inp: AnalysisInput, mode: str) -> dict[str, Any]:
+def store_report(analysis_id: str, inp: AnalysisInput, mode: str) -> dict[str, Any]:
     conn = db.connect()
     report = build_report(analysis_id, inp, mode, conn)
     conn.execute(
         "UPDATE analyses SET status = 'done', stage = 'done', finished_at = ?, report = ?, place_key = ? WHERE id = ?",
         (report["analysis"]["finished_at"], json.dumps(report, default=str), inp.target.place_key, analysis_id),
     )
+    return report
+
+
+def finish_analysis(analysis_id: str, inp: AnalysisInput, mode: str) -> dict[str, Any]:
+    report = store_report(analysis_id, inp, mode)
     print_summary(report)
     return report
 

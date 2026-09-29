@@ -361,6 +361,21 @@ def cmd_analyze(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_serve(args: argparse.Namespace) -> int:
+    import uvicorn
+
+    from .api.app import create_app
+
+    host = config.tunable("server", "host")
+    if host not in ("127.0.0.1", "localhost"):
+        print("Refusing to bind anywhere but 127.0.0.1: ReviewRing is local only.", file=sys.stderr)
+        return 1
+    port = args.port or config.tunable("server", "port")
+    print(f"ReviewRing on http://127.0.0.1:{port}  (Ctrl+C to stop)")
+    uvicorn.run(create_app(), host="127.0.0.1", port=port, log_level="warning")
+    return 0
+
+
 def cmd_cancel(args: argparse.Namespace) -> int:
     if cancel_analysis(args.analysis_id):
         print(f"Cancelled {args.analysis_id}. Everything fetched so far stays cached.")
@@ -453,6 +468,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("analysis_id")
     p.add_argument("--json", action="store_true", help="Print the full report")
     p.set_defaults(func=cmd_analyze)
+
+    p = sub.add_parser("serve", help="Run the local web app and API on 127.0.0.1")
+    p.add_argument("--port", type=int)
+    p.set_defaults(func=cmd_serve)
 
     p = sub.add_parser("cancel", help="Cancel a running or paused analysis")
     p.add_argument("analysis_id")

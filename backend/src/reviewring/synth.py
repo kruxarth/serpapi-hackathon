@@ -59,16 +59,54 @@ CLIENT_TYPES = [
 ]
 TRAVEL_TYPES = ["Hotel", "Restaurant", "Resort", "Tourist attraction", "Hindu temple", "Cafe", "Guest house"]
 
-_OPENERS = ["Went here", "Visited", "Stopped by", "We came", "I tried this place", "Came with family",
-            "Dropped in", "Our second visit", "First time here", "Booked in advance"]
-_WHEN = ["last weekend", "on a weekday", "after work", "during the holidays", "for a birthday", "in the morning",
-         "late evening", "on a rainy day", "with friends", "before a flight"]
-_OPINIONS = ["the staff were polite but slow", "prices felt a little high", "parking was a real problem",
-             "quality was consistent with before", "the waiting time was long", "everything was neat and clean",
-             "service could be better", "it was crowded but manageable", "they fixed our issue quickly",
-             "the menu had fewer options now", "value for money is decent", "the location is easy to find"]
-_ENDINGS = ["Would come again.", "Not sure I will return.", "Okay overall.", "Mixed feelings.", "Decent enough.",
-            "Recommended for families.", "Average experience.", "Might try once more."]
+_OPENERS = [
+    "Went here",
+    "Visited",
+    "Stopped by",
+    "We came",
+    "I tried this place",
+    "Came with family",
+    "Dropped in",
+    "Our second visit",
+    "First time here",
+    "Booked in advance",
+]
+_WHEN = [
+    "last weekend",
+    "on a weekday",
+    "after work",
+    "during the holidays",
+    "for a birthday",
+    "in the morning",
+    "late evening",
+    "on a rainy day",
+    "with friends",
+    "before a flight",
+]
+_OPINIONS = [
+    "the staff were polite but slow",
+    "prices felt a little high",
+    "parking was a real problem",
+    "quality was consistent with before",
+    "the waiting time was long",
+    "everything was neat and clean",
+    "service could be better",
+    "it was crowded but manageable",
+    "they fixed our issue quickly",
+    "the menu had fewer options now",
+    "value for money is decent",
+    "the location is easy to find",
+]
+_ENDINGS = [
+    "Would come again.",
+    "Not sure I will return.",
+    "Okay overall.",
+    "Mixed feelings.",
+    "Decent enough.",
+    "Recommended for families.",
+    "Average experience.",
+    "Might try once more.",
+]
 
 
 def random_text(rng: random.Random) -> str:
