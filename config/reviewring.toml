@@ -32,6 +32,7 @@ short_text = 1
 duplicate_cluster = 2
 local_guide = 0
 round2_near_days = 3
+round2_bonus = 2
 
 [text]
 ngram = 3
@@ -143,3 +144,87 @@ paraphrase_signal = false    # A8, off by default
 host = "127.0.0.1"
 port = 8765
 dev_origins = ["http://localhost:5173", "http://127.0.0.1:5173"]
+
+[geo]
+# 28 states and 8 union territories, for finding the city in Indian addresses.
+states = [
+  "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana",
+  "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur",
+  "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana",
+  "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal",
+]
+union_territories = [
+  "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli and Daman and Diu", "Delhi",
+  "Jammu and Kashmir", "Ladakh", "Lakshadweep", "Puducherry",
+]
+# Older or alternative spellings seen in addresses.
+state_aliases = { "Orissa" = "Odisha", "Pondicherry" = "Puducherry", "NCT of Delhi" = "Delhi", "National Capital Territory of Delhi" = "Delhi", "Uttaranchal" = "Uttarakhand", "Jammu & Kashmir" = "Jammu and Kashmir", "Andaman & Nicobar Islands" = "Andaman and Nicobar Islands" }
+# One metro never counts as several cities.
+metros = [
+  ["Delhi NCR", "Delhi", "New Delhi", "Gurugram", "Gurgaon", "Noida", "Greater Noida", "Ghaziabad", "Faridabad"],
+  ["Mumbai", "Mumbai", "Thane", "Navi Mumbai", "Kalyan", "Mira-Bhayandar", "Mira Bhayandar", "Vasai-Virar", "Vasai", "Virar"],
+  ["Hyderabad", "Hyderabad", "Secunderabad"],
+  ["Kolkata", "Kolkata", "Howrah", "Bidhannagar"],
+  ["Pune", "Pune", "Pimpri-Chinchwad", "Pimpri Chinchwad"],
+  ["Bengaluru", "Bengaluru", "Bangalore"],
+  ["Chandigarh", "Chandigarh", "Mohali", "Sahibzada Ajit Singh Nagar", "Panchkula"],
+  ["Ahmedabad", "Ahmedabad", "Gandhinagar"],
+]
+country_short = { "United Arab Emirates" = "UAE", "United States" = "USA", "United Kingdom" = "UK" }
+
+# Type groups (spec 9.6): whole-word, case-insensitive keywords matched against a place's type.
+# First match wins; order matters. "travel" marks groups a trip would visit.
+[[type_groups]]
+name = "Lodging"
+travel = true
+keywords = ["hotel", "resort", "lodge", "guest house", "guesthouse", "homestay", "hostel", "inn", "dharamshala", "motel"]
+
+[[type_groups]]
+name = "Food & drink"
+travel = true
+keywords = ["restaurant", "cafe", "café", "bakery", "dhaba", "bar", "pub", "sweet shop", "food court", "caterer", "coffee shop", "ice cream shop"]
+
+[[type_groups]]
+name = "Tourist & religious"
+travel = true
+keywords = ["attraction", "temple", "mosque", "church", "gurudwara", "gurdwara", "monument", "museum", "fort", "palace", "park", "beach", "lake", "zoo", "shrine", "dargah"]
+
+[[type_groups]]
+name = "Event venue"
+travel = true
+keywords = ["banquet hall", "wedding venue", "marriage hall", "event venue", "convention center", "convention centre"]
+
+[[type_groups]]
+name = "Transport"
+travel = true
+keywords = ["airport", "station", "bus", "taxi", "travel agency"]
+
+[[type_groups]]
+name = "Health"
+travel = false
+keywords = ["clinic", "hospital", "dentist", "dental", "doctor", "physiotherapist", "pharmacy", "diagnostic", "ivf", "transplant", "surgeon", "medical"]
+
+[[type_groups]]
+name = "Education"
+travel = false
+keywords = ["coaching", "school", "college", "institute", "academy", "tutor", "university"]
+
+[[type_groups]]
+name = "Home & moving services"
+travel = false
+keywords = ["packers", "movers", "plumber", "electrician", "repair", "pest control", "interior", "interior designer"]
+
+[[type_groups]]
+name = "Retail"
+travel = false
+keywords = ["store", "shop", "showroom", "supermarket", "market"]
+
+[[type_groups]]
+name = "Beauty & wellness"
+travel = false
+keywords = ["salon", "spa", "parlour", "gym", "fitness"]
+
+[[type_groups]]
+name = "Auto"
+travel = false
+keywords = ["car", "bike", "motorcycle", "dealer", "garage", "service center"]
