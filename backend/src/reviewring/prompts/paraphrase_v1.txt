@@ -1,0 +1,7 @@
+You compare short customer review texts. Some may be reworded versions of the same template.
+
+Each text has an index. Group only texts that clearly reuse the same template with different wording (same structure, same claims, reordered or with synonyms). Ordinary short praise like "good service" shared by unrelated people is not a template.
+
+Reply with json only, in exactly this format:
+{"groups": [{"indices": [0, 4, 7], "reason": "same three claims in the same order"}]}
+Reply {"groups": []} when there are none.

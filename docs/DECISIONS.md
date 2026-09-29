@@ -26,3 +26,10 @@ One line of reasoning per decision not fixed by IMPLEMENTATION.md.
 - **Synthetic demo fixtures** (`fixtures/synthetic-*.json`, made by `reviewring demo-fixtures`) let demo mode work on a fresh clone before real showcases exist. They are labelled "synthetic" in every view.
 - **Leak check scope:** phone and PIN rules apply to free-text strings only; numbers, ISO timestamps and the exporter's salted ids are exempt, since the PIN pattern otherwise fires on microseconds and hex hashes.
 - **Presentation mode is server-side:** the API pseudonymizes reports when asked (`?presentation=1`), so real names never reach the browser in a recording.
+- **Evaluation bases fall back to synthetic businesses** until real clean controls are cached (listed in `data/cases.toml`); the results say which kind of base was used.
+- **Collection is simulated in evaluation:** the harness replays the priority score, round 1, the early stop and round 2 on the combined data, so "not chosen" losses are real losses of the budgeted method.
+- **Extra "harder rings" table** (aged accounts with photos, unique texts, spread timing) is information only; it shows where the method loses rings, since planted rings otherwise follow our own model.
+- **DeepSeek model is `deepseek-flash`** (checked against api-docs.deepseek.com on 2026-09-29; `deepseek-chat` in the first draft of the config was from memory). JSON mode via `response_format: json_object`; prompts say "json" as the docs require.
+- **LLM client is a thin `requests` call** to the OpenAI-compatible `/chat/completions` endpoint rather than the `openai` package: one fewer dependency, and the key only ever travels in an Authorization header.
+- **Place-name validator** uses states, UTs, metro aliases and a config list of major Indian cities, plus the analysis's own areas.
+- **Template summary always attached** when no validated LLM text exists, so the report shape is the same with or without a key.

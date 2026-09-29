@@ -51,7 +51,7 @@ def known_area_names() -> set[str]:
     """States, UTs and metro members: used by the LLM validator to catch stray place names."""
     states, metros, _ = _tables()
     geo = config.load_tunables()["geo"]
-    names = {*geo["states"], *geo["union_territories"], *geo["state_aliases"]}
+    names = {*geo["states"], *geo["union_territories"], *geo["state_aliases"], *geo.get("major_cities", [])}
     for canonical, *members in geo["metros"]:
         names.add(canonical)
         names.update(members)

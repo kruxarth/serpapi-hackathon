@@ -136,7 +136,9 @@ cluster_radius_km = 50
 
 [llm]
 base_url = "https://api.deepseek.com"
-model = "deepseek-chat"      # verify against DeepSeek docs at M10
+model = "deepseek-flash"     # checked against api-docs.deepseek.com on 2026-09-29
+max_tokens = 1200
+timeout_seconds = 60
 temperature = 0
 paraphrase_signal = false    # A8, off by default
 
@@ -169,6 +171,17 @@ metros = [
   ["Bengaluru", "Bengaluru", "Bangalore"],
   ["Chandigarh", "Chandigarh", "Mohali", "Sahibzada Ajit Singh Nagar", "Panchkula"],
   ["Ahmedabad", "Ahmedabad", "Gandhinagar"],
+]
+# Major cities, so the AI-summary validator catches stray place names even outside this analysis's areas.
+major_cities = [
+  "Agra", "Ahmedabad", "Ajmer", "Allahabad", "Prayagraj", "Amritsar", "Aurangabad", "Bhopal", "Bhubaneswar",
+  "Chandigarh", "Chennai", "Coimbatore", "Cuttack", "Dehradun", "Dhanbad", "Durgapur", "Gangtok", "Goa", "Gwalior",
+  "Guwahati", "Hubli", "Imphal", "Indore", "Jabalpur", "Jaipur", "Jalandhar", "Jammu", "Jamshedpur", "Jodhpur",
+  "Kanpur", "Kochi", "Cochin", "Kolhapur", "Kota", "Kozhikode", "Lucknow", "Ludhiana", "Madurai", "Mangaluru",
+  "Mangalore", "Meerut", "Mysuru", "Mysore", "Nagpur", "Nashik", "Panaji", "Patna", "Pondicherry", "Raipur",
+  "Rajkot", "Ranchi", "Rishikesh", "Shillong", "Shimla", "Siliguri", "Solapur", "Srinagar", "Surat",
+  "Thiruvananthapuram", "Trivandrum", "Tiruchirappalli", "Udaipur", "Vadodara", "Varanasi", "Vijayawada",
+  "Visakhapatnam", "Vizag", "Warangal", "Manali", "Ooty", "Darjeeling", "Munnar", "Mussoorie", "Nainital",
 ]
 country_short = { "United Arab Emirates" = "UAE", "United States" = "USA", "United Kingdom" = "UK" }
 

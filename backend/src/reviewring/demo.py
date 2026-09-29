@@ -37,6 +37,10 @@ def _load(path: Path) -> dict[str, Any]:
     }
     if fixture.get("ai_summary"):
         report["ai_summary"] = fixture["ai_summary"]
+    else:
+        from .llm import summarize
+
+        report["ai_summary"] = summarize(report, None)  # templates; demo mode never calls an LLM
     report["pseudonymized"] = True
     entry = {"fixture": fixture, "report": report}
     with _lock:

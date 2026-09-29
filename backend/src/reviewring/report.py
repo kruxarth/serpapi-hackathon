@@ -3,17 +3,24 @@
 from __future__ import annotations
 
 import json
+import logging
+import re
 from typing import Any
 
-from . import db
+from . import db, settings
 from .engine.analyze import LABEL_TEXT, analyze
+from .llm import LLMGateway, LLMRefused, paraphrase_groups, summarize
 from .model import AnalysisInput
 from .serp.gateway import Gateway
 
+log = logging.getLogger(__name__)
 
-def build_report(analysis_id: str, inp: AnalysisInput, mode: str, conn=None) -> dict[str, Any]:
+
+def build_report(
+    analysis_id: str, inp: AnalysisInput, mode: str, conn=None, paraphrase: dict[str, int] | None = None
+) -> dict[str, Any]:
     conn = conn or db.connect()
-    report = analyze(inp)
+    report = analyze(inp, paraphrase_groups=paraphrase)
     row = conn.execute(
         "SELECT input, params, started_at, searches_used, state FROM analyses WHERE id = ?", (analysis_id,)
     ).fetchone()
@@ -49,8 +56,26 @@ def build_report(analysis_id: str, inp: AnalysisInput, mode: str, conn=None) -> 
 
 
 def store_report(analysis_id: str, inp: AnalysisInput, mode: str) -> dict[str, Any]:
+    """Build the report, add the AI summary (validated LLM text or templates) and store it.
+
+    Live mode may call the LLM when a key is set; offline and demo modes only reuse cached replies.
+    """
     conn = db.connect()
-    report = build_report(analysis_id, inp, mode, conn)
+    llm = LLMGateway(mode="live" if mode == "live" else "offline")
+    paraphrase = None
+    if settings.load().get("paraphrase_signal"):
+        texts = {r.review_id: r.text for r in inp.target_reviews if r.text}
+        words = {w for w in re.split(r"\W+", inp.target.title or "") if len(w) >= 4}
+        try:
+            paraphrase = paraphrase_groups(texts, llm, words)
+        except (LLMRefused, RuntimeError) as exc:
+            log.warning("paraphrase signal skipped: %s", exc)
+    report = build_report(analysis_id, inp, mode, conn, paraphrase)
+    try:
+        report["ai_summary"] = summarize(report, llm)
+    except LLMRefused as exc:
+        log.warning("AI summary refused: %s", exc)
+        report["ai_summary"] = summarize(report, None)
     conn.execute(
         "UPDATE analyses SET status = 'done', stage = 'done', finished_at = ?, report = ?, place_key = ? WHERE id = ?",
         (report["analysis"]["finished_at"], json.dumps(report, default=str), inp.target.place_key, analysis_id),
