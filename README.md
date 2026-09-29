@@ -1,47 +1,133 @@
 # ReviewRing
 
-**A fake review looks like any other review. A batch of them doesn't.** Paste a Google Maps link and ReviewRing finds groups of reviewer accounts that reviewed the same unrelated businesses in distant cities, then shows what the rating looks like without them.
+**A fake review looks like any other review. A batch of them doesn't.** Paste a Google Maps link and ReviewRing finds groups of reviewer accounts that reviewed the same unrelated businesses in distant cities, and shows what the rating looks like without them.
 
-> Work in progress for the SerpApi India Hackathon 2026 (Knowledge & Public Interest track). This README is a stub; the full version comes at the end of the build.
+![A ReviewRing report (synthetic example, pseudonymized)](docs/screenshots/report.png)
 
-## Status
+*SerpApi India Hackathon 2026 · Knowledge & Public Interest track · MIT licensed*
 
-| Part | State |
+## The problem
+
+People in India pick clinics, hotels, coaching centres, packers-and-movers and restaurants by their Google rating. That rating is distorted by paid review farms, and by the "rate hotels on Google Maps and earn" **task scams**, which recruit ordinary people to post 5★ reviews in batches (see [The Metrognome](https://www.themetrognome.in/business-and-personal-finance/are-you-receiving-data-entry-job-offers-its-likely-an-online-scam) and a [₹9.68 lakh task-fraud case reported by Deccan Herald](https://www.deccanherald.com/amp/story/india%2Fmaharashtra%2Ffour-held-for-cheating-media-executive-of-rs-968-lakh-in-task-fraud-in-mumbai-2691525)).
+
+A single paid review is indistinguishable from a real one. The pattern only appears when you step from a business's reviews to **each reviewer's full public review history**: the same accounts reviewed the same set of unrelated businesses (a dental clinic in Jaipur, packers and movers in Lucknow, a hotel in Kochi) at about the same time.
+
+## How it works
+
+1. **Newest reviews.** Fetch the business's newest 88 reviews and score each reviewer by how likely a closer look is to pay off (review bursts, thin profiles, near-duplicate texts).
+2. **Reviewer histories.** Fetch the full public history of the 8 highest-priority reviewers plus 2 random baseline reviewers. If none of them share anything, stop there. Otherwise fetch 15 more.
+3. **Co-review graph.** Link two reviewers when they reviewed at least two of the same *unrelated, distant* places, weighted by distance from the business and by how unusual the place type is.
+4. **Groups, not individuals.** Find tight groups, **rule out group trips** (people who shared hotels and sights in one region and whose histories look like ordinary travellers'), and call a group a ring only when it spans several distant cities.
+5. **Evidence first.** The report shows the suspicion level with its reasons, the ring-adjusted rating, the ring graph, a map of where the group's other reviews are, a timeline of review bursts, **"also reviewed by this group"** (the ring's other clients), the groups that were ruled out, and exactly what was and wasn't checked.
+
+| Ring graph and map | A group trip, ruled out |
 |---|---|
-| SerpApi gateway (cache, ledger, budget guard, key redaction) | done |
-| Command-line interface: `budget`, `resolve`, `probe`, `dry-run`, `ledger`, `purge-data` | done |
-| Analysis engine, web app, Chrome extension, demo mode | in progress |
+| ![Ring graph and map](docs/screenshots/report.png) | ![A ruled-out group trip](docs/screenshots/trip-ruled-out.png) |
 
-## Setup (backend)
+> Screenshots come from the synthetic demo fixtures. *(TODO before submission: replace them with a real showcase recorded in presentation mode, and add the report GIF.)*
 
-Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).
+A **Chrome extension** puts a badge on Google Maps place pages (level and rating without rings, or "Check reviews") and opens a side panel that runs an analysis on one explicit click, after showing its cost.
+
+Everything that decides (labels, groups, levels, ratings) is deterministic and explained in [docs/methodology.md](docs/methodology.md). An optional AI model (DeepSeek) only writes a plain-language summary from numbered facts, under the evidence. A validator rejects any draft with a number, place name or loaded word it wasn't given.
+
+## Why this needs SerpApi
+
+ReviewRing can't exist without SerpApi. Google's official Places API returns **at most 5 reviews per place** and **no reviewer histories**. The reviewer history is the whole method.
+
+| SerpApi engine | What ReviewRing uses it for |
+|---|---|
+| **Google Maps Contributor Reviews API** (`google_maps_contributor_reviews`) | A reviewer's public review history (up to 200 reviews, one search): the places they reviewed, with coordinates, types, ratings and dates. This is where rings become visible. |
+| **Google Maps Reviews API** (`google_maps_reviews`) | The business's newest reviews with exact dates, reviewer ids and profile stats: bursts, thin profiles, near-duplicate texts, and who to expand. |
+| **Google Maps API** (`google_maps`) | Resolving a CID, a place_id-only link or a name search; the business's coordinates when no history contains them. |
+| **Account API** (free) | The remaining monthly and hourly budget, shown before every analysis. |
+
+When we checked (2026-09-26), none of the ~177 public BuiltWithSerpApi projects used the Contributor Reviews API.
+
+## Quick start
+
+Requires Python 3.12+ and Node 20+. [uv](https://docs.astral.sh/uv/) is recommended; a plain pip route is below.
+
+### Demo mode (no keys, no network)
 
 ```bash
-cp .env.example .env          # add SERPAPI_API_KEY; the file is gitignored
+git clone https://github.com/kruxarth/serpapi-hackathon.git reviewring && cd reviewring
+(cd web && npm install && npm run build)
+cd backend && uv sync && uv run reviewring serve
+# open http://127.0.0.1:8765
+```
+
+Without a SerpApi key the app starts in **demo mode**: prepared, pseudonymized analyses from `fixtures/`, re-run through the same engine and served by the same API.
+
+<details><summary>Without uv (pip)</summary>
+
+```bash
 cd backend
-uv sync
-uv run pytest                 # never touches the network
-uv run reviewring budget      # free Account API call: shows searches left
+python3 -m venv .venv && . .venv/bin/activate
+pip install -r requirements.txt
+reviewring serve
 ```
+</details>
 
-Every command that could spend searches shows the estimated cost and the remaining budget, and does nothing without `--yes`. `uv run reviewring dry-run <maps link>` lists exactly what an analysis would request, using only the local cache.
-
-## Local data and privacy
-
-The cache in `data/` holds reviewer names and other personal data from Google Maps. It is gitignored and never committed. Delete it at any time with:
+### Live mode (your own SerpApi key)
 
 ```bash
-uv run reviewring purge-data --yes
+cp .env.example .env        # add SERPAPI_API_KEY (and optionally DEEPSEEK_API_KEY)
+cd backend && uv run reviewring serve
 ```
 
-API keys live only in `.env` and in the backend process. They are never logged, returned by an endpoint or sent to the browser.
+Paste a Google Maps link. You'll see the estimated cost (about 15 searches for a clean business, about 30 for a suspicious one) and your remaining budget before anything runs. Everything fetched is cached, so re-opening or re-analysing a place is free.
 
-## Contributing
+The same pipeline runs from the command line: `uv run reviewring --help` (`budget`, `dry-run`, `collect`, `resume`, `analyze`, `export`, `evaluate`, `purge-data`).
+
+### Chrome extension
 
 ```bash
-pre-commit install            # gitleaks + the fixture leak check run on every commit
+cd extension && npm install && npm run build
 ```
 
-## License
+Then open `chrome://extensions`, enable Developer mode, click **Load unpacked** and pick `extension/dist`. Keep the backend running. The extension only ever talks to your local backend.
 
-MIT
+## Evaluation
+
+`uv run reviewring evaluate` plants synthetic rings into clean businesses, replays the budgeted collection (priority score, round 1, early stop, round 2), and runs the engine on exactly what would have been fetched. It uses zero searches, fixed seeds and no AI. Results: [docs/evaluation/results.md](docs/evaluation/results.md).
+
+![Credits vs recall](docs/evaluation/credits_vs_recall.png)
+
+- Recall is reported **split by where each missed account was lost**: not chosen by the priority score, chosen but not grouped, or grouped but failing the ring rules.
+- **Negative scenarios** must not be flagged: a wedding party, a family trip, a tour through two nearby states, a local circle of friends.
+- A **harder-rings** table (aged accounts with photos and unique texts) shows where the method loses.
+- **Honesty:** the planted rings follow our own model of a ring, so recall on them is optimistic. The false-positive estimate uses a small sample and comes with its 95% interval.
+
+## Search efficiency
+
+- **~15 searches** for a clean business, thanks to the early stop; **~30** for a suspicious one; a hard cap of 32.
+- Every raw response is cached before it's parsed; a forced refresh adds a new version instead of overwriting.
+- A budget guard enforces the monthly, hourly and per-analysis caps (the stricter of the local ledger and SerpApi's Account API) and pauses at the hourly limit. Resuming never requests anything twice.
+- `dry-run` lists exactly which requests an analysis would make, from the cache alone.
+
+## Responsible use, limitations and privacy
+
+- **A pattern, not proof.** ReviewRing says "suspicious", "coordinated" or "ring-like pattern", never "fake" or "fraud", and it never declares a business or a person dishonest. Every claim links to visible evidence.
+- **It doesn't flag everything.** Group trips are ruled out and shown as such, and "not checked" reviewers are neutral.
+- **Known limits:** rings within a single city aren't detected; colleagues who stay at the same hotels in several cities can look ring-like; regional travel-only rings show at most as "possible ring (trip-like)"; only the newest 88 reviews and 25 reviewers are examined; private profiles can't be checked; Google may already have removed some reviews.
+- **The AI only writes summaries.** It sees pseudonymized facts, never names, profile links or ids, and it never sets a label, group, level or rating.
+- **Privacy.** The local cache in `data/` holds personal data and is never committed (`uv run reviewring purge-data --yes` deletes it). Committed fixtures are pseudonymized (salted ids, "Business A/B", areas only, coordinates rounded, review text dropped unless it's a truncated template shared by 3+ accounts) and pass a leak check. **Presentation mode** pseudonymizes the live app for recordings. Keys stay in `.env` and the backend and are redacted from every log. The backend binds to 127.0.0.1 and rejects cross-site requests.
+
+## Project layout
+
+| Path | Contents |
+|---|---|
+| `backend/` | Python package: SerpApi gateway, parsers, engine, API, exporter, evaluation, tests |
+| `web/` | React + Vite + TypeScript app |
+| `extension/` | Chrome extension (Manifest V3) |
+| `fixtures/` | Pseudonymized analyses for demo mode |
+| `config/reviewring.toml` | Every tunable threshold in one file |
+| `docs/` | Methodology, evaluation, decisions, QA checklists |
+
+Contributing: `pre-commit install` runs gitleaks and the fixture leak check on every commit. Tests (`uv run pytest` in `backend/`) never touch the network; any attempt fails the run.
+
+## Hackathon details
+
+- **Track:** Knowledge & Public Interest
+- **AI tools used:** Claude Code (implementation, with a human-written spec and review); DeepSeek inside the product, optionally, for the plain-language summary only.
+- **License:** MIT

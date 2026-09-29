@@ -103,6 +103,7 @@ button, input, select { font: inherit; color: inherit; }
 
 .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
 .card + .card { margin-top: 16px; }
+.grid-2 > .card, .grid-3 > .card { margin-top: 0; }
 .card h2 { margin-bottom: 10px; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
