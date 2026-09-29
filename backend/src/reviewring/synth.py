@@ -109,9 +109,46 @@ _ENDINGS = [
 ]
 
 
+_NOUNS = [
+    "the chai",
+    "the receptionist",
+    "the billing counter",
+    "the washroom",
+    "the lift",
+    "the queue",
+    "the lighting",
+    "the music",
+    "the seating",
+    "the AC",
+    "the menu card",
+    "the security guard",
+    "the waiting area",
+    "the payment process",
+    "the signboard",
+    "the entrance",
+    "the lobby",
+    "the manager",
+]
+_ADJS = [
+    "surprisingly good",
+    "a bit noisy",
+    "quite outdated",
+    "very efficient",
+    "confusing",
+    "freshly renovated",
+    "too cold",
+    "friendly enough",
+    "painfully slow",
+    "better than expected",
+    "a little dusty",
+    "well organised",
+]
+
+
 def random_text(rng: random.Random) -> str:
     """A varied, invented review sentence (so unrelated reviews don't look like near-duplicates)."""
-    parts = [rng.choice(_OPENERS), rng.choice(_WHEN) + ",", rng.choice(_OPINIONS)]
+    detail = f"{rng.choice(_NOUNS).capitalize()} was {rng.choice(_ADJS)}, {rng.choice(_NOUNS)} {rng.choice(_ADJS)}."
+    parts = [detail, rng.choice(_OPENERS), rng.choice(_WHEN) + ",", rng.choice(_OPINIONS)]
     if rng.random() < 0.6:
         parts.append("and " + rng.choice(_OPINIONS) + ".")
     else:
@@ -258,7 +295,7 @@ class World:
             hi,
             False,
             [],
-            text if text is not None else f"Invented review {self._n} of a place.",
+            text if text is not None else random_text(self.rng),
         )
         self.histories.setdefault(cid, []).append(h)
         c = self.contributors.get(cid)

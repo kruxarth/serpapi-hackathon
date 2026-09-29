@@ -29,8 +29,12 @@ def client(server, monkeypatch):
     monkeypatch.setenv("SERPAPI_API_KEY", FAKE_KEY)
 
     def factory(mode):
-        return Gateway(mode="live" if mode == "live" else "offline", secrets=config.Secrets(FAKE_KEY, None),
-                       client=server, sleep=lambda s: None)
+        return Gateway(
+            mode="live" if mode == "live" else "offline",
+            secrets=config.Secrets(FAKE_KEY, None),
+            client=server,
+            sleep=lambda s: None,
+        )
 
     app = create_app(factory)
     with TestClient(app, base_url="http://127.0.0.1") as c:
@@ -57,13 +61,23 @@ def test_post_needs_custom_header_and_json(client):
 
 
 def test_cors_preflight_only_for_web_app(client):
-    evil = client.options("/api/analyses", headers={"Origin": "https://evil.example",
-                                                    "Access-Control-Request-Method": "POST",
-                                                    "Access-Control-Request-Headers": "x-reviewring,content-type"})
+    evil = client.options(
+        "/api/analyses",
+        headers={
+            "Origin": "https://evil.example",
+            "Access-Control-Request-Method": "POST",
+            "Access-Control-Request-Headers": "x-reviewring,content-type",
+        },
+    )
     assert evil.status_code == 400
-    ok = client.options("/api/analyses", headers={"Origin": "http://localhost:5173",
-                                                  "Access-Control-Request-Method": "POST",
-                                                  "Access-Control-Request-Headers": "x-reviewring,content-type"})
+    ok = client.options(
+        "/api/analyses",
+        headers={
+            "Origin": "http://localhost:5173",
+            "Access-Control-Request-Method": "POST",
+            "Access-Control-Request-Headers": "x-reviewring,content-type",
+        },
+    )
     assert ok.status_code == 200
 
 

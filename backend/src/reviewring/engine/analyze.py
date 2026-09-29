@@ -15,7 +15,7 @@ from .. import ALGORITHM_VERSION, config
 from ..model import AnalysisInput
 from ..normalize.dates import ist_date
 from ..normalize.text import cluster_owners
-from .accounts import compute_signals
+from .accounts import AccountSignals, compute_signals
 from .features import compute_text_features, target_text_id
 from .graph import build_pairs, distance_km, edges, is_popular_type, surprise
 from .groups import Group, detect_groups, type_group
@@ -262,7 +262,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
         "reviews": review_rows,
         "label_counts": {k: label_counts.get(k, 0) for k in LABELS},
         "client_lists": client_lists,
-        "places": places_payload(inp, groups),
+        "places": places_payload(inp, groups, signals),
         "evidence": evidence,
         "caveats": caveats(inp),
         "notes": inp.notes,
@@ -333,11 +333,16 @@ def graph_payload(inp, expanded, all_pairs, edge_pairs, labels) -> dict[str, Any
     return {"nodes": nodes, "edges": links}
 
 
-def places_payload(inp: AnalysisInput, groups: list[Group]) -> dict[str, dict[str, Any]]:
-    """Places referenced by groups and edges, for the map and tables."""
+def places_payload(
+    inp: AnalysisInput, groups: list[Group], signals: dict[str, AccountSignals]
+) -> dict[str, dict[str, Any]]:
+    """Places referenced by groups and same-day-distant badges, for the map and tables."""
     keys = {inp.target.place_key}
     for g in groups:
         keys.update(g.core_places)
+    for sig in signals.values():
+        for occ in sig.badges.get("A4", {}).get("occasions", []):
+            keys.update(occ["places"])
     out = {}
     for k in sorted(keys):
         p = inp.places.get(k)

@@ -66,8 +66,13 @@ def test_wedding_party_is_not_a_ring():
 def test_tour_through_two_nearby_states_is_ruled_out():
     w = World()
     ordinary_reviewers(w, 10)
-    tour = [w.place("Udaipur", "Hotel"), w.place("Udaipur", "Hindu temple"), w.place("Udaipur", "Restaurant"),
-            w.place("Ahmedabad", "Hotel"), w.place("Ahmedabad", "Cafe")]
+    tour = [
+        w.place("Udaipur", "Hotel"),
+        w.place("Udaipur", "Hindu temple"),
+        w.place("Udaipur", "Restaurant"),
+        w.place("Ahmedabad", "Hotel"),
+        w.place("Ahmedabad", "Cafe"),
+    ]
     members = trip(w, 6, tour)
     r = analyze(w.build())
     g = group_of(r, members[0])
@@ -105,8 +110,14 @@ def test_large_loose_component_is_split_with_louvain():
     w = World()
     ordinary_reviewers(w, 10)
     a = plant_ring(w, 6, cities=["Jaipur", "Kochi", "Lucknow"], m=4, base_days_ago=30)
-    b = plant_ring(w, 6, cities=["Kolkata", "Chennai", "Indore"], m=4, base_days_ago=90,
-                   template="Wonderful staff and quick work, five stars from our family!")
+    b = plant_ring(
+        w,
+        6,
+        cities=["Kolkata", "Chennai", "Indore"],
+        m=4,
+        base_days_ago=90,
+        template="Wonderful staff and quick work, five stars from our family!",
+    )
     for x, y in ((a[0], b[0]), (a[1], b[1])):  # two cross edges, each through its own pair of places
         for p in (w.place("Nagpur", "Dental clinic"), w.place("Goa", "Car dealer")):
             w.add_history(x, p)
@@ -137,8 +148,10 @@ def test_outsider_attached_by_one_edge_is_pruned():
 def test_regional_hotel_ring_is_possible_ring_trip():
     w = World()
     ordinary_reviewers(w, 10)
-    hotels = [w.place(c, t) for c, t in (("Jaipur", "Hotel"), ("Udaipur", "Resort"), ("Jodhpur", "Hotel"),
-                                         ("Jaipur", "Restaurant"))]
+    hotels = [
+        w.place(c, t)
+        for c, t in (("Jaipur", "Hotel"), ("Udaipur", "Resort"), ("Jodhpur", "Hotel"), ("Jaipur", "Restaurant"))
+    ]
     members = trip(w, 5, hotels, ordinary=False, precision="month", ratings=(5,))
     r = analyze(w.build())
     g = group_of(r, members[0])
@@ -151,8 +164,10 @@ def test_regional_hotel_ring_is_possible_ring_trip():
 def test_regional_group_trip_by_ordinary_people_is_ruled_out():
     w = World()
     ordinary_reviewers(w, 10)
-    stops = [w.place(c, t) for c, t in (("Jaipur", "Hotel"), ("Udaipur", "Resort"), ("Jodhpur", "Hotel"),
-                                        ("Jaipur", "Restaurant"))]
+    stops = [
+        w.place(c, t)
+        for c, t in (("Jaipur", "Hotel"), ("Udaipur", "Resort"), ("Jodhpur", "Hotel"), ("Jaipur", "Restaurant"))
+    ]
     members = trip(w, 6, stops, ordinary=True, precision="week", ratings=(2, 3, 4, 5))
     r = analyze(w.build())
     assert group_of(r, members[0])["verdict"] == "ruled_out_trip"
@@ -162,8 +177,14 @@ def test_regional_group_trip_by_ordinary_people_is_ruled_out():
 
 
 def test_confidence_with_unknown_timing_renormalizes():
-    m = {"core_places": 6, "far_area_count": 4, "type_diversity": 4, "concentration": 0.3, "co_timing_ratio": None,
-         "member_signal_share": 1.0}
+    m = {
+        "core_places": 6,
+        "far_area_count": 4,
+        "type_diversity": 4,
+        "concentration": 0.3,
+        "co_timing_ratio": None,
+        "member_signal_share": 1.0,
+    }
     score, parts = confidence(m, 1.0)
     assert score == 1.0
     assert next(p for p in parts if p["part"] == "Timing")["used"] is False
@@ -178,7 +199,8 @@ def test_suspicious_needs_copied_text():
     thin = []
     for _ in range(4):
         cid = w.reviewer(total=3, photos=0)
-        w.personal_history(cid, "Pune", 2, ratings=(5,))
+        for _ in range(3):
+            w.add_history(cid, w.place("Pune", "Cafe"), 5, text="Good.")
         w.review_target(cid, rating=5, text=template)
         thin.append(cid)
     lonely = w.reviewer(total=2, photos=0)

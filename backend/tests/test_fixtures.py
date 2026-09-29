@@ -110,6 +110,11 @@ def test_demo_mode_on_fresh_checkout_without_keys(monkeypatch):
 
 def test_leakcheck_cli_on_fixtures_dir():
     env = dict(os.environ)
-    result = subprocess.run([sys.executable, "-m", "reviewring.leakcheck", str(FIXTURES_DIR)], capture_output=True,
-                            text=True, env=env, check=False)
+    result = subprocess.run(
+        [sys.executable, "-m", "reviewring.leakcheck", str(FIXTURES_DIR)],
+        capture_output=True,
+        text=True,
+        env=env,
+        check=False,
+    )
     assert result.returncode == 0, result.stderr
