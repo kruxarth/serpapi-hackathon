@@ -2,5 +2,9 @@
 useDefault = true
 
 [allowlist]
-description = "Obvious placeholders used in tests and examples"
-regexes = ['''fakekey-not-real-[a-z]+''', '''your-serpapi-key-here''']
+description = "Obvious placeholders, and the exporter's 12-hex salted ids (a real key is far longer)"
+regexes = [
+  '''fakekey-not-real-[a-z]+''',
+  '''your-serpapi-key-here''',
+  '''^(?:[th]:)?[purc][0-9a-f]{12}(?::[purc][0-9a-f]{12})?$''',
+]

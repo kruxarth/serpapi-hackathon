@@ -36,7 +36,7 @@ def hashed(value: str, kind: str, salt_value: str) -> str:
     return kind + hashlib.sha256(f"{salt_value}:{kind}:{value}".encode()).hexdigest()[:12]
 
 
-def _letters(i: int) -> str:
+def letters(i: int) -> str:
     out = ""
     i += 1
     while i:
@@ -85,7 +85,7 @@ class Pseudonymizer:
         for key in place_keys:
             if key in self.places:
                 continue
-            letter = _letters(len(self.places))
+            letter = letters(len(self.places))
             t = types.get(key)
             self.places[key] = f"{t} {letter}" if t else f"Business {letter}"
             self.place_ids[key] = hashed(key, "p", self.salt)

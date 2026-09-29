@@ -376,6 +376,28 @@ def cmd_serve(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_export(args: argparse.Namespace) -> int:
+    from .exporter import LeakFound, export_analysis
+
+    try:
+        path = export_analysis(args.analysis_id, slug=args.slug, title=args.title)
+    except LeakFound as exc:
+        for f in exc.findings:
+            print(f"LEAK {f}", file=sys.stderr)
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(f"Wrote {path.relative_to(config.REPO_ROOT)} (pseudonymized; leak check passed).")
+    return 0
+
+
+def cmd_demo_fixtures(args: argparse.Namespace) -> int:
+    from .demo_fixtures import make_all
+
+    for path in make_all():
+        print(f"Wrote {path.relative_to(config.REPO_ROOT)}")
+    return 0
+
+
 def cmd_cancel(args: argparse.Namespace) -> int:
     if cancel_analysis(args.analysis_id):
         print(f"Cancelled {args.analysis_id}. Everything fetched so far stays cached.")
@@ -472,6 +494,15 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("serve", help="Run the local web app and API on 127.0.0.1")
     p.add_argument("--port", type=int)
     p.set_defaults(func=cmd_serve)
+
+    p = sub.add_parser("export", help="Write a pseudonymized fixture of a finished analysis (0 searches)")
+    p.add_argument("analysis_id")
+    p.add_argument("--slug", help="file name under fixtures/, e.g. dental-pune")
+    p.add_argument("--title", help="title shown in demo mode (no real names!)")
+    p.set_defaults(func=cmd_export)
+
+    p = sub.add_parser("demo-fixtures", help="Regenerate the synthetic demo fixtures (no network)")
+    p.set_defaults(func=cmd_demo_fixtures)
 
     p = sub.add_parser("cancel", help="Cancel a running or paused analysis")
     p.add_argument("analysis_id")

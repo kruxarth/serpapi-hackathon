@@ -22,3 +22,7 @@ One line of reasoning per decision not fixed by IMPLEMENTATION.md.
 - **Label precedence:** ring > possible ring (trip-like) > suspicious > group trip > no flags. Copied text is independent evidence, so it outranks the neutral trip explanation.
 - **A ruled-out trip is reported** only when it has at least 3 members and 2 core places; smaller overlaps aren't worth a card.
 - **`fake_serp.py`** serves a synthetic world as real-shaped SerpApi JSON, so live mode can be exercised end to end without spending searches.
+- **Fixtures store the pseudonymized engine input** plus the report the engine produces from it; demo mode re-runs the engine, and a test checks the re-run equals the stored report.
+- **Synthetic demo fixtures** (`fixtures/synthetic-*.json`, made by `reviewring demo-fixtures`) let demo mode work on a fresh clone before real showcases exist. They are labelled "synthetic" in every view.
+- **Leak check scope:** phone and PIN rules apply to free-text strings only; numbers, ISO timestamps and the exporter's salted ids are exempt, since the PIN pattern otherwise fires on microseconds and hex hashes.
+- **Presentation mode is server-side:** the API pseudonymizes reports when asked (`?presentation=1`), so real names never reach the browser in a recording.

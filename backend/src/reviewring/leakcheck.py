@@ -27,6 +27,9 @@ PHONE = re.compile(r"(?<!\d)(?:\+?91[\s\-]?)?[6-9]\d{4}[\s\-]?\d{5}(?!\d)|\+\d{1
 PIN = re.compile(r"(?<![\d\-])[1-9]\d{2}\s?\d{3}(?![\d\-])")
 # Keys whose values are hashes or opaque ids made by the exporter, not free text.
 HASH_KEY = re.compile(r"(hash|_key|salted|^id$|_id$)", re.IGNORECASE)
+# Values shaped exactly like the exporter's salted ids ("u3fa9...", "t:r12ab...", "h:u..:r.."), never free text.
+ISO_TIME = re.compile(r"^\d{4}-\d{2}-\d{2}(?:[T ]\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+\-]\d{2}:?\d{2})?)?$")
+HASHED_ID = re.compile(r"^(?:[th]:)?[a-z][0-9a-f]{12}(?::[a-z][0-9a-f]{12})?$")
 
 
 @dataclass
@@ -47,17 +50,19 @@ def _mask(text: str, match: re.Match[str] | None = None) -> str:
     return (text[start : match.start()] + "***" + text[match.end() : match.end() + 12]).replace("\n", " ")
 
 
-def _walk(obj: Any, path: str = "$") -> Iterator[tuple[str, str, str]]:
-    """Yield (json path, key, string value) for every string, including keys themselves."""
+def _walk(obj: Any, path: str = "$", key: str = "") -> Iterator[tuple[str, str, str, bool]]:
+    """Yield (json path, key, value as text, is a string) for every scalar, and for dict keys."""
     if isinstance(obj, dict):
-        for key, value in obj.items():
-            yield f"{path}.{key}[key]", "", str(key)
-            yield from _walk(value, f"{path}.{key}") if not isinstance(value, str) else [(f"{path}.{key}", key, value)]
+        for k, value in obj.items():
+            yield f"{path}.{k}[key]", "", str(k), True
+            yield from _walk(value, f"{path}.{k}", str(k))
     elif isinstance(obj, list):
         for i, value in enumerate(obj):
-            yield from _walk(value, f"{path}[{i}]")
+            yield from _walk(value, f"{path}[{i}]", key)
+    elif isinstance(obj, str):
+        yield path, key, obj, True
     elif obj is not None and not isinstance(obj, bool):
-        yield path, "", str(obj)
+        yield path, key, str(obj), False
 
 
 def originals_from_cache(db_path: Path | None = None) -> dict[str, set[str]]:
@@ -120,11 +125,12 @@ def _original_patterns(originals: dict[str, set[str]]) -> list[tuple[str, re.Pat
 def check_object(obj: Any, name: str, originals: dict[str, set[str]] | None = None) -> list[Finding]:
     findings: list[Finding] = []
     patterns = _original_patterns(originals or {})
-    for where, key, text in _walk(obj):
+    for where, key, text, is_text in _walk(obj):
         for kind, regex in (("URL", URL), ("email address", EMAIL)):
             if m := regex.search(text):
                 findings.append(Finding(name, where, kind, _mask(text, m)))
-        if not HASH_KEY.search(key):
+        free_text = is_text and not HASH_KEY.search(key) and not HASHED_ID.match(text) and not ISO_TIME.match(text)
+        if free_text:
             if m := PHONE.search(text):
                 findings.append(Finding(name, where, "phone number", _mask(text, m)))
             if m := PIN.search(text):
