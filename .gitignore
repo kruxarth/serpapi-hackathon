@@ -24,3 +24,5 @@ extension/dist/
 .DS_Store
 .idea/
 .vscode/
+
+IMPLEMENTATION.md
