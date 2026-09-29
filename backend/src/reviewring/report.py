@@ -12,6 +12,7 @@ from .engine.analyze import LABEL_TEXT, analyze
 from .llm import LLMGateway, LLMRefused, paraphrase_groups, summarize
 from .model import AnalysisInput
 from .serp.gateway import Gateway
+from .store import save_parsed
 
 log = logging.getLogger(__name__)
 
@@ -70,6 +71,7 @@ def store_report(analysis_id: str, inp: AnalysisInput, mode: str) -> dict[str, A
             paraphrase = paraphrase_groups(texts, llm, words)
         except (LLMRefused, RuntimeError) as exc:
             log.warning("paraphrase signal skipped: %s", exc)
+    save_parsed(inp, conn)
     report = build_report(analysis_id, inp, mode, conn, paraphrase)
     try:
         report["ai_summary"] = summarize(report, llm)
