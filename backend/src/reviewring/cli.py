@@ -398,6 +398,16 @@ def cmd_demo_fixtures(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_evaluate(args: argparse.Namespace) -> int:
+    from .evaluate import OUT_DIR, run_evaluation
+
+    results = run_evaluation(quick=args.quick)
+    for k, v in results["summary"].items():
+        print(f"{k}: {v}")
+    print(f"Wrote {OUT_DIR.relative_to(config.REPO_ROOT)}/results.md, results.json and charts.")
+    return 0
+
+
 def cmd_cancel(args: argparse.Namespace) -> int:
     if cancel_analysis(args.analysis_id):
         print(f"Cancelled {args.analysis_id}. Everything fetched so far stays cached.")
@@ -503,6 +513,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("demo-fixtures", help="Regenerate the synthetic demo fixtures (no network)")
     p.set_defaults(func=cmd_demo_fixtures)
+
+    p = sub.add_parser("evaluate", help="Run the evaluation harness (zero searches, fixed seeds)")
+    p.add_argument("--quick", action="store_true", help="A smaller grid, for a fast check")
+    p.set_defaults(func=cmd_evaluate)
 
     p = sub.add_parser("cancel", help="Cancel a running or paused analysis")
     p.add_argument("analysis_id")
