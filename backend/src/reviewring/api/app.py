@@ -78,6 +78,8 @@ def create_app(
     app.add_middleware(
         CORSMiddleware,
         allow_origins=origins,
+        # Only installed extensions have this origin; web pages can't use it.
+        allow_origin_regex=r"^chrome-extension://[a-p]{32}$",
         allow_methods=["GET", "POST", "PUT"],
         allow_headers=["Content-Type", "X-ReviewRing"],
     )

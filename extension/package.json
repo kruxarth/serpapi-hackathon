@@ -1,0 +1,15 @@
+{
+  "name": "reviewring-extension",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit && vite build",
+    "zip": "npm run build && cd dist && zip -qr ../reviewring-extension.zip ."
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.4",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1"
+  }
+}

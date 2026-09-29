@@ -1,0 +1,26 @@
+:root {
+  color-scheme: light dark;
+  --surface: #fcfcfb; --surface-2: #f3f2ee; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781; --border: rgba(11,11,11,.1);
+  --accent: #2a78d6; --critical: #d03b3b; --serious: #ec835a; --good: #006300;
+  font: 14px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --surface: #1a1a19; --surface-2: #242423; --ink: #fff; --ink-2: #c3c2b7; --border: rgba(255,255,255,.1); --accent: #3987e5; --good: #0ca30c; }
+}
+body { margin: 0; background: var(--surface); color: var(--ink); }
+header { display: flex; gap: 8px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+main { padding: 14px; }
+.muted { color: var(--muted); } .secondary { color: var(--ink-2); } .small { font-size: 12px; }
+.box { border: 1px solid var(--border); border-radius: 10px; padding: 12px; background: var(--surface-2); margin-bottom: 12px; }
+.level { display: inline-flex; gap: 6px; align-items: center; font-weight: 700; border: 2px solid currentColor; border-radius: 999px; padding: 3px 12px; }
+.level.High { color: var(--critical); } .level.Elevated { color: var(--serious); } .level.Low { color: var(--good); } .level.NotEnough { color: var(--muted); }
+.big { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
+button { font: inherit; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--ink); cursor: pointer; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+a { color: var(--accent); }
+ul { padding-left: 18px; margin: 6px 0; }
+input[type=url] { width: 100%; padding: 8px; margin-top: 4px; font: inherit; }
+label.check { display: flex; gap: 8px; align-items: center; margin: 10px 0; }
+.bar { height: 6px; background: var(--border); border-radius: 999px; overflow: hidden; margin-top: 8px; }
+.bar > div { height: 100%; background: var(--accent); }

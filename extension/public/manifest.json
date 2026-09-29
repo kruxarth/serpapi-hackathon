@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "ReviewRing",
+  "version": "0.1.0",
+  "description": "Checks a Google Maps place for coordinated reviewer rings, using your local ReviewRing backend.",
+  "permissions": ["storage", "sidePanel"],
+  "host_permissions": [
+    "https://www.google.com/maps/*",
+    "https://www.google.co.in/maps/*",
+    "https://maps.google.com/*",
+    "http://127.0.0.1/*",
+    "http://localhost/*"
+  ],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/maps/*", "https://www.google.co.in/maps/*", "https://maps.google.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "side_panel": { "default_path": "sidepanel.html" },
+  "options_page": "options.html",
+  "action": { "default_title": "ReviewRing", "default_icon": { "32": "icon32.png", "128": "icon128.png" } },
+  "icons": { "32": "icon32.png", "128": "icon128.png" }
+}

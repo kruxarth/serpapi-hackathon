@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ReviewRing options</title>
+    <link rel="stylesheet" href="/src/panel.css" />
+  </head>
+  <body>
+    <header><img src="/icon32.png" width="20" height="20" alt="" /> <strong>ReviewRing options</strong></header>
+    <main>
+      <label>Local backend URL<br /><input id="url" type="url" /></label>
+      <p class="muted">Only a local address (127.0.0.1 or localhost) works; ReviewRing never talks to anything else.</p>
+      <label class="check"><input id="pres" type="checkbox" /> Presentation mode (pseudonymized names)</label>
+      <p><button id="save" class="primary">Save</button> <span id="status" class="muted"></span></p>
+    </main>
+    <script type="module" src="/src/options.ts"></script>
+  </body>
+</html>
