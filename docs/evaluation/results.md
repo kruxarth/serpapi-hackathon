@@ -4,13 +4,13 @@ Algorithm version 0.1.0. Reproduce with `uv run reviewring evaluate` (fixed seed
 
 > Planted rings follow our own model of a ring, so recall on them is optimistic.
 
-- **Bases:** synthetic-1 (Dental clinic, Pune), synthetic-2 (Restaurant, Bengaluru) (synthetic; no cached controls yet)
-- **Recall of planted accounts:** 99.0% (491/496)
-- **Lost: not chosen by the priority score:** 0.6%
-- **Lost: chosen but not in any group:** 0.4%
+- **Bases:** synthetic-1 (Dental clinic, Pune), synthetic-2 (Restaurant, Bengaluru), synthetic-3 (Coaching center, Kolkata) (synthetic; no cached controls yet)
+- **Recall of planted accounts:** 99.2% (5145/5184)
+- **Lost: not chosen by the priority score:** 0.5%
+- **Lost: chosen but not in any group:** 0.2%
 - **Lost: grouped, but the group failed the ring rules:** 0.0%
-- **Businesses with a planted ring rated High or Elevated:** 97.9%
-- **False-positive rate on unplanted accounts:** 0/20 = 0.0% (95% Wilson interval 0.0%–16.1%; small sample)
+- **Businesses with a planted ring rated High or Elevated:** 98.9%
+- **False-positive rate on unplanted accounts:** 0/30 = 0.0% (95% Wilson interval 0.0%–11.4%; small sample)
 - **Negative scenarios passed:** 4/4
 
 ![Credits vs recall](credits_vs_recall.png)
@@ -21,30 +21,36 @@ Algorithm version 0.1.0. Reproduce with `uv run reviewring evaluate` (fixed seed
 
 | k | recall | not chosen | not grouped | failed rules | planted |
 |---|---|---|---|---|---|
-| 3 | 0.938 | 0.021 | 0.042 | 0.0 | 48 |
-| 8 | 1.0 | 0.0 | 0.0 | 0.0 | 128 |
-| 20 | 0.994 | 0.006 | 0.0 | 0.0 | 320 |
+| 3 | 0.944 | 0.019 | 0.037 | 0.0 | 324 |
+| 5 | 0.993 | 0.007 | 0.0 | 0.0 | 540 |
+| 8 | 0.999 | 0.001 | 0.0 | 0.0 | 864 |
+| 12 | 0.998 | 0.002 | 0.0 | 0.0 | 1296 |
+| 20 | 0.994 | 0.006 | 0.0 | 0.0 | 2160 |
 
 ## Recall by shared places (m)
 
 | m | recall | not chosen | not grouped | failed rules | planted |
 |---|---|---|---|---|---|
-| 2 | 0.984 | 0.008 | 0.008 | 0.0 | 248 |
-| 4 | 0.996 | 0.004 | 0.0 | 0.0 | 248 |
+| 2 | 0.992 | 0.007 | 0.001 | 0.0 | 1728 |
+| 4 | 0.996 | 0.003 | 0.001 | 0.0 | 1728 |
+| 8 | 0.99 | 0.006 | 0.005 | 0.0 | 1728 |
 
 ## Recall by camouflage
 
 | camouflage | recall | not chosen | not grouped | failed rules | planted |
 |---|---|---|---|---|---|
-| none | 1.0 | 0.0 | 0.0 | 0.0 | 248 |
-| high | 0.98 | 0.012 | 0.008 | 0.0 | 248 |
+| none | 0.997 | 0.002 | 0.001 | 0.0 | 1728 |
+| low | 0.995 | 0.004 | 0.001 | 0.0 | 1728 |
+| high | 0.986 | 0.01 | 0.005 | 0.0 | 1728 |
 
 ## Recall by timing
 
 | timing | recall | not chosen | not grouped | failed rules | planted |
 |---|---|---|---|---|---|
-| same week | 1.0 | 0.0 | 0.0 | 0.0 | 248 |
-| unknown | 0.98 | 0.012 | 0.008 | 0.0 | 248 |
+| same day | 1.0 | 0.0 | 0.0 | 0.0 | 1296 |
+| same week | 1.0 | 0.0 | 0.0 | 0.0 | 1296 |
+| month | 0.991 | 0.005 | 0.005 | 0.0 | 1296 |
+| unknown | 0.979 | 0.016 | 0.005 | 0.0 | 1296 |
 
 ## Regional travel-only rings (within ~450 km)
 
@@ -54,17 +60,22 @@ Algorithm version 0.1.0. Reproduce with `uv run reviewring evaluate` (fixed seed
 | synthetic-1 (Dental clinic, Pune) | 8 | 0 | 8 | 8 | Elevated |
 | synthetic-2 (Restaurant, Bengaluru) | 5 | 0 | 5 | 5 | Elevated |
 | synthetic-2 (Restaurant, Bengaluru) | 8 | 0 | 8 | 8 | Elevated |
+| synthetic-3 (Coaching center, Kolkata) | 5 | 5 | 0 | 5 | Elevated |
+| synthetic-3 (Coaching center, Kolkata) | 8 | 8 | 0 | 8 | High |
 
 ## Harder rings: aged accounts, photos, unique texts, spread timing (information only)
 
 | base | k | recall | not chosen | not grouped | failed rules | planted |
 |---|---|---|---|---|---|---|
-| synthetic-1 (Dental clinic, Pune) | 5 | 0.8 | 0.2 | 0.0 | 0.0 | 10 |
-| synthetic-1 (Dental clinic, Pune) | 8 | 0.812 | 0.188 | 0.0 | 0.0 | 16 |
-| synthetic-1 (Dental clinic, Pune) | 12 | 1.0 | 0.0 | 0.0 | 0.0 | 24 |
-| synthetic-2 (Restaurant, Bengaluru) | 5 | 0.3 | 0.6 | 0.1 | 0.0 | 10 |
-| synthetic-2 (Restaurant, Bengaluru) | 8 | 0.812 | 0.188 | 0.0 | 0.0 | 16 |
-| synthetic-2 (Restaurant, Bengaluru) | 12 | 0.917 | 0.083 | 0.0 | 0.0 | 24 |
+| synthetic-1 (Dental clinic, Pune) | 5 | 0.85 | 0.15 | 0.0 | 0.0 | 20 |
+| synthetic-1 (Dental clinic, Pune) | 8 | 0.844 | 0.156 | 0.0 | 0.0 | 32 |
+| synthetic-1 (Dental clinic, Pune) | 12 | 0.896 | 0.104 | 0.0 | 0.0 | 48 |
+| synthetic-2 (Restaurant, Bengaluru) | 5 | 0.4 | 0.4 | 0.2 | 0.0 | 20 |
+| synthetic-2 (Restaurant, Bengaluru) | 8 | 0.75 | 0.25 | 0.0 | 0.0 | 32 |
+| synthetic-2 (Restaurant, Bengaluru) | 12 | 0.938 | 0.062 | 0.0 | 0.0 | 48 |
+| synthetic-3 (Coaching center, Kolkata) | 5 | 0.8 | 0.2 | 0.0 | 0.0 | 20 |
+| synthetic-3 (Coaching center, Kolkata) | 8 | 0.906 | 0.094 | 0.0 | 0.0 | 32 |
+| synthetic-3 (Coaching center, Kolkata) | 12 | 0.938 | 0.062 | 0.0 | 0.0 | 48 |
 
 ## Negative scenarios
 
@@ -83,6 +94,7 @@ Algorithm version 0.1.0. Reproduce with `uv run reviewring evaluate` (fixed seed
 |---|---|---|---|
 | synthetic-1 (Dental clinic, Pune) | Low | 15 | True |
 | synthetic-2 (Restaurant, Bengaluru) | Low | 15 | True |
+| synthetic-3 (Coaching center, Kolkata) | Low | 15 | True |
 
 ## Credits vs recall (k=8, m=4, low camouflage, same week)
 
@@ -90,8 +102,8 @@ Algorithm version 0.1.0. Reproduce with `uv run reviewring evaluate` (fixed seed
 |---|---|---|
 | 4 | 9.0 | 0.5 |
 | 6 | 11.0 | 0.75 |
-| 8 | 13.0 | 0.958 |
-| 10 | 15.0 | 0.958 |
+| 8 | 13.0 | 0.965 |
+| 10 | 15.0 | 0.965 |
 | 13 | 18.0 | 1.0 |
 | 16 | 21.0 | 1.0 |
 | 20 | 25.0 | 1.0 |
