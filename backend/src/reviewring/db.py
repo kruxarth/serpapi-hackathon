@@ -111,7 +111,9 @@ CREATE TABLE IF NOT EXISTS analyses (
     started_at TEXT,
     finished_at TEXT,
     algorithm_version TEXT,
-    report TEXT
+    report TEXT,
+    state TEXT,                        -- JSON: resolved place, expansion plan, pause info
+    error TEXT
 );
 
 CREATE TABLE IF NOT EXISTS llm_responses (
@@ -152,5 +154,17 @@ def connect(path: Path | str | None = None) -> sqlite3.Connection:
     with _init_lock:
         if path not in _initialized:
             conn.executescript(SCHEMA)
+            _migrate(conn)
             _initialized.add(path)
     return conn
+
+
+# Columns added after a table first shipped: (table, column, type).
+_ADDED_COLUMNS = [("analyses", "state", "TEXT"), ("analyses", "error", "TEXT")]
+
+
+def _migrate(conn: sqlite3.Connection) -> None:
+    for table, column, kind in _ADDED_COLUMNS:
+        existing = {row[1] for row in conn.execute(f"PRAGMA table_info({table})")}
+        if column not in existing:
+            conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {kind}")
