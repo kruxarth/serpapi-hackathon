@@ -12,3 +12,13 @@ One line of reasoning per decision not fixed by IMPLEMENTATION.md.
 - **Short-link expansion** uses `requests` with `allow_redirects=False` and follows each hop manually, so loops, the hop limit and consent pages are all handled explicitly.
 - **Pagination failure:** a 429 or a repeated 5xx mid-pagination returns the pages already fetched with a note, instead of pausing between pages (spec 5.3 forbids pauses inside pagination).
 - **IMPLEMENTATION.md** is left uncommitted until the user decides whether the internal spec belongs in the public repo.
+- **Hourly cap stays 50:** the Account API reports `account_rate_limit_per_hour = 250` for this account, but the spec's free-plan figure (50) is kept as the configured cap because it's stricter.
+- **Engine as a pure function:** collection produces an `AnalysisInput`; the engine never fetches. Demo mode, the CLI `analyze` command and the evaluation harness all run the same `analyze()`.
+- **Text clusters are anchored on target reviews:** similarity is computed for (target review, any text) pairs, not all history pairs, which is all A6, T4 and stock phrases need and keeps it fast.
+- **Priority uses target-only clusters:** the priority score's duplicate-cluster points use clusters among the target's reviews only, so the expansion order never depends on histories fetched later.
+- **Pruning removes one member at a time** (the weakest first), so one removal can't cascade unfairly.
+- **Offline mode analyses whatever is cached** and reports what's missing with its cost, instead of failing on the first missing history.
+- **Member-signals confidence part** counts only non-context signals (A1, A2, A5, A6, A7); A3, A4 and A8 are context only.
+- **Label precedence:** ring > possible ring (trip-like) > suspicious > group trip > no flags. Copied text is independent evidence, so it outranks the neutral trip explanation.
+- **A ruled-out trip is reported** only when it has at least 3 members and 2 core places; smaller overlaps aren't worth a card.
+- **`fake_serp.py`** serves a synthetic world as real-shaped SerpApi JSON, so live mode can be exercised end to end without spending searches.

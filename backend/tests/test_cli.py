@@ -92,3 +92,42 @@ def test_budget_live_strips_email(fake, capsys):
     out = capsys.readouterr().out
     assert "example.invalid" not in out and FAKE_KEY not in out
     assert "total_searches_left: 240" in out
+
+
+def test_checkpoint_flow_probe_then_collect_reuses_responses(monkeypatch, capsys):
+    from reviewring.fake_serp import FakeSerpApi
+    from reviewring.synth import World, ordinary_reviewers, plant_ring
+
+    w = World()
+    ordinary_reviewers(w, 50)
+    plant_ring(w, 8, cities=["Jaipur", "Kochi", "Lucknow"], m=4)
+    server = FakeSerpApi(w)
+    secrets = config.Secrets(FAKE_KEY, None)
+
+    def factory(*args, **kwargs):
+        kwargs.setdefault("secrets", secrets)
+        kwargs.setdefault("client", server)
+        kwargs.setdefault("sleep", lambda s: None)
+        return Gateway(*args, **kwargs)
+
+    monkeypatch.setattr(cli, "Gateway", factory)
+    url = "https://www.google.com/maps/place/T/data=!4m2!3m1!1s0x5eed:0x1"
+    assert cli.main(["probe", url, "--yes"]) == 0
+    probe_calls = [dict(c) for c in server.calls]
+    assert len(probe_calls) == 2
+
+    assert cli.main(["collect", url]) == 2  # shows the estimate, spends nothing without --yes
+    assert len(server.calls) == 2
+    out = capsys.readouterr().out
+    assert "Estimate:" in out and "1 of 5 pages cached" in out
+
+    assert cli.main(["collect", url, "--yes"]) == 0
+    keys = [tuple(sorted(c.items())) for c in server.calls]
+    assert len(keys) == len(set(keys)), "the probe's responses were fetched again"
+    out = capsys.readouterr().out
+    analysis_id = next(line.split(": ")[1] for line in out.splitlines() if line.startswith("Analysis id"))
+    assert cli.main(["resume", analysis_id, "--yes"]) == 1  # finished: needs --force
+    n = len(server.calls)
+    assert cli.main(["resume", analysis_id, "--yes", "--force"]) == 0
+    assert len(server.calls) == n  # everything is cached
+    assert cli.main(["cancel", analysis_id]) == 1  # nothing running

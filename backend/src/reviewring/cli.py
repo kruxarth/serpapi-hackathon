@@ -15,10 +15,11 @@ from collections import Counter
 from typing import Any
 
 from . import config, db, redact
+from .collect import Collector, CollectParams, cancel_analysis, estimate
 from .resolve import InputRefused, lookup, lookup_request, parse_input
 from .serp import catalog
 from .serp.errors import GatewayError, NotCached
-from .serp.gateway import Gateway, PlannedRequest, pages_needed
+from .serp.gateway import Gateway
 
 log = logging.getLogger("reviewring")
 
@@ -217,45 +218,155 @@ def cmd_probe(args: argparse.Namespace) -> int:
     return 0
 
 
-# --------------------------------------------------------------------------- dry run
+# --------------------------------------------------------------------------- collection
+
+
+def _params(args: argparse.Namespace) -> CollectParams:
+    return CollectParams.from_config(
+        n=getattr(args, "n", None),
+        k1=getattr(args, "k1", None),
+        k2=getattr(args, "k2", None),
+        stop_after_round1=getattr(args, "stop_after_round1", None) or None,
+        pick=getattr(args, "pick", None),
+    )
+
+
+def _print_estimate(est) -> None:
+    for line in est.lines:
+        print(f"  - {line}")
+    print(f"Estimate: {est.minimum}-{est.maximum} searches (per-analysis cap {est.cap}).")
 
 
 def cmd_dry_run(args: argparse.Namespace) -> int:
-    """List exactly which requests an analysis would make, using the cache only."""
-    n = args.n or config.tunable("collection", "n_reviews")
-    k1, b, k2 = (config.tunable("collection", k) for k in ("k1", "baseline", "k2"))
+    """List what an analysis would request, using the cache only. No network."""
     resolved = parse_input(args.input)
-    gw = Gateway(mode="offline", dry_run=True)
-    minimum = maximum = 0
-    data_id = resolved.data_id
-    if data_id is None:
-        try:
-            candidates = lookup(gw, resolved)
-            data_id = candidates[0].data_id if len(candidates) == 1 else None
-        except NotCached:
-            pass
-    if data_id:
-        pages = gw.fetch_pages(data_id, n)
-        print(f"Review pages: {len(pages.responses)} cached of {pages_needed(n)} needed.")
-    else:
-        gw.planned.append(
-            PlannedRequest(
-                "reviews pages (after the place is identified)", catalog.REVIEWS_ENGINE, None, pages_needed(n)
-            )
-        )
-    for p in gw.planned:
-        minimum += p.cost
-        maximum += p.cost
-    rounds = f"round 1: {k1 + b} reviewer histories" + ("" if args.stop_after_round1 else f", round 2: up to {k2} more")
-    maximum += k1 + b + (0 if args.stop_after_round1 else k2)
-    minimum += k1 + b
     print("Would request:")
-    for p in gw.planned:
-        print(f"  - {p.label} ({p.engine}), {p.cost} search{'es' if p.cost != 1 else ''}")
-    print(f"  - {rounds} (chosen after scoring; cached histories cost nothing)")
-    cap = config.tunable("budget", "per_analysis_cap")
-    print(f"Estimate: {minimum}-{min(maximum, cap)} searches (per-analysis cap {cap}). {_budget_line(gw)}")
+    _print_estimate(estimate(resolved, _params(args)))
+    print(_budget_line(Gateway(mode="offline")))
     return 0
+
+
+def _on_event(event) -> None:
+    print(f"[{event.searches_used:>2} searches] {event.message}")
+
+
+def _run_collection(gw: Gateway, input_text: str, params: CollectParams, analysis_id: str | None) -> int:
+    collector = Collector(gw, input_text, params, analysis_id=analysis_id, on_event=_on_event)
+    print(f"Analysis id: {collector.analysis_id}")
+    outcome = collector.run()
+    if outcome.status == "needs_input":
+        for c in outcome.candidates:
+            print(f"  --pick {c['data_id']}   {c['title']} | {c['address']} | {c['rating']} ({c['reviews']})")
+        print(f"Re-run: reviewring resume {collector.analysis_id} --pick <data_id> --yes")
+        return 2
+    if outcome.status == "paused":
+        print(
+            f"Paused: {outcome.message} Resume after {outcome.resume_at} with: "
+            f"reviewring resume {collector.analysis_id} --yes"
+        )
+        return 3
+    if outcome.status != "done":
+        print(f"{outcome.status}: {outcome.message}", file=sys.stderr)
+        return 1
+    for what, cost in collector.state.get("missing", {}).items():
+        print(f"Not cached: {what} (would cost {cost})")
+    inp = outcome.input
+    ok = sum(1 for c in inp.contributors.values() if c.status == "ok")
+    print(f"Collected {len(inp.target_reviews)} target reviews and {ok}/{len(inp.contributors)} reviewer histories.")
+    if outcome.early_stop:
+        print(f"Early stop: {collector.state.get('early_stop')}")
+    finish = _finisher()
+    if finish is not None:
+        finish(collector.analysis_id, inp, gw.mode)
+    print(f"Searches used by this analysis: {collector.searches_used()}. {_budget_line(gw)}")
+    return 0
+
+
+def _finisher():
+    """The M3 report step, when present."""
+    try:
+        from .report import finish_analysis
+    except ImportError:
+        return None
+    return finish_analysis
+
+
+def _confirm_live(gw: Gateway, est, yes: bool) -> int | None:
+    gw.refresh_account()
+    status = gw.budget_status()
+    _print_estimate(est)
+    print(_budget_line(gw))
+    if est.maximum > status.month_remaining:
+        print(
+            "Refused: the maximum cost exceeds the searches left this month. "
+            "Try a smaller --n or --k2, or --stop-after-round1."
+        )
+        return 1
+    if est.maximum and not yes:
+        print("Re-run with --yes to spend them.")
+        return 2
+    return None
+
+
+def cmd_collect(args: argparse.Namespace) -> int:
+    resolved = parse_input(args.input)
+    params = _params(args)
+    gw = _gateway(args)
+    if gw.live:
+        stop = _confirm_live(gw, estimate(resolved, params), args.yes)
+        if stop is not None:
+            return stop
+    return _run_collection(gw, args.input, params, None)
+
+
+def cmd_resume(args: argparse.Namespace) -> int:
+    row = (
+        db.connect().execute("SELECT input, status, params FROM analyses WHERE id = ?", (args.analysis_id,)).fetchone()
+    )
+    if row is None:
+        print(f"No analysis {args.analysis_id}.", file=sys.stderr)
+        return 1
+    if row["status"] in ("done", "cancelled") and not args.force:
+        print(f"Analysis {args.analysis_id} is {row['status']}. Use --force to run it again from the cache.")
+        return 1
+    params = CollectParams(**json.loads(row["params"])) if row["params"] else CollectParams.from_config()
+    if args.pick:
+        params.pick = args.pick
+    gw = _gateway(args)
+    if gw.live:
+        stop = _confirm_live(gw, estimate(parse_input(row["input"]), params), args.yes)
+        if stop is not None:
+            return stop
+    return _run_collection(gw, row["input"], params, args.analysis_id)
+
+
+def cmd_analyze(args: argparse.Namespace) -> int:
+    """Re-run the engine on a collected analysis, from the cache only (0 searches)."""
+    row = db.connect().execute("SELECT input, params FROM analyses WHERE id = ?", (args.analysis_id,)).fetchone()
+    if row is None:
+        print(f"No analysis {args.analysis_id}.", file=sys.stderr)
+        return 1
+    params = CollectParams(**json.loads(row["params"])) if row["params"] else CollectParams.from_config()
+    gw = Gateway(mode="offline")
+    collector = Collector(gw, row["input"], params, analysis_id=args.analysis_id)
+    outcome = collector.run()
+    if outcome.status != "done":
+        print(f"{outcome.status}: {outcome.message}", file=sys.stderr)
+        return 1
+    from .report import finish_analysis
+
+    report = finish_analysis(args.analysis_id, outcome.input, "offline")
+    if args.json:
+        _print(report)
+    return 0
+
+
+def cmd_cancel(args: argparse.Namespace) -> int:
+    if cancel_analysis(args.analysis_id):
+        print(f"Cancelled {args.analysis_id}. Everything fetched so far stays cached.")
+        return 0
+    print(f"Nothing to cancel for {args.analysis_id}.")
+    return 1
 
 
 # --------------------------------------------------------------------------- housekeeping
@@ -311,11 +422,41 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--dry-run", action="store_true")
     p.set_defaults(func=cmd_probe)
 
+    def collection_args(p: argparse.ArgumentParser) -> None:
+        p.add_argument("--n", type=int, help="newest reviews to fetch (default 88)")
+        p.add_argument("--k1", type=int, help="round-1 reviewers (default 8)")
+        p.add_argument("--k2", type=int, help="round-2 reviewers (default 15)")
+        p.add_argument("--stop-after-round1", action="store_true")
+        p.add_argument("--pick", help="data_id of the candidate to use after a name search")
+
     p = sub.add_parser("dry-run", help="List the requests an analysis would make (cache only, no network)")
     p.add_argument("input")
-    p.add_argument("--n", type=int)
-    p.add_argument("--stop-after-round1", action="store_true")
+    collection_args(p)
     p.set_defaults(func=cmd_dry_run)
+
+    p = sub.add_parser("collect", help="Checkpoint A: run a full collection (shows the cost; spends only with --yes)")
+    p.add_argument("input")
+    collection_args(p)
+    p.add_argument("--yes", action="store_true")
+    p.add_argument("--offline", action="store_true", help="Use only the cache")
+    p.set_defaults(func=cmd_collect)
+
+    p = sub.add_parser("resume", help="Resume a paused analysis (cached requests cost nothing)")
+    p.add_argument("analysis_id")
+    p.add_argument("--pick")
+    p.add_argument("--yes", action="store_true")
+    p.add_argument("--offline", action="store_true")
+    p.add_argument("--force", action="store_true", help="Re-run a finished analysis from the cache")
+    p.set_defaults(func=cmd_resume)
+
+    p = sub.add_parser("analyze", help="Re-run the engine on a collected analysis from the cache (0 searches)")
+    p.add_argument("analysis_id")
+    p.add_argument("--json", action="store_true", help="Print the full report")
+    p.set_defaults(func=cmd_analyze)
+
+    p = sub.add_parser("cancel", help="Cancel a running or paused analysis")
+    p.add_argument("analysis_id")
+    p.set_defaults(func=cmd_cancel)
 
     p = sub.add_parser("ledger", help="Show recent live requests")
     p.add_argument("--limit", type=int, default=30)
