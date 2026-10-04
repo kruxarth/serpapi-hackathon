@@ -14,6 +14,9 @@ function levelClass(level: string) {
 }
 
 async function activeTab(): Promise<chrome.tabs.Tab | undefined> {
+  // ?tab=<id> lets the panel be opened as a normal page for a given tab (testing, or browsers without side panels).
+  const forced = new URLSearchParams(location.search).get('tab')
+  if (forced) return chrome.tabs.get(Number(forced))
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
   return tab
 }
@@ -65,8 +68,12 @@ async function summary(s: Summary, analysisId: string, ageDays: number, url: str
     <div class="box">
       ${s.title ? `<div class="secondary small">${esc(s.title)}</div>` : ''}
       <span class="level ${levelClass(s.level)}">${esc(s.level)}</span>
-      <p><span class="big">${s.sample_mean?.toFixed(2) ?? '–'}★ → ${s.adjusted?.toFixed(2) ?? '–'}★</span><br>
-      <span class="secondary small">latest ${s.examined} reviews, excluding linked reviewers</span></p>
+      ${s.headline ? `<div class="secondary" style="margin-top:6px">Main finding: <strong>${esc(s.headline)}</strong></div>` : ''}
+      ${s.adjusted != null && s.sample_mean != null && Math.abs(s.adjusted - s.sample_mean) >= 0.01
+        ? `<p><span class="big">${s.sample_mean.toFixed(2)}★ → ${s.adjusted.toFixed(2)}★</span><br>
+           <span class="secondary small">latest ${s.examined} reviews, excluding linked reviewers</span></p>`
+        : `<p><span class="big">Shows ${s.rating ?? '–'}★</span><br>
+           <span class="secondary small">its latest ${s.examined} reviews average ${s.sample_mean?.toFixed(2) ?? '–'}★</span></p>`}
       <p class="small">${s.rings} ring-like group${s.rings === 1 ? '' : 's'} found · analysed ${age}</p>
       ${s.evidence.length ? `<ul>${s.evidence.map((e) => `<li>${esc(e)}</li>`).join('')}</ul>` : ''}
       <p><a href="${esc(backendUrl)}/analysis/${encodeURIComponent(analysisId)}" target="_blank">Open full report</a></p>

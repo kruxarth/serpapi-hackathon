@@ -407,10 +407,27 @@ def create_app(
     return app
 
 
+HEADLINES = [  # (evidence kind, short reason for the badge), strongest first
+    ("ring", "linked reviewer group"),
+    ("generated_text", "chatbot text in reviews"),
+    ("single_use_burst", "burst of single-use accounts"),
+    ("possible_ring_trip", "possible linked group"),
+    ("rating_gap", "rating carried by old reviews"),
+]
+
+
+def headline(report: dict[str, Any]) -> str | None:
+    kinds = {e["kind"] for e in report.get("evidence", [])}
+    return next((text for kind, text in HEADLINES if kind in kinds), None)
+
+
 def summarize(report: dict[str, Any]) -> dict[str, Any]:
-    """The extension's summary: level, adjusted rating, rings and the top 3 evidence sentences."""
+    """The extension's summary: level, main reason, adjusted rating, rings and the top 3 evidence sentences."""
+    order = {kind: i for i, (kind, _) in enumerate(HEADLINES)}
+    evidence = sorted(report["evidence"], key=lambda e: order.get(e["kind"], len(order)))
     return {
         "level": report["level"]["level"],
+        "headline": headline(report),
         "reasons": report["level"]["reasons"],
         "title": report["place"].get("title"),
         "rating": report["place"].get("rating"),
@@ -418,7 +435,7 @@ def summarize(report: dict[str, Any]) -> dict[str, Any]:
         "adjusted": report["ratings"]["without_ring"],
         "examined": report["ratings"]["examined"],
         "rings": sum(1 for g in report["groups"] if g["verdict"] in ("ring", "possible_ring", "possible_ring_trip")),
-        "evidence": [e["text"] for e in report["evidence"][:3]],
+        "evidence": [e["text"] for e in evidence[:3]],
     }
 
 

@@ -15,6 +15,7 @@ export async function getSettings(): Promise<ExtSettings> {
 
 export interface Summary {
   level: string
+  headline: string | null
   reasons: string[]
   title: string | null
   rating: number | null

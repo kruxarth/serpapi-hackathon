@@ -307,3 +307,24 @@ def test_needs_top_rated_only_for_a_large_gap():
     w2 = World(total_reviews=5000, rating=4.2)
     ordinary_reviewers(w2, 40, rating_pool=(4, 5))
     assert not needs_top_rated(w2.build())
+
+
+def test_presentation_mode_blurs_counts_and_dates_inside_sentences():
+    from reviewring.model import TargetReview
+    from reviewring.privacy import pseudonymize_report
+
+    w = World(total_reviews=6607, rating=4.9)
+    ordinary_reviewers(w, 60, rating_pool=(1, 2, 3, 4, 5))
+    inp = w.build()
+    inp.top_rated = [
+        TargetReview(f"t{i}", f"o{i}", 5, FETCHED - timedelta(days=600 + i), text="ok fine", reviewer_reviews=1)
+        for i in range(10)
+    ]
+    report = analyze(inp)
+    text = " ".join(e["text"] for e in report["evidence"])
+    assert "6,607" in text
+    shown = pseudonymize_report(report, salt_value="s")
+    shown_text = " ".join(e["text"] for e in shown["evidence"]) + " ".join(shown["level"]["reasons"])
+    assert "6,607" not in shown_text and "about 7,000" in shown_text
+    for d in __import__("re").findall(r"\d{4}-\d{2}-\d{2}", text):
+        assert d not in shown_text

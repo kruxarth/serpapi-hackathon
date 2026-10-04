@@ -80,8 +80,8 @@ async function check() {
   else if (lookup.state === 'found') {
     const s = lookup.summary
     const age = lookup.ageDays < 1 ? 'today' : `${Math.floor(lookup.ageDays)}d ago`
-    const rating = s.adjusted != null ? `${s.adjusted.toFixed(1)}★ excl. linked reviewers` : ''
-    setBadge('', `Reviews checked: ${s.level}`, [rating, age].filter(Boolean).join(' · '))
+    const reason = s.headline ?? (s.level === 'Low' ? 'no linked groups found' : '')
+    setBadge('', `Reviews checked: ${s.level}`, [reason, age].filter(Boolean).join(' · '))
   } else if (lookup.state === 'demo') setBadge('', 'ReviewRing', 'demo mode')
   else setBadge('', 'Check reviews')
 }

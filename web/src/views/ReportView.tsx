@@ -63,12 +63,19 @@ export function ReportView({ detail }: { detail: AnalysisDetail }) {
         <div className="grid-2" style={{ marginTop: 16 }}>
           <div>
             <div className="muted small">Latest {r.examined} reviews</div>
-            <div className="hero">
-              <span className="big num">{fmt(r.sample_mean, 2)}★</span>
-              <span className="arrow">→</span>
-              <span className="big num">{fmt(r.without_ring, 2)}★</span>
-              <span className="secondary">excluding linked reviewers</span>
-            </div>
+            {r.ring_reviews > 0 ? (
+              <div className="hero">
+                <span className="big num">{fmt(r.sample_mean, 2)}★</span>
+                <span className="arrow">→</span>
+                <span className="big num">{fmt(r.without_ring, 2)}★</span>
+                <span className="secondary">excluding linked reviewers</span>
+              </div>
+            ) : (
+              <div className="hero">
+                <span className="big num">{fmt(r.sample_mean, 2)}★</span>
+                <span className="secondary">average of the latest {r.examined}{report.place.rating != null && <> (the listing shows {report.place.rating}★)</>}</span>
+              </div>
+            )}
             <div className="secondary small">
               {fmt(r.without_ring_and_suspicious, 2)}★ also excluding suspicious and possible-group reviews ·{' '}
               {r.ring_reviews} review{r.ring_reviews === 1 ? '' : 's'} from ring-like groups set aside

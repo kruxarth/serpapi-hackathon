@@ -92,6 +92,36 @@ def shift_dates(obj: Any, days: int, skip: frozenset[str] = frozenset({"analysis
     return obj
 
 
+_EMBEDDED_DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
+
+
+def _scrub_sentences(r: dict[str, Any], original: dict[str, Any], days: int) -> dict[str, Any]:
+    """Evidence and reasons are prose: shift the dates inside them and blur exact review counts."""
+    total = original.get("place", {}).get("total_reviews")
+    gap = original.get("signals", {}).get("T7") or {}
+    swaps: list[tuple[str, str]] = []
+    if total:
+        swaps.append((f"{total:,}", f"about {approx_count(total):,}"))
+        swaps.append((str(total), f"about {approx_count(total)}"))
+    if gap.get("older_count"):
+        n = gap["older_count"]
+        swaps.append((f"{n:,}", f"about {approx_count(n):,}"))
+
+    def fix(text: str) -> str:
+        for a, b in swaps:
+            text = text.replace(a, b)
+        return _EMBEDDED_DATE.sub(lambda m: shift_iso(m.group(0), days), text)
+
+    for e in r.get("evidence", []):
+        e["text"] = fix(e["text"])
+    if r.get("level"):
+        r["level"]["reasons"] = [fix(x) for x in r["level"]["reasons"]]
+    if r.get("ai_summary"):
+        r["ai_summary"]["paragraphs"] = [fix(x) for x in r["ai_summary"].get("paragraphs", [])]
+        r["ai_summary"].pop("facts", None)
+    return r
+
+
 def approx_count(n: int | None) -> int | None:
     """One significant figure (640 -> 600, 2300 -> 2000): the review count alone shouldn't identify a business."""
     if not n:
@@ -254,7 +284,9 @@ def pseudonymize_report(report: dict[str, Any], salt_value: str | None = None) -
         r["ratings"]["overall"]["total_as_displayed"] = approx_count(r["ratings"]["overall"]["total_as_displayed"])
     for row in r.get("reviews", []):
         row.pop("date", None)  # exact timestamps; the shifted day is enough
-    r = shift_dates(r, date_offset_days(ps.salt, tk))
+    days = date_offset_days(ps.salt, tk)
+    r = shift_dates(r, days)
+    r = _scrub_sentences(r, report, days)
     r["pseudonymized"] = True
     r["dates_shifted"] = True
     return r

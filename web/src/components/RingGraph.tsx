@@ -32,6 +32,7 @@ export function RingGraph({ report, namer, selectedGroup, onSelectGroup }: Props
       container: box.current,
       elements,
       wheelSensitivity: 0.2,
+      maxZoom: 1.6,
       style: [
         { selector: 'node.person', style: {
           'background-color': 'data(color)', width: 18, height: 18, label: 'data(name)', 'font-size': 9,
@@ -105,6 +106,11 @@ export function RingGraph({ report, namer, selectedGroup, onSelectGroup }: Props
         {report.graph.nodes.length === 0 && (
           <div className="muted" style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center' }}>
             No reviewer histories to show.
+          </div>
+        )}
+        {report.graph.nodes.length > 0 && report.graph.edges.length === 0 && (
+          <div className="muted small" style={{ position: 'absolute', left: 12, right: 12, bottom: 10, textAlign: 'center' }}>
+            None of the {report.graph.nodes.length} reviewers checked share any other places: no linked groups.
           </div>
         )}
       </div>
