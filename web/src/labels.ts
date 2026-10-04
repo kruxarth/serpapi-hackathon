@@ -21,16 +21,16 @@ export const VERDICT_TEXT: Record<Verdict, string> = {
   none: 'No verdict',
 }
 
-export const LEVEL_ICON: Record<Level, string> = {
-  High: '▲',
-  Elevated: '◆',
-  Low: '●',
-  'Not enough history': '○',
+export const BADGE_NAMES: Record<string, string> = {
+  A1: 'Thin profile', A2: 'Rating monotony', A3: 'Several cities in one week', A4: 'Same-day distant reviews',
+  A5: 'Short texts', A6: 'Copy-paste text', A7: 'Burst participant', A8: 'Reworded template (AI)',
 }
 
-export const levelClass = (l: Level) => (l === 'Not enough history' ? 'NotEnough' : l)
+export const FLAGGED_VERDICTS: Verdict[] = ['ring', 'possible_ring', 'possible_ring_trip']
 
-/** Read a CSS custom property, for libraries (Cytoscape, Leaflet, Recharts) that need concrete colours. */
+export const levelClass = (l: Level) => `lvl-${l === 'Not enough history' ? 'NotEnough' : l}`
+
+/** Read a CSS custom property, for libraries (Cytoscape, Leaflet) that need concrete colours. */
 export function cssVar(name: string): string {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || '#888'
 }
@@ -54,6 +54,21 @@ export function labelColor(label: Label): string {
 
 export const fmt = (v: number | null | undefined, digits = 1) =>
   v === null || v === undefined || Number.isNaN(v) ? '–' : v.toFixed(digits)
+
+export const pct = (share: number) => `${Math.round(share * 100)}%`
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+/** "2023-03-19" → "19 Mar 2023"; the day itself is not changed. */
+export function day(iso: string | null | undefined): string {
+  if (!iso) return '–'
+  const [y, m, d] = iso.slice(0, 10).split('-')
+  return `${Number(d)} ${MONTHS[Number(m) - 1]} ${y}`
+}
+
+export function dayCount(start: string, end: string): number {
+  return Math.round((Date.parse(end) - Date.parse(start)) / 86_400_000) + 1
+}
 
 export function ageText(iso: string | null | undefined): string {
   if (!iso) return ''

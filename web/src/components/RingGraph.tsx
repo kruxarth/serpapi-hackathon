@@ -3,6 +3,7 @@ import fcose from 'cytoscape-fcose'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { cssVar, LABEL_ORDER, LABEL_TEXT, labelColor, VERDICT_TEXT } from '../labels'
 import type { Namer } from '../names'
+import { useTheme } from '../theme'
 import type { Label, Report } from '../types'
 
 cytoscape.use(fcose)
@@ -17,10 +18,12 @@ interface Props {
 export function RingGraph({ report, namer, selectedGroup, onSelectGroup }: Props) {
   const box = useRef<HTMLDivElement>(null)
   const cy = useRef<Core | null>(null)
+  const { scheme } = useTheme()
   const [showPlaces, setShowPlaces] = useState(false)
   const [tip, setTip] = useState<{ x: number; y: number; html: string[] } | null>(null)
 
-  const elements = useMemo(() => buildElements(report, namer, showPlaces), [report, namer, showPlaces])
+  // scheme is a dependency so colours are re-read from CSS when the theme flips.
+  const elements = useMemo(() => buildElements(report, namer, showPlaces), [report, namer, showPlaces, scheme])
 
   useEffect(() => {
     if (!box.current) return
@@ -50,7 +53,7 @@ export function RingGraph({ report, namer, selectedGroup, onSelectGroup }: Props
         { selector: 'edge.visit', style: { width: 1, 'line-style': 'dotted', opacity: 0.45 } },
         { selector: '.faded', style: { opacity: 0.12 } },
       ],
-      layout: { name: 'fcose', randomize: true, seed: 7, animate: false, nodeRepulsion: 6000, idealEdgeLength: 70, packComponents: true } as cytoscape.LayoutOptions,
+      layout: { name: 'fcose', randomize: true, seed: 7, animate: true, animationDuration: 1400, animationEasing: 'ease-out-cubic', nodeRepulsion: 14000, idealEdgeLength: 130, padding: 24, packComponents: true } as cytoscape.LayoutOptions,
     })
     instance.on('mouseover', 'node.person', (e) => {
       const d = e.target.data()
@@ -89,11 +92,11 @@ export function RingGraph({ report, namer, selectedGroup, onSelectGroup }: Props
   const present = LABEL_ORDER.filter((l) => report.graph.nodes.some((n) => n.label === l))
   return (
     <div>
-      <div className="row small" style={{ marginBottom: 8 }}>
-        <label className="toggle">
-          <input type="checkbox" checked={showPlaces} onChange={(e) => setShowPlaces(e.target.checked)} /> Show shared places as nodes
+      <div className="row small" style={{ marginBottom: 10, justifyContent: 'space-between' }}>
+        <span className="muted">Each dot is a reviewer whose history was checked. A line joins two who reviewed the same unrelated, distant places.</span>
+        <label className="row" style={{ gap: 6, whiteSpace: 'nowrap', cursor: 'pointer' }}>
+          <input type="checkbox" checked={showPlaces} onChange={(e) => setShowPlaces(e.target.checked)} /> Shared places as nodes
         </label>
-        <span className="muted">Each dot is a reviewer whose history was checked. A line joins two reviewers who reviewed the same unrelated, distant places.</span>
       </div>
       <div style={{ position: 'relative' }}>
         <div ref={box} className="graph-box" role="img" aria-label="Graph of reviewers connected by shared places" />
@@ -114,7 +117,7 @@ export function RingGraph({ report, namer, selectedGroup, onSelectGroup }: Props
           </div>
         )}
       </div>
-      <div className="legend">
+      <div className="legend" style={{ marginTop: 12 }}>
         {present.map((l) => <span key={l}><i className={`swatch ${l}`} /> {LABEL_TEXT[l]}</span>)}
         <span className="muted">Outlines: solid = ring-like group, dashed = possible, dotted = ruled out (trip or friends)</span>
       </div>

@@ -2,6 +2,7 @@ import { CircleMarker, MapContainer, Polyline, TileLayer, Tooltip, useMap } from
 import { useEffect, useMemo } from 'react'
 import { cssVar } from '../labels'
 import type { Namer } from '../names'
+import { useTheme } from '../theme'
 import type { Report } from '../types'
 
 interface Props {
@@ -34,12 +35,13 @@ function Fit({ points }: { points: [number, number][] }) {
   const map = useMap()
   useEffect(() => {
     if (points.length === 1) map.setView(points[0], 9)
-    else if (points.length > 1) map.fitBounds(points, { padding: [30, 30] })
+    else if (points.length > 1) map.flyToBounds(points, { padding: [40, 40], duration: 1.6 })
   }, [map, points])
   return null
 }
 
 export function MapView({ report, namer, selectedGroup, presentation }: Props) {
+  useTheme() // re-render, and so re-read the colours, when the theme flips
   const ring = cssVar('--label-ring')
   const trip = cssVar('--label-trip')
   const ink = cssVar('--ink')
@@ -114,7 +116,7 @@ export function MapView({ report, namer, selectedGroup, presentation }: Props) {
           )}
         </MapContainer>
       </div>
-      <div className="legend">
+      <div className="legend" style={{ marginTop: 12 }}>
         <span><i className="swatch" style={{ background: ink }} /> This business</span>
         {points.length > 0 && <span><i className="swatch ring" /> Places the group reviewed (size = members)</span>}
         {points.length === 0 && <span className="muted">No flagged group, so no other places to map.</span>}
