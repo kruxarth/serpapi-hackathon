@@ -32,6 +32,25 @@ from .target_signals import (
     young_business,
 )
 
+EVIDENCE_ORDER = {
+    k: i
+    for i, k in enumerate(
+        [
+            "ring",
+            "possible_ring",
+            "generated_text",
+            "single_use_burst",
+            "rating_gap",
+            "top_rated",
+            "possible_ring_trip",
+            "duplicates",
+            "burst",
+            "baseline",
+            "social_circle",
+            "ruled_out_trip",
+        ]
+    )
+}
 LABELS = ["ring", "possible_ring_trip", "suspicious", "single_use_burst", "group_trip", "no_flags", "not_checked"]
 LABEL_TEXT = {
     "ring": "Ring-like group",
@@ -252,6 +271,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
     t4 = {k: v for k, v in t4.items() if k not in stock}
     evidence = evidence_sentences(inp, groups, client_lists, bursts, t4, ratings, expanded, edge_pairs)
     evidence += rating_evidence(gap, top, [row for row in review_rows if row["generated_marker"]])
+    evidence.sort(key=lambda e: EVIDENCE_ORDER.get(e["kind"], len(EVIDENCE_ORDER)))  # stable: the strongest first
 
     popular_target = is_popular_type(inp.target.type)
     warnings = []

@@ -1,16 +1,37 @@
 # ReviewRing
 
-**A fake review looks like any other review. A batch of them doesn't.** Paste a Google Maps link and ReviewRing finds groups of reviewer accounts that reviewed the same unrelated businesses in distant cities, and shows what the rating looks like excluding them.
+**A Google rating is a number. ReviewRing shows where it comes from.** Paste a Google Maps link and ReviewRing checks who wrote the reviews, when, and whether those accounts look like real customers. Every finding comes with the evidence behind it.
+
+It runs five checks:
+
+| Check | What it catches |
+|---|---|
+| **Bursts of single-use accounts** | Dozens of 5★ reviews in a few days from accounts that have reviewed nothing else |
+| **Chatbot and template text** | Reviews that say "I'm unable to generate a review for you…" or "[Hotel Name]" |
+| **A rating carried by old reviews** | A listing showing 4.9★ while its recent guests average 3.3★ |
+| **Linked reviewer groups** | Accounts that reviewed the same unrelated businesses in distant cities (with group trips and friends ruled out) |
+| **Waves of prompted reviews** | Shown as context, never as a red flag: asking real customers is not the same as buying reviews |
 
 ![A ReviewRing report (synthetic example, pseudonymized)](docs/screenshots/report.png)
 
 *SerpApi India Hackathon 2026 · Knowledge & Public Interest track · MIT licensed*
 
+## What we found on real listings
+
+We tested ReviewRing on real Google Maps listings in Bengaluru and Delhi (about 100 SerpApi searches). The manipulation we found was cheaper than we expected:
+
+- **Burner accounts:** a mover rated 5.0★ received 31 five-star reviews in 3 days; 27 came from accounts that have never reviewed anything else.
+- **Chatbot text:** a budget hotel showing 4.9★ from thousands of reviews, whose latest 88 reviews average 3.3★, had a 5★ review reading *"I'm unable to generate a review for you, but I can help you outline key points."*
+- **No rings in this sample.** Even an account that looked like a "rate hotels and earn" task worker (12 hotels in 6 cities in one month, all 5★) shared no hotels with other reviewers. In those scams the hotels are decoys and each worker gets a different list, so the linked-group check stays in the product but isn't the headline.
+- **Reviews that look like a campaign but aren't one:** a mover whose reviews arrive in waves was rated Low, because the reviewers' full histories showed established local people. The business was asking customers to review, not buying reviews.
+
+Listings are not named here; the tool reports patterns, not verdicts.
+
 ## The problem
 
 People in India pick clinics, hotels, coaching centres, packers-and-movers and restaurants by their Google rating. That rating is distorted by paid review farms, and by the "rate hotels on Google Maps and earn" **task scams**, which recruit ordinary people to post 5★ reviews in batches (see [The Metrognome](https://www.themetrognome.in/business-and-personal-finance/are-you-receiving-data-entry-job-offers-its-likely-an-online-scam) and a [₹9.68 lakh task-fraud case reported by Deccan Herald](https://www.deccanherald.com/amp/story/india%2Fmaharashtra%2Ffour-held-for-cheating-media-executive-of-rs-968-lakh-in-task-fraud-in-mumbai-2691525)).
 
-A single paid review is indistinguishable from a real one. The pattern only appears when you step from a business's reviews to **each reviewer's full public review history**: the same accounts reviewed the same set of unrelated businesses (a dental clinic in Jaipur, packers and movers in Lucknow, a hotel in Kochi) at about the same time.
+A single bought review is indistinguishable from a real one. The pattern only appears in aggregate: when the reviews arrived, who wrote them, what else those accounts have reviewed, and whether the recent reviews agree with the displayed rating.
 
 ## How it works
 
@@ -36,8 +57,8 @@ ReviewRing can't exist without SerpApi. Google's official Places API returns **a
 
 | SerpApi engine | What ReviewRing uses it for |
 |---|---|
-| **Google Maps Contributor Reviews API** (`google_maps_contributor_reviews`) | A reviewer's public review history (up to 200 reviews, one search): the places they reviewed, with coordinates, types, ratings and dates. This is where rings become visible. |
-| **Google Maps Reviews API** (`google_maps_reviews`) | The business's newest reviews with exact dates, reviewer ids and profile stats: bursts, thin profiles, near-duplicate texts, and who to expand. |
+| **Google Maps Contributor Reviews API** (`google_maps_contributor_reviews`) | A reviewer's public review history (up to 200 reviews, one search): what else they reviewed, where and when. It tells apart real customers (ordinary local lives) from linked groups and dormant accounts woken up for one review. |
+| **Google Maps Reviews API** (`google_maps_reviews`) | The newest reviews, with exact dates and each reviewer's review count (bursts, single-use accounts, near-duplicate and chatbot text), and, sorted by highest rating, the old reviews that carry a listing's rating. |
 | **Google Maps API** (`google_maps`) | Resolving a CID, a place_id-only link or a name search; the business's coordinates when no history contains them. |
 | **Account API** (free) | The remaining monthly and hourly budget, shown before every analysis. |
 

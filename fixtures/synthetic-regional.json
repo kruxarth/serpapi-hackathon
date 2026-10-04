@@ -5347,7 +5347,7 @@
     "reviews_returned": 5,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u20cbc7dff3a3": {
     "contributor_id": "u20cbc7dff3a3",
@@ -5362,7 +5362,7 @@
     "reviews_returned": 26,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u20e5cd7484ed": {
     "contributor_id": "u20e5cd7484ed",
@@ -5377,7 +5377,7 @@
     "reviews_returned": 22,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u44bcbdad6bc0": {
     "contributor_id": "u44bcbdad6bc0",
@@ -5392,7 +5392,7 @@
     "reviews_returned": 16,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u4623fba07165": {
     "contributor_id": "u4623fba07165",
@@ -5407,7 +5407,7 @@
     "reviews_returned": 5,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u477096694b04": {
     "contributor_id": "u477096694b04",
@@ -5422,7 +5422,7 @@
     "reviews_returned": 21,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u496de7b6ccc3": {
     "contributor_id": "u496de7b6ccc3",
@@ -5437,7 +5437,7 @@
     "reviews_returned": 5,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u4b6ce4ec0b7b": {
     "contributor_id": "u4b6ce4ec0b7b",
@@ -5452,7 +5452,7 @@
     "reviews_returned": 12,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u4b8363703ff2": {
     "contributor_id": "u4b8363703ff2",
@@ -5467,7 +5467,7 @@
     "reviews_returned": 24,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u5199e87c8276": {
     "contributor_id": "u5199e87c8276",
@@ -5482,7 +5482,7 @@
     "reviews_returned": 17,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u526e53d1c3ff": {
     "contributor_id": "u526e53d1c3ff",
@@ -5497,7 +5497,7 @@
     "reviews_returned": 5,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u54fb76234986": {
     "contributor_id": "u54fb76234986",
@@ -5512,7 +5512,7 @@
     "reviews_returned": 22,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u58ccbeaae6c0": {
     "contributor_id": "u58ccbeaae6c0",
@@ -5527,7 +5527,7 @@
     "reviews_returned": 12,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u5fffb4d5814f": {
     "contributor_id": "u5fffb4d5814f",
@@ -5542,7 +5542,7 @@
     "reviews_returned": 14,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u67faf509258b": {
     "contributor_id": "u67faf509258b",
@@ -5557,7 +5557,7 @@
     "reviews_returned": 12,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u8a928a2d836c": {
     "contributor_id": "u8a928a2d836c",
@@ -5572,7 +5572,7 @@
     "reviews_returned": 28,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "u8cdabf4061e8": {
     "contributor_id": "u8cdabf4061e8",
@@ -5587,7 +5587,7 @@
     "reviews_returned": 23,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "ua31cc1a6119f": {
     "contributor_id": "ua31cc1a6119f",
@@ -5602,7 +5602,7 @@
     "reviews_returned": 17,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "uc9aa089c7c28": {
     "contributor_id": "uc9aa089c7c28",
@@ -5617,7 +5617,7 @@
     "reviews_returned": 24,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "uce227d82e6f2": {
     "contributor_id": "uce227d82e6f2",
@@ -5632,7 +5632,7 @@
     "reviews_returned": 5,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "ud17e066ada92": {
     "contributor_id": "ud17e066ada92",
@@ -5647,7 +5647,7 @@
     "reviews_returned": 5,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "ue12a18c35190": {
     "contributor_id": "ue12a18c35190",
@@ -5662,7 +5662,7 @@
     "reviews_returned": 15,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "uef8aad8714ef": {
     "contributor_id": "uef8aad8714ef",
@@ -5677,7 +5677,7 @@
     "reviews_returned": 26,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "ufaa0ccd37683": {
     "contributor_id": "ufaa0ccd37683",
@@ -5692,7 +5692,7 @@
     "reviews_returned": 11,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    },
    "ufdf77f19c733": {
     "contributor_id": "ufdf77f19c733",
@@ -5707,7 +5707,7 @@
     "reviews_returned": 26,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T08:51:19+00:00"
+    "fetched_at": "2026-06-25T10:21:17+00:00"
    }
   },
   "histories": {
@@ -11063,7 +11063,7 @@
     "reason": "priority"
    }
   ],
-  "fetched_at": "2026-06-25T08:51:18.962837+00:00",
+  "fetched_at": "2026-06-25T10:21:17.197015+00:00",
   "params": {
    "n": 88,
    "k1": 8,
@@ -15116,7 +15116,8 @@
     "target_cluster": null
    }
   },
-  "notes": []
+  "notes": [],
+  "top_rated": []
  },
  "report": {
   "algorithm_version": "0.1.0",
