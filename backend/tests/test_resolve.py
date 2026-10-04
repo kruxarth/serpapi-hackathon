@@ -139,3 +139,34 @@ def test_candidates_from_lookup_bodies():
     assert c.data_id == "0xaa:0xbb" and (c.lat, c.lng) == (1.0, 2.0)
     many = {"local_results": [{"title": str(i), "data_id": f"0x1:0x{i}"} for i in range(9)]}
     assert len(candidates_from_body(many)) == 5
+
+
+class DeadSession:
+    def get(self, url, **kwargs):
+        raise requests.ConnectionError("connect timeout (ISP DNS answered with a dead address)")
+
+
+def test_short_link_falls_back_to_doh_when_isp_dns_is_blocked(monkeypatch):
+    from reviewring import resolve
+
+    monkeypatch.setattr(resolve, "doh_resolve", lambda host, timeout=5: ["142.250.0.1"])
+    calls = []
+
+    def fake_pinned(url, ip, headers, timeout):
+        calls.append((url, ip))
+        resp = requests.Response()
+        resp.status_code = 302
+        resp.headers["Location"] = PLACE
+        return resp
+
+    monkeypatch.setattr(resolve, "fetch_pinned", fake_pinned)
+    r = parse_input("https://maps.app.goo.gl/abc", session=DeadSession())
+    assert r.data_id == DID and calls == [("https://maps.app.goo.gl/abc", "142.250.0.1")]
+
+
+def test_short_link_blocked_everywhere_gives_a_clear_message(monkeypatch):
+    from reviewring import resolve
+
+    monkeypatch.setattr(resolve, "doh_resolve", lambda host, timeout=5: [])
+    with pytest.raises(InputRefused, match="paste the full"):
+        parse_input("https://maps.app.goo.gl/abc", session=DeadSession())

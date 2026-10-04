@@ -8,6 +8,7 @@ then name + city text (1 search, the user picks a candidate).
 from __future__ import annotations
 
 import re
+import threading
 from dataclasses import dataclass, field
 from typing import Any
 from urllib.parse import parse_qs, unquote, urljoin, urlsplit
@@ -154,12 +155,70 @@ def expand_short_link(url: str, session: requests.Session | None = None) -> str:
         try:
             resp = session.get(current, headers=headers, timeout=timeout, allow_redirects=False)
         except requests.RequestException:
-            raise InputRefused("Couldn't open that short link. Check your connection or paste the full link.") from None
+            # Some ISPs' DNS (seen with Jio) answer goo.gl with addresses that never respond. Resolve it through
+            # DNS-over-HTTPS and connect to Google's own address; TLS is still verified against the hostname.
+            resp = _fetch_via_doh(current, headers, timeout)
+            if resp is None:
+                raise InputRefused(
+                    "Couldn't open that short link: your network may be blocking goo.gl links. Open it in your "
+                    "browser and paste the full google.com/maps link instead."
+                ) from None
         location = resp.headers.get("Location")
         if resp.status_code not in (301, 302, 303, 307, 308) or not location:
             raise InputRefused("That short link didn't lead to a Google Maps place.")
         current = urljoin(current, location)
     raise InputRefused("That short link redirects too many times.")
+
+
+DOH_ENDPOINTS = (
+    ("https://dns.google/resolve", {}),
+    ("https://cloudflare-dns.com/dns-query", {"Accept": "application/dns-json"}),
+)
+_pin_lock = threading.Lock()
+
+
+def doh_resolve(host: str, timeout: float = 5) -> list[str]:
+    """IPv4 addresses for a host from public DNS-over-HTTPS resolvers (plain HTTPS, never SerpApi)."""
+    for endpoint, headers in DOH_ENDPOINTS:
+        try:
+            resp = requests.get(endpoint, params={"name": host, "type": "A"}, headers=headers, timeout=timeout)
+            answers = resp.json().get("Answer") or []
+        except (requests.RequestException, ValueError):
+            continue
+        ips = [a["data"] for a in answers if a.get("type") == 1 and a.get("data")]
+        if ips:
+            return ips
+    return []
+
+
+def fetch_pinned(url: str, ip: str, headers: dict[str, str], timeout: float) -> requests.Response:
+    """GET a URL while connecting to a given IP. SNI and certificate checks still use the URL's hostname."""
+    import urllib3.util.connection as u3conn
+
+    host = urlsplit(url).hostname
+    original = u3conn.create_connection
+
+    def pinned(address, *args, **kwargs):
+        target, port = address
+        return original((ip if target == host else target, port), *args, **kwargs)
+
+    with _pin_lock:
+        u3conn.create_connection = pinned
+        try:
+            with requests.Session() as fresh:
+                return fresh.get(url, headers=headers, timeout=timeout, allow_redirects=False)
+        finally:
+            u3conn.create_connection = original
+
+
+def _fetch_via_doh(url: str, headers: dict[str, str], timeout: float) -> requests.Response | None:
+    host = urlsplit(url).hostname or ""
+    for ip in doh_resolve(host):
+        try:
+            return fetch_pinned(url, ip, headers, timeout)
+        except requests.RequestException:
+            continue
+    return None
 
 
 def parse_input(text: str, session: requests.Session | None = None) -> ResolvedInput:
