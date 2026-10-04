@@ -70,8 +70,10 @@ def test_regional_campaign_without_trip_evidence_stays_visible():
     and no travel-party details, so it must not be ruled out."""
     w = World(target_city="Jaipur", target_type="Hotel")
     ordinary_reviewers(w, 15, home="Jaipur")
-    hotels = [w.place(c, t) for c, t in (("Udaipur", "Hotel"), ("Jodhpur", "Resort"), ("Udaipur", "Restaurant"),
-                                         ("Jodhpur", "Hotel"))]
+    hotels = [
+        w.place(c, t)
+        for c, t in (("Udaipur", "Hotel"), ("Jodhpur", "Resort"), ("Udaipur", "Restaurant"), ("Jodhpur", "Hotel"))
+    ]
     members = []
     for home in ["Kolkata", "Chennai", "Indore", "Nagpur", "Lucknow"]:
         cid = w.reviewer(total=80, photos=30)
@@ -107,8 +109,12 @@ def test_travel_party_details_count_as_trip_evidence():
 def test_one_non_travel_core_place_keeps_the_trip_shape():
     w = World(target_city="Jaipur", target_type="Hotel")
     ordinary_reviewers(w, 15, home="Jaipur")
-    stops = [w.place("Udaipur", "Hotel"), w.place("Udaipur", "Restaurant"), w.place("Jodhpur", "Resort"),
-             w.place("Jodhpur", "Handicraft store")]  # the tour guide's emporium
+    stops = [
+        w.place("Udaipur", "Hotel"),
+        w.place("Udaipur", "Restaurant"),
+        w.place("Jodhpur", "Resort"),
+        w.place("Jodhpur", "Handicraft store"),
+    ]  # the tour guide's emporium
     members = []
     for _ in range(5):
         cid = w.reviewer()
@@ -122,11 +128,19 @@ def test_one_non_travel_core_place_keeps_the_trip_shape():
 
 
 def test_travel_group_is_parsed_from_details():
-    body = {"contributor": {"name": "x"}, "reviews": [
-        {"review_id": "1", "rating": 5, "date": "2 weeks ago", "snippet": "Nice stay",
-         "details": {"Trip_type": "Vacation", "Travel_group": "Family"},
-         "place_info": {"title": "H", "data_id": "0x1:0x2", "type": "Hotel"}},
-    ]}
+    body = {
+        "contributor": {"name": "x"},
+        "reviews": [
+            {
+                "review_id": "1",
+                "rating": 5,
+                "date": "2 weeks ago",
+                "snippet": "Nice stay",
+                "details": {"Trip_type": "Vacation", "Travel_group": "Family"},
+                "place_info": {"title": "H", "data_id": "0x1:0x2", "type": "Hotel"},
+            },
+        ],
+    }
     _, history, _ = contributor_history(body, "c1", FETCHED)
     assert history[0].travel_group == "family"
     assert history[0].text == "Nice stay"  # contributor reviews carry text in `snippet`
@@ -209,3 +223,35 @@ def test_presentation_mode_shifts_dates_and_rounds():
     assert shown["sample"]["first"] != report["sample"]["first"]
     assert all("date" not in row for row in shown["reviews"])
     assert all(round(p["lat"], 1) == p["lat"] for p in shown["places"].values() if p["lat"] is not None)
+
+
+def test_burst_of_single_use_accounts_raises_level_to_elevated():
+    w = World(total_reviews=900)
+    ordinary_reviewers(w, 40)
+    t = FETCHED - timedelta(days=30)
+    burners = []
+    for i in range(12):
+        cid = w.reviewer(total=1, photos=0)
+        w.histories[cid] = []  # the account's only review is this business
+        r = w.review_target(cid, rating=5, when=t + timedelta(hours=i * 3), total=1, photos=0)
+        burners.append(r.review_id)
+    inp = w.build()
+    report = analyze(inp)
+    t6 = report["signals"]["T6"]["single_use_bursts"]
+    assert any(b["flagged"] and b["single_use"] >= 10 for b in t6)
+    assert report["level"]["level"] == "Elevated"
+    labels = {r["review_id"]: r["label"] for r in report["reviews"]}
+    assert sum(labels[b] == "single_use_burst" for b in burners) >= 10
+    assert any(e["kind"] == "single_use_burst" for e in report["evidence"])
+
+
+def test_burst_of_established_accounts_does_not_raise_level():
+    w = World(total_reviews=900)
+    ordinary_reviewers(w, 40)
+    t = FETCHED - timedelta(days=30)
+    for i in range(12):
+        cid = w.reviewer(total=40, photos=10)
+        w.review_target(cid, rating=5, when=t + timedelta(hours=i * 3))
+    report = analyze(w.build())
+    assert not any(b["flagged"] for b in report["signals"]["T6"]["single_use_bursts"])
+    assert report["level"]["level"] == "Low"

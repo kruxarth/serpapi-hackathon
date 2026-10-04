@@ -4,12 +4,13 @@ export const LABEL_TEXT: Record<Label, string> = {
   ring: 'Ring-like group',
   possible_ring_trip: 'Possible ring-like group (trip-like)',
   suspicious: 'Suspicious',
+  single_use_burst: 'Single-use account in a burst',
   group_trip: 'Trip or social group',
   no_flags: 'No flags',
   not_checked: 'Not checked',
 }
 
-export const LABEL_ORDER: Label[] = ['ring', 'possible_ring_trip', 'suspicious', 'group_trip', 'no_flags', 'not_checked']
+export const LABEL_ORDER: Label[] = ['ring', 'possible_ring_trip', 'suspicious', 'single_use_burst', 'group_trip', 'no_flags', 'not_checked']
 
 export const VERDICT_TEXT: Record<Verdict, string> = {
   ring: 'Ring-like group',
@@ -40,6 +41,7 @@ export function labelColor(label: Label): string {
     case 'possible_ring_trip':
       return cssVar('--label-ring')
     case 'suspicious':
+    case 'single_use_burst':
       return cssVar('--label-suspicious')
     case 'group_trip':
       return cssVar('--label-trip')

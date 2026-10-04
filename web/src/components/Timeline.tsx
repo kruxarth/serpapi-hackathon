@@ -57,6 +57,10 @@ export function Timeline({ report, selectedGroup }: Props) {
                 <rect width="6" height="6" fill={ring} fillOpacity={0.25} />
                 <line x1="0" y1="0" x2="0" y2="6" stroke={ring} strokeWidth="3" />
               </pattern>
+              <pattern id="hatch-blue" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <rect width="6" height="6" fill={cssVar('--label-suspicious')} fillOpacity={0.25} />
+                <line x1="0" y1="0" x2="0" y2="6" stroke={cssVar('--label-suspicious')} strokeWidth="3" />
+              </pattern>
             </defs>
             <CartesianGrid vertical={false} stroke={grid} />
             <XAxis dataKey="day" tick={{ fontSize: 11, fill: muted }} minTickGap={40} tickLine={false} axisLine={{ stroke: grid }} />
@@ -75,7 +79,7 @@ export function Timeline({ report, selectedGroup }: Props) {
                 </div>
               ) : null} />
             {labels.map((l) => (
-              <Bar key={l} dataKey={l} stackId="a" fill={l === 'possible_ring_trip' ? 'url(#hatch)' : labelColor(l)} isAnimationActive={false}
+              <Bar key={l} dataKey={l} stackId="a" fill={l === 'possible_ring_trip' ? 'url(#hatch)' : l === 'single_use_burst' ? 'url(#hatch-blue)' : labelColor(l)} isAnimationActive={false}
                 fillOpacity={selectedGroup ? 0.35 : 1} stroke={cssVar('--surface')} strokeWidth={0.5} />
             ))}
             {selectedGroup && <Bar dataKey="selected" stackId="a" fill={ink} isAnimationActive={false} radius={[3, 3, 0, 0]} />}

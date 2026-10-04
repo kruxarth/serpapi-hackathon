@@ -4725,7 +4725,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:38+00:00"
    },
    "u0cf9b91b9e66": {
     "contributor_id": "u0cf9b91b9e66",
@@ -4740,7 +4740,7 @@
     "reviews_returned": 20,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:39+00:00"
    },
    "u0e56b396e1b5": {
     "contributor_id": "u0e56b396e1b5",
@@ -4755,7 +4755,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:38+00:00"
    },
    "u1150c93936f3": {
     "contributor_id": "u1150c93936f3",
@@ -4770,7 +4770,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:39+00:00"
    },
    "u26defa777f22": {
     "contributor_id": "u26defa777f22",
@@ -4785,7 +4785,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:38+00:00"
    },
    "u270ceb746eb8": {
     "contributor_id": "u270ceb746eb8",
@@ -4800,7 +4800,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:38+00:00"
    },
    "u2cc9a2aa1b38": {
     "contributor_id": "u2cc9a2aa1b38",
@@ -4815,7 +4815,7 @@
     "reviews_returned": 21,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:39+00:00"
    },
    "u3b4aaa517351": {
     "contributor_id": "u3b4aaa517351",
@@ -4830,7 +4830,7 @@
     "reviews_returned": 30,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:39+00:00"
    },
    "u429d0d615bcd": {
     "contributor_id": "u429d0d615bcd",
@@ -4845,7 +4845,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:38+00:00"
    },
    "u4a68b7ddabb4": {
     "contributor_id": "u4a68b7ddabb4",
@@ -4860,7 +4860,7 @@
     "reviews_returned": 19,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:39+00:00"
    },
    "u4b420ab98c9c": {
     "contributor_id": "u4b420ab98c9c",
@@ -4875,7 +4875,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:38+00:00"
    },
    "u4eb65ae7ef18": {
     "contributor_id": "u4eb65ae7ef18",
@@ -4890,7 +4890,7 @@
     "reviews_returned": 28,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:39+00:00"
    },
    "u6be1c05d2d9f": {
     "contributor_id": "u6be1c05d2d9f",
@@ -4905,7 +4905,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:38+00:00"
    },
    "u6d96670f2122": {
     "contributor_id": "u6d96670f2122",
@@ -4920,7 +4920,7 @@
     "reviews_returned": 12,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:39+00:00"
    },
    "u70bdcc4580a4": {
     "contributor_id": "u70bdcc4580a4",
@@ -4935,7 +4935,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:38+00:00"
    },
    "u75b7fb45f0e4": {
     "contributor_id": "u75b7fb45f0e4",
@@ -4950,7 +4950,7 @@
     "reviews_returned": 26,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:39+00:00"
    },
    "u837b7beeeb20": {
     "contributor_id": "u837b7beeeb20",
@@ -4965,7 +4965,7 @@
     "reviews_returned": 25,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:39+00:00"
    },
    "u85cf5daf6992": {
     "contributor_id": "u85cf5daf6992",
@@ -4980,7 +4980,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:38+00:00"
    },
    "u9d1548155368": {
     "contributor_id": "u9d1548155368",
@@ -4995,7 +4995,7 @@
     "reviews_returned": 12,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:38+00:00"
    },
    "uc0243fd67926": {
     "contributor_id": "uc0243fd67926",
@@ -5010,7 +5010,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:38+00:00"
    },
    "uc41598bb963a": {
     "contributor_id": "uc41598bb963a",
@@ -5025,7 +5025,7 @@
     "reviews_returned": 27,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:38+00:00"
    },
    "ucaee0c409c32": {
     "contributor_id": "ucaee0c409c32",
@@ -5040,7 +5040,7 @@
     "reviews_returned": 23,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:39+00:00"
    },
    "ud60d4221ffac": {
     "contributor_id": "ud60d4221ffac",
@@ -5055,7 +5055,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:38+00:00"
    },
    "udff1d6786da4": {
     "contributor_id": "udff1d6786da4",
@@ -5070,7 +5070,7 @@
     "reviews_returned": 11,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:39+00:00"
    },
    "ue2c4e0f2e685": {
     "contributor_id": "ue2c4e0f2e685",
@@ -5085,7 +5085,7 @@
     "reviews_returned": 18,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T07:52:44+00:00"
+    "fetched_at": "2026-06-25T08:42:39+00:00"
    }
   },
   "histories": {
@@ -10363,7 +10363,7 @@
     "reason": "priority"
    }
   ],
-  "fetched_at": "2026-06-25T07:52:44.351393+00:00",
+  "fetched_at": "2026-06-25T08:42:38.928442+00:00",
   "params": {
    "n": 88,
    "k1": 8,
@@ -14456,6 +14456,7 @@
    "without_ring": 4.11,
    "without_ring_and_suspicious": 4.11,
    "ring_reviews": 12,
+   "single_use_burst_reviews": 0,
    "overall": {
     "displayed": 4.4,
     "total_as_displayed": 600,
@@ -14547,6 +14548,20 @@
     "young": false,
     "total_reviews": 600,
     "sample_span_days": 118
+   },
+   "T6": {
+    "single_use_bursts": [
+     {
+      "start": "2026-06-02",
+      "end": "2026-06-05",
+      "direction": "positive",
+      "count": 15,
+      "single_use": 0,
+      "share": 0.0,
+      "flagged": false,
+      "review_ids": []
+     }
+    ]
    }
   },
   "reviewers": [
@@ -19903,6 +19918,7 @@
    "ring": 12,
    "possible_ring_trip": 0,
    "suspicious": 0,
+   "single_use_burst": 0,
    "group_trip": 0,
    "no_flags": 13,
    "not_checked": 57

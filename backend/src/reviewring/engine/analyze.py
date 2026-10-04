@@ -23,16 +23,18 @@ from .homes import compute_homes
 from .target_signals import (
     detect_bursts,
     rating_histogram,
+    single_use_bursts,
     target_duplicate_clusters,
     thin_profile_skew,
     young_business,
 )
 
-LABELS = ["ring", "possible_ring_trip", "suspicious", "group_trip", "no_flags", "not_checked"]
+LABELS = ["ring", "possible_ring_trip", "suspicious", "single_use_burst", "group_trip", "no_flags", "not_checked"]
 LABEL_TEXT = {
     "ring": "Ring-like group",
     "possible_ring_trip": "Possible ring-like group (trip-like)",
     "suspicious": "Suspicious",
+    "single_use_burst": "Single-use account in a burst",
     "group_trip": "Trip or social group",
     "no_flags": "No flags",
     "not_checked": "Not checked",
@@ -105,9 +107,14 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
         else:
             reviewer_label[cid] = "no_flags"
 
+    single_bursts = single_use_bursts(inp.target_reviews, bursts)
+    single_ids = {i for b in single_bursts if b["flagged"] for i in b["review_ids"]}
+
     review_rows = []
     for r in inp.target_reviews:
         label = reviewer_label.get(r.contributor_id or "", "not_checked")
+        if r.review_id in single_ids and label in ("no_flags", "not_checked", "group_trip"):
+            label = "single_use_burst"
         f = features.get(target_text_id(r.review_id))
         review_rows.append(
             {
@@ -139,7 +146,13 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
     ring_rows = [row for row in review_rows if row["label"] == "ring"]
     sample_mean = mean(review_rows)
     without_ring = mean([row for row in review_rows if row["label"] != "ring"])
-    strict = mean([row for row in review_rows if row["label"] not in ("ring", "suspicious", "possible_ring_trip")])
+    strict = mean(
+        [
+            row
+            for row in review_rows
+            if row["label"] not in ("ring", "suspicious", "possible_ring_trip", "single_use_burst")
+        ]
+    )
     overall = None
     displayed, total = inp.target.rating, inp.target.total_reviews
     if displayed is not None and total and ring_rows and total > len(ring_rows):
@@ -159,6 +172,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
         "without_ring": without_ring,
         "without_ring_and_suspicious": strict,
         "ring_reviews": len(ring_rows),
+        "single_use_burst_reviews": len(single_ids),
         "overall": overall,
     }
 
@@ -179,7 +193,12 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             f"(evidence strength {strong[0].confidence:.2f}) wrote "
             f"{len(ring_rows)} of the {examined} reviews examined."
         )
-    elif rings or possibles or suspicious_share >= level_cfg["elevated_suspicious_share"]:
+    elif (
+        rings
+        or possibles
+        or suspicious_share >= level_cfg["elevated_suspicious_share"]
+        or (single_ids and config.tunable("single_use", "raises_level"))
+    ):
         level = "Elevated"
         if rings:
             reasons.append(f"{_plural(len(rings), 'ring-like group')} found among the reviewers checked.")
@@ -190,6 +209,13 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
                 f"{label_counts['suspicious']} of {examined} reviews come from accounts with copied text "
                 "and other signals."
             )
+        for b in single_bursts:
+            if b["flagged"]:
+                star = "5★" if b["direction"] == "positive" else "1★"
+                reasons.append(
+                    f"A burst of {b['count']} {star} reviews ({b['start']} to {b['end']}): {b['single_use']} came "
+                    "from accounts that have reviewed nothing else."
+                )
     elif expanded and ok_histories == 0:
         level = "Not enough history"
         reasons.append("Every reviewer history checked was empty or private, so nothing could be compared.")
@@ -251,6 +277,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             "T3": thin_profile_skew(inp.target_reviews),
             "T4": {"clusters": t4, "stock_phrase_clusters": sorted(stock)},
             "T5": young,
+            "T6": {"single_use_bursts": single_bursts},
         },
         "reviewers": [
             {
@@ -420,6 +447,18 @@ def evidence_sentences(inp, groups, client_lists, bursts, t4, ratings, expanded,
                 f"{b.matching} of them are {star}. Consistent with an in-store review drive or a campaign.",
             }
         )
+    for b in single_use_bursts(inp.target_reviews, bursts):
+        if b["flagged"]:
+            out.append(
+                {
+                    "kind": "single_use_burst",
+                    "visual": "timeline",
+                    "text": f"{b['single_use']} of the {b['count']} reviews in the {b['start']} to {b['end']} "
+                    "burst came from accounts that have reviewed nothing else on Google Maps. Bursts of "
+                    "single-use accounts are a common pattern in coordinated review campaigns, though a business "
+                    "can also be targeted without its knowledge.",
+                }
+            )
     dup_reviews = sum(len(v) for v in t4.values())
     if dup_reviews:
         out.append(

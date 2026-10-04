@@ -138,6 +138,7 @@ button, input, select { font: inherit; color: inherit; }
 .swatch.ring { background: var(--label-ring); }
 .swatch.possible_ring_trip { background: transparent; border: 2px dashed var(--label-ring); }
 .swatch.suspicious { background: var(--label-suspicious); }
+.swatch.single_use_burst { background: repeating-linear-gradient(45deg, var(--label-suspicious) 0 2px, transparent 2px 4px); border: 1px solid var(--label-suspicious); }
 .swatch.group_trip { background: var(--label-trip); }
 .swatch.no_flags { background: var(--label-none); }
 .swatch.not_checked { background: transparent; border: 2px solid var(--label-unchecked); }

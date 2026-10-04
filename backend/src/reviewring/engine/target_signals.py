@@ -177,3 +177,27 @@ def young_business(inp: AnalysisInput, bursts: BurstResult) -> dict[str, Any]:
     few = total is not None and total < cfg["min_total_reviews"]
     short = bursts.span_days < cfg["short_span_days"] and total is not None and total < cfg["short_span_max_total"]
     return {"young": bool(few or short), "total_reviews": total, "sample_span_days": bursts.span_days}
+
+
+def single_use_bursts(reviews: list[TargetReview], bursts: BurstResult) -> list[dict[str, Any]]:
+    """For each burst: how many of its reviews come from accounts that have reviewed nothing else."""
+    cfg = config.load_tunables()["single_use"]
+    by_id = {r.review_id: r for r in reviews}
+    out = []
+    for b in bursts.bursts:
+        rows = [by_id[i] for i in b.review_ids if i in by_id]
+        single = [r for r in rows if r.reviewer_reviews is not None and r.reviewer_reviews <= cfg["max_reviews"]]
+        share = len(single) / len(rows) if rows else 0.0
+        out.append(
+            {
+                "start": b.start.isoformat(),
+                "end": b.end.isoformat(),
+                "direction": b.direction,
+                "count": len(rows),
+                "single_use": len(single),
+                "share": round(share, 3),
+                "flagged": len(single) >= cfg["min_in_burst"] and share >= cfg["min_share"],
+                "review_ids": sorted(r.review_id for r in single),
+            }
+        )
+    return out

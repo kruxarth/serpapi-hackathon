@@ -56,6 +56,13 @@ direction_share = 0.90
 max_rounds = 3
 negative_bursts = true
 
+[single_use]
+# A burst made mostly of accounts that have reviewed nothing else: the cheapest kind of bought review.
+max_reviews = 1              # an account showing at most this many reviews is "single-use"
+min_in_burst = 5
+min_share = 0.6
+raises_level = true          # a flagged burst makes the level at least Elevated (never High)
+
 [young]
 min_total_reviews = 50
 short_span_days = 30

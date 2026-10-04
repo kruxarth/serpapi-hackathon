@@ -15,8 +15,10 @@ def test_planted_ring_is_caught_and_reproducible():
     losses = classify_losses(sim, members)
     assert losses["caught"] >= 6
     assert sum(losses.values()) == 8
-    again = classify_losses(simulate(inject(base.input, k=8, m=4, camouflage="low", timing="same week", seed=1)[0],
-                                     k1=8, b=2, k2=15), members)
+    again = classify_losses(
+        simulate(inject(base.input, k=8, m=4, camouflage="low", timing="same week", seed=1)[0], k1=8, b=2, k2=15),
+        members,
+    )
     assert again == losses
     assert base.input.target_reviews != inp.target_reviews  # the base itself is untouched
 

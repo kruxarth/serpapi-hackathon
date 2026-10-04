@@ -1,7 +1,7 @@
 // Shapes of the backend's JSON. Kept in one place so the views stay honest about what they read.
 
 export type Level = 'High' | 'Elevated' | 'Low' | 'Not enough history'
-export type Label = 'ring' | 'possible_ring_trip' | 'suspicious' | 'group_trip' | 'no_flags' | 'not_checked'
+export type Label = 'ring' | 'possible_ring_trip' | 'suspicious' | 'single_use_burst' | 'group_trip' | 'no_flags' | 'not_checked'
 export type Verdict = 'ring' | 'possible_ring' | 'possible_ring_trip' | 'ruled_out_trip' | 'social_circle' | 'none'
 
 export interface Health {

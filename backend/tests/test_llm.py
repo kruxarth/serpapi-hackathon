@@ -43,8 +43,14 @@ def gw(transport):
 
 def good_reply(facts):
     ids = [f["id"] for f in facts]
-    return json.dumps({"paragraphs": [f"[{ids[1]}] of [{ids[0]}] were examined.",
-                                      f"The level is [{ids[3]}]. This is a pattern, not proof."]})
+    return json.dumps(
+        {
+            "paragraphs": [
+                f"[{ids[1]}] of [{ids[0]}] were examined.",
+                f"The level is [{ids[3]}]. This is a pattern, not proof.",
+            ]
+        }
+    )
 
 
 def test_fact_ids_are_substituted():
