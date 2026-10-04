@@ -22,10 +22,13 @@ from .groups import Group, detect_groups, type_group
 from .homes import compute_homes
 from .target_signals import (
     detect_bursts,
+    generated_marker,
+    rating_gap,
     rating_histogram,
     single_use_bursts,
     target_duplicate_clusters,
     thin_profile_skew,
+    top_rated_sample,
     young_business,
 )
 
@@ -133,6 +136,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
                 "short": bool(f and f.short),
                 "reviewer_reviews": r.reviewer_reviews,
                 "local_guide": r.local_guide,
+                "generated_marker": generated_marker(r),
             }
         )
     label_counts = Counter(row["label"] for row in review_rows)
@@ -178,6 +182,11 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
 
     # ---------------------------------------------------------------- level
     young = young_business(inp, bursts)
+    gap = rating_gap(inp)
+    top = top_rated_sample(inp)
+    generated = [row for row in review_rows if row["generated_marker"]] + (top.get("generated") or [])
+    generated_ids = {g["review_id"] for g in generated}
+    raise_generated = bool(generated_ids) and config.tunable("generated_text", "raises_level")
     rings = [g for g in groups if g.verdict == "ring"]
     possibles = [g for g in groups if g.verdict in ("possible_ring", "possible_ring_trip")]
     level_cfg = config.load_tunables()["level"]
@@ -198,6 +207,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
         or possibles
         or suspicious_share >= level_cfg["elevated_suspicious_share"]
         or (single_ids and config.tunable("single_use", "raises_level"))
+        or raise_generated
     ):
         level = "Elevated"
         if rings:
@@ -208,6 +218,12 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             reasons.append(
                 f"{label_counts['suspicious']} of {examined} reviews come from accounts with copied text "
                 "and other signals."
+            )
+        if raise_generated:
+            reasons.append(
+                f"{_plural(len(generated_ids), 'review')} {'contains' if len(generated_ids) == 1 else 'contain'} "
+                "text that only a chatbot or an unfilled "
+                "template would produce, pasted in as a customer review."
             )
         for b in single_bursts:
             if b["flagged"]:
@@ -235,6 +251,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
     t4 = target_duplicate_clusters(inp.target_reviews, features, target_only=False)
     t4 = {k: v for k, v in t4.items() if k not in stock}
     evidence = evidence_sentences(inp, groups, client_lists, bursts, t4, ratings, expanded, edge_pairs)
+    evidence += rating_evidence(gap, top, [row for row in review_rows if row["generated_marker"]])
 
     popular_target = is_popular_type(inp.target.type)
     warnings = []
@@ -278,6 +295,8 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             "T4": {"clusters": t4, "stock_phrase_clusters": sorted(stock)},
             "T5": young,
             "T6": {"single_use_bursts": single_bursts},
+            "T7": gap,
+            "T8": top,
         },
         "reviewers": [
             {
@@ -480,6 +499,41 @@ def evidence_sentences(inp, groups, client_lists, bursts, t4, ratings, expanded,
                 }
             )
         break
+    return out
+
+
+def rating_evidence(gap: dict[str, Any], top: dict[str, Any], recent_generated: list[dict[str, Any]]) -> list:
+    out: list[dict[str, Any]] = []
+    if gap.get("flagged"):
+        out.append(
+            {
+                "kind": "rating_gap",
+                "visual": "timeline",
+                "text": f"The business shows {gap['displayed']}★ from {gap['total']:,} reviews, but its latest "
+                f"{gap['recent_count']} average {gap['recent_mean']}★. For the display to hold, the other "
+                f"{gap['older_count']:,} must average about {gap['older_implied_mean']}★.",
+            }
+        )
+    if top.get("available"):
+        parts = [
+            f"Of {top['count']} highest-rated reviews sampled, {top['window_count']} were posted between "
+            f"{top['window_start']} and {top['window_end']}"
+        ]
+        if top.get("single_use_share") is not None:
+            parts.append(f"{round(top['single_use_share'] * 100)}% come from accounts with at most one review")
+        out.append({"kind": "top_rated", "visual": "reviews", "text": "; ".join(parts) + "."})
+    gen = (top.get("generated") or []) + [
+        {"rating": r["rating"], "day": r["day"], "marker": r["generated_marker"]} for r in recent_generated
+    ]
+    for g in gen[:3]:
+        out.append(
+            {
+                "kind": "generated_text",
+                "visual": "reviews",
+                "text": f'A {g["rating"]:.0f}★ review from {g["day"]} contains "{g["marker"]}", text that only a '
+                "chatbot or an unfilled template would produce, pasted in as a customer review.",
+            }
+        )
     return out
 
 

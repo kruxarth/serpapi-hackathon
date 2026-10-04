@@ -201,3 +201,80 @@ def single_use_bursts(reviews: list[TargetReview], bursts: BurstResult) -> list[
             }
         )
     return out
+
+
+def generated_marker(review: TargetReview) -> str | None:
+    """The first chatbot-reply or placeholder phrase in the text (or the one a fixture kept)."""
+    if review.text:
+        low = " ".join(review.text.casefold().split())
+        for m in config.load_tunables()["generated_text"]["markers"]:
+            if m in low:
+                return m
+        return None
+    return review.generated_marker
+
+
+def rating_gap(inp: AnalysisInput) -> dict[str, Any]:
+    """Displayed rating vs the newest reviews, and what the rest must average for the display to hold."""
+    cfg = config.load_tunables()["rating_gap"]
+    rated = [r.rating for r in inp.target_reviews if r.rating is not None]
+    displayed, total = inp.target.rating, inp.target.total_reviews
+    if not rated or displayed is None or not total or total <= len(rated):
+        return {"available": False}
+    recent = sum(rated) / len(rated)
+    older = (displayed * total - sum(rated)) / (total - len(rated))
+    gap = displayed - recent
+    return {
+        "available": True,
+        "displayed": displayed,
+        "total": total,
+        "recent_mean": round(recent, 2),
+        "recent_count": len(rated),
+        "older_count": total - len(rated),
+        "older_implied_mean": round(min(5.0, older), 2),
+        "gap": round(gap, 2),
+        "flagged": gap >= cfg["min_gap"] and total >= cfg["min_total_ratio"] * len(rated),
+    }
+
+
+def top_rated_sample(inp: AnalysisInput) -> dict[str, Any]:
+    """Who wrote the highest-rated reviews, and when: the busiest window, single-use share, generated text."""
+    sample = inp.top_rated
+    if not sample:
+        return {"available": False}
+    months = int(config.tunable("rating_gap", "cluster_months"))
+    max_single = int(config.tunable("single_use", "max_reviews"))
+    dated = sorted(r.posted_at for r in sample if r.posted_at)
+    best = (0, None, None)
+    for i, start in enumerate(dated):
+        end_limit = start + timedelta(days=30 * months)
+        n = sum(1 for d in dated[i:] if d <= end_limit)
+        if n > best[0]:
+            best = (n, start, max(d for d in dated[i:] if d <= end_limit))
+    known = [r for r in sample if r.reviewer_reviews is not None]
+    single = [r for r in known if r.reviewer_reviews <= max_single]
+    markers = []
+    for r in sample:
+        m = generated_marker(r)
+        if m:
+            markers.append(
+                {
+                    "review_id": r.review_id,
+                    "rating": r.rating,
+                    "day": ist_date(r.posted_at).isoformat() if r.posted_at else None,
+                    "marker": m,
+                    "reviewer_reviews": r.reviewer_reviews,
+                }
+            )
+    return {
+        "available": True,
+        "count": len(sample),
+        "window_months": months,
+        "window_count": best[0],
+        "window_start": ist_date(best[1]).isoformat() if best[1] else None,
+        "window_end": ist_date(best[2]).isoformat() if best[2] else None,
+        "window_share": round(best[0] / len(sample), 3) if sample else 0.0,
+        "single_use_share": round(len(single) / len(known), 3) if known else None,
+        "no_photo_share": round(sum(1 for r in sample if r.reviewer_photos == 0) / len(sample), 3),
+        "generated": markers,
+    }

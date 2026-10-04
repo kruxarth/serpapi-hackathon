@@ -102,6 +102,8 @@ class FakeSerpApi:
     def _reviews(self, params: dict[str, Any]) -> dict[str, Any]:
         w = self.world
         reviews = sorted(w.target_reviews, key=lambda r: r.posted_at or FETCHED, reverse=True)
+        if params.get("sort_by") == "ratingHigh":
+            reviews = sorted(reviews, key=lambda r: -(r.rating or 0))
         token = params.get("next_page_token")
         start = 0 if not token else int(token.removeprefix("tok"))
         size = 8 if not token else int(params.get("num", 20))

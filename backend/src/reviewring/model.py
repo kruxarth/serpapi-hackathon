@@ -55,6 +55,7 @@ class TargetReview:
     reviewer_photos: int | None = None
     local_guide: bool | None = None
     reviewer_name: str | None = None
+    generated_marker: str | None = None  # kept by fixtures, which drop most texts
 
 
 @dataclass
@@ -122,3 +123,5 @@ class AnalysisInput:
     # Precomputed text features by text_id. Fixtures carry these because they drop most texts.
     text_features: dict[str, TextFeatures] | None = None
     notes: list[str] = field(default_factory=list)
+    # A sample of the highest-rated reviews, fetched only when the displayed rating far exceeds recent ones.
+    top_rated: list[TargetReview] = field(default_factory=list)

@@ -4,7 +4,7 @@
 [budget]
 monthly_cap = 250            # free plan
 hourly_cap = 50              # free plan, rolling 60 minutes
-per_analysis_cap = 32
+per_analysis_cap = 35          # 5 pages + 25 histories + 3 top-rated + 1 coordinates lookup
 retry_delay_seconds = 30     # 5xx / timeout: retry once after this, then pause
 request_timeout_seconds = 60
 
@@ -62,6 +62,24 @@ max_reviews = 1              # an account showing at most this many reviews is "
 min_in_burst = 5
 min_share = 0.6
 raises_level = true          # a flagged burst makes the level at least Elevated (never High)
+
+[rating_gap]
+# When the displayed rating sits far above the newest reviews, the older mass of reviews carries it.
+min_gap = 0.8                # displayed rating minus the recent average, in stars
+min_total_ratio = 5          # only when the total is at least 5x the reviews examined
+top_rated_pages = 3          # then sample the highest-rated reviews: 3 searches (5-8 + 20 + 20 reviews)
+cluster_months = 3           # report the busiest 3-month window among those top-rated reviews
+
+[generated_text]
+# Phrases no customer writes: chatbot replies and unfilled template placeholders pasted in as reviews.
+markers = [
+  "unable to generate", "can't generate a review", "cannot generate a review", "i can help you outline",
+  "as an ai", "as a language model", "ai language model", "i don't have personal experience",
+  "i do not have personal experience", "here's a review", "here is a review", "certainly! here",
+  "sure! here", "[hotel name]", "[business name]", "[your name]", "[company name]", "[restaurant name]",
+  "[clinic name]", "[insert",
+]
+raises_level = true          # a matched marker makes the level at least Elevated (never High)
 
 [young]
 min_total_reviews = 50

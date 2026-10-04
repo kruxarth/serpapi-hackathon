@@ -255,3 +255,55 @@ def test_burst_of_established_accounts_does_not_raise_level():
     report = analyze(w.build())
     assert not any(b["flagged"] for b in report["signals"]["T6"]["single_use_bursts"])
     assert report["level"]["level"] == "Low"
+
+
+def test_rating_gap_top_rated_sample_and_generated_text():
+    from reviewring.model import TargetReview
+
+    w = World(total_reviews=5000, rating=4.9)
+    ordinary_reviewers(w, 60, rating_pool=(1, 2, 3, 4, 5))
+    inp = w.build()
+    old = FETCHED - timedelta(days=600)
+    inp.top_rated = [
+        TargetReview(
+            f"top{i}",
+            f"old{i}",
+            5,
+            old + timedelta(days=i),
+            text="Lovely stay, great staff and rooms",
+            reviewer_reviews=1,
+            reviewer_photos=0,
+        )
+        for i in range(20)
+    ]
+    inp.top_rated.append(
+        TargetReview(
+            "topx",
+            "oldx",
+            5,
+            old,
+            text="I'm unable to generate a review for you, but I can help you outline key points.",
+            reviewer_reviews=2,
+            reviewer_photos=0,
+        )
+    )
+    r = analyze(inp)
+    gap = r["signals"]["T7"]
+    assert gap["flagged"] and gap["older_implied_mean"] > 4.9 > gap["recent_mean"]
+    top = r["signals"]["T8"]
+    assert top["window_count"] == 21 and top["single_use_share"] > 0.9
+    assert top["generated"][0]["marker"] == "unable to generate"
+    assert r["level"]["level"] == "Elevated"
+    kinds = {e["kind"] for e in r["evidence"]}
+    assert {"rating_gap", "top_rated", "generated_text"} <= kinds
+
+
+def test_needs_top_rated_only_for_a_large_gap():
+    from reviewring.collect import needs_top_rated
+
+    w = World(total_reviews=5000, rating=4.9)
+    ordinary_reviewers(w, 40, rating_pool=(1, 2, 3))
+    assert needs_top_rated(w.build())
+    w2 = World(total_reviews=5000, rating=4.2)
+    ordinary_reviewers(w2, 40, rating_pool=(4, 5))
+    assert not needs_top_rated(w2.build())

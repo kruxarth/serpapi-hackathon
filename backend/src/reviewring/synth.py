@@ -174,7 +174,7 @@ class World:
     target_city: str = "Pune"
     target_type: str = "Dental clinic"
     total_reviews: int | None = 900
-    rating: float | None = 4.7
+    rating: float | None = None  # displayed rating; None unless a test or demo sets one
     seed: int = 7
     rng: random.Random = field(init=False)
     places: dict[str, Place] = field(default_factory=dict)

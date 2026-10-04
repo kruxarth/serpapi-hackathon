@@ -31,7 +31,7 @@ from .parse import contributor_history, lookup_place, target_place, target_revie
 from .resolve import InputRefused, ResolvedInput, lookup, parse_input, target_coords_request
 from .serp import catalog
 from .serp.errors import BudgetRefused, GatewayError, InvalidApiKey, NotCached, Paused
-from .serp.gateway import Gateway, Response, pages_needed
+from .serp.gateway import Gateway, Response, next_page_token, pages_needed
 
 log = logging.getLogger(__name__)
 
@@ -319,8 +319,11 @@ class Collector:
         if not pages:
             raise GatewayError("No reviews could be fetched for this place.")
 
-        self.emit("scoring", "Scoring reviewers")
         inp = build_input(self.gw, data_id, pages, self.params.n, [], self.state)
+        if needs_top_rated(inp):
+            self._top_rated(data_id)
+            self._check_cancel()
+        self.emit("scoring", "Scoring reviewers")
         features = compute_text_features(inp)
         bursts = detect_bursts(inp.target_reviews)
         candidates = score_reviews(inp.target_reviews, bursts, features)
@@ -357,6 +360,22 @@ class Collector:
         self._check_cancel()
         inp.params = self.params.as_dict()
         return Outcome("done", input=inp, early_stop=early, selection=dict(self.state["selection"]))
+
+    def _top_rated(self, data_id: str) -> None:
+        """Sample the highest-rated reviews (spec extension; 3 searches): where a high rating comes from."""
+        pages = int(config.tunable("rating_gap", "top_rated_pages"))
+        self.emit("top_rated", "The displayed rating is far above the newest reviews; sampling the highest-rated ones")
+        token = None
+        for _ in range(pages):
+            req = catalog.top_rated_page(data_id, token)
+            try:
+                resp = self.gw.fetch(req, analysis_id=self.analysis_id)
+            except NotCached:
+                self._missing("highest-rated review pages", pages)
+                return
+            token = next_page_token(resp.body)
+            if not token:
+                return
 
     def _ensure_target_coords(self, inp: AnalysisInput, data_id: str) -> None:
         """Free if any history contains the target; otherwise 1 lookup by data_cid (spec 8)."""
@@ -433,6 +452,7 @@ def build_input(
         places[k].area = area
 
     fetched = max((p.fetched_at for p in pages), default=db.utcnow())
+    top_rated = cached_top_rated(gw, data_id)
     return AnalysisInput(
         target=target,
         target_reviews=reviews,
@@ -442,7 +462,38 @@ def build_input(
         expansions=expansions,
         fetched_at=fetched,
         notes=list(state.get("notes", [])),
+        top_rated=top_rated,
     )
+
+
+def needs_top_rated(inp: AnalysisInput) -> bool:
+    """True when the displayed rating sits far above the newest reviews and the total dwarfs them."""
+    cfg = config.load_tunables()["rating_gap"]
+    rated = [r.rating for r in inp.target_reviews if r.rating is not None]
+    displayed, total = inp.target.rating, inp.target.total_reviews
+    if not rated or displayed is None or not total:
+        return False
+    gap = displayed - sum(rated) / len(rated)
+    return gap >= cfg["min_gap"] and total >= cfg["min_total_ratio"] * len(rated)
+
+
+def cached_top_rated(gw: Gateway, data_id: str) -> list:
+    """The highest-rated sample, from cache only (empty when it was never fetched)."""
+    out = []
+    seen: set[str] = set()
+    token = None
+    for _ in range(int(config.tunable("rating_gap", "top_rated_pages"))):
+        cached = gw.lookup_cache(catalog.top_rated_page(data_id, token))
+        if cached is None:
+            break
+        for r in target_reviews(cached.body):
+            if r.review_id not in seen:
+                seen.add(r.review_id)
+                out.append(r)
+        token = next_page_token(cached.body)
+        if not token:
+            break
+    return out
 
 
 def cancel_analysis(analysis_id: str, conn=None) -> bool:
@@ -522,6 +573,14 @@ def estimate(resolved: ResolvedInput, params: CollectParams, db_path=None) -> Es
     if r2_max:
         hi += r2_max
         lines.append(f"Round 2, only if round 1 finds overlap: up to {r2_max}")
+    if pages and pages.complete and data_id and needs_top_rated(inp):
+        missing_top = 0 if cached_top_rated(gw, data_id) else int(config.tunable("rating_gap", "top_rated_pages"))
+        lo += missing_top
+        hi += missing_top
+        lines.append(f"Highest-rated sample (displayed rating far above recent reviews): {missing_top}")
+    elif not (pages and pages.complete):
+        hi += int(config.tunable("rating_gap", "top_rated_pages"))
+        lines.append("Highest-rated sample, only if the displayed rating is far above recent reviews: 0-3")
     if not coords_known:
         hi += 1
         lines.append("Target coordinates, only if no history contains them: 0-1")

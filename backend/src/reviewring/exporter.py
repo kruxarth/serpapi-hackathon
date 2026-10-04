@@ -17,6 +17,7 @@ from typing import Any
 from . import ALGORITHM_VERSION, config, db
 from .engine.analyze import analyze
 from .engine.features import compute_text_features, history_text_id, target_text_id
+from .engine.target_signals import generated_marker
 from .leakcheck import check_object, originals_from_cache
 from .model import AnalysisInput, Contributor, Expansion, HistoryReview, Place, TargetReview
 from .normalize.text import TextFeatures
@@ -184,6 +185,23 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str) -> AnalysisInput:
         params=dict(inp.params),
         text_features=new_features,
         notes=list(inp.notes),
+        top_rated=[
+            TargetReview(
+                rid(r.review_id),
+                uid(r.contributor_id),
+                r.rating,
+                dt(r.posted_at),
+                r.edited,
+                None,
+                r.has_images,
+                r.reviewer_reviews,
+                r.reviewer_photos,
+                r.local_guide,
+                None,
+                generated_marker(r),
+            )
+            for r in inp.top_rated
+        ],
     )
 
 
@@ -208,6 +226,7 @@ def input_to_dict(inp: AnalysisInput) -> dict[str, Any]:
         "params": inp.params,
         "text_features": {k: asdict(f) for k, f in sorted((inp.text_features or {}).items())},
         "notes": inp.notes,
+        "top_rated": [asdict(r) for r in inp.top_rated],
     }
 
 
@@ -236,6 +255,7 @@ def input_from_dict(d: dict[str, Any]) -> AnalysisInput:
         params=d.get("params", {}),
         text_features={k: TextFeatures(**f) for k, f in d.get("text_features", {}).items()} or None,
         notes=d.get("notes", []),
+        top_rated=[TargetReview(**{**r, "posted_at": _dt(r["posted_at"])}) for r in d.get("top_rated", [])],
     )
 
 

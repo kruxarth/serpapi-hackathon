@@ -54,6 +54,15 @@ def reviews_page(data_id: str, next_page_token: str | None = None) -> SerpReques
     return SerpRequest(REVIEWS_ENGINE, params, label)
 
 
+def top_rated_page(data_id: str, next_page_token: str | None = None) -> SerpRequest:
+    """Highest-rated reviews first: where a high displayed rating actually comes from."""
+    params = {"data_id": data_id.strip().lower(), "hl": "en", "sort_by": "ratingHigh"}
+    if next_page_token:
+        params["next_page_token"] = next_page_token
+        params["num"] = str(PAGE_SIZE)
+    return SerpRequest(REVIEWS_ENGINE, params, "highest-rated reviews page")
+
+
 def contributor_history(contributor_id: str) -> SerpRequest:
     params = {
         "contributor_id": _s(contributor_id).strip(),
