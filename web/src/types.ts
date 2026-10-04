@@ -101,6 +101,7 @@ export interface GroupMetrics {
   size: number
   density: number
   core_places: number
+  core_min_members?: number
   far_areas: string[]
   far_area_count: number
   span_km: number
@@ -173,6 +174,7 @@ export interface ReviewRow {
   short: boolean
   reviewer_reviews: number | null
   local_guide: boolean | null
+  generated_marker?: string | null
 }
 
 export interface Burst {
@@ -184,6 +186,54 @@ export interface Burst {
   p_value: number
   review_ids: string[]
 }
+
+export interface SingleUseBurst {
+  start: string
+  end: string
+  direction: 'positive' | 'negative'
+  count: number
+  single_use: number
+  share: number
+  flagged: boolean
+  review_ids: string[]
+}
+
+export type RatingGap =
+  | { available: false }
+  | {
+      available: true
+      displayed: number
+      total: number
+      recent_mean: number
+      recent_count: number
+      older_count: number
+      older_implied_mean: number
+      gap: number
+      flagged: boolean
+    }
+
+export interface GeneratedHit {
+  review_id: string
+  rating: number | null
+  day: string | null
+  marker: string
+  reviewer_reviews: number | null
+}
+
+export type TopRated =
+  | { available: false }
+  | {
+      available: true
+      count: number
+      window_months: number
+      window_count: number
+      window_start: string
+      window_end: string
+      window_share: number
+      single_use_share: number
+      no_photo_share: number
+      generated: GeneratedHit[]
+    }
 
 export interface PlaceInfo {
   title: string | null
@@ -229,6 +279,7 @@ export interface Report {
   level: { level: Level; reasons: string[] }
   ratings: {
     examined: number
+    single_use_burst_reviews?: number
     sample_mean: number | null
     without_ring: number | null
     without_ring_and_suspicious: number | null
@@ -259,6 +310,9 @@ export interface Report {
     }
     T4: { clusters: Record<string, string[]>; stock_phrase_clusters: string[] }
     T5: { young: boolean; total_reviews: number | null; sample_span_days: number }
+    T6?: { single_use_bursts: SingleUseBurst[] }
+    T7?: RatingGap
+    T8?: TopRated
   }
   reviewers: ReviewerRow[]
   graph: { nodes: { id: string; label: Label; display_name?: string }[]; edges: GraphEdge[] }
@@ -267,7 +321,7 @@ export interface Report {
   label_counts: Record<Label, number>
   client_lists: Record<string, ClientRow[]>
   places: Record<string, PlaceInfo>
-  evidence: { kind: string; group?: string; text: string; visual: string }[]
+  evidence: Evidence[]
   caveats: string[]
   notes: string[]
   names?: Record<string, string>
@@ -286,6 +340,13 @@ export interface Report {
   dates_shifted?: boolean
   calibration?: { relative: string | null; true_date: string; estimated_from: string; estimated_to: string | null; inside: boolean }[]
   ai_summary?: AiSummary
+}
+
+export interface Evidence {
+  kind: string
+  group?: string
+  text: string
+  visual: string
 }
 
 export interface AiSummary {
