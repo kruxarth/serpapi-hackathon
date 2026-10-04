@@ -1,6 +1,6 @@
 # ReviewRing
 
-**A fake review looks like any other review. A batch of them doesn't.** Paste a Google Maps link and ReviewRing finds groups of reviewer accounts that reviewed the same unrelated businesses in distant cities, and shows what the rating looks like without them.
+**A fake review looks like any other review. A batch of them doesn't.** Paste a Google Maps link and ReviewRing finds groups of reviewer accounts that reviewed the same unrelated businesses in distant cities, and shows what the rating looks like excluding them.
 
 ![A ReviewRing report (synthetic example, pseudonymized)](docs/screenshots/report.png)
 
@@ -17,8 +17,8 @@ A single paid review is indistinguishable from a real one. The pattern only appe
 1. **Newest reviews.** Fetch the business's newest 88 reviews and score each reviewer by how likely a closer look is to pay off (review bursts, thin profiles, near-duplicate texts).
 2. **Reviewer histories.** Fetch the full public history of the 8 highest-priority reviewers plus 2 random baseline reviewers. If none of them share anything, stop there. Otherwise fetch 15 more.
 3. **Co-review graph.** Link two reviewers when they reviewed at least two of the same *unrelated, distant* places, weighted by distance from the business and by how unusual the place type is.
-4. **Groups, not individuals.** Find tight groups, **rule out group trips** (people who shared hotels and sights in one region and whose histories look like ordinary travellers'), and call a group a ring only when it spans several distant cities.
-5. **Evidence first.** The report shows the suspicion level with its reasons, the ring-adjusted rating, the ring graph, a map of where the group's other reviews are, a timeline of review bursts, **"also reviewed by this group"** (the ring's other clients), the groups that were ruled out, and exactly what was and wasn't checked.
+4. **Groups, not individuals.** Find tight groups and set aside the innocent ones: **friends and family** (most members share a home area, near the places they share) and **group trips** with positive evidence (a shared home, or hotel reviews saying family or friends). A group is called ring-like only when it spans several distant cities. Distances are measured from the business *and* from each reviewer's home, so friends from Pune don't look suspicious just because the business is in Goa.
+5. **Evidence first.** The report shows the suspicion level with its reasons, the rating excluding linked reviewers, the reviewer-link graph, a map of where the group's other reviews are, a timeline of review bursts, **the other places this group reviewed**, the groups that were set aside, and exactly what was and wasn't checked.
 
 | Ring graph and map | A group trip, ruled out |
 |---|---|
@@ -108,10 +108,11 @@ Then open `chrome://extensions`, enable Developer mode, click **Load unpacked** 
 ## Responsible use, limitations and privacy
 
 - **A pattern, not proof.** ReviewRing says "suspicious", "coordinated" or "ring-like pattern", never "fake" or "fraud", and it never declares a business or a person dishonest. Every claim links to visible evidence.
-- **It doesn't flag everything.** Group trips are ruled out and shown as such, and "not checked" reviewers are neutral.
+- **It doesn't flag everything.** Friends, families and group trips are set aside and shown as such, and "not checked" reviewers are neutral.
+- **A business can be targeted without its knowledge.** Review-task scams hand recruits real businesses to review, so a ring-like group says nothing about whether the business asked for it.
 - **Known limits:** rings within a single city aren't detected; colleagues who stay at the same hotels in several cities can look ring-like; regional travel-only rings show at most as "possible ring (trip-like)"; only the newest 88 reviews and 25 reviewers are examined; private profiles can't be checked; Google may already have removed some reviews.
 - **The AI only writes summaries.** It sees pseudonymized facts, never names, profile links or ids, and it never sets a label, group, level or rating.
-- **Privacy.** The local cache in `data/` holds personal data and is never committed (`uv run reviewring purge-data --yes` deletes it). Committed fixtures are pseudonymized (salted ids, "Business A/B", areas only, coordinates rounded, review text dropped unless it's a truncated template shared by 3+ accounts) and pass a leak check. **Presentation mode** pseudonymizes the live app for recordings. Keys stay in `.env` and the backend and are redacted from every log. The backend binds to 127.0.0.1 and rejects cross-site requests.
+- **Privacy.** The local cache in `data/` holds personal data and is never committed (`uv run reviewring purge-data --yes` deletes it). Committed fixtures are pseudonymized (salted ids, "Business A/B", areas only, coordinates rounded to ~11 km, an approximate review count, every date shifted by a hidden per-business offset, review text dropped unless it's a truncated template shared by 3+ accounts) and pass a leak check. **Presentation mode** pseudonymizes the live app for recordings. Keys stay in `.env` and the backend and are redacted from every log. The backend binds to 127.0.0.1 and rejects cross-site requests.
 
 ## Project layout
 
