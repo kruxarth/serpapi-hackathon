@@ -45,7 +45,7 @@ export function MapView({ report, namer, selectedGroup, presentation }: Props) {
   const ring = cssVar('--label-ring')
   const trip = cssVar('--label-trip')
   const ink = cssVar('--ink')
-  const accent = cssVar('--accent')
+  const accent = cssVar('--label-suspicious')
 
   const { points, target, arcs } = useMemo(() => {
     const pts = new Map<string, Pt>()
@@ -94,7 +94,7 @@ export function MapView({ report, namer, selectedGroup, presentation }: Props) {
           <Fit points={bounds} />
           {arcs.map((a, i) => (
             <Polyline key={i} positions={arc(a.from, a.to)} pathOptions={{ color: accent, weight: 2, dashArray: '4 4', opacity: 0.8 }}>
-              <Tooltip sticky>Same-day reviews {a.km} km apart · {a.day}</Tooltip>
+              <Tooltip sticky>Same-day reviews {a.km} km apart, {a.day}</Tooltip>
             </Polyline>
           ))}
           {points.map((p) => {
@@ -104,7 +104,7 @@ export function MapView({ report, namer, selectedGroup, presentation }: Props) {
               <CircleMarker key={p.key} center={[p.lat, p.lng]} radius={4 + Math.min(p.members, 10)}
                 pathOptions={{ color, fillColor: color, fillOpacity: p.core ? 0.75 : 0.3, weight: 2, dashArray: g?.verdict === 'possible_ring_trip' ? '3 3' : undefined }}>
                 <Tooltip>
-                  <strong>{p.name}</strong><br />{p.area ?? 'Unknown area'} · reviewed by {p.members} group members{p.core ? ' (core place)' : ''}
+                  <strong>{p.name}</strong><br />{p.area ?? 'Unknown area'}, reviewed by {p.members} group members{p.core ? ' (core place)' : ''}
                 </Tooltip>
               </CircleMarker>
             )

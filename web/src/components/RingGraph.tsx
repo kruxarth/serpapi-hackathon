@@ -89,7 +89,9 @@ export function RingGraph({ report, namer, selectedGroup, onSelectGroup }: Props
     c.elements().not(keep).not(keep.connectedEdges()).addClass('faded')
   }, [selectedGroup, elements])
 
-  const present = LABEL_ORDER.filter((l) => report.graph.nodes.some((n) => n.label === l))
+  const linkedIds = new Set([...report.graph.edges.flatMap((e) => [e.source, e.target]), ...report.groups.flatMap((g) => g.members)])
+  const unlinked = report.graph.nodes.filter((n) => !linkedIds.has(n.id)).length
+  const present = LABEL_ORDER.filter((l) => report.graph.nodes.some((n) => n.label === l && linkedIds.has(n.id)))
   return (
     <div>
       <div className="row small" style={{ marginBottom: 10, justifyContent: 'space-between' }}>
@@ -118,6 +120,7 @@ export function RingGraph({ report, namer, selectedGroup, onSelectGroup }: Props
         )}
       </div>
       <div className="legend" style={{ marginTop: 12 }}>
+        {unlinked > 0 && <span className="muted">{unlinked} other reviewer{unlinked === 1 ? '' : 's'} checked shared no places and {unlinked === 1 ? 'is' : 'are'} not drawn.</span>}
         {present.map((l) => <span key={l}><i className={`swatch ${l}`} /> {LABEL_TEXT[l]}</span>)}
         <span className="muted">Outlines: solid = ring-like group, dashed = possible, dotted = ruled out (trip or friends)</span>
       </div>
@@ -132,12 +135,14 @@ function buildElements(report: Report, namer: Namer, showPlaces: boolean): Eleme
   for (const g of shown) {
     const kind = g.verdict === 'ring' || g.verdict === 'possible_ring' ? 'ring' : g.verdict === 'possible_ring_trip' ? 'possible' : 'trip' // trip covers social circles too
     const color = kind === 'trip' ? cssVar('--label-trip') : cssVar('--label-ring')
-    els.push({ data: { id: `group:${g.group_id}`, gid: g.group_id, name: `${g.group_id} · ${VERDICT_TEXT[g.verdict]}`, color },
+    els.push({ data: { id: `group:${g.group_id}`, gid: g.group_id, name: `${g.group_id}: ${VERDICT_TEXT[g.verdict]}`, color },
       classes: `group ${kind}` })
     g.members.forEach((m) => inGroup.set(m, g.group_id))
   }
   const badgesOf = new Map(report.reviewers.map((r) => [r.contributor_id, r.badges.map((b) => b.name)]))
+  const linked = new Set(report.graph.edges.flatMap((e) => [e.source, e.target]))
   for (const n of report.graph.nodes) {
+    if (!linked.has(n.id) && !inGroup.has(n.id)) continue // unlinked reviewers are counted under the graph instead
     const gid = inGroup.get(n.id)
     const classes = ['person']
     if (n.label === 'possible_ring_trip') classes.push('dashed')

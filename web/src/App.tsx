@@ -71,7 +71,7 @@ export default function App() {
         )}
         {mode === 'demo' && !health.isError && (
           <motion.div key="demo" className="banner" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
-            <FlaskConical size={16} style={{ color: 'var(--accent)' }} />
+            <FlaskConical size={16} style={{ color: 'var(--gold)' }} />
             Demo mode: prepared, synthetic, pseudonymized analyses. Nothing is fetched. Add a SerpApi key and switch to live mode to analyse a real place.
           </motion.div>
         )}

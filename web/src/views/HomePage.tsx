@@ -1,11 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { ArrowRight, ChevronRight, CircleAlert, Search, SlidersHorizontal } from 'lucide-react'
+import { CircleAlert, Search, SlidersHorizontal } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { api, type StartOptions } from '../api'
 import { BudgetDetail } from '../components/BudgetWidget'
-import { Orbit } from '../components/Orbit'
+import { HeroStars } from '../components/HeroStars'
 import { LevelBadge } from '../components/ui'
 import { ageText, fmt } from '../labels'
 import { EASE } from '../motion'
@@ -30,11 +30,8 @@ export function HomePage() {
     <div>
       <section className="home-hero">
         <div>
-          <motion.div className="eyebrow" {...rise(0)}>Google Maps review audit</motion.div>
-          <motion.h1 style={{ marginTop: 14 }} {...rise(1)}>
-            A Google rating is a number.<br />
-            <span className="dim">ReviewRing shows where it comes from.</span>
-          </motion.h1>
+          <motion.h1 {...rise(0)}>A Google rating is a number.</motion.h1>
+          <motion.p className="hero-sub" {...rise(1)}>ReviewRing shows where it comes from.</motion.p>
           <motion.p className="lede" {...rise(2)}>
             Paste a Google Maps link. ReviewRing reads the newest reviews, opens the histories of the most unusual reviewers,
             and tells you how much of the rating to trust, with the evidence for every claim.
@@ -52,13 +49,13 @@ export function HomePage() {
             {CHECKS.map((c) => <span key={c} className="chip">{c}</span>)}
           </motion.div>
         </div>
-        <Orbit />
+        <HeroStars />
       </section>
 
       <section>
         <div className="section-title">
           <h2>{demo ? 'Prepared examples' : 'Recent analyses'}</h2>
-          {demo && <span className="chip accent">synthetic</span>}
+          {demo && <span className="muted">Synthetic businesses, made to show each kind of finding</span>}
         </div>
         {list.isLoading && <div className="analysis-list">{[0, 1, 2].map((i) => <div key={i} className="skeleton" style={{ height: 76 }} />)}</div>}
         {list.isError && <p className="muted">{(list.error as Error).message}</p>}
@@ -82,17 +79,17 @@ function AnalysisRow({ a }: { a: AnalysisListItem }) {
   return (
     <Link to={`/analysis/${a.id}`} className="analysis-row">
       <div>
-        <div className="row" style={{ gap: 8 }}>
-          <strong style={{ fontSize: '1.02rem' }}>{a.title ?? a.type ?? 'Place'}</strong>
-          {a.synthetic && <span className="chip accent">synthetic</span>}
+        <div className="row" style={{ gap: 10 }}>
+          <span className="name">{a.title ?? a.type ?? 'Place'}</span>
+          {a.synthetic && <span className="chip accent">Synthetic</span>}
         </div>
-        <div className="muted small">{[a.type, a.area].filter(Boolean).join(' · ') || '–'}</div>
+        <div className="muted small">{[a.type, a.area].filter(Boolean).join(', ') || '–'}</div>
       </div>
       <div>{a.level ? <LevelBadge level={a.level} /> : <span className="chip">{a.status}</span>}</div>
       <div>
         {a.sample_mean != null ? (
           <>
-            <span className="num" style={{ fontSize: '1.15rem', fontWeight: 620 }}>{fmt(a.sample_mean, 2)}★</span>
+            <span className="fig" style={{ fontSize: '1.35rem' }}>{fmt(a.sample_mean, 2)}<span style={{ color: 'var(--gold)' }}>★</span></span>
             {shifted && <span className="num secondary"> → {fmt(a.adjusted, 2)}★</span>}
             <div className="muted tiny">{shifted ? 'latest reviews → without linked reviewers' : 'average of the latest reviews'}</div>
           </>
@@ -102,7 +99,6 @@ function AnalysisRow({ a }: { a: AnalysisListItem }) {
         <span className="num">{a.searches_used}</span> searches
         <div className="muted tiny">{a.finished_at ? ageText(a.finished_at) : a.stage ?? ''}</div>
       </div>
-      <ChevronRight size={18} className="arrow" />
     </Link>
   )
 }
@@ -204,14 +200,14 @@ function Analyse({ mode }: { mode: string | undefined }) {
         )}
         {resolved?.candidates && resolved.candidates.length > 1 && (
           <motion.div key="cands" style={{ marginTop: 16 }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-            <div className="eyebrow" style={{ marginBottom: 8 }}>Which place?</div>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: 10 }}>Which place?</h3>
             <CandidatePicker candidates={resolved.candidates} picked={pick} onPick={setPick} />
           </motion.div>
         )}
         {est && (
           <motion.div key="est" className="panel estimate" initial={{ opacity: 0, y: 16, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5, ease: EASE }}>
             <div>
-              <div className="eyebrow">Estimated cost</div>
+              <div className="secondary">Estimated cost</div>
               <div className="row" style={{ alignItems: 'baseline', gap: 8, marginTop: 10 }}>
                 <span className="big-num num">{est.min}–{est.max}</span><span className="secondary">searches</span>
               </div>
@@ -221,12 +217,12 @@ function Analyse({ mode }: { mode: string | undefined }) {
             </div>
             <div className="col" style={{ justifyContent: 'space-between', gap: 16 }}>
               <div>
-                <div className="eyebrow" style={{ marginBottom: 10 }}>Budget</div>
+                <div className="secondary" style={{ marginBottom: 10 }}>Your budget</div>
                 <BudgetDetail />
               </div>
               <div>
                 <button className="btn primary lg" style={{ width: '100%' }} disabled={needsPick || start.isPending} onClick={() => start.mutate()}>
-                  {offline ? 'Analyse from cache (0 searches)' : `Run analysis (up to ${est.max} searches)`} <ArrowRight size={17} />
+                  {offline ? 'Analyse from cache (0 searches)' : `Run analysis (up to ${est.max} searches)`}
                 </button>
                 {needsPick && <div className="muted small" style={{ marginTop: 6 }}>Pick a place first.</div>}
               </div>
@@ -247,7 +243,7 @@ export function CandidatePicker({ candidates, picked, onPick, disabled }: { cand
           onClick={() => onPick(c.data_id ?? undefined)}>
           <span className="col" style={{ flex: 1 }}>
             <strong>{c.title ?? 'Unnamed place'}</strong>
-            <span className="muted small">{[c.type, c.address].filter(Boolean).join(' · ')}</span>
+            <span className="muted small">{[c.type, c.address].filter(Boolean).join(', ')}</span>
           </span>
           <span className="num secondary">{c.rating ?? '–'}★ <span className="muted">({c.reviews?.toLocaleString() ?? '?'})</span></span>
         </button>

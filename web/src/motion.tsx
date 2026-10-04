@@ -1,26 +1,12 @@
-// Shared motion: scroll reveals, counters that settle on the report's exact number, and a width hook for SVG charts.
+// Shared motion: counters that settle on the report's exact number, and a width hook for SVG charts.
 // MotionConfig in main.tsx honours the viewer's reduced-motion setting for all of these.
 
-import { animate, motion, useInView, useReducedMotion, type HTMLMotionProps } from 'motion/react'
-import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { animate, useInView, useReducedMotion } from 'motion/react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 const format = (v: number, digits: number) => v.toLocaleString('en-IN', { minimumFractionDigits: digits, maximumFractionDigits: digits })
 
 export const EASE = [0.22, 1, 0.36, 1] as const
-
-export function Reveal({ children, delay = 0, y = 24, ...rest }: { children: ReactNode; delay?: number; y?: number } & HTMLMotionProps<'div'>) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-      transition={{ duration: 0.7, ease: EASE, delay }}
-      {...rest}
-    >
-      {children}
-    </motion.div>
-  )
-}
 
 /** Counts from `from` to `value` when scrolled into view, then shows `value` formatted exactly as given. */
 export function CountUp({ value, from = 0, digits = 0, duration = 1.4, delay = 0 }: { value: number; from?: number; digits?: number; duration?: number; delay?: number }) {

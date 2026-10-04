@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { motion } from 'motion/react'
 import { api } from '../api'
-import { EASE, Reveal } from '../motion'
+import { EASE } from '../motion'
 
 type Cell = string | number | null
 interface Row { [k: string]: Cell }
@@ -38,7 +38,7 @@ export function EvaluationPage() {
   return (
     <div className="col" style={{ gap: 28, maxWidth: 1120 }}>
       <div>
-        <div className="eyebrow">Evaluation on planted synthetic rings</div>
+        <h1 style={{ fontSize: '2.6rem', fontStretch: '82%' }}>How well it finds planted rings</h1>
         {lead && (
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ ease: EASE, duration: 0.7 }} style={{ marginTop: 16 }}>
             <div className="row" style={{ alignItems: 'baseline', gap: 18 }}>
@@ -70,7 +70,7 @@ export function EvaluationPage() {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
         {d.tables.map((t) => (
-          <Reveal key={t.title}>
+          <div key={t.title}>
             <div className="panel pad">
               <h3 style={{ marginBottom: 12 }}>{t.title}</h3>
               <table className="small">
@@ -93,7 +93,7 @@ export function EvaluationPage() {
                 </tbody>
               </table>
             </div>
-          </Reveal>
+          </div>
         ))}
       </div>
       {d.charts.length > 0 && <p className="muted small">Charts: {d.charts.map((c) => c.title).join(', ')} are in <code>docs/evaluation/</code>.</p>}

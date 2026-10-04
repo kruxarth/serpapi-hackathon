@@ -1,10 +1,10 @@
 // One visual per evidence kind. Every number shown here is read from the report; nothing is re-scored.
 
-import { ArrowRight, Check, CircleSlash, Copy, Dices, Minus, Network, Quote } from 'lucide-react'
+import { Check, CircleSlash, Copy, Dices, Minus, Network, Quote } from 'lucide-react'
 import { motion, useInView } from 'motion/react'
 import { useRef, type ReactNode } from 'react'
-import { day, dayCount, fmt, pct, VERDICT_TEXT } from '../labels'
-import { CountUp, EASE, Reveal } from '../motion'
+import { day, dayCount, fmt, pct } from '../labels'
+import { CountUp, EASE } from '../motion'
 import type { Namer } from '../names'
 import type { Burst, Evidence, Group, Report, SingleUseBurst } from '../types'
 import { Timeline } from './Timeline'
@@ -48,35 +48,32 @@ export function pairEvidence(report: Report) {
   })
 }
 
-export function Finding({ index, e, burst, single, ctx }: { index: number; e: Evidence; burst?: Burst; single?: SingleUseBurst; ctx: Ctx }) {
+export function Finding({ e, burst, single, ctx }: { e: Evidence; burst?: Burst; single?: SingleUseBurst; ctx: Ctx }) {
   const k = KIND[e.kind] ?? { text: e.kind.replace(/_/g, ' '), tone: 'var(--ink-2)' }
   const group = e.group ? ctx.report.groups.find((g) => g.group_id === e.group) : undefined
   const quiet = QUIET.has(e.kind)
   const setAside = e.kind === 'ruled_out_trip' || e.kind === 'social_circle'
   return (
-    <Reveal>
-      <article className={`panel finding ${quiet ? 'quiet' : ''} ${setAside ? 'setaside' : ''}`} style={{ ['--tone' as string]: k.tone }}>
-        <div className="finding-index">{String(index + 1).padStart(2, '0')}</div>
-        <div>
-          <div className="finding-kind">
-            {quiet ? (e.kind === 'duplicates' ? <Copy size={14} /> : <Dices size={14} />) : setAside ? <CircleSlash size={14} /> : <span className="swatch" style={{ background: k.tone }} />}
-            {k.text}{e.group ? ` · ${e.group}` : ''}
-          </div>
-          <h3>{e.text}</h3>
+    <article className={`finding ${quiet ? 'quiet' : ''} ${setAside ? 'setaside' : ''}`} style={{ ['--tone' as string]: k.tone }}>
+      <div>
+        <div className="finding-kind">
+          {quiet ? (e.kind === 'duplicates' ? <Copy size={15} /> : <Dices size={15} />) : setAside ? <CircleSlash size={15} /> : <span className="swatch" style={{ background: k.tone }} />}
+          {k.text}{e.group ? `, group ${e.group}` : ''}
         </div>
-        {!quiet && (
-          <div className="visual">
-            {e.kind === 'rating_gap' && <RatingGapVisual report={ctx.report} />}
-            {e.kind === 'top_rated' && <TopRatedVisual report={ctx.report} />}
-            {e.kind === 'generated_text' && <GeneratedVisual report={ctx.report} text={e.text} />}
-            {e.kind === 'single_use_burst' && single && <SingleUseVisual report={ctx.report} b={single} />}
-            {e.kind === 'burst' && burst && <BurstVisual report={ctx.report} b={burst} />}
-            {group && ['ring', 'possible_ring', 'possible_ring_trip'].includes(e.kind) && <GroupVisual g={group} onShow={() => ctx.onShowGroup(group.group_id)} />}
-            {group && setAside && <SetAsideVisual g={group} />}
-          </div>
-        )}
-      </article>
-    </Reveal>
+        <h3>{e.text}</h3>
+      </div>
+      {!quiet && (
+        <div className="visual">
+          {e.kind === 'rating_gap' && <RatingGapVisual report={ctx.report} />}
+          {e.kind === 'top_rated' && <TopRatedVisual report={ctx.report} />}
+          {e.kind === 'generated_text' && <GeneratedVisual report={ctx.report} text={e.text} />}
+          {e.kind === 'single_use_burst' && single && <SingleUseVisual report={ctx.report} b={single} />}
+          {e.kind === 'burst' && burst && <BurstVisual report={ctx.report} b={burst} />}
+          {group && ['ring', 'possible_ring', 'possible_ring_trip'].includes(e.kind) && <GroupVisual g={group} onShow={() => ctx.onShowGroup(group.group_id)} />}
+          {group && setAside && <SetAsideVisual g={group} />}
+        </div>
+      )}
+    </article>
   )
 }
 
@@ -90,9 +87,9 @@ function RatingGapVisual({ report }: { report: Report }) {
   // Bars run on the 1–5 star scale, with the axis labelled.
   const w = (v: number) => `${((v - 1) / 4) * 100}%`
   const rows = [
-    { label: 'Listing shows', sub: `${(report.pseudonymized ? report.place.total_reviews ?? t.total : t.total).toLocaleString('en-IN')} reviews, as displayed`, v: t.displayed, fill: 'var(--ink-2)', digits: 1 },
-    { label: `Latest ${t.recent_count} average`, sub: 'what recent customers say', v: t.recent_mean, fill: 'var(--status-serious)', digits: 2 },
-    { label: 'Older reviews must average', sub: report.pseudonymized ? 'all the others, implied' : `${t.older_count.toLocaleString('en-IN')} reviews, implied`, v: t.older_implied_mean, fill: 'repeating-linear-gradient(45deg, var(--ink-2) 0 4px, color-mix(in srgb, var(--ink-2) 40%, transparent) 4px 8px)', digits: 2 },
+    { label: 'Listing shows', sub: `${(report.pseudonymized ? report.place.total_reviews ?? t.total : t.total).toLocaleString('en-IN')} reviews, as displayed`, v: t.displayed, fill: 'var(--gold)', digits: 1 },
+    { label: `Latest ${t.recent_count} average`, sub: 'what recent customers say', v: t.recent_mean, fill: 'var(--ink)', digits: 2 },
+    { label: 'Older reviews must average', sub: report.pseudonymized ? 'all the others, implied' : `${t.older_count.toLocaleString('en-IN')} reviews, implied`, v: t.older_implied_mean, fill: 'repeating-linear-gradient(45deg, var(--gold) 0 4px, color-mix(in srgb, var(--gold) 35%, transparent) 4px 8px)', digits: 2 },
   ]
   return (
     <div ref={ref}>
@@ -124,7 +121,7 @@ function TopRatedVisual({ report }: { report: Report }) {
   const inView = useInView(ref, { once: true, margin: '0px 0px -60px 0px' })
   if (!t?.available) return null
   return (
-    <div ref={ref} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'start' }}>
+    <div ref={ref} className="col" style={{ gap: 24 }}>
       <div>
         <div className="dotgrid" role="img" aria-label={`${t.window_count} of ${t.count} in the window`}>
           {Array.from({ length: t.count }, (_, i) => (
@@ -140,7 +137,7 @@ function TopRatedVisual({ report }: { report: Report }) {
       <div className="col" style={{ gap: 16 }}>
         <div className="row" style={{ alignItems: 'baseline', gap: 10 }}>
           <span className="big-num num"><CountUp value={t.window_count} /></span>
-          <span className="secondary">of {t.count} highest-rated reviews sampled fall in one {t.window_months}-month window</span>
+          <span className="secondary">of the {t.count} highest-rated reviews sampled fall in one {t.window_months}-month window</span>
         </div>
         <Meter label="From accounts with at most one review" share={t.single_use_share} inView={inView} delay={0.6} hatch />
         <Meter label="Without photos" share={t.no_photo_share} inView={inView} delay={0.8} />
@@ -197,11 +194,11 @@ function PullQuote({ marker, full, rating, date, reviews }: { marker: string; fu
       <blockquote>
         {at >= 0 && full ? <>{full.slice(0, at)}{hl}{full.slice(at + marker.length)}</> : <>…{hl}…</>}
       </blockquote>
-      <div className="row small" style={{ marginTop: 16, gap: 14 }}>
+      <div className="row wrap small" style={{ marginTop: 16, gap: '6px 14px', whiteSpace: 'nowrap' }}>
         <Stars rating={rating} />
         {date && <span className="secondary">{day(date)}</span>}
         {reviews != null && <span className="muted">from an account with {reviews} review{reviews === 1 ? '' : 's'}</span>}
-        {!full && <span className="muted">· full text not included</span>}
+        {!full && <span className="muted">Full text not included</span>}
       </div>
     </div>
   )
@@ -259,13 +256,13 @@ function GroupVisual({ g, onShow }: { g: Group; onShow: () => void }) {
       </div>
       {m.far_areas.length > 0 && (
         <div className="row wrap" style={{ gap: 6 }}>
-          <span className="muted small">Cities:</span>
+          <span className="muted small">Distant cities</span>
           {m.far_areas.map((a) => <span key={a} className="chip">{a}</span>)}
         </div>
       )}
       {g.confidence != null && <Strength g={g} />}
       <div>
-        <button className="btn" onClick={onShow}><Network size={15} /> Show this group on the graph and map <ArrowRight size={15} /></button>
+        <button className="btn" onClick={onShow}><Network size={15} /> Show this group on the graph and map</button>
       </div>
     </div>
   )
@@ -278,11 +275,11 @@ export function Strength({ g }: { g: Group }) {
     <div ref={ref}>
       <div className="row" style={{ alignItems: 'baseline', gap: 10 }}>
         <strong>Evidence strength <span className="num">{g.confidence?.toFixed(2)}</span></strong>
-        <span className="muted small">a weighted sum of the parts below, from 0 to 1; not a probability</span>
+        <span className="muted small">a weighted sum from 0 to 1, not a probability</span>
       </div>
       <div className="col" style={{ gap: 8, marginTop: 12 }}>
         {g.confidence_parts.map((p, i) => (
-          <div key={p.part} className="meter-row" style={{ gridTemplateColumns: '150px 1fr 120px', opacity: p.used ? 1 : 0.5 }}>
+          <div key={p.part} className="meter-row" style={{ gridTemplateColumns: '130px 1fr 112px', opacity: p.used ? 1 : 0.5 }}>
             <span className="secondary">{p.part}</span>
             <div className="bar-track" style={{ height: 8 }}>
               <motion.div className="bar-fill" style={{ background: 'var(--label-ring)' }} initial={{ width: 0 }}
@@ -314,7 +311,7 @@ function SetAsideVisual({ g }: { g: Group }) {
       ]
   return (
     <div className="col" style={{ gap: 12 }}>
-      <div className="eyebrow">{VERDICT_TEXT[g.verdict]} · {g.members.length} reviewers · {m.core_places} shared places within {Math.round(m.span_km)} km</div>
+      <strong>{g.members.length} reviewers, {m.core_places} shared places within {Math.round(m.span_km)} km</strong>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 28px' }}>
         {items.map(([ok, text], i) => (
           <motion.div key={i} className="indicator" initial={{ opacity: 0, x: -8 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}

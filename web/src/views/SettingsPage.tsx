@@ -72,7 +72,7 @@ export function SettingsPage() {
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
     <motion.section className="panel pad" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
-      <div className="eyebrow" style={{ marginBottom: 14 }}>{title}</div>
+      <h2 style={{ fontSize: '1.35rem', marginBottom: 14 }}>{title}</h2>
       {children}
     </motion.section>
   )

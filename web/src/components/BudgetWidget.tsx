@@ -15,7 +15,7 @@ export const useBudget = () => useQuery({ queryKey: ['budget'], queryFn: api.bud
 export function StatusChip({ mode }: { mode: Mode | undefined }) {
   const b = useBudget().data
   if (!mode) return null
-  const color = mode === 'live' ? 'var(--status-good)' : mode === 'offline' ? 'var(--muted)' : 'var(--accent)'
+  const color = mode === 'live' ? 'var(--status-good)' : mode === 'offline' ? 'var(--muted)' : 'var(--gold)'
   return (
     <span className="status-chip" title={b?.note ?? MODE_TITLE[mode]}>
       <span className="pulse-dot" style={{ color }} aria-hidden />
@@ -41,7 +41,7 @@ export function BudgetDetail() {
         <span className="big-num num">{b.month_remaining}</span>
         <span className="secondary">left this month</span>
       </div>
-      <div className="secondary small"><strong className="num">{b.hour_remaining}</strong> left this hour · cap {b.per_analysis_cap} per analysis</div>
+      <div className="secondary small"><strong className="num">{b.hour_remaining}</strong> left this hour, and at most {b.per_analysis_cap} per analysis</div>
       {b.month_remaining === 0 && <div className="notice error small">The monthly search budget is used up. Offline and demo modes still work.</div>}
       {b.month_remaining > 0 && b.hour_remaining === 0 && (
         <div className="notice warn small">

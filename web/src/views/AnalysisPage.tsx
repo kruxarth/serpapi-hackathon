@@ -92,11 +92,11 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
       <Link to="/" className="row muted small" style={{ gap: 6, marginBottom: 22 }}><ArrowLeft size={14} /> All analyses</Link>
       <div className="progress-wrap">
         <div>
-          <div className="eyebrow">Analysis {detail.id}</div>
+          <div className="muted">Analysis {detail.id}</div>
           <h1 style={{ fontSize: '2.4rem', marginTop: 10, letterSpacing: '-0.04em' }}>
             {live ? (finished ? 'Writing the report…' : 'Reading the reviews') : STATUS_TITLE[detail.status] ?? detail.status}
           </h1>
-          {detail.input && !pres.on && <p className="muted small mono" style={{ marginTop: 8, wordBreak: 'break-all' }}>{detail.input}</p>}
+          {detail.input && !pres.on && <p className="muted small" style={{ marginTop: 8, wordBreak: 'break-all' }}>{detail.input}</p>}
 
           {live && (
             <div className="panel" style={{ marginTop: 26, padding: '14px 18px' }}>
@@ -114,7 +114,7 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
                         <AnimatePresence mode="wait">
                           {state === 'done' && !skipped
                             ? <motion.span key="d" initial={{ scale: 0 }} animate={{ scale: 1 }} style={{ display: 'grid' }}><Check size={14} strokeWidth={3} /></motion.span>
-                            : <span className="mono tiny">{i + 1}</span>}
+                            : <span>{i + 1}</span>}
                         </AnimatePresence>
                       </div>
                       <div>
@@ -123,7 +123,7 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
                         {s.key === 'expanding' && total > 0 && state !== 'pending' && (
                           <div style={{ marginTop: 8, maxWidth: 360 }}>
                             <div className="bar-track"><motion.div className="bar-fill" animate={{ width: `${(100 * done) / total}%` }} transition={{ duration: 0.5, ease: EASE }} /></div>
-                            <div className="muted tiny num" style={{ marginTop: 4 }}>{done} of {total} histories{round ? ` · round ${String(round)}` : ''}</div>
+                            <div className="muted tiny num" style={{ marginTop: 4 }}>{done} of {total} histories{round ? `, round ${String(round)}` : ''}</div>
                           </div>
                         )}
                       </div>
@@ -184,7 +184,7 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
 
         <aside className="col" style={{ gap: 18, paddingTop: 34 }}>
           <div className="panel pad">
-            <div className="eyebrow">Searches used</div>
+            <div className="secondary">Searches used</div>
             <div className="big-num num" style={{ fontSize: '4rem', marginTop: 10 }}>
               <AnimatePresence mode="popLayout">
                 <motion.span key={used} initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -24, opacity: 0 }} transition={{ duration: 0.35, ease: EASE }} style={{ display: 'inline-block' }}>
@@ -196,7 +196,7 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
           </div>
           {live && (
             <div className="panel pad">
-              <div className="eyebrow" style={{ marginBottom: 12 }}><Clock size={12} style={{ verticalAlign: -1 }} /> Live log</div>
+              <div className="secondary row" style={{ marginBottom: 12, gap: 6 }}><Clock size={14} /> What it is doing</div>
               <div className="log">
                 <AnimatePresence initial={false}>
                   {(events.length ? [...events].reverse().slice(0, 10) : [{ type: 'queued', message: 'Queued…', searches_used: 0, data: {} }]).map((e, i) => (
