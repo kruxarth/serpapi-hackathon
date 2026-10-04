@@ -17,6 +17,7 @@ from ..model import AnalysisInput, HistoryReview
 from ..normalize.geo import haversine_km
 from .accounts import CONTEXT_ONLY, AccountSignals
 from .graph import Pair, coincidence, distance_km, is_popular_type
+from .homes import Home
 
 
 @lru_cache(maxsize=1)
@@ -45,7 +46,7 @@ class Group:
     edges: list[tuple[str, str]] = field(default_factory=list)
     metrics: dict[str, Any] = field(default_factory=dict)
     trip: dict[str, Any] = field(default_factory=dict)
-    verdict: str = "none"  # ring | possible_ring | possible_ring_trip | ruled_out_trip | none
+    verdict: str = "none"  # ring | possible_ring | possible_ring_trip | ruled_out_trip | social_circle | none
     confidence: float | None = None
     confidence_parts: list[dict[str, Any]] = field(default_factory=list)
     core_places: list[str] = field(default_factory=list)
@@ -126,7 +127,7 @@ def _episodes(dates: list[tuple[Any, Any]], gap_days: int) -> int:
 
 
 def group_metrics(
-    inp: AnalysisInput, members: list[str], signals: dict[str, AccountSignals]
+    inp: AnalysisInput, members: list[str], signals: dict[str, AccountSignals], homes: dict[str, Home] | None = None
 ) -> tuple[dict[str, Any], list[str]]:
     cfg = config.load_tunables()["groups"]
     n = len(members)
@@ -153,7 +154,7 @@ def group_metrics(
     located = [p for p in core_places if p.lat is not None]
     span = max((haversine_km(a.lat, a.lng, b.lat, b.lng) for a, b in combinations(located, 2)), default=0.0)
     groups_seen = sorted({type_group(p.type)[0] for p in core_places})
-    all_travel = bool(core_places) and all(type_group(p.type)[1] for p in core_places)
+    travel_share = sum(1 for p in core_places if type_group(p.type)[1]) / len(core_places) if core_places else 0.0
 
     core_reviews = [(k, cid, h) for k in core for cid, hs in by_place[k].items() for h in hs]
     precise = [
@@ -181,6 +182,28 @@ def group_metrics(
 
     rated = [h.rating for _, _, h in core_reviews if h.rating is not None]
     five_share = sum(1 for r in rated if r == 5) / len(rated) if rated else None
+    # Home areas: do most members share one, and do the core places sit near it?
+    homes = homes or {}
+    member_homes = [homes[m] for m in members if m in homes]
+    home_area, home_members, near_home = None, 0, 0.0
+    if member_homes:
+        home_area, home_members = min(
+            ((a, sum(1 for h in member_homes if h.area == a)) for a in {h.area for h in member_homes}),
+            key=lambda x: (-x[1], x[0]),
+        )
+        anchor = [h for h in member_homes if h.area == home_area]
+        lat = sum(h.lat for h in anchor) / len(anchor)
+        lng = sum(h.lng for h in anchor) / len(anchor)
+        if located:
+            near_home = sum(1 for p in located if haversine_km(lat, lng, p.lat, p.lng) <= cfg["social_km"]) / len(
+                core_places
+            )
+    trip_groups = {g.casefold() for g in cfg["trip_travel_groups"]}
+    with_party = sum(
+        1
+        for cid in members
+        if any((h.travel_group or "") in trip_groups for k in core for h in by_place[k].get(cid, []))
+    )
     with_signals = sum(
         1
         for cid in members
@@ -197,7 +220,12 @@ def group_metrics(
             "span_km": round(span, 1),
             "type_groups": groups_seen,
             "type_diversity": len(groups_seen),
-            "all_core_travel": all_travel,
+            "core_travel_share": round(travel_share, 3),
+            "core_non_travel": sum(1 for p in core_places if not type_group(p.type)[1]),
+            "home_area": home_area,
+            "home_member_share": round(home_members / n, 3) if n else 0.0,
+            "core_near_home_share": round(near_home, 3),
+            "travel_party_share": round(with_party / n, 3) if n else 0.0,
             "episodes": episodes,
             "timing_known": timing_known,
             "concentration": round(concentration, 3),
@@ -215,11 +243,28 @@ def _blank(key: str):
     return Place(key)
 
 
-def trip_assessment(m: dict[str, Any]) -> dict[str, Any]:
+def is_social_circle(m: dict[str, Any]) -> bool:
+    """Most members share a home area and most core places are near it: friends or family, not clients."""
     cfg = config.load_tunables()["groups"]
+    return (
+        m["home_area"] is not None
+        and m["home_member_share"] >= cfg["social_min_member_share"]
+        and m["core_near_home_share"] >= cfg["social_min_core_share"]
+    )
+
+
+def trip_assessment(m: dict[str, Any]) -> dict[str, Any]:
+    """A trip is ruled out only on positive evidence (a shared home, or hotel reviews saying family/friends),
+    never merely because farm signs are absent. Otherwise trip evidence caps a group at "possible"."""
+    cfg = config.load_tunables()["groups"]
+    # Mostly travel businesses: at least 75% of core places, or all but one when there are 3 or more
+    # (a tour guide's emporium or a pharmacy shouldn't break the shape).
+    mostly_travel = m["core_travel_share"] >= cfg["trip_min_travel_share"] or (
+        m["core_places"] >= 3 and m["core_non_travel"] <= 1
+    )
     shape = (
         m["span_km"] <= cfg["trip_max_span_km"]
-        and m["all_core_travel"]
+        and mostly_travel
         and not (m["episodes"] is not None and m["episodes"] >= 2)
     )
     indicators = {
@@ -229,13 +274,25 @@ def trip_assessment(m: dict[str, Any]) -> dict[str, Any]:
         and m["core_five_star_share"] < cfg["trip_five_star_share_below"],
     }
     met = sum(indicators.values())
+    evidence = {
+        "shared_home": m["home_member_share"] >= cfg["social_min_member_share"],
+        "travel_party": m["travel_party_share"] >= cfg["social_min_member_share"],
+    }
     if not shape:
         status = "no_trip_shape"
-    elif met >= cfg["trip_indicators_needed"]:
+    elif met >= cfg["trip_indicators_needed"] and (
+        any(evidence.values()) or not cfg.get("trip_requires_positive_evidence", True)
+    ):
         status = "ruled_out"
     else:
         status = "unresolved"
-    return {"trip_like_shape": shape, "indicators": indicators, "indicators_met": met, "status": status}
+    return {
+        "trip_like_shape": shape,
+        "indicators": indicators,
+        "indicators_met": met,
+        "positive_evidence": evidence,
+        "status": status,
+    }
 
 
 def confidence(m: dict[str, Any], density: float) -> tuple[float, list[dict[str, Any]]]:
@@ -260,7 +317,10 @@ def confidence(m: dict[str, Any], density: float) -> tuple[float, list[dict[str,
 
 
 def detect_groups(
-    inp: AnalysisInput, edge_pairs: dict[tuple[str, str], Pair], signals: dict[str, AccountSignals]
+    inp: AnalysisInput,
+    edge_pairs: dict[tuple[str, str], Pair],
+    signals: dict[str, AccountSignals],
+    homes: dict[str, Home] | None = None,
 ) -> list[Group]:
     cfg = config.load_tunables()["groups"]
     groups: list[Group] = []
@@ -273,7 +333,7 @@ def detect_groups(
         group_edges = [(u, v) for u, v in combinations(members, 2) if (u, v) in edge_pairs]
         g.add_edges_from(group_edges)
         density = _density(g)
-        metrics, core = group_metrics(inp, members, signals)
+        metrics, core = group_metrics(inp, members, signals, homes)
         metrics["density"] = round(density, 3)
         trip = trip_assessment(metrics)
         structural = (
@@ -282,8 +342,11 @@ def detect_groups(
             and metrics["far_area_count"] >= cfg["ring_min_far_areas"]
         )
         n = len(members)
-        if trip["status"] == "ruled_out":
-            verdict = "ruled_out_trip" if n >= cfg["possible_ring_min_size"] and metrics["core_places"] >= 2 else "none"
+        substantive = n >= cfg["possible_ring_min_size"] and metrics["core_places"] >= 2
+        if is_social_circle(metrics):
+            verdict = "social_circle" if substantive else "none"
+        elif trip["status"] == "ruled_out":
+            verdict = "ruled_out_trip" if substantive else "none"
         elif trip["status"] == "unresolved":
             verdict = "possible_ring_trip" if structural and n >= cfg["possible_ring_min_size"] else "none"
         elif structural and n >= cfg["ring_min_size"]:
@@ -296,7 +359,7 @@ def detect_groups(
         if verdict in ("ring", "possible_ring", "possible_ring_trip"):
             group.confidence, group.confidence_parts = confidence(metrics, density)
         groups.append(group)
-    order = {"ring": 0, "possible_ring": 1, "possible_ring_trip": 2, "ruled_out_trip": 3, "none": 4}
+    order = {"ring": 0, "possible_ring": 1, "possible_ring_trip": 2, "ruled_out_trip": 3, "social_circle": 4, "none": 5}
     groups.sort(key=lambda g: (order[g.verdict], -(g.confidence or 0), -len(g.members), g.members[0]))
     for i, g in enumerate(groups):
         g.group_id = f"G{i + 1}"

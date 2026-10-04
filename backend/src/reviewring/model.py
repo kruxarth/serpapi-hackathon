@@ -69,6 +69,7 @@ class HistoryReview:
     edited: bool = False
     image_dates: list[str] = field(default_factory=list)
     text: str | None = None
+    travel_group: str | None = None  # from hotel review details ("family", "friends", "business", ...)
 
     @property
     def precision_days(self) -> int | None:

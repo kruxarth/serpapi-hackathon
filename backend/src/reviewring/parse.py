@@ -135,9 +135,22 @@ def contributor_history(
                 edited=rng.edited,
                 image_dates=image_dates,
                 text=review_text(r),
+                travel_group=_travel_group(r.get("details")),
             )
         )
     return contributor, history, places
+
+
+def _travel_group(details: Any) -> str | None:
+    """Hotel reviews can say who the reviewer travelled with ("Family", "Friends") or why ("Business")."""
+    if not isinstance(details, dict):
+        return None
+    lowered = {str(k).casefold(): v for k, v in details.items()}
+    for key in ("travel_group", "trip_type"):
+        value = lowered.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip().casefold()
+    return None
 
 
 def lookup_place(body: dict[str, Any]) -> Place | None:

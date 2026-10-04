@@ -13,6 +13,7 @@ from itertools import combinations
 from .. import config
 from ..model import AnalysisInput, HistoryReview, Place
 from ..normalize.geo import haversine_km
+from .homes import Home, compute_homes
 
 
 def is_popular_type(place_type: str | None) -> bool:
@@ -33,9 +34,15 @@ def distance_km(target: Place, place: Place) -> float | None:
     return haversine_km(target.lat, target.lng, place.lat, place.lng)  # type: ignore[arg-type]
 
 
-def surprise(target: Place, place: Place) -> float:
+def surprise(target: Place, place: Place, homes: tuple[Home | None, ...] = ()) -> float:
+    """Distance factor x type factor. Distance is to the business or to either reviewer's home, whichever is nearer."""
     cfg = config.load_tunables()["surprise"]
     d = distance_km(target, place)
+    if place.lat is not None and place.lng is not None:
+        for home in homes:
+            if home is not None:
+                dh = haversine_km(home.lat, home.lng, place.lat, place.lng)
+                d = dh if d is None else min(d, dh)
     if d is None:
         dist = cfg["no_coords_factor"]
     elif d < cfg["near_km"]:
@@ -105,9 +112,13 @@ def reviews_by_place(inp: AnalysisInput, contributors: list[str]) -> dict[str, d
     return out
 
 
-def build_pairs(inp: AnalysisInput, contributors: list[str]) -> dict[tuple[str, str], Pair]:
+def build_pairs(
+    inp: AnalysisInput, contributors: list[str], homes: dict[str, Home] | None = None
+) -> dict[tuple[str, str], Pair]:
     """Every pair of the given reviewers that shares at least one place."""
     contributors = sorted(set(contributors))
+    if homes is None:
+        homes = compute_homes(inp, contributors)
     index = reviews_by_place(inp, contributors)
     pairs: dict[tuple[str, str], Pair] = {}
     for place_key in sorted(index):
@@ -115,9 +126,9 @@ def build_pairs(inp: AnalysisInput, contributors: list[str]) -> dict[tuple[str, 
         if len(who) < 2:
             continue
         place = inp.places.get(place_key) or Place(place_key)
-        s = surprise(inp.target, place)
         popular = is_popular_type(place.type)
         for u, v in combinations(sorted(who), 2):
+            s = surprise(inp.target, place, (homes.get(u), homes.get(v)))
             c = max(coincidence(a, b) for a in who[u] for b in who[v])
             pairs.setdefault((u, v), Pair(u, v)).shared.append(SharedPlace(place_key, s, c, popular))
     return pairs

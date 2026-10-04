@@ -1,10 +1,10 @@
 import type { Label, Level, Verdict } from './types'
 
 export const LABEL_TEXT: Record<Label, string> = {
-  ring: 'Ring',
-  possible_ring_trip: 'Possible ring (trip-like)',
+  ring: 'Ring-like group',
+  possible_ring_trip: 'Possible ring-like group (trip-like)',
   suspicious: 'Suspicious',
-  group_trip: 'Group trip',
+  group_trip: 'Trip or social group',
   no_flags: 'No flags',
   not_checked: 'Not checked',
 }
@@ -12,10 +12,11 @@ export const LABEL_TEXT: Record<Label, string> = {
 export const LABEL_ORDER: Label[] = ['ring', 'possible_ring_trip', 'suspicious', 'group_trip', 'no_flags', 'not_checked']
 
 export const VERDICT_TEXT: Record<Verdict, string> = {
-  ring: 'Ring',
-  possible_ring: 'Possible ring',
-  possible_ring_trip: 'Possible ring (trip-like pattern)',
+  ring: 'Ring-like group',
+  possible_ring: 'Possible ring-like group',
+  possible_ring_trip: 'Possible ring-like group (trip-like pattern)',
   ruled_out_trip: 'Consistent with a group trip',
+  social_circle: 'Consistent with friends or family',
   none: 'No verdict',
 }
 

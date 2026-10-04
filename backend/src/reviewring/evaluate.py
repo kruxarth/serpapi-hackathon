@@ -373,122 +373,243 @@ def real_input_for(url: str) -> tuple[str, AnalysisInput] | None:
 # ---------------------------------------------------------------------- scenarios
 
 
-def negative_scenarios(seed: int = 5) -> list[dict[str, Any]]:
-    """Plant groups that must not be flagged (pass/fail) and information-only ones."""
+def negative_scenarios(seed: int = 5, sizes: tuple[int, ...] = (3, 5, 8), repeats: int = 2) -> list[dict[str, Any]]:
+    """Plant innocent group structures into ordinary reviewer populations, across group sizes.
+
+    "Must not be flagged" scenarios pass only if no planted member is ever labelled ring, possible ring or
+    suspicious. "Information only" scenarios are genuine coordination or known limits; their share is reported.
+    """
     rows = []
 
-    def trip(w: World, n: int, stops, *, ordinary: bool, ratings, precision="week", home="Pune"):
-        ids = []
-        for _ in range(n):
-            cid = w.reviewer(total=60 if ordinary else 5, photos=20 if ordinary else 0)
-            for p in stops:
-                w.add_history(cid, p, w.rng.choice(ratings), days_ago=40, precision=precision)
-            if ordinary:
-                w.personal_history(cid, home, 25)
-            w.review_target(cid, rating=5, when=w.target_reviews[0].posted_at if w.target_reviews else None)
-            ids.append(cid)
-        return ids
+    def member(w: World, home: str, *, ordinary: bool = True) -> str:
+        cid = w.reviewer(total=60 if ordinary else 5, photos=20 if ordinary else 0)
+        if ordinary:
+            w.personal_history(cid, home, 20)
+        return cid
 
-    def run(name: str, build, must_pass: bool) -> None:
-        flagged_share = []
-        for s in range(3):
-            w = World(seed=seed * 100 + s + len(rows) * 7)
-            ordinary_reviewers(w, 40)
-            planted = build(w)
-            sim = simulate(w.build(), k1=8, b=2, k2=15, no_early_stop=False)
-            labels = {r["contributor_id"]: r["label"] for r in sim.report["reviewers"]}
-            checked = [p for p in planted if p in labels]
-            flagged = [p for p in checked if labels[p] in FLAGGED or labels[p] == "suspicious"]
-            flagged_share.append(len(flagged) / len(planted))
-        share = sum(flagged_share) / len(flagged_share)
+    def visit(w: World, cid: str, places, ratings=(3, 4, 5), precision="week", days_ago=40):
+        for p in places:
+            w.add_history(cid, p, w.rng.choice(ratings), days_ago=days_ago, precision=precision)
+
+    def trip(n, stops_spec, *, home="Pune", ordinary=True, ratings=(3, 4, 5), precision="week"):
+        def build(w: World):
+            stops = [w.place(c, t) for c, t in stops_spec]
+            ids = []
+            for _ in range(n):
+                cid = member(w, home, ordinary=ordinary)
+                visit(w, cid, stops, ratings, precision)
+                w.review_target(cid, rating=5)
+                ids.append(cid)
+            return ids
+
+        return build
+
+    def hometown_friends(n):
+        def build(w: World):
+            shared = [w.place("Pune", t, near_km=6) for t in ("College", "Cafe", "Restaurant")]
+            shared.append(w.place("Mumbai", "Dhaba"))  # an earlier trip together
+            ids = []
+            for _ in range(n):
+                cid = member(w, "Pune")
+                for p in shared:
+                    w.add_history(cid, p, w.rng.choice((3, 4, 5)), days_ago=w.rng.randint(30, 600))
+                w.review_target(cid, rating=5)
+                ids.append(cid)
+            return ids
+
+        return build
+
+    def local_circle(n):
+        def build(w: World):
+            spots = [w.place("Pune", t, near_km=3) for t in ("Cafe", "Restaurant", "Gym", "Bakery", "Bookstore")]
+            ids = []
+            for _ in range(n):
+                cid = member(w, "Pune")
+                for p in spots:
+                    w.add_history(cid, p, w.rng.choice((3, 4, 5)), days_ago=w.rng.randint(5, 300), precision="day")
+                w.review_target(cid, rating=5)
+                ids.append(cid)
+            return ids
+
+        return build
+
+    def family_support(n):
+        """Relatives in several cities reviewing each other's shops: genuine coordination, not paid."""
+
+        def build(w: World):
+            homes = ["Delhi NCR", "Jaipur", "Lucknow", "Kolkata", "Indore", "Nagpur", "Chennai", "Kochi"]
+            shops = [
+                w.place(homes[i % len(homes)], t)
+                for i, t in enumerate(("Clothing store", "Dentist", "Electronics store"))
+            ]
+            ids = []
+            for i in range(n):
+                cid = member(w, homes[i % len(homes)])
+                visit(w, cid, shops, ratings=(5,), precision="month", days_ago=w.rng.randint(30, 300))
+                w.review_target(cid, rating=5)
+                ids.append(cid)
+            return ids
+
+        return build
+
+    def wedding_friends(n):
+        """Friends from several cities who met at two weddings in two cities: two episodes, never trip-like."""
+
+        def build(w: World):
+            homes = ["Delhi NCR", "Bengaluru", "Hyderabad", "Kolkata", "Chennai", "Indore", "Nagpur", "Lucknow"]
+            first = [w.place("Jaipur", "Wedding venue"), w.place("Jaipur", "Hotel")]
+            second = [w.place("Udaipur", "Wedding venue"), w.place("Udaipur", "Resort")]
+            ids = []
+            for i in range(n):
+                cid = member(w, homes[i % len(homes)])
+                visit(w, cid, first, days_ago=60)
+                visit(w, cid, second, days_ago=200)
+                w.review_target(cid, rating=5)
+                ids.append(cid)
+            return ids
+
+        return build
+
+    def colleagues(n):
+        def build(w: World):
+            hotels = [w.place(c, "Hotel") for c in ("Delhi NCR", "Bengaluru", "Hyderabad", "Kolkata")]
+            ids = []
+            for _ in range(n):
+                cid = member(w, "Pune")
+                for p in hotels:
+                    h = w.add_history(cid, p, w.rng.choice((3, 4, 5)), days_ago=w.rng.randint(20, 400))
+                    h.travel_group = "business"
+                w.review_target(cid, rating=4)
+                ids.append(cid)
+            return ids
+
+        return build
+
+    scenarios = [
+        (
+            "Wedding party in one far city",
+            True,
+            "Pune",
+            lambda n: trip(n, [("Jaipur", "Wedding venue"), ("Jaipur", "Hotel"), ("Jaipur", "Restaurant")]),
+        ),
+        (
+            "Family trip",
+            True,
+            "Pune",
+            lambda n: trip(n, [("Goa", "Resort"), ("Goa", "Restaurant"), ("Goa", "Beach"), ("Goa", "Cafe")]),
+        ),
+        (
+            "Tour through two nearby states",
+            True,
+            "Pune",
+            lambda n: trip(
+                n,
+                [
+                    ("Udaipur", "Hotel"),
+                    ("Udaipur", "Hindu temple"),
+                    ("Udaipur", "Restaurant"),
+                    ("Ahmedabad", "Hotel"),
+                    ("Ahmedabad", "Cafe"),
+                ],
+                ratings=(2, 3, 4, 5),
+            ),
+        ),
+        (
+            "Package tour with the guide's emporium",
+            True,
+            "Pune",
+            lambda n: trip(
+                n, [("Jaipur", "Hotel"), ("Jaipur", "Fort"), ("Jodhpur", "Restaurant"), ("Jodhpur", "Handicraft store")]
+            ),
+        ),
+        ("Hometown friends reviewing a far resort", True, "Goa", hometown_friends),
+        ("Local circle of friends", True, "Pune", local_circle),
+        (
+            "Thin solicited tourists, all 5★ (expected: possible, trip-like)",
+            False,
+            "Pune",
+            lambda n: trip(
+                n,
+                [("Jaipur", "Hotel"), ("Udaipur", "Resort"), ("Jodhpur", "Hotel")],
+                ordinary=False,
+                ratings=(5,),
+                precision="month",
+            ),
+        ),
+        ("Family support circle across cities (genuine coordination)", False, "Pune", family_support),
+        ("Friends from several cities at two weddings", False, "Pune", wedding_friends),
+        ("Colleagues at the same hotels in several cities (known limit)", False, "Pune", colleagues),
+    ]
+    for name, must_pass, city, factory in scenarios:
+        row: dict[str, Any] = {"scenario": name, "kind": "must not be flagged" if must_pass else "information only"}
+        worst = 0.0
+        for n in sizes:
+            shares = []
+            for rep in range(repeats):
+                w = World(
+                    target_city=city,
+                    target_type="Resort" if city == "Goa" else "Dental clinic",
+                    seed=seed * 1000 + n * 10 + rep + len(rows) * 101,
+                )
+                ordinary_reviewers(w, 40, home=city)
+                planted = factory(n)(w)
+                sim = simulate(w.build(), k1=8, b=2, k2=15)
+                labels = {r["contributor_id"]: r["label"] for r in sim.report["reviewers"]}
+                flagged = [p for p in planted if labels.get(p) in FLAGGED or labels.get(p) == "suspicious"]
+                shares.append(len(flagged) / len(planted))
+            share = sum(shares) / len(shares)
+            row[f"flagged (size {n})"] = round(share, 3)
+            worst = max(worst, share)
+        row["result"] = ("PASS" if worst == 0 else "FAIL") if must_pass else "-"
+        rows.append(row)
+    return rows
+
+
+def trip_veto_ablation(seed: int = 9, repeats: int = 6) -> list[dict[str, Any]]:
+    """Regional campaigns by aged accounts (4/5-star mix, one week, members in different cities): how many are
+    hidden as "group trip" under the old rule (2 of 3 indicators) versus the evidence-based rule."""
+    rows = []
+    for requires in (False, True):
+        hidden = shown = 0
+        groups_cfg = config.load_tunables()["groups"]
+        old = groups_cfg.get("trip_requires_positive_evidence", True)
+        groups_cfg["trip_requires_positive_evidence"] = requires
+        try:
+            for rep in range(repeats):
+                w = World(target_city="Jaipur", target_type="Hotel", seed=seed * 100 + rep)
+                ordinary_reviewers(w, 40, home="Jaipur")
+                hotels = [
+                    w.place(c, t)
+                    for c, t in (
+                        ("Udaipur", "Hotel"),
+                        ("Jodhpur", "Resort"),
+                        ("Udaipur", "Restaurant"),
+                        ("Jodhpur", "Hotel"),
+                    )
+                ]
+                members = []
+                for home in ["Kolkata", "Chennai", "Indore", "Nagpur", "Lucknow", "Kochi"]:
+                    cid = w.reviewer(total=80, photos=30)
+                    for p in hotels:
+                        w.add_history(cid, p, w.rng.choice((4, 5)), days_ago=20, precision="week")
+                    w.personal_history(cid, home, 25)
+                    w.review_target(cid, rating=5)
+                    members.append(cid)
+                sim = simulate(w.build(), k1=8, b=2, k2=15)
+                labels = {r["contributor_id"]: r["label"] for r in sim.report["reviewers"]}
+                hidden += sum(1 for m in members if labels.get(m) == "group_trip")
+                shown += sum(1 for m in members if labels.get(m) in FLAGGED)
+        finally:
+            groups_cfg["trip_requires_positive_evidence"] = old
+        total = repeats * 6
         rows.append(
             {
-                "scenario": name,
-                "kind": "must not be flagged" if must_pass else "information only",
-                "flagged_share": round(share, 3),
-                "result": ("PASS" if share == 0 else "FAIL") if must_pass else "-",
+                "trip rule": "evidence required (current)" if requires else "2 of 3 indicators (old)",
+                "hidden as trip": round(hidden / total, 3),
+                "shown as ring-like": round(shown / total, 3),
+                "planted": total,
             }
         )
-
-    run(
-        "Wedding party (one far city)",
-        lambda w: trip(
-            w,
-            10,
-            [w.place("Jaipur", "Wedding venue"), w.place("Jaipur", "Hotel"), w.place("Jaipur", "Restaurant")],
-            ordinary=True,
-            ratings=(3, 4, 5),
-        ),
-        True,
-    )
-    run(
-        "Family trip, ordinary histories",
-        lambda w: trip(
-            w,
-            6,
-            [w.place("Goa", "Resort"), w.place("Goa", "Restaurant"), w.place("Goa", "Beach"), w.place("Goa", "Cafe")],
-            ordinary=True,
-            ratings=(3, 4, 5),
-        ),
-        True,
-    )
-    run(
-        "Tour through two nearby states",
-        lambda w: trip(
-            w,
-            7,
-            [
-                w.place("Udaipur", "Hotel"),
-                w.place("Udaipur", "Hindu temple"),
-                w.place("Udaipur", "Restaurant"),
-                w.place("Ahmedabad", "Hotel"),
-                w.place("Ahmedabad", "Cafe"),
-            ],
-            ordinary=True,
-            ratings=(2, 3, 4, 5),
-        ),
-        True,
-    )
-
-    def circle(w: World):
-        spots = [w.place("Pune", t, near_km=3) for t in ("Cafe", "Restaurant", "Gym", "Bakery", "Bookstore", "Salon")]
-        ids = []
-        for _ in range(6):
-            cid = w.reviewer()
-            for p in spots:
-                w.add_history(cid, p, w.rng.choice((3, 4, 5)), days_ago=w.rng.randint(5, 300), precision="day")
-            w.personal_history(cid, "Pune", 10)
-            w.review_target(cid, rating=5)
-            ids.append(cid)
-        return ids
-
-    run("Local circle of friends", circle, True)
-    run(
-        "Group trip by thin accounts, all 5★ (expected: possible ring, trip-like)",
-        lambda w: trip(
-            w,
-            6,
-            [w.place("Jaipur", "Hotel"), w.place("Udaipur", "Resort"), w.place("Jodhpur", "Hotel")],
-            ordinary=False,
-            ratings=(5,),
-            precision="month",
-        ),
-        False,
-    )
-
-    def colleagues(w: World):
-        hotels = [w.place(c, "Hotel") for c in ("Delhi NCR", "Bengaluru", "Hyderabad", "Kolkata")]
-        ids = []
-        for _ in range(5):
-            cid = w.reviewer()
-            for p in hotels:
-                w.add_history(cid, p, w.rng.choice((3, 4, 5)), days_ago=w.rng.randint(20, 400))
-            w.personal_history(cid, "Pune", 20)
-            w.review_target(cid, rating=4)
-            ids.append(cid)
-        return ids
-
-    run("Colleagues at the same hotels in several cities (known limit)", colleagues, False)
     return rows
 
 
@@ -642,8 +763,11 @@ def run_evaluation(quick: bool = False, out_dir: Path | None = None) -> dict[str
             }
         )
 
-    negatives = negative_scenarios()
+    negatives = negative_scenarios(repeats=1 if quick else 2)
+    ablation = trip_veto_ablation(repeats=3 if quick else 6)
 
+    hard_planted = sum(r["planted"] for r in stealth_rows)
+    hard_caught = round(sum(r["recall"] * r["planted"] for r in stealth_rows))
     total = defaultdict(int)
     for r in grid_rows:
         for key in ("caught", "not_chosen", "not_grouped", "failed_rules", "planted"):
@@ -656,7 +780,11 @@ def run_evaluation(quick: bool = False, out_dir: Path | None = None) -> dict[str
         "summary": {
             "Bases": ", ".join(b_.name for b_ in bases)
             + (" (real cached controls)" if bases[0].real else " (synthetic; no cached controls yet)"),
-            "Recall of planted accounts": (
+            "Recall on harder rings (aged accounts, photos, unique texts, spread timing)": (
+                f"{hard_caught / hard_planted:.1%} ({hard_caught}/{hard_planted}); almost every loss is at the "
+                "priority step"
+            ),
+            "Recall on rings shaped like our own model (optimistic)": (
                 f"{total['caught'] / total['planted']:.1%} ({total['caught']}/{total['planted']})"
             ),
             "Lost: not chosen by the priority score": f"{total['not_chosen'] / total['planted']:.1%}",
@@ -679,7 +807,8 @@ def run_evaluation(quick: bool = False, out_dir: Path | None = None) -> dict[str
                 "title": "Harder rings: aged accounts, photos, unique texts, spread timing (information only)",
                 "rows": stealth_rows,
             },
-            {"title": "Negative scenarios", "rows": negatives},
+            {"title": "Negative scenarios (share of planted members flagged, by group size)", "rows": negatives},
+            {"title": "Ablation: regional campaigns hidden by the trip rule", "rows": ablation},
             {"title": "Clean bases without planted rings", "rows": control_levels},
             {"title": "Credits vs recall (k=8, m=4, low camouflage, same week)", "rows": curve},
             {"title": "Real cases from data/cases.toml", "rows": case_rows} if case_rows else None,

@@ -66,12 +66,12 @@ async function summary(s: Summary, analysisId: string, ageDays: number, url: str
       ${s.title ? `<div class="secondary small">${esc(s.title)}</div>` : ''}
       <span class="level ${levelClass(s.level)}">${esc(s.level)}</span>
       <p><span class="big">${s.sample_mean?.toFixed(2) ?? '–'}★ → ${s.adjusted?.toFixed(2) ?? '–'}★</span><br>
-      <span class="secondary small">latest ${s.examined} reviews, without ring reviews</span></p>
+      <span class="secondary small">latest ${s.examined} reviews, excluding linked reviewers</span></p>
       <p class="small">${s.rings} ring-like group${s.rings === 1 ? '' : 's'} found · analysed ${age}</p>
       ${s.evidence.length ? `<ul>${s.evidence.map((e) => `<li>${esc(e)}</li>`).join('')}</ul>` : ''}
       <p><a href="${esc(backendUrl)}/analysis/${encodeURIComponent(analysisId)}" target="_blank">Open full report</a></p>
     </div>
-    <p class="muted small">A pattern, not proof. ReviewRing never declares a business fraudulent.</p>
+    <p class="muted small">A pattern, not proof. A business can be targeted without its knowledge.</p>
     <button id="again">Analyse again…</button>`
   document.getElementById('again')!.onclick = () => offer(url)
 }

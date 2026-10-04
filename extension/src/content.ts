@@ -30,10 +30,8 @@ function ensureBadge(): HTMLButtonElement {
         display: inline-flex; gap: 8px; align-items: center; padding: 7px 12px; border-radius: 999px;
         background: #fcfcfb; color: #0b0b0b; border: 2px solid #c3c2b7; box-shadow: 0 2px 10px rgba(0,0,0,.18); }
       button:focus-visible { outline: 2px solid #2a78d6; outline-offset: 2px; }
-      .dot { width: 10px; height: 10px; border-radius: 50%; background: #898781; }
-      .High { border-color: #d03b3b; } .High .dot { background: #d03b3b; }
-      .Elevated { border-color: #ec835a; } .Elevated .dot { background: #ec835a; }
-      .Low { border-color: #0ca30c; } .Low .dot { background: #0ca30c; }
+      .dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid #52514e; box-sizing: border-box; }
+      /* Deliberately neutral: no red badge on a business's own Maps page. The level is in the text. */
       .sub { font-weight: 400; color: #52514e; }
     </style>
     <button type="button" aria-label="ReviewRing"><span class="dot"></span><span class="text">ReviewRing</span></button>`
@@ -82,8 +80,8 @@ async function check() {
   else if (lookup.state === 'found') {
     const s = lookup.summary
     const age = lookup.ageDays < 1 ? 'today' : `${Math.floor(lookup.ageDays)}d ago`
-    const rating = s.adjusted != null ? `${s.adjusted.toFixed(1)}★ without rings` : ''
-    setBadge(s.level.replace(/ /g, ''), `${s.level}`, [rating, age].filter(Boolean).join(' · '))
+    const rating = s.adjusted != null ? `${s.adjusted.toFixed(1)}★ excl. linked reviewers` : ''
+    setBadge('', `Reviews checked: ${s.level}`, [rating, age].filter(Boolean).join(' · '))
   } else if (lookup.state === 'demo') setBadge('', 'ReviewRing', 'demo mode')
   else setBadge('', 'Check reviews')
 }

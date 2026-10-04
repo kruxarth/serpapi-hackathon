@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import random
+from bisect import bisect_left, bisect_right
 from dataclasses import dataclass, field
 from datetime import timedelta
 
@@ -33,6 +34,16 @@ def score_reviews(
         if f and f.target_cluster:
             dup_clusters[f.target_cluster] = dup_clusters.get(f.target_cluster, 0) + 1
 
+    five_star_times = sorted(r.posted_at for r in reviews if r.rating == 5 and r.posted_at is not None)
+    window = timedelta(hours=float(w.get("batch_window_hours", 24)))
+
+    def batch_size(r: TargetReview) -> int:
+        """Other 5-star reviews within +-24 h: catches small batches a busy place's burst test misses."""
+        if r.posted_at is None:
+            return 0
+        lo, hi = bisect_left(five_star_times, r.posted_at - window), bisect_right(five_star_times, r.posted_at + window)
+        return hi - lo - (1 if r.rating == 5 else 0)
+
     best: dict[str, Candidate] = {}
     for r in reviews:
         if not r.contributor_id:
@@ -45,6 +56,8 @@ def score_reviews(
                 parts["rating_matches_direction"] = w["rating_matches_direction"]
         elif r.rating == 5:
             parts["rating_matches_direction"] = w["rating_matches_direction"]
+        if r.rating == 5 and burst is None and batch_size(r) >= w.get("batch_min_others", 2):
+            parts["batch"] = w.get("batch_points", 2)
         if r.reviewer_reviews is not None and r.reviewer_reviews <= w["thin_reviews_max"]:
             parts["thin_reviewer"] = w["thin_reviewer"]
         if r.reviewer_photos is not None and r.reviewer_photos == 0:

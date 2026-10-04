@@ -19,6 +19,7 @@ from .accounts import AccountSignals, compute_signals
 from .features import compute_text_features, target_text_id
 from .graph import build_pairs, distance_km, edges, is_popular_type, surprise
 from .groups import Group, detect_groups, type_group
+from .homes import compute_homes
 from .target_signals import (
     detect_bursts,
     rating_histogram,
@@ -29,10 +30,10 @@ from .target_signals import (
 
 LABELS = ["ring", "possible_ring_trip", "suspicious", "group_trip", "no_flags", "not_checked"]
 LABEL_TEXT = {
-    "ring": "Ring",
-    "possible_ring_trip": "Possible ring (trip-like)",
+    "ring": "Ring-like group",
+    "possible_ring_trip": "Possible ring-like group (trip-like)",
     "suspicious": "Suspicious",
-    "group_trip": "Group trip",
+    "group_trip": "Trip or social group",
     "no_flags": "No flags",
     "not_checked": "Not checked",
 }
@@ -49,16 +50,23 @@ def _list_words(items: list[str]) -> str:
     return ", ".join(items[:-1]) + " and " + items[-1]
 
 
-def stock_phrase_clusters(inp: AnalysisInput, features, edge_pairs) -> set[str]:
-    """Clusters used by >= N accounts of which < 20% have an edge to another account using it."""
+def stock_phrase_clusters(inp: AnalysisInput, features, edge_pairs, checked: set[str]) -> set[str]:
+    """Clusters used by >= N accounts where < 20% of the *checked* users have an edge to another user of it.
+
+    Only checked (expanded) accounts can have edges, so the share is computed among them; with fewer than
+    3 checked users it's undetermined and the cluster is kept as evidence rather than dismissed.
+    """
     cfg = config.load_tunables()["text"]
     owners = cluster_owners(features.values())
     out = set()
     for cluster, accounts in owners.items():
         if len(accounts) < cfg["stock_phrase_min_accounts"]:
             continue
-        connected = sum(1 for a in accounts if any(tuple(sorted((a, b))) in edge_pairs for b in accounts if b != a))
-        if connected / len(accounts) < cfg["stock_phrase_max_connected_share"]:
+        known = [a for a in accounts if a in checked]
+        if len(known) < cfg.get("stock_phrase_min_checked", 3):
+            continue
+        connected = sum(1 for a in known if any(tuple(sorted((a, b))) in edge_pairs for b in known if b != a))
+        if connected / len(known) < cfg["stock_phrase_max_connected_share"]:
             out.add(cluster)
     return out
 
@@ -68,11 +76,12 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
     bursts = detect_bursts(inp.target_reviews)
     expanded = [e.contributor_id for e in inp.expansions]
     usable = [c for c in expanded if inp.contributors.get(c) and inp.contributors[c].status == "ok"]
-    all_pairs = build_pairs(inp, usable)
+    homes = compute_homes(inp, usable)
+    all_pairs = build_pairs(inp, usable, homes)
     edge_pairs = edges(all_pairs)
-    stock = stock_phrase_clusters(inp, features, edge_pairs)
+    stock = stock_phrase_clusters(inp, features, edge_pairs, set(usable))
     signals = compute_signals(inp, features, bursts, stock, paraphrase_groups)
-    groups = detect_groups(inp, edge_pairs, signals)
+    groups = detect_groups(inp, edge_pairs, signals, homes)
 
     # ---------------------------------------------------------------- labels
     membership: dict[str, Group] = {}
@@ -91,7 +100,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             reviewer_label[cid] = "possible_ring_trip"
         elif signals[cid].has("A6") and signals[cid].count(exclude={"A6"}) >= 2:
             reviewer_label[cid] = "suspicious"
-        elif g is not None and g.verdict == "ruled_out_trip":
+        elif g is not None and g.verdict in ("ruled_out_trip", "social_circle"):
             reviewer_label[cid] = "group_trip"
         else:
             reviewer_label[cid] = "no_flags"
@@ -166,7 +175,8 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
     if strong and ring_share >= level_cfg["high_ring_share"]:
         level = "High"
         reasons.append(
-            f"A ring of {len(strong[0].members)} accounts (confidence {strong[0].confidence:.2f}) wrote "
+            f"A ring-like group of {len(strong[0].members)} accounts "
+            f"(evidence strength {strong[0].confidence:.2f}) wrote "
             f"{len(ring_rows)} of the {examined} reviews examined."
         )
     elif rings or possibles or suspicious_share >= level_cfg["elevated_suspicious_share"]:
@@ -174,7 +184,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
         if rings:
             reasons.append(f"{_plural(len(rings), 'ring-like group')} found among the reviewers checked.")
         if possibles:
-            reasons.append(f"{_plural(len(possibles), 'possible ring')} found (weighted lower).")
+            reasons.append(f"{_plural(len(possibles), 'possible ring-like group')} found (weighted lower).")
         if suspicious_share >= level_cfg["elevated_suspicious_share"]:
             reasons.append(
                 f"{label_counts['suspicious']} of {examined} reviews come from accounts with copied text "
@@ -265,6 +275,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
         "places": places_payload(inp, groups, signals),
         "evidence": evidence,
         "caveats": caveats(inp),
+        "calibration": date_calibration(inp),
         "notes": inp.notes,
     }
 
@@ -443,4 +454,30 @@ def caveats(inp: AnalysisInput) -> list[str]:
         "Dates in reviewer histories are approximate.",
         "Rings within a single city aren't detected.",
         "Google may already have removed some reviews.",
+        "A business can be targeted without its knowledge: review-task scams hand recruits real businesses to review.",
     ]
+
+
+def date_calibration(inp: AnalysisInput) -> list[dict[str, Any]]:
+    """Free calibration of relative dates: each checked reviewer's history usually contains their review of
+    this business, whose exact date we already have. Compare the estimated range with the true date."""
+    exact = {r.contributor_id: r.posted_at for r in inp.target_reviews if r.contributor_id and r.posted_at}
+    rows = []
+    for cid, history in sorted(inp.histories.items()):
+        true = exact.get(cid)
+        if true is None:
+            continue
+        for h in history:
+            if h.place_key == inp.target.place_key and h.date_min is not None:
+                day = ist_date(true)
+                rows.append(
+                    {
+                        "relative": h.relative_date,
+                        "true_date": day.isoformat(),
+                        "estimated_from": h.date_min.isoformat(),
+                        "estimated_to": h.date_max.isoformat() if h.date_max else None,
+                        "inside": h.date_min <= day <= (h.date_max or h.date_min),
+                    }
+                )
+                break
+    return rows

@@ -33,6 +33,9 @@ duplicate_cluster = 2
 local_guide = 0
 round2_near_days = 3
 round2_bonus = 2
+batch_points = 2             # review posted with >= batch_min_others other 5-star reviews within +-24 h
+batch_window_hours = 24
+batch_min_others = 2
 
 [text]
 ngram = 3
@@ -41,6 +44,7 @@ near_duplicate_min_chars = 30
 short_max_chars = 40
 stock_phrase_min_accounts = 10
 stock_phrase_max_connected_share = 0.20
+stock_phrase_min_checked = 3   # below this many checked users, a stock phrase is undetermined (kept as evidence)
 
 [bursts]
 min_reviews = 10
@@ -70,7 +74,8 @@ popular_last_words = [
   "attraction", "airport", "station", "mall", "park", "temple", "mosque",
   "church", "cathedral", "gurudwara", "gurdwara", "shrine", "dargah",
   "monument", "landmark", "museum", "fort", "palace", "stadium", "beach",
-  "lake", "zoo", "university",
+  "lake", "zoo", "university", "worship", "ashram", "ghat", "garden", "memorial", "waterfall", "viewpoint",
+  "aquarium", "planetarium", "stupa", "basilica", "monastery", "synagogue", "cave", "hill",
 ]
 popular_exclusions = ["police station", "fire station"]
 
@@ -91,6 +96,12 @@ far_km = 50
 episode_precision_days = 14
 episode_gap_days = 21
 trip_max_span_km = 600
+trip_min_travel_share = 0.75     # at most a quarter of core places may be non-travel (an emporium, a pharmacy)
+trip_travel_groups = ["family", "friends", "couple"]   # hotel review details that count as trip evidence
+trip_requires_positive_evidence = true   # false = the old rule (ruled out on 2 of 3 indicators alone); for ablation
+social_min_member_share = 0.5    # social circle: at least half the members share a home area...
+social_min_core_share = 0.5      # ...and at least half the core places are near it
+social_km = 50
 trip_concentration_below = 0.3
 trip_five_star_share_below = 0.9
 trip_indicators_needed = 2
@@ -133,6 +144,12 @@ elevated_suspicious_share = 0.15
 
 [areas]
 cluster_radius_km = 50
+
+[homes]
+# A reviewer's home area: the most common area among places no other checked reviewer reviewed.
+min_personal_places = 3
+min_mode_count = 2
+min_mode_share = 0.4
 
 [llm]
 base_url = "https://api.deepseek.com"
@@ -200,7 +217,7 @@ keywords = ["restaurant", "cafe", "café", "bakery", "dhaba", "bar", "pub", "swe
 [[type_groups]]
 name = "Tourist & religious"
 travel = true
-keywords = ["attraction", "temple", "mosque", "church", "gurudwara", "gurdwara", "monument", "museum", "fort", "palace", "park", "beach", "lake", "zoo", "shrine", "dargah"]
+keywords = ["attraction", "temple", "mosque", "church", "gurudwara", "gurdwara", "monument", "museum", "fort", "palace", "park", "beach", "lake", "zoo", "shrine", "dargah", "ashram", "place of worship", "ghat", "garden", "waterfall", "viewpoint", "memorial"]
 
 [[type_groups]]
 name = "Event venue"

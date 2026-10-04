@@ -54,7 +54,7 @@ def trip_world() -> World:
         cid = w.reviewer(total=w.rng.randint(30, 90), photos=w.rng.randint(5, 50))
         for p in stops:
             w.add_history(cid, p, w.rng.choice((3, 4, 5)), days_ago=14, precision="week")
-        w.personal_history(cid, w.rng.choice(["Mumbai", "Ahmedabad"]), 25)
+        w.personal_history(cid, "Mumbai", 25)  # a family shares one home
         w.review_target(cid, rating=5, when=when + timedelta(hours=i * 3))
     return w
 

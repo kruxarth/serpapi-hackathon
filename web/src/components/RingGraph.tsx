@@ -110,7 +110,7 @@ export function RingGraph({ report, namer, selectedGroup, onSelectGroup }: Props
       </div>
       <div className="legend">
         {present.map((l) => <span key={l}><i className={`swatch ${l}`} /> {LABEL_TEXT[l]}</span>)}
-        <span className="muted">Outlines: solid = ring, dashed = possible ring, dotted = ruled out as a trip</span>
+        <span className="muted">Outlines: solid = ring-like group, dashed = possible, dotted = ruled out (trip or friends)</span>
       </div>
     </div>
   )
@@ -121,7 +121,7 @@ function buildElements(report: Report, namer: Namer, showPlaces: boolean): Eleme
   const inGroup = new Map<string, string>()
   const shown = report.groups.filter((g) => g.verdict !== 'none')
   for (const g of shown) {
-    const kind = g.verdict === 'ring' || g.verdict === 'possible_ring' ? 'ring' : g.verdict === 'possible_ring_trip' ? 'possible' : 'trip'
+    const kind = g.verdict === 'ring' || g.verdict === 'possible_ring' ? 'ring' : g.verdict === 'possible_ring_trip' ? 'possible' : 'trip' // trip covers social circles too
     const color = kind === 'trip' ? cssVar('--label-trip') : cssVar('--label-ring')
     els.push({ data: { id: `group:${g.group_id}`, gid: g.group_id, name: `${g.group_id} · ${VERDICT_TEXT[g.verdict]}`, color },
       classes: `group ${kind}` })

@@ -2,7 +2,7 @@
 
 export type Level = 'High' | 'Elevated' | 'Low' | 'Not enough history'
 export type Label = 'ring' | 'possible_ring_trip' | 'suspicious' | 'group_trip' | 'no_flags' | 'not_checked'
-export type Verdict = 'ring' | 'possible_ring' | 'possible_ring_trip' | 'ruled_out_trip' | 'none'
+export type Verdict = 'ring' | 'possible_ring' | 'possible_ring_trip' | 'ruled_out_trip' | 'social_circle' | 'none'
 
 export interface Health {
   status: string
@@ -112,6 +112,11 @@ export interface GroupMetrics {
   core_five_star_share: number | null
   co_timing_ratio: number | null
   member_signal_share: number
+  core_travel_share: number
+  home_area: string | null
+  home_member_share: number
+  core_near_home_share: number
+  travel_party_share: number
 }
 
 export interface Group {
@@ -124,6 +129,7 @@ export interface Group {
     trip_like_shape: boolean
     indicators: { one_episode: boolean; low_concentration: boolean; varied_ratings: boolean }
     indicators_met: number
+    positive_evidence?: { shared_home: boolean; travel_party: boolean }
     status: string
   }
   verdict: Verdict
@@ -277,6 +283,8 @@ export interface Report {
     coords_source?: string | null
   }
   budget?: { month_remaining: number; hour_remaining: number }
+  dates_shifted?: boolean
+  calibration?: { relative: string | null; true_date: string; estimated_from: string; estimated_to: string | null; inside: boolean }[]
   ai_summary?: AiSummary
 }
 

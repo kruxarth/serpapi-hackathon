@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import asdict
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -20,7 +20,17 @@ from .engine.features import compute_text_features, history_text_id, target_text
 from .leakcheck import check_object, originals_from_cache
 from .model import AnalysisInput, Contributor, Expansion, HistoryReview, Place, TargetReview
 from .normalize.text import TextFeatures
-from .privacy import TEXT_KEEP_CHARS, TEXT_KEEP_MIN_ACCOUNTS, hashed, letters, salt, scrub_text
+from .privacy import (
+    TEXT_KEEP_CHARS,
+    TEXT_KEEP_MIN_ACCOUNTS,
+    approx_count,
+    date_offset_days,
+    hashed,
+    letters,
+    round1,
+    salt,
+    scrub_text,
+)
 
 FIXTURE_VERSION = 1
 FIXTURES_DIR = config.REPO_ROOT / "fixtures"
@@ -32,8 +42,8 @@ class LeakFound(RuntimeError):
         self.findings = findings
 
 
-def _r2(v: float | None) -> float | None:
-    return None if v is None else round(v, 2)
+def _r1(v: float | None) -> float | None:
+    return round1(v)
 
 
 def pseudonymize_input(inp: AnalysisInput, salt_value: str) -> AnalysisInput:
@@ -77,17 +87,32 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str) -> AnalysisInput:
     def place(p: Place) -> Place:
         label = f"{p.type} {names[p.place_key]}" if p.type else f"Business {names[p.place_key]}"
         return Place(
-            pk(p.place_key), None, label, None, _r2(p.lat), _r2(p.lng), p.type, p.area, p.rating, p.total_reviews
+            pk(p.place_key), None, label, None, _r1(p.lat), _r1(p.lng), p.type, p.area, p.rating, p.total_reviews
         )
 
     target = place(inp.target)
+    target.total_reviews = approx_count(target.total_reviews)
+    shift = timedelta(days=date_offset_days(salt_value, inp.target.place_key))
+
+    def dt(v):
+        return None if v is None else v - shift
+
+    def shifted_images(dates: list[str]) -> list[str]:
+        out = []
+        for d in dates:
+            try:
+                out.append((date.fromisoformat(d[:10]) - shift).isoformat())
+            except ValueError:
+                continue
+        return out
+
     places = {pk(k): place(p) for k, p in inp.places.items()}
     reviews = [
         TargetReview(
             rid(r.review_id),
             uid(r.contributor_id),
             r.rating,
-            r.posted_at,
+            dt(r.posted_at),
             r.edited,
             text_for(target_text_id(r.review_id), r.text),
             r.has_images,
@@ -109,7 +134,7 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str) -> AnalysisInput:
             c.reviews_returned,
             c.truncated,
             c.status,
-            c.fetched_at,
+            dt(c.fetched_at),
         )
         for cid, c in inp.contributors.items()
     }
@@ -121,11 +146,12 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str) -> AnalysisInput:
                 pk(h.place_key),
                 h.rating,
                 h.relative_date,
-                h.date_min,
-                h.date_max,
+                dt(h.date_min),
+                dt(h.date_max),
                 h.edited,
-                list(h.image_dates),
+                shifted_images(h.image_dates),
                 None if h.place_key == inp.target.place_key else text_for(history_text_id(cid, h.review_id), h.text),
+                h.travel_group,
             )
             for h in hs
         ]
@@ -154,7 +180,7 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str) -> AnalysisInput:
         contributors=contributors,
         histories=histories,
         expansions=[Expansion(uid(e.contributor_id), e.round, e.reason) for e in inp.expansions],
-        fetched_at=inp.fetched_at,
+        fetched_at=dt(inp.fetched_at),
         params=dict(inp.params),
         text_features=new_features,
         notes=list(inp.notes),

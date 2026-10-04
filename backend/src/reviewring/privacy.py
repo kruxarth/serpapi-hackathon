@@ -56,6 +56,55 @@ def scrub_text(text: str, business_words: set[str]) -> str:
     return text
 
 
+_ISO = re.compile(r"^(\d{4})-(\d{2})-(\d{2})(.*)$")
+
+
+def date_offset_days(salt_value: str, key: str) -> int:
+    """A per-business shift of 30-365 days into the past. Intervals stay intact; the calendar doesn't."""
+    digest = hashlib.sha256(f"{salt_value}:dates:{key}".encode()).digest()
+    return 30 + int.from_bytes(digest[:4], "big") % 336
+
+
+def shift_iso(value: str, days: int) -> str:
+    from datetime import date, datetime, timedelta
+
+    m = _ISO.match(value)
+    if not m:
+        return value
+    if m.group(4).startswith("T"):
+        try:
+            return (datetime.fromisoformat(value.replace("Z", "+00:00")) - timedelta(days=days)).isoformat()
+        except ValueError:
+            return value
+    try:
+        return (date.fromisoformat(value[:10]) - timedelta(days=days)).isoformat() + value[10:]
+    except ValueError:
+        return value
+
+
+def shift_dates(obj: Any, days: int, skip: frozenset[str] = frozenset({"analysis", "budget"})) -> Any:
+    if isinstance(obj, dict):
+        return {k: (v if k in skip else shift_dates(v, days, skip)) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [shift_dates(v, days, skip) for v in obj]
+    if isinstance(obj, str):
+        return shift_iso(obj, days)
+    return obj
+
+
+def approx_count(n: int | None) -> int | None:
+    """One significant figure (640 -> 600, 2300 -> 2000): the review count alone shouldn't identify a business."""
+    if not n:
+        return n
+    magnitude = 10 ** (len(str(int(n))) - 1)
+    return max(1, round(n / magnitude)) * magnitude
+
+
+def round1(v: float | None) -> float | None:
+    """One decimal (about 11 km): two decimals can single out a small business."""
+    return None if v is None else round(float(v), 1)
+
+
 class Pseudonymizer:
     def __init__(self, report: dict[str, Any], salt_value: str | None = None) -> None:
         self.salt = salt_value if salt_value is not None else salt()
@@ -115,7 +164,7 @@ class Pseudonymizer:
 
 
 def _round(v: float | None) -> float | None:
-    return None if v is None else round(float(v), 2)
+    return round1(v)
 
 
 def keep_text(row: dict[str, Any], cluster_accounts: dict[str, int]) -> bool:
@@ -200,5 +249,12 @@ def pseudonymize_report(report: dict[str, Any], salt_value: str | None = None) -
         b["review_ids"] = [ps.review(x) for x in b.get("review_ids", [])]
     r["sample"]["baseline"] = [ps.person(x) for x in r["sample"].get("baseline", [])]
     r.pop("names", None)
+    r["place"]["total_reviews"] = approx_count(r["place"].get("total_reviews"))
+    if r.get("ratings", {}).get("overall"):
+        r["ratings"]["overall"]["total_as_displayed"] = approx_count(r["ratings"]["overall"]["total_as_displayed"])
+    for row in r.get("reviews", []):
+        row.pop("date", None)  # exact timestamps; the shifted day is enough
+    r = shift_dates(r, date_offset_days(ps.salt, tk))
     r["pseudonymized"] = True
+    r["dates_shifted"] = True
     return r

@@ -104,7 +104,7 @@ def print_summary(report: dict[str, Any]) -> None:
     for reason in lvl["reasons"]:
         print(f"  - {reason}")
     print(
-        f"Latest {r['examined']} reviews: {r['sample_mean']} -> {r['without_ring']} without ring reviews "
+        f"Latest {r['examined']} reviews: {r['sample_mean']} -> {r['without_ring']} excluding linked reviewers "
         f"({r['without_ring_and_suspicious']} also without suspicious and possible-ring reviews)"
     )
     if r["overall"]:
@@ -114,7 +114,7 @@ def print_summary(report: dict[str, Any]) -> None:
     print("Labels: " + ", ".join(f"{LABEL_TEXT[k]} {v}" for k, v in report["label_counts"].items() if v))
     for g in report["groups"]:
         m = g["metrics"]
-        conf = f", confidence {g['confidence']:.2f}" if g["confidence"] is not None else ""
+        conf = f", evidence strength {g['confidence']:.2f}" if g["confidence"] is not None else ""
         print(
             f"Group {g['group_id']}: {g['verdict']} - {m['size']} members, density {m['density']}, "
             f"{m['core_places']} core places, far areas {m['far_areas']}{conf}"
