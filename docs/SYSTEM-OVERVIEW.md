@@ -1,6 +1,6 @@
 # ReviewRing: system overview for reviewers
 
-This document describes exactly how ReviewRing works as built (algorithm version 0.1.0, 2026-10-04): data flow, every algorithm and threshold, where each piece lives in the code, and the weak points we already know about. It's written so that someone who hasn't seen the code (a person or another LLM) can review the design critically. The final section lists the questions we most want challenged.
+This document describes exactly how ReviewRing works as built (algorithm version 0.1.0, revised 2026-10-04 after one external review; see section 12): data flow, every algorithm and threshold, where each piece lives in the code, and the weak points we already know about. It's written so that someone who hasn't seen the code (a person or another LLM) can review the design critically. The final section lists the questions we most want challenged.
 
 Context: an entry for the SerpApi India Hackathon 2026, judged on idea strength, originality, technical complexity, usefulness and meaningful SerpApi usage. Hard constraint: one free SerpApi account with **250 searches for the whole hackathon** (the plan renews after the deadline) and 50 searches per hour.
 
@@ -128,13 +128,13 @@ Pause, resume and cancel: every response is cached, so resuming re-runs the whol
 
 ### 6.3 Priority score (`priority.py`)
 
-Each review with a `contributor_id` gets: +3 inside a burst; +2 if its rating matches the burst's direction (outside bursts, if it's 5★); +2 if the reviewer has ≤ 5 reviews; +1 for 0 photos; +1 for short text; +2 for being in a duplicate cluster. Local Guide status scores 0 on purpose: farms use aged accounts. Unknown values score 0. Each contributor keeps its best review; ties go to the newest.
+Each review with a `contributor_id` gets: +3 inside a burst; +2 if its rating matches the burst's direction (outside bursts, if it's 5★); +2 for a 5★ review outside a burst with ≥ 2 other 5★ reviews within ±24 h (small batches); +2 if the reviewer has ≤ 5 reviews; +1 for 0 photos; +1 for short text; +2 for being in a duplicate cluster. Local Guide status scores 0 on purpose: farms use aged accounts. Unknown values score 0. Each contributor keeps its best review; ties go to the newest.
 
 ### 6.4 Surprise weight of a shared place (`graph.py`)
 
 *s(p)* = distance factor × type factor
 
-- distance from the business: < 5 km → 0.2; 5–50 km → 0.5; > 50 km → 1.0; unknown → 0.5 (and never "far")
+- distance: < 5 km → 0.2; 5–50 km → 0.5; > 50 km → 1.0; unknown → 0.5 (and never "far"). The distance is to the business **or to either reviewer's home area, whichever is nearer**. A reviewer's home is the most common area among places no other checked reviewer reviewed; it needs ≥ 3 such places, and the top area must hold ≥ 2 of them and ≥ 40% (`engine/homes.py`).
 - type factor 0.1 for "popular" types, else 1.0. A type is popular when its **last word** is on a list (attraction, airport, station, mall, park, temple, mosque, church, museum, fort, palace, beach, zoo, university, …), unless the whole type is on an exclusion list (police station, fire station). So "Water park" is popular and "Parking lot" isn't.
 
 Adamic–Adar was rejected deliberately: it down-weights places shared by many sampled reviewers, and in our sample the ring's client places are exactly those.
@@ -147,7 +147,7 @@ Adamic–Adar was rejected deliberately: it down-weights places shared by many s
 
 ### 6.6 Stock phrases
 
-A near-duplicate cluster used by ≥ 10 distinct accounts, fewer than 20% of which have an edge to another account in the cluster, is a stock phrase. It's excluded from T4 and A6. This is computed per analysis, after the graph exists.
+A near-duplicate cluster used by ≥ 10 distinct accounts is a stock phrase when fewer than 20% of its **checked** users have an edge to another checked user of it. With fewer than 3 checked users it's undetermined and kept as evidence. It's excluded from T4 and A6. This is computed per analysis, after the graph exists.
 
 ### 6.7 Groups (`groups.py`)
 
@@ -162,17 +162,19 @@ A near-duplicate cluster used by ≥ 10 distinct accounts, fewer than 20% of whi
    - **concentration:** the median, over members, of the share of their visible history (excluding the business) made up of places another member also reviewed
    - **core-place 5★ share**
    - **co-timing ratio:** the share of core-place reviews with *c* > 0 against another member's review of the same place; unknown under the episodes rule
-4. **Trip test:**
-   - **Trip-like shape** = span ≤ 600 km (or no coordinates) **and** every core place is in a travel type group **and** episodes aren't known to be ≥ 2.
+4. **Social circle:** ≥ 50% of members share a home area **and** ≥ 50% of core places are within 50 km of it. Shown neutrally, never counted.
+5. **Trip test:**
+   - **Trip-like shape** = span ≤ 600 km (or no coordinates) **and** ≥ 75% of core places are in travel type groups (or all but one, with ≥ 3 core places) **and** episodes aren't known to be ≥ 2.
    - **Trip indicators:** episodes known to be exactly 1; concentration < 0.3; core 5★ share < 0.9.
-   - A trip-like shape with ≥ 2 indicators is **ruled out as a trip**: shown neutrally, never counted. It's reported only with ≥ 3 members and ≥ 2 core places.
-   - A trip-like shape with fewer than 2 indicators is **unresolved**.
-5. **Verdicts:**
+   - **Positive evidence:** ≥ 50% of members share a home area, or ≥ 50% have a core-place hotel review whose `details` say they travelled as family, friends or a couple.
+   - A trip-like shape with ≥ 2 indicators **and** positive evidence is **ruled out as a trip**: shown neutrally, never counted. It's reported only with ≥ 3 members and ≥ 2 core places.
+   - Any other trip-like shape is **unresolved**: at most a possible ring-like group.
+6. **Verdicts:**
    - **ring:** ≥ 4 members, density ≥ 0.5, ≥ 2 core places, ≥ 2 far areas, no trip-like shape.
    - **possible ring:** the same with 3 members.
    - **possible ring (trip-like):** an unresolved trip-like group with ≥ 3 members, density ≥ 0.5, ≥ 2 core places and ≥ 2 far areas.
    - otherwise **none**.
-6. **Confidence** (rings and possible rings only):
+7. **Evidence strength** (named `confidence` in code; rings and possible rings only; not a probability):
 
    | Part | Value | Weight |
    |---|---|---|
@@ -207,7 +209,7 @@ For each expanded reviewer, using the visible history only:
   - **ring:** member of a ring or a 3-member possible ring
   - **possible ring (trip-like)**
   - **suspicious:** expanded, not in a ring, has A6 plus ≥ 2 other signals; rare by design, since copied text is required
-  - **group trip:** member of a ruled-out group; neutral
+  - **trip or social group:** member of a ruled-out trip or a social circle; neutral
   - **no flags**
   - **not checked:** not expanded, or the fetch failed; neutral, hidden by default
 - **Ratings:**
@@ -242,10 +244,10 @@ For each expanded reviewer, using the visible history only:
 - The local SQLite cache in gitignored `data/` holds personal data; `reviewring purge-data` deletes it.
 - **Fixtures** (for demo mode and committed to git) are produced by the exporter:
   - ids are salted hashes (the salt stays in `data/`)
-  - businesses become "<Type> A/B/…"; addresses become areas; coordinates are rounded to 2 decimals
+  - businesses become "<Type> A/B/…"; addresses become areas; coordinates are rounded to 1 decimal (~11 km); the review count is given to one significant figure; every date is shifted by a hidden per-business offset of 30–365 days (intervals unchanged)
   - review text is dropped unless it's in a near-duplicate cluster written by ≥ 3 accounts, and then it's scrubbed and cut to 60 characters
   - a leak check (URLs, emails, phones, PIN codes, every original id, name and title from the cache) blocks the export and runs as a pre-commit hook alongside gitleaks
-- **Presentation mode** pseudonymizes reports on the server, so real names never reach the browser during a recording.
+- **Presentation mode** pseudonymizes reports on the server (same rounding, count bucketing and date shift), so real names never reach the browser during a recording.
 - **API:** bound to 127.0.0.1. Every POST/PUT requires the header `X-ReviewRing: 1` plus a JSON content type, which forces a CORS preflight that only the web app's origins (and installed extensions) pass. A Host-header allowlist blocks DNS rebinding.
 - **Wording:** "suspicious", "coordinated", "ring-like pattern"; never "fake" or "fraud" as a verdict. Caveats are always shown.
 - **Extension:** never searches without an explicit click that shows the estimated cost and remaining budget. The content script never calls the backend; the service worker and side panel do.
@@ -269,12 +271,13 @@ For each expanded reviewer, using the visible history only:
 
 | Measure | Result |
 |---|---|
-| Recall of planted accounts | 99.2% (5145/5184); 0.5% lost at the priority step, 0.2% not grouped |
+| Recall on harder rings (aged accounts, photos, unique texts, spread timing) | 83.0% (249/300); almost every loss is at the priority step |
+| Recall on rings shaped like our own model | 99.1% (5135/5184) |
 | Businesses with a planted ring rated High or Elevated | 98.9% |
 | False positives on unplanted accounts | 0/30 (95% CI 0–11.4%) |
-| Must-not-flag negative scenarios | 4/4 pass |
-| Regional travel-only rings | Always "possible ring (trip-like)", never "ring" (by design) |
-| Harder aged-account rings | Recall 40–94% depending on base and size; losses almost all at the priority step |
+| Must-not-flag negative scenarios (sizes 3, 5, 8) | 6/6 pass, including hometown friends at a far resort and a package tour with an emporium |
+| Known-limit scenarios | Friends from several cities at two weddings and cross-city family support circles are flagged (see section 12) |
+| Trip-veto ablation | The old rule hid 61% of planted regional campaigns; the current rule hides none |
 
 These numbers are **optimistic**: the planted rings follow our own model of a ring, and the bases are synthetic.
 
@@ -313,3 +316,31 @@ Not yet validated on real data. Zero real searches have been spent so far; the f
 5. Is the evaluation methodology honest and informative enough for judges? What's missing?
 6. Any privacy or safety gaps in publishing pseudonymized fixtures and a demo video of real businesses (with names hidden)?
 7. Anything in the wording or presentation that could still read as an accusation against a business?
+
+---
+
+## 12. Changes after the first external review (2026-10-04)
+
+| Review point | Change |
+|---|---|
+| Hometown friends at a far business look like a multi-city ring | Home areas; surprise uses the nearer of business and homes; neutral **social circle** verdict. New must-not-flag scenario passes. |
+| The trip test vetoed on the *absence* of farm signs | Ruling out now needs **positive evidence** (shared home, or hotel details saying family/friends/couple). Ablation: the old rule hid 61% of planted regional campaigns by aged accounts; the new one hides none. |
+| One emporium or pharmacy breaks a real tour's trip shape | All but one core place may be non-travel when there are ≥ 3. |
+| Batches at busy places evade the burst test | +2 priority for a 5★ review with ≥ 2 other 5★ reviews within ±24 h. |
+| Stock phrases judged on unexpanded accounts | Judged among checked users only; undetermined below 3. |
+| Free date calibration | The report lists (relative string, true date) pairs from the business's own reviews found in histories. |
+| The business itself is the re-identification risk | Date shift, count to 1 significant figure, coordinates to 1 decimal, in fixtures and presentation mode. |
+| Wording implies payment | "Ring-like group", "excluding linked reviewers", "other places this group reviewed", "evidence strength (not a probability)", a standing caveat that businesses can be targeted without their knowledge, and a neutral Maps badge. |
+| Evaluation leads with self-consistent numbers | The summary leads with harder-ring recall; negatives are a grid over sizes with social structures (hometown friends, package tour, family support circle, two-wedding friends, colleagues); the trip-veto ablation is reported. |
+
+Checked against the SerpApi docs: contributor reviews carry text in `snippet` (the parser falls back to it), image dates are absolute, `hl=en` is in every frozen request key, and review `details` are now parsed for `travel_group`/`trip_type`.
+
+**Deferred until real data:**
+- a reverse co-client lookup: from one seed account, fetch a candidate co-client's newest reviews and intersect reviewer ids (finds aged accounts; costs searches)
+- a curveball (degree-preserving shuffle) p-value per group
+- route-order trip checks
+- popular-type and type-group lists built from real type strings
+- a cross-analysis popularity proxy
+
+**Still open:**
+- Friends from several cities who meet at two weddings, and cross-city family support circles, are flagged. The first is a false positive the design can't separate yet. The second is genuine coordination: we treat it as a wording issue, not a detection one.

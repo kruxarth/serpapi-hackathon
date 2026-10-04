@@ -33,3 +33,16 @@ One line of reasoning per decision not fixed by IMPLEMENTATION.md.
 - **LLM client is a thin `requests` call** to the OpenAI-compatible `/chat/completions` endpoint rather than the `openai` package: one fewer dependency, and the key only ever travels in an Authorization header.
 - **Place-name validator** uses states, UTs, metro aliases and a config list of major Indian cities, plus the analysis's own areas.
 - **Template summary always attached** when no validated LLM text exists, so the report shape is the same with or without a key.
+
+## After the external design review (2026-10-04)
+
+- **Home areas:** a reviewer's home is the most common area among places no other checked reviewer reviewed. Surprise distance is the nearer of the business and either reviewer's home, so hometown friends reviewing a far business don't look like a multi-city ring.
+- **Social circle verdict:** at least half the members share a home area and at least half the core places are within 50 km of it. Neutral, never counted.
+- **Trips are ruled out only on positive evidence** (a shared home area, or hotel review details saying family/friends/couple) plus 2 of 3 trip indicators. Otherwise trip evidence caps a group at "possible ring-like (trip-like)". The old rule hid 61% of planted regional campaigns in the ablation.
+- **One non-travel core place** (an emporium, a pharmacy) no longer breaks the trip shape when there are 3 or more core places.
+- **Batch priority feature:** +2 for a 5-star review with at least 2 other 5-star reviews within 24 hours, outside a detected burst. It catches small batches a busy place's burst test misses.
+- **Stock phrases are judged among checked users only;** with fewer than 3 checked users the phrase is undetermined and kept as evidence, so a mass farm template isn't dismissed.
+- **Free date calibration:** the report lists each checked reviewer's (relative string, true date) pair for their review of this business.
+- **Privacy:** fixtures and presentation mode shift all dates by a hidden per-business offset (30–365 days), show the review count to one significant figure, and round coordinates to 1 decimal.
+- **Wording:** "ring-like group", "evidence strength (not a probability)", "excluding linked reviewers", "other places this group reviewed", a standing caveat that a business can be targeted without its knowledge, and a neutral badge on Maps pages.
+- **Deferred until real data:** the reverse co-client lookup (finds aged ring accounts from one seed, but spends searches), a degree-preserving shuffle (curveball) p-value, route-order trip checks, and building the popular-type list from real type strings.

@@ -16,13 +16,14 @@
  ],
  "summary": {
   "Bases": "synthetic-1 (Dental clinic, Pune), synthetic-2 (Restaurant, Bengaluru), synthetic-3 (Coaching center, Kolkata) (synthetic; no cached controls yet)",
-  "Recall of planted accounts": "99.2% (5145/5184)",
-  "Lost: not chosen by the priority score": "0.5%",
+  "Recall on harder rings (aged accounts, photos, unique texts, spread timing)": "83.0% (249/300); almost every loss is at the priority step",
+  "Recall on rings shaped like our own model (optimistic)": "99.1% (5135/5184)",
+  "Lost: not chosen by the priority score": "0.7%",
   "Lost: chosen but not in any group": "0.2%",
   "Lost: grouped, but the group failed the ring rules": "0.0%",
   "Businesses with a planted ring rated High or Elevated": "98.9%",
   "False-positive rate on unplanted accounts": "0/30 = 0.0% (95% Wilson interval 0.0%\u201311.4%; small sample)",
-  "Negative scenarios passed": "4/4"
+  "Negative scenarios passed": "6/6"
  },
  "tables": [
   {
@@ -62,8 +63,8 @@
     },
     {
      "k": 20,
-     "recall": 0.994,
-     "not chosen": 0.006,
+     "recall": 0.989,
+     "not chosen": 0.011,
      "not grouped": 0.0,
      "failed rules": 0.0,
      "planted": 2160
@@ -83,16 +84,16 @@
     },
     {
      "m": 4,
-     "recall": 0.996,
-     "not chosen": 0.003,
+     "recall": 0.994,
+     "not chosen": 0.005,
      "not grouped": 0.001,
      "failed rules": 0.0,
      "planted": 1728
     },
     {
      "m": 8,
-     "recall": 0.99,
-     "not chosen": 0.006,
+     "recall": 0.986,
+     "not chosen": 0.009,
      "not grouped": 0.005,
      "failed rules": 0.0,
      "planted": 1728
@@ -104,24 +105,24 @@
    "rows": [
     {
      "camouflage": "none",
-     "recall": 0.997,
-     "not chosen": 0.002,
+     "recall": 0.998,
+     "not chosen": 0.001,
      "not grouped": 0.001,
      "failed rules": 0.0,
      "planted": 1728
     },
     {
      "camouflage": "low",
-     "recall": 0.995,
-     "not chosen": 0.004,
+     "recall": 0.991,
+     "not chosen": 0.008,
      "not grouped": 0.001,
      "failed rules": 0.0,
      "planted": 1728
     },
     {
      "camouflage": "high",
-     "recall": 0.986,
-     "not chosen": 0.01,
+     "recall": 0.983,
+     "not chosen": 0.012,
      "not grouped": 0.005,
      "failed rules": 0.0,
      "planted": 1728
@@ -141,24 +142,24 @@
     },
     {
      "timing": "same week",
-     "recall": 1.0,
-     "not chosen": 0.0,
+     "recall": 0.999,
+     "not chosen": 0.001,
      "not grouped": 0.0,
      "failed rules": 0.0,
      "planted": 1296
     },
     {
      "timing": "month",
-     "recall": 0.991,
-     "not chosen": 0.005,
+     "recall": 0.987,
+     "not chosen": 0.008,
      "not grouped": 0.005,
      "failed rules": 0.0,
      "planted": 1296
     },
     {
      "timing": "unknown",
-     "recall": 0.979,
-     "not chosen": 0.016,
+     "recall": 0.976,
+     "not chosen": 0.019,
      "not grouped": 0.005,
      "failed rules": 0.0,
      "planted": 1296
@@ -242,8 +243,8 @@
     {
      "base": "synthetic-1 (Dental clinic, Pune)",
      "k": 12,
-     "recall": 0.896,
-     "not chosen": 0.104,
+     "recall": 0.812,
+     "not chosen": 0.188,
      "not grouped": 0.0,
      "failed rules": 0.0,
      "planted": 48
@@ -260,8 +261,8 @@
     {
      "base": "synthetic-2 (Restaurant, Bengaluru)",
      "k": 8,
-     "recall": 0.75,
-     "not chosen": 0.25,
+     "recall": 0.781,
+     "not chosen": 0.219,
      "not grouped": 0.0,
      "failed rules": 0.0,
      "planted": 32
@@ -269,8 +270,8 @@
     {
      "base": "synthetic-2 (Restaurant, Bengaluru)",
      "k": 12,
-     "recall": 0.938,
-     "not chosen": 0.062,
+     "recall": 0.896,
+     "not chosen": 0.104,
      "not grouped": 0.0,
      "failed rules": 0.0,
      "planted": 48
@@ -305,43 +306,104 @@
    ]
   },
   {
-   "title": "Negative scenarios",
+   "title": "Negative scenarios (share of planted members flagged, by group size)",
    "rows": [
     {
-     "scenario": "Wedding party (one far city)",
+     "scenario": "Wedding party in one far city",
      "kind": "must not be flagged",
-     "flagged_share": 0.0,
+     "flagged (size 3)": 0.0,
+     "flagged (size 5)": 0.0,
+     "flagged (size 8)": 0.0,
      "result": "PASS"
     },
     {
-     "scenario": "Family trip, ordinary histories",
+     "scenario": "Family trip",
      "kind": "must not be flagged",
-     "flagged_share": 0.0,
+     "flagged (size 3)": 0.0,
+     "flagged (size 5)": 0.0,
+     "flagged (size 8)": 0.0,
      "result": "PASS"
     },
     {
      "scenario": "Tour through two nearby states",
      "kind": "must not be flagged",
-     "flagged_share": 0.0,
+     "flagged (size 3)": 0.0,
+     "flagged (size 5)": 0.0,
+     "flagged (size 8)": 0.0,
+     "result": "PASS"
+    },
+    {
+     "scenario": "Package tour with the guide's emporium",
+     "kind": "must not be flagged",
+     "flagged (size 3)": 0.0,
+     "flagged (size 5)": 0.0,
+     "flagged (size 8)": 0.0,
+     "result": "PASS"
+    },
+    {
+     "scenario": "Hometown friends reviewing a far resort",
+     "kind": "must not be flagged",
+     "flagged (size 3)": 0.0,
+     "flagged (size 5)": 0.0,
+     "flagged (size 8)": 0.0,
      "result": "PASS"
     },
     {
      "scenario": "Local circle of friends",
      "kind": "must not be flagged",
-     "flagged_share": 0.0,
+     "flagged (size 3)": 0.0,
+     "flagged (size 5)": 0.0,
+     "flagged (size 8)": 0.0,
      "result": "PASS"
     },
     {
-     "scenario": "Group trip by thin accounts, all 5\u2605 (expected: possible ring, trip-like)",
+     "scenario": "Thin solicited tourists, all 5\u2605 (expected: possible, trip-like)",
      "kind": "information only",
-     "flagged_share": 1.0,
+     "flagged (size 3)": 1.0,
+     "flagged (size 5)": 1.0,
+     "flagged (size 8)": 1.0,
+     "result": "-"
+    },
+    {
+     "scenario": "Family support circle across cities (genuine coordination)",
+     "kind": "information only",
+     "flagged (size 3)": 1.0,
+     "flagged (size 5)": 1.0,
+     "flagged (size 8)": 0.875,
+     "result": "-"
+    },
+    {
+     "scenario": "Friends from several cities at two weddings",
+     "kind": "information only",
+     "flagged (size 3)": 0.0,
+     "flagged (size 5)": 0.5,
+     "flagged (size 8)": 0.875,
      "result": "-"
     },
     {
      "scenario": "Colleagues at the same hotels in several cities (known limit)",
      "kind": "information only",
-     "flagged_share": 0.0,
+     "flagged (size 3)": 0.0,
+     "flagged (size 5)": 0.0,
+     "flagged (size 8)": 0.0,
      "result": "-"
+    }
+   ]
+  },
+  {
+   "title": "Ablation: regional campaigns hidden by the trip rule",
+   "rows": [
+    {
+     "trip rule": "2 of 3 indicators (old)",
+     "hidden as trip": 0.778,
+     "shown as ring-like": 0.0,
+     "planted": 36
+    },
+    {
+     "trip rule": "evidence required (current)",
+     "hidden as trip": 0.0,
+     "shown as ring-like": 0.778,
+     "planted": 36
     }
    ]
   },
@@ -379,17 +441,17 @@
     {
      "histories": 6,
      "searches": 11.0,
-     "recall": 0.75
+     "recall": 0.736
     },
     {
      "histories": 8,
      "searches": 13.0,
-     "recall": 0.965
+     "recall": 0.944
     },
     {
      "histories": 10,
      "searches": 15.0,
-     "recall": 0.965
+     "recall": 0.944
     },
     {
      "histories": 13,
@@ -2591,8 +2653,8 @@
    "m": 2,
    "camouflage": "high",
    "timing": "unknown",
-   "caught": 18,
-   "not_chosen": 2,
+   "caught": 19,
+   "not_chosen": 1,
    "not_grouped": 0,
    "failed_rules": 0,
    "planted": 20,
@@ -2871,8 +2933,8 @@
    "m": 8,
    "camouflage": "low",
    "timing": "unknown",
-   "caught": 19,
-   "not_chosen": 1,
+   "caught": 20,
+   "not_chosen": 0,
    "not_grouped": 0,
    "failed_rules": 0,
    "planted": 20,
@@ -5041,76 +5103,6 @@
    "m": 2,
    "camouflage": "low",
    "timing": "month",
-   "caught": 20,
-   "not_chosen": 0,
-   "not_grouped": 0,
-   "failed_rules": 0,
-   "planted": 20,
-   "level": "Elevated",
-   "searches": 31
-  },
-  {
-   "base": "synthetic-2 (Restaurant, Bengaluru)",
-   "k": 20,
-   "m": 2,
-   "camouflage": "low",
-   "timing": "unknown",
-   "caught": 19,
-   "not_chosen": 1,
-   "not_grouped": 0,
-   "failed_rules": 0,
-   "planted": 20,
-   "level": "Elevated",
-   "searches": 31
-  },
-  {
-   "base": "synthetic-2 (Restaurant, Bengaluru)",
-   "k": 20,
-   "m": 2,
-   "camouflage": "high",
-   "timing": "same day",
-   "caught": 20,
-   "not_chosen": 0,
-   "not_grouped": 0,
-   "failed_rules": 0,
-   "planted": 20,
-   "level": "High",
-   "searches": 31
-  },
-  {
-   "base": "synthetic-2 (Restaurant, Bengaluru)",
-   "k": 20,
-   "m": 2,
-   "camouflage": "high",
-   "timing": "same week",
-   "caught": 20,
-   "not_chosen": 0,
-   "not_grouped": 0,
-   "failed_rules": 0,
-   "planted": 20,
-   "level": "Elevated",
-   "searches": 31
-  },
-  {
-   "base": "synthetic-2 (Restaurant, Bengaluru)",
-   "k": 20,
-   "m": 2,
-   "camouflage": "high",
-   "timing": "month",
-   "caught": 20,
-   "not_chosen": 0,
-   "not_grouped": 0,
-   "failed_rules": 0,
-   "planted": 20,
-   "level": "Elevated",
-   "searches": 31
-  },
-  {
-   "base": "synthetic-2 (Restaurant, Bengaluru)",
-   "k": 20,
-   "m": 2,
-   "camouflage": "high",
-   "timing": "unknown",
    "caught": 18,
    "not_chosen": 2,
    "not_grouped": 0,
@@ -5122,6 +5114,76 @@
   {
    "base": "synthetic-2 (Restaurant, Bengaluru)",
    "k": 20,
+   "m": 2,
+   "camouflage": "low",
+   "timing": "unknown",
+   "caught": 19,
+   "not_chosen": 1,
+   "not_grouped": 0,
+   "failed_rules": 0,
+   "planted": 20,
+   "level": "Elevated",
+   "searches": 31
+  },
+  {
+   "base": "synthetic-2 (Restaurant, Bengaluru)",
+   "k": 20,
+   "m": 2,
+   "camouflage": "high",
+   "timing": "same day",
+   "caught": 20,
+   "not_chosen": 0,
+   "not_grouped": 0,
+   "failed_rules": 0,
+   "planted": 20,
+   "level": "High",
+   "searches": 31
+  },
+  {
+   "base": "synthetic-2 (Restaurant, Bengaluru)",
+   "k": 20,
+   "m": 2,
+   "camouflage": "high",
+   "timing": "same week",
+   "caught": 20,
+   "not_chosen": 0,
+   "not_grouped": 0,
+   "failed_rules": 0,
+   "planted": 20,
+   "level": "Elevated",
+   "searches": 31
+  },
+  {
+   "base": "synthetic-2 (Restaurant, Bengaluru)",
+   "k": 20,
+   "m": 2,
+   "camouflage": "high",
+   "timing": "month",
+   "caught": 20,
+   "not_chosen": 0,
+   "not_grouped": 0,
+   "failed_rules": 0,
+   "planted": 20,
+   "level": "Elevated",
+   "searches": 31
+  },
+  {
+   "base": "synthetic-2 (Restaurant, Bengaluru)",
+   "k": 20,
+   "m": 2,
+   "camouflage": "high",
+   "timing": "unknown",
+   "caught": 19,
+   "not_chosen": 1,
+   "not_grouped": 0,
+   "failed_rules": 0,
+   "planted": 20,
+   "level": "Elevated",
+   "searches": 31
+  },
+  {
+   "base": "synthetic-2 (Restaurant, Bengaluru)",
+   "k": 20,
    "m": 4,
    "camouflage": "none",
    "timing": "same day",
@@ -5209,8 +5271,8 @@
    "m": 4,
    "camouflage": "low",
    "timing": "month",
-   "caught": 20,
-   "not_chosen": 0,
+   "caught": 18,
+   "not_chosen": 2,
    "not_grouped": 0,
    "failed_rules": 0,
    "planted": 20,
@@ -5279,8 +5341,8 @@
    "m": 4,
    "camouflage": "high",
    "timing": "unknown",
-   "caught": 17,
-   "not_chosen": 3,
+   "caught": 16,
+   "not_chosen": 4,
    "not_grouped": 0,
    "failed_rules": 0,
    "planted": 20,
@@ -5335,6 +5397,34 @@
    "m": 8,
    "camouflage": "none",
    "timing": "unknown",
+   "caught": 20,
+   "not_chosen": 0,
+   "not_grouped": 0,
+   "failed_rules": 0,
+   "planted": 20,
+   "level": "High",
+   "searches": 31
+  },
+  {
+   "base": "synthetic-2 (Restaurant, Bengaluru)",
+   "k": 20,
+   "m": 8,
+   "camouflage": "low",
+   "timing": "same day",
+   "caught": 20,
+   "not_chosen": 0,
+   "not_grouped": 0,
+   "failed_rules": 0,
+   "planted": 20,
+   "level": "High",
+   "searches": 31
+  },
+  {
+   "base": "synthetic-2 (Restaurant, Bengaluru)",
+   "k": 20,
+   "m": 8,
+   "camouflage": "low",
+   "timing": "same week",
    "caught": 19,
    "not_chosen": 1,
    "not_grouped": 0,
@@ -5348,37 +5438,9 @@
    "k": 20,
    "m": 8,
    "camouflage": "low",
-   "timing": "same day",
-   "caught": 20,
-   "not_chosen": 0,
-   "not_grouped": 0,
-   "failed_rules": 0,
-   "planted": 20,
-   "level": "High",
-   "searches": 31
-  },
-  {
-   "base": "synthetic-2 (Restaurant, Bengaluru)",
-   "k": 20,
-   "m": 8,
-   "camouflage": "low",
-   "timing": "same week",
-   "caught": 20,
-   "not_chosen": 0,
-   "not_grouped": 0,
-   "failed_rules": 0,
-   "planted": 20,
-   "level": "High",
-   "searches": 31
-  },
-  {
-   "base": "synthetic-2 (Restaurant, Bengaluru)",
-   "k": 20,
-   "m": 8,
-   "camouflage": "low",
    "timing": "month",
-   "caught": 20,
-   "not_chosen": 0,
+   "caught": 19,
+   "not_chosen": 1,
    "not_grouped": 0,
    "failed_rules": 0,
    "planted": 20,
@@ -5391,8 +5453,8 @@
    "m": 8,
    "camouflage": "low",
    "timing": "unknown",
-   "caught": 20,
-   "not_chosen": 0,
+   "caught": 19,
+   "not_chosen": 1,
    "not_grouped": 0,
    "failed_rules": 0,
    "planted": 20,
@@ -5447,8 +5509,8 @@
    "m": 8,
    "camouflage": "high",
    "timing": "unknown",
-   "caught": 20,
-   "not_chosen": 0,
+   "caught": 18,
+   "not_chosen": 2,
    "not_grouped": 0,
    "failed_rules": 0,
    "planted": 20,
@@ -7799,8 +7861,8 @@
    "m": 4,
    "camouflage": "high",
    "timing": "unknown",
-   "caught": 20,
-   "not_chosen": 0,
+   "caught": 19,
+   "not_chosen": 1,
    "not_grouped": 0,
    "failed_rules": 0,
    "planted": 20,
@@ -7911,8 +7973,8 @@
    "m": 8,
    "camouflage": "low",
    "timing": "unknown",
-   "caught": 20,
-   "not_chosen": 0,
+   "caught": 19,
+   "not_chosen": 1,
    "not_grouped": 0,
    "failed_rules": 0,
    "planted": 20,
@@ -7967,8 +8029,8 @@
    "m": 8,
    "camouflage": "high",
    "timing": "unknown",
-   "caught": 20,
-   "not_chosen": 0,
+   "caught": 18,
+   "not_chosen": 2,
    "not_grouped": 0,
    "failed_rules": 0,
    "planted": 20,
@@ -7985,17 +8047,17 @@
   {
    "histories": 6,
    "searches": 11.0,
-   "recall": 0.75
+   "recall": 0.736
   },
   {
    "histories": 8,
    "searches": 13.0,
-   "recall": 0.965
+   "recall": 0.944
   },
   {
    "histories": 10,
    "searches": 15.0,
-   "recall": 0.965
+   "recall": 0.944
   },
   {
    "histories": 13,
