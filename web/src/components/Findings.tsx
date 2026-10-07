@@ -1,8 +1,8 @@
 // One visual per evidence kind. Every number shown here is read from the report; nothing is re-scored.
 
-import { Check, CircleSlash, Copy, Dices, Minus, Network, Quote } from 'lucide-react'
-import { motion, useInView } from 'motion/react'
-import { useRef, type ReactNode } from 'react'
+import { Bot, Check, CircleSlash, Copy, Dices, Minus, Network, RotateCcw, User } from 'lucide-react'
+import { motion, useInView, useReducedMotion } from 'motion/react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { day, dayCount, fmt, pct } from '../labels'
 import { CountUp, EASE } from '../motion'
 import type { Namer } from '../names'
@@ -159,47 +159,81 @@ function Meter({ label, share, inView, delay, hatch }: { label: string; share: n
   )
 }
 
-/* ---------- generated_text: the marker phrase as a pull quote ---------- */
+/* ---------- generated_text: the review itself, typed out, with the giveaway highlighted ---------- */
 
 function GeneratedVisual({ report, text }: { report: Report; text: string }) {
   const hits = report.signals.T8?.available ? report.signals.T8.generated : []
   const fromRows = report.reviews.filter((r) => r.generated_marker).map((r) => ({
     review_id: r.review_id, rating: r.rating, day: r.day, marker: r.generated_marker as string, reviewer_reviews: r.reviewer_reviews,
+    excerpt: r.excerpt ?? r.text,
   }))
   const all = [...hits, ...fromRows.filter((r) => !hits.some((h) => h.review_id === r.review_id))]
   const quoted = text.match(/"([^"]+)"/)?.[1]
-  if (!all.length && quoted) all.push({ review_id: 'q', rating: null, day: null, marker: quoted, reviewer_reviews: null })
+  if (!all.length && quoted) all.push({ review_id: 'q', rating: null, day: null, marker: quoted, reviewer_reviews: null, excerpt: null })
   return (
     <div className="col" style={{ gap: 14 }}>
-      {all.map((h) => {
-        const full = report.reviews.find((r) => r.review_id === h.review_id)?.text
-        return <PullQuote key={h.review_id} marker={h.marker} full={full ?? null} rating={h.rating} date={h.day} reviews={h.reviewer_reviews} />
-      })}
+      {all.map((h) => <ReviewCard key={h.review_id} marker={h.marker} text={h.excerpt ?? null} rating={h.rating} date={h.day} reviews={h.reviewer_reviews} />)}
     </div>
   )
 }
 
-function PullQuote({ marker, full, rating, date, reviews }: { marker: string; full: string | null; rating: number | null; date: string | null; reviews: number | null }) {
+function ReviewCard({ marker, text, rating, date, reviews }: { marker: string; text: string | null; rating: number | null; date: string | null; reviews: number | null }) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '0px 0px -60px 0px' })
-  const at = full ? full.toLowerCase().indexOf(marker.toLowerCase()) : -1
-  const hl = (
-    <motion.span className="mark-hl" initial={{ backgroundSize: '0% 100%' }} animate={inView ? { backgroundSize: '100% 100%' } : {}} transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}>
-      {at >= 0 && full ? full.slice(at, at + marker.length) : marker}
-    </motion.span>
-  )
+  const inView = useInView(ref, { once: true, margin: '0px 0px -80px 0px' })
+  const reduce = useReducedMotion()
+  const body = text ?? `…${marker}…`
+  const [n, setN] = useState(0)
+  const [run, setRun] = useState(0)
+  useEffect(() => {
+    if (!inView) return
+    if (reduce) {
+      setN(body.length)
+      return
+    }
+    setN(0)
+    let raf = 0
+    const dur = Math.min(3600, Math.max(900, body.length * 30))
+    const t0 = performance.now() + 450
+    const tick = () => {
+      const k = Math.max(0, Math.min(body.length, Math.round(((performance.now() - t0) / dur) * body.length)))
+      setN(k)
+      if (k < body.length) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [inView, body, reduce, run])
+  const at = Math.max(0, body.toLowerCase().indexOf(marker.toLowerCase()))
+  const end = at + marker.length
+  const typing = n < body.length
   return (
-    <div ref={ref} className="quote">
-      <Quote className="qmark" size={34} />
-      <blockquote>
-        {at >= 0 && full ? <>{full.slice(0, at)}{hl}{full.slice(at + marker.length)}</> : <>…{hl}…</>}
-      </blockquote>
-      <div className="row wrap small" style={{ marginTop: 16, gap: '6px 14px', whiteSpace: 'nowrap' }}>
-        <Stars rating={rating} />
-        {date && <span className="secondary">{day(date)}</span>}
-        {reviews != null && <span className="muted">from an account with {reviews} review{reviews === 1 ? '' : 's'}</span>}
-        {!full && <span className="muted">Full text not included</span>}
+    <div ref={ref} className="review-card">
+      <div className="row" style={{ gap: 12 }}>
+        <span className="avatar" aria-hidden><User size={18} /></span>
+        <div className="col">
+          <strong style={{ fontSize: '0.95rem' }}>A reviewer</strong>
+          <span className="muted tiny">{reviews != null ? `${reviews} review${reviews === 1 ? '' : 's'} on the profile` : 'profile not checked'}</span>
+        </div>
       </div>
+      <div className="row small" style={{ gap: 10, margin: '14px 0 10px' }}>
+        <Stars rating={rating} />{date && <span className="muted">{day(date)}</span>}
+      </div>
+      <blockquote aria-label={body}>
+        <span aria-hidden>
+          {body.slice(0, Math.min(n, at))}
+          {n > at && (
+            <motion.span className="mark-hl" initial={{ backgroundSize: '0% 100%' }} animate={n >= end ? { backgroundSize: '100% 100%' } : {}} transition={{ duration: 0.6, ease: EASE }}>
+              {body.slice(at, Math.min(n, end))}
+            </motion.span>
+          )}
+          {n > end && body.slice(end, n)}
+          {typing && <span className="caret" />}
+        </span>
+      </blockquote>
+      <motion.div className="row wrap small" style={{ marginTop: 16, gap: '6px 14px', justifyContent: 'space-between' }} initial={{ opacity: 0 }} animate={!typing && inView ? { opacity: 1 } : {}}>
+        <span className="giveaway"><Bot size={15} /> "{marker}" is what a chatbot replies, not what a customer writes</span>
+        <button className="btn ghost sm" onClick={() => setRun((x) => x + 1)}><RotateCcw size={13} /> Again</button>
+      </motion.div>
+      {!text && <div className="muted tiny" style={{ marginTop: 8 }}>Only the giveaway phrase is kept for this review.</div>}
     </div>
   )
 }

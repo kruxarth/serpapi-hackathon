@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { api, type StartOptions } from '../api'
 import { BudgetDetail } from '../components/BudgetWidget'
-import { HeroStars } from '../components/HeroStars'
+import { illustrationDots, RatingUnpacked } from '../components/RatingUnpacked'
 import { LevelBadge } from '../components/ui'
 import { ageText, fmt } from '../labels'
 import { EASE } from '../motion'
@@ -49,7 +49,7 @@ export function HomePage() {
             {CHECKS.map((c) => <span key={c} className="chip">{c}</span>)}
           </motion.div>
         </div>
-        <HeroStars />
+        <HeroIllustration />
       </section>
 
       <section>
@@ -71,6 +71,18 @@ export function HomePage() {
         </div>
       </section>
     </div>
+  )
+}
+
+const DEMO = illustrationDots()
+
+/** The product's own visual, on invented reviews: a rating, its reviews, and a burst of single-use accounts lifted out. */
+function HeroIllustration() {
+  return (
+    <motion.div className="hero-ill panel" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: EASE, delay: 0.35 }} aria-label="Illustration with invented reviews">
+      <RatingUnpacked dots={DEMO.dots} shown={DEMO.shown} mean={DEMO.mean} adjusted={DEMO.adjusted} height={270} loop />
+      <p className="muted tiny" style={{ marginTop: 10 }}>Illustration with invented reviews.</p>
+    </motion.div>
   )
 }
 

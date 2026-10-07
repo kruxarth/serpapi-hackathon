@@ -1,24 +1,27 @@
-import { ArrowLeft, ChevronRight, Info, Network, ShieldAlert, Sparkles } from 'lucide-react'
-import { motion } from 'motion/react'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { ArrowLeft, ChevronRight, Info, Network, Play, RotateCcw, ShieldAlert, Sparkles, X } from 'lucide-react'
+import { AnimatePresence, motion } from 'motion/react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { api } from '../api'
 import { Finding, pairEvidence, Strength } from '../components/Findings'
+import { eventsFromReport, Investigation, usePlayback } from '../components/Investigation'
 import { MapView } from '../components/MapView'
+import { FLAGGED_LABELS, RatingUnpacked, type UnpackDot } from '../components/RatingUnpacked'
+import { CheckedGrid, ReviewerProvider } from '../components/Reviewer'
 import { RingGraph } from '../components/RingGraph'
 import { ClientTable, ReviewsTable } from '../components/Tables'
 import { Timeline } from '../components/Timeline'
 import { LevelBadge, StarBar } from '../components/ui'
-import { ageText, day, FLAGGED_VERDICTS, fmt, levelClass, VERDICT_TEXT } from '../labels'
+import { ageText, day, FLAGGED_VERDICTS, levelClass, VERDICT_TEXT } from '../labels'
 import { makeNamer } from '../names'
 import { usePresentation } from '../presentation'
-import type { AnalysisDetail, Report } from '../types'
+import type { AnalysisDetail, ProgressEvent, Report } from '../types'
 
 const CHAPTERS = [
   ['verdict', 'Verdict'],
   ['findings', 'Findings'],
   ['timeline', 'Timeline'],
-  ['linked', 'Linked reviewers'],
+  ['linked', 'Reviewers'],
   ['reviews', 'Reviews'],
   ['checked', 'What was checked'],
 ] as const
@@ -34,12 +37,14 @@ export function ReportView({ detail }: { detail: AnalysisDetail }) {
     document.getElementById('linked')?.scrollIntoView({ behavior: 'smooth' })
   }
   const findings = useMemo(() => pairEvidence(report), [report])
+  const [replay, setReplay] = useState(false)
 
   return (
+    <ReviewerProvider report={report} namer={namer}>
     <div className="report">
       <Rail />
       <div>
-        <Verdict report={report} detail={detail} />
+        <Verdict report={report} detail={detail} onReplay={() => setReplay(true)} />
 
         <section id="findings" className="chapter">
           <ChapterHead title="What we found" note={report.evidence.length > 1 ? 'Strongest first' : undefined} />
@@ -77,6 +82,8 @@ export function ReportView({ detail }: { detail: AnalysisDetail }) {
         <Checked report={report} detail={detail} />
       </div>
     </div>
+    <AnimatePresence>{replay && <Replay report={report} onClose={() => setReplay(false)} />}</AnimatePresence>
+    </ReviewerProvider>
   )
 }
 
@@ -124,20 +131,16 @@ function Rail() {
 
 /* ---------- 1. Verdict ---------- */
 
-function Verdict({ report, detail }: { report: Report; detail: AnalysisDetail }) {
+function Verdict({ report, detail, onReplay }: { report: Report; detail: AnalysisDetail; onReplay: () => void }) {
   const r = report.ratings
   const p = report.place
   const demo = report.analysis?.mode === 'demo'
   const stale = detail.finished_at && Date.now() - Date.parse(detail.finished_at) > 7 * 86_400_000
   const lv = report.level.level
-  const ring = r.ring_reviews > 0
-  // The key number, straight from the report: without linked reviewers, or the latest reviews' average.
-  const value = (ring ? r.without_ring : r.sample_mean) ?? 0
-  const from = ring ? r.sample_mean ?? undefined : p.rating ?? undefined
-  const fig = useRef<HTMLSpanElement>(null)
-  const follow = useCallback((v: number) => {
-    if (fig.current) fig.current.textContent = v.toFixed(2)
-  }, [])
+  const dots = useMemo<UnpackDot[]>(() => report.reviews.filter((x) => x.rating != null).map((x) => ({
+    rating: x.rating!, day: x.day, label: x.label, single: x.reviewer_reviews != null && x.reviewer_reviews <= 1,
+  })), [report])
+  const flagged = dots.some((d) => FLAGGED_LABELS.includes(d.label))
   const where = [p.type, p.area].filter(Boolean)
   return (
     <section id="verdict" className={`chapter verdict ${levelClass(lv)}`}>
@@ -152,31 +155,18 @@ function Verdict({ report, detail }: { report: Report; detail: AnalysisDetail })
       <h1>{p.title ?? 'This business'}</h1>
 
       <div className="verdict-stage">
-        <div className="panel meter">
-          {p.rating != null && (
-            <div className="secondary">Google shows <strong className="num" style={{ color: 'var(--ink)' }}>{p.rating}★</strong> from {p.total_reviews?.toLocaleString('en-IN') ?? '?'} reviews</div>
-          )}
-          <div style={{ marginTop: 14 }}>
-            <StarBar className="meter-stars" value={value} from={from} delay={0.5} onValue={follow} />
+        <div className="panel unpack-panel">
+          <div className="row wrap" style={{ justifyContent: 'space-between', gap: 12 }}>
+            <h2 className="unpack-title">Where the rating comes from</h2>
+            {p.rating != null && (
+              <span className="row secondary small" style={{ gap: 8 }}>
+                Google shows <StarBar value={p.rating} duration={1} className="mini-stars" /> <strong className="num" style={{ color: 'var(--ink)' }}>{p.rating}</strong> from {p.total_reviews?.toLocaleString('en-IN') ?? '?'} reviews
+              </span>
+            )}
           </div>
-          <div className="meter-row">
-            <span className="fig meter-fig"><span ref={fig}>{value.toFixed(2)}</span><span className="star">★</span></span>
-            <span className="secondary" style={{ paddingBottom: 10, maxWidth: '24ch', lineHeight: 1.35 }}>
-              {ring
-                ? <>the latest {r.examined} reviews without linked reviewers, down from <strong className="num">{fmt(r.sample_mean, 2)}★</strong></>
-                : <>is what the latest {r.examined} reviews average</>}
-            </span>
-          </div>
-          {ring && (
-            <p className="secondary small" style={{ marginTop: 16 }}>
-              {r.ring_reviews} review{r.ring_reviews === 1 ? '' : 's'} from ring-like groups set aside. {fmt(r.without_ring_and_suspicious, 2)}★ also excluding suspicious and possible-group reviews.
-            </p>
-          )}
-          {!ring && r.without_ring_and_suspicious != null && r.without_ring_and_suspicious !== r.sample_mean && (
-            <p className="secondary small" style={{ marginTop: 16 }}>{fmt(r.without_ring_and_suspicious, 2)}★ excluding suspicious reviews.</p>
-          )}
+          <RatingUnpacked dots={dots} shown={p.rating} mean={r.sample_mean} adjusted={flagged ? r.without_ring_and_suspicious : null} />
           {r.overall && (
-            <p className="small muted" style={{ marginTop: 8 }}>
+            <p className="small muted" style={{ marginTop: 14 }}>
               Across all {r.overall.total_as_displayed.toLocaleString('en-IN')} reviews as displayed:{' '}
               {r.overall.no_visible_change
                 ? 'no visible change; the effect is concentrated in recent reviews.'
@@ -192,6 +182,15 @@ function Verdict({ report, detail }: { report: Report; detail: AnalysisDetail })
             {report.warnings.map((w) => <div key={w} className="notice warn small"><ShieldAlert size={15} />{w}</div>)}
             {stale && <div className="notice small"><Info size={15} />Analysed {ageText(detail.finished_at)}. Reviews may have changed since.</div>}
           </div>
+          {report.sample.expanded > 0 && (
+            <button className="replay-cta" onClick={onReplay}>
+              <span className="replay-icon"><Play size={16} fill="currentColor" /></span>
+              <span className="col" style={{ alignItems: 'flex-start' }}>
+                <strong>Watch the investigation</strong>
+                <span className="muted small">{report.sample.examined} reviews read, {report.sample.expanded} reviewer histories opened</span>
+              </span>
+            </button>
+          )}
           <div className="caveat-strip">
             <Info size={16} className="muted" />
             A pattern, not proof. A business can be targeted without its knowledge.
@@ -199,6 +198,52 @@ function Verdict({ report, detail }: { report: Report; detail: AnalysisDetail })
         </div>
       </div>
     </section>
+  )
+}
+
+/** The investigation again, rebuilt from the report: costs nothing, good for recordings. */
+function Replay({ report, onClose }: { report: Report; onClose: () => void }) {
+  const events = useMemo(() => eventsFromReport(report), [report])
+  const [run, setRun] = useState(0)
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
+    window.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [onClose])
+  return (
+    <motion.div className="replay" role="dialog" aria-modal="true" aria-label="Investigation replay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+      <div className="replay-inner">
+        <div className="row" style={{ justifyContent: 'space-between', marginBottom: 18 }}>
+          <div>
+            <div className="muted small">Replay, rebuilt from the report (no searches)</div>
+            <h2 style={{ fontSize: '2.2rem', fontStretch: '82%' }}>{report.place.title ?? 'This business'}</h2>
+          </div>
+          <div className="row">
+            <button className="btn sm" onClick={() => setRun((x) => x + 1)}><RotateCcw size={14} /> Restart</button>
+            <button className="icon-btn" onClick={onClose} aria-label="Close replay"><X size={16} /></button>
+          </div>
+        </div>
+        <ReplayPlayer key={run} events={events} onDone={onClose} />
+      </div>
+    </motion.div>
+  )
+}
+
+function ReplayPlayer({ events, onDone }: { events: ProgressEvent[]; onDone: () => void }) {
+  const { state } = usePlayback(events)
+  return (
+    <div className="panel pad">
+      <Investigation state={state} />
+      {state.finished && (
+        <motion.div className="row" style={{ marginTop: 18, justifyContent: 'flex-end' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
+          <button className="btn primary" onClick={onDone}>See the evidence <ChevronRight size={16} /></button>
+        </motion.div>
+      )}
+    </div>
   )
 }
 
@@ -216,15 +261,18 @@ function Linked({ report, namer, selected, select, presentation }: {
   if (!shown.length || !report.graph.edges.length) {
     return (
       <section id="linked" className="chapter">
-        <ChapterHead title="Linked reviewers" />
-        
-          <div className="empty-line">
-            <Network size={20} className="muted" />
-            {checked
-              ? <span>None of the <strong className="num">{checked}</strong> reviewers checked share any other places, so there is no linked group to show.</span>
-              : <span>No reviewer histories were checked.</span>}
-          </div>
-        
+        <ChapterHead title="Reviewers opened" note={checked ? 'Select one to see their history' : undefined} />
+        {checked ? (
+          <>
+            <p className="chapter-lede">
+              ReviewRing opened the full public history of <strong className="num">{checked}</strong> reviewers. <strong>None of them share another place</strong>, so there is no linked group: a clean result, and evidence too.
+            </p>
+            <CheckedGrid report={report} namer={namer} />
+            <StripKey />
+          </>
+        ) : (
+          <div className="empty-line"><Network size={20} className="muted" /><span>No reviewer histories were checked.</span></div>
+        )}
       </section>
     )
   }
@@ -266,7 +314,22 @@ function Linked({ report, namer, selected, select, presentation }: {
           </div>
         
       )}
+      <div style={{ marginTop: 40 }}>
+        <div className="chapter-head" style={{ marginBottom: 14 }}><h3 style={{ fontSize: '1.35rem' }}>Every reviewer opened</h3><span className="muted">Select one to see their history</span></div>
+        <CheckedGrid report={report} namer={namer} />
+        <StripKey />
+      </div>
     </section>
+  )
+}
+
+function StripKey() {
+  return (
+    <div className="legend" style={{ marginTop: 12 }}>
+      <span><span style={{ color: 'var(--gold)' }}>★</span> this business</span>
+      <span><i className="swatch" style={{ background: 'var(--gold)' }} /> 5★ … <i className="swatch" style={{ background: 'var(--star-empty)' }} /> 1★</span>
+      <span className="muted">Each line is one reviewer's history, oldest left; higher dots are farther from this business.</span>
+    </div>
   )
 }
 

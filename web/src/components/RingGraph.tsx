@@ -5,6 +5,7 @@ import { cssVar, LABEL_ORDER, LABEL_TEXT, labelColor, VERDICT_TEXT } from '../la
 import type { Namer } from '../names'
 import { useTheme } from '../theme'
 import type { Label, Report } from '../types'
+import { useReviewer } from './Reviewer'
 
 cytoscape.use(fcose)
 
@@ -21,6 +22,7 @@ export function RingGraph({ report, namer, selectedGroup, onSelectGroup }: Props
   const { scheme } = useTheme()
   const [showPlaces, setShowPlaces] = useState(false)
   const [tip, setTip] = useState<{ x: number; y: number; html: string[] } | null>(null)
+  const { open } = useReviewer()
 
   // scheme is a dependency so colours are re-read from CSS when the theme flips.
   const elements = useMemo(() => buildElements(report, namer, showPlaces), [report, namer, showPlaces, scheme])
@@ -72,13 +74,16 @@ export function RingGraph({ report, namer, selectedGroup, onSelectGroup }: Props
     })
     instance.on('mouseout', () => setTip(null))
     instance.on('tap', 'node.group', (e) => onSelectGroup(e.target.data('gid')))
-    instance.on('tap', 'node.person', (e) => onSelectGroup(e.target.data('group') ?? null))
+    instance.on('tap', 'node.person', (e) => {
+      onSelectGroup(e.target.data('group') ?? null)
+      open(e.target.id())
+    })
     instance.on('tap', (e) => {
       if (e.target === instance) onSelectGroup(null)
     })
     cy.current = instance
     return () => instance.destroy()
-  }, [elements, onSelectGroup])
+  }, [elements, onSelectGroup, open])
 
   useEffect(() => {
     const c = cy.current
@@ -95,7 +100,7 @@ export function RingGraph({ report, namer, selectedGroup, onSelectGroup }: Props
   return (
     <div>
       <div className="row small" style={{ marginBottom: 10, justifyContent: 'space-between' }}>
-        <span className="muted">Each dot is a reviewer whose history was checked. A line joins two who reviewed the same unrelated, distant places.</span>
+        <span className="muted">Each dot is a reviewer whose history was checked; select one to open it. A line joins two who reviewed the same unrelated, distant places.</span>
         <label className="row" style={{ gap: 6, whiteSpace: 'nowrap', cursor: 'pointer' }}>
           <input type="checkbox" checked={showPlaces} onChange={(e) => setShowPlaces(e.target.checked)} /> Shared places as nodes
         </label>

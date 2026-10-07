@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { BADGE_NAMES, day, fmt, LABEL_ORDER, LABEL_TEXT } from '../labels'
 import type { Namer } from '../names'
 import type { ClientRow, Label, Report, ReviewRow } from '../types'
+import { useReviewer } from './Reviewer'
 import { Stars } from './ui'
 
 export function ReviewsTable({ report, namer, selectedGroup }: { report: Report; namer: Namer; selectedGroup: string | null }) {
@@ -12,6 +13,7 @@ export function ReviewsTable({ report, namer, selectedGroup }: { report: Report;
     () => new Set(selectedGroup ? report.groups.find((g) => g.group_id === selectedGroup)?.members ?? [] : []),
     [report, selectedGroup],
   )
+  const { open } = useReviewer()
   const inGroup = (r: ReviewRow) => r.contributor_id != null && members.has(r.contributor_id)
   const rows = report.reviews.filter((r) => shown.has(r.label) || inGroup(r)).sort((a, b) => Number(inGroup(b)) - Number(inGroup(a)))
   const flip = (l: Label) => {
@@ -37,7 +39,9 @@ export function ReviewsTable({ report, namer, selectedGroup }: { report: Report;
             {rows.map((r) => (
               <tr key={r.review_id} className={inGroup(r) ? 'selected' : ''}>
                 <td>
-                  <div style={{ fontWeight: 560, whiteSpace: 'nowrap' }}>{namer.reviewer(r.contributor_id)}</div>
+                  {r.contributor_id
+                    ? <button className="link-btn" onClick={() => open(r.contributor_id!)}>{namer.reviewer(r.contributor_id)}</button>
+                    : <div style={{ fontWeight: 560, whiteSpace: 'nowrap' }}>{namer.reviewer(r.contributor_id)}</div>}
                   {r.reviewer_reviews != null && <div className="muted tiny">{r.reviewer_reviews} review{r.reviewer_reviews === 1 ? '' : 's'}</div>}
                 </td>
                 <td style={{ whiteSpace: 'nowrap' }}><Stars rating={r.rating} /></td>

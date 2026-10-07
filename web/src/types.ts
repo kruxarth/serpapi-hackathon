@@ -175,6 +175,8 @@ export interface ReviewRow {
   reviewer_reviews: number | null
   local_guide: boolean | null
   generated_marker?: string | null
+  /** The text around a chatbot or placeholder phrase (scrubbed and shortened when pseudonymized). */
+  excerpt?: string | null
 }
 
 export interface Burst {
@@ -217,6 +219,7 @@ export interface GeneratedHit {
   rating: number | null
   day: string | null
   marker: string
+  excerpt?: string | null
   reviewer_reviews: number | null
 }
 
@@ -243,6 +246,26 @@ export interface PlaceInfo {
   lat: number | null
   lng: number | null
   surprise: number
+}
+
+/** One review from a checked reviewer's public history. `day` is the middle of its approximate date range. */
+export interface HistoryItem {
+  day: string | null
+  rating: number | null
+  place_key: string | null
+  this: boolean
+  area: string | null
+  type_group: string
+  lat: number | null
+  lng: number | null
+  km: number | null
+}
+
+export interface History {
+  total_reviews: number | null
+  visible: number
+  home_area: string | null
+  items: HistoryItem[]
 }
 
 export interface GraphEdge {
@@ -315,6 +338,8 @@ export interface Report {
     T8?: TopRated
   }
   reviewers: ReviewerRow[]
+  /** Visible histories of the checked reviewers, by contributor id (older reports don't have them). */
+  histories?: Record<string, History>
   graph: { nodes: { id: string; label: Label; display_name?: string }[]; edges: GraphEdge[] }
   groups: Group[]
   reviews: ReviewRow[]

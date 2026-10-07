@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState, type ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { api } from '../api'
+import { Investigation, usePlayback } from '../components/Investigation'
 import { CountUp, EASE } from '../motion'
 import { usePresentation } from '../presentation'
 import type { AnalysisDetail, ProgressEvent } from '../types'
@@ -41,6 +42,7 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const live = RUNNING.has(detail.status)
+  const { state, played, caughtUp } = usePlayback(events)
 
   useEffect(() => {
     if (!live) return
@@ -48,12 +50,7 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
     es.onmessage = (m) => {
       const e = JSON.parse(m.data) as ProgressEvent
       setEvents((prev) => [...prev, e])
-      if (TERMINAL.includes(e.type)) {
-        es.close()
-        qc.invalidateQueries({ queryKey: ['analysis', detail.id] })
-        qc.invalidateQueries({ queryKey: ['budget'] })
-        qc.invalidateQueries({ queryKey: ['analyses'] })
-      }
+      if (TERMINAL.includes(e.type)) es.close()
     }
     es.onerror = () => {
       es.close()
@@ -62,13 +59,25 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
     return () => es.close()
   }, [detail.id, live, qc])
 
-  const last = events[events.length - 1]
+  // The report opens once the viewer has seen the investigation through, not the instant the backend finishes.
+  const ended = played.find((e) => TERMINAL.includes(e.type))
+  useEffect(() => {
+    if (!ended || !caughtUp) return
+    const t = window.setTimeout(() => {
+      qc.invalidateQueries({ queryKey: ['analysis', detail.id] })
+      qc.invalidateQueries({ queryKey: ['budget'] })
+      qc.invalidateQueries({ queryKey: ['analyses'] })
+    }, ended.type === 'done' ? 1600 : 0)
+    return () => clearTimeout(t)
+  }, [ended, caughtUp, detail.id, qc])
+
+  const last = played[played.length - 1]
   const used = last?.searches_used ?? detail.searches_used
-  const expanding = [...events].reverse().find((e) => e.type === 'expanding')
+  const expanding = [...played].reverse().find((e) => e.type === 'expanding')
   const done = Number(expanding?.data?.done ?? 0)
   const total = Number(expanding?.data?.total ?? 0)
   const round = expanding?.data?.round
-  const reached = new Set(events.map((e) => e.type))
+  const reached = new Set(played.map((e) => e.type))
   const current = Math.max(-1, ...STAGES.map((s, i) => (reached.has(s.key) ? i : -1)))
   const finished = reached.has('done')
 
@@ -91,56 +100,14 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
     <div>
       <Link to="/" className="row muted small" style={{ gap: 6, marginBottom: 22 }}><ArrowLeft size={14} /> All analyses</Link>
       <div className="progress-wrap">
-        <div>
+        <div style={{ minWidth: 0 }}>
           <div className="muted">Analysis {detail.id}</div>
-          <h1 style={{ fontSize: '2.4rem', marginTop: 10, letterSpacing: '-0.04em' }}>
-            {live ? (finished ? 'Writing the report…' : 'Reading the reviews') : STATUS_TITLE[detail.status] ?? detail.status}
+          <h1 className="progress-title">
+            {live ? (finished ? 'Report ready' : STAGE_TITLE[last?.type ?? ''] ?? 'Investigating') : STATUS_TITLE[detail.status] ?? detail.status}
           </h1>
           {detail.input && !pres.on && <p className="muted small" style={{ marginTop: 8, wordBreak: 'break-all' }}>{detail.input}</p>}
 
-          {live && (
-            <div className="panel" style={{ marginTop: 26, padding: '14px 18px' }}>
-              <div className="stages" aria-live="polite">
-                <div className="stage-rail">
-                  <motion.div animate={{ height: `${finished ? 100 : (Math.max(0, current) / (STAGES.length - 1)) * 100}%` }} transition={{ duration: 0.8, ease: EASE }} style={{ height: 0 }} />
-                </div>
-                {STAGES.map((s, i) => {
-                  const skipped = s.optional && !reached.has(s.key) && current > i
-                  const state = finished || i < current ? 'done' : i === current ? 'active' : 'pending'
-                  return (
-                    <motion.div key={s.key} className={`stage ${skipped ? 'skipped' : state}`} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.06, ease: EASE }}>
-                      <div className="stage-node">
-                        {state === 'active' && !skipped && <motion.span className="halo" animate={{ scale: [1, 1.5], opacity: [0.6, 0] }} transition={{ duration: 1.4, repeat: Infinity }} />}
-                        <AnimatePresence mode="wait">
-                          {state === 'done' && !skipped
-                            ? <motion.span key="d" initial={{ scale: 0 }} animate={{ scale: 1 }} style={{ display: 'grid' }}><Check size={14} strokeWidth={3} /></motion.span>
-                            : <span>{i + 1}</span>}
-                        </AnimatePresence>
-                      </div>
-                      <div>
-                        <div className="stage-title">{s.title}</div>
-                        <div className="muted small">{skipped ? 'Not needed for this listing' : s.note}</div>
-                        {s.key === 'expanding' && total > 0 && state !== 'pending' && (
-                          <div style={{ marginTop: 8, maxWidth: 360 }}>
-                            <div className="bar-track"><motion.div className="bar-fill" animate={{ width: `${(100 * done) / total}%` }} transition={{ duration: 0.5, ease: EASE }} /></div>
-                            <div className="muted tiny num" style={{ marginTop: 4 }}>{done} of {total} histories{round ? `, round ${String(round)}` : ''}</div>
-                          </div>
-                        )}
-                      </div>
-                      <div />
-                    </motion.div>
-                  )
-                })}
-              </div>
-              <AnimatePresence>
-                {reached.has('early_stop') && (
-                  <motion.div className="notice small" style={{ margin: '6px 6px 8px' }} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}>
-                    No ring-like pattern among the highest-priority reviewers, so round 2 was skipped to save searches.
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          )}
+          {(live || played.length > 0) && <div className="panel pad" style={{ marginTop: 26 }}><Investigation state={state} /></div>}
 
           <div className="col" style={{ gap: 14, marginTop: 22 }}>
             {detail.status === 'paused' && (
@@ -178,14 +145,14 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
               </State>
             )}
             {error && <div className="notice error"><CircleAlert size={16} />{error}</div>}
-            {live && <div><button className="btn ghost sm" disabled={busy} onClick={() => act(() => api.cancel(detail.id))}>Cancel analysis</button></div>}
+            {live && !finished && <div><button className="btn ghost sm" disabled={busy} onClick={() => act(() => api.cancel(detail.id))}>Cancel analysis</button></div>}
           </div>
         </div>
 
         <aside className="col" style={{ gap: 18, paddingTop: 34 }}>
           <div className="panel pad">
             <div className="secondary">Searches used</div>
-            <div className="big-num num" style={{ fontSize: '4rem', marginTop: 10 }}>
+            <div className="big-num num" style={{ fontSize: '3.6rem', marginTop: 10 }}>
               <AnimatePresence mode="popLayout">
                 <motion.span key={used} initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -24, opacity: 0 }} transition={{ duration: 0.35, ease: EASE }} style={{ display: 'inline-block' }}>
                   <CountUp value={used} duration={0.4} />
@@ -194,13 +161,14 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
             </div>
             <div className="muted small" style={{ marginTop: 6 }}>Cached data is reused; nothing is fetched twice.</div>
           </div>
+          {live && <Stages reached={reached} current={current} finished={finished} done={done} total={total} round={round} />}
           {live && (
             <div className="panel pad">
               <div className="secondary row" style={{ marginBottom: 12, gap: 6 }}><Clock size={14} /> What it is doing</div>
               <div className="log">
                 <AnimatePresence initial={false}>
-                  {(events.length ? [...events].reverse().slice(0, 10) : [{ type: 'queued', message: 'Queued…', searches_used: 0, data: {} }]).map((e, i) => (
-                    <motion.div key={`${events.length - i}-${e.type}`} layout initial={{ opacity: 0, y: -8 }} animate={{ opacity: i === 0 ? 1 : 0.7, y: 0 }}>
+                  {(played.length ? [...played].reverse().slice(0, 10) : [{ type: 'queued', message: 'Queued…', searches_used: 0, data: {} }]).map((e, i) => (
+                    <motion.div key={`${played.length - i}-${e.type}`} layout initial={{ opacity: 0, y: -8 }} animate={{ opacity: i === 0 ? 1 : 0.7, y: 0 }}>
                       {e.message}
                     </motion.div>
                   ))}
@@ -209,6 +177,52 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
             </div>
           )}
         </aside>
+      </div>
+    </div>
+  )
+}
+
+const STAGE_TITLE: Record<string, string> = {
+  resolving: 'Finding the place',
+  fetching_reviews: 'Reading the reviews',
+  reviews_loaded: 'Reading the reviews',
+  top_rated: 'Sampling the highest-rated reviews',
+  scoring: 'Choosing who to look at',
+  picks: 'Choosing who to look at',
+  expanding: 'Opening reviewer histories',
+  history: 'Opening reviewer histories',
+  building_graph: 'Looking for shared places',
+  links: 'Looking for shared places',
+  early_stop: 'Looking for shared places',
+  finding_groups: 'Testing groups',
+}
+
+/** The pipeline as a compact checklist beside the live view. */
+function Stages({ reached, current, finished, done, total, round }: { reached: Set<string>; current: number; finished: boolean; done: number; total: number; round: unknown }) {
+  return (
+    <div className="panel" style={{ padding: '10px 14px' }}>
+      <div className="stages compact" aria-live="polite">
+        <div className="stage-rail">
+          <motion.div animate={{ height: `${finished ? 100 : (Math.max(0, current) / (STAGES.length - 1)) * 100}%` }} transition={{ duration: 0.8, ease: EASE }} style={{ height: 0 }} />
+        </div>
+        {STAGES.map((s, i) => {
+          const skipped = s.optional && !reached.has(s.key) && current > i
+          const state = finished || i < current ? 'done' : i === current ? 'active' : 'pending'
+          return (
+            <div key={s.key} className={`stage ${skipped ? 'skipped' : state}`}>
+              <div className="stage-node">
+                {state === 'active' && !skipped && <motion.span className="halo" animate={{ scale: [1, 1.5], opacity: [0.6, 0] }} transition={{ duration: 1.4, repeat: Infinity }} />}
+                {state === 'done' && !skipped ? <Check size={12} strokeWidth={3} /> : <span>{i + 1}</span>}
+              </div>
+              <div>
+                <div className="stage-title">{s.title}</div>
+                {s.key === 'expanding' && total > 0 && state === 'active' && (
+                  <div className="muted tiny num">{done} of {total}{round ? `, round ${String(round)}` : ''}</div>
+                )}
+              </div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )
