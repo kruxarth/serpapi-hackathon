@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "ReviewRing",
   "version": "0.1.0",
-  "description": "Checks a Google Maps place for coordinated reviewer rings, using your local ReviewRing backend.",
+  "description": "Shows which Google Maps reviews carry warning signs, and the rating without them, using your local ReviewRing app.",
   "permissions": ["storage", "sidePanel"],
   "host_permissions": [
     "https://www.google.com/maps/*",

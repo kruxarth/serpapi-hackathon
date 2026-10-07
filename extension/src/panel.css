@@ -24,3 +24,20 @@ input[type=url] { width: 100%; padding: 8px; margin-top: 4px; font: inherit; }
 label.check { display: flex; gap: 8px; align-items: center; margin: 10px 0; }
 .bar { height: 6px; background: var(--border); border-radius: 999px; overflow: hidden; margin-top: 8px; }
 .bar > div { height: 100%; background: var(--accent); }
+.link-form { display: flex; gap: 6px; padding: 10px 14px 0; }
+.link-form input { flex: 1; min-width: 0; padding: 7px 10px; font: inherit; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--ink); }
+.gold { color: #e3a008; }
+.stars { color: #e3a008; letter-spacing: 1px; }
+.stars .off { color: var(--border); }
+.kept-line { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin: 4px 0; }
+label.sign { display: grid; grid-template-columns: auto 1fr auto; gap: 8px; align-items: center; padding: 7px 0; border-top: 1px solid var(--border); cursor: pointer; }
+label.sign:first-of-type { border-top: none; margin-top: 6px; }
+label.sign.opinion .sign-name { font-style: italic; }
+label.sign.context .sign-name { color: var(--ink-2); }
+.list-head { display: flex; gap: 8px; align-items: baseline; margin: 16px 0 8px; }
+.rev { border-top: 1px solid var(--border); padding: 10px 0; }
+.rev-head { display: flex; justify-content: space-between; align-items: baseline; }
+.rev-text { margin: 6px 0 4px; overflow-wrap: anywhere; }
+mark.cue { background: none; color: inherit; text-decoration: underline wavy #2a78d6; text-underline-offset: 3px; }
+button.link { border: 0; background: none; padding: 0; color: var(--accent); text-decoration: underline; }
+pre { white-space: pre-wrap; }

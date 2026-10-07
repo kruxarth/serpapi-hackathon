@@ -24,6 +24,9 @@ export interface Summary {
   examined: number
   rings: number
   evidence: string[]
+  kept_mean?: number | null
+  kept_count?: number | null
+  signs?: Record<string, number>
 }
 
 export type Lookup =
