@@ -1,16 +1,18 @@
 # ReviewRing methodology
 
-ReviewRing looks for **groups of reviewer accounts that reviewed the same unrelated businesses in distant cities**. A single paid review looks like any other review. Paid reviewers work in batches, though, and a batch shows up once you step from a business's reviews to each reviewer's full public review history.
+ReviewRing reads a business's **newest 100 reviews**, gives each one every **warning sign** that applies, and lets the reader set aside the signs they choose and read the rest (section 6). The signs come from the reviews themselves (chatbot text, copied text, bursts of first-time accounts), from the reviewers' full public histories (linked groups of accounts that reviewed the same unrelated businesses in distant cities, reviewing sprees) and, optionally, from an AI model's opinion of the text.
+
+The linked-group method came first, but it isn't what real data mostly shows: the manipulation we found was cheap and one review at a time (bursts of accounts with no other reviews, pasted chatbot replies). A single paid review looks like any other review, and a single first-time account proves nothing, because most real customers review only once. The pattern shows in aggregate, and the reader gets to see it review by review.
 
 Everything below is deterministic: the same cached data and the same `config/reviewring.toml` always give the same report. No AI model decides any label, group, level or rating.
 
 ## 1. Collection within a search budget
 
-One analysis costs about 15 searches for a clean business and about 30 for a suspicious one (SerpApi free plan: 250 a month).
+One analysis costs about 16 searches for a clean business and about 31 for one whose first reviewers are linked (SerpApi free plan: 250 a month). Searches are a developer concern: the app shows them only in its settings and in a "For developers" section of each report.
 
 | Step | SerpApi engine | Searches |
 |---|---|---|
-| Newest 88 reviews of the business | `google_maps_reviews` (`sort_by=newestFirst`) | 5 (8 + 4 × 20) |
+| Newest 100 reviews of the business | `google_maps_reviews` (`sort_by=newestFirst`) | 6 (8 + 5 × 20 = 108, the newest 100 kept) |
 | Round 1: 8 highest-priority reviewers + 2 random baseline reviewers | `google_maps_contributor_reviews` (`num=200`) | 10 |
 | Round 2, only if round 1 finds overlap: 15 more reviewers | `google_maps_contributor_reviews` | 15 |
 | Business coordinates, only if no fetched history contains the business | `google_maps` (`data_cid`) | 0–1 |
@@ -87,7 +89,7 @@ When timing is unknown (most history dates are too coarse), the timing part is d
 
 ## 5. Account signals, labels and the level
 
-Each checked reviewer gets badges: **A1** thin profile, **A2** rating monotony, **A3** several cities in one week (context), **A4** same-day distant reviews (context; people fly and batch-post trip reviews, so it's never called "impossible"), **A5** short texts, **A6** copy-paste text, **A7** burst participant, **A8** reworded template (optional, AI, context only).
+Each checked reviewer gets badges: **A1** thin profile, **A2** rating monotony, **A3** several cities in one week (context), **A4** same-day distant reviews (context; people fly and batch-post trip reviews, so it's never called "impossible"), **A5** short texts, **A6** copy-paste text, **A7** burst participant, **A8** reworded template (optional, AI, context only), **A9** reviewing spree (context, section 6).
 
 Review labels: **ring**, **possible ring (trip-like)**, **suspicious** (needs A6 copied text plus 2 other signals, so it's rare by design: without copied text the graph is the only route to a flag), **group trip** (neutral), **not checked** (neutral, for reviewers whose history wasn't fetched) and **no flags**.
 
@@ -95,21 +97,56 @@ The **ring-adjusted rating** is the mean of the examined reviews without ring re
 
 **Suspicion level:** **High** needs a ring (not a possible ring) with confidence ≥ 0.7 whose reviews are ≥ 10% of those examined. **Elevated** means any ring or possible ring, or ≥ 15% suspicious reviews. **Not enough history** covers a young business, or the case where every checked profile was empty or private. Otherwise the level is **Low**. Bursts, thin profiles and ruled-out trips never raise the level on their own.
 
-## 6. The AI summary (optional)
+## 6. Warning signs and sorting the reviews
 
-With a DeepSeek key, a model writes a short plain-language summary **below** the evidence, collapsed by default. It only receives a numbered list of already-formatted, pseudonymized facts ("F3 = the latest 88 reviews") and may refer to them only by id. A deterministic validator rejects the draft if it references an unknown fact, or writes a digit, a number word, a place name, or any of fake / fraud / scam / paid / bot / manipulated (whole words). One retry, then fixed templates. The AI never sets a label, group, level or rating.
+Each of the newest 100 reviews gets every sign that applies, in this order (strongest first):
 
-## 7. Known limits
+| Sign | Rule | Strength | At first |
+|---|---|---|---|
+| Chatbot or template text | The text contains a fixed phrase no customer writes ("unable to generate", "[hotel name]", "as an AI") | strong | set aside |
+| Copied text | In a near-duplicate cluster (section 2) with another account's text, excluding stock phrases | strong | set aside |
+| First-time accounts in a burst | From an account showing ≤ 1 review, inside a burst where ≥ 5 such accounts make up ≥ 60% | strong | set aside |
+| Linked reviewer group | The reviewer is in a ring or possible ring (sections 3 and 4) | strong | set aside |
+| Reads as AI-written | An AI model's opinion, with quoted cues (below) | opinion | kept |
+| Reviewing spree (A9) | A checked reviewer whose busiest 31 days hold ≥ 8 non-popular places in ≥ 3 areas, ≥ 90% 5★ | context | kept |
+| First-time account | The account shows ≤ 1 review | context | kept |
+
+The report draws the reviews as dots flowing down a trunk; a review leaves at the **first** sign the reader has set aside and the rest reach **Kept**, with their average. Changing a sign moves exactly its reviews. The level (section 5) doesn't depend on the reader's choice.
+
+**Why a single first-time account is only context.** On real listings, 15–20% of the 5★ reviews of an ordinary business come from accounts with no other reviews: people create an account to leave one review. Following Xie et al. (KDD 2012), who found that over 90% of reviewers write a single review and that bought singleton reviews show up as bursts correlated with rating, ReviewRing looks for the aggregate: the burst test above, and a **first-time skew** finding when 5★ reviews are at least twice as likely to come from first-time accounts as the other reviews (with ≥ 10 five-star and ≥ 5 other reviews, and ≥ 35% of the 5★ reviews from first-time accounts). Staff asking customers to review on the spot produces the same skew, so it is context, never a flag.
+
+**The AI-written opinion.** AI-text detectors are unreliable on short texts (independent tests show accuracy dropping under about 50 words) and over-flag people writing in a second language (Liang et al., 2023, found 61% of non-native essays flagged), and many real customers polish honest reviews with AI. So:
+
+- only reviews of **40 words or more** are judged; the report says how many were too short;
+- texts are scrubbed (links, emails, phones, handles, the business's name) and sent in batches of 12 with opaque indices; no reviewer names or ids;
+- the prompt lists what is *not* evidence (Indian English, Hinglish, mistakes, simple praise, concrete details) and asks for "unclear" when in doubt;
+- an "AI-written" opinion counts only if it quotes **at least two phrases that occur in the review**; otherwise it becomes "unclear";
+- it is kept by default, shown with its quoted phrases underlined, and never counts towards the level.
+
+Behavioural signals beat text signals on real platforms (Mukherjee et al., ICWSM 2013: n-gram classifiers that scored ~90% on crowdsourced fakes scored 68% on Yelp's filtered reviews, while behavioural features held up), which is why the strong signs are behavioural or verbatim, and the text opinion is the weakest.
+
+## 7. The AI summary (optional)
+
+With a DeepSeek key, a model writes a short plain-language summary **below** the evidence, collapsed by default. It only receives a numbered list of already-formatted, pseudonymized facts ("F3 = the latest 100 reviews") and may refer to them only by id. A deterministic validator rejects the draft if it references an unknown fact, or writes a digit, a number word, a place name, or any of fake / fraud / scam / paid / bot / manipulated (whole words). One retry, then fixed templates. The AI never sets a label, group, level or rating.
+
+## 8. Known limits
 
 - Rings that operate within a single city look like real local social circles; v1 doesn't flag them.
 - Colleagues who stay at the same approved hotels in several cities can look ring-like. Concentration and diversity lower the confidence, but don't rule it out.
 - Regional rings that only review travel businesses within about 600 km look like group trips; they show as possible rings (trip-like pattern) at most, unless their timing shows repeated batches.
-- Only the newest 88 reviews and 25 reviewers are examined; histories are capped at 200 reviews; private profiles can't be checked; Google may already have removed some reviews.
+- Only the newest 100 reviews and 25 reviewers are examined; histories are capped at 200 reviews; private profiles can't be checked; Google may already have removed some reviews.
+- A bought review from an established account, with its own words, posted outside a burst, carries no sign. Only reviewers whose histories were opened can show a spree or a linked group.
+- The burst test needs ≥ 90% of a 3-day window in one direction, so a burst that overlaps a few ordinary reviews can be cut short.
+- The AI-written opinion covers only long reviews, which are a minority on Indian listings, and it is an opinion.
 - The evaluation plants rings that follow our own model of a ring, so its recall figures are optimistic (see `docs/evaluation/`).
 
-## 8. Prior work and existing tools
+## 9. Prior work and existing tools
 
-ReviewRing builds on research into group spam detection:
+ReviewRing builds on research into review spam detection:
+
+- Xie, Wang, Lin & Yu, "Review Spam Detection via Temporal Pattern Discovery", KDD 2012: singleton reviews and bursts correlated with rating.
+- Mukherjee, Venkataraman, Liu & Glance, "What Yelp Fake Review Filter Might Be Doing?", ICWSM 2013: behavioural features over linguistic ones on real data.
+- Liang et al., "GPT detectors are biased against non-native English writers", 2023: why only long texts are judged and why the AI opinion is never a flag.
 
 - Mukherjee, Liu & Glance, "Spotting Fake Reviewer Groups in Consumer Reviews", WWW 2012: reviewer groups via frequent itemsets, with group-level indicators such as time windows and rating deviation.
 - Beutel et al., "CopyCatch: Stopping Group Attacks by Spotting Lockstep Behavior in Social Networks", WWW 2013: lockstep behaviour in time as a group signal.

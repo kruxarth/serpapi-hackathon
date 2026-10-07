@@ -9,7 +9,8 @@ Read `docs/SYSTEM-OVERVIEW.md` for the algorithm, `docs/DECISIONS.md` for why th
 - **No live DeepSeek calls** unless asked. The LLM only writes a summary; it never decides a label, level or rating.
 - **No personal data in git.** `data/` is gitignored: cache DB, ledger, pseudonym salt, `data/demo-script.md` (names real listings). `IMPLEMENTATION.md` is also gitignored. Committed data is only the pseudonymized `fixtures/`, which must pass `python -m reviewring.leakcheck fixtures`.
 - **Never name real listings** in tracked files, the README, or anything shown on screen in presentation mode.
-- Wording: "suspicious", "coordinated", "ring-like". Never "fake", "fraud" or "scam" about a business or person.
+- Wording: "suspicious", "coordinated", "ring-like". Never "fake", "fraud" or "scam" about a business or person. Reviews are "set aside" or "kept", never removed as fake.
+- No search counts or API costs in anything a user sees (web app or extension). They belong under Settings and the report's "For developers" section.
 - Backend binds to 127.0.0.1 only. Keys never leave the backend or appear in logs.
 - Small descriptive commits; don't rewrite history. Commit only when the user asks.
 
@@ -40,9 +41,17 @@ Read `docs/SYSTEM-OVERVIEW.md` for the algorithm, `docs/DECISIONS.md` for why th
 - Live progress events from `collect.py` (`Collector.show`): `reviews_loaded`, `picks`, `history`, `links`. They carry stars, day offsets, counts and review indices only, never ids or names. The UI plays them at a minimum pace (`usePlayback` in `web/src/components/Investigation.tsx`), and `eventsFromReport` rebuilds the same events from a finished report for the free replay.
 - Google's profile review count (`total_reviews`) can be *lower* than the number of reviews the API returns. The UI shows `max(total, visible)`.
 
+## Report shapes added on 2026-10-07 (warning signs)
+
+- `reviews[].signs` (sign keys in sieve order), `reviews[].ai` (`{verdict, cues}` or null), `report.sieve` (`order`, `set_aside_by_default`, `signs{name, short, strength, explain, count, mean}`, `kept`, `no_signs`, `all`, `ai` coverage), `ratings.kept_mean/kept_count`, `signals.T9` (first-time skew), badge `A9` (reviewing spree).
+- `AnalysisInput.text_judgements[review_id] = {verdict, cues, model}` holds the LLM's AI-written opinion; `report.store_report` fills it in live mode (cached by payload hash), the exporter hashes its keys and scrubs its cues. Synthetic worlds write theirs in `demo_fixtures.synthetic_judgements`.
+- The sample is now 100 reviews (6 pages). Analyses cached with 5 pages re-run offline on 88 and list the missing page.
+
 ## Frontend map
 
-- `components/RatingUnpacked.tsx`: the verdict visual (dots stacked by star, a pointer at the average, flagged reviews lifted into a tray). The home hero uses it with `illustrationDots()`.
+- `components/Sieve.tsx`: `useSieve(report)` (the reader's set-aside choice, shared by the verdict ladder and the list) and `SieveGraph` (vertical flow: newest reviews → one row per sign → Kept; each review is a dot that moves when a sign is toggled).
+- `components/ReviewList.tsx`: `BranchTabs` and the review cards behind a branch, with the AI opinion's quoted phrases underlined.
+- `components/RatingUnpacked.tsx`: dots stacked by star with flagged reviews lifted into a tray. Only the home hero uses it now (`illustrationDots()`).
 - `components/Investigation.tsx`: the live analysis view and the replay.
 - `components/Reviewer.tsx`: `ReviewerProvider`/`useReviewer().open(cid)` opens the profile drawer (radar, timeline, cities). Also has `HistoryStrip` and `CheckedGrid`.
 - `components/Findings.tsx`: one visual per evidence kind. `ReviewCard` types out chatbot text.

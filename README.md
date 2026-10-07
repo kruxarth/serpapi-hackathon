@@ -1,16 +1,20 @@
 # ReviewRing
 
-**A Google rating is a number. ReviewRing shows where it comes from.** Paste a Google Maps link and ReviewRing checks who wrote the reviews, when, and whether those accounts look like real customers. Every finding comes with the evidence behind it.
+**A Google rating is a number. ReviewRing shows where it comes from.** Paste a Google Maps link and ReviewRing reads the newest 100 reviews, marks the ones that carry a warning sign, and shows you the rating without them. You choose which signs to set aside; every sign comes with its evidence, and nothing is ever called fake.
 
-It runs five checks:
+The warning signs, strongest first:
 
-| Check | What it catches |
-|---|---|
-| **Bursts of single-use accounts** | Dozens of 5★ reviews in a few days from accounts that have reviewed nothing else |
-| **Chatbot and template text** | Reviews that say "I'm unable to generate a review for you…" or "[Hotel Name]" |
-| **A rating carried by old reviews** | A listing showing 4.9★ while its recent guests average 3.3★ |
-| **Linked reviewer groups** | Accounts that reviewed the same unrelated businesses in distant cities (with group trips and friends ruled out) |
-| **Waves of prompted reviews** | Shown as context, never as a red flag: asking real customers is not the same as buying reviews |
+| Sign | What it means | At first |
+|---|---|---|
+| **Chatbot or template text** | The review says "I'm unable to generate a review for you…" or "[Hotel Name]" | Set aside |
+| **Copied text** | Near-identical to a review another account wrote | Set aside |
+| **First-time accounts in a burst** | Posted in a sudden burst of 5★ reviews from accounts that have reviewed nothing else | Set aside |
+| **Linked reviewer group** | The reviewer is one of a group of accounts that reviewed the same unrelated businesses in distant cities | Set aside |
+| **Reads as AI-written** | An AI model's opinion, with the phrases it quotes as the reason. Only reviews of 40+ words are judged | Kept |
+| **Reviewing spree** | The reviewer rated many businesses in several cities within a month, nearly all 5★ | Kept |
+| **First-time account** | The account shows no other reviews. Many real customers do this, so it's context only | Kept |
+
+Each review is drawn as a dot that flows down a branching graph and stops at the first sign the reader has set aside; the rest reach **Kept**, with their own average. Around that, the report shows a rating carried by old reviews (4.9★ displayed while recent guests average 3.3★), five-star reviews concentrated among first-time accounts, waves of prompted reviews (shown as context, never as a red flag) and every reviewer history that was opened.
 
 ![A ReviewRing report (synthetic example, pseudonymized)](docs/screenshots/report.png)
 
@@ -22,10 +26,13 @@ We tested ReviewRing on real Google Maps listings in Bengaluru and Delhi (about 
 
 - **Burner accounts:** a mover rated 5.0★ received 31 five-star reviews in 3 days; 27 came from accounts that have never reviewed anything else.
 - **Chatbot text:** a budget hotel showing 4.9★ from thousands of reviews, whose latest 88 reviews average 3.3★, had a 5★ review reading *"I'm unable to generate a review for you, but I can help you outline key points."*
+- **A reviewing spree:** one of that hotel's reviewers rated a dozen hotels in six cities within a month, all 5★.
 - **No rings in this sample.** Even an account that looked like a "rate hotels and earn" task worker (12 hotels in 6 cities in one month, all 5★) shared no hotels with other reviewers. In those scams the hotels are decoys and each worker gets a different list, so the linked-group check stays in the product but isn't the headline.
 - **Reviews that look like a campaign but aren't one:** a mover whose reviews arrive in waves was rated Low, because the reviewers' full histories showed established local people. The business was asking customers to review, not buying reviews.
 
 Listings are not named here; the tool reports patterns, not verdicts.
+
+What this taught us: most manipulation is cheap and one review at a time, so a single first-time account proves nothing (most real customers in India review once). The pattern shows up in aggregate (first-time accounts arriving in a burst, or concentrated among the 5★ reviews), which is the singleton-review insight of Xie et al. (KDD 2012). That's why ReviewRing now judges each review by its signs and lets the reader filter, instead of leading with rings.
 
 ## The problem
 
@@ -35,11 +42,11 @@ A single bought review is indistinguishable from a real one. The pattern only ap
 
 ## How it works
 
-1. **Newest reviews.** Fetch the business's newest 88 reviews and score each reviewer by how likely a closer look is to pay off (review bursts, thin profiles, near-duplicate texts).
-2. **Reviewer histories.** Fetch the full public history of the 8 highest-priority reviewers plus 2 random baseline reviewers. If none of them share anything, stop there. Otherwise fetch 15 more.
-3. **Co-review graph.** Link two reviewers when they reviewed at least two of the same *unrelated, distant* places, weighted by distance from the business and by how unusual the place type is.
-4. **Groups, not individuals.** Find tight groups and set aside the innocent ones: **friends and family** (most members share a home area, near the places they share) and **group trips** with positive evidence (a shared home, or hotel reviews saying family or friends). A group is called ring-like only when it spans several distant cities. Distances are measured from the business *and* from each reviewer's home, so friends from Pune don't look suspicious just because the business is in Goa.
-5. **Evidence first.** The report opens with the rating unpacked: every review is a dot stacked on its star, the pointer is their average, and flagged reviews are lifted out. It then shows the suspicion level with its reasons, a typed-out replay of any chatbot text, every reviewer opened with their whole history (a profile with a distance radar and timeline for each), a replay of the investigation itself (free, rebuilt from the report), the rating excluding linked reviewers, the reviewer-link graph, a map of where the group's other reviews are, a timeline of review bursts, **the other places this group reviewed**, the groups that were set aside, and exactly what was and wasn't checked.
+1. **Newest reviews.** Fetch the business's newest 100 reviews (6 pages) with their exact dates, texts and each reviewer's review count. Check them for chatbot phrases, copied text, bursts of first-time accounts and a rating that sits far above them.
+2. **Reviewer histories.** Fetch the full public history of the 8 highest-priority reviewers plus 2 random baseline reviewers. If none of them share anything, stop there. Otherwise fetch 15 more. Histories show reviewing sprees and linked groups.
+3. **Co-review graph.** Link two reviewers when they reviewed at least two of the same *unrelated, distant* places, weighted by distance from the business and by how unusual the place type is. Tight groups that span distant cities are ring-like; **friends and family** and **group trips** with positive evidence are set aside, never counted.
+4. **AI-written opinion (optional).** With a DeepSeek key, reviews of 40 words or more are read for AI-written style. An "AI-written" opinion only counts when it quotes at least two phrases that are really in the review. Shorter reviews aren't judged: detectors are unreliable on short texts and over-flag people writing in a second language.
+5. **Sort the reviews.** Every review gets all the signs that apply. The report draws the newest 100 as dots that leave a trunk at the first sign the reader sets aside, so the reader sees exactly which reviews each choice removes and what the rest average. Below it, the kept reviews (and each set-aside branch) are listed with their signs, and the quoted AI phrases underlined.
 
 | Ring graph and map | A group trip, ruled out |
 |---|---|
@@ -47,9 +54,9 @@ A single bought review is indistinguishable from a real one. The pattern only ap
 
 > Screenshots come from the synthetic demo fixtures. *(TODO before submission: replace them with a real showcase recorded in presentation mode, and add the report GIF.)*
 
-A **Chrome extension** puts a badge on Google Maps place pages (level and rating without rings, or "Check reviews") and opens a side panel that runs an analysis on one explicit click, after showing its cost.
+A **Chrome extension** puts a badge on Google Maps place pages and opens a side panel. Paste a Maps link there (or open a place), click **Check reviews**, tick the signs to set aside, and read the reviews you kept with their rating.
 
-Everything that decides (labels, groups, levels, ratings) is deterministic and explained in [docs/methodology.md](docs/methodology.md). An optional AI model (DeepSeek) only writes a plain-language summary from numbered facts, under the evidence. A validator rejects any draft with a number, place name or loaded word it wasn't given.
+Everything that decides (signs, labels, groups, levels, ratings) is deterministic and explained in [docs/methodology.md](docs/methodology.md). The optional AI model (DeepSeek) does two things, neither of which raises the level: it gives the "reads as AI-written" opinion described above, and writes a plain-language summary from numbered facts, under the evidence. A validator rejects any summary with a number, place name or loaded word it wasn't given.
 
 ## Why this needs SerpApi
 
@@ -96,7 +103,7 @@ cp .env.example .env        # add SERPAPI_API_KEY (and optionally DEEPSEEK_API_K
 cd backend && uv run reviewring serve
 ```
 
-Paste a Google Maps link. You'll see the estimated cost (about 15 searches for a clean business, about 30 for a suspicious one) and your remaining budget before anything runs. Everything fetched is cached, so re-opening or re-analysing a place is free.
+Paste a Google Maps link and click **Check reviews**. A check costs about 16 SerpApi searches for a clean business and about 31 for one whose first reviewers turn out to be linked; the budget and caps are under **Settings** (people using the app don't need to think about searches). Everything fetched is cached, so re-opening or re-checking a place is free. Add `DEEPSEEK_API_KEY` for the AI-written opinion; without it that check is skipped and says so.
 
 The same pipeline runs from the command line: `uv run reviewring --help` (`budget`, `dry-run`, `collect`, `resume`, `analyze`, `export`, `evaluate`, `purge-data`).
 
@@ -121,7 +128,7 @@ Then open `chrome://extensions`, enable Developer mode, click **Load unpacked** 
 
 ## Search efficiency
 
-- **~15 searches** for a clean business, thanks to the early stop; **~30** for a suspicious one; a hard cap of 32.
+- **~16 searches** for a clean business (6 review pages + 10 histories), thanks to the early stop; **~31** when the first reviewers are linked; a hard cap of 36. Search counts are a developer concern, so the app shows them only under Settings and in a "For developers" section of each report.
 - Every raw response is cached before it's parsed; a forced refresh adds a new version instead of overwriting.
 - A budget guard enforces the monthly, hourly and per-analysis caps (the stricter of the local ledger and SerpApi's Account API) and pauses at the hourly limit. Resuming never requests anything twice.
 - `dry-run` lists exactly which requests an analysis would make, from the cache alone.
@@ -129,10 +136,11 @@ Then open `chrome://extensions`, enable Developer mode, click **Load unpacked** 
 ## Responsible use, limitations and privacy
 
 - **A pattern, not proof.** ReviewRing says "suspicious", "coordinated" or "ring-like pattern", never "fake" or "fraud", and it never declares a business or a person dishonest. Every claim links to visible evidence.
-- **It doesn't flag everything.** Friends, families and group trips are set aside and shown as such, and "not checked" reviewers are neutral.
+- **It doesn't flag everything.** Friends, families and group trips are set aside and shown as such, and "not checked" reviewers are neutral. A first-time account and an AI-written opinion are kept unless the reader chooses otherwise.
+- **The AI-written opinion is an opinion.** It's never counted towards the level, it must quote its evidence, and short reviews aren't judged.
 - **A business can be targeted without its knowledge.** Review-task scams hand recruits real businesses to review, so a ring-like group says nothing about whether the business asked for it.
-- **Known limits:** rings within a single city aren't detected; colleagues who stay at the same hotels in several cities can look ring-like; regional travel-only rings show at most as "possible ring (trip-like)"; only the newest 88 reviews and 25 reviewers are examined; private profiles can't be checked; Google may already have removed some reviews.
-- **The AI only writes summaries.** It sees pseudonymized facts, never names, profile links or ids, and it never sets a label, group, level or rating.
+- **Known limits:** rings within a single city aren't detected; colleagues who stay at the same hotels in several cities can look ring-like; regional travel-only rings show at most as "possible ring (trip-like)"; only the newest 100 reviews and 25 reviewers are examined; private profiles can't be checked; Google may already have removed some reviews.
+- **The AI never decides.** The summary sees pseudonymized facts only. The AI-written check sees review texts scrubbed of links, phone numbers, emails, handles and the business's name, never reviewer names or ids. Neither sets a label, group, level or rating.
 - **Privacy.** The local cache in `data/` holds personal data and is never committed (`uv run reviewring purge-data --yes` deletes it). Committed fixtures are pseudonymized (salted ids, "Business A/B", areas only, coordinates rounded to ~11 km, an approximate review count, every date shifted by a hidden per-business offset, review text dropped unless it's a truncated template shared by 3+ accounts) and pass a leak check. **Presentation mode** pseudonymizes the live app for recordings. Keys stay in `.env` and the backend and are redacted from every log. The backend binds to 127.0.0.1 and rejects cross-site requests.
 
 ## Project layout

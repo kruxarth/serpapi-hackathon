@@ -66,14 +66,14 @@ Why SerpApi is essential: Google's official Places API returns at most 5 reviews
 
 ## 4. Collection: the budgeted strategy (`collect.py`)
 
-Default parameters: N = 88 newest reviews, K1 = 8, B = 2 baseline, K2 = 15, hard cap 32 searches per analysis.
+Default parameters: N = 100 newest reviews (6 pages), K1 = 8, B = 2 baseline, K2 = 15, hard cap 36 searches per analysis.
 
 1. **Resolve** the place. A URL with a `data_id` costs 0 searches (parsed from the URL, along with the place's own coordinates from the `!8m2!3d…!4d…` token, never the viewport `@lat,lng`). Short links are followed with plain HTTP, not SerpApi. CID, place_id-only and name inputs cost 1 search.
-2. **Fetch the newest 88 reviews** as one atomic step: 5 pages. Before page 1, the budget guard checks that the month and the hour can cover all missing pages, because page tokens chain and a pause mid-way would force a restart.
+2. **Fetch the newest 100 reviews** as one atomic step: 6 pages (108 reviews, the newest 100 kept). Before page 1, the budget guard checks that the month and the hour can cover all missing pages, because page tokens chain and a pause mid-way would force a restart.
 3. **Score reviewers** (section 6.3) and pick round 1: the top K1 = 8 plus B = 2 random baseline reviewers from the lower-scoring half (seeded RNG keyed by the place).
 4. **Expand round 1:** fetch 10 histories (3 in parallel).
-5. **Early stop:** if no pair of round-1 reviewers forms an edge (section 6.5), stop and report "no ring-like pattern among the highest-priority reviewers". Cost so far is about 15 searches.
-6. **Round 2:** otherwise take the next K2 = 15 by score, with a +2 bonus for reviewers whose review of the business is within ±3 days of a round-1 pick's, or a near-duplicate of one. Total is about 30 searches.
+5. **Early stop:** if no pair of round-1 reviewers forms an edge (section 6.5), stop and report "no ring-like pattern among the highest-priority reviewers". Cost so far is about 16 searches.
+6. **Round 2:** otherwise take the next K2 = 15 by score, with a +2 bonus for reviewers whose review of the business is within ±3 days of a round-1 pick's, or a near-duplicate of one. Total is about 31 searches.
 7. **Business coordinates:** taken for free from any fetched history that contains the business itself; otherwise 1 `google_maps` lookup by `data_cid`.
 
 Pause, resume and cancel: every response is cached, so resuming re-runs the whole flow and cached requests cost nothing. Pauses happen only between reviewer histories.
@@ -226,14 +226,19 @@ For each expanded reviewer, using the visible history only:
 
 ---
 
+### 6.10 Per-review warning signs and the sieve (`signs.py`; added 2026-10-07)
+
+Each review gets every sign that applies, in config order: chatbot text, copied text, first-time accounts in a burst, linked reviewer group (strong, set aside at first), reads as AI-written (an LLM opinion with ≥ 2 quoted phrases that occur in the text; only reviews of ≥ 40 words), reviewing spree (A9) and first-time account (context, kept). The report carries `reviews[].signs`, `reviews[].ai` and a `sieve` summary; the web app and extension let the reader choose what to set aside and recompute the kept average. A first-time skew finding (T9) compares first-time shares among 5★ and other reviews. See `docs/methodology.md` section 6.
+
 ## 7. The optional LLM (`llm.py`)
 
 - **Job 1, summary:**
-  - The backend builds a numbered fact list (F1 = "the latest 88 reviews", F5 = "Jaipur, Kochi and Lucknow", …). Facts never name a reviewer; the business appears only as "this <type>".
+  - The backend builds a numbered fact list (F1 = "the latest 100 reviews", F5 = "Jaipur, Kochi and Lucknow", …). Facts never name a reviewer; the business appears only as "this <type>".
   - The model must write 3–5 paragraphs that refer to facts only by `[Fn]`.
   - A deterministic validator rejects a draft containing an unknown id, a digit or number word outside a reference ("no one" is allowed), a known state, city or area name, or a banned word (fake, fraud, scam, paid, bought, bot, inauthentic, manipulate…, matched as whole words, so "unpaid" passes).
   - One retry with the complaints, then fixed templates. Ids are substituted by the backend.
   - The summary is shown below the evidence, collapsed by default.
+- **Job 3, reads as AI-written:** reviews of ≥ 40 words, scrubbed, in batches of 12; a verdict of "ai_style" needs ≥ 2 quoted phrases found in the text, else "unclear". Shown as an opinion, kept by default, never counted.
 - **Job 2, paraphrase signal A8:** off by default. Business-review texts are scrubbed (business words, phones, emails, URLs, handles) and sent with opaque indices; the reply groups reworded templates. A8 can never flag anyone on its own.
 - **Safety:** an input check refuses payloads containing real names, contributor ids, review ids or URLs. Every call is cached by hash(model, prompt version, input) and stored before parsing. Offline and demo modes never call the API. Temperature is 0.
 
@@ -295,7 +300,7 @@ Not yet validated on real data. Zero real searches have been spent so far; the f
 2. **The priority score is the main bottleneck** in the harder-ring evaluation. Aged accounts with photos and unique text are rarely chosen, so a well-camouflaged farm can slip past within a budget of 25 histories.
 3. **Single-city rings aren't detected by design** (they're indistinguishable from real local circles with this signal). Regional travel-only rings top out at "possible ring (trip-like)" and can't reach High.
 4. **Colleagues at the same corporate hotels** in several cities can look ring-like. Concentration and diversity lower the confidence, but don't rule them out.
-5. **Sampling:** only the newest 88 reviews and up to 25 reviewers are examined, and histories are capped at 200 reviews. A ring that posted months ago is outside the window.
+5. **Sampling:** only the newest 100 reviews and up to 25 reviewers are examined, and histories are capped at 200 reviews. A ring that posted months ago is outside the window.
 6. **Thresholds are uncalibrated on real data:** edge W ≥ 2.0, core ≥ max(3, 30%), ring ≥ 4 members and ≥ 2 far areas, High at confidence ≥ 0.7 and ≥ 10% share.
 7. **The false-positive estimate is thin** (30 accounts, synthetic), so its interval is wide.
 8. **Text clustering is anchored on the business's reviews,** so duplicates that appear only between two histories aren't detected (A6 is defined on the business review, so this is intended, but it limits evidence).
