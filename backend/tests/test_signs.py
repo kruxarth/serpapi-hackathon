@@ -67,6 +67,14 @@ def test_only_long_reviews_are_sent_and_cues_must_be_quoted():
     assert "r3" not in out
 
 
+def test_quotes_crossing_a_scrubbed_name_count_but_are_not_shown():
+    text = POLISHED + " Overall, Gold Movers is a truly seamless choice for every family moving homes."
+    cues = ["absolutely seamless", "Overall, [business] [business] is a truly seamless choice"]
+    t = FakeTransport(json.dumps({"items": [{"index": 0, "verdict": "ai_style", "cues": cues}]}))
+    out = judge_texts({"r1": text}, gw(t), {"Gold", "Movers"})
+    assert out["r1"]["verdict"] == "ai_style" and out["r1"]["cues"] == ["absolutely seamless"]
+
+
 def test_texts_are_scrubbed_before_sending():
     text = POLISHED + " Call 9876543210 or see www.example.com, ask for Gold Movers."
     t = FakeTransport(json.dumps({"items": [{"index": 0, "verdict": "human_style", "cues": []}]}))

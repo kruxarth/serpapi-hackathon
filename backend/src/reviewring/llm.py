@@ -108,6 +108,10 @@ class LLMRefused(RuntimeError):
     """The input wasn't safe to send (it contained a real identity)."""
 
 
+class EmptyReply(RuntimeError):
+    """The model returned no content. DeepSeek's JSON mode does this occasionally; it is retried once."""
+
+
 def _prompt(name: str) -> str:
     return resources.files("reviewring.prompts").joinpath(f"{name.replace('-', '_')}.txt").read_text("utf-8")
 
@@ -122,6 +126,8 @@ def default_transport(api_key: str) -> Transport:
             "temperature": cfg["temperature"],
             "max_tokens": cfg["max_tokens"],
         }
+        if cfg.get("thinking"):
+            body["thinking"] = {"type": cfg["thinking"]}
         if json_mode:
             body["response_format"] = {"type": "json_object"}
         try:
@@ -132,9 +138,14 @@ def default_transport(api_key: str) -> Transport:
                 timeout=cfg["timeout_seconds"],
             )
             resp.raise_for_status()
-            return str(resp.json()["choices"][0]["message"]["content"] or "")
+            choice = resp.json()["choices"][0]
+            content = str(choice["message"].get("content") or "")
         except (requests.RequestException, KeyError, ValueError) as exc:
             raise RuntimeError(f"LLM call failed: {redact.safe_error(exc)}") from None
+        if not content.strip():
+            # DeepSeek's JSON mode can return empty content (and thinking can use up max_tokens first).
+            raise EmptyReply(f"LLM returned an empty reply (finish_reason={choice.get('finish_reason')})")
+        return content
 
     return call
 
@@ -168,12 +179,13 @@ class LLMGateway:
         return hashlib.sha256(f"{self.model}\n{prompt_version}\n{payload}".encode()).hexdigest()
 
     def cached(self, prompt_version: str, payload: str) -> str | None:
+        """A stored reply; an empty one (stored before empty replies were refused) counts as missing."""
         row = (
             db.connect(self.db_path)
             .execute("SELECT output FROM llm_responses WHERE request_key = ?", (self._key(prompt_version, payload),))
             .fetchone()
         )
-        return row["output"] if row else None
+        return row["output"] if row and str(row["output"] or "").strip() else None
 
     def complete(self, prompt_version: str, system: str, payload: str) -> str | None:
         """Cached completion. None when it isn't cached and a live call isn't allowed."""
@@ -183,7 +195,18 @@ class LLMGateway:
         if not self.can_call:
             return None
         transport = self._transport or default_transport(self.secrets.deepseek_key or "")
-        output = transport([{"role": "system", "content": system}, {"role": "user", "content": payload}], True)
+        messages = [{"role": "system", "content": system}, {"role": "user", "content": payload}]
+        output = ""
+        for attempt in range(2):  # an empty reply is never stored, and is retried once
+            try:
+                output = transport(messages, True)
+            except EmptyReply:
+                output = ""
+            if output.strip():
+                break
+            log.warning("LLM returned an empty reply (attempt %d)", attempt + 1)
+        if not output.strip():
+            raise EmptyReply("LLM returned an empty reply twice")
         db.connect(self.db_path).execute(  # persist before parse
             "INSERT OR REPLACE INTO llm_responses (request_key, model, prompt_version, input, output, validated, "
             "created_at) VALUES (?, ?, ?, ?, ?, 0, ?)",
@@ -398,6 +421,9 @@ def _norm(text: str) -> str:
     return " ".join(text.casefold().split())
 
 
+SCRUBBED = re.compile(r"\[(?:business|link|email|phone|handle)\]")
+
+
 def word_count(text: str | None) -> int:
     return len((text or "").split())
 
@@ -462,9 +488,11 @@ def judge_texts(texts: dict[str, str], gateway: LLMGateway, business_words: set[
                 verdict = "unclear"
             if verdict not in ("ai_style", "human_style", "unclear"):
                 verdict = "unclear"
+            # Quotes that cross a scrubbed span ("[business]") count towards the verdict but can't be shown in the text.
+            shown = [c for c in cues if not SCRUBBED.search(c)]
             out[batch[i]] = {
                 "verdict": verdict,
-                "cues": cues if verdict == "ai_style" else [],
+                "cues": shown if verdict == "ai_style" else [],
                 "model": gateway.model,
             }
         gateway.mark_valid(AI_STYLE_PROMPT, payload)

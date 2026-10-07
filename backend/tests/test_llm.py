@@ -144,3 +144,70 @@ def test_a8_never_flags_a_reviewer_on_its_own():
     assert a8, "A8 should be attached as context"
     assert all(r["label"] in ("no_flags", "not_checked") for r in a8)
     assert report["level"]["level"] == "Low"
+
+
+def test_empty_replies_are_retried_once_and_never_cached():
+    report = ring_report()
+    facts = build_facts(report)
+    t = FakeTransport("", good_reply(facts))
+    g = gw(t)
+    out = summarize(report, g)
+    assert out["source"] == "llm" and len(t.calls) == 2
+
+    t2 = FakeTransport("", "  ")
+    out2 = summarize(ring_report(), gw(t2))  # same payload is cached now, so use a cold gateway check below
+    assert out2["source"] == "llm"  # served from the cache filled above, no call made
+    assert t2.calls == []
+
+
+def test_an_empty_reply_twice_falls_back_and_stores_nothing(tmp_path, monkeypatch):
+    from reviewring import db
+
+    report = ring_report()
+    t = FakeTransport("", "")
+    g = LLMGateway(mode="live", secrets=config.Secrets(None, None), transport=t, db_path=tmp_path / "x.sqlite3")
+    out = summarize(report, g)
+    assert out["source"] == "template" and len(t.calls) == 2
+    rows = db.connect(tmp_path / "x.sqlite3").execute("SELECT COUNT(*) FROM llm_responses").fetchone()[0]
+    assert rows == 0
+
+
+def test_a_stored_empty_reply_counts_as_missing(tmp_path):
+    from reviewring import db
+
+    g = LLMGateway(mode="offline", secrets=config.Secrets(None, None), db_path=tmp_path / "x.sqlite3")
+    db.connect(tmp_path / "x.sqlite3").execute(
+        "INSERT INTO llm_responses (request_key, model, prompt_version, input, output, validated, created_at) "
+        "VALUES (?, ?, ?, ?, '', 0, '2026-10-07T00:00:00+00:00')",
+        (g._key("p", "x"), g.model, "p", "x"),
+    )
+    assert g.cached("p", "x") is None
+
+
+def test_transport_disables_thinking_and_refuses_empty_content(monkeypatch):
+    from reviewring import llm
+
+    sent = {}
+
+    class Resp:
+        def __init__(self, content):
+            self.content = content
+
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return {"choices": [{"message": {"content": self.content}, "finish_reason": "length"}]}
+
+    def post(url, headers, json, timeout):
+        sent.update(json)
+        return Resp(post.content)
+
+    post.content = '{"items": []}'
+    monkeypatch.setattr(llm.requests, "post", post)
+    call = llm.default_transport("key")
+    assert call([{"role": "user", "content": "json"}], True) == '{"items": []}'
+    assert sent["thinking"] == {"type": "disabled"} and sent["response_format"] == {"type": "json_object"}
+    post.content = ""
+    with pytest.raises(llm.EmptyReply):
+        call([{"role": "user", "content": "json"}], True)

@@ -208,7 +208,8 @@ min_mode_share = 0.4
 [llm]
 base_url = "https://api.deepseek.com"
 model = "deepseek-flash"     # checked against api-docs.deepseek.com on 2026-09-29
-max_tokens = 1200
+thinking = "disabled"        # deepseek-flash thinks by default; that spends the reply budget and returned empty JSON
+max_tokens = 2000
 timeout_seconds = 60
 temperature = 0
 paraphrase_signal = false    # A8, off by default

@@ -470,7 +470,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.set_defaults(func=cmd_probe)
 
     def collection_args(p: argparse.ArgumentParser) -> None:
-        p.add_argument("--n", type=int, help="newest reviews to fetch (default 88)")
+        p.add_argument("--n", type=int, help="newest reviews to fetch (default 100)")
         p.add_argument("--k1", type=int, help="round-1 reviewers (default 8)")
         p.add_argument("--k2", type=int, help="round-2 reviewers (default 15)")
         p.add_argument("--stop-after-round1", action="store_true")
