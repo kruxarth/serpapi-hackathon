@@ -144,3 +144,23 @@ def test_name_search_needs_pick_then_continues():
 @pytest.fixture(autouse=True)
 def _fast(monkeypatch):
     monkeypatch.setitem(config.load_tunables()["collection"], "history_concurrency", 3)
+
+
+def test_live_view_events_carry_no_ids_or_names():
+    w, ring = ring_world()
+    server = FakeSerpApi(w)
+    events = []
+    Collector(gateway(server), URL, on_event=events.append).run()
+    by_type = {}
+    for e in events:
+        by_type.setdefault(e.type, []).append(e)
+    loaded = by_type["reviews_loaded"][0].data
+    assert len(loaded["reviews"]) > 0 and all(len(row) == 3 for row in loaded["reviews"])
+    picks = [p for e in by_type["picks"] for p in e.data["picks"]]
+    histories = by_type["history"]
+    assert len(picks) == 25 and len(histories) == 25
+    assert {h.data["index"] for h in histories} == {p[0] for p in picks}
+    assert any(e.data["pairs"] for e in by_type["links"])  # the planted ring links up
+    text = repr([e.data for e in events])
+    for cid in ring:
+        assert cid not in text

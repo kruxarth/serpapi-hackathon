@@ -328,3 +328,40 @@ def test_presentation_mode_blurs_counts_and_dates_inside_sentences():
     assert "6,607" not in shown_text and "about 7,000" in shown_text
     for d in __import__("re").findall(r"\d{4}-\d{2}-\d{2}", text):
         assert d not in shown_text
+
+
+def test_presentation_mode_pseudonymizes_reviewer_histories():
+    from reviewring.privacy import pseudonymize_report
+
+    w = World()
+    ordinary_reviewers(w, 10)
+    plant_ring(w, 5, cities=["Jaipur", "Kochi", "Lucknow"], m=3)
+    inp = w.build()
+    report = analyze(inp)
+    assert report["histories"] and set(report["histories"]) <= {e.contributor_id for e in inp.expansions}
+    shown = pseudonymize_report(report, salt_value="s")
+    text = repr(shown["histories"])
+    for cid in report["histories"]:
+        assert cid not in text
+    for h in report["histories"].values():
+        for it in h["items"]:
+            assert it["place_key"] is None or it["place_key"] not in text
+    items = [it for h in shown["histories"].values() for it in h["items"]]
+    assert all(it["lat"] is None or round(it["lat"], 1) == it["lat"] for it in items)
+    assert items[0]["day"] != next(iter(report["histories"].values()))["items"][0]["day"]
+
+
+def test_chatbot_excerpt_is_kept_and_scrubbed():
+    from reviewring.privacy import pseudonymize_report
+
+    w = World()
+    ordinary_reviewers(w, 20)
+    cid = w.reviewer()
+    w.personal_history(cid, "Pune", 4)
+    w.review_target(cid, rating=5, text="I'm unable to generate a review for you, but call 9876543210 for help.")
+    report = analyze(w.build())
+    row = next(r for r in report["reviews"] if r["generated_marker"])
+    assert row["excerpt"].startswith("I'm unable to generate")
+    shown = pseudonymize_report(report, salt_value="s")
+    srow = next(r for r in shown["reviews"] if r["generated_marker"])
+    assert "unable to generate" in srow["excerpt"] and "9876543210" not in srow["excerpt"]

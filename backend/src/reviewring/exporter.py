@@ -17,11 +17,12 @@ from typing import Any
 from . import ALGORITHM_VERSION, config, db
 from .engine.analyze import analyze
 from .engine.features import compute_text_features, history_text_id, target_text_id
-from .engine.target_signals import generated_marker
+from .engine.target_signals import generated_excerpt, generated_marker
 from .leakcheck import check_object, originals_from_cache
 from .model import AnalysisInput, Contributor, Expansion, HistoryReview, Place, TargetReview
 from .normalize.text import TextFeatures
 from .privacy import (
+    EXCERPT_KEEP_CHARS,
     TEXT_KEEP_CHARS,
     TEXT_KEEP_MIN_ACCOUNTS,
     approx_count,
@@ -82,6 +83,11 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str) -> AnalysisInput:
             return None
         return scrub_text(text, title_words)[:TEXT_KEEP_CHARS]
 
+    def machine_text(r: TargetReview) -> str | None:
+        """Chatbot or placeholder text is kept as a scrubbed excerpt: it is the evidence, and no person wrote it."""
+        excerpt = generated_excerpt(r)
+        return scrub_text(excerpt, title_words)[:EXCERPT_KEEP_CHARS] if excerpt else None
+
     order = [inp.target.place_key] + sorted(k for k in inp.places if k != inp.target.place_key)
     names = {k: letters(i) for i, k in enumerate(order)}
 
@@ -115,7 +121,7 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str) -> AnalysisInput:
             r.rating,
             dt(r.posted_at),
             r.edited,
-            text_for(target_text_id(r.review_id), r.text),
+            text_for(target_text_id(r.review_id), r.text) or machine_text(r),
             r.has_images,
             r.reviewer_reviews,
             r.reviewer_photos,
@@ -192,7 +198,7 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str) -> AnalysisInput:
                 r.rating,
                 dt(r.posted_at),
                 r.edited,
-                None,
+                machine_text(r),
                 r.has_images,
                 r.reviewer_reviews,
                 r.reviewer_photos,

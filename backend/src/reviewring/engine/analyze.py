@@ -22,6 +22,7 @@ from .groups import Group, detect_groups, type_group
 from .homes import compute_homes
 from .target_signals import (
     detect_bursts,
+    generated_excerpt,
     generated_marker,
     rating_gap,
     rating_histogram,
@@ -156,6 +157,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
                 "reviewer_reviews": r.reviewer_reviews,
                 "local_guide": r.local_guide,
                 "generated_marker": generated_marker(r),
+                "excerpt": generated_excerpt(r),
             }
         )
     label_counts = Counter(row["label"] for row in review_rows)
@@ -333,6 +335,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             }
             for cid in expanded
         ],
+        "histories": histories_payload(inp, expanded, homes),
         "graph": graph_payload(inp, expanded, all_pairs, edge_pairs, reviewer_label),
         "groups": [g.as_dict() for g in groups],
         "reviews": review_rows,
@@ -383,6 +386,44 @@ def client_list(inp: AnalysisInput, g: Group) -> list[dict[str, Any]]:
         )
     rows.sort(key=lambda r: (-r["member_count"], not r["core"], r["place_key"]))
     return rows
+
+
+def histories_payload(inp: AnalysisInput, expanded: list[str], homes: dict) -> dict[str, dict[str, Any]]:
+    """Each checked reviewer's visible history, compact, for the reviewer views: when, how many stars, where."""
+    out: dict[str, dict[str, Any]] = {}
+    for cid in expanded:
+        c = inp.contributors.get(cid)
+        if c is None or c.status != "ok":
+            continue
+        items = []
+        for h in inp.histories.get(cid, []):
+            place = inp.places.get(h.place_key) if h.place_key else None
+            km = distance_km(inp.target, place) if place is not None else None
+            mid = None
+            if h.date_min is not None and h.date_max is not None:
+                mid = h.date_min + (h.date_max - h.date_min) / 2
+            items.append(
+                {
+                    "day": mid.isoformat() if mid else None,
+                    "rating": h.rating,
+                    "place_key": h.place_key,
+                    "this": h.place_key == inp.target.place_key,
+                    "area": place.area if place else None,
+                    "type_group": type_group(place.type if place else None)[0],
+                    "lat": None if place is None or place.lat is None else round(place.lat, 2),
+                    "lng": None if place is None or place.lng is None else round(place.lng, 2),
+                    "km": None if km is None else round(km, 1),
+                }
+            )
+        items.sort(key=lambda x: x["day"] or "")
+        home = homes.get(cid)
+        out[cid] = {
+            "total_reviews": c.total_reviews,
+            "visible": len(items),
+            "home_area": home.area if home else None,
+            "items": items,
+        }
+    return out
 
 
 def graph_payload(inp, expanded, all_pairs, edge_pairs, labels) -> dict[str, Any]:

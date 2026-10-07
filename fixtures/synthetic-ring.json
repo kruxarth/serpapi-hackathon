@@ -4807,7 +4807,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u0cf9b91b9e66": {
     "contributor_id": "u0cf9b91b9e66",
@@ -4822,7 +4822,7 @@
     "reviews_returned": 20,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u0e56b396e1b5": {
     "contributor_id": "u0e56b396e1b5",
@@ -4837,7 +4837,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u1150c93936f3": {
     "contributor_id": "u1150c93936f3",
@@ -4852,7 +4852,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u26defa777f22": {
     "contributor_id": "u26defa777f22",
@@ -4867,7 +4867,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u270ceb746eb8": {
     "contributor_id": "u270ceb746eb8",
@@ -4882,7 +4882,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u2cc9a2aa1b38": {
     "contributor_id": "u2cc9a2aa1b38",
@@ -4897,7 +4897,7 @@
     "reviews_returned": 21,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u3b4aaa517351": {
     "contributor_id": "u3b4aaa517351",
@@ -4912,7 +4912,7 @@
     "reviews_returned": 30,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u429d0d615bcd": {
     "contributor_id": "u429d0d615bcd",
@@ -4927,7 +4927,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u4a68b7ddabb4": {
     "contributor_id": "u4a68b7ddabb4",
@@ -4942,7 +4942,7 @@
     "reviews_returned": 19,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u4b420ab98c9c": {
     "contributor_id": "u4b420ab98c9c",
@@ -4957,7 +4957,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u4eb65ae7ef18": {
     "contributor_id": "u4eb65ae7ef18",
@@ -4972,7 +4972,7 @@
     "reviews_returned": 28,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u6be1c05d2d9f": {
     "contributor_id": "u6be1c05d2d9f",
@@ -4987,7 +4987,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u6d96670f2122": {
     "contributor_id": "u6d96670f2122",
@@ -5002,7 +5002,7 @@
     "reviews_returned": 12,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u70bdcc4580a4": {
     "contributor_id": "u70bdcc4580a4",
@@ -5017,7 +5017,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u75b7fb45f0e4": {
     "contributor_id": "u75b7fb45f0e4",
@@ -5032,7 +5032,7 @@
     "reviews_returned": 26,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u837b7beeeb20": {
     "contributor_id": "u837b7beeeb20",
@@ -5047,7 +5047,7 @@
     "reviews_returned": 25,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u85cf5daf6992": {
     "contributor_id": "u85cf5daf6992",
@@ -5062,7 +5062,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "u9d1548155368": {
     "contributor_id": "u9d1548155368",
@@ -5077,7 +5077,7 @@
     "reviews_returned": 12,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "uc0243fd67926": {
     "contributor_id": "uc0243fd67926",
@@ -5092,7 +5092,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "uc41598bb963a": {
     "contributor_id": "uc41598bb963a",
@@ -5107,7 +5107,7 @@
     "reviews_returned": 27,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "ucaee0c409c32": {
     "contributor_id": "ucaee0c409c32",
@@ -5122,7 +5122,7 @@
     "reviews_returned": 23,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "ud60d4221ffac": {
     "contributor_id": "ud60d4221ffac",
@@ -5137,7 +5137,7 @@
     "reviews_returned": 10,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "udff1d6786da4": {
     "contributor_id": "udff1d6786da4",
@@ -5152,7 +5152,7 @@
     "reviews_returned": 11,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    },
    "ue2c4e0f2e685": {
     "contributor_id": "ue2c4e0f2e685",
@@ -5167,7 +5167,7 @@
     "reviews_returned": 18,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:10+00:00"
+    "fetched_at": "2026-06-25T13:52:47+00:00"
    }
   },
   "histories": {
@@ -10445,7 +10445,7 @@
     "reason": "priority"
    }
   ],
-  "fetched_at": "2026-06-25T10:21:09.997259+00:00",
+  "fetched_at": "2026-06-25T13:52:47.260954+00:00",
   "params": {
    "n": 88,
    "k1": 8,
@@ -15229,6 +15229,4495 @@
     "badges": []
    }
   ],
+  "histories": {
+   "u85cf5daf6992": {
+    "total_reviews": 4,
+    "visible": 10,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2024-08-19",
+      "rating": 5,
+      "place_key": "p59d3020fc913",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Retail",
+      "lat": 26.8,
+      "lng": 81.0,
+      "km": 1175.2
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 4,
+      "place_key": "p4de2d429c24f",
+      "this": false,
+      "area": "Goa",
+      "type_group": "Retail",
+      "lat": 15.5,
+      "lng": 73.8,
+      "km": 333.8
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 4,
+      "place_key": "p068c181c144e",
+      "this": false,
+      "area": "Ahmedabad",
+      "type_group": "Health",
+      "lat": 23.1,
+      "lng": 72.5,
+      "km": 531.8
+     },
+     {
+      "day": "2026-02-01",
+      "rating": 5,
+      "place_key": "p860b583e373b",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 10.0,
+      "lng": 76.2,
+      "km": 977.1
+     },
+     {
+      "day": "2026-02-22",
+      "rating": 5,
+      "place_key": "pd554e61058f5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-03-22",
+      "rating": 5,
+      "place_key": "p7f951c4224c5",
+      "this": false,
+      "area": "Kolkata",
+      "type_group": "Education",
+      "lat": 22.5,
+      "lng": 88.3,
+      "km": 1563.5
+     },
+     {
+      "day": "2026-04-12",
+      "rating": 5,
+      "place_key": "pd67b9b550f84",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Home & moving services",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 1168.9
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 5,
+      "place_key": "p334b8a86e31d",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 9.9,
+      "lng": 76.3,
+      "km": 990.6
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "p1fb0313f7c06",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u70bdcc4580a4": {
+    "total_reviews": 5,
+    "visible": 10,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2024-09-18",
+      "rating": 5,
+      "place_key": "p5368244fa3e2",
+      "this": false,
+      "area": "Mumbai",
+      "type_group": "Food & drink",
+      "lat": 19.0,
+      "lng": 72.8,
+      "km": 128.5
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "pcfe66184adc5",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Health",
+      "lat": 26.8,
+      "lng": 81.0,
+      "km": 1175.2
+     },
+     {
+      "day": "2026-02-01",
+      "rating": 5,
+      "place_key": "p860b583e373b",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 10.0,
+      "lng": 76.2,
+      "km": 977.1
+     },
+     {
+      "day": "2026-02-22",
+      "rating": 5,
+      "place_key": "pd554e61058f5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-03-22",
+      "rating": 5,
+      "place_key": "p7f951c4224c5",
+      "this": false,
+      "area": "Kolkata",
+      "type_group": "Education",
+      "lat": 22.5,
+      "lng": 88.3,
+      "km": 1563.5
+     },
+     {
+      "day": "2026-04-12",
+      "rating": 5,
+      "place_key": "pd67b9b550f84",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Home & moving services",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 1168.9
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 5,
+      "place_key": "p334b8a86e31d",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 9.9,
+      "lng": 76.3,
+      "km": 990.6
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "p0bd02ab1c394",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.6,
+      "lng": 77.3,
+      "km": 1175.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "p1fb0313f7c06",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u429d0d615bcd": {
+    "total_reviews": 3,
+    "visible": 10,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "p1c791becdc90",
+      "this": false,
+      "area": "Nagpur",
+      "type_group": "Food & drink",
+      "lat": 21.2,
+      "lng": 79.1,
+      "km": 621.1
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 5,
+      "place_key": "pa4d698fe85e5",
+      "this": false,
+      "area": "Bengaluru",
+      "type_group": "Retail",
+      "lat": 12.9,
+      "lng": 77.6,
+      "km": 737.9
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 5,
+      "place_key": "p328fcef31efe",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Retail",
+      "lat": 24.5,
+      "lng": 73.8,
+      "km": 667.3
+     },
+     {
+      "day": "2026-02-01",
+      "rating": 5,
+      "place_key": "p860b583e373b",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 10.0,
+      "lng": 76.2,
+      "km": 977.1
+     },
+     {
+      "day": "2026-02-22",
+      "rating": 5,
+      "place_key": "pd554e61058f5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-03-22",
+      "rating": 5,
+      "place_key": "p7f951c4224c5",
+      "this": false,
+      "area": "Kolkata",
+      "type_group": "Education",
+      "lat": 22.5,
+      "lng": 88.3,
+      "km": 1563.5
+     },
+     {
+      "day": "2026-04-12",
+      "rating": 5,
+      "place_key": "pd67b9b550f84",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Home & moving services",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 1168.9
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 5,
+      "place_key": "p334b8a86e31d",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 9.9,
+      "lng": 76.3,
+      "km": 990.6
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "p1fb0313f7c06",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "uc0243fd67926": {
+    "total_reviews": 3,
+    "visible": 10,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2025-09-13",
+      "rating": 4,
+      "place_key": "pa06ae90abef2",
+      "this": false,
+      "area": "Kolkata",
+      "type_group": "Retail",
+      "lat": 22.6,
+      "lng": 88.3,
+      "km": 1566.2
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 5,
+      "place_key": "peb55f3538ce9",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 80.9,
+      "km": 1177.5
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "pe6e6133a72df",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Food & drink",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 678.6
+     },
+     {
+      "day": "2026-02-01",
+      "rating": 5,
+      "place_key": "p860b583e373b",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 10.0,
+      "lng": 76.2,
+      "km": 977.1
+     },
+     {
+      "day": "2026-02-22",
+      "rating": 5,
+      "place_key": "pd554e61058f5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-03-22",
+      "rating": 5,
+      "place_key": "p7f951c4224c5",
+      "this": false,
+      "area": "Kolkata",
+      "type_group": "Education",
+      "lat": 22.5,
+      "lng": 88.3,
+      "km": 1563.5
+     },
+     {
+      "day": "2026-04-12",
+      "rating": 5,
+      "place_key": "pd67b9b550f84",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Home & moving services",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 1168.9
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 5,
+      "place_key": "p334b8a86e31d",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 9.9,
+      "lng": 76.3,
+      "km": 990.6
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "p1fb0313f7c06",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u03df342534c8": {
+    "total_reviews": 3,
+    "visible": 10,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2025-06-15",
+      "rating": 4,
+      "place_key": "p6a879511a378",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 5,
+      "place_key": "p3ae828bc936c",
+      "this": false,
+      "area": "Mumbai",
+      "type_group": "Beauty & wellness",
+      "lat": 19.1,
+      "lng": 72.8,
+      "km": 133.6
+     },
+     {
+      "day": "2026-02-01",
+      "rating": 5,
+      "place_key": "p860b583e373b",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 10.0,
+      "lng": 76.2,
+      "km": 977.1
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "pf70fe7c61769",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Food & drink",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 678.6
+     },
+     {
+      "day": "2026-02-22",
+      "rating": 5,
+      "place_key": "pd554e61058f5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-03-22",
+      "rating": 5,
+      "place_key": "p7f951c4224c5",
+      "this": false,
+      "area": "Kolkata",
+      "type_group": "Education",
+      "lat": 22.5,
+      "lng": 88.3,
+      "km": 1563.5
+     },
+     {
+      "day": "2026-04-12",
+      "rating": 5,
+      "place_key": "pd67b9b550f84",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Home & moving services",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 1168.9
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 5,
+      "place_key": "p334b8a86e31d",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 9.9,
+      "lng": 76.3,
+      "km": 990.6
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "p1fb0313f7c06",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u26defa777f22": {
+    "total_reviews": 4,
+    "visible": 10,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2024-10-18",
+      "rating": 5,
+      "place_key": "p0891f67c3527",
+      "this": false,
+      "area": "Chennai",
+      "type_group": "Food & drink",
+      "lat": 13.1,
+      "lng": 80.2,
+      "km": 902.5
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 5,
+      "place_key": "p30fded9ae6fe",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 5,
+      "place_key": "pe238fbaa9463",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Food & drink",
+      "lat": 9.9,
+      "lng": 76.2,
+      "km": 987.8
+     },
+     {
+      "day": "2026-02-01",
+      "rating": 5,
+      "place_key": "p860b583e373b",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 10.0,
+      "lng": 76.2,
+      "km": 977.1
+     },
+     {
+      "day": "2026-02-22",
+      "rating": 5,
+      "place_key": "pd554e61058f5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-03-22",
+      "rating": 5,
+      "place_key": "p7f951c4224c5",
+      "this": false,
+      "area": "Kolkata",
+      "type_group": "Education",
+      "lat": 22.5,
+      "lng": 88.3,
+      "km": 1563.5
+     },
+     {
+      "day": "2026-04-12",
+      "rating": 5,
+      "place_key": "pd67b9b550f84",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Home & moving services",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 1168.9
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 5,
+      "place_key": "p334b8a86e31d",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 9.9,
+      "lng": 76.3,
+      "km": 990.6
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "p1fb0313f7c06",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "ud60d4221ffac": {
+    "total_reviews": 4,
+    "visible": 10,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2025-09-13",
+      "rating": 4,
+      "place_key": "p5b6198904028",
+      "this": false,
+      "area": "Goa",
+      "type_group": "Food & drink",
+      "lat": 15.5,
+      "lng": 73.8,
+      "km": 333.8
+     },
+     {
+      "day": "2026-02-01",
+      "rating": 5,
+      "place_key": "p860b583e373b",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 10.0,
+      "lng": 76.2,
+      "km": 977.1
+     },
+     {
+      "day": "2026-02-22",
+      "rating": 5,
+      "place_key": "pd554e61058f5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-03-22",
+      "rating": 5,
+      "place_key": "p7f951c4224c5",
+      "this": false,
+      "area": "Kolkata",
+      "type_group": "Education",
+      "lat": 22.5,
+      "lng": 88.3,
+      "km": 1563.5
+     },
+     {
+      "day": "2026-04-12",
+      "rating": 5,
+      "place_key": "pd67b9b550f84",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Home & moving services",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 1168.9
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 5,
+      "place_key": "p334b8a86e31d",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 9.9,
+      "lng": 76.3,
+      "km": 990.6
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 4,
+      "place_key": "p13c070a1c3b5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 4,
+      "place_key": "pfe47f8d71f55",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Beauty & wellness",
+      "lat": 9.9,
+      "lng": 76.2,
+      "km": 987.8
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "p1fb0313f7c06",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u270ceb746eb8": {
+    "total_reviews": 3,
+    "visible": 10,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2025-07-15",
+      "rating": 5,
+      "place_key": "pd4902d7e81ce",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 81.0,
+      "km": 1183.8
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 5,
+      "place_key": "p6e831da03cf5",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 678.6
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 4,
+      "place_key": "p4f0399773366",
+      "this": false,
+      "area": "Mumbai",
+      "type_group": "Food & drink",
+      "lat": 19.0,
+      "lng": 72.8,
+      "km": 128.5
+     },
+     {
+      "day": "2026-02-01",
+      "rating": 5,
+      "place_key": "p860b583e373b",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 10.0,
+      "lng": 76.2,
+      "km": 977.1
+     },
+     {
+      "day": "2026-02-22",
+      "rating": 5,
+      "place_key": "pd554e61058f5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-03-22",
+      "rating": 5,
+      "place_key": "p7f951c4224c5",
+      "this": false,
+      "area": "Kolkata",
+      "type_group": "Education",
+      "lat": 22.5,
+      "lng": 88.3,
+      "km": 1563.5
+     },
+     {
+      "day": "2026-04-12",
+      "rating": 5,
+      "place_key": "pd67b9b550f84",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Home & moving services",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 1168.9
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 5,
+      "place_key": "p334b8a86e31d",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 9.9,
+      "lng": 76.3,
+      "km": 990.6
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "p1fb0313f7c06",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "uc41598bb963a": {
+    "total_reviews": 39,
+    "visible": 27,
+    "home_area": "Pune",
+    "items": [
+     {
+      "day": "2024-07-20",
+      "rating": 3,
+      "place_key": "pc8c99e6f1aa3",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-08-19",
+      "rating": 4,
+      "place_key": "pfa08af933e98",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-08-19",
+      "rating": 5,
+      "place_key": "p839dc4e4ab73",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2024-08-19",
+      "rating": 3,
+      "place_key": "p00cf4ee96d8a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 2,
+      "place_key": "p62bc1f440376",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 3,
+      "place_key": "pb98f7e8d476e",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 4,
+      "place_key": "p934ecd0d0f90",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 5,
+      "place_key": "p8731dda82d60",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 3,
+      "place_key": "pfcc9fd0bf04c",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 5,
+      "place_key": "pe0d35fa106ef",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 5,
+      "place_key": "pd4d135e1d3fb",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 5,
+      "place_key": "p916de010086d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 5,
+      "place_key": "pa783d05dd7d8",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 2,
+      "place_key": "pf23e64155b3e",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 3,
+      "place_key": "pc15d33f6df5c",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "pc8e8888c8851",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 3,
+      "place_key": "p319f49520568",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 5,
+      "place_key": "p933619b74dd2",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 5,
+      "place_key": "pfbadcd9916bd",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 4,
+      "place_key": "p68c14bb0477d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 3,
+      "place_key": "pb246ac9601d4",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 2,
+      "place_key": "p2727e75d4862",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 3,
+      "place_key": "p977024926ec4",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "pa43e0d23b6e9",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2026-03-01",
+      "rating": 2,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 5,
+      "place_key": "p1f4f55aef746",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 5,
+      "place_key": "pf7e4a82e50de",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u9d1548155368": {
+    "total_reviews": 79,
+    "visible": 12,
+    "home_area": "Pune",
+    "items": [
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "p1c25b4b10914",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "pf9aecfe6ab1d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 2,
+      "place_key": "p41a020186c36",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 2,
+      "place_key": "pac3cce6da1ab",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 3,
+      "place_key": "p3cdc651257e3",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "pdab732915375",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 2,
+      "place_key": "pbe9281f09463",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 5,
+      "place_key": "p050b8b0cd0dc",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 4,
+      "place_key": "p5bdf4f795384",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 4,
+      "place_key": "p40daa579358b",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 2,
+      "place_key": "pfbbb97a9ea27",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u0e56b396e1b5": {
+    "total_reviews": 4,
+    "visible": 10,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2024-10-18",
+      "rating": 4,
+      "place_key": "pab4ef9b17b1a",
+      "this": false,
+      "area": "Goa",
+      "type_group": "Retail",
+      "lat": 15.6,
+      "lng": 73.8,
+      "km": 322.6
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "p35058255cf79",
+      "this": false,
+      "area": "Indore",
+      "type_group": "Health",
+      "lat": 22.7,
+      "lng": 75.9,
+      "km": 511.3
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 4,
+      "place_key": "pdf1002a440fa",
+      "this": false,
+      "area": "Chennai",
+      "type_group": "Health",
+      "lat": 13.1,
+      "lng": 80.3,
+      "km": 910.5
+     },
+     {
+      "day": "2026-02-01",
+      "rating": 5,
+      "place_key": "p860b583e373b",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 10.0,
+      "lng": 76.2,
+      "km": 977.1
+     },
+     {
+      "day": "2026-02-22",
+      "rating": 5,
+      "place_key": "pd554e61058f5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-03-22",
+      "rating": 5,
+      "place_key": "p7f951c4224c5",
+      "this": false,
+      "area": "Kolkata",
+      "type_group": "Education",
+      "lat": 22.5,
+      "lng": 88.3,
+      "km": 1563.5
+     },
+     {
+      "day": "2026-04-12",
+      "rating": 5,
+      "place_key": "pd67b9b550f84",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Home & moving services",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 1168.9
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 5,
+      "place_key": "p334b8a86e31d",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 9.9,
+      "lng": 76.3,
+      "km": 990.6
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "p1fb0313f7c06",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u4b420ab98c9c": {
+    "total_reviews": 3,
+    "visible": 10,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2025-01-16",
+      "rating": 4,
+      "place_key": "pdbf363dd1719",
+      "this": false,
+      "area": "Indore",
+      "type_group": "Food & drink",
+      "lat": 22.7,
+      "lng": 75.9,
+      "km": 511.3
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 4,
+      "place_key": "pf04ddabdffd9",
+      "this": false,
+      "area": "Bengaluru",
+      "type_group": "Retail",
+      "lat": 13.0,
+      "lng": 77.5,
+      "km": 722.7
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 5,
+      "place_key": "p227bcc1e5ca1",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-02-01",
+      "rating": 5,
+      "place_key": "p860b583e373b",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 10.0,
+      "lng": 76.2,
+      "km": 977.1
+     },
+     {
+      "day": "2026-02-22",
+      "rating": 5,
+      "place_key": "pd554e61058f5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-03-22",
+      "rating": 5,
+      "place_key": "p7f951c4224c5",
+      "this": false,
+      "area": "Kolkata",
+      "type_group": "Education",
+      "lat": 22.5,
+      "lng": 88.3,
+      "km": 1563.5
+     },
+     {
+      "day": "2026-04-12",
+      "rating": 5,
+      "place_key": "pd67b9b550f84",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Home & moving services",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 1168.9
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 5,
+      "place_key": "p334b8a86e31d",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 9.9,
+      "lng": 76.3,
+      "km": 990.6
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "p1fb0313f7c06",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u6be1c05d2d9f": {
+    "total_reviews": 5,
+    "visible": 10,
+    "home_area": "Nagpur",
+    "items": [
+     {
+      "day": "2024-09-18",
+      "rating": 5,
+      "place_key": "p913a8084925d",
+      "this": false,
+      "area": "Nagpur",
+      "type_group": "Beauty & wellness",
+      "lat": 21.1,
+      "lng": 79.1,
+      "km": 616.0
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 4,
+      "place_key": "p7a5c8dd4b4fb",
+      "this": false,
+      "area": "Nagpur",
+      "type_group": "Food & drink",
+      "lat": 21.2,
+      "lng": 79.0,
+      "km": 612.0
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 4,
+      "place_key": "pd934282a9333",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-02-01",
+      "rating": 5,
+      "place_key": "p860b583e373b",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 10.0,
+      "lng": 76.2,
+      "km": 977.1
+     },
+     {
+      "day": "2026-02-22",
+      "rating": 5,
+      "place_key": "pd554e61058f5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-03-22",
+      "rating": 5,
+      "place_key": "p7f951c4224c5",
+      "this": false,
+      "area": "Kolkata",
+      "type_group": "Education",
+      "lat": 22.5,
+      "lng": 88.3,
+      "km": 1563.5
+     },
+     {
+      "day": "2026-04-12",
+      "rating": 5,
+      "place_key": "pd67b9b550f84",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Home & moving services",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 1168.9
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 5,
+      "place_key": "p334b8a86e31d",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 9.9,
+      "lng": 76.3,
+      "km": 990.6
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "p1fb0313f7c06",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u1150c93936f3": {
+    "total_reviews": 6,
+    "visible": 10,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2024-11-17",
+      "rating": 4,
+      "place_key": "p1f57d6b4ef2a",
+      "this": false,
+      "area": "Jodhpur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.2,
+      "lng": 73.0,
+      "km": 861.2
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 5,
+      "place_key": "p7245e1196562",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 80.9,
+      "km": 1177.5
+     },
+     {
+      "day": "2026-02-01",
+      "rating": 5,
+      "place_key": "p860b583e373b",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 10.0,
+      "lng": 76.2,
+      "km": 977.1
+     },
+     {
+      "day": "2026-02-22",
+      "rating": 5,
+      "place_key": "pd554e61058f5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 4,
+      "place_key": "p7903fd81a5ec",
+      "this": false,
+      "area": "Goa",
+      "type_group": "Food & drink",
+      "lat": 15.4,
+      "lng": 73.9,
+      "km": 344.7
+     },
+     {
+      "day": "2026-03-22",
+      "rating": 5,
+      "place_key": "p7f951c4224c5",
+      "this": false,
+      "area": "Kolkata",
+      "type_group": "Education",
+      "lat": 22.5,
+      "lng": 88.3,
+      "km": 1563.5
+     },
+     {
+      "day": "2026-04-12",
+      "rating": 5,
+      "place_key": "pd67b9b550f84",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Home & moving services",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 1168.9
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 5,
+      "place_key": "p334b8a86e31d",
+      "this": false,
+      "area": "Kochi",
+      "type_group": "Health",
+      "lat": 9.9,
+      "lng": 76.3,
+      "km": 990.6
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "p1fb0313f7c06",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 952.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u4eb65ae7ef18": {
+    "total_reviews": 22,
+    "visible": 28,
+    "home_area": "Pune",
+    "items": [
+     {
+      "day": "2024-09-18",
+      "rating": 2,
+      "place_key": "p4b9d03e6dade",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 4,
+      "place_key": "pf671be2c3fc3",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 5,
+      "place_key": "pcafa9c526336",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 5,
+      "place_key": "pc6631e2ff76f",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 5,
+      "place_key": "pea61aae66da3",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 2,
+      "place_key": "pacaff7f006b2",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 3,
+      "place_key": "p0f60a1568ddb",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 3,
+      "place_key": "p61f37abfb355",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 2,
+      "place_key": "pe3093a803c85",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 2,
+      "place_key": "pa8cc3975b0fa",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 2,
+      "place_key": "p4632044e47b7",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 2,
+      "place_key": "p5583e5665879",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 4,
+      "place_key": "p7a31cdf21c5b",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 5,
+      "place_key": "pffe727a9f81e",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 5,
+      "place_key": "p06f2ac0302bd",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 5,
+      "place_key": "p5c4b46d5a12b",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 4,
+      "place_key": "pad5f870dcce9",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 4,
+      "place_key": "pb4d08f92744a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 4,
+      "place_key": "pa33c47b4547d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 5,
+      "place_key": "p3f55fa814337",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 4,
+      "place_key": "pbd88bb6cfd01",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 4,
+      "place_key": "p07db817b0cd5",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "pcfbaedea0392",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 3,
+      "place_key": "pdb0743d30e13",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "peb5c5f545d64",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 4,
+      "place_key": "p189c1be389b3",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 3,
+      "place_key": "pc61859a6b2c7",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "ue2c4e0f2e685": {
+    "total_reviews": 85,
+    "visible": 18,
+    "home_area": "Pune",
+    "items": [
+     {
+      "day": "2024-08-19",
+      "rating": 4,
+      "place_key": "pbad71191b10b",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2024-08-19",
+      "rating": 5,
+      "place_key": "p34528851707d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 5,
+      "place_key": "p0c040cf37d69",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 5,
+      "place_key": "p3584a1a75ebe",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 4,
+      "place_key": "pf57da3ca8f98",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 3,
+      "place_key": "pf6444f33212f",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 5,
+      "place_key": "pad01c8ff9d34",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 3,
+      "place_key": "pc274f0c51d17",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 5,
+      "place_key": "pcc7f6263d81a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 4,
+      "place_key": "p36b63b6760e6",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 2,
+      "place_key": "p7f079ed5ca61",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 5,
+      "place_key": "p951e90ae5daf",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 4,
+      "place_key": "p3ad97a764c9f",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 5,
+      "place_key": "pf4c5547b0bd5",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 4,
+      "place_key": "p2bf04cfb9805",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 4,
+      "place_key": "p71674c6ba674",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 4,
+      "place_key": "pa1e2f85ca8d2",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 3,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u6d96670f2122": {
+    "total_reviews": 36,
+    "visible": 12,
+    "home_area": "Pune",
+    "items": [
+     {
+      "day": "2024-07-20",
+      "rating": 5,
+      "place_key": "p66e34e331696",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2024-07-20",
+      "rating": 4,
+      "place_key": "p7a99f99d0974",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2024-08-19",
+      "rating": 3,
+      "place_key": "pdd0eba742382",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 3,
+      "place_key": "p77cff370f769",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 5,
+      "place_key": "p3e22a76a38ee",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 3,
+      "place_key": "p7d292eb63f98",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 4,
+      "place_key": "p561007d393b8",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 5,
+      "place_key": "pc62a5cb3a132",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 2,
+      "place_key": "pb4a46d969636",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 4,
+      "place_key": "pf88c788ae215",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "pd86a809841be",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 3,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u837b7beeeb20": {
+    "total_reviews": 81,
+    "visible": 25,
+    "home_area": "Pune",
+    "items": [
+     {
+      "day": "2024-10-18",
+      "rating": 4,
+      "place_key": "pedf8e927480a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 5,
+      "place_key": "p76b696bad760",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 3,
+      "place_key": "pf8f45b1cacbf",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 2,
+      "place_key": "p02dd11608e77",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 4,
+      "place_key": "p394182691bbe",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 5,
+      "place_key": "p64d80f5e8b8d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 4,
+      "place_key": "pac51b9b428e8",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 3,
+      "place_key": "pa2d99caf4d64",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 5,
+      "place_key": "p7db69764a6fe",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 3,
+      "place_key": "p777565e5f02c",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 3,
+      "place_key": "p222e25f253cc",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 5,
+      "place_key": "p64317e52da93",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 3,
+      "place_key": "p14007089b2d4",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 5,
+      "place_key": "p2e99a58078a9",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 5,
+      "place_key": "pa58aa88cabc6",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 4,
+      "place_key": "p0028d094166f",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 2,
+      "place_key": "p999a4d6e4da6",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 3,
+      "place_key": "pbd2c253f8c5c",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 4,
+      "place_key": "pa79f557f8eda",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 5,
+      "place_key": "p28d5a9abc95a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 4,
+      "place_key": "p0a41dabe624a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 3,
+      "place_key": "p02e2ab119b0c",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 2,
+      "place_key": "pae2b7ad8a4de",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 2,
+      "place_key": "pcec06d50117b",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-06-14",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u3b4aaa517351": {
+    "total_reviews": 39,
+    "visible": 30,
+    "home_area": "Pune",
+    "items": [
+     {
+      "day": "2024-08-19",
+      "rating": 5,
+      "place_key": "pf53476ee753f",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-08-19",
+      "rating": 2,
+      "place_key": "pba4590b3fc1a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 2,
+      "place_key": "p5cc901d5577a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 3,
+      "place_key": "pa3e1eeccdbee",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 3,
+      "place_key": "pd806f32ad2eb",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 2,
+      "place_key": "pb0c81c2b9f5a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 2,
+      "place_key": "pf75837843831",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 5,
+      "place_key": "pb8450bb3797b",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 3,
+      "place_key": "p458901ff6db3",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 4,
+      "place_key": "pfbc37fe8e2a0",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 3,
+      "place_key": "p32ad67b1ef9a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 4,
+      "place_key": "p211a8df0123b",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 5,
+      "place_key": "p9fc19b66c8aa",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 2,
+      "place_key": "paafad85ead70",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 4,
+      "place_key": "p14bc576ee903",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 5,
+      "place_key": "p29c40070e5cb",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 3,
+      "place_key": "p8085a6bad981",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 5,
+      "place_key": "p14738125c362",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 4,
+      "place_key": "p89d09f70800a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 2,
+      "place_key": "p8764881f3007",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 3,
+      "place_key": "pe989bb60b28d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 5,
+      "place_key": "p93d24473a9e6",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 5,
+      "place_key": "p552b0bedd50a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 4,
+      "place_key": "p5d6ba989ac49",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 4,
+      "place_key": "pff092233f77b",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 2,
+      "place_key": "p54c4189014c0",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 2,
+      "place_key": "p666e9c8e48e1",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "pa0de41ff39fa",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 4,
+      "place_key": "p48ebf3f91045",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-06-14",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u0cf9b91b9e66": {
+    "total_reviews": 57,
+    "visible": 20,
+    "home_area": "Pune",
+    "items": [
+     {
+      "day": "2024-08-19",
+      "rating": 4,
+      "place_key": "p2ba942b6fd7c",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 5,
+      "place_key": "pb708ead7f41d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "pf4dd380957a8",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 4,
+      "place_key": "pa6ecfdb41438",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 3,
+      "place_key": "p8c236c241940",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 5,
+      "place_key": "p00f086037e50",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 2,
+      "place_key": "p3190db842184",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 2,
+      "place_key": "p54057d67490b",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 4,
+      "place_key": "pcd763ececa95",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 4,
+      "place_key": "p43229015b72e",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 4,
+      "place_key": "p9355a9069ac8",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 5,
+      "place_key": "p77689e1a6cee",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 4,
+      "place_key": "pa83b0b674d13",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 4,
+      "place_key": "p452686426820",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 4,
+      "place_key": "p36140df13138",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "pce328b93b791",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 4,
+      "place_key": "p56d7e81e5c8c",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 2,
+      "place_key": "p6a6c9f3a25b1",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 4,
+      "place_key": "p556a3f2f2636",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-06-14",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u75b7fb45f0e4": {
+    "total_reviews": 76,
+    "visible": 26,
+    "home_area": "Pune",
+    "items": [
+     {
+      "day": "2024-09-18",
+      "rating": 3,
+      "place_key": "p3bcdc5fbc828",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 4,
+      "place_key": "p20e375d7574f",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 4,
+      "place_key": "pc579679ce940",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 3,
+      "place_key": "p39da0e6eafe1",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 2,
+      "place_key": "pf2c80ea13e40",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 4,
+      "place_key": "pab895cc417eb",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 3,
+      "place_key": "p94372645ac2d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 3,
+      "place_key": "p689d5f777188",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 5,
+      "place_key": "p47ed6c51f547",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 3,
+      "place_key": "p75ba20d79fb5",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "p353c778c8248",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 3,
+      "place_key": "p9f421cb1196d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "pf8be7522cf3b",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 3,
+      "place_key": "p7f2d1c5d4df6",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 5,
+      "place_key": "pfc493949d396",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 3,
+      "place_key": "pb90897c5b1f4",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 2,
+      "place_key": "p5c907130e55c",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 5,
+      "place_key": "pf3dc6c5e99f1",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 5,
+      "place_key": "p78ed6c93cc98",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "p6d5ec2543afb",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 2,
+      "place_key": "p0a13fd90e455",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 2,
+      "place_key": "p801e5bc66118",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 4,
+      "place_key": "p0341e66a4070",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 2,
+      "place_key": "p4d8a9d0a86d5",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 4,
+      "place_key": "p238e1520d2cc",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-06-14",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "ucaee0c409c32": {
+    "total_reviews": 43,
+    "visible": 23,
+    "home_area": "Pune",
+    "items": [
+     {
+      "day": "2024-10-18",
+      "rating": 5,
+      "place_key": "pb98a5be15c35",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "p8a35a4045f25",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.4,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "pc98f51419580",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 3,
+      "place_key": "p7b35dbdca4b3",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 5,
+      "place_key": "p4cd967d872a8",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 4,
+      "place_key": "pb3dea9ff000d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 2,
+      "place_key": "p07aee105e75e",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 4,
+      "place_key": "p0deb4b174619",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 3,
+      "place_key": "p44de419609f9",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 4,
+      "place_key": "p22c9ba5b34e4",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 4,
+      "place_key": "pdd41d778d35c",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "p1ea07ff6602d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 2,
+      "place_key": "p05b120c4f895",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 5,
+      "place_key": "pfd5fc31b2be0",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 5,
+      "place_key": "p3a62884fbe1c",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 3,
+      "place_key": "p79a935468de0",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 2,
+      "place_key": "pe73b9faadec7",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "pdce477decbcd",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "pfcf8f69f5943",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 4,
+      "place_key": "pcb5376304978",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 2,
+      "place_key": "p3ca9123c89ae",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "p2edb54fde472",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-06-14",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u2cc9a2aa1b38": {
+    "total_reviews": 111,
+    "visible": 21,
+    "home_area": "Pune",
+    "items": [
+     {
+      "day": "2024-11-17",
+      "rating": 4,
+      "place_key": "peacd34f6da27",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 2,
+      "place_key": "p853c60ffb27a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "pa454929b57c0",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "p0e7f019674bc",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 5,
+      "place_key": "pb0cacff419c8",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 5,
+      "place_key": "pf4e285dd859e",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 4,
+      "place_key": "p4475d67cf090",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "p63665c61af8d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "p29f622ff4e92",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 4,
+      "place_key": "pab0b541e0b96",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 5,
+      "place_key": "pe58ccdd6f041",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 4,
+      "place_key": "pf9754e9395b7",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 5,
+      "place_key": "pbcc937e42be5",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 4,
+      "place_key": "p4e5261a4cd98",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 4,
+      "place_key": "p2e8411b055bd",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 3,
+      "place_key": "p3c4473941ab2",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 4,
+      "place_key": "pc96448cef5f5",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "pc2f0f3743ed3",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "pb179181a89d8",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 4,
+      "place_key": "p352db8c97706",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 3,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u4a68b7ddabb4": {
+    "total_reviews": 54,
+    "visible": 19,
+    "home_area": "Pune",
+    "items": [
+     {
+      "day": "2024-08-19",
+      "rating": 3,
+      "place_key": "p56361e9d70fb",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 4,
+      "place_key": "p43bd1f33ad58",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 4,
+      "place_key": "padf7c28ed3b3",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "pc40f48e18821",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "p528a86e0e581",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 5,
+      "place_key": "p130ee082f67a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 5,
+      "place_key": "p3d7647bf58e1",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 4,
+      "place_key": "pc61143dbe7e9",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 5,
+      "place_key": "p9918cbce3529",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 5,
+      "place_key": "p07d8788a2a98",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 2,
+      "place_key": "p875bff6065eb",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 4,
+      "place_key": "p1336f25c6b97",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 2,
+      "place_key": "p3d67d0a1784d",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 2,
+      "place_key": "p52c7f21e8a10",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 2,
+      "place_key": "p8a017adb9ed1",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 3,
+      "place_key": "p703b33171e77",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "p3482e346b77f",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 2,
+      "place_key": "p7408bc29fc6b",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-31",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "udff1d6786da4": {
+    "total_reviews": 27,
+    "visible": 11,
+    "home_area": "Pune",
+    "items": [
+     {
+      "day": "2024-08-19",
+      "rating": 4,
+      "place_key": "p3b29314c4a7a",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 4,
+      "place_key": "p8b11029e1fb4",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 2,
+      "place_key": "pc8de66529145",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "p486730a0473f",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 2,
+      "place_key": "p697044ce9522",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 5,
+      "place_key": "pcea3480e6233",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 4,
+      "place_key": "p995791d53436",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Beauty & wellness",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 2,
+      "place_key": "p27eb219c1a25",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 4,
+      "place_key": "pce187b10ae7f",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Retail",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 2,
+      "place_key": "p5a6f17eb3146",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-31",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Health",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   }
+  },
   "graph": {
    "nodes": [
     {
@@ -18577,7 +23066,8 @@
     "short": false,
     "reviewer_reviews": 81,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rf93822ed1b60",
@@ -18595,7 +23085,8 @@
     "short": false,
     "reviewer_reviews": 39,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r8c4d5a848a73",
@@ -18613,7 +23104,8 @@
     "short": false,
     "reviewer_reviews": 44,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r6f68f81d5202",
@@ -18631,7 +23123,8 @@
     "short": false,
     "reviewer_reviews": 57,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r4c0bead0fedc",
@@ -18649,7 +23142,8 @@
     "short": false,
     "reviewer_reviews": 76,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r154975ebf727",
@@ -18667,7 +23161,8 @@
     "short": false,
     "reviewer_reviews": 27,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rbb941acdca43",
@@ -18685,7 +23180,8 @@
     "short": false,
     "reviewer_reviews": 43,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r8de15bb173e5",
@@ -18705,7 +23201,8 @@
     "short": false,
     "reviewer_reviews": 85,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "re8189bd1baf7",
@@ -18727,7 +23224,8 @@
     "short": false,
     "reviewer_reviews": 4,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "re8b4f8e20a91",
@@ -18750,7 +23248,8 @@
     "short": false,
     "reviewer_reviews": 5,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r9ba857506325",
@@ -18772,7 +23271,8 @@
     "short": false,
     "reviewer_reviews": 3,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r0948e7827066",
@@ -18794,7 +23294,8 @@
     "short": false,
     "reviewer_reviews": 3,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r876489175404",
@@ -18815,7 +23316,8 @@
     "short": false,
     "reviewer_reviews": 6,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r774af62c1a72",
@@ -18835,7 +23337,8 @@
     "short": false,
     "reviewer_reviews": 22,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rcd4e2ad3aea0",
@@ -18857,7 +23360,8 @@
     "short": false,
     "reviewer_reviews": 3,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r41db9530bc71",
@@ -18880,7 +23384,8 @@
     "short": false,
     "reviewer_reviews": 4,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "ra66e456bfc6a",
@@ -18902,7 +23407,8 @@
     "short": false,
     "reviewer_reviews": 4,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r8f01b9b0fb81",
@@ -18924,7 +23430,8 @@
     "short": false,
     "reviewer_reviews": 3,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "ra144f5189c9d",
@@ -18946,7 +23453,8 @@
     "short": false,
     "reviewer_reviews": 4,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r71d22fb61e51",
@@ -18968,7 +23476,8 @@
     "short": false,
     "reviewer_reviews": 3,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rf1ea46c23f99",
@@ -18988,7 +23497,8 @@
     "short": false,
     "reviewer_reviews": 36,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r66bd4606aaaf",
@@ -19010,7 +23520,8 @@
     "short": false,
     "reviewer_reviews": 5,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r26c7840f49bb",
@@ -19028,7 +23539,8 @@
     "short": false,
     "reviewer_reviews": 111,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r90335b1b76fb",
@@ -19046,7 +23558,8 @@
     "short": false,
     "reviewer_reviews": 80,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "ra050c4de6ea7",
@@ -19064,7 +23577,8 @@
     "short": false,
     "reviewer_reviews": 54,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rbd1a2e63e574",
@@ -19082,7 +23596,8 @@
     "short": false,
     "reviewer_reviews": 50,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rd1eeecb16e50",
@@ -19100,7 +23615,8 @@
     "short": false,
     "reviewer_reviews": 110,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r1dbeaa178246",
@@ -19118,7 +23634,8 @@
     "short": false,
     "reviewer_reviews": 54,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r4fd94eca5a40",
@@ -19136,7 +23653,8 @@
     "short": false,
     "reviewer_reviews": 27,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "re38c1a6b4fb5",
@@ -19154,7 +23672,8 @@
     "short": false,
     "reviewer_reviews": 111,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r1edff241f2d9",
@@ -19172,7 +23691,8 @@
     "short": false,
     "reviewer_reviews": 92,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rd28b5ed1cfca",
@@ -19190,7 +23710,8 @@
     "short": false,
     "reviewer_reviews": 108,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "ra955593909c6",
@@ -19208,7 +23729,8 @@
     "short": false,
     "reviewer_reviews": 68,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r01a05fc80749",
@@ -19226,7 +23748,8 @@
     "short": false,
     "reviewer_reviews": 98,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r9ca62b9e2b4f",
@@ -19244,7 +23767,8 @@
     "short": false,
     "reviewer_reviews": 96,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r2f96b92c7b5f",
@@ -19262,7 +23786,8 @@
     "short": false,
     "reviewer_reviews": 66,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rddb3d42593f0",
@@ -19280,7 +23805,8 @@
     "short": false,
     "reviewer_reviews": 86,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r1d55e559a765",
@@ -19298,7 +23824,8 @@
     "short": false,
     "reviewer_reviews": 25,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rd646751d5f0f",
@@ -19316,7 +23843,8 @@
     "short": false,
     "reviewer_reviews": 37,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rc4fdf2013e68",
@@ -19334,7 +23862,8 @@
     "short": false,
     "reviewer_reviews": 106,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r9d05c837088c",
@@ -19352,7 +23881,8 @@
     "short": false,
     "reviewer_reviews": 79,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r716b037fba68",
@@ -19370,7 +23900,8 @@
     "short": false,
     "reviewer_reviews": 32,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rf49b141796da",
@@ -19388,7 +23919,8 @@
     "short": false,
     "reviewer_reviews": 114,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r1b987ad65322",
@@ -19406,7 +23938,8 @@
     "short": false,
     "reviewer_reviews": 64,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r59ed08cc754a",
@@ -19424,7 +23957,8 @@
     "short": false,
     "reviewer_reviews": 52,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r3c582e55b060",
@@ -19442,7 +23976,8 @@
     "short": false,
     "reviewer_reviews": 75,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rf29315eda6fe",
@@ -19460,7 +23995,8 @@
     "short": false,
     "reviewer_reviews": 94,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r738004f00d44",
@@ -19478,7 +24014,8 @@
     "short": false,
     "reviewer_reviews": 24,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r8e29eb7bc62c",
@@ -19496,7 +24033,8 @@
     "short": false,
     "reviewer_reviews": 57,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r1806bc907304",
@@ -19514,7 +24052,8 @@
     "short": false,
     "reviewer_reviews": 30,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rec57e3564f22",
@@ -19532,7 +24071,8 @@
     "short": false,
     "reviewer_reviews": 64,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r6660e05d6374",
@@ -19550,7 +24090,8 @@
     "short": false,
     "reviewer_reviews": 26,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rf51d94c04884",
@@ -19568,7 +24109,8 @@
     "short": false,
     "reviewer_reviews": 64,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rb304a038404b",
@@ -19586,7 +24128,8 @@
     "short": false,
     "reviewer_reviews": 90,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r681c866a0c0c",
@@ -19604,7 +24147,8 @@
     "short": false,
     "reviewer_reviews": 96,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r2d7e6f77f7da",
@@ -19622,7 +24166,8 @@
     "short": false,
     "reviewer_reviews": 42,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r81abe8540d42",
@@ -19640,7 +24185,8 @@
     "short": false,
     "reviewer_reviews": 30,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r1e5422332e4b",
@@ -19658,7 +24204,8 @@
     "short": false,
     "reviewer_reviews": 32,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "refa1e286fb0a",
@@ -19676,7 +24223,8 @@
     "short": false,
     "reviewer_reviews": 86,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r43f95aeead98",
@@ -19694,7 +24242,8 @@
     "short": false,
     "reviewer_reviews": 26,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r7c2cd8a85f30",
@@ -19712,7 +24261,8 @@
     "short": false,
     "reviewer_reviews": 56,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r1be3e2c1f40a",
@@ -19730,7 +24280,8 @@
     "short": false,
     "reviewer_reviews": 29,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r730304e8a49d",
@@ -19748,7 +24299,8 @@
     "short": false,
     "reviewer_reviews": 35,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r0a67931353df",
@@ -19766,7 +24318,8 @@
     "short": false,
     "reviewer_reviews": 47,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r57f55fe35e10",
@@ -19784,7 +24337,8 @@
     "short": false,
     "reviewer_reviews": 90,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rb90772b0215c",
@@ -19802,7 +24356,8 @@
     "short": false,
     "reviewer_reviews": 101,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r8c84f847389b",
@@ -19820,7 +24375,8 @@
     "short": false,
     "reviewer_reviews": 15,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r4bd613832727",
@@ -19838,7 +24394,8 @@
     "short": false,
     "reviewer_reviews": 35,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rb9f9ee2fa39c",
@@ -19856,7 +24413,8 @@
     "short": false,
     "reviewer_reviews": 46,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r72f664511d91",
@@ -19874,7 +24432,8 @@
     "short": false,
     "reviewer_reviews": 24,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r8af8bf54802d",
@@ -19892,7 +24451,8 @@
     "short": false,
     "reviewer_reviews": 56,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rfd594a060777",
@@ -19910,7 +24470,8 @@
     "short": false,
     "reviewer_reviews": 69,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r8d8a9a5a0ca5",
@@ -19928,7 +24489,8 @@
     "short": false,
     "reviewer_reviews": 18,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r63dff630dd3b",
@@ -19946,7 +24508,8 @@
     "short": false,
     "reviewer_reviews": 31,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r177ce4163782",
@@ -19964,7 +24527,8 @@
     "short": false,
     "reviewer_reviews": 89,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r699c6d8ee310",
@@ -19982,7 +24546,8 @@
     "short": false,
     "reviewer_reviews": 82,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r92ca4b977850",
@@ -20000,7 +24565,8 @@
     "short": false,
     "reviewer_reviews": 59,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "reff0833863df",
@@ -20018,7 +24584,8 @@
     "short": false,
     "reviewer_reviews": 85,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rb92796001190",
@@ -20036,7 +24603,8 @@
     "short": false,
     "reviewer_reviews": 26,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r00bcd7e21f8b",
@@ -20054,7 +24622,8 @@
     "short": false,
     "reviewer_reviews": 54,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r076202bb730a",
@@ -20072,7 +24641,8 @@
     "short": false,
     "reviewer_reviews": 101,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rdfacbdb4e10a",
@@ -20090,7 +24660,8 @@
     "short": false,
     "reviewer_reviews": 39,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    }
   ],
   "label_counts": {

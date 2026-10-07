@@ -214,6 +214,23 @@ def generated_marker(review: TargetReview) -> str | None:
     return review.generated_marker
 
 
+EXCERPT_CHARS = 240
+
+
+def generated_excerpt(review: TargetReview) -> str | None:
+    """The review's text around its chatbot or placeholder phrase, whitespace-normalized and at most ~240 chars."""
+    marker = generated_marker(review)
+    if not marker or not review.text:
+        return None
+    text = " ".join(review.text.split())
+    if len(text) <= EXCERPT_CHARS:
+        return text
+    at = max(0, text.casefold().find(marker))
+    start = max(0, at - 80)
+    end = min(len(text), start + EXCERPT_CHARS)
+    return ("…" if start else "") + text[start:end].strip() + ("…" if end < len(text) else "")
+
+
 def rating_gap(inp: AnalysisInput) -> dict[str, Any]:
     """Displayed rating vs the newest reviews, and what the rest must average for the display to hold."""
     cfg = config.load_tunables()["rating_gap"]
@@ -263,6 +280,7 @@ def top_rated_sample(inp: AnalysisInput) -> dict[str, Any]:
                     "rating": r.rating,
                     "day": ist_date(r.posted_at).isoformat() if r.posted_at else None,
                     "marker": m,
+                    "excerpt": generated_excerpt(r),
                     "reviewer_reviews": r.reviewer_reviews,
                 }
             )

@@ -161,6 +161,64 @@ class Collector:
         self._update(stage=type_)
         self.on_event(Event(type_, message, self.searches_used(), data))
 
+    def show(self, type_: str, message: str, **data: Any) -> None:
+        """An event for the live view only (no stage change): counts, stars and day offsets, never ids or names."""
+        self.on_event(Event(type_, message, self.searches_used(), data))
+
+    def _show_reviews(self, inp: AnalysisInput) -> None:
+        newest = max((r.posted_at for r in inp.target_reviews if r.posted_at), default=None)
+        self._index = {}
+        for i, r in enumerate(inp.target_reviews):
+            if r.contributor_id and r.contributor_id not in self._index:
+                self._index[r.contributor_id] = i
+        rows = [
+            [r.rating, (newest - r.posted_at).days if newest and r.posted_at else None, r.reviewer_reviews]
+            for r in inp.target_reviews
+        ]
+        self.show(
+            "reviews_loaded",
+            f"Read {len(rows)} reviews",
+            rating=inp.target.rating,
+            total=inp.target.total_reviews,
+            reviews=rows,
+        )
+
+    def _show_history(self, cid: str) -> None:
+        """One reviewer's history, as stars and ages in days, for the live view."""
+        index = getattr(self, "_index", {}).get(cid)
+        cached = self.gw.lookup_cache(catalog.contributor_history(cid))
+        if index is None or cached is None:
+            return
+        contributor, history, places = contributor_history(cached.body, cid, cached.fetched_at, cached.status)
+        today = cached.fetched_at.date()
+        points = []
+        for h in history:
+            if h.date_min is None or h.date_max is None:
+                continue
+            mid = h.date_min + (h.date_max - h.date_min) / 2
+            points.append([(today - mid).days, h.rating])
+        areas = {p.area for p in places if p.area}
+        self.show(
+            "history",
+            f"Opened a reviewer with {contributor.total_reviews or len(history)} reviews",
+            index=index,
+            status=contributor.status,
+            total=contributor.total_reviews,
+            visible=len(history),
+            areas=len(areas),
+            points=points,
+        )
+
+    def _show_picks(self, picks: list[tuple[str, str, int]]) -> None:
+        index = getattr(self, "_index", {})
+        rows = [[index[c], reason, round_] for c, reason, round_ in picks if c in index]
+        self.show("picks", f"Picked {len(rows)} reviewers to open", picks=rows)
+
+    def _show_links(self, pairs) -> None:
+        index = getattr(self, "_index", {})
+        links = sorted({tuple(sorted((index[u], index[v]))) for u, v in pairs if u in index and v in index})
+        self.show("links", f"{len(links)} linked pair{'' if len(links) == 1 else 's'} of reviewers", pairs=links)
+
     def _check_cancel(self) -> None:
         if self.cancel_event.is_set():
             raise Cancelled()
@@ -222,6 +280,9 @@ class Collector:
         self.emit(
             "expanding", f"Round {round_}: {done} of {total} reviewer histories", round=round_, done=done, total=total
         )
+        for cid in contributors:
+            if cid not in todo:
+                self._show_history(cid)
         if not todo:
             return
         stop = threading.Event()
@@ -258,6 +319,7 @@ class Collector:
                     done=done,
                     total=total,
                 )
+                self._show_history(cid)
 
         workers = int(config.tunable("collection", "history_concurrency"))
         with ThreadPoolExecutor(max_workers=workers) as pool:
@@ -323,6 +385,7 @@ class Collector:
         if needs_top_rated(inp):
             self._top_rated(data_id)
             self._check_cancel()
+        self._show_reviews(inp)
         self.emit("scoring", "Scoring reviewers")
         features = compute_text_features(inp)
         bursts = detect_bursts(inp.target_reviews)
@@ -334,6 +397,9 @@ class Collector:
             "baseline": selection.baseline,
             "candidates": len(candidates),
         }
+        self._show_picks(
+            [(c, "priority", 1) for c in selection.round1] + [(c, "baseline", 1) for c in selection.baseline]
+        )
 
         self._expand(round1, 1)
         expansions = [Expansion(c, 1, "priority") for c in selection.round1]
@@ -344,6 +410,7 @@ class Collector:
 
         self.emit("building_graph", "Checking round-1 reviewers for shared places")
         found = edges(build_pairs(inp, round1))
+        self._show_links(found)
         early = not found or self.params.stop_after_round1 or not selection.remaining
         if early:
             saved = min(self.params.k2, len(selection.remaining))
@@ -354,9 +421,11 @@ class Collector:
         else:
             round2 = select_round2(selection, inp.target_reviews, features, self.params.k2)
             self.state["selection"]["round2"] = round2
+            self._show_picks([(c, "priority", 2) for c in round2])
             self._expand(round2, 2)
             expansions += [Expansion(c, 2, "priority") for c in round2]
             inp = build_input(self.gw, data_id, pages, self.params.n, expansions, self.state)
+            self._show_links(edges(build_pairs(inp, [e.contributor_id for e in expansions])))
         self._check_cancel()
         inp.params = self.params.as_dict()
         return Outcome("done", input=inp, early_stop=early, selection=dict(self.state["selection"]))

@@ -5347,7 +5347,7 @@
     "reviews_returned": 5,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u20cbc7dff3a3": {
     "contributor_id": "u20cbc7dff3a3",
@@ -5362,7 +5362,7 @@
     "reviews_returned": 26,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u20e5cd7484ed": {
     "contributor_id": "u20e5cd7484ed",
@@ -5377,7 +5377,7 @@
     "reviews_returned": 22,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u44bcbdad6bc0": {
     "contributor_id": "u44bcbdad6bc0",
@@ -5392,7 +5392,7 @@
     "reviews_returned": 16,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u4623fba07165": {
     "contributor_id": "u4623fba07165",
@@ -5407,7 +5407,7 @@
     "reviews_returned": 5,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u477096694b04": {
     "contributor_id": "u477096694b04",
@@ -5422,7 +5422,7 @@
     "reviews_returned": 21,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u496de7b6ccc3": {
     "contributor_id": "u496de7b6ccc3",
@@ -5437,7 +5437,7 @@
     "reviews_returned": 5,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u4b6ce4ec0b7b": {
     "contributor_id": "u4b6ce4ec0b7b",
@@ -5452,7 +5452,7 @@
     "reviews_returned": 12,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u4b8363703ff2": {
     "contributor_id": "u4b8363703ff2",
@@ -5467,7 +5467,7 @@
     "reviews_returned": 24,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u5199e87c8276": {
     "contributor_id": "u5199e87c8276",
@@ -5482,7 +5482,7 @@
     "reviews_returned": 17,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u526e53d1c3ff": {
     "contributor_id": "u526e53d1c3ff",
@@ -5497,7 +5497,7 @@
     "reviews_returned": 5,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u54fb76234986": {
     "contributor_id": "u54fb76234986",
@@ -5512,7 +5512,7 @@
     "reviews_returned": 22,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u58ccbeaae6c0": {
     "contributor_id": "u58ccbeaae6c0",
@@ -5527,7 +5527,7 @@
     "reviews_returned": 12,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u5fffb4d5814f": {
     "contributor_id": "u5fffb4d5814f",
@@ -5542,7 +5542,7 @@
     "reviews_returned": 14,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u67faf509258b": {
     "contributor_id": "u67faf509258b",
@@ -5557,7 +5557,7 @@
     "reviews_returned": 12,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u8a928a2d836c": {
     "contributor_id": "u8a928a2d836c",
@@ -5572,7 +5572,7 @@
     "reviews_returned": 28,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "u8cdabf4061e8": {
     "contributor_id": "u8cdabf4061e8",
@@ -5587,7 +5587,7 @@
     "reviews_returned": 23,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "ua31cc1a6119f": {
     "contributor_id": "ua31cc1a6119f",
@@ -5602,7 +5602,7 @@
     "reviews_returned": 17,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "uc9aa089c7c28": {
     "contributor_id": "uc9aa089c7c28",
@@ -5617,7 +5617,7 @@
     "reviews_returned": 24,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "uce227d82e6f2": {
     "contributor_id": "uce227d82e6f2",
@@ -5632,7 +5632,7 @@
     "reviews_returned": 5,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "ud17e066ada92": {
     "contributor_id": "ud17e066ada92",
@@ -5647,7 +5647,7 @@
     "reviews_returned": 5,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "ue12a18c35190": {
     "contributor_id": "ue12a18c35190",
@@ -5662,7 +5662,7 @@
     "reviews_returned": 15,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "uef8aad8714ef": {
     "contributor_id": "uef8aad8714ef",
@@ -5677,7 +5677,7 @@
     "reviews_returned": 26,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "ufaa0ccd37683": {
     "contributor_id": "ufaa0ccd37683",
@@ -5692,7 +5692,7 @@
     "reviews_returned": 11,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    },
    "ufdf77f19c733": {
     "contributor_id": "ufdf77f19c733",
@@ -5707,7 +5707,7 @@
     "reviews_returned": 26,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-25T10:21:17+00:00"
+    "fetched_at": "2026-06-25T13:53:01+00:00"
    }
   },
   "histories": {
@@ -11063,7 +11063,7 @@
     "reason": "priority"
    }
   ],
-  "fetched_at": "2026-06-25T10:21:17.197015+00:00",
+  "fetched_at": "2026-06-25T13:53:01.755765+00:00",
   "params": {
    "n": 88,
    "k1": 8,
@@ -15563,6 +15563,4561 @@
     "badges": []
    }
   ],
+  "histories": {
+   "uce227d82e6f2": {
+    "total_reviews": 5,
+    "visible": 5,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "p7d292eb63f98",
+      "this": false,
+      "area": "Jodhpur",
+      "type_group": "Lodging",
+      "lat": 26.2,
+      "lng": 73.0,
+      "km": 289.2
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "p3aba30628e18",
+      "this": false,
+      "area": "Jodhpur",
+      "type_group": "Lodging",
+      "lat": 26.2,
+      "lng": 73.1,
+      "km": 279.6
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 5,
+      "place_key": "p82b571a190d2",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Lodging",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 331.1
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 5,
+      "place_key": "pa150cf7051e7",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Lodging",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 331.1
+     },
+     {
+      "day": "2026-06-14",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u4623fba07165": {
+    "total_reviews": 5,
+    "visible": 5,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "p82b571a190d2",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Lodging",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 331.1
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "p3aba30628e18",
+      "this": false,
+      "area": "Jodhpur",
+      "type_group": "Lodging",
+      "lat": 26.2,
+      "lng": 73.1,
+      "km": 279.6
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 5,
+      "place_key": "pa150cf7051e7",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Lodging",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 331.1
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 5,
+      "place_key": "p7d292eb63f98",
+      "this": false,
+      "area": "Jodhpur",
+      "type_group": "Lodging",
+      "lat": 26.2,
+      "lng": 73.0,
+      "km": 289.2
+     },
+     {
+      "day": "2026-05-31",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u496de7b6ccc3": {
+    "total_reviews": 4,
+    "visible": 5,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "pa150cf7051e7",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Lodging",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 331.1
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "p3aba30628e18",
+      "this": false,
+      "area": "Jodhpur",
+      "type_group": "Lodging",
+      "lat": 26.2,
+      "lng": 73.1,
+      "km": 279.6
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "p7d292eb63f98",
+      "this": false,
+      "area": "Jodhpur",
+      "type_group": "Lodging",
+      "lat": 26.2,
+      "lng": 73.0,
+      "km": 289.2
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "p82b571a190d2",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Lodging",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 331.1
+     },
+     {
+      "day": "2026-05-17",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "ud17e066ada92": {
+    "total_reviews": 4,
+    "visible": 5,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "pa150cf7051e7",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Lodging",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 331.1
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "p7d292eb63f98",
+      "this": false,
+      "area": "Jodhpur",
+      "type_group": "Lodging",
+      "lat": 26.2,
+      "lng": 73.0,
+      "km": 289.2
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "p3aba30628e18",
+      "this": false,
+      "area": "Jodhpur",
+      "type_group": "Lodging",
+      "lat": 26.2,
+      "lng": 73.1,
+      "km": 279.6
+     },
+     {
+      "day": "2026-05-03",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "p82b571a190d2",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Lodging",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 331.1
+     }
+    ]
+   },
+   "u19529cfa42cd": {
+    "total_reviews": 5,
+    "visible": 5,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "pa150cf7051e7",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Lodging",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 331.1
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "p7d292eb63f98",
+      "this": false,
+      "area": "Jodhpur",
+      "type_group": "Lodging",
+      "lat": 26.2,
+      "lng": 73.0,
+      "km": 289.2
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "p82b571a190d2",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Lodging",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 331.1
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "p3aba30628e18",
+      "this": false,
+      "area": "Jodhpur",
+      "type_group": "Lodging",
+      "lat": 26.2,
+      "lng": 73.1,
+      "km": 279.6
+     },
+     {
+      "day": "2026-05-03",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u526e53d1c3ff": {
+    "total_reviews": 8,
+    "visible": 5,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "pa150cf7051e7",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Lodging",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 331.1
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "p7d292eb63f98",
+      "this": false,
+      "area": "Jodhpur",
+      "type_group": "Lodging",
+      "lat": 26.2,
+      "lng": 73.0,
+      "km": 289.2
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "p3aba30628e18",
+      "this": false,
+      "area": "Jodhpur",
+      "type_group": "Lodging",
+      "lat": 26.2,
+      "lng": 73.1,
+      "km": 279.6
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 5,
+      "place_key": "p82b571a190d2",
+      "this": false,
+      "area": "Udaipur",
+      "type_group": "Lodging",
+      "lat": 24.6,
+      "lng": 73.7,
+      "km": 331.1
+     },
+     {
+      "day": "2026-05-24",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u4b8363703ff2": {
+    "total_reviews": 100,
+    "visible": 24,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-08-19",
+      "rating": 4,
+      "place_key": "pdd39969782a4",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 4,
+      "place_key": "p6f29f1400e08",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 5,
+      "place_key": "p12ea76439afc",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 5,
+      "place_key": "pfda70764a02c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 5,
+      "place_key": "pca829b80d02f",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 2,
+      "place_key": "p1683596b0ba5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 2,
+      "place_key": "p89d265206112",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 2,
+      "place_key": "p092b217ade86",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 5,
+      "place_key": "p0e3154ce2ce6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 4,
+      "place_key": "pfb4908fc6743",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.9,
+      "km": 14.9
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 3,
+      "place_key": "paae962869410",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 5,
+      "place_key": "pb1b508af9230",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "p85951c018476",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 4,
+      "place_key": "p0f3d3514b271",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 5,
+      "place_key": "pc9447c1f932a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 2,
+      "place_key": "pf94dcc1e0d86",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 5,
+      "place_key": "pb6d9b7012952",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 4,
+      "place_key": "p1641d5720305",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 5,
+      "place_key": "p23f2c5a368e6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 4,
+      "place_key": "p89defa57431d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 4,
+      "place_key": "pafca4b53d030",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 4,
+      "place_key": "p8016ba96f786",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "p691e6772ff21",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.8,
+      "lng": 75.9,
+      "km": 14.9
+     },
+     {
+      "day": "2026-06-14",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u44bcbdad6bc0": {
+    "total_reviews": 67,
+    "visible": 16,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-08-19",
+      "rating": 2,
+      "place_key": "pf910226c5123",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 5,
+      "place_key": "pcb234f34b80f",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 4,
+      "place_key": "p68bb46a0323f",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 4,
+      "place_key": "p2f4717033815",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 5,
+      "place_key": "pc7da19b07ba7",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 2,
+      "place_key": "pfd799c6a457f",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 4,
+      "place_key": "p6366e7b3e759",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 2,
+      "place_key": "p2e111ef44614",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 2,
+      "place_key": "p21aa3cab74e2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 5,
+      "place_key": "p2ef326cc51c6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.9,
+      "km": 14.9
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 5,
+      "place_key": "pd1207330f94e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 3,
+      "place_key": "pa91c4643775d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "pe95681b68196",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "pd9c9ce0241f2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.8,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 4,
+      "place_key": "p3bd43c5b1d02",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "ue12a18c35190": {
+    "total_reviews": 71,
+    "visible": 15,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "pf009fe467c2f",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 2,
+      "place_key": "p42f995081729",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 3,
+      "place_key": "p24217c983893",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 4,
+      "place_key": "p165eb77f064e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.8,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 4,
+      "place_key": "p925aed586330",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 4,
+      "place_key": "p8e5ce27580b0",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 5,
+      "place_key": "pe5c741e5ed38",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 2,
+      "place_key": "pfc04b6d5a067",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.8,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "p99ce1efd6038",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "p4e8ec689ed2c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 2,
+      "place_key": "p956007383ea2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 5,
+      "place_key": "pde1d34a604ce",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-03-22",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 3,
+      "place_key": "p6d66e86ddea2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 3,
+      "place_key": "p0018e336b853",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u54fb76234986": {
+    "total_reviews": 90,
+    "visible": 22,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-07-20",
+      "rating": 4,
+      "place_key": "p112feab7ce67",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-08-19",
+      "rating": 2,
+      "place_key": "p487801a5d1d0",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-08-19",
+      "rating": 5,
+      "place_key": "pf6767d280431",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 5,
+      "place_key": "p7bce140960b2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "p88a970ac5e3c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 3,
+      "place_key": "p3ced6a9d2d30",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 5,
+      "place_key": "pe0e92f645d8e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 5,
+      "place_key": "pbdf321a80475",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 5,
+      "place_key": "p581f33511385",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "p8fd428501765",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 4,
+      "place_key": "pd2909848525a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 4,
+      "place_key": "pd56dfea7fd58",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 5,
+      "place_key": "pbba76ce9d2a2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 5,
+      "place_key": "p9e920cf68dcf",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 5,
+      "place_key": "p8b05b06d2200",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 4,
+      "place_key": "pf2caf2a7706a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 4,
+      "place_key": "p93ca4cebb1c2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "p5ceb9115d6a5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 5,
+      "place_key": "p54c39d046a8e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-05",
+      "rating": 3,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 4,
+      "place_key": "pba263997fb44",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 4,
+      "place_key": "pd43e28b50dc6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "ufdf77f19c733": {
+    "total_reviews": 40,
+    "visible": 26,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-07-20",
+      "rating": 5,
+      "place_key": "p65d0fb8c3199",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.9,
+      "km": 14.9
+     },
+     {
+      "day": "2024-08-19",
+      "rating": 5,
+      "place_key": "p25d179fe2366",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 5,
+      "place_key": "p4842eef0791b",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 2,
+      "place_key": "pf3c4ac6058ff",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 5,
+      "place_key": "p5b6ced881763",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 4,
+      "place_key": "p3767738ddc9f",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "p8373ded81b2c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.8,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "p816d1c04912b",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 5,
+      "place_key": "p54b915ea570e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 4,
+      "place_key": "p5d1d3a38c5c9",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 2,
+      "place_key": "p16fb6c35ed8a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 4,
+      "place_key": "p9edfa372152c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 4,
+      "place_key": "pa7d2c2c590ce",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "p120d85ebbba5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 4,
+      "place_key": "p74b583cfe4dd",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 2,
+      "place_key": "pf54cc82e03e7",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 3,
+      "place_key": "p346d255ef7e6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 3,
+      "place_key": "pb4ce6e0e75d0",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 4,
+      "place_key": "pc085cdec9e5e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 5,
+      "place_key": "p25c3dcb2c0df",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 4,
+      "place_key": "pbc114cadc51e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 4,
+      "place_key": "p07d2d32bedc6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 5,
+      "place_key": "pf1fc692396d9",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 4,
+      "place_key": "pe6a84da3f4fa",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 4,
+      "place_key": "p773f338537ae",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-03",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "uc9aa089c7c28": {
+    "total_reviews": 73,
+    "visible": 24,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "p8d306b365511",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 5,
+      "place_key": "p755cf33b508f",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 3,
+      "place_key": "p925ca09a47b2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 5,
+      "place_key": "pb739f4b75bea",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 3,
+      "place_key": "p63fa2f759a0e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 2,
+      "place_key": "pffc1f92287a9",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.9,
+      "km": 14.9
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 4,
+      "place_key": "pc7ca64bf2046",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 4,
+      "place_key": "p489eea277ecf",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 4,
+      "place_key": "pcb35c91f6cdb",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 3,
+      "place_key": "pa988c019be00",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 4,
+      "place_key": "p663447e631b8",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 2,
+      "place_key": "pb5b2f2d9e29f",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 4,
+      "place_key": "pb4e98101fc83",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 3,
+      "place_key": "pa35be73ce0fb",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 3,
+      "place_key": "p3b30d872707b",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "p309e05811244",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 3,
+      "place_key": "p01d989a8a3f1",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 3,
+      "place_key": "p58c511acb606",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 4,
+      "place_key": "p0dba0de781ee",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 4,
+      "place_key": "p36696eacd171",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "p7aa4b2f1f0a8",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 2,
+      "place_key": "p3bccd87d7d34",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 4,
+      "place_key": "pb0f5fd5bf153",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-06-14",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "uef8aad8714ef": {
+    "total_reviews": 53,
+    "visible": 26,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-09-18",
+      "rating": 4,
+      "place_key": "p6800d65292f3",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 5,
+      "place_key": "pc3be79b33026",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 4,
+      "place_key": "pa1717e541bb1",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "pc1789534dc3c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 5,
+      "place_key": "pfa51482127c7",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "p8244911e9eac",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 5,
+      "place_key": "pbbf9c0e8e708",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 3,
+      "place_key": "p3a7666255022",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 2,
+      "place_key": "pd58f974129a6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 5,
+      "place_key": "p6f1e05b137a2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "p33ca94de884b",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 5,
+      "place_key": "p2fc23d5bf54c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 4,
+      "place_key": "paf40d6c92e58",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 3,
+      "place_key": "pd9fcd2dd2480",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 5,
+      "place_key": "p54f41ac1f287",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 4,
+      "place_key": "pce0d7cace5ce",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 2,
+      "place_key": "p6df9d90d45e6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.9,
+      "km": 14.9
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 2,
+      "place_key": "p90a84e73b916",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "p9283fab4c9f5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.9,
+      "km": 14.9
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 4,
+      "place_key": "p3a20acbfa5c4",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.8,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 4,
+      "place_key": "p64a46b6926ae",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 4,
+      "place_key": "p4ece045db05e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 4,
+      "place_key": "p97053fad3fc2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 4,
+      "place_key": "pc4f7348eda44",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "p03b291b1d4de",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-06-14",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u4b6ce4ec0b7b": {
+    "total_reviews": 112,
+    "visible": 12,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-09-18",
+      "rating": 4,
+      "place_key": "p43f1e616e797",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "pa8fe4b3912f6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "p1e28a6bc4793",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "p9516d5aa7bc2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.8,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 5,
+      "place_key": "pbf60a6a8c2b0",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 27.0,
+      "lng": 75.9,
+      "km": 14.9
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "p05dc0bda99a9",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 5,
+      "place_key": "pe2bcae8276aa",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 4,
+      "place_key": "p20c9007801bc",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 3,
+      "place_key": "pc479f6f44a21",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 5,
+      "place_key": "p0214c0c093e2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 3,
+      "place_key": "p0d3a3feb7d59",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u8cdabf4061e8": {
+    "total_reviews": 27,
+    "visible": 23,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-08-19",
+      "rating": 5,
+      "place_key": "pa1a4567b9e6a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2024-08-19",
+      "rating": 5,
+      "place_key": "p868b691d9f63",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 4,
+      "place_key": "p8cb25cf7b9e2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 4,
+      "place_key": "p614d96c4b636",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 4,
+      "place_key": "p07f12ce270e6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 5,
+      "place_key": "pec53259fa33d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 4,
+      "place_key": "pe202e24fdcd2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 4,
+      "place_key": "pa575d84299a0",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 5,
+      "place_key": "p2d7ec149acb5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 3,
+      "place_key": "p2e67176f3330",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 4,
+      "place_key": "paccea479d20c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 3,
+      "place_key": "pcc11865d0886",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 5,
+      "place_key": "p5c3219f0d430",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "p29b336284fae",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "pd26fbaf23dea",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 4,
+      "place_key": "p6bcc4c3f2bf2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "p80593c3c4fc2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 2,
+      "place_key": "p0378e7cf7878",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 3,
+      "place_key": "p7b3d19b1ddda",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 5,
+      "place_key": "p57aca9d5cd98",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 2,
+      "place_key": "paf9a8fd53af8",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "p4cdd47c64f55",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-06-07",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u5199e87c8276": {
+    "total_reviews": 76,
+    "visible": 17,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-09-18",
+      "rating": 5,
+      "place_key": "p907d4aa1abc0",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "pbab3848d392d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 2,
+      "place_key": "p7e00e0fb6fad",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 2,
+      "place_key": "p2019128cc502",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 2,
+      "place_key": "p931b864aa312",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 5,
+      "place_key": "p7fb81856b8e4",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 4,
+      "place_key": "p96a7ed14b8bf",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 2,
+      "place_key": "p1b624725d4bd",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "pb81e007f6fde",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 3,
+      "place_key": "p382b0f13e60a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 4,
+      "place_key": "p79767ac43c7d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "pdc9ba5213203",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "pd337f148c056",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 3,
+      "place_key": "p506dacd7fa7d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 4,
+      "place_key": "p35e541c4dadc",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "p09b849cc2288",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-31",
+      "rating": 3,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u8a928a2d836c": {
+    "total_reviews": 15,
+    "visible": 28,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-08-19",
+      "rating": 4,
+      "place_key": "p71a70342cc77",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 3,
+      "place_key": "p00391607a31a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 3,
+      "place_key": "p84ab0f342aff",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.8,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "p90bdca79f6b8",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 5,
+      "place_key": "p1f32e6736413",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 5,
+      "place_key": "p0db850d3c87d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 5,
+      "place_key": "p965bf69316ee",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "pb3dee16e045c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 3,
+      "place_key": "p0fabe296f718",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 2,
+      "place_key": "pb703f226f93d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 4,
+      "place_key": "p9fda2e6224a7",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 5,
+      "place_key": "p7c8235f736d3",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 3,
+      "place_key": "p61c644e2268e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 2,
+      "place_key": "p6c8cfb53e569",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 3,
+      "place_key": "p30f9db24514c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 3,
+      "place_key": "p6e2e1750fb70",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 2,
+      "place_key": "pc9fafadf09a4",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 5,
+      "place_key": "pf3030e99c0f6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 4,
+      "place_key": "p8871a412c4ce",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 4,
+      "place_key": "p9aefef710451",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "p2f44a37a18f3",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 5,
+      "place_key": "p14e716bb7c99",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 2,
+      "place_key": "pd66c7d73562e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 2,
+      "place_key": "p87edfbfcd2e3",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 5,
+      "place_key": "p72cf5728ae61",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "pe81dd05dad71",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 4,
+      "place_key": "p69b309d49eae",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-31",
+      "rating": 3,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u58ccbeaae6c0": {
+    "total_reviews": 116,
+    "visible": 12,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-11-17",
+      "rating": 2,
+      "place_key": "pbdd781e19345",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 5,
+      "place_key": "p787e03292cea",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 2,
+      "place_key": "pc1e17bc36173",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 2,
+      "place_key": "pb67ccab58c2b",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 4,
+      "place_key": "p51bc176b6be2",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 5,
+      "place_key": "peb5ed271f328",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 2,
+      "place_key": "pf90a24a7d589",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "pee266c03ab3a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 2,
+      "place_key": "p0d86b4c0c220",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 2,
+      "place_key": "p67be87273136",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "p1b5e60c044e1",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-05-24",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u67faf509258b": {
+    "total_reviews": 71,
+    "visible": 12,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-09-18",
+      "rating": 5,
+      "place_key": "p3584a1a75ebe",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "pcc7f6263d81a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "p7f079ed5ca61",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 3,
+      "place_key": "p34528851707d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 4,
+      "place_key": "pf57da3ca8f98",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-04-16",
+      "rating": 3,
+      "place_key": "p13362e337b48",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 5,
+      "place_key": "p2bf04cfb9805",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 3,
+      "place_key": "pf6444f33212f",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 2,
+      "place_key": "p84e613ae5b78",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 4,
+      "place_key": "p71674c6ba674",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 3,
+      "place_key": "pafe2476f01e1",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-24",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "ua31cc1a6119f": {
+    "total_reviews": 56,
+    "visible": 17,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-07-20",
+      "rating": 4,
+      "place_key": "pd9d43b9ff9fe",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 5,
+      "place_key": "p90633c237b36",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 4,
+      "place_key": "p5fcdf6855382",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "pa9ad0b0c1e2c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "p920fe66d95b9",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 5,
+      "place_key": "p9fcccf2cea12",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 4,
+      "place_key": "p95723b33c6f6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 5,
+      "place_key": "pe03ea1f55cb0",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 4,
+      "place_key": "pbb541f95fb40",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 3,
+      "place_key": "pe7d64abc97da",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 2,
+      "place_key": "peda3e4468f5b",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "p5b9df032c4b1",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 5,
+      "place_key": "p8e913461df00",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 5,
+      "place_key": "p74a4e0486e55",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 5,
+      "place_key": "p8df308714088",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 4,
+      "place_key": "p63618fe07bfc",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-17",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "ufaa0ccd37683": {
+    "total_reviews": 36,
+    "visible": 11,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-08-19",
+      "rating": 4,
+      "place_key": "ped229d0308bd",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 5,
+      "place_key": "p25ced44cee4b",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 3,
+      "place_key": "pcf29e35b64a9",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "p05e2f879893a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 4,
+      "place_key": "p5110049bfe32",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 3,
+      "place_key": "p34443f7bb0f7",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 3,
+      "place_key": "pc5f70dfc567a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 2,
+      "place_key": "p848ba7aaf676",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 4,
+      "place_key": "p562648e9f185",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 3,
+      "place_key": "pab4c0e1c3e61",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-17",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u20cbc7dff3a3": {
+    "total_reviews": 78,
+    "visible": 26,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-07-20",
+      "rating": 5,
+      "place_key": "p833a4d2e2d44",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-08-19",
+      "rating": 5,
+      "place_key": "pa434336d38fd",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-08-19",
+      "rating": 5,
+      "place_key": "pd6198be3c75d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 3,
+      "place_key": "pa7dfefd3ee44",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 5,
+      "place_key": "p914eefb10f4e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 2,
+      "place_key": "p53ca282c6abf",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 5,
+      "place_key": "pc5aa2fa94030",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 5,
+      "place_key": "p4a182b8daf23",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 2,
+      "place_key": "p4ae9f5ebb674",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 5,
+      "place_key": "p3db11a671fd5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 3,
+      "place_key": "pa65e4ba894d5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.8,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 2,
+      "place_key": "p4493d4b5696a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 4,
+      "place_key": "pdec145443060",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 5,
+      "place_key": "pb8841f556311",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 4,
+      "place_key": "p6f7312bb253c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 2,
+      "place_key": "p7209479d3ca6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 5,
+      "place_key": "p2ba5204eb44d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-10-13",
+      "rating": 5,
+      "place_key": "p28b4628b2132",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 3,
+      "place_key": "p07716c2e41e1",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "p67bc170db594",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 3,
+      "place_key": "p5def85d1c591",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 3,
+      "place_key": "p340645d84b83",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "pac152d74d4b5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 2,
+      "place_key": "p6a2ea23d6fdc",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 3,
+      "place_key": "p558fb81b1ecb",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-05-17",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   },
+   "u477096694b04": {
+    "total_reviews": 111,
+    "visible": 21,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-09-18",
+      "rating": 4,
+      "place_key": "p608c32702d9c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 5,
+      "place_key": "p0280150de7fb",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2024-10-18",
+      "rating": 5,
+      "place_key": "p88f62fde28ca",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 5,
+      "place_key": "p71b58391ad6c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 5,
+      "place_key": "p71efac8a2922",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "p13b7a584c64c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "p34d357c7a760",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "p445e5ec41677",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 5,
+      "place_key": "pd85e54e7f07c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-01-16",
+      "rating": 4,
+      "place_key": "p8d4339ccce1d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 5,
+      "place_key": "p5875ec02837f",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "p1fd38230e60a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 3,
+      "place_key": "pfc02b61b9441",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 2,
+      "place_key": "p468252a23d1e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-11-12",
+      "rating": 3,
+      "place_key": "pb3ce289bc798",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 5,
+      "place_key": "p3b95deb485b7",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 5,
+      "place_key": "pbeb5347dd059",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-05-10",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "pc6ac23ad0c1c",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 5,
+      "place_key": "pf4ca44e2e787",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 4,
+      "place_key": "pff2ca7b929d6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     }
+    ]
+   },
+   "u20e5cd7484ed": {
+    "total_reviews": 115,
+    "visible": 22,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-08-19",
+      "rating": 4,
+      "place_key": "p6da501f3626d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 5,
+      "place_key": "p17cb97010ff5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 4,
+      "place_key": "p9c400123a678",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2024-11-17",
+      "rating": 4,
+      "place_key": "p73bf9a126f1f",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 4,
+      "place_key": "ped012c32fbb5",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-17",
+      "rating": 3,
+      "place_key": "p516886c83431",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-02-15",
+      "rating": 4,
+      "place_key": "pfb74fd579756",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 4,
+      "place_key": "pc91085961833",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 5,
+      "place_key": "pf306a71e7de4",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 2,
+      "place_key": "p70d5aeefb449",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 3,
+      "place_key": "p620e23325787",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-08-14",
+      "rating": 5,
+      "place_key": "p9bf0e59da1c4",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 4,
+      "place_key": "paac5f6b9dce7",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 27.0,
+      "lng": 75.7,
+      "km": 14.9
+     },
+     {
+      "day": "2025-12-12",
+      "rating": 2,
+      "place_key": "p363097227105",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "p1aadb8a3a9b0",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "pc11ddcddb17b",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.8,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2026-01-11",
+      "rating": 5,
+      "place_key": "p2c615b329d51",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-02-10",
+      "rating": 3,
+      "place_key": "pc8653175d20e",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 2,
+      "place_key": "pfdc05843408d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 3,
+      "place_key": "pc581551f3d28",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2026-05-03",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 3,
+      "place_key": "p581c6faed490",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     }
+    ]
+   },
+   "u5fffb4d5814f": {
+    "total_reviews": 47,
+    "visible": 14,
+    "home_area": "Jaipur",
+    "items": [
+     {
+      "day": "2024-07-20",
+      "rating": 5,
+      "place_key": "p84232978673d",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.9,
+      "km": 9.9
+     },
+     {
+      "day": "2024-09-18",
+      "rating": 2,
+      "place_key": "pbbe861b93048",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-03-17",
+      "rating": 4,
+      "place_key": "p304e36cf5ce9",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.7,
+      "km": 9.9
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 4,
+      "place_key": "p62b8fdb9ed8a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-16",
+      "rating": 5,
+      "place_key": "p62862e4e6f37",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-15",
+      "rating": 3,
+      "place_key": "pc62ec87d8442",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 2,
+      "place_key": "p923b571aba0a",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-07-15",
+      "rating": 2,
+      "place_key": "p7a15d22eb5fc",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 5,
+      "place_key": "pa55669fc824f",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Other",
+      "lat": 27.0,
+      "lng": 75.8,
+      "km": 11.1
+     },
+     {
+      "day": "2025-09-13",
+      "rating": 4,
+      "place_key": "p4918b3c0ff40",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Beauty & wellness",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 4,
+      "place_key": "pada9928845be",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-11",
+      "rating": 4,
+      "place_key": "p251e22df15d6",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-03",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Jaipur",
+      "type_group": "Lodging",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-11",
+      "rating": 3,
+      "place_key": "p9067e9800635",
+      "this": false,
+      "area": "Jaipur",
+      "type_group": "Health",
+      "lat": 26.9,
+      "lng": 75.8,
+      "km": 0.0
+     }
+    ]
+   }
+  },
   "graph": {
    "nodes": [
     {
@@ -16321,7 +20876,8 @@
     "short": false,
     "reviewer_reviews": 73,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rbef57e1814ff",
@@ -16339,7 +20895,8 @@
     "short": false,
     "reviewer_reviews": 100,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r64a9a6de990f",
@@ -16359,7 +20916,8 @@
     "short": false,
     "reviewer_reviews": 5,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r6baeaa5848d1",
@@ -16377,7 +20935,8 @@
     "short": false,
     "reviewer_reviews": 53,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r92af2e1c4bbe",
@@ -16395,7 +20954,8 @@
     "short": false,
     "reviewer_reviews": 23,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rb9e18f0694ba",
@@ -16413,7 +20973,8 @@
     "short": false,
     "reviewer_reviews": 28,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rbca22ea19809",
@@ -16431,7 +20992,8 @@
     "short": false,
     "reviewer_reviews": 112,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r9109c437049e",
@@ -16449,7 +21011,8 @@
     "short": false,
     "reviewer_reviews": 27,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rdee8087c596a",
@@ -16467,7 +21030,8 @@
     "short": false,
     "reviewer_reviews": 67,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rd8b942a17da4",
@@ -16485,7 +21049,8 @@
     "short": false,
     "reviewer_reviews": 76,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r8a6bfae3ae37",
@@ -16505,7 +21070,8 @@
     "short": false,
     "reviewer_reviews": 5,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r679d57746e16",
@@ -16523,7 +21089,8 @@
     "short": false,
     "reviewer_reviews": 15,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r152fb16a43f7",
@@ -16541,7 +21108,8 @@
     "short": false,
     "reviewer_reviews": 22,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rad61c1713ca7",
@@ -16559,7 +21127,8 @@
     "short": false,
     "reviewer_reviews": 21,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r35ed5453e64e",
@@ -16577,7 +21146,8 @@
     "short": false,
     "reviewer_reviews": 57,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "reca40bdb6388",
@@ -16595,7 +21165,8 @@
     "short": false,
     "reviewer_reviews": 116,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rec6a39b5ded7",
@@ -16613,7 +21184,8 @@
     "short": false,
     "reviewer_reviews": 79,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r889df947cb82",
@@ -16631,7 +21203,8 @@
     "short": false,
     "reviewer_reviews": 8,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r81a14613617a",
@@ -16649,7 +21222,8 @@
     "short": false,
     "reviewer_reviews": 71,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rbc89ff224259",
@@ -16667,7 +21241,8 @@
     "short": false,
     "reviewer_reviews": 56,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r9553017cf5c2",
@@ -16685,7 +21260,8 @@
     "short": false,
     "reviewer_reviews": 36,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r73eae5d88eef",
@@ -16705,7 +21281,8 @@
     "short": false,
     "reviewer_reviews": 4,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r82a0171e641f",
@@ -16723,7 +21300,8 @@
     "short": false,
     "reviewer_reviews": 78,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "re20e889972c5",
@@ -16741,7 +21319,8 @@
     "short": false,
     "reviewer_reviews": 51,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rc4fd1f9ff32f",
@@ -16759,7 +21338,8 @@
     "short": false,
     "reviewer_reviews": 80,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r5b9eca2d958b",
@@ -16777,7 +21357,8 @@
     "short": false,
     "reviewer_reviews": 111,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r12122ba5ecda",
@@ -16795,7 +21376,8 @@
     "short": false,
     "reviewer_reviews": 115,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r3b46c7417777",
@@ -16813,7 +21395,8 @@
     "short": false,
     "reviewer_reviews": 47,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r3c797886d5f7",
@@ -16831,7 +21414,8 @@
     "short": false,
     "reviewer_reviews": 72,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rf5a3bbaa6ae8",
@@ -16849,7 +21433,8 @@
     "short": false,
     "reviewer_reviews": 106,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rd73e44065fc0",
@@ -16867,7 +21452,8 @@
     "short": false,
     "reviewer_reviews": 40,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rda9b39f83545",
@@ -16887,7 +21473,8 @@
     "short": false,
     "reviewer_reviews": 4,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rb3f61371d9d1",
@@ -16907,7 +21494,8 @@
     "short": false,
     "reviewer_reviews": 5,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r096fc70ccac6",
@@ -16925,7 +21513,8 @@
     "short": false,
     "reviewer_reviews": 29,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rab9a8f766391",
@@ -16943,7 +21532,8 @@
     "short": false,
     "reviewer_reviews": 19,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r29b7bc5828b6",
@@ -16961,7 +21551,8 @@
     "short": false,
     "reviewer_reviews": 48,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r716b037fba68",
@@ -16979,7 +21570,8 @@
     "short": false,
     "reviewer_reviews": 69,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rd56ac18db693",
@@ -16997,7 +21589,8 @@
     "short": false,
     "reviewer_reviews": 17,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rd21bdfffd915",
@@ -17015,7 +21608,8 @@
     "short": false,
     "reviewer_reviews": 111,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r8afe96fc29cb",
@@ -17033,7 +21627,8 @@
     "short": false,
     "reviewer_reviews": 35,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r3d1106660210",
@@ -17051,7 +21646,8 @@
     "short": false,
     "reviewer_reviews": 71,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r58d4acfad9e9",
@@ -17069,7 +21665,8 @@
     "short": false,
     "reviewer_reviews": 105,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "reba2d0ad8c4e",
@@ -17087,7 +21684,8 @@
     "short": false,
     "reviewer_reviews": 24,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r177ce4163782",
@@ -17105,7 +21703,8 @@
     "short": false,
     "reviewer_reviews": 19,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r05c88f3da6fc",
@@ -17123,7 +21722,8 @@
     "short": false,
     "reviewer_reviews": 31,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r0453e82c756a",
@@ -17141,7 +21741,8 @@
     "short": false,
     "reviewer_reviews": 19,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r4affa5dbe8ee",
@@ -17159,7 +21760,8 @@
     "short": false,
     "reviewer_reviews": 119,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r5efab3866e61",
@@ -17177,7 +21779,8 @@
     "short": false,
     "reviewer_reviews": 41,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rf4b795fbad22",
@@ -17195,7 +21798,8 @@
     "short": false,
     "reviewer_reviews": 73,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rc2da948bacb2",
@@ -17213,7 +21817,8 @@
     "short": false,
     "reviewer_reviews": 71,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r5a2763754b6a",
@@ -17231,7 +21836,8 @@
     "short": false,
     "reviewer_reviews": 90,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r27470a8f43c4",
@@ -17249,7 +21855,8 @@
     "short": false,
     "reviewer_reviews": 46,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r4c7a29e5585c",
@@ -17267,7 +21874,8 @@
     "short": false,
     "reviewer_reviews": 82,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r9b9286091afd",
@@ -17285,7 +21893,8 @@
     "short": false,
     "reviewer_reviews": 99,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r7a7f58a6db1b",
@@ -17303,7 +21912,8 @@
     "short": false,
     "reviewer_reviews": 47,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rfb284c2f414c",
@@ -17321,7 +21931,8 @@
     "short": false,
     "reviewer_reviews": 37,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r9e48de248031",
@@ -17339,7 +21950,8 @@
     "short": false,
     "reviewer_reviews": 101,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r2b07322e97db",
@@ -17357,7 +21969,8 @@
     "short": false,
     "reviewer_reviews": 71,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rd243c0ab4f24",
@@ -17375,7 +21988,8 @@
     "short": false,
     "reviewer_reviews": 41,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r034eeccdaeb8",
@@ -17393,7 +22007,8 @@
     "short": false,
     "reviewer_reviews": 120,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r9564560f8ed5",
@@ -17411,7 +22026,8 @@
     "short": false,
     "reviewer_reviews": 84,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r5f7d493d06a6",
@@ -17429,7 +22045,8 @@
     "short": false,
     "reviewer_reviews": 43,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rc16b9afc5d01",
@@ -17447,7 +22064,8 @@
     "short": false,
     "reviewer_reviews": 58,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r5a2f311df996",
@@ -17465,7 +22083,8 @@
     "short": false,
     "reviewer_reviews": 31,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rb9673efa8695",
@@ -17483,7 +22102,8 @@
     "short": false,
     "reviewer_reviews": 37,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r3c4b3153918c",
@@ -17501,7 +22121,8 @@
     "short": false,
     "reviewer_reviews": 44,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r521632cab65a",
@@ -17519,7 +22140,8 @@
     "short": false,
     "reviewer_reviews": 110,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rbc59c556d9d0",
@@ -17537,7 +22159,8 @@
     "short": false,
     "reviewer_reviews": 36,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r5076635280c7",
@@ -17555,7 +22178,8 @@
     "short": false,
     "reviewer_reviews": 18,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "redcf9e8a1e75",
@@ -17573,7 +22197,8 @@
     "short": false,
     "reviewer_reviews": 80,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r292bd049b7e2",
@@ -17591,7 +22216,8 @@
     "short": false,
     "reviewer_reviews": 74,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r92d923bd61eb",
@@ -17609,7 +22235,8 @@
     "short": false,
     "reviewer_reviews": 25,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rd1eeecb16e50",
@@ -17627,7 +22254,8 @@
     "short": false,
     "reviewer_reviews": 58,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "rb771621b57b0",
@@ -17645,7 +22273,8 @@
     "short": false,
     "reviewer_reviews": 100,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r874b81f12892",
@@ -17663,7 +22292,8 @@
     "short": false,
     "reviewer_reviews": 37,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    },
    {
     "review_id": "r954986c47dc3",
@@ -17681,7 +22311,8 @@
     "short": false,
     "reviewer_reviews": 82,
     "local_guide": null,
-    "generated_marker": null
+    "generated_marker": null,
+    "excerpt": null
    }
   ],
   "label_counts": {

@@ -3,6 +3,7 @@
 Businesses become "<Type> A/B/...", reviewers "Reviewer N", coordinates are
 rounded to 2 decimals, and review texts are kept only when they belong to a
 near-duplicate cluster written by >= 3 accounts, scrubbed and cut to 60 chars.
+Chatbot or placeholder excerpts are the exception: scrubbed and cut to 180 chars.
 """
 
 from __future__ import annotations
@@ -22,6 +23,8 @@ URL = re.compile(r"(?:https?://|www\.)\S+", re.IGNORECASE)
 HANDLE = re.compile(r"(?<!\w)@\w+")
 TEXT_KEEP_MIN_ACCOUNTS = 3
 TEXT_KEEP_CHARS = 60
+# Chatbot or placeholder text is kept longer: it was written by a machine, and it is the evidence. Still scrubbed.
+EXCERPT_KEEP_CHARS = 180
 
 
 def salt() -> str:
@@ -243,6 +246,21 @@ def pseudonymize_report(report: dict[str, Any], salt_value: str | None = None) -
                 occ["places"] = [ps.place(k) for k in occ["places"]]
             if "cluster" in b:
                 b["cluster"] = ps.cluster(b["cluster"])
+    r["histories"] = {
+        ps.person(cid): {
+            **h,
+            "items": [
+                {
+                    **it,
+                    "place_key": ps.place(it["place_key"]),
+                    "lat": _round(it.get("lat")),
+                    "lng": _round(it.get("lng")),
+                }
+                for it in h.get("items", [])
+            ],
+        }
+        for cid, h in report.get("histories", {}).items()
+    }
     graph = r.get("graph", {})
     for n in graph.get("nodes", []):
         n["display_name"] = ps.reviewers.get(n["id"])
@@ -270,10 +288,19 @@ def pseudonymize_report(report: dict[str, Any], salt_value: str | None = None) -
         row["display_name"] = ps.reviewers.get(orig.get("contributor_id") or "")
         row["contributor_id"] = ps.person(orig.get("contributor_id"))
         row["cluster"] = ps.cluster(orig.get("cluster"))
+        if orig.get("excerpt"):
+            row["excerpt"] = scrub_text(orig["excerpt"], business_words)[:EXCERPT_KEEP_CHARS]
     t4 = r.get("signals", {}).get("T4", {})
     if t4:
         t4["clusters"] = {ps.cluster(c): [ps.review(x) for x in ids] for c, ids in t4.get("clusters", {}).items()}
         t4["stock_phrase_clusters"] = [ps.cluster(c) for c in t4.get("stock_phrase_clusters", [])]
+    for b in r.get("signals", {}).get("T6", {}).get("single_use_bursts", []):
+        b["review_ids"] = [ps.review(x) for x in b.get("review_ids", [])]
+    t8 = r.get("signals", {}).get("T8", {})
+    for hit in t8.get("generated", []) if t8.get("available") else []:
+        hit["review_id"] = ps.review(hit["review_id"])
+        if hit.get("excerpt"):
+            hit["excerpt"] = scrub_text(hit["excerpt"], business_words)[:EXCERPT_KEEP_CHARS]
     t1 = r.get("signals", {}).get("T1", {})
     for b in t1.get("bursts", []):
         b["review_ids"] = [ps.review(x) for x in b.get("review_ids", [])]
