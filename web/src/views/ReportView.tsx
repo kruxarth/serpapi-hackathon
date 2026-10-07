@@ -1,4 +1,4 @@
-import { ArrowLeft, ChevronRight, Info, Network, Play, RotateCcw, ShieldAlert, Sparkles, X } from 'lucide-react'
+import { ArrowLeft, ChevronRight, Info, Network, Play, RotateCcw, ShieldAlert, Sparkles, Undo2, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -6,23 +6,24 @@ import { api } from '../api'
 import { Finding, pairEvidence, Strength } from '../components/Findings'
 import { eventsFromReport, Investigation, usePlayback } from '../components/Investigation'
 import { MapView } from '../components/MapView'
-import { FLAGGED_LABELS, RatingUnpacked, type UnpackDot } from '../components/RatingUnpacked'
 import { CheckedGrid, ReviewerProvider } from '../components/Reviewer'
+import { BranchTabs, ReviewList } from '../components/ReviewList'
 import { RingGraph } from '../components/RingGraph'
+import { type Branch, SieveGraph, type SieveState, useSieve } from '../components/Sieve'
 import { ClientTable, ReviewsTable } from '../components/Tables'
 import { Timeline } from '../components/Timeline'
 import { LevelBadge, StarBar } from '../components/ui'
-import { ageText, day, FLAGGED_VERDICTS, levelClass, VERDICT_TEXT } from '../labels'
+import { ageText, day, FLAGGED_VERDICTS, fmt, levelClass, VERDICT_TEXT } from '../labels'
 import { makeNamer } from '../names'
 import { usePresentation } from '../presentation'
 import type { AnalysisDetail, ProgressEvent, Report } from '../types'
 
 const CHAPTERS = [
   ['verdict', 'Verdict'],
+  ['reviews', 'Sort the reviews'],
   ['findings', 'Findings'],
   ['timeline', 'Timeline'],
   ['linked', 'Reviewers'],
-  ['reviews', 'Reviews'],
   ['checked', 'What was checked'],
 ] as const
 
@@ -38,13 +39,24 @@ export function ReportView({ detail }: { detail: AnalysisDetail }) {
   }
   const findings = useMemo(() => pairEvidence(report), [report])
   const [replay, setReplay] = useState(false)
+  const sieve = useSieve(report)
 
   return (
     <ReviewerProvider report={report} namer={namer}>
     <div className="report">
       <Rail />
       <div>
-        <Verdict report={report} detail={detail} onReplay={() => setReplay(true)} />
+        <Verdict report={report} detail={detail} sieve={sieve} onReplay={() => setReplay(true)} />
+
+        {report.sieve
+          ? <Sorting report={report} state={sieve} namer={namer} presentation={pres.on || !!report.pseudonymized} />
+          : (
+            <section id="reviews" className="chapter">
+              <ChapterHead title="Reviews examined" />
+              <div className="notice small" style={{ marginBottom: 16 }}><Info size={15} />This report predates warning signs. Re-run it from the cache to sort its reviews: <code>uv run reviewring analyze {report.analysis?.id ?? '<id>'}</code></div>
+              <div className="panel pad"><ReviewsTable report={report} namer={namer} selectedGroup={selected} /></div>
+            </section>
+          )}
 
         <section id="findings" className="chapter">
           <ChapterHead title="What we found" note={report.evidence.length > 1 ? 'Strongest first' : undefined} />
@@ -73,11 +85,6 @@ export function ReportView({ detail }: { detail: AnalysisDetail }) {
         </section>
 
         <Linked report={report} namer={namer} selected={selected} select={select} presentation={pres.on || !!report.pseudonymized} />
-
-        <section id="reviews" className="chapter">
-          <ChapterHead title="Reviews examined" />
-          <div className="panel pad"><ReviewsTable report={report} namer={namer} selectedGroup={selected} /></div>
-        </section>
 
         <Checked report={report} detail={detail} />
       </div>
@@ -131,17 +138,14 @@ function Rail() {
 
 /* ---------- 1. Verdict ---------- */
 
-function Verdict({ report, detail, onReplay }: { report: Report; detail: AnalysisDetail; onReplay: () => void }) {
+function Verdict({ report, detail, sieve, onReplay }: { report: Report; detail: AnalysisDetail; sieve: SieveState; onReplay: () => void }) {
   const r = report.ratings
   const p = report.place
-  const demo = report.analysis?.mode === 'demo'
   const stale = detail.finished_at && Date.now() - Date.parse(detail.finished_at) > 7 * 86_400_000
   const lv = report.level.level
-  const dots = useMemo<UnpackDot[]>(() => report.reviews.filter((x) => x.rating != null).map((x) => ({
-    rating: x.rating!, day: x.day, label: x.label, single: x.reviewer_reviews != null && x.reviewer_reviews <= 1,
-  })), [report])
-  const flagged = dots.some((d) => FLAGGED_LABELS.includes(d.label))
   const where = [p.type, p.area].filter(Boolean)
+  const kept = report.sieve ? sieve.keptMean : r.without_ring_and_suspicious
+  const keptN = report.sieve ? sieve.keptCount : r.examined
   return (
     <section id="verdict" className={`chapter verdict ${levelClass(lv)}`}>
       <div className="verdict-top">
@@ -150,24 +154,21 @@ function Verdict({ report, detail, onReplay }: { report: Report; detail: Analysi
         {report.pseudonymized && !detail.synthetic && <span className="chip">Pseudonymized</span>}
         {report.dates_shifted && <span className="chip" title="All dates moved by the same hidden offset; intervals are unchanged">Dates shifted</span>}
         <span className="spacer" />
-        <span className="muted small">{demo ? 'Demo, no searches used' : `${report.analysis?.searches_used ?? detail.searches_used} searches, analysed ${ageText(detail.finished_at ?? report.analysis?.finished_at)}`}</span>
+        {detail.finished_at && <span className="muted small">Analysed {ageText(detail.finished_at)}</span>}
       </div>
       <h1>{p.title ?? 'This business'}</h1>
 
       <div className="verdict-stage">
-        <div className="panel unpack-panel">
-          <div className="row wrap" style={{ justifyContent: 'space-between', gap: 12 }}>
-            <h2 className="unpack-title">Where the rating comes from</h2>
-            {p.rating != null && (
-              <span className="row secondary small" style={{ gap: 8 }}>
-                Google shows <StarBar value={p.rating} duration={1} className="mini-stars" /> <strong className="num" style={{ color: 'var(--ink)' }}>{p.rating}</strong> from {p.total_reviews?.toLocaleString('en-IN') ?? '?'} reviews
-              </span>
-            )}
-          </div>
-          <RatingUnpacked dots={dots} shown={p.rating} mean={r.sample_mean} adjusted={flagged ? r.without_ring_and_suspicious : null} />
+        <div className="panel ladder">
+          {p.rating != null && (
+            <LadderRow label="Google shows" value={p.rating} note={p.total_reviews ? `from ${p.total_reviews.toLocaleString('en-IN')} reviews` : undefined} />
+          )}
+          <LadderRow label={`The newest ${r.examined}`} value={r.sample_mean} note={report.sample.first ? `${day(report.sample.first)} to ${day(report.sample.last)}` : undefined} />
+          <LadderRow label="After setting aside" value={kept} strong
+            note={keptN === r.examined ? 'nothing set aside' : `${keptN} of ${r.examined} reviews kept`} />
           {r.overall && (
-            <p className="small muted" style={{ marginTop: 14 }}>
-              Across all {r.overall.total_as_displayed.toLocaleString('en-IN')} reviews as displayed:{' '}
+            <p className="small muted" style={{ marginTop: 6 }}>
+              Across all {r.overall.total_as_displayed.toLocaleString('en-IN')} reviews, without the linked reviewers:{' '}
               {r.overall.no_visible_change
                 ? 'no visible change; the effect is concentrated in recent reviews.'
                 : <><strong className="num">{r.overall.low.toFixed(2)}–{r.overall.high.toFixed(2)}★</strong> instead of {r.overall.displayed}★.</>}
@@ -201,6 +202,66 @@ function Verdict({ report, detail, onReplay }: { report: Report; detail: Analysi
   )
 }
 
+function LadderRow({ label, value, note, strong }: { label: string; value: number | null | undefined; note?: string; strong?: boolean }) {
+  return (
+    <div className={`ladder-row ${strong ? 'strong' : ''}`}>
+      <div className="col">
+        <span className="ladder-label">{label}</span>
+        {note && <span className="tiny muted">{note}</span>}
+      </div>
+      {value != null && <StarBar value={value} duration={1.2} className="ladder-stars" />}
+      <span className="fig ladder-fig">{fmt(value, 2)}</span>
+    </div>
+  )
+}
+
+/* ---------- 2. Sorting the reviews ---------- */
+
+function Sorting({ report, state, namer, presentation }: { report: Report; state: SieveState; namer: ReturnType<typeof makeNamer>; presentation: boolean }) {
+  const sieve = report.sieve!
+  const [branch, setBranch] = useState<Branch>('kept')
+  const select = (b: Branch) => {
+    setBranch(b)
+    document.getElementById('review-list')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+  // A branch that empties (its sign was kept) falls back to the kept reviews.
+  const shown: Branch = branch !== 'kept' && !(state.aside.has(branch) && (state.groups[branch]?.length ?? 0) > 0) ? 'kept' : branch
+  const none = sieve.order.filter((k) => sieve.signs[k].count === 0)
+  const ai = sieve.ai
+  return (
+    <section id="reviews" className="chapter">
+      <ChapterHead title={`Sort the newest ${sieve.examined} reviews`} />
+      <p className="chapter-lede">
+        Each dot is a review, coloured by its stars. A review leaves the line at the first warning sign you set aside;
+        the rest are kept. Switch a sign off to keep those reviews, or on to set them aside.
+      </p>
+      <div className="panel pad sieve-panel">
+        <SieveGraph report={report} state={state} selected={shown} onSelect={select} />
+        <div className="sieve-foot">
+          <div className="legend">
+            <span><i className="swatch" style={{ background: 'var(--label-suspicious)' }} /> Near-certain signs, set aside at first</span>
+            <span><i className="swatch dashed" style={{ ['--tone' as string]: 'var(--label-suspicious)' }} /> An AI model's opinion</span>
+            <span><i className="swatch" style={{ background: 'var(--label-none)' }} /> True of many real customers too</span>
+            {!state.isDefault && <button className="btn ghost sm" onClick={state.reset}><Undo2 size={14} /> Back to the defaults</button>}
+          </div>
+          <div className="small secondary col" style={{ gap: 4 }}>
+            {none.length > 0 && <span>Also checked, none found: {none.map((k) => sieve.signs[k].short.charAt(0).toLowerCase() + sieve.signs[k].short.slice(1)).join(', ')}.</span>}
+            {ai.judged > 0
+              ? <span>An AI model read the {ai.judged} review{ai.judged === 1 ? '' : 's'} with at least {ai.min_words} words for AI-written style; {ai.too_short} {ai.too_short === 1 ? 'was' : 'were'} too short to judge.</span>
+              : ai.eligible > 0
+                ? <span>The AI-written check didn't run for this analysis (no AI key was set). {ai.eligible} reviews are long enough to judge.</span>
+                : <span>No review is long enough ({ai.min_words}+ words) for the AI-written check.</span>}
+          </div>
+        </div>
+      </div>
+      <div id="review-list" style={{ marginTop: 34, scrollMarginTop: 90 }}>
+        <BranchTabs report={report} state={state} selected={shown} onSelect={setBranch} />
+        <ReviewList key={shown} report={report} state={state} branch={shown} namer={namer} presentation={presentation} />
+      </div>
+    </section>
+  )
+}
+
 /** The investigation again, rebuilt from the report: costs nothing, good for recordings. */
 function Replay({ report, onClose }: { report: Report; onClose: () => void }) {
   const events = useMemo(() => eventsFromReport(report), [report])
@@ -219,7 +280,7 @@ function Replay({ report, onClose }: { report: Report; onClose: () => void }) {
       <div className="replay-inner">
         <div className="row" style={{ justifyContent: 'space-between', marginBottom: 18 }}>
           <div>
-            <div className="muted small">Replay, rebuilt from the report (no searches)</div>
+            <div className="muted small">Replay, rebuilt from the report</div>
             <h2 style={{ fontSize: '2.2rem', fontStretch: '82%' }}>{report.place.title ?? 'This business'}</h2>
           </div>
           <div className="row">
@@ -309,7 +370,7 @@ function Linked({ report, namer, selected, select, presentation }: {
             <div className="row" style={{ alignItems: 'baseline', marginBottom: 6 }}>
               <h3 style={{ fontSize: '1.1rem' }}>Other places this group reviewed</h3><span className="chip">{clientGroup}</span>
             </div>
-            <p className="secondary small" style={{ marginBottom: 14 }}>From the reviewer histories already fetched; no extra searches.</p>
+            <p className="secondary small" style={{ marginBottom: 14 }}>From the reviewer histories already opened.</p>
             <ClientTable rows={report.client_lists[clientGroup] ?? []} namer={namer} />
           </div>
         
@@ -348,16 +409,24 @@ function Checked({ report, detail }: { report: Report; detail: AnalysisDetail })
           <div className="col" style={{ gap: 22 }}>
             <dl className="kv">
               <dt>Reviews examined</dt><dd>The newest {report.sample.examined} ({day(report.sample.first)} to {day(report.sample.last)})</dd>
-              <dt>Reviewer histories</dt><dd>{report.sample.expanded} fetched ({report.sample.histories_ok} usable), incl. {report.sample.baseline.length} chosen at random as a baseline</dd>
-              <dt>Not checked</dt><dd>{report.sample.not_checked_high_priority} high-priority reviewers (budget)</dd>
-              <dt>Searches used</dt><dd className="num">{a?.mode === 'demo' ? '0 (demo)' : a?.searches_used ?? detail.searches_used}</dd>
-              {a?.early_stop && <><dt>Early stop</dt><dd>{a.early_stop.reason === 'no_overlap' ? `Round-1 reviewers shared nothing, so round 2 was skipped (${a.early_stop.searches_saved} searches saved)` : 'Stopped after round 1 on request'}</dd></>}
-              <dt>Algorithm</dt><dd>version {report.algorithm_version}</dd>
+              <dt>Reviewer histories</dt><dd>{report.sample.expanded} opened ({report.sample.histories_ok} usable), incl. {report.sample.baseline.length} chosen at random as a baseline</dd>
+              <dt>Not opened</dt><dd>{report.sample.not_checked_high_priority} other reviewers</dd>
+              {a?.early_stop && <><dt>Stopped early</dt><dd>{a.early_stop.reason === 'no_overlap' ? 'The first reviewers opened shared no other places, so no more were opened' : 'Stopped after the first round on request'}</dd></>}
+              {report.sieve && report.sieve.ai.judged > 0 && <><dt>AI-written check</dt><dd>{report.sieve.ai.judged} reviews read by {report.sieve.ai.model ?? 'an AI model'}</dd></>}
             </dl>
             <p className="small secondary">
               Labels, groups, levels and ratings come from fixed rules; no AI decides any of them. Two accounts are linked only when they
               reviewed at least two of the same unrelated places, weighted by distance from this business and by how unusual the place type is.
             </p>
+            <details className="dev-details small">
+              <summary className="secondary">For developers</summary>
+              <dl className="kv" style={{ marginTop: 12 }}>
+                <dt>Searches used</dt><dd className="num">{a?.mode === 'demo' ? '0 (demo)' : a?.searches_used ?? detail.searches_used}</dd>
+                {a?.early_stop && <><dt>Saved by stopping early</dt><dd className="num">{a.early_stop.searches_saved}</dd></>}
+                {Object.keys(a?.missing ?? {}).length > 0 && <><dt>Not in the cache</dt><dd>{Object.entries(a!.missing).map(([k, v]) => `${k} (${v})`).join(', ')}</dd></>}
+                <dt>Algorithm</dt><dd>version {report.algorithm_version}</dd>
+              </dl>
+            </details>
             {a?.mode !== 'demo' && (
               <div className="row">
                 <button className="btn sm" disabled={busy} onClick={async () => {

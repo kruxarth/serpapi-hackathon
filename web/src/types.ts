@@ -66,6 +66,9 @@ export interface AnalysisListItem {
   level: Level | null
   adjusted?: number | null
   sample_mean?: number | null
+  kept_mean?: number | null
+  kept_count?: number | null
+  examined?: number | null
   synthetic?: boolean
 }
 
@@ -177,6 +180,63 @@ export interface ReviewRow {
   generated_marker?: string | null
   /** The text around a chatbot or placeholder phrase (scrubbed and shortened when pseudonymized). */
   excerpt?: string | null
+  /** Every warning sign that applies, in sieve order (older reports don't have them). */
+  signs?: SignKey[]
+  /** An AI model's opinion of the text, with the phrases it quotes; null when the text wasn't judged. */
+  ai?: { verdict: 'ai_style' | 'human_style' | 'unclear'; cues: string[] } | null
+}
+
+export type SignKey =
+  | 'chatbot_text'
+  | 'copied_text'
+  | 'first_time_burst'
+  | 'linked_group'
+  | 'ai_style'
+  | 'review_spree'
+  | 'first_time_account'
+
+export interface SieveSign {
+  name: string
+  short: string
+  strength: 'strong' | 'opinion' | 'context'
+  explain: string
+  count: number
+  mean: number | null
+  set_aside_by_default: boolean
+}
+
+export interface AiCoverage {
+  min_words: number
+  eligible: number
+  judged: number
+  too_short: number
+  no_text: number
+  ai_style: number
+  human_style: number
+  unclear: number
+  model: string | null
+}
+
+/** Per-review warning signs, strongest first, and what's left once the default ones are set aside. */
+export interface Sieve {
+  order: SignKey[]
+  set_aside_by_default: SignKey[]
+  signs: Record<SignKey, SieveSign>
+  examined: number
+  kept: { count: number; mean: number | null }
+  no_signs: { count: number; mean: number | null }
+  all: { count: number; mean: number | null }
+  ai: AiCoverage
+}
+
+export interface FirstTimeSkew {
+  available: boolean
+  five_star: number
+  five_star_first_time?: number
+  other: number
+  other_first_time?: number
+  ratio?: number
+  flagged?: boolean
 }
 
 export interface Burst {
@@ -304,6 +364,8 @@ export interface Report {
     examined: number
     single_use_burst_reviews?: number
     sample_mean: number | null
+    kept_mean?: number | null
+    kept_count?: number
     without_ring: number | null
     without_ring_and_suspicious: number | null
     ring_reviews: number
@@ -336,7 +398,9 @@ export interface Report {
     T6?: { single_use_bursts: SingleUseBurst[] }
     T7?: RatingGap
     T8?: TopRated
+    T9?: FirstTimeSkew
   }
+  sieve?: Sieve
   reviewers: ReviewerRow[]
   /** Visible histories of the checked reviewers, by contributor id (older reports don't have them). */
   histories?: Record<string, History>

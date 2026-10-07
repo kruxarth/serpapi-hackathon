@@ -182,7 +182,7 @@ export function Investigation({ state }: { state: InvState }) {
             <Link2 size={18} />
             {state.links.length
               ? <span><b className="num">{state.links.length}</b> pair{state.links.length === 1 ? '' : 's'} of reviewers reviewed the same unrelated, distant places.</span>
-              : <span>None of the <b className="num">{opened}</b> reviewers opened share other places.{state.earlyStop ? ' Round 2 was skipped to save searches.' : ''}</span>}
+              : <span>None of the <b className="num">{opened}</b> reviewers opened share other places.{state.earlyStop ? ' So no more were opened.' : ''}</span>}
           </motion.div>
         )}
       </AnimatePresence>

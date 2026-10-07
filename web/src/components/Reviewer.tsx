@@ -100,7 +100,7 @@ function Dossier({ report, namer, cid }: { report: Report; namer: Namer; cid: st
         <div className="notice" style={{ marginTop: 26 }}>
           {row && row.status !== 'ok'
             ? `This profile's history was ${row.status === 'private' ? 'private' : 'empty or unavailable'}, so there is nothing to compare.`
-            : `This reviewer's history wasn't fetched (only the highest-priority reviewers are opened, to keep the search budget). ${here[0]?.reviewer_reviews != null ? `Google lists ${here[0].reviewer_reviews} review${here[0].reviewer_reviews === 1 ? '' : 's'} on the profile.` : ''}`}
+            : `This reviewer's history wasn't fetched (only the most unusual reviewers are opened). ${here[0]?.reviewer_reviews != null ? `Google lists ${here[0].reviewer_reviews} review${here[0].reviewer_reviews === 1 ? '' : 's'} on the profile.` : ''}`}
         </div>
       ) : (
         <>

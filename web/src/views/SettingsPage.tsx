@@ -3,6 +3,7 @@ import { CircleAlert, KeyRound } from 'lucide-react'
 import { motion } from 'motion/react'
 import type { ReactNode } from 'react'
 import { api } from '../api'
+import { BudgetDetail } from '../components/BudgetWidget'
 import type { Mode, Settings } from '../types'
 
 const MODES: { m: Mode; title: string; text: string }[] = [
@@ -39,6 +40,10 @@ export function SettingsPage() {
         </div>
         {!s.serpapi_key_set && <p className="small muted" style={{ marginTop: 10 }}>Live mode needs SERPAPI_API_KEY in the backend's .env file.</p>}
       </Section>
+      <Section title="SerpApi usage">
+        <BudgetDetail />
+        <p className="small muted" style={{ marginTop: 12 }}>Shown here only. A check costs about 16 searches, or about 31 when the first reviewers opened turn out to be linked; anything already fetched is reused for free.</p>
+      </Section>
       <Section title="Search caps">
         <div className="row" style={{ gap: 18 }}>
           {(['monthly_cap', 'hourly_cap', 'per_analysis_cap'] as const).map((k) => (
@@ -56,6 +61,7 @@ export function SettingsPage() {
           <KeyState name="DeepSeek" set={s.deepseek_key_set} />
         </div>
         <p className="small muted" style={{ marginTop: 10 }}>Keys live only in the backend's .env file and are never shown here.</p>
+        <p className="small muted" style={{ marginTop: 6 }}>With a DeepSeek key, reviews of 40 words or more are read for AI-written style. Their texts are sent scrubbed of links, phone numbers, emails and the business's name; the opinion is shown, never counted.</p>
         <label className="row" style={{ marginTop: 16, gap: 10, cursor: 'pointer', alignItems: 'flex-start' }}>
           <input type="checkbox" checked={s.paraphrase_signal} onChange={(e) => save.mutate({ paraphrase_signal: e.target.checked })} style={{ marginTop: 4 }} />
           <span>

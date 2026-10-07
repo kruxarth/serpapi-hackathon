@@ -11,26 +11,19 @@ const MODE_TITLE: Record<Mode, string> = {
 
 export const useBudget = () => useQuery({ queryKey: ['budget'], queryFn: api.budget, refetchInterval: 30000 })
 
-/** The header's one status area: run mode and searches left. */
+/** The header's status: shown only when the app isn't live (demo or offline), since live is the normal case. */
 export function StatusChip({ mode }: { mode: Mode | undefined }) {
-  const b = useBudget().data
-  if (!mode) return null
-  const color = mode === 'live' ? 'var(--status-good)' : mode === 'offline' ? 'var(--muted)' : 'var(--gold)'
+  if (!mode || mode === 'live') return null
+  const color = mode === 'offline' ? 'var(--muted)' : 'var(--gold)'
   return (
-    <span className="status-chip" title={b?.note ?? MODE_TITLE[mode]}>
+    <span className="status-chip" title={MODE_TITLE[mode]}>
       <span className="pulse-dot" style={{ color }} aria-hidden />
       <strong>{MODE_TEXT[mode]}</strong>
-      {b && mode !== 'demo' && (
-        <>
-          <span className="sep" />
-          <span><strong className="num">{b.month_remaining}</strong> searches left</span>
-        </>
-      )}
     </span>
   )
 }
 
-/** Budget detail next to a cost estimate. */
+/** SerpApi budget detail, for the developer settings. */
 export function BudgetDetail() {
   const b = useBudget().data
   if (!b) return null

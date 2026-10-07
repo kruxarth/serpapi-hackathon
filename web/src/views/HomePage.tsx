@@ -1,10 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { CircleAlert, Search, SlidersHorizontal } from 'lucide-react'
+import { CircleAlert, Search } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { api, type StartOptions } from '../api'
-import { BudgetDetail } from '../components/BudgetWidget'
+import { api } from '../api'
 import { illustrationDots, RatingUnpacked } from '../components/RatingUnpacked'
 import { LevelBadge } from '../components/ui'
 import { ageText, fmt } from '../labels'
@@ -12,7 +11,7 @@ import { EASE } from '../motion'
 import { usePresentation } from '../presentation'
 import type { AnalysisListItem, Candidate, ResolveResult } from '../types'
 
-const CHECKS = ['Bursts of single-use accounts', 'Chatbot or template text', 'Ratings carried by old reviews', 'Linked reviewer groups', 'Innocent explanations']
+const CHECKS = ['Bursts of first-time accounts', 'Chatbot and AI-written text', 'Copied text', 'Ratings carried by old reviews', 'Linked reviewer groups']
 
 const rise = (i: number) => ({
   initial: { opacity: 0, y: 18 },
@@ -33,8 +32,8 @@ export function HomePage() {
           <motion.h1 {...rise(0)}>A Google rating is a number.</motion.h1>
           <motion.p className="hero-sub" {...rise(1)}>ReviewRing shows where it comes from.</motion.p>
           <motion.p className="lede" {...rise(2)}>
-            Paste a Google Maps link. ReviewRing reads the newest reviews, opens the histories of the most unusual reviewers,
-            and tells you how much of the rating to trust, with the evidence for every claim.
+            Paste a Google Maps link. ReviewRing reads the newest 100 reviews, marks the ones with warning signs, and shows
+            you the rating without them. You choose what to set aside; every sign comes with its evidence.
           </motion.p>
           <motion.div {...rise(3)}>
             {demo ? (
@@ -87,7 +86,8 @@ function HeroIllustration() {
 }
 
 function AnalysisRow({ a }: { a: AnalysisListItem }) {
-  const shifted = a.adjusted != null && a.sample_mean != null && a.adjusted !== a.sample_mean
+  const after = a.kept_mean ?? a.adjusted
+  const shifted = after != null && a.sample_mean != null && Math.abs(after - a.sample_mean) >= 0.005
   return (
     <Link to={`/analysis/${a.id}`} className="analysis-row">
       <div>
@@ -102,14 +102,13 @@ function AnalysisRow({ a }: { a: AnalysisListItem }) {
         {a.sample_mean != null ? (
           <>
             <span className="fig" style={{ fontSize: '1.35rem' }}>{fmt(a.sample_mean, 2)}<span style={{ color: 'var(--gold)' }}>★</span></span>
-            {shifted && <span className="num secondary"> → {fmt(a.adjusted, 2)}★</span>}
-            <div className="muted tiny">{shifted ? 'latest reviews → without linked reviewers' : 'average of the latest reviews'}</div>
+            {shifted && <span className="num secondary"> → {fmt(after, 2)}★</span>}
+            <div className="muted tiny">{shifted ? `newest ${a.examined ?? ''} → after setting aside${a.kept_count != null ? ` (${a.kept_count} kept)` : ''}` : `average of the newest ${a.examined ?? ''}`}</div>
           </>
         ) : <span className="muted">–</span>}
       </div>
       <div className="small secondary">
-        <span className="num">{a.searches_used}</span> searches
-        <div className="muted tiny">{a.finished_at ? ageText(a.finished_at) : a.stage ?? ''}</div>
+        {a.finished_at ? ageText(a.finished_at) : a.stage ?? ''}
       </div>
     </Link>
   )
@@ -119,39 +118,33 @@ function Analyse({ mode }: { mode: string | undefined }) {
   const navigate = useNavigate()
   const qc = useQueryClient()
   const [input, setInput] = useState('')
-  const [opts, setOpts] = useState<StartOptions>({})
-  const [showOpts, setShowOpts] = useState(false)
-  const [resolved, setResolved] = useState<ResolveResult | null>(null)
-  const [pick, setPick] = useState<string | undefined>()
+  const [candidates, setCandidates] = useState<Candidate[] | null>(null)
   const [error, setError] = useState<string | null>(null)
   const offline = mode === 'offline'
-  const withPick = { ...opts, pick }
 
-  const resolve = useMutation({
-    mutationFn: (confirm: boolean) => api.resolve(input, { ...withPick, confirm_lookup: confirm }),
-    onSuccess: (r) => {
-      setResolved(r)
-      setError(null)
-      qc.invalidateQueries({ queryKey: ['budget'] })
-      if (r.candidates?.length === 1) setPick(r.candidates[0].data_id ?? undefined)
-    },
-    onError: (e: Error) => {
-      setResolved(null)
-      setError(e.message)
-    },
-  })
   const start = useMutation({
-    mutationFn: () => api.start(input, withPick),
+    mutationFn: (pick?: string) => api.start(input, { pick }),
     onSuccess: (r) => {
       qc.invalidateQueries({ queryKey: ['analyses'] })
       navigate(`/analysis/${r.analysis_id}`)
     },
     onError: (e: Error) => setError(e.message),
   })
-
-  const needsPick = (resolved?.candidates?.length ?? 0) > 1 && !pick
-  const est = resolved && !resolved.needs_confirmation ? resolved.estimate : null
-  const num = (k: keyof StartOptions, v: string) => setOpts({ ...opts, [k]: v ? Number(v) : undefined })
+  // Find the place (a name or a short ID may need one lookup), ask which one if several match, then start.
+  const check = useMutation({
+    mutationFn: async () => {
+      let r: ResolveResult = await api.resolve(input, {})
+      if (r.needs_confirmation) r = await api.resolve(input, { confirm_lookup: true })
+      return r
+    },
+    onSuccess: (r) => {
+      setError(null)
+      if ((r.candidates?.length ?? 0) > 1) setCandidates(r.candidates!)
+      else start.mutate(r.candidates?.[0]?.data_id ?? undefined)
+    },
+    onError: (e: Error) => setError(e.message),
+  })
+  const busy = check.isPending || start.isPending
 
   return (
     <div>
@@ -159,8 +152,8 @@ function Analyse({ mode }: { mode: string | undefined }) {
         className="search-box"
         onSubmit={(e) => {
           e.preventDefault()
-          setPick(undefined)
-          if (input.trim()) resolve.mutate(false)
+          setCandidates(null)
+          if (input.trim()) check.mutate()
         }}
       >
         <Search size={18} className="muted" style={{ alignSelf: 'center', marginLeft: 8 }} />
@@ -169,31 +162,17 @@ function Analyse({ mode }: { mode: string | undefined }) {
           value={input}
           onChange={(e) => {
             setInput(e.target.value)
-            setResolved(null)
+            setCandidates(null)
           }}
           aria-label="Google Maps link or business name and city"
         />
-        <button type="button" className="btn ghost sm" style={{ alignSelf: 'center' }} onClick={() => setShowOpts(!showOpts)} aria-expanded={showOpts} aria-label="Options">
-          <SlidersHorizontal size={15} />
-        </button>
-        <button className="btn primary" type="submit" disabled={!input.trim() || resolve.isPending}>
-          {resolve.isPending ? 'Checking…' : 'Check cost'}
+        <button className="btn primary" type="submit" disabled={!input.trim() || busy}>
+          {busy ? 'Starting…' : 'Check reviews'}
         </button>
       </form>
-      <p className="muted small" style={{ marginTop: 10 }}>You'll see the cost in searches before anything is spent. <code>maps.app.goo.gl</code> links work too.</p>
-
-      <AnimatePresence>
-        {showOpts && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} style={{ overflow: 'hidden' }}>
-            <div className="row wrap small" style={{ gap: 18, paddingTop: 14 }}>
-              <label className="row" style={{ gap: 8 }}>Newest reviews <input type="number" className="input" style={{ width: 80, height: 34 }} min={8} max={208} placeholder="88" value={opts.n ?? ''} onChange={(e) => num('n', e.target.value)} /></label>
-              <label className="row" style={{ gap: 8 }}>Round-1 reviewers <input type="number" className="input" style={{ width: 70, height: 34 }} min={1} max={30} placeholder="8" value={opts.k1 ?? ''} onChange={(e) => num('k1', e.target.value)} /></label>
-              <label className="row" style={{ gap: 8 }}>Round-2 reviewers <input type="number" className="input" style={{ width: 70, height: 34 }} min={0} max={40} placeholder="15" value={opts.k2 ?? ''} onChange={(e) => num('k2', e.target.value)} /></label>
-              <label className="row" style={{ gap: 8 }}><input type="checkbox" checked={!!opts.stop_after_round1} onChange={(e) => setOpts({ ...opts, stop_after_round1: e.target.checked })} /> Stop after round 1</label>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <p className="muted small" style={{ marginTop: 10 }}>
+        {offline ? 'Offline mode: only places already fetched can be checked.' : <>Share links (<code>maps.app.goo.gl</code>) work too. Places checked before open instantly.</>}
+      </p>
 
       <AnimatePresence mode="popLayout">
         {error && (
@@ -201,44 +180,10 @@ function Analyse({ mode }: { mode: string | undefined }) {
             <CircleAlert size={16} /> {error}
           </motion.div>
         )}
-        {resolved?.needs_confirmation && (
-          <motion.div key="confirm" className="panel pad" style={{ marginTop: 16 }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-            <p>Finding this place costs <strong>1 search</strong> ({resolved.resolved.kind === 'name' ? 'a name search' : 'a place lookup'}).</p>
-            <div className="row" style={{ marginTop: 14 }}>
-              <button className="btn" onClick={() => resolve.mutate(true)} disabled={resolve.isPending || offline}>Spend 1 search to find it</button>
-              {offline && <span className="muted small">Not available in offline mode.</span>}
-            </div>
-          </motion.div>
-        )}
-        {resolved?.candidates && resolved.candidates.length > 1 && (
-          <motion.div key="cands" style={{ marginTop: 16 }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+        {candidates && (
+          <motion.div key="cands" style={{ marginTop: 16 }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ ease: EASE }}>
             <h3 style={{ fontSize: '1.2rem', marginBottom: 10 }}>Which place?</h3>
-            <CandidatePicker candidates={resolved.candidates} picked={pick} onPick={setPick} />
-          </motion.div>
-        )}
-        {est && (
-          <motion.div key="est" className="panel estimate" initial={{ opacity: 0, y: 16, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5, ease: EASE }}>
-            <div>
-              <div className="secondary">Estimated cost</div>
-              <div className="row" style={{ alignItems: 'baseline', gap: 8, marginTop: 10 }}>
-                <span className="big-num num">{est.min}–{est.max}</span><span className="secondary">searches</span>
-              </div>
-              <ul className="small secondary" style={{ paddingLeft: 16, margin: '12px 0 0' }}>
-                {est.lines.map((l) => <li key={l}>{l}</li>)}
-              </ul>
-            </div>
-            <div className="col" style={{ justifyContent: 'space-between', gap: 16 }}>
-              <div>
-                <div className="secondary" style={{ marginBottom: 10 }}>Your budget</div>
-                <BudgetDetail />
-              </div>
-              <div>
-                <button className="btn primary lg" style={{ width: '100%' }} disabled={needsPick || start.isPending} onClick={() => start.mutate()}>
-                  {offline ? 'Analyse from cache (0 searches)' : `Run analysis (up to ${est.max} searches)`}
-                </button>
-                {needsPick && <div className="muted small" style={{ marginTop: 6 }}>Pick a place first.</div>}
-              </div>
-            </div>
+            <CandidatePicker candidates={candidates} disabled={busy} onPick={(id) => id && start.mutate(id)} />
           </motion.div>
         )}
       </AnimatePresence>

@@ -4,7 +4,7 @@ export const LABEL_TEXT: Record<Label, string> = {
   ring: 'Ring-like group',
   possible_ring_trip: 'Possible ring-like group (trip-like)',
   suspicious: 'Suspicious',
-  single_use_burst: 'Single-use account in a burst',
+  single_use_burst: 'First-time account in a burst',
   group_trip: 'Trip or social group',
   no_flags: 'No flags',
   not_checked: 'Not checked',
@@ -23,7 +23,7 @@ export const VERDICT_TEXT: Record<Verdict, string> = {
 
 export const BADGE_NAMES: Record<string, string> = {
   A1: 'Thin profile', A2: 'Rating monotony', A3: 'Several cities in one week', A4: 'Same-day distant reviews',
-  A5: 'Short texts', A6: 'Copy-paste text', A7: 'Burst participant', A8: 'Reworded template (AI)',
+  A5: 'Short texts', A6: 'Copy-paste text', A7: 'Burst participant', A8: 'Reworded template (AI)', A9: 'Reviewing spree',
 }
 
 export const FLAGGED_VERDICTS: Verdict[] = ['ring', 'possible_ring', 'possible_ring_trip']

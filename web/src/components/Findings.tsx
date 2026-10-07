@@ -14,7 +14,7 @@ const KIND: Record<string, { text: string; tone: string }> = {
   rating_gap: { text: 'Rating carried by older reviews', tone: 'var(--status-serious)' },
   top_rated: { text: 'Highest-rated reviews cluster in time', tone: 'var(--label-suspicious)' },
   generated_text: { text: 'Chatbot or template text', tone: 'var(--label-suspicious)' },
-  single_use_burst: { text: 'Burst of single-use accounts', tone: 'var(--label-suspicious)' },
+  single_use_burst: { text: 'Burst of first-time accounts', tone: 'var(--label-suspicious)' },
   burst: { text: 'Review burst', tone: 'var(--ink-2)' },
   ring: { text: 'Ring-like group of linked reviewers', tone: 'var(--label-ring)' },
   possible_ring: { text: 'Possible ring-like group', tone: 'var(--label-ring)' },
@@ -22,6 +22,8 @@ const KIND: Record<string, { text: string; tone: string }> = {
   ruled_out_trip: { text: 'Set aside: consistent with a group trip', tone: 'var(--label-trip)' },
   social_circle: { text: 'Set aside: consistent with friends or family', tone: 'var(--label-trip)' },
   duplicates: { text: 'Near-identical texts', tone: 'var(--ink-2)' },
+  ai_style: { text: "Reads as AI-written (an AI model's opinion)", tone: 'var(--label-suspicious)' },
+  first_time_skew: { text: 'Five-star reviews from first-time accounts', tone: 'var(--ink-2)' },
   baseline: { text: 'Random baseline', tone: 'var(--ink-2)' },
 }
 const QUIET = new Set(['duplicates', 'baseline'])
@@ -69,11 +71,53 @@ export function Finding({ e, burst, single, ctx }: { e: Evidence; burst?: Burst;
           {e.kind === 'generated_text' && <GeneratedVisual report={ctx.report} text={e.text} />}
           {e.kind === 'single_use_burst' && single && <SingleUseVisual report={ctx.report} b={single} />}
           {e.kind === 'burst' && burst && <BurstVisual report={ctx.report} b={burst} />}
+          {e.kind === 'ai_style' && <AiStyleVisual report={ctx.report} />}
+          {e.kind === 'first_time_skew' && <FirstTimeSkewVisual report={ctx.report} />}
           {group && ['ring', 'possible_ring', 'possible_ring_trip'].includes(e.kind) && <GroupVisual g={group} onShow={() => ctx.onShowGroup(group.group_id)} />}
           {group && setAside && <SetAsideVisual g={group} />}
         </div>
       )}
     </article>
+  )
+}
+
+/* ---------- ai_style: the phrases the AI opinion quoted ---------- */
+
+function AiStyleVisual({ report }: { report: Report }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, margin: '0px 0px -60px 0px' })
+  const ai = report.sieve?.ai
+  const rows = report.reviews.filter((r) => r.ai?.verdict === 'ai_style')
+  if (!ai || !rows.length) return null
+  return (
+    <div ref={ref} className="col" style={{ gap: 18 }}>
+      <Meter label={`Of the ${ai.judged} reviews long enough to judge`} share={rows.length / Math.max(1, ai.judged)} inView={inView} delay={0.2} hatch />
+      <div className="col" style={{ gap: 10 }}>
+        {rows.slice(0, 3).map((r) => (
+          <div key={r.review_id} className="cue-line">
+            <Stars rating={r.rating} />
+            <span className="small">{r.ai!.cues.map((c, i) => <span key={c}>{i > 0 && ', '}<mark className="cue">{c}</mark></span>)}</span>
+          </div>
+        ))}
+      </div>
+      <p className="tiny muted">Short reviews aren't judged: detectors are unreliable on them and over-flag people writing in a second language.</p>
+    </div>
+  )
+}
+
+/* ---------- first_time_skew: first-time accounts among 5-star reviews vs the rest ---------- */
+
+function FirstTimeSkewVisual({ report }: { report: Report }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, margin: '0px 0px -60px 0px' })
+  const t = report.signals.T9
+  if (!t?.available || !t.five_star || !t.other) return null
+  return (
+    <div ref={ref} className="col" style={{ gap: 14 }}>
+      <Meter label={`5★ reviews (${t.five_star})`} share={(t.five_star_first_time ?? 0) / t.five_star} inView={inView} delay={0.2} hatch />
+      <Meter label={`Other reviews (${t.other})`} share={(t.other_first_time ?? 0) / t.other} inView={inView} delay={0.45} />
+      <p className="tiny muted">Share from accounts with no other reviews.</p>
+    </div>
   )
 }
 
@@ -248,7 +292,7 @@ function SingleUseVisual({ report, b }: { report: Report; b: SingleUseBurst }) {
       <div>
         <div className="row" style={{ alignItems: 'baseline', gap: 10, marginBottom: 12 }}>
           <span className="big-num num"><CountUp value={b.single_use} /></span>
-          <span className="secondary">of <strong className="num">{b.count}</strong> reviews in {dayCount(b.start, b.end)} days came from single-use accounts</span>
+          <span className="secondary">of <strong className="num">{b.count}</strong> reviews in {dayCount(b.start, b.end)} days came from first-time accounts</span>
         </div>
         <div className="propbar" role="img" aria-label={`${b.single_use} of ${b.count}`}>
           <motion.div className="seg-hatch" initial={{ width: 0 }} animate={inView ? { width: `${(b.single_use / b.count) * 100}%` } : {}} transition={{ duration: 1.2, ease: EASE, delay: 0.2 }} />

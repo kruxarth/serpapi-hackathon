@@ -5,7 +5,7 @@ import { useEffect, useState, type ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { api } from '../api'
 import { Investigation, usePlayback } from '../components/Investigation'
-import { CountUp, EASE } from '../motion'
+import { EASE } from '../motion'
 import { usePresentation } from '../presentation'
 import type { AnalysisDetail, ProgressEvent } from '../types'
 import { CandidatePicker } from './HomePage'
@@ -19,6 +19,7 @@ const STAGES: { key: string; title: string; note: string; optional?: boolean }[]
   { key: 'expanding', title: 'Open reviewer histories', note: 'Every other place each account reviewed' },
   { key: 'building_graph', title: 'Build the co-review graph', note: 'Link accounts that share unrelated places' },
   { key: 'finding_groups', title: 'Find groups', note: 'Test each group against rings, trips and friends' },
+  { key: 'reading_texts', title: 'Read the longer reviews', note: 'An AI opinion on AI-written style', optional: true },
 ]
 const TERMINAL = ['done', 'cancelled', 'error', 'paused', 'needs_input']
 const RUNNING = new Set(['queued', 'running', 'collected'])
@@ -72,7 +73,6 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
   }, [ended, caughtUp, detail.id, qc])
 
   const last = played[played.length - 1]
-  const used = last?.searches_used ?? detail.searches_used
   const expanding = [...played].reverse().find((e) => e.type === 'expanding')
   const done = Number(expanding?.data?.done ?? 0)
   const total = Number(expanding?.data?.total ?? 0)
@@ -111,9 +111,9 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
 
           <div className="col" style={{ gap: 14, marginTop: 22 }}>
             {detail.status === 'paused' && (
-              <State icon={<Pause size={16} />} tone="warn" title="Paused: waiting for the hourly search limit.">
+              <State icon={<Pause size={16} />} tone="warn" title="Paused: too many checks this hour.">
                 {detail.paused?.resume_at && <>It can resume after {new Date(detail.paused.resume_at).toLocaleTimeString()}. </>}
-                Everything fetched so far is cached; resuming requests nothing twice.
+                Everything fetched so far is kept; resuming picks up where it stopped.
                 <div className="row" style={{ marginTop: 12 }}>
                   <button className="btn primary sm" disabled={busy} onClick={() => act(() => api.resume(detail.id))}>Resume</button>
                   <button className="btn sm" disabled={busy} onClick={() => act(() => api.cancel(detail.id))}>Cancel</button>
@@ -140,8 +140,8 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
               </State>
             )}
             {missing.length > 0 && (
-              <State icon={<Database size={16} />} title="Not in the cache.">
-                {missing.map(([k, v]) => `${k} (would cost ${v})`).join(', ')}. Switch to live mode to fetch it.
+              <State icon={<Database size={16} />} title="Not fetched yet.">
+                {missing.map(([k]) => k).join(', ')}. The report uses what was already fetched; live mode fetches the rest.
               </State>
             )}
             {error && <div className="notice error"><CircleAlert size={16} />{error}</div>}
@@ -150,17 +150,6 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
         </div>
 
         <aside className="col" style={{ gap: 18, paddingTop: 34 }}>
-          <div className="panel pad">
-            <div className="secondary">Searches used</div>
-            <div className="big-num num" style={{ fontSize: '3.6rem', marginTop: 10 }}>
-              <AnimatePresence mode="popLayout">
-                <motion.span key={used} initial={{ y: 24, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -24, opacity: 0 }} transition={{ duration: 0.35, ease: EASE }} style={{ display: 'inline-block' }}>
-                  <CountUp value={used} duration={0.4} />
-                </motion.span>
-              </AnimatePresence>
-            </div>
-            <div className="muted small" style={{ marginTop: 6 }}>Cached data is reused; nothing is fetched twice.</div>
-          </div>
           {live && <Stages reached={reached} current={current} finished={finished} done={done} total={total} round={round} />}
           {live && (
             <div className="panel pad">
@@ -195,6 +184,7 @@ const STAGE_TITLE: Record<string, string> = {
   links: 'Looking for shared places',
   early_stop: 'Looking for shared places',
   finding_groups: 'Testing groups',
+  reading_texts: 'Reading the longer reviews',
 }
 
 /** The pipeline as a compact checklist beside the live view. */
