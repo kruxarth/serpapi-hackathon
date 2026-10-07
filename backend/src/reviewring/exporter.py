@@ -22,6 +22,7 @@ from .leakcheck import check_object, originals_from_cache
 from .model import AnalysisInput, Contributor, Expansion, HistoryReview, Place, TargetReview
 from .normalize.text import TextFeatures
 from .privacy import (
+    CUE_KEEP_CHARS,
     EXCERPT_KEEP_CHARS,
     TEXT_KEEP_CHARS,
     TEXT_KEEP_MIN_ACCOUNTS,
@@ -48,8 +49,14 @@ def _r1(v: float | None) -> float | None:
     return round1(v)
 
 
-def pseudonymize_input(inp: AnalysisInput, salt_value: str) -> AnalysisInput:
-    """Hash ids, rename businesses, reduce addresses to areas, round coordinates, drop most text."""
+SYNTHETIC_TEXT_CHARS = 1500
+
+
+def pseudonymize_input(inp: AnalysisInput, salt_value: str, *, keep_texts: bool = False) -> AnalysisInput:
+    """Hash ids, rename businesses, reduce addresses to areas, round coordinates, drop most text.
+
+    ``keep_texts`` keeps every target review text (scrubbed): only for synthetic worlds, whose texts are invented.
+    """
     features = compute_text_features(inp)
 
     def pk(key: str | None) -> str | None:
@@ -76,12 +83,19 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str) -> AnalysisInput:
     for p in inp.places.values():
         if p.title and p.place_key != inp.target.place_key:
             title_words |= {w for w in re.split(r"\W+", p.title) if len(w) >= 5}
+    if keep_texts:
+        title_words = set()  # invented names hide nothing, and words like "hotel" must stay readable
 
     def text_for(tid: str, text: str | None) -> str | None:
         f = features.get(tid)
         if not text or not f or not f.cluster or len(accounts.get(f.cluster, ())) < TEXT_KEEP_MIN_ACCOUNTS:
             return None
         return scrub_text(text, title_words)[:TEXT_KEEP_CHARS]
+
+    def target_text(r: TargetReview) -> str | None:
+        if keep_texts and r.text:
+            return scrub_text(r.text, title_words)[:SYNTHETIC_TEXT_CHARS]
+        return text_for(target_text_id(r.review_id), r.text) or machine_text(r)
 
     def machine_text(r: TargetReview) -> str | None:
         """Chatbot or placeholder text is kept as a scrubbed excerpt: it is the evidence, and no person wrote it."""
@@ -121,7 +135,7 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str) -> AnalysisInput:
             r.rating,
             dt(r.posted_at),
             r.edited,
-            text_for(target_text_id(r.review_id), r.text) or machine_text(r),
+            target_text(r),
             r.has_images,
             r.reviewer_reviews,
             r.reviewer_photos,
@@ -208,6 +222,14 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str) -> AnalysisInput:
             )
             for r in inp.top_rated
         ],
+        text_judgements={
+            rid(k): {
+                "verdict": j.get("verdict"),
+                "cues": [scrub_text(c, title_words)[:CUE_KEEP_CHARS] for c in j.get("cues", [])],
+                "model": j.get("model"),
+            }
+            for k, j in sorted(inp.text_judgements.items())
+        },
     )
 
 
@@ -233,6 +255,7 @@ def input_to_dict(inp: AnalysisInput) -> dict[str, Any]:
         "text_features": {k: asdict(f) for k, f in sorted((inp.text_features or {}).items())},
         "notes": inp.notes,
         "top_rated": [asdict(r) for r in inp.top_rated],
+        "text_judgements": dict(sorted(inp.text_judgements.items())),
     }
 
 
@@ -262,6 +285,7 @@ def input_from_dict(d: dict[str, Any]) -> AnalysisInput:
         text_features={k: TextFeatures(**f) for k, f in d.get("text_features", {}).items()} or None,
         notes=d.get("notes", []),
         top_rated=[TargetReview(**{**r, "posted_at": _dt(r["posted_at"])}) for r in d.get("top_rated", [])],
+        text_judgements=d.get("text_judgements", {}),
     )
 
 
@@ -274,7 +298,7 @@ def build_fixture(
     ai_summary: dict[str, Any] | None = None,
     salt_value: str | None = None,
 ) -> dict[str, Any]:
-    pseudo = pseudonymize_input(inp, salt_value if salt_value is not None else salt())
+    pseudo = pseudonymize_input(inp, salt_value if salt_value is not None else salt(), keep_texts=synthetic)
     report = analyze(pseudo)
     fixture = {
         "fixture_version": FIXTURE_VERSION,

@@ -101,7 +101,7 @@ def test_budget_strips_account(client, server):
 
 def test_full_analysis_flow(client, server):
     dry = client.post("/api/analyses", json={"input": URL, "dry_run": True}, headers=H).json()
-    assert dry["estimate"]["min"] == 15 and not server.calls
+    assert dry["estimate"]["min"] == 16 and not server.calls  # 6 review pages + 10 histories
     started = client.post("/api/analyses", json={"input": URL}, headers=H)
     assert started.status_code == 200, started.text
     aid = started.json()["analysis_id"]

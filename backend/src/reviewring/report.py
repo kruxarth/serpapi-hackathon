@@ -5,11 +5,12 @@ from __future__ import annotations
 import json
 import logging
 import re
+from collections.abc import Callable
 from typing import Any
 
 from . import db, settings
 from .engine.analyze import LABEL_TEXT, analyze
-from .llm import LLMGateway, LLMRefused, paraphrase_groups, summarize
+from .llm import LLMGateway, LLMRefused, judge_texts, paraphrase_groups, summarize
 from .model import AnalysisInput
 from .serp.gateway import Gateway
 from .store import save_parsed
@@ -56,17 +57,23 @@ def build_report(
     return report
 
 
-def store_report(analysis_id: str, inp: AnalysisInput, mode: str) -> dict[str, Any]:
-    """Build the report, add the AI summary (validated LLM text or templates) and store it.
+def store_report(
+    analysis_id: str, inp: AnalysisInput, mode: str, on_progress: Callable[[str], None] | None = None
+) -> dict[str, Any]:
+    """Build the report, add the AI opinions and summary (validated LLM text or templates) and store it.
 
     Live mode may call the LLM when a key is set; offline and demo modes only reuse cached replies.
     """
     conn = db.connect()
     llm = LLMGateway(mode="live" if mode == "live" else "offline")
+    texts = {r.review_id: r.text for r in inp.target_reviews if r.text}
+    words = {w for w in re.split(r"\W+", inp.target.title or "") if len(w) >= 4}
+    if texts and not inp.text_judgements:
+        if on_progress and llm.can_call:
+            on_progress("Reading the longer reviews for AI-written style")
+        inp.text_judgements = judge_texts(texts, llm, words)
     paraphrase = None
     if settings.load().get("paraphrase_signal"):
-        texts = {r.review_id: r.text for r in inp.target_reviews if r.text}
-        words = {w for w in re.split(r"\W+", inp.target.title or "") if len(w) >= 4}
         try:
             paraphrase = paraphrase_groups(texts, llm, words)
         except (LLMRefused, RuntimeError) as exc:
@@ -107,6 +114,14 @@ def print_summary(report: dict[str, Any]) -> None:
         f"Latest {r['examined']} reviews: {r['sample_mean']} -> {r['without_ring']} excluding linked reviewers "
         f"({r['without_ring_and_suspicious']} also without suspicious and possible-ring reviews)"
     )
+    sieve = report.get("sieve") or {}
+    if sieve:
+        signs = ", ".join(f"{v['name']} {v['count']}" for v in sieve["signs"].values() if v["count"])
+        print(f"Warning signs: {signs or 'none'}")
+        print(
+            f"Without the strong signs: {sieve['kept']['count']} reviews averaging {sieve['kept']['mean']} "
+            f"(AI-text opinion on {sieve['ai']['judged']} of {sieve['ai']['eligible']} long-enough reviews)"
+        )
     if r["overall"]:
         o = r["overall"]
         change = "no visible change overall" if o["no_visible_change"] else f"{o['low']}-{o['high']} overall"

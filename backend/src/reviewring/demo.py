@@ -74,6 +74,9 @@ def list_demo(directory: Path | None = None) -> list[dict[str, Any]]:
                 "level": r["level"]["level"],
                 "adjusted": r["ratings"]["without_ring"],
                 "sample_mean": r["ratings"]["sample_mean"],
+                "kept_mean": r["ratings"].get("kept_mean"),
+                "kept_count": r["ratings"].get("kept_count"),
+                "examined": r["ratings"]["examined"],
             }
         )
     order = {"High": 0, "Elevated": 1, "Low": 2, "Not enough history": 3}

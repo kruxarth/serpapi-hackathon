@@ -175,7 +175,20 @@ class JobManager:
                 "at": db.iso(db.utcnow()),
             },
         )
-        report = store_report(job.analysis_id, outcome.input, job.mode)
+
+        def progress(message: str) -> None:
+            self._push(
+                job,
+                {
+                    "type": "reading_texts",
+                    "message": message,
+                    "searches_used": used,
+                    "data": {},
+                    "at": db.iso(db.utcnow()),
+                },
+            )
+
+        report = store_report(job.analysis_id, outcome.input, job.mode, progress)
         self._push(
             job,
             {

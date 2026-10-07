@@ -3,7 +3,8 @@
 Businesses become "<Type> A/B/...", reviewers "Reviewer N", coordinates are
 rounded to 2 decimals, and review texts are kept only when they belong to a
 near-duplicate cluster written by >= 3 accounts, scrubbed and cut to 60 chars.
-Chatbot or placeholder excerpts are the exception: scrubbed and cut to 180 chars.
+Chatbot or placeholder excerpts are the exception: scrubbed and cut to 180 chars. The phrases an AI model
+quotes for "reads as AI-written" are kept too, scrubbed and cut to 60 chars each.
 """
 
 from __future__ import annotations
@@ -25,6 +26,8 @@ TEXT_KEEP_MIN_ACCOUNTS = 3
 TEXT_KEEP_CHARS = 60
 # Chatbot or placeholder text is kept longer: it was written by a machine, and it is the evidence. Still scrubbed.
 EXCERPT_KEEP_CHARS = 180
+# The short phrases an AI model quotes as the reason a review reads as AI-written. Scrubbed, cut to this length.
+CUE_KEEP_CHARS = 60
 
 
 def salt() -> str:
@@ -290,6 +293,11 @@ def pseudonymize_report(report: dict[str, Any], salt_value: str | None = None) -
         row["cluster"] = ps.cluster(orig.get("cluster"))
         if orig.get("excerpt"):
             row["excerpt"] = scrub_text(orig["excerpt"], business_words)[:EXCERPT_KEEP_CHARS]
+        if orig.get("ai"):
+            row["ai"] = {
+                **orig["ai"],
+                "cues": [scrub_text(c, business_words)[:CUE_KEEP_CHARS] for c in orig["ai"].get("cues", [])],
+            }
     t4 = r.get("signals", {}).get("T4", {})
     if t4:
         t4["clusters"] = {ps.cluster(c): [ps.review(x) for x in ids] for c, ids in t4.get("clusters", {}).items()}

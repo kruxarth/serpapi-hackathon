@@ -70,7 +70,7 @@ def test_probe_dry_run_spends_nothing(fake, capsys):
 def test_dry_run_command(fake, capsys):
     assert cli.main(["dry-run", URL]) == 0
     out = capsys.readouterr().out
-    assert "Estimate: 15-33 searches" in out
+    assert "Estimate: 16-34 searches" in out
     assert fake.calls == []
 
 
@@ -119,7 +119,7 @@ def test_checkpoint_flow_probe_then_collect_reuses_responses(monkeypatch, capsys
     assert cli.main(["collect", url]) == 2  # shows the estimate, spends nothing without --yes
     assert len(server.calls) == 2
     out = capsys.readouterr().out
-    assert "Estimate:" in out and "1 of 5 pages cached" in out
+    assert "Estimate:" in out and "1 of 6 pages cached" in out
 
     assert cli.main(["collect", url, "--yes"]) == 0
     keys = [tuple(sorted(c.items())) for c in server.calls]

@@ -12,9 +12,10 @@ from ..model import AnalysisInput, HistoryReview, TargetReview
 from ..normalize.geo import haversine_km
 from ..normalize.text import TextFeatures
 from .features import history_text_id, target_text_id
+from .graph import is_popular_type
 from .target_signals import BurstResult
 
-CONTEXT_ONLY = {"A3", "A4", "A8"}
+CONTEXT_ONLY = {"A3", "A4", "A8", "A9"}
 SIGNAL_NAMES = {
     "A1": "Thin profile",
     "A2": "Rating monotony",
@@ -24,6 +25,7 @@ SIGNAL_NAMES = {
     "A6": "Copy-paste text",
     "A7": "Burst participant",
     "A8": "Reworded template (AI)",
+    "A9": "Reviewing spree",
 }
 
 
@@ -159,4 +161,48 @@ def compute_signals(
             if g is not None and len(paraphrase_owners[g] - {cid}) >= 1:
                 sig.badges["A8"] = {"group": g}
                 break
+
+        # A9 reviewing spree (context only): many unrelated businesses in several cities within a month, ~all 5-star.
+        spree = reviewing_spree(inp, history)
+        if spree:
+            sig.badges["A9"] = spree
     return out
+
+
+def reviewing_spree(inp: AnalysisInput, history: list[HistoryReview]) -> dict[str, Any] | None:
+    """The busiest window of ``window_days`` among non-popular places, if it has enough reviews, areas and 5-stars.
+
+    The shape of "rate hotels and earn" tasks: one account rating many unrelated businesses across cities in a few
+    weeks, nearly all 5-star. Some travellers review this way too, so it's context, never counted.
+    """
+    cfg = config.load_tunables()["spree"]
+    dated = []
+    for h in history:
+        place = inp.places.get(h.place_key) if h.place_key else None
+        if place is None or h.place_key == inp.target.place_key or is_popular_type(place.type):
+            continue
+        if not _dated(h, cfg["max_precision_days"]):
+            continue
+        mid = h.date_min + (h.date_max - h.date_min) / 2  # type: ignore[operator]
+        dated.append((mid, h, place))
+    dated.sort(key=lambda x: (x[0], x[1].review_id))
+    best: list = []
+    for i, (start, _, _) in enumerate(dated):
+        window = [x for x in dated[i:] if (x[0] - start).days <= cfg["window_days"]]
+        if len({h.place_key for _, h, _ in window}) > len({h.place_key for _, h, _ in best}):
+            best = window
+    places = {h.place_key for _, h, _ in best}
+    areas = {p.area for _, _, p in best if p.area}
+    rated = [h.rating for _, h, _ in best if h.rating is not None]
+    if len(places) < cfg["min_reviews"] or len(areas) < cfg["min_areas"] or not rated:
+        return None
+    five = sum(1 for x in rated if x == 5) / len(rated)
+    if five < cfg["min_five_star_share"]:
+        return None
+    return {
+        "places": len(places),
+        "areas": sorted(areas),
+        "from": best[0][0].isoformat(),
+        "to": best[-1][0].isoformat(),
+        "five_star_share": round(five, 3),
+    }

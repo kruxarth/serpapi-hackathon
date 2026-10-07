@@ -12,12 +12,15 @@ from datetime import timedelta
 from pathlib import Path
 
 from . import config
+from . import demo_texts as T
 from .collect import Collector
 from .exporter import build_fixture, write_fixture
 from .fake_serp import FakeSerpApi
 from .leakcheck import originals_from_cache
+from .llm import valid_cues
+from .model import AnalysisInput
 from .serp.gateway import Gateway
-from .synth import FETCHED, World, ordinary_reviewers, plant_ring
+from .synth import CLIENT_TYPES, FETCHED, World, ordinary_reviewers, plant_ring
 
 URL = "https://www.google.com/maps/place/T/data=!4m2!3m1!1s0x5eed:0x1"
 SALT = "synthetic-demo"
@@ -75,7 +78,101 @@ def regional_world() -> World:
     return w
 
 
+def movers_world() -> World:
+    """The most common real pattern: a burst of 5-star reviews from first-time accounts, plus polished
+    AI-style texts, one pasted chatbot reply and a template copied across accounts."""
+    w = World(target_city="Bengaluru", target_type="Packers and movers", total_reviews=410, rating=4.9, seed=404)
+    ordinary_reviewers(w, 50, home="Bengaluru", rating_pool=(5, 5, 5, 5, 4, 4, 3, 1))
+    burst_day = FETCHED - timedelta(days=58)
+    for i in range(26):
+        cid = w.reviewer(total=1, photos=0)
+        text = T.MOVERS_TEMPLATE if i % 5 == 0 else T.MOVERS_BURST_SHORT[i % len(T.MOVERS_BURST_SHORT)]
+        if i % 5 == 0 and i:
+            text = text.replace("Highly recommended!", "Highly recommend.") if i % 2 else text.lower()
+        w.review_target(cid, rating=5, when=burst_day + timedelta(hours=i * 1.8), text=text)
+    for i, (text, _) in enumerate(T.MOVERS_AI):
+        cid = w.reviewer(total=w.rng.randint(1, 3), photos=0)
+        w.review_target(cid, rating=5, when=FETCHED - timedelta(days=8 + i * 13, hours=i), text=text)
+    cid = w.reviewer(total=64, photos=120, level=6)
+    w.personal_history(cid, "Bengaluru", 30)
+    w.review_target(cid, rating=4, when=FETCHED - timedelta(days=27), text=T.MOVERS_POLISHED[0])
+    for i, (text, rating) in enumerate(T.MOVERS_HUMAN):
+        cid = w.reviewer(total=w.rng.randint(6, 60), photos=w.rng.randint(0, 30))
+        w.personal_history(cid, "Bengaluru", w.rng.randint(5, 15))
+        w.review_target(cid, rating=rating, when=FETCHED - timedelta(days=5 + i * 17), text=text)
+    cid = w.reviewer(total=1, photos=0)
+    w.review_target(cid, rating=5, when=FETCHED - timedelta(days=63), text=T.MOVERS_CHATBOT)
+    for _ in range(9):  # real customers who made an account just to review: context, not a warning sign
+        cid = w.reviewer(total=1, photos=w.rng.choice((0, 0, 2)))
+        w.review_target(cid, rating=w.rng.choice((5, 5, 4, 3)))
+    return w
+
+
+def hotel_world() -> World:
+    """A rating carried by old reviews: shows 4.8, the newest 100 average about 3.2, and the highest-rated reviews
+    are an old batch from first-time accounts. Plus a pasted chatbot reply, AI-style texts and a reviewing spree."""
+    w = World(target_city="Delhi NCR", target_type="Hotel", total_reviews=5200, rating=4.8, seed=505)
+    ordinary_reviewers(w, 85, home="Delhi NCR", rating_pool=(1, 2, 2, 3, 3, 3, 4, 4, 4, 5))
+    when = FETCHED - timedelta(days=19)
+    for i, (text, _) in enumerate(T.HOTEL_AI):
+        cid = w.reviewer(total=w.rng.randint(1, 2), photos=0)
+        w.review_target(cid, rating=5, when=when + timedelta(hours=5 * i), text=text)
+    for i, (text, rating) in enumerate(T.HOTEL_HUMAN):
+        cid = w.reviewer(total=w.rng.randint(8, 70), photos=w.rng.randint(0, 40))
+        w.personal_history(cid, w.rng.choice(("Mumbai", "Pune", "Lucknow", "Jaipur")), w.rng.randint(6, 18))
+        w.review_target(cid, rating=rating, when=FETCHED - timedelta(days=3 + i * 21), text=text)
+    cid = w.reviewer(total=1, photos=0)
+    w.review_target(cid, rating=5, when=FETCHED - timedelta(days=44), text=T.HOTEL_CHATBOT)
+    # A "rate hotels and earn" worker: a dozen hotels in six cities within a month, all 5 stars.
+    spree = w.reviewer(total=14, photos=0)
+    for j, city in enumerate(["Mumbai", "Jaipur", "Goa", "Kochi", "Hyderabad", "Kolkata"] * 2):
+        w.add_history(
+            spree,
+            w.place(city, "Hotel" if j % 3 else CLIENT_TYPES[j % len(CLIENT_TYPES)]),
+            5,
+            days_ago=20 + j * 2,
+            precision="week",
+            text="Good",
+        )
+    w.review_target(spree, rating=5, when=when + timedelta(hours=2), text="Nice hotel")
+    for _ in range(6):
+        cid = w.reviewer(total=1, photos=0)
+        w.review_target(cid, rating=w.rng.choice((4, 3, 2, 5)))
+    for i in range(33):  # the old batch the displayed rating rests on
+        cid = w.reviewer(total=1, photos=0)
+        w.review_target(
+            cid,
+            rating=5,
+            when=FETCHED - timedelta(days=420 + i * 2, hours=i),
+            text=T.HOTEL_OLD_BATCH[i % len(T.HOTEL_OLD_BATCH)],
+        )
+    return w
+
+
+AI_CUES = {text: cues for text, cues in [*T.MOVERS_AI, T.MOVERS_POLISHED, *T.HOTEL_AI]}
+
+
+def synthetic_judgements(inp: AnalysisInput) -> dict[str, dict]:
+    """The AI-text opinion for invented texts, written with them (demo mode never calls a model)."""
+    min_words = int(config.tunable("ai_text", "min_words"))
+    out = {}
+    for r in inp.target_reviews:
+        if not r.text or len(r.text.split()) < min_words:
+            continue
+        cues = AI_CUES.get(r.text)
+        if cues and len(valid_cues(cues, r.text)) != len(cues):
+            raise ValueError(f"cues not found in their own text: {cues}")
+        out[r.review_id] = {
+            "verdict": "ai_style" if cues else "human_style",
+            "cues": cues or [],
+            "model": "synthetic example",
+        }
+    return out
+
+
 CASES = [
+    ("synthetic-movers", "Synthetic example: movers with a burst of first-time accounts", movers_world),
+    ("synthetic-hotel", "Synthetic example: hotel whose rating is carried by old reviews", hotel_world),
     ("synthetic-ring", "Synthetic example: dental clinic with a country-wide ring", ring_world),
     ("synthetic-trip", "Synthetic example: resort with a family trip (ruled out)", trip_world),
     ("synthetic-regional", "Synthetic example: hotel with a regional possible ring", regional_world),
@@ -99,6 +196,7 @@ def make_all(directory: Path | None = None) -> list[Path]:
                 out = Collector(gw, URL).run()
                 if out.status != "done" or out.input is None:
                     raise RuntimeError(f"{slug}: collection ended with {out.status}: {out.message}")
+                out.input.text_judgements = synthetic_judgements(out.input)
                 fixture = build_fixture(out.input, slug, title=title, synthetic=True, salt_value=SALT)
                 paths.append(write_fixture(fixture, originals=originals_from_cache(), directory=directory))
     finally:

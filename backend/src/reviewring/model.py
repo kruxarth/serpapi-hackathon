@@ -125,3 +125,6 @@ class AnalysisInput:
     notes: list[str] = field(default_factory=list)
     # A sample of the highest-rated reviews, fetched only when the displayed rating far exceeds recent ones.
     top_rated: list[TargetReview] = field(default_factory=list)
+    # An AI model's opinion of each long-enough review text, by review_id: {"verdict": "ai_style" | "human_style" |
+    # "unclear", "cues": [phrases quoted from the text]}. Never decides anything; fixtures carry it.
+    text_judgements: dict[str, dict[str, Any]] = field(default_factory=dict)

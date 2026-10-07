@@ -99,7 +99,7 @@ def test_offline_mode_reports_missing():
     offline = Gateway(mode="offline", secrets=config.Secrets(None, None))
     c = Collector(offline, URL)
     out = c.run()
-    assert out.status == "error" and "would cost 5 searches" in out.message
+    assert out.status == "error" and "would cost 6 searches" in out.message
     # With the pages cached but no histories, offline mode still runs and reports what's missing.
     server = FakeSerpApi(w)
     gateway(server).fetch_pages("0x5eed:0x1", 88)

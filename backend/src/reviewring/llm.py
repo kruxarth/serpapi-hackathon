@@ -6,6 +6,9 @@ The LLM informs, never decides (Rule 8):
   fixed templates are used when there's no key or validation fails twice.
 - Job 2 (optional, off by default) groups reworded template texts: signal A8,
   context only, which can never flag a reviewer on its own.
+- Job 3 gives an opinion on whether each long-enough review reads as AI-written.
+  An "AI-written" opinion counts only when it quotes phrases that are really in
+  the review; it is shown to the reader and never raises the level.
 
 Only pseudonymized data is ever sent. Every call is cached by a hash of
 (model, prompt version, input) and stored before it's parsed.
@@ -30,6 +33,7 @@ log = logging.getLogger(__name__)
 
 SUMMARY_PROMPT = "summary-v1"
 PARAPHRASE_PROMPT = "paraphrase-v1"
+AI_STYLE_PROMPT = "ai-style-v1"
 BANNED = [
     "fake",
     "fakes",
@@ -242,6 +246,13 @@ def build_facts(report: dict[str, Any]) -> list[dict[str, str]]:
         add(f"{r['without_ring']:.2f} stars without the ring reviews")
         add(f"{r['ring_reviews']} reviews")
     add(f"suspicion level {report['level']['level']}")
+    sieve = report.get("sieve") or {}
+    if sieve and sieve["kept"]["count"] < sieve["examined"]:
+        add(f"{sieve['examined'] - sieve['kept']['count']} reviews with a strong warning sign")
+        if sieve["kept"]["mean"] is not None:
+            add(f"{sieve['kept']['mean']:.2f} stars from the other {sieve['kept']['count']} reviews")
+    if sieve and sieve["signs"].get("ai_style", {}).get("count"):
+        add(f"{sieve['signs']['ai_style']['count']} reviews that read as AI-written to an AI model")
     for g in report.get("groups", []):
         m = g["metrics"]
         if g["verdict"] in ("ring", "possible_ring", "possible_ring_trip"):
@@ -376,4 +387,85 @@ def paraphrase_groups(texts: dict[str, str], gateway: LLMGateway, business_words
             for i in members:
                 out.setdefault(ids[i], g_index)
     gateway.mark_valid(PARAPHRASE_PROMPT, payload)
+    return out
+
+
+# ---------------------------------------------------------------------- job 3: reads as AI-written
+
+
+def _norm(text: str) -> str:
+    text = text.replace("\u2019", "'").replace("\u2018", "'").replace("\u201c", '"').replace("\u201d", '"')
+    return " ".join(text.casefold().split())
+
+
+def word_count(text: str | None) -> int:
+    return len((text or "").split())
+
+
+def valid_cues(cues: Any, text: str) -> list[str]:
+    """The quoted phrases that really occur in the text the model saw (at most 3, each at most 80 characters)."""
+    if not isinstance(cues, list):
+        return []
+    hay = _norm(text)
+    out: list[str] = []
+    for c in cues:
+        if not isinstance(c, str):
+            continue
+        cue = c.strip().strip("\"'.,!;:\u201c\u201d\u2018\u2019").strip()
+        n = _norm(cue)
+        if 6 <= len(n) <= 80 and n in hay and n not in {_norm(x) for x in out}:
+            out.append(cue)
+    return out[:3]
+
+
+def judge_texts(texts: dict[str, str], gateway: LLMGateway, business_words: set[str]) -> dict[str, dict[str, Any]]:
+    """review_id -> {"verdict", "cues", "model"} for reviews long enough to judge.
+
+    Texts are scrubbed (links, emails, phones, handles, the business's name) and sent with opaque indices in
+    small batches. An "ai_style" verdict needs ``min_cues`` phrases that occur in the scrubbed text; otherwise it
+    becomes "unclear". Cached and offline-safe: returns only what it could judge.
+    """
+    from .privacy import scrub_text
+
+    cfg = config.load_tunables()["ai_text"]
+    if not cfg.get("enabled", True):
+        return {}
+    ids = sorted(rid for rid, t in texts.items() if word_count(t) >= cfg["min_words"])
+    system = _prompt(AI_STYLE_PROMPT)
+    out: dict[str, dict[str, Any]] = {}
+    size = max(1, int(cfg["batch_size"]))
+    for start in range(0, len(ids), size):
+        batch = ids[start : start + size]
+        scrubbed = [scrub_text(texts[rid], business_words)[: int(cfg["max_chars"])] for rid in batch]
+        payload = json.dumps({"reviews": [{"index": i, "text": t} for i, t in enumerate(scrubbed)]}, ensure_ascii=False)
+        try:
+            assert_safe(payload, [])
+            raw = gateway.complete(AI_STYLE_PROMPT, system, payload)
+        except (LLMRefused, RuntimeError) as exc:
+            log.warning("AI-text check skipped a batch: %s", exc)
+            continue
+        if raw is None:
+            continue
+        try:
+            items = json.loads(raw).get("items", [])
+        except (ValueError, AttributeError):
+            continue
+        for item in items if isinstance(items, list) else []:
+            if not isinstance(item, dict):
+                continue
+            i = item.get("index")
+            if not isinstance(i, int) or not 0 <= i < len(batch) or batch[i] in out:
+                continue
+            verdict = item.get("verdict")
+            cues = valid_cues(item.get("cues"), scrubbed[i])
+            if verdict == "ai_style" and len(cues) < int(cfg["min_cues"]):
+                verdict = "unclear"
+            if verdict not in ("ai_style", "human_style", "unclear"):
+                verdict = "unclear"
+            out[batch[i]] = {
+                "verdict": verdict,
+                "cues": cues if verdict == "ai_style" else [],
+                "model": gateway.model,
+            }
+        gateway.mark_valid(AI_STYLE_PROMPT, payload)
     return out

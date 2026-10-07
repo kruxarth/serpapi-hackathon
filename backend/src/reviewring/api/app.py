@@ -8,6 +8,7 @@ the web app's. A Host check stops DNS-rebinding pages from posing as localhost.
 from __future__ import annotations
 
 import json
+import logging
 import time
 from collections.abc import Callable, Iterator
 from datetime import datetime
@@ -27,6 +28,8 @@ from ..resolve import InputRefused, lookup, lookup_request, parse_input
 from ..serp.errors import GatewayError, InvalidApiKey, NoApiKey, NotCached
 from ..serp.gateway import Gateway
 from .jobs import JobManager
+
+log = logging.getLogger(__name__)
 
 WEB_DIST = config.REPO_ROOT / "web" / "dist"
 MUTATING = {"POST", "PUT", "PATCH", "DELETE"}
@@ -199,10 +202,15 @@ def create_app(
             gw.refresh_account()
             status = gw.budget_status()
             if est.maximum > status.month_remaining:
+                log.warning(
+                    "analysis refused: up to %s searches needed, %s left this month",
+                    est.maximum,
+                    status.month_remaining,
+                )
                 raise HTTPException(
                     409,
-                    f"This analysis could cost up to {est.maximum} searches but only {status.month_remaining} are "
-                    "left this month. Try fewer reviews or reviewers, or stop after round 1.",
+                    "ReviewRing has reached its limit for new analyses this month. Places already analysed still "
+                    "open, and the limit resets at the start of next month. (Settings shows the details.)",
                 )
         analysis_id = app.state.jobs.submit(body.input, params, m)
         return {"analysis_id": analysis_id, "estimate": est.as_dict()}
@@ -247,6 +255,9 @@ def create_app(
                     level=report["level"]["level"],
                     adjusted=report["ratings"]["without_ring"],
                     sample_mean=report["ratings"]["sample_mean"],
+                    kept_mean=report["ratings"].get("kept_mean"),
+                    kept_count=report["ratings"].get("kept_count"),
+                    examined=report["ratings"]["examined"],
                 )
             out.append(item)
         return out
@@ -410,7 +421,7 @@ def create_app(
 HEADLINES = [  # (evidence kind, short reason for the badge), strongest first
     ("ring", "linked reviewer group"),
     ("generated_text", "chatbot text in reviews"),
-    ("single_use_burst", "burst of single-use accounts"),
+    ("single_use_burst", "burst of first-time accounts"),
     ("possible_ring_trip", "possible linked group"),
     ("rating_gap", "rating carried by old reviews"),
 ]
@@ -422,7 +433,7 @@ def headline(report: dict[str, Any]) -> str | None:
 
 
 def summarize(report: dict[str, Any]) -> dict[str, Any]:
-    """The extension's summary: level, main reason, adjusted rating, rings and the top 3 evidence sentences."""
+    """The extension's summary: level, main reason, ratings, sign counts and the top 3 evidence sentences."""
     order = {kind: i for i, (kind, _) in enumerate(HEADLINES)}
     evidence = sorted(report["evidence"], key=lambda e: order.get(e["kind"], len(order)))
     return {
@@ -435,6 +446,9 @@ def summarize(report: dict[str, Any]) -> dict[str, Any]:
         "adjusted": report["ratings"]["without_ring"],
         "examined": report["ratings"]["examined"],
         "rings": sum(1 for g in report["groups"] if g["verdict"] in ("ring", "possible_ring", "possible_ring_trip")),
+        "kept_mean": report["ratings"].get("kept_mean"),
+        "kept_count": report["ratings"].get("kept_count"),
+        "signs": {k: v["count"] for k, v in (report.get("sieve") or {}).get("signs", {}).items()},
         "evidence": [e["text"] for e in evidence[:3]],
     }
 

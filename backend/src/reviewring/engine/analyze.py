@@ -20,6 +20,7 @@ from .features import compute_text_features, target_text_id
 from .graph import build_pairs, distance_km, edges, is_popular_type, surprise
 from .groups import Group, detect_groups, type_group
 from .homes import compute_homes
+from .signs import ai_coverage, first_time_skew, review_signs, sieve_summary
 from .target_signals import (
     detect_bursts,
     generated_excerpt,
@@ -43,6 +44,8 @@ EVIDENCE_ORDER = {
             "single_use_burst",
             "rating_gap",
             "top_rated",
+            "ai_style",
+            "first_time_skew",
             "possible_ring_trip",
             "duplicates",
             "burst",
@@ -57,7 +60,7 @@ LABEL_TEXT = {
     "ring": "Ring-like group",
     "possible_ring_trip": "Possible ring-like group (trip-like)",
     "suspicious": "Suspicious",
-    "single_use_burst": "Single-use account in a burst",
+    "single_use_burst": "First-time account in a burst",
     "group_trip": "Trip or social group",
     "no_flags": "No flags",
     "not_checked": "Not checked",
@@ -139,6 +142,17 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
         if r.review_id in single_ids and label in ("no_flags", "not_checked", "group_trip"):
             label = "single_use_burst"
         f = features.get(target_text_id(r.review_id))
+        marker = generated_marker(r)
+        judgement = inp.text_judgements.get(r.review_id)
+        signs = review_signs(
+            r,
+            marker=marker,
+            copied=bool(f and f.cluster and f.cluster not in stock),
+            in_first_time_burst=r.review_id in single_ids,
+            label=label,
+            judgement=judgement,
+            spree=bool(r.contributor_id in signals and signals[r.contributor_id].has("A9")),
+        )
         review_rows.append(
             {
                 "review_id": r.review_id,
@@ -156,8 +170,12 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
                 "short": bool(f and f.short),
                 "reviewer_reviews": r.reviewer_reviews,
                 "local_guide": r.local_guide,
-                "generated_marker": generated_marker(r),
+                "generated_marker": marker,
                 "excerpt": generated_excerpt(r),
+                "signs": signs,
+                "ai": None
+                if judgement is None
+                else {"verdict": judgement.get("verdict"), "cues": judgement.get("cues", [])},
             }
         )
     label_counts = Counter(row["label"] for row in review_rows)
@@ -191,9 +209,12 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             "high": round(hi, 2),
             "no_visible_change": lo <= displayed <= hi,
         }
+    sieve = sieve_summary(review_rows, ai_coverage(inp.target_reviews, inp.text_judgements))
     ratings = {
         "examined": examined,
         "sample_mean": sample_mean,
+        "kept_mean": sieve["kept"]["mean"],
+        "kept_count": sieve["kept"]["count"],
         "without_ring": without_ring,
         "without_ring_and_suspicious": strict,
         "ring_reviews": len(ring_rows),
@@ -273,6 +294,8 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
     t4 = {k: v for k, v in t4.items() if k not in stock}
     evidence = evidence_sentences(inp, groups, client_lists, bursts, t4, ratings, expanded, edge_pairs)
     evidence += rating_evidence(gap, top, [row for row in review_rows if row["generated_marker"]])
+    skew = first_time_skew(inp.target_reviews)
+    evidence += review_text_evidence(sieve, skew)
     evidence.sort(key=lambda e: EVIDENCE_ORDER.get(e["kind"], len(EVIDENCE_ORDER)))  # stable: the strongest first
 
     popular_target = is_popular_type(inp.target.type)
@@ -319,7 +342,9 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             "T6": {"single_use_bursts": single_bursts},
             "T7": gap,
             "T8": top,
+            "T9": skew,
         },
+        "sieve": sieve,
         "reviewers": [
             {
                 "contributor_id": cid,
@@ -343,7 +368,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
         "client_lists": client_lists,
         "places": places_payload(inp, groups, signals),
         "evidence": evidence,
-        "caveats": caveats(inp),
+        "caveats": caveats(inp, sieve["ai"]),
         "calibration": date_calibration(inp),
         "notes": inp.notes,
     }
@@ -535,7 +560,7 @@ def evidence_sentences(inp, groups, client_lists, bursts, t4, ratings, expanded,
                     "visual": "timeline",
                     "text": f"{b['single_use']} of the {b['count']} reviews in the {b['start']} to {b['end']} "
                     "burst came from accounts that have reviewed nothing else on Google Maps. Bursts of "
-                    "single-use accounts are a common pattern in coordinated review campaigns, though a business "
+                    "first-time accounts are a common pattern in coordinated review campaigns, though a business "
                     "can also be targeted without its knowledge.",
                 }
             )
@@ -598,10 +623,10 @@ def rating_evidence(gap: dict[str, Any], top: dict[str, Any], recent_generated: 
     return out
 
 
-def caveats(inp: AnalysisInput) -> list[str]:
-    n = inp.params.get("n") or len(inp.target_reviews)
+def caveats(inp: AnalysisInput, ai: dict[str, Any] | None = None) -> list[str]:
+    n = len(inp.target_reviews)
     k = len(inp.expansions)
-    return [
+    out = [
         "This is a pattern, not proof.",
         f"Only the newest {n} reviews and the {k} highest-priority reviewers were examined.",
         "Private profiles can't be checked.",
@@ -610,6 +635,42 @@ def caveats(inp: AnalysisInput) -> list[str]:
         "Google may already have removed some reviews.",
         "A business can be targeted without its knowledge: review-task scams hand recruits real businesses to review.",
     ]
+    if ai and ai.get("judged"):
+        out.append(
+            "\u201cReads as AI-written\u201d is an AI model's opinion. AI-text detectors are unreliable on short texts "
+            "and over-flag people writing in a second language, so only longer reviews were judged."
+        )
+    return out
+
+
+def review_text_evidence(sieve: dict[str, Any], skew: dict[str, Any]) -> list[dict[str, Any]]:
+    """Sentences for the AI-written opinion and for first-time accounts concentrated among 5-star reviews."""
+    out: list[dict[str, Any]] = []
+    ai = sieve["ai"]
+    n_ai = sieve["signs"].get("ai_style", {}).get("count", 0)
+    if ai.get("judged") and n_ai:
+        out.append(
+            {
+                "kind": "ai_style",
+                "visual": "sieve",
+                "text": f"{n_ai} of the {ai['judged']} reviews long enough to judge read as AI-written to an AI model, "
+                "which quotes the phrases behind each opinion. Real customers also polish honest reviews with AI, "
+                "so these are shown, not counted.",
+            }
+        )
+    if skew.get("flagged"):
+        five, other = skew["five_star"], skew["other"]
+        f5, fo = skew["five_star_first_time"], skew["other_first_time"]
+        out.append(
+            {
+                "kind": "first_time_skew",
+                "visual": "sieve",
+                "text": f"{f5} of the {five} five-star reviews ({round(100 * f5 / five)}%) come from accounts with no "
+                f"other reviews, against {fo} of the {other} other reviews ({round(100 * fo / other)}%). "
+                "Customers asked to review on the spot also create new accounts, so this is context, not proof.",
+            }
+        )
+    return out
 
 
 def date_calibration(inp: AnalysisInput) -> list[dict[str, Any]]:

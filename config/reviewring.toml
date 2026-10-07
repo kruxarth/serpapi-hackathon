@@ -4,12 +4,12 @@
 [budget]
 monthly_cap = 250            # free plan
 hourly_cap = 50              # free plan, rolling 60 minutes
-per_analysis_cap = 35          # 5 pages + 25 histories + 3 top-rated + 1 coordinates lookup
+per_analysis_cap = 36        # 6 pages + 25 histories + 3 top-rated + 1 coordinates lookup + 1 spare
 retry_delay_seconds = 30     # 5xx / timeout: retry once after this, then pause
 request_timeout_seconds = 60
 
 [collection]
-n_reviews = 88               # newest target reviews: 8 + 4 x 20
+n_reviews = 100              # newest target reviews: 6 pages (8 + 5 x 20 = 108), the newest 100 kept
 k1 = 8                       # round-1 reviewers
 baseline = 2                 # B: random baseline reviewers
 k2 = 15                      # round-2 reviewers
@@ -80,6 +80,35 @@ markers = [
   "[clinic name]", "[insert",
 ]
 raises_level = true          # a matched marker makes the level at least Elevated (never High)
+
+[ai_text]
+# An AI model's opinion on whether a review reads as AI-written. Shown, never counted towards the level.
+# Detectors are unreliable on short texts and over-flag second-language writers, so only longer reviews are
+# judged, and an "AI-written" opinion must quote at least min_cues phrases that are really in the review.
+enabled = true
+min_words = 40
+batch_size = 12
+max_chars = 1500             # per review sent
+min_cues = 2
+
+[signs]
+# Per-review warning signs, strongest first. A review is drawn in the first branch that is set aside.
+order = ["chatbot_text", "copied_text", "first_time_burst", "linked_group", "ai_style", "review_spree", "first_time_account"]
+set_aside_by_default = ["chatbot_text", "copied_text", "first_time_burst", "linked_group"]
+first_time_max_reviews = 1   # an account showing at most this many reviews is "first-time"
+skew_min_ratio = 2.0         # 5-star reviews this many times as likely to be first-time as other reviews...
+skew_min_five_star = 10      # ...with at least this many 5-star and
+skew_min_other = 5           # this many other reviews to compare
+skew_min_share = 0.35        # and at least this share of the 5-star reviews (a fifth is normal for real customers)
+
+[spree]
+# A checked reviewer who rated many unrelated businesses in several cities within a month, almost all 5 stars:
+# the shape of "rate and earn" tasks, though some travellers review this way too. Context, never counted.
+window_days = 31
+min_reviews = 8
+min_areas = 3
+min_five_star_share = 0.9
+max_precision_days = 31
 
 [young]
 min_total_reviews = 50
