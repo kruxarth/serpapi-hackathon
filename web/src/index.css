@@ -229,13 +229,12 @@ tr.selected td { background: color-mix(in srgb, var(--label-ring) 10%, var(--sur
 .table-scroll { max-height: 600px; overflow: auto; }
 
 /* ---------- Home ---------- */
-.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) 560px; gap: 56px; align-items: center; padding: 24px 0 72px; }
+.home-hero { display: grid; grid-template-columns: minmax(0, 1fr) 640px; gap: 56px; align-items: center; padding: 24px 0 72px; }
 .home-hero h1 { font-size: 5.2rem; font-stretch: 78%; font-weight: 750; line-height: 0.95; letter-spacing: -0.015em; max-width: 12ch; }
 .home-hero .lede { margin-top: 24px; font-size: 1.15rem; color: var(--ink-2); max-width: 54ch; }
 .search-box { margin-top: 34px; display: flex; align-items: center; gap: 8px; padding: 8px 8px 8px 18px; border-radius: 999px; background: var(--surface); border: 2px solid var(--ink); }
 .search-box:focus-within { box-shadow: 0 0 0 5px color-mix(in srgb, var(--ink) 12%, transparent); }
 .search-box input { flex: 1; border: none; background: transparent; padding: 0 6px; height: 44px; font-size: 1.05rem; outline: none; }
-.checks { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
 .section-title { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
 .section-title h2 { font-size: 1.9rem; font-stretch: 85%; }
 .analysis-list { display: grid; gap: 0; border-top: 1px solid var(--rule); }
@@ -366,25 +365,15 @@ details.summary-ai[open] > summary .chev { transform: rotate(90deg); }
 }
 .home-hero .hero-sub { margin-top: 14px; font-family: var(--display); font-size: 2.3rem; font-stretch: 85%; font-weight: 500; line-height: 1.1; color: var(--ink-2); max-width: 22ch; }
 
-/* ---------- Rating, unpacked ---------- */
-.unpacked circle { transition: fill 0.5s var(--ease), stroke 0.5s var(--ease); }
-.unpack-panel { padding: 28px 30px 24px; }
-.unpack-title { font-size: 1.35rem; font-stretch: 88%; }
-.mini-stars { font-size: 1rem; letter-spacing: 1px; }
-.unpack-fig { display: flex; align-items: flex-end; gap: 18px; margin: 18px 0 6px; min-height: 64px; }
-.unpack-fig .fig { font-size: 4.2rem; line-height: 0.9; font-stretch: 80%; }
-.unpack-cap { color: var(--ink-2); padding-bottom: 8px; max-width: 34ch; line-height: 1.35; }
-.unpack-steps li.unpack-replay { margin-left: auto; }
-.unpack-steps li.unpack-replay::before { display: none; }
-.unpack-steps { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 14px 0 0; padding: 14px 0 0; border-top: 1px solid var(--rule-soft); font-size: 0.9rem; color: var(--ink-2); counter-reset: step; }
-.unpack-steps li { display: inline-flex; align-items: center; gap: 6px; counter-increment: step; }
-.unpack-steps li::before { content: counter(step); display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--sunk); font-size: 0.75rem; font-weight: 700; color: var(--muted); }
-.unpack-steps li.active::before { background: var(--ink); color: var(--on-ink); }
-.unpack-steps b { color: var(--ink); }
 .hero-ill { padding: 22px 24px 16px; }
-.hero-ill .unpack-fig { margin-top: 0; }
-.hero-ill .unpack-fig .fig { font-size: 3.2rem; }
-.hero-ill .unpack-steps { font-size: 0.82rem; }
+.sieve.compact .sieve-node { padding: 10px 14px; }
+.sieve.compact .sieve-avg .fig { font-size: 1.45rem; }
+.sieve.compact .sieve-avg.big .fig { font-size: 2.1rem; }
+.sieve.compact .sieve-leaf { grid-template-columns: 40px minmax(0, 1fr) auto; gap: 12px; padding: 6px 12px; }
+.sieve.compact .leaf-count { font-size: 1.55rem; }
+.sieve.compact .leaf-name { font-size: 0.92rem; line-height: 1.2; }
+.sieve.compact .leaf-switch { min-width: 0; }
+.sieve-leaf.static, .sieve-sink.static { cursor: default; }
 
 .replay-cta { display: flex; align-items: center; gap: 14px; width: 100%; margin-top: 26px; padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--rule); background: var(--surface); cursor: pointer; text-align: left; transition: border-color 0.2s, transform 0.2s var(--ease); }
 .replay-cta:hover { border-color: var(--ink); transform: translateY(-1px); }

@@ -216,7 +216,8 @@ def create_app(
         return {"analysis_id": analysis_id, "estimate": est.as_dict()}
 
     @app.get("/api/analyses")
-    def list_analyses(request: Request, limit: int = 50) -> list[dict[str, Any]]:
+    def list_analyses(request: Request, limit: int = 50, per_place: bool = False) -> list[dict[str, Any]]:
+        """Newest first. ``per_place`` keeps only the newest analysis of each place (the home page's list)."""
         if mode() == "demo":
             from ..demo import list_demo
 
@@ -225,14 +226,19 @@ def create_app(
             db.connect()
             .execute(
                 "SELECT id, input, status, stage, searches_used, started_at, finished_at, place_key, report "
-                "FROM analyses ORDER BY started_at DESC LIMIT ?",
+                "FROM analyses ORDER BY started_at DESC, rowid DESC LIMIT ?",
                 (min(limit, 200),),
             )
             .fetchall()
         )
         hide = present(request)
         out = []
+        seen: set[str] = set()
         for r in rows:
+            if per_place and r["place_key"]:
+                if r["place_key"] in seen:
+                    continue
+                seen.add(r["place_key"])
             report = json.loads(r["report"]) if r["report"] else None
             item = {
                 "id": r["id"],

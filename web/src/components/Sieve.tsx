@@ -1,5 +1,5 @@
-// The sieve: the newest reviews flow left to right as dots. Each review leaves the trunk at the first warning sign
-// the reader has set aside and drops into that sign's branch; the rest reach "Kept". Setting a sign aside or keeping
+// The sieve: the newest reviews flow down a trunk as dots. Each review leaves the trunk at the first warning sign
+// the reader has set aside and drops into that sign's row; the rest reach "Kept". Setting a sign aside or keeping
 // it moves exactly its reviews, so the reader sees what changed. Nothing here re-scores a review: the signs come
 // from the report, the reader only chooses which ones to set aside.
 
@@ -11,6 +11,8 @@ import type { Report, ReviewRow, SieveSign, SignKey } from '../types'
 import { starFill } from './Reviewer'
 
 export type Branch = SignKey | 'kept'
+/** What the sieve needs from a report: its reviews and their signs. The home page builds one from invented reviews. */
+export type SieveSource = Pick<Report, 'reviews' | 'sieve'>
 
 const mean = (rows: ReviewRow[]) => {
   const v = rows.map((r) => r.rating).filter((x): x is number => x != null)
@@ -18,7 +20,7 @@ const mean = (rows: ReviewRow[]) => {
 }
 
 /** The reader's choice of signs to set aside, and where each review lands because of it. */
-export function useSieve(report: Report) {
+export function useSieve(report: SieveSource) {
   const sieve = report.sieve
   const [aside, setAside] = useState<Set<SignKey>>(() => new Set(sieve?.set_aside_by_default ?? []))
   const toggle = useCallback((k: SignKey) => setAside((prev) => {
@@ -52,54 +54,50 @@ export function signTone(k: SignKey, s: SieveSign | undefined): string {
 
 /* ---------- geometry ----------
    Vertical: the newest reviews sit in a card at the top, a trunk runs down the left edge, each sign is a row the
-   trunk branches into, and what's left reaches "Kept" at the bottom. Rows have room for a name, an explanation and
-   the sign's own dots, however many signs there are. */
+   trunk branches into, and what's left reaches "Kept" at the bottom. The full size has room for each sign's
+   explanation; the compact size (the home page) shows names only. */
 
 const P = 8 // dot pitch
 const R = 3 // dot radius
-const TX = 30 // trunk's left edge
-const T = 46 // trunk width for every review
-const LEAF_X = TX + T + 64
-const SRC_H = 88
-const SINK_H = 118
-const ROW_H = 96
-const ROW_GAP = 14
-const GAP = 34 // between the source card, the rows and the sink card
 const PAD = 16
-const DOT_COLS = 34
+
+const FULL = { tx: 30, t: 46, leafX: 140, srcH: 88, sinkH: 118, rowH: 96, rowGap: 14, gap: 34, dotCols: 34, minW: 720, explain: true }
+const COMPACT = { tx: 18, t: 38, leafX: 98, srcH: 76, sinkH: 104, rowH: 52, rowGap: 9, gap: 24, dotCols: 16, minW: 420, explain: false }
+type Dims = typeof FULL
 
 interface Grid { x: number; y: number; cols: number }
 const at = (g: Grid, j: number) => ({ x: g.x + (j % g.cols) * P + P / 2, y: g.y + Math.floor(j / g.cols) * P + P / 2 })
 const rowsFor = (n: number, cols: number) => Math.max(1, Math.ceil(n / cols))
 
-function useLayout(width: number, report: Report, gates: SignKey[]) {
+function useLayout(width: number, report: SieveSource, gates: SignKey[], d: Dims) {
   return useMemo(() => {
     const n = report.reviews.length
-    const W = Math.max(width, 720)
-    const wideCols = Math.min(60, Math.floor((W * 0.46) / P))
+    const W = Math.max(width, d.minW)
+    const wideCols = Math.min(60, Math.floor((W * (d.explain ? 0.46 : 0.5)) / P))
     const nodeDotsH = rowsFor(n, wideCols) * P
-    const srcH = Math.max(SRC_H, nodeDotsH + 2 * PAD + 4)
-    const sinkH = Math.max(SINK_H, nodeDotsH + 2 * PAD + 4)
+    const srcH = Math.max(d.srcH, nodeDotsH + 2 * PAD + 4)
+    const sinkH = Math.max(d.sinkH, nodeDotsH + 2 * PAD + 4)
     const srcBottom = srcH
-    const rowTop = (i: number) => srcBottom + GAP + i * (ROW_H + ROW_GAP)
-    const rowMid = Object.fromEntries(gates.map((k, i) => [k, rowTop(i) + ROW_H / 2])) as Record<SignKey, number>
-    const rowsEnd = gates.length ? rowTop(gates.length - 1) + ROW_H : srcBottom
-    const sinkTop = rowsEnd + GAP
+    const rowTop = (i: number) => srcBottom + d.gap + i * (d.rowH + d.rowGap)
+    const rowMid = Object.fromEntries(gates.map((k, i) => [k, rowTop(i) + d.rowH / 2])) as Record<SignKey, number>
+    const rowsEnd = gates.length ? rowTop(gates.length - 1) + d.rowH : srcBottom
+    const sinkTop = rowsEnd + d.gap
     const height = sinkTop + sinkH
     const nodeGrid = (top: number, h: number): Grid => ({ x: W - PAD - wideCols * P, y: top + (h - nodeDotsH) / 2, cols: wideCols })
-    const leafCols = Math.min(DOT_COLS, Math.floor((W - LEAF_X) * 0.36 / P))
+    const leafCols = Math.min(d.dotCols, Math.floor(((W - d.leafX) * (d.explain ? 0.36 : 0.42)) / P))
     const leaves = Object.fromEntries(gates.map((k) => {
       const rows = rowsFor(report.sieve?.signs[k]?.count ?? 1, leafCols)
       return [k, { x: W - PAD - leafCols * P, y: rowMid[k] - (rows * P) / 2, cols: leafCols }]
     })) as Record<SignKey, Grid>
-    return { W, n, srcH, sinkH, srcBottom, sinkTop, rowMid, rowTop, leaves, leafCols, height, src: nodeGrid(0, srcH), sink: nodeGrid(sinkTop, sinkH) }
-  }, [width, report, gates])
+    return { d, W, n, srcH, sinkH, srcBottom, sinkTop, rowMid, rowTop, leaves, leafCols, height, src: nodeGrid(0, srcH), sink: nodeGrid(sinkTop, sinkH) }
+  }, [width, report, gates, d])
 }
 type Layout = ReturnType<typeof useLayout>
 
 /** Trunk width before each sign's row, and each branch's width, for the current choice. */
 function flows(layout: Layout, gates: SignKey[], counts: Record<Branch, number>) {
   const total = Math.max(1, layout.n)
+  const T = layout.d.t
   const th = (c: number) => (c > 0 ? Math.max(3, (c / total) * T) : 0)
   let left = layout.n
   const before: Record<string, number> = {}
@@ -114,34 +112,38 @@ function flows(layout: Layout, gates: SignKey[], counts: Record<Branch, number>)
 
 /** The trunk: a straight left edge, and a right edge that steps in where each branch leaves. */
 function trunkPath(layout: Layout, gates: SignKey[], f: ReturnType<typeof flows>) {
+  const TX = layout.d.tx
   const top = layout.srcBottom
   const bottom = layout.sinkTop
   const startW = gates.length ? f.before[gates[0]] : f.end
-  let d = `M ${TX} ${top} L ${TX + startW} ${top}`
+  const bend = layout.d.rowH * 0.4
+  let path = `M ${TX} ${top} L ${TX + startW} ${top}`
   gates.forEach((k, i) => {
     const y = layout.rowMid[k]
     const after = i === gates.length - 1 ? f.end : f.before[gates[i + 1]]
-    d += ` L ${TX + f.before[k]} ${y - 38} C ${TX + f.before[k]} ${y - 18} ${TX + after} ${y - 14} ${TX + after} ${y + 6}`
+    path += ` L ${TX + f.before[k]} ${y - bend} C ${TX + f.before[k]} ${y - bend / 2} ${TX + after} ${y - bend / 3} ${TX + after} ${y + 6}`
   })
-  d += ` L ${TX + f.end} ${bottom} L ${TX} ${bottom} Z`
-  return d
+  path += ` L ${TX + f.end} ${bottom} L ${TX} ${bottom} Z`
+  return path
 }
 
 /* ---------- the graph ---------- */
 
-export function SieveGraph({ report, state, selected, onSelect }: {
-  report: Report; state: SieveState; selected: Branch; onSelect: (b: Branch) => void
+export function SieveGraph({ report, state, selected, onSelect, compact = false }: {
+  report: SieveSource; state: SieveState; selected?: Branch; onSelect?: (b: Branch) => void; compact?: boolean
 }) {
   const sieve = report.sieve!
+  const d = compact ? COMPACT : FULL
   const gates = useMemo(() => sieve.order.filter((k) => sieve.signs[k].count > 0), [sieve])
   const [ref, width] = useWidth<HTMLDivElement>()
-  const layout = useLayout(width, report, gates)
+  const layout = useLayout(width, report, gates, d)
   const counts = useMemo(() => Object.fromEntries((['kept', ...sieve.order] as Branch[]).map((b) => [b, state.groups[b]?.length ?? 0])) as Record<Branch, number>, [state.groups, sieve])
   const f = flows(layout, gates, counts)
   const ready = width > 0
+  const reach = d.rowH * 0.42
 
   return (
-    <div ref={ref} className="sieve" style={{ height: layout.height }}>
+    <div ref={ref} className={`sieve ${compact ? 'compact' : ''}`} style={{ height: layout.height }}>
       {ready && (
         <>
           <svg className="sieve-svg" width={layout.W} height={layout.height} aria-hidden>
@@ -150,12 +152,12 @@ export function SieveGraph({ report, state, selected, onSelect }: {
               const y = layout.rowMid[k]
               const w = f.branch[k]
               const on = state.aside.has(k)
-              const x0 = TX + f.before[k] - Math.max(w, 2) / 2
-              const d = `M ${x0} ${y - 40} C ${x0} ${y - 12} ${x0 + 14} ${y} ${x0 + 40} ${y} L ${LEAF_X} ${y}`
+              const x0 = d.tx + f.before[k] - Math.max(w, 2) / 2
+              const path = `M ${x0} ${y - reach} C ${x0} ${y - reach / 3} ${x0 + 14} ${y} ${x0 + 40} ${y} L ${d.leafX} ${y}`
               const tone = signTone(k, sieve.signs[k])
               return on && w > 0
-                ? <path key={k} d={d} fill="none" stroke={tone} strokeOpacity={sieve.signs[k].strength === 'opinion' ? 0.22 : 0.3} strokeWidth={w} />
-                : <path key={k} d={`M ${TX + f.before[k] + 6} ${y} L ${LEAF_X} ${y}`} fill="none" stroke="var(--line-strong)" strokeDasharray="2 5" strokeWidth={1.4} />
+                ? <path key={k} d={path} fill="none" stroke={tone} strokeOpacity={sieve.signs[k].strength === 'opinion' ? 0.22 : 0.3} strokeWidth={w} />
+                : <path key={k} d={`M ${d.tx + f.before[k] + 6} ${y} L ${d.leafX} ${y}`} fill="none" stroke="var(--line-strong)" strokeDasharray="2 5" strokeWidth={1.4} />
             })}
           </svg>
 
@@ -166,14 +168,10 @@ export function SieveGraph({ report, state, selected, onSelect }: {
 
           {gates.map((k) => (
             <Leaf key={k} k={k} sign={sieve.signs[k]} layout={layout} on={state.aside.has(k)} count={counts[k]} rows={state.groups[k] ?? []}
-              selected={selected === k} onToggle={() => state.toggle(k)} onSelect={() => onSelect(k)} />
+              selected={selected === k} onToggle={() => state.toggle(k)} onSelect={onSelect ? () => onSelect(k) : undefined} />
           ))}
 
-          <button type="button" className={`sieve-node sieve-sink ${selected === 'kept' ? 'selected' : ''}`} style={{ left: 0, right: 0, top: layout.sinkTop, height: layout.sinkH }} onClick={() => onSelect('kept')}>
-            <div className="sieve-node-label">Kept</div>
-            <div className="sieve-avg big"><span className="fig">{fmt(state.keptMean, 2)}</span><span className="star">★</span></div>
-            <div className="muted small"><span className="num">{state.keptCount}</span> of {layout.n} reviews</div>
-          </button>
+          <SinkNode layout={layout} state={state} selected={selected === 'kept'} onSelect={onSelect ? () => onSelect('kept') : undefined} />
 
           <Dots report={report} layout={layout} state={state} f={f} />
         </>
@@ -182,30 +180,45 @@ export function SieveGraph({ report, state, selected, onSelect }: {
   )
 }
 
+function SinkNode({ layout, state, selected, onSelect }: { layout: Layout; state: SieveState; selected: boolean; onSelect?: () => void }) {
+  const inner = (
+    <>
+      <div className="sieve-node-label">Kept</div>
+      <div className="sieve-avg big"><span className="fig">{fmt(state.keptMean, 2)}</span><span className="star">★</span></div>
+      <div className="muted small"><span className="num">{state.keptCount}</span> of {layout.n} reviews</div>
+    </>
+  )
+  const style = { left: 0, right: 0, top: layout.sinkTop, height: layout.sinkH }
+  return onSelect
+    ? <button type="button" className={`sieve-node sieve-sink ${selected ? 'selected' : ''}`} style={style} onClick={onSelect}>{inner}</button>
+    : <div className="sieve-node sieve-sink static" style={style}>{inner}</div>
+}
+
 function Leaf({ k, sign, layout, on, count, rows, selected, onToggle, onSelect }: {
-  k: SignKey; sign: SieveSign; layout: Layout; on: boolean; count: number; rows: ReviewRow[]; selected: boolean; onToggle: () => void; onSelect: () => void
+  k: SignKey; sign: SieveSign; layout: Layout; on: boolean; count: number; rows: ReviewRow[]; selected: boolean; onToggle: () => void; onSelect?: () => void
 }) {
   const tone = signTone(k, sign)
   const m = mean(rows)
+  const d = layout.d
   const dotsW = layout.leafCols * P + PAD
+  const status = on
+    ? <>{count > 0 && m != null ? <>these average <span className="num">{fmt(m, 1)}</span>★</> : 'none left here'}{d.explain && count !== sign.count && <> ({sign.count - count} more left at an earlier sign)</>}</>
+    : <>kept: {sign.count === 1 ? 'this review counts' : `these ${sign.count} reviews count`} towards Kept</>
   return (
-    <div className={`sieve-node sieve-leaf ${on ? 'on' : 'off'} ${sign.strength} ${selected ? 'selected' : ''}`}
-      style={{ left: LEAF_X, right: 0, top: layout.rowMid[k] - ROW_H / 2, height: ROW_H, paddingRight: dotsW + 12, ['--tone' as string]: tone }}>
-      <button type="button" className="leaf-hit" onClick={onSelect} aria-label={`Show the reviews: ${sign.name}`} />
+    <div className={`sieve-node sieve-leaf ${on ? 'on' : 'off'} ${sign.strength} ${selected ? 'selected' : ''} ${onSelect ? '' : 'static'}`}
+      title={d.explain ? undefined : sign.explain}
+      style={{ left: d.leafX, right: 0, top: layout.rowMid[k] - d.rowH / 2, height: d.rowH, paddingRight: dotsW + 12, ['--tone' as string]: tone }}>
+      {onSelect && <button type="button" className="leaf-hit" onClick={onSelect} aria-label={`Show the reviews: ${sign.name}`} />}
       <span className="fig leaf-count">{on ? count : sign.count}</span>
       <div className="leaf-body">
-        <div className="leaf-name">{sign.name}</div>
-        <div className="leaf-explain">{sign.explain}</div>
-        <div className="tiny muted">
-          {on
-            ? <>{count > 0 && m != null ? <>these average <span className="num">{fmt(m, 1)}</span>★</> : 'none left here'}{count !== sign.count && <> ({sign.count - count} more left at an earlier sign)</>}</>
-            : <>kept: {sign.count === 1 ? "this review counts" : `these ${sign.count} reviews count`} towards Kept</>}
-        </div>
+        <div className="leaf-name">{d.explain ? sign.name : sign.short}</div>
+        {d.explain && <div className="leaf-explain">{sign.explain}</div>}
+        {d.explain && <div className="tiny muted">{status}</div>}
       </div>
       <label className="leaf-switch" title={on ? 'Keep these reviews' : 'Set these reviews aside'}>
         <input type="checkbox" className="sr-only" checked={on} onChange={onToggle} aria-label={`Set aside: ${sign.name}`} />
         <span className={`switch-track ${on ? 'on' : ''}`}><span className="switch-thumb" /></span>
-        <span className="tiny">{on ? 'Set aside' : 'Kept'}</span>
+        {d.explain && <span className="tiny">{on ? 'Set aside' : 'Kept'}</span>}
       </label>
     </div>
   )
@@ -215,9 +228,10 @@ function Leaf({ k, sign, layout, on, count, rows, selected, onToggle, onSelect }
 
 interface Pt { x: number; y: number }
 
-function Dots({ report, layout, state, f }: { report: Report; layout: Layout; state: SieveState; f: ReturnType<typeof flows> }) {
+function Dots({ report, layout, state, f }: { report: SieveSource; layout: Layout; state: SieveState; f: ReturnType<typeof flows> }) {
   const reduce = useReducedMotion()
   const reviews = report.reviews
+  const { tx: TX, leafX: LEAF_X } = layout.d
   // Where each review lands: its branch and its slot in that node's grid (in the reviews' own order, newest first).
   const targets = useMemo(() => {
     const slot: Record<string, number> = {}
@@ -235,7 +249,7 @@ function Dots({ report, layout, state, f }: { report: Report; layout: Layout; st
     if (b === 'kept') return TX + 2 + k * Math.max(1, f.end - 4)
     const w = f.branch[b] ?? 3
     return TX + f.before[b] - w + 1 + k * Math.max(1, w - 2)
-  }, [f])
+  }, [f, TX])
 
   // The previous landing places, kept in state (not a ref) so moves can start where each dot was.
   const [snap, setSnap] = useState<{ cur: typeof targets; prev: typeof targets | null }>({ cur: targets, prev: null })
@@ -243,7 +257,8 @@ function Dots({ report, layout, state, f }: { report: Report; layout: Layout; st
   const old = snap.cur !== targets ? snap.cur : snap.prev
   const plans = useMemo(() => {
     const sinkIn = layout.sinkTop + 4
-    const out = (b: SignKey, x: number): Pt[] => [{ x, y: layout.rowMid[b] - 30 }, { x: x + 30, y: layout.rowMid[b] }, { x: LEAF_X + 10, y: layout.rowMid[b] }]
+    const turn = layout.d.rowH * 0.3
+    const out = (b: SignKey, x: number): Pt[] => [{ x, y: layout.rowMid[b] - turn }, { x: x + turn, y: layout.rowMid[b] }, { x: LEAF_X + 10, y: layout.rowMid[b] }]
     return targets.map((t, i) => {
       const x = lane(i, t.b)
       const src = at(layout.src, i)
@@ -254,11 +269,11 @@ function Dots({ report, layout, state, f }: { report: Report; layout: Layout; st
       const o = old[i]
       if (!o || o.b === t.b) return { pts: [t.pos], from: false, delay: 0 }
       const ox = lane(i, o.b)
-      const back: Pt[] = o.b === 'kept' ? [{ x: ox, y: sinkIn }] : [{ x: LEAF_X + 10, y: layout.rowMid[o.b] }, { x: ox + 30, y: layout.rowMid[o.b] }]
+      const back: Pt[] = o.b === 'kept' ? [{ x: ox, y: sinkIn }] : [{ x: LEAF_X + 10, y: layout.rowMid[o.b] }, { x: ox + turn, y: layout.rowMid[o.b] }]
       const ahead: Pt[] = t.b === 'kept' ? [{ x, y: sinkIn }] : out(t.b, x)
       return { pts: [...back, ...ahead, t.pos], from: false, delay: (i % 25) * 0.01 }
     })
-  }, [targets, old, layout, lane])
+  }, [targets, old, layout, lane, LEAF_X])
 
   return (
     <svg className="sieve-dots" width={layout.W} height={layout.height} aria-hidden>

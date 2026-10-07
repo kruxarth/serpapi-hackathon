@@ -162,3 +162,15 @@ def test_error_messages_never_leak_keys(client, server, monkeypatch):
     assert FAKE_KEY not in json.dumps(events)
     assert FAKE_KEY not in client.get(f"/api/analyses/{aid}").text
     time.sleep(0)
+
+
+def test_list_per_place_keeps_the_newest_analysis_of_each_place(client, server):
+    first = client.post("/api/analyses", json={"input": URL}, headers=H).json()["analysis_id"]
+    wait_done(client, first)
+    second = client.post("/api/analyses", json={"input": URL}, headers=H).json()["analysis_id"]
+    wait_done(client, second)
+    every = client.get("/api/analyses").json()
+    one = client.get("/api/analyses?per_place=1").json()
+    assert {first, second} <= {a["id"] for a in every}
+    assert [a["id"] for a in one if a["id"] in (first, second)] == [second]
+    assert one[0]["kept_mean"] is not None and one[0]["examined"] > 0

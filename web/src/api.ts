@@ -75,7 +75,8 @@ export const api = {
     send<{ dry_run: true; estimate: Estimate }>('POST', '/api/analyses', { input, ...opts, dry_run: true }),
   start: (input: string, opts: StartOptions) =>
     send<{ analysis_id: string; estimate: Estimate }>('POST', '/api/analyses', { input, ...opts }),
-  list: (presentation: boolean) => request<AnalysisListItem[]>(`/api/analyses${q(presentation)}`),
+  list: (presentation: boolean, perPlace = false) =>
+    request<AnalysisListItem[]>(`/api/analyses${q(presentation)}${perPlace ? '&per_place=1' : ''}`),
   get: (id: string, presentation: boolean) =>
     request<AnalysisDetail>(`/api/analyses/${encodeURIComponent(id)}${q(presentation)}`),
   resume: (id: string, pick?: string) =>

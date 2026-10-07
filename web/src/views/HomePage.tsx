@@ -4,14 +4,14 @@ import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../api'
-import { illustrationDots, RatingUnpacked } from '../components/RatingUnpacked'
+import { SieveGraph, useSieve } from '../components/Sieve'
 import { LevelBadge } from '../components/ui'
+import { exampleSource } from '../example'
 import { ageText, fmt } from '../labels'
 import { EASE } from '../motion'
 import { usePresentation } from '../presentation'
 import type { AnalysisListItem, Candidate, ResolveResult } from '../types'
 
-const CHECKS = ['Bursts of first-time accounts', 'Chatbot and AI-written text', 'Copied text', 'Ratings carried by old reviews', 'Linked reviewer groups']
 
 const rise = (i: number) => ({
   initial: { opacity: 0, y: 18 },
@@ -22,7 +22,7 @@ const rise = (i: number) => ({
 export function HomePage() {
   const pres = usePresentation()
   const health = useQuery({ queryKey: ['health'], queryFn: api.health })
-  const list = useQuery({ queryKey: ['analyses', pres.on], queryFn: () => api.list(pres.on), refetchInterval: 10000 })
+  const list = useQuery({ queryKey: ['analyses', pres.on, 'per-place'], queryFn: () => api.list(pres.on, true), refetchInterval: 10000 })
   const demo = health.data?.mode === 'demo'
 
   return (
@@ -44,9 +44,10 @@ export function HomePage() {
               <Analyse mode={health.data?.mode} />
             )}
           </motion.div>
-          <motion.div className="checks" {...rise(4)}>
-            {CHECKS.map((c) => <span key={c} className="chip">{c}</span>)}
-          </motion.div>
+          <motion.p className="small secondary" style={{ marginTop: 22, maxWidth: '58ch' }} {...rise(4)}>
+            It also checks whether the rating is carried by old reviews, and whether reviewers belong to linked groups that
+            review the same unrelated businesses across cities.
+          </motion.p>
         </div>
         <HeroIllustration />
       </section>
@@ -73,21 +74,26 @@ export function HomePage() {
   )
 }
 
-const DEMO = illustrationDots()
+const EXAMPLE = exampleSource()
 
-/** The product's own visual, on invented reviews: a rating, its reviews, and a burst of single-use accounts lifted out. */
+/** The product's own graph on invented reviews: switch a sign and watch its reviews move. */
 function HeroIllustration() {
+  const state = useSieve(EXAMPLE)
   return (
-    <motion.div className="hero-ill panel" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: EASE, delay: 0.35 }} aria-label="Illustration with invented reviews">
-      <RatingUnpacked dots={DEMO.dots} shown={DEMO.shown} mean={DEMO.mean} adjusted={DEMO.adjusted} height={270} loop />
-      <p className="muted tiny" style={{ marginTop: 10 }}>Illustration with invented reviews.</p>
+    <motion.div className="hero-ill panel" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: EASE, delay: 0.35 }}>
+      <div className="row" style={{ justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 14 }}>
+        <strong>Try it: switch a sign on or off</strong>
+        <span className="small secondary">Google shows <span className="num">{EXAMPLE.shown}</span><span style={{ color: 'var(--gold)' }}>★</span></span>
+      </div>
+      <SieveGraph report={EXAMPLE} state={state} compact />
+      <p className="muted tiny" style={{ marginTop: 12 }}>Invented reviews. Each dot is one review, coloured by its stars.</p>
     </motion.div>
   )
 }
 
 function AnalysisRow({ a }: { a: AnalysisListItem }) {
-  const after = a.kept_mean ?? a.adjusted
-  const shifted = after != null && a.sample_mean != null && Math.abs(after - a.sample_mean) >= 0.005
+  const after = a.kept_mean ?? null
+  const setAside = a.kept_count != null && a.examined != null && a.kept_count < a.examined
   return (
     <Link to={`/analysis/${a.id}`} className="analysis-row">
       <div>
@@ -102,8 +108,12 @@ function AnalysisRow({ a }: { a: AnalysisListItem }) {
         {a.sample_mean != null ? (
           <>
             <span className="fig" style={{ fontSize: '1.35rem' }}>{fmt(a.sample_mean, 2)}<span style={{ color: 'var(--gold)' }}>★</span></span>
-            {shifted && <span className="num secondary"> → {fmt(after, 2)}★</span>}
-            <div className="muted tiny">{shifted ? `newest ${a.examined ?? ''} → after setting aside${a.kept_count != null ? ` (${a.kept_count} kept)` : ''}` : `average of the newest ${a.examined ?? ''}`}</div>
+            {setAside && after != null && <span className="num secondary"> → {fmt(after, 2)}★</span>}
+            <div className="muted tiny">
+              {a.examined == null
+                ? 'average of the newest reviews'
+                : setAside ? `newest ${a.examined}, then the ${a.kept_count} kept` : `newest ${a.examined}, no strong signs`}
+            </div>
           </>
         ) : <span className="muted">–</span>}
       </div>
@@ -158,7 +168,7 @@ function Analyse({ mode }: { mode: string | undefined }) {
       >
         <Search size={18} className="muted" style={{ alignSelf: 'center', marginLeft: 8 }} />
         <input
-          placeholder="Paste a Google Maps link, or type a name and city"
+          placeholder="Google Maps link, or a name and city"
           value={input}
           onChange={(e) => {
             setInput(e.target.value)
