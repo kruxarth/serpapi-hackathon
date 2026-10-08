@@ -6,6 +6,9 @@ The LLM informs, never decides (Rule 8):
   fixed templates are used when there's no key or validation fails twice.
 - Job 2 (optional, off by default) groups reworded template texts: signal A8,
   context only, which can never flag a reviewer on its own.
+- Job 4 compares a checked reviewer's review of this business with their own other
+  reviews: is it in their own voice? A "different voice" needs a quoted phrase from
+  each side that really occurs there; the report shows both texts side by side.
 - Job 3 gives an opinion on whether each long-enough review reads as AI-written.
   An "AI-written" opinion counts only when it quotes phrases that are really in
   the review; it is shown to the reader and never raises the level.
@@ -34,6 +37,7 @@ log = logging.getLogger(__name__)
 SUMMARY_PROMPT = "summary-v1"
 PARAPHRASE_PROMPT = "paraphrase-v1"
 AI_STYLE_PROMPT = "ai-style-v1"
+VOICE_PROMPT = "voice-v1"
 BANNED = [
     "fake",
     "fakes",
@@ -496,4 +500,89 @@ def judge_texts(texts: dict[str, str], gateway: LLMGateway, business_words: set[
                 "model": gateway.model,
             }
         gateway.mark_valid(AI_STYLE_PROMPT, payload)
+    return out
+
+
+# ---------------------------------------------------------------------- job 4: not in the reviewer's own voice
+
+
+def voice_items(inp) -> list[dict[str, Any]]:
+    """Each checked reviewer with enough of their own writing to compare: their review here, and their other reviews."""
+    cfg = config.load_tunables()["voice"]
+    target = inp.target.place_key
+    here_by: dict[str, str] = {}
+    for r in inp.target_reviews:
+        if r.contributor_id and r.text and word_count(r.text) >= cfg["min_words_here"]:
+            here_by.setdefault(r.contributor_id, r.text)
+    items = []
+    for e in inp.expansions:
+        cid = e.contributor_id
+        c = inp.contributors.get(cid)
+        if cid not in here_by or c is None or c.status != "ok":
+            continue
+        others = [
+            h.text
+            for h in inp.histories.get(cid, [])
+            if h.place_key != target and h.text and word_count(h.text) >= cfg["min_other_words"]
+        ]
+        if others:
+            items.append({"contributor_id": cid, "here": here_by[cid], "others": others[: int(cfg["max_others"])]})
+    return items
+
+
+def judge_voices(inp, gateway: LLMGateway, business_words: set[str]) -> dict[str, dict[str, Any]]:
+    """contributor_id -> {"verdict", "here", "elsewhere", "model"}. Scrubbed texts, opaque indices, cached."""
+    from .privacy import scrub_text
+
+    cfg = config.load_tunables()["voice"]
+    if not cfg.get("enabled", True):
+        return {}
+    items = voice_items(inp)
+    system = _prompt(VOICE_PROMPT)
+    out: dict[str, dict[str, Any]] = {}
+    size = max(1, int(cfg["batch_size"]))
+    for start in range(0, len(items), size):
+        batch = items[start : start + size]
+        sent = [
+            {
+                "index": i,
+                "this_review": scrub_text(it["here"], business_words)[:900],
+                "other_reviews": [scrub_text(o, business_words)[:300] for o in it["others"]],
+            }
+            for i, it in enumerate(batch)
+        ]
+        payload = json.dumps({"items": sent}, ensure_ascii=False)
+        try:
+            assert_safe(payload, [])
+            raw = gateway.complete(VOICE_PROMPT, system, payload)
+        except (LLMRefused, RuntimeError) as exc:
+            log.warning("voice check skipped a batch: %s", exc)
+            continue
+        if raw is None:
+            continue
+        try:
+            replies = json.loads(raw).get("items", [])
+        except (ValueError, AttributeError):
+            continue
+        for rep in replies if isinstance(replies, list) else []:
+            if not isinstance(rep, dict):
+                continue
+            i = rep.get("index")
+            if not isinstance(i, int) or not 0 <= i < len(batch) or batch[i]["contributor_id"] in out:
+                continue
+            verdict = rep.get("verdict")
+            here = valid_cues([rep.get("here")], sent[i]["this_review"])
+            elsewhere = valid_cues([rep.get("elsewhere")], " \n ".join(sent[i]["other_reviews"]))
+            if verdict == "different_voice" and not (here and elsewhere):
+                verdict = "unclear"
+            if verdict not in ("different_voice", "same_voice", "unclear"):
+                verdict = "unclear"
+            different = verdict == "different_voice"
+            out[batch[i]["contributor_id"]] = {
+                "verdict": verdict,
+                "here": here[0] if different else "",
+                "elsewhere": elsewhere[0] if different else "",
+                "model": gateway.model,
+            }
+        gateway.mark_valid(VOICE_PROMPT, payload)
     return out

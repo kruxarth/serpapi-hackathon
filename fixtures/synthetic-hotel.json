@@ -9,7 +9,7 @@
    "place_key": "pa8129cf95546",
    "data_id": null,
    "title": "Hotel A",
-   "address": null,
+   "address": "Invented Road, New Delhi, Delhi",
    "lat": 28.6,
    "lng": 77.2,
    "type": "Hotel",
@@ -1423,7 +1423,7 @@
    "p0067b11179ed": {
     "place_key": "p0067b11179ed",
     "data_id": null,
-    "title": "Restaurant G",
+    "title": "Restaurant Z",
     "address": null,
     "lat": 28.7,
     "lng": 77.3,
@@ -1435,7 +1435,7 @@
    "p00e39884d8b4": {
     "place_key": "p00e39884d8b4",
     "data_id": null,
-    "title": "Grocery store AM",
+    "title": "Grocery store BS",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1447,7 +1447,7 @@
    "p0633ef55ccb8": {
     "place_key": "p0633ef55ccb8",
     "data_id": null,
-    "title": "Hotel AY",
+    "title": "Hotel DG",
     "address": null,
     "lat": 17.4,
     "lng": 78.4,
@@ -1456,10 +1456,34 @@
     "rating": null,
     "total_reviews": null
    },
+   "p09d16e0b5f7c": {
+    "place_key": "p09d16e0b5f7c",
+    "data_id": null,
+    "title": "Grocery store CI",
+    "address": null,
+    "lat": 28.7,
+    "lng": 77.2,
+    "type": "Grocery store",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p0aa2369fb42e": {
+    "place_key": "p0aa2369fb42e",
+    "data_id": null,
+    "title": "Pharmacy AL",
+    "address": null,
+    "lat": 28.5,
+    "lng": 77.2,
+    "type": "Pharmacy",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p1047f8376f40": {
     "place_key": "p1047f8376f40",
     "data_id": null,
-    "title": "Restaurant AG",
+    "title": "Restaurant BM",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1468,10 +1492,82 @@
     "rating": null,
     "total_reviews": null
    },
+   "p12b5af6e09f0": {
+    "place_key": "p12b5af6e09f0",
+    "data_id": null,
+    "title": "Cafe AG",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Cafe",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p1796b977a5e2": {
+    "place_key": "p1796b977a5e2",
+    "data_id": null,
+    "title": "Gym AH",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Gym",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p17cb97010ff5": {
+    "place_key": "p17cb97010ff5",
+    "data_id": null,
+    "title": "Restaurant AP",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Restaurant",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p1aadb8a3a9b0": {
+    "place_key": "p1aadb8a3a9b0",
+    "data_id": null,
+    "title": "Grocery store AQ",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.1,
+    "type": "Grocery store",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p1afd2fdc7cd9": {
+    "place_key": "p1afd2fdc7cd9",
+    "data_id": null,
+    "title": "Bakery AI",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Bakery",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p1afd7edbf8f5": {
+    "place_key": "p1afd7edbf8f5",
+    "data_id": null,
+    "title": "Bookstore CN",
+    "address": null,
+    "lat": 26.9,
+    "lng": 81.0,
+    "type": "Bookstore",
+    "area": "Lucknow",
+    "rating": null,
+    "total_reviews": null
+   },
    "p1e067dc91958": {
     "place_key": "p1e067dc91958",
     "data_id": null,
-    "title": "Skin care clinic AU",
+    "title": "Skin care clinic DC",
     "address": null,
     "lat": 19.0,
     "lng": 72.9,
@@ -1483,7 +1579,7 @@
    "p1f15b2b776bc": {
     "place_key": "p1f15b2b776bc",
     "data_id": null,
-    "title": "Gym S",
+    "title": "Gym AY",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1495,7 +1591,7 @@
    "p1f39c9a7eb0a": {
     "place_key": "p1f39c9a7eb0a",
     "data_id": null,
-    "title": "Grocery store W",
+    "title": "Grocery store BC",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1504,10 +1600,34 @@
     "rating": null,
     "total_reviews": null
    },
+   "p1fc10ac58129": {
+    "place_key": "p1fc10ac58129",
+    "data_id": null,
+    "title": "Cafe P",
+    "address": null,
+    "lat": 28.7,
+    "lng": 77.3,
+    "type": "Cafe",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p256468a4bb4a": {
+    "place_key": "p256468a4bb4a",
+    "data_id": null,
+    "title": "Electronics store BX",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Electronics store",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p2647e5935803": {
     "place_key": "p2647e5935803",
     "data_id": null,
-    "title": "Restaurant X",
+    "title": "Restaurant BD",
     "address": null,
     "lat": 28.6,
     "lng": 77.1,
@@ -1519,7 +1639,7 @@
    "p26f556ad3a5b": {
     "place_key": "p26f556ad3a5b",
     "data_id": null,
-    "title": "Bookstore AK",
+    "title": "Bookstore BQ",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1531,7 +1651,7 @@
    "p2926af2d8cf4": {
     "place_key": "p2926af2d8cf4",
     "data_id": null,
-    "title": "Gym R",
+    "title": "Gym AX",
     "address": null,
     "lat": 28.5,
     "lng": 77.3,
@@ -1540,10 +1660,22 @@
     "rating": null,
     "total_reviews": null
    },
+   "p2a7f598af228": {
+    "place_key": "p2a7f598af228",
+    "data_id": null,
+    "title": "Bakery E",
+    "address": null,
+    "lat": 28.7,
+    "lng": 77.2,
+    "type": "Bakery",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p2a90c307e5ba": {
     "place_key": "p2a90c307e5ba",
     "data_id": null,
-    "title": "Restaurant C",
+    "title": "Restaurant V",
     "address": null,
     "lat": 28.6,
     "lng": 77.3,
@@ -1552,10 +1684,58 @@
     "rating": null,
     "total_reviews": null
    },
+   "p2b7ae61524f7": {
+    "place_key": "p2b7ae61524f7",
+    "data_id": null,
+    "title": "Hospital BZ",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Hospital",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p2b99596cdbc5": {
+    "place_key": "p2b99596cdbc5",
+    "data_id": null,
+    "title": "Restaurant CL",
+    "address": null,
+    "lat": 26.8,
+    "lng": 80.9,
+    "type": "Restaurant",
+    "area": "Lucknow",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p2cb715d63092": {
+    "place_key": "p2cb715d63092",
+    "data_id": null,
+    "title": "Bookstore Q",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.1,
+    "type": "Bookstore",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p2cc66b84b72b": {
+    "place_key": "p2cc66b84b72b",
+    "data_id": null,
+    "title": "Bookstore D",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Bookstore",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p2d0125032283": {
     "place_key": "p2d0125032283",
     "data_id": null,
-    "title": "Gym H",
+    "title": "Gym AA",
     "address": null,
     "lat": 28.7,
     "lng": 77.2,
@@ -1567,7 +1747,7 @@
    "p2f68717f4e21": {
     "place_key": "p2f68717f4e21",
     "data_id": null,
-    "title": "Hotel AT",
+    "title": "Hotel DB",
     "address": null,
     "lat": 22.6,
     "lng": 88.4,
@@ -1579,7 +1759,7 @@
    "p31ca8d7fb7a7": {
     "place_key": "p31ca8d7fb7a7",
     "data_id": null,
-    "title": "Hospital L",
+    "title": "Hospital AE",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1588,10 +1768,70 @@
     "rating": null,
     "total_reviews": null
    },
+   "p348e868863a3": {
+    "place_key": "p348e868863a3",
+    "data_id": null,
+    "title": "Electronics store CQ",
+    "address": null,
+    "lat": 26.9,
+    "lng": 80.9,
+    "type": "Electronics store",
+    "area": "Lucknow",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p35004ac2b77b": {
+    "place_key": "p35004ac2b77b",
+    "data_id": null,
+    "title": "Grocery store K",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Grocery store",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p35c451bd12bd": {
+    "place_key": "p35c451bd12bd",
+    "data_id": null,
+    "title": "Grocery store CE",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Grocery store",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p36903699070e": {
+    "place_key": "p36903699070e",
+    "data_id": null,
+    "title": "Dentist BY",
+    "address": null,
+    "lat": 28.7,
+    "lng": 77.2,
+    "type": "Dentist",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p37ee6016b9e4": {
+    "place_key": "p37ee6016b9e4",
+    "data_id": null,
+    "title": "Gym AM",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.3,
+    "type": "Gym",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p3b61b481b4cc": {
     "place_key": "p3b61b481b4cc",
     "data_id": null,
-    "title": "Pharmacy AD",
+    "title": "Pharmacy BJ",
     "address": null,
     "lat": 28.6,
     "lng": 77.3,
@@ -1600,10 +1840,34 @@
     "rating": null,
     "total_reviews": null
    },
+   "p3c8b6255b337": {
+    "place_key": "p3c8b6255b337",
+    "data_id": null,
+    "title": "Restaurant I",
+    "address": null,
+    "lat": 28.7,
+    "lng": 77.2,
+    "type": "Restaurant",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p405692ac9517": {
+    "place_key": "p405692ac9517",
+    "data_id": null,
+    "title": "Grocery store T",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Grocery store",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p40f71d383ba1": {
     "place_key": "p40f71d383ba1",
     "data_id": null,
-    "title": "Hotel AW",
+    "title": "Hotel DE",
     "address": null,
     "lat": 15.5,
     "lng": 73.8,
@@ -1615,7 +1879,7 @@
    "p45ab3f56150c": {
     "place_key": "p45ab3f56150c",
     "data_id": null,
-    "title": "Dental clinic AO",
+    "title": "Dental clinic CW",
     "address": null,
     "lat": 19.0,
     "lng": 72.9,
@@ -1624,10 +1888,22 @@
     "rating": null,
     "total_reviews": null
    },
+   "p46695fe11f63": {
+    "place_key": "p46695fe11f63",
+    "data_id": null,
+    "title": "Grocery store CG",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Grocery store",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p474ddd8a007d": {
     "place_key": "p474ddd8a007d",
     "data_id": null,
-    "title": "Pharmacy B",
+    "title": "Pharmacy U",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1639,7 +1915,7 @@
    "p47d35e92432c": {
     "place_key": "p47d35e92432c",
     "data_id": null,
-    "title": "Gym AB",
+    "title": "Gym BH",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1648,10 +1924,34 @@
     "rating": null,
     "total_reviews": null
    },
+   "p4b3571e83423": {
+    "place_key": "p4b3571e83423",
+    "data_id": null,
+    "title": "Cafe H",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.1,
+    "type": "Cafe",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p4c7f7948d5d6": {
     "place_key": "p4c7f7948d5d6",
     "data_id": null,
-    "title": "Hair salon P",
+    "title": "Hair salon AV",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Hair salon",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p4e276bfc507e": {
+    "place_key": "p4e276bfc507e",
+    "data_id": null,
+    "title": "Hair salon AF",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1663,7 +1963,7 @@
    "p568245f4582c": {
     "place_key": "p568245f4582c",
     "data_id": null,
-    "title": "Hospital AL",
+    "title": "Hospital BR",
     "address": null,
     "lat": 28.6,
     "lng": 77.1,
@@ -1672,10 +1972,34 @@
     "rating": null,
     "total_reviews": null
    },
+   "p572502295bd0": {
+    "place_key": "p572502295bd0",
+    "data_id": null,
+    "title": "Bakery CO",
+    "address": null,
+    "lat": 26.9,
+    "lng": 81.0,
+    "type": "Bakery",
+    "area": "Lucknow",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p5c5465e2bfe1": {
+    "place_key": "p5c5465e2bfe1",
+    "data_id": null,
+    "title": "Electronics store G",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Electronics store",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p6256b48e86ee": {
     "place_key": "p6256b48e86ee",
     "data_id": null,
-    "title": "Cafe J",
+    "title": "Cafe AC",
     "address": null,
     "lat": 28.6,
     "lng": 77.1,
@@ -1687,7 +2011,7 @@
    "p63df68c66dc6": {
     "place_key": "p63df68c66dc6",
     "data_id": null,
-    "title": "Bookstore I",
+    "title": "Bookstore AB",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1699,7 +2023,7 @@
    "p664b19b10456": {
     "place_key": "p664b19b10456",
     "data_id": null,
-    "title": "Pharmacy V",
+    "title": "Pharmacy BB",
     "address": null,
     "lat": 28.7,
     "lng": 77.3,
@@ -1708,10 +2032,22 @@
     "rating": null,
     "total_reviews": null
    },
+   "p6720abfec45d": {
+    "place_key": "p6720abfec45d",
+    "data_id": null,
+    "title": "Dentist CJ",
+    "address": null,
+    "lat": 26.8,
+    "lng": 80.9,
+    "type": "Dentist",
+    "area": "Lucknow",
+    "rating": null,
+    "total_reviews": null
+   },
    "p6c345c85f7cf": {
     "place_key": "p6c345c85f7cf",
     "data_id": null,
-    "title": "Hotel AQ",
+    "title": "Hotel CY",
     "address": null,
     "lat": 15.4,
     "lng": 73.9,
@@ -1723,7 +2059,7 @@
    "p6c86619538b2": {
     "place_key": "p6c86619538b2",
     "data_id": null,
-    "title": "Dentist AE",
+    "title": "Dentist BK",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1735,7 +2071,7 @@
    "p6ca89c20c6d0": {
     "place_key": "p6ca89c20c6d0",
     "data_id": null,
-    "title": "Electronics store AI",
+    "title": "Electronics store BO",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1744,10 +2080,46 @@
     "rating": null,
     "total_reviews": null
    },
+   "p6dc66ee18f2a": {
+    "place_key": "p6dc66ee18f2a",
+    "data_id": null,
+    "title": "Restaurant CM",
+    "address": null,
+    "lat": 26.8,
+    "lng": 81.0,
+    "type": "Restaurant",
+    "area": "Lucknow",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p6f3f2b7d1ace": {
+    "place_key": "p6f3f2b7d1ace",
+    "data_id": null,
+    "title": "Dentist CR",
+    "address": null,
+    "lat": 26.8,
+    "lng": 81.0,
+    "type": "Dentist",
+    "area": "Lucknow",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p71fe04fbb1a2": {
+    "place_key": "p71fe04fbb1a2",
+    "data_id": null,
+    "title": "Restaurant CU",
+    "address": null,
+    "lat": 26.8,
+    "lng": 80.9,
+    "type": "Restaurant",
+    "area": "Lucknow",
+    "rating": null,
+    "total_reviews": null
+   },
    "p7256cceb8819": {
     "place_key": "p7256cceb8819",
     "data_id": null,
-    "title": "Resort AX",
+    "title": "Resort DF",
     "address": null,
     "lat": 10.0,
     "lng": 76.3,
@@ -1756,10 +2128,22 @@
     "rating": null,
     "total_reviews": null
    },
+   "p73bf9a126f1f": {
+    "place_key": "p73bf9a126f1f",
+    "data_id": null,
+    "title": "Gym AO",
+    "address": null,
+    "lat": 28.5,
+    "lng": 77.2,
+    "type": "Gym",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p768829ab9370": {
     "place_key": "p768829ab9370",
     "data_id": null,
-    "title": "Clothing store AC",
+    "title": "Clothing store BI",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1768,10 +2152,22 @@
     "rating": null,
     "total_reviews": null
    },
+   "p7757b77ecaf7": {
+    "place_key": "p7757b77ecaf7",
+    "data_id": null,
+    "title": "Electronics store CH",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.3,
+    "type": "Electronics store",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p7b9a0c236d2f": {
     "place_key": "p7b9a0c236d2f",
     "data_id": null,
-    "title": "Bookstore T",
+    "title": "Bookstore AZ",
     "address": null,
     "lat": 28.7,
     "lng": 77.2,
@@ -1780,10 +2176,34 @@
     "rating": null,
     "total_reviews": null
    },
+   "p7ff3ba62ff6a": {
+    "place_key": "p7ff3ba62ff6a",
+    "data_id": null,
+    "title": "Restaurant CD",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.3,
+    "type": "Restaurant",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p80c715a38d32": {
+    "place_key": "p80c715a38d32",
+    "data_id": null,
+    "title": "Cafe J",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Cafe",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p853c69be9a7c": {
     "place_key": "p853c69be9a7c",
     "data_id": null,
-    "title": "Bakery E",
+    "title": "Bakery X",
     "address": null,
     "lat": 28.7,
     "lng": 77.2,
@@ -1792,10 +2212,34 @@
     "rating": null,
     "total_reviews": null
    },
+   "p8919cbaf7168": {
+    "place_key": "p8919cbaf7168",
+    "data_id": null,
+    "title": "Restaurant CS",
+    "address": null,
+    "lat": 26.9,
+    "lng": 81.0,
+    "type": "Restaurant",
+    "area": "Lucknow",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p8a20fa582682": {
+    "place_key": "p8a20fa582682",
+    "data_id": null,
+    "title": "Bakery L",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.1,
+    "type": "Bakery",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p8c08832dc9ff": {
     "place_key": "p8c08832dc9ff",
     "data_id": null,
-    "title": "Bookstore Y",
+    "title": "Bookstore BE",
     "address": null,
     "lat": 28.7,
     "lng": 77.2,
@@ -1807,7 +2251,7 @@
    "p8e574f8b91b5": {
     "place_key": "p8e574f8b91b5",
     "data_id": null,
-    "title": "Clothing store AJ",
+    "title": "Clothing store BP",
     "address": null,
     "lat": 28.5,
     "lng": 77.3,
@@ -1819,7 +2263,7 @@
    "p8e91661ab2e6": {
     "place_key": "p8e91661ab2e6",
     "data_id": null,
-    "title": "Clothing store AA",
+    "title": "Clothing store BG",
     "address": null,
     "lat": 28.7,
     "lng": 77.3,
@@ -1831,7 +2275,7 @@
    "p8ea348f57056": {
     "place_key": "p8ea348f57056",
     "data_id": null,
-    "title": "Hotel AV",
+    "title": "Hotel DD",
     "address": null,
     "lat": 26.9,
     "lng": 75.7,
@@ -1843,7 +2287,7 @@
    "p92eda2e35f44": {
     "place_key": "p92eda2e35f44",
     "data_id": null,
-    "title": "Hotel AS",
+    "title": "Hotel DA",
     "address": null,
     "lat": 17.4,
     "lng": 78.5,
@@ -1852,10 +2296,22 @@
     "rating": null,
     "total_reviews": null
    },
+   "p9592d2a15f57": {
+    "place_key": "p9592d2a15f57",
+    "data_id": null,
+    "title": "Restaurant BW",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Restaurant",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "p9776663e4422": {
     "place_key": "p9776663e4422",
     "data_id": null,
-    "title": "Bakery N",
+    "title": "Bakery AT",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1864,10 +2320,46 @@
     "rating": null,
     "total_reviews": null
    },
+   "p9812aab4622b": {
+    "place_key": "p9812aab4622b",
+    "data_id": null,
+    "title": "Cafe CT",
+    "address": null,
+    "lat": 26.9,
+    "lng": 80.9,
+    "type": "Cafe",
+    "area": "Lucknow",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p9c9953fe84ad": {
+    "place_key": "p9c9953fe84ad",
+    "data_id": null,
+    "title": "Clothing store CA",
+    "address": null,
+    "lat": 28.7,
+    "lng": 77.1,
+    "type": "Clothing store",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pa3cce419d532": {
+    "place_key": "pa3cce419d532",
+    "data_id": null,
+    "title": "Gym AJ",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.3,
+    "type": "Gym",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "pa4167847cd83": {
     "place_key": "pa4167847cd83",
     "data_id": null,
-    "title": "Hotel AP",
+    "title": "Hotel CX",
     "address": null,
     "lat": 26.9,
     "lng": 75.8,
@@ -1888,10 +2380,22 @@
     "rating": 4.8,
     "total_reviews": 5200
    },
+   "paac5f6b9dce7": {
+    "place_key": "paac5f6b9dce7",
+    "data_id": null,
+    "title": "Electronics store AR",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Electronics store",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "pad9276a16e64": {
     "place_key": "pad9276a16e64",
     "data_id": null,
-    "title": "Grocery store U",
+    "title": "Grocery store BA",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1903,7 +2407,7 @@
    "paef6606354be": {
     "place_key": "paef6606354be",
     "data_id": null,
-    "title": "Hotel AZ",
+    "title": "Hotel DH",
     "address": null,
     "lat": 22.5,
     "lng": 88.4,
@@ -1915,7 +2419,7 @@
    "pb271e11f7930": {
     "place_key": "pb271e11f7930",
     "data_id": null,
-    "title": "Coaching center AR",
+    "title": "Coaching center CZ",
     "address": null,
     "lat": 9.9,
     "lng": 76.2,
@@ -1924,10 +2428,22 @@
     "rating": null,
     "total_reviews": null
    },
+   "pb63fa4d9dfbb": {
+    "place_key": "pb63fa4d9dfbb",
+    "data_id": null,
+    "title": "Cafe BU",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.3,
+    "type": "Cafe",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "pb82c2c45a8b6": {
     "place_key": "pb82c2c45a8b6",
     "data_id": null,
-    "title": "Cafe M",
+    "title": "Cafe AS",
     "address": null,
     "lat": 28.6,
     "lng": 77.3,
@@ -1939,7 +2455,7 @@
    "pb8fe66012826": {
     "place_key": "pb8fe66012826",
     "data_id": null,
-    "title": "Hospital AN",
+    "title": "Hospital BT",
     "address": null,
     "lat": 28.5,
     "lng": 77.2,
@@ -1948,10 +2464,46 @@
     "rating": null,
     "total_reviews": null
    },
+   "pc06b3383b9bb": {
+    "place_key": "pc06b3383b9bb",
+    "data_id": null,
+    "title": "Bookstore C",
+    "address": null,
+    "lat": 28.7,
+    "lng": 77.2,
+    "type": "Bookstore",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pc0d254db85ab": {
+    "place_key": "pc0d254db85ab",
+    "data_id": null,
+    "title": "Pharmacy R",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Pharmacy",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pc23d2b2f1f97": {
+    "place_key": "pc23d2b2f1f97",
+    "data_id": null,
+    "title": "Bakery F",
+    "address": null,
+    "lat": 28.7,
+    "lng": 77.2,
+    "type": "Bakery",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "pc7879427e0e3": {
     "place_key": "pc7879427e0e3",
     "data_id": null,
-    "title": "Cafe Z",
+    "title": "Cafe BF",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1960,10 +2512,34 @@
     "rating": null,
     "total_reviews": null
    },
+   "pc84db12046a0": {
+    "place_key": "pc84db12046a0",
+    "data_id": null,
+    "title": "Hair salon BV",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.3,
+    "type": "Hair salon",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pd07302a532d6": {
+    "place_key": "pd07302a532d6",
+    "data_id": null,
+    "title": "Hospital AK",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.3,
+    "type": "Hospital",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "pd746feb4ada7": {
     "place_key": "pd746feb4ada7",
     "data_id": null,
-    "title": "Bookstore AF",
+    "title": "Bookstore BL",
     "address": null,
     "lat": 28.7,
     "lng": 77.2,
@@ -1975,7 +2551,7 @@
    "pd859a3b0220a": {
     "place_key": "pd859a3b0220a",
     "data_id": null,
-    "title": "Cafe D",
+    "title": "Cafe W",
     "address": null,
     "lat": 28.6,
     "lng": 77.1,
@@ -1984,10 +2560,34 @@
     "rating": null,
     "total_reviews": null
    },
+   "pd94cf8f038d3": {
+    "place_key": "pd94cf8f038d3",
+    "data_id": null,
+    "title": "Dentist CF",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Dentist",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pdb79d20eb3e8": {
+    "place_key": "pdb79d20eb3e8",
+    "data_id": null,
+    "title": "Cafe N",
+    "address": null,
+    "lat": 28.7,
+    "lng": 77.2,
+    "type": "Cafe",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "pdca58f44d51c": {
     "place_key": "pdca58f44d51c",
     "data_id": null,
-    "title": "Bookstore K",
+    "title": "Bookstore AD",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -1999,7 +2599,7 @@
    "pdd4d7da291ff": {
     "place_key": "pdd4d7da291ff",
     "data_id": null,
-    "title": "Cafe Q",
+    "title": "Cafe AW",
     "address": null,
     "lat": 28.6,
     "lng": 77.2,
@@ -2008,10 +2608,106 @@
     "rating": null,
     "total_reviews": null
    },
+   "pe07eaa1884a3": {
+    "place_key": "pe07eaa1884a3",
+    "data_id": null,
+    "title": "Bakery M",
+    "address": null,
+    "lat": 28.5,
+    "lng": 77.2,
+    "type": "Bakery",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pe4cb734154ce": {
+    "place_key": "pe4cb734154ce",
+    "data_id": null,
+    "title": "Electronics store S",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Electronics store",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pe6810224f79c": {
+    "place_key": "pe6810224f79c",
+    "data_id": null,
+    "title": "Electronics store O",
+    "address": null,
+    "lat": 28.7,
+    "lng": 77.2,
+    "type": "Electronics store",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pee6aef3df4e5": {
+    "place_key": "pee6aef3df4e5",
+    "data_id": null,
+    "title": "Restaurant CV",
+    "address": null,
+    "lat": 26.9,
+    "lng": 81.0,
+    "type": "Restaurant",
+    "area": "Lucknow",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pf14704245cd9": {
+    "place_key": "pf14704245cd9",
+    "data_id": null,
+    "title": "Clothing store CK",
+    "address": null,
+    "lat": 26.9,
+    "lng": 80.9,
+    "type": "Clothing store",
+    "area": "Lucknow",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pf36a506db154": {
+    "place_key": "pf36a506db154",
+    "data_id": null,
+    "title": "Grocery store CP",
+    "address": null,
+    "lat": 26.8,
+    "lng": 81.0,
+    "type": "Grocery store",
+    "area": "Lucknow",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pf36ec1b8e5bc": {
+    "place_key": "pf36ec1b8e5bc",
+    "data_id": null,
+    "title": "Hair salon B",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Hair salon",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pf4b243e53ecf": {
+    "place_key": "pf4b243e53ecf",
+    "data_id": null,
+    "title": "Gym CB",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Gym",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
    "pf4e96e1ba111": {
     "place_key": "pf4e96e1ba111",
     "data_id": null,
-    "title": "Electronics store O",
+    "title": "Electronics store AU",
     "address": null,
     "lat": 28.7,
     "lng": 77.3,
@@ -2023,7 +2719,7 @@
    "pf53e6a2d47bf": {
     "place_key": "pf53e6a2d47bf",
     "data_id": null,
-    "title": "Restaurant AH",
+    "title": "Restaurant BN",
     "address": null,
     "lat": 28.7,
     "lng": 77.2,
@@ -2035,11 +2731,35 @@
    "pf5b192377ea6": {
     "place_key": "pf5b192377ea6",
     "data_id": null,
-    "title": "Pharmacy F",
+    "title": "Pharmacy Y",
     "address": null,
     "lat": 28.7,
     "lng": 77.3,
     "type": "Pharmacy",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pf8f44502eea2": {
+    "place_key": "pf8f44502eea2",
+    "data_id": null,
+    "title": "Cafe CC",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Cafe",
+    "area": "Delhi NCR",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pfb86c41b35bf": {
+    "place_key": "pfb86c41b35bf",
+    "data_id": null,
+    "title": "Gym AN",
+    "address": null,
+    "lat": 28.6,
+    "lng": 77.2,
+    "type": "Gym",
     "area": "Delhi NCR",
     "rating": null,
     "total_reviews": null
@@ -2059,7 +2779,7 @@
     "reviews_returned": 1,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:57+00:00"
+    "fetched_at": "2026-06-28T21:11:59+00:00"
    },
    "u27d2c92b7549": {
     "contributor_id": "u27d2c92b7549",
@@ -2074,7 +2794,22 @@
     "reviews_returned": 29,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:57+00:00"
+    "fetched_at": "2026-06-28T21:11:59+00:00"
+   },
+   "u47ecd89155b3": {
+    "contributor_id": "u47ecd89155b3",
+    "name": null,
+    "level": null,
+    "points": null,
+    "local_guide": null,
+    "contributions": {
+     "reviews": 50,
+     "photos": 30
+    },
+    "reviews_returned": 14,
+    "truncated": true,
+    "status": "ok",
+    "fetched_at": "2026-06-28T21:11:59+00:00"
    },
    "u485286132ce9": {
     "contributor_id": "u485286132ce9",
@@ -2089,7 +2824,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:57+00:00"
+    "fetched_at": "2026-06-28T21:11:59+00:00"
    },
    "u49d31d058fa9": {
     "contributor_id": "u49d31d058fa9",
@@ -2104,7 +2839,7 @@
     "reviews_returned": 12,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:57+00:00"
+    "fetched_at": "2026-06-28T21:11:59+00:00"
    },
    "u5e8ab5244ff6": {
     "contributor_id": "u5e8ab5244ff6",
@@ -2119,7 +2854,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:57+00:00"
+    "fetched_at": "2026-06-28T21:11:59+00:00"
    },
    "u6875106302dc": {
     "contributor_id": "u6875106302dc",
@@ -2134,7 +2869,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:57+00:00"
+    "fetched_at": "2026-06-28T21:11:59+00:00"
    },
    "u6c2c47db828c": {
     "contributor_id": "u6c2c47db828c",
@@ -2149,7 +2884,52 @@
     "reviews_returned": 1,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:57+00:00"
+    "fetched_at": "2026-06-28T21:11:59+00:00"
+   },
+   "u80ff81b50601": {
+    "contributor_id": "u80ff81b50601",
+    "name": null,
+    "level": null,
+    "points": null,
+    "local_guide": null,
+    "contributions": {
+     "reviews": 68,
+     "photos": 35
+    },
+    "reviews_returned": 16,
+    "truncated": true,
+    "status": "ok",
+    "fetched_at": "2026-06-28T21:11:59+00:00"
+   },
+   "u8f42b928a317": {
+    "contributor_id": "u8f42b928a317",
+    "name": null,
+    "level": null,
+    "points": null,
+    "local_guide": null,
+    "contributions": {
+     "reviews": 34,
+     "photos": 16
+    },
+    "reviews_returned": 20,
+    "truncated": true,
+    "status": "ok",
+    "fetched_at": "2026-06-28T21:11:59+00:00"
+   },
+   "ua507385881cb": {
+    "contributor_id": "ua507385881cb",
+    "name": null,
+    "level": null,
+    "points": null,
+    "local_guide": null,
+    "contributions": {
+     "reviews": 42,
+     "photos": 9
+    },
+    "reviews_returned": 14,
+    "truncated": true,
+    "status": "ok",
+    "fetched_at": "2026-06-28T21:11:59+00:00"
    },
    "uad4ea151ef7b": {
     "contributor_id": "uad4ea151ef7b",
@@ -2164,7 +2944,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:57+00:00"
+    "fetched_at": "2026-06-28T21:11:59+00:00"
    },
    "ucb18df9ed834": {
     "contributor_id": "ucb18df9ed834",
@@ -2179,7 +2959,7 @@
     "reviews_returned": 13,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:57+00:00"
+    "fetched_at": "2026-06-28T21:11:59+00:00"
    },
    "ucc53ae974179": {
     "contributor_id": "ucc53ae974179",
@@ -2194,7 +2974,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:57+00:00"
+    "fetched_at": "2026-06-28T21:11:59+00:00"
    }
   },
   "histories": {
@@ -2205,8 +2985,8 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "2 weeks ago",
-     "date_min": "2026-06-07",
-     "date_max": "2026-06-14",
+     "date_min": "2026-06-08",
+     "date_max": "2026-06-15",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2220,11 +3000,11 @@
      "place_key": "pb82c2c45a8b6",
      "rating": 2,
      "relative_date": "5 months ago",
-     "date_min": "2025-12-30",
-     "date_max": "2026-01-29",
+     "date_min": "2025-12-31",
+     "date_max": "2026-01-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The entrance was freshly renovated, the AC friendly enough. Went here with friends, the waiting time was long. Okay overall.",
      "travel_group": null
     },
     {
@@ -2233,11 +3013,11 @@
      "place_key": "p9776663e4422",
      "rating": 5,
      "relative_date": "2 months ago",
-     "date_min": "2026-03-30",
-     "date_max": "2026-04-29",
+     "date_min": "2026-03-31",
+     "date_max": "2026-04-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The security guard was a little dusty, the entrance friendly enough. Visited with friends, prices felt a little high and they fixed our issue quickly. Might try once more.",
      "travel_group": null
     },
     {
@@ -2246,11 +3026,11 @@
      "place_key": "pf4e96e1ba111",
      "rating": 5,
      "relative_date": "4 months ago",
-     "date_min": "2026-01-29",
-     "date_max": "2026-02-28",
+     "date_min": "2026-01-30",
+     "date_max": "2026-03-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The menu card was painfully slow, the receptionist well organised. Stopped by late evening, the waiting time was long. Recommended for families.",
      "travel_group": null
     },
     {
@@ -2259,11 +3039,11 @@
      "place_key": "p4c7f7948d5d6",
      "rating": 2,
      "relative_date": "9 months ago",
-     "date_min": "2025-09-01",
-     "date_max": "2025-10-01",
+     "date_min": "2025-09-02",
+     "date_max": "2025-10-02",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The ac was well organised, the waiting area confusing. Visited with friends, prices felt a little high. Recommended for families.",
      "travel_group": null
     },
     {
@@ -2272,11 +3052,11 @@
      "place_key": "pdd4d7da291ff",
      "rating": 5,
      "relative_date": "a month ago",
-     "date_min": "2026-04-29",
-     "date_max": "2026-05-29",
+     "date_min": "2026-04-30",
+     "date_max": "2026-05-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The queue was surprisingly good, the payment process too cold. Our second visit for a birthday, prices felt a little high. Average experience.",
      "travel_group": null
     },
     {
@@ -2285,11 +3065,11 @@
      "place_key": "p2926af2d8cf4",
      "rating": 5,
      "relative_date": "17 months ago",
-     "date_min": "2025-01-04",
-     "date_max": "2025-02-03",
+     "date_min": "2025-01-05",
+     "date_max": "2025-02-04",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The security guard was quite outdated, the entrance friendly enough. I tried this place last weekend, the menu had fewer options now and the waiting time was long. Might try once more.",
      "travel_group": null
     },
     {
@@ -2298,11 +3078,11 @@
      "place_key": "p1f15b2b776bc",
      "rating": 2,
      "relative_date": "10 months ago",
-     "date_min": "2025-08-02",
-     "date_max": "2025-09-01",
+     "date_min": "2025-08-03",
+     "date_max": "2025-09-02",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The queue was well organised, the music well organised. Went here with friends, quality was consistent with before. Might try once more.",
      "travel_group": null
     },
     {
@@ -2311,11 +3091,11 @@
      "place_key": "p7b9a0c236d2f",
      "rating": 4,
      "relative_date": "12 months ago",
-     "date_min": "2025-06-03",
-     "date_max": "2025-07-03",
+     "date_min": "2025-06-04",
+     "date_max": "2025-07-04",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The waiting area was well organised, the receptionist friendly enough. I tried this place after work, value for money is decent and the menu had fewer options now. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2324,11 +3104,11 @@
      "place_key": "pad9276a16e64",
      "rating": 4,
      "relative_date": "10 months ago",
-     "date_min": "2025-08-02",
-     "date_max": "2025-09-01",
+     "date_min": "2025-08-03",
+     "date_max": "2025-09-02",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The menu card was confusing, the entrance better than expected. Dropped in in the morning, parking was a real problem. Not sure I will return.",
      "travel_group": null
     },
     {
@@ -2337,11 +3117,11 @@
      "place_key": "p664b19b10456",
      "rating": 2,
      "relative_date": "3 months ago",
-     "date_min": "2026-02-28",
-     "date_max": "2026-03-30",
+     "date_min": "2026-03-01",
+     "date_max": "2026-03-31",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The chai was better than expected, the receptionist a bit noisy. Stopped by last weekend, value for money is decent and service could be better. Would come again.",
      "travel_group": null
     },
     {
@@ -2350,11 +3130,11 @@
      "place_key": "p1f39c9a7eb0a",
      "rating": 4,
      "relative_date": "13 months ago",
-     "date_min": "2025-05-04",
-     "date_max": "2025-06-03",
+     "date_min": "2025-05-05",
+     "date_max": "2025-06-04",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lift was surprisingly good, the lighting painfully slow. Booked in advance with friends, the location is easy to find and everything was neat and clean. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2363,11 +3143,11 @@
      "place_key": "p2647e5935803",
      "rating": 5,
      "relative_date": "a month ago",
-     "date_min": "2026-04-29",
-     "date_max": "2026-05-29",
+     "date_min": "2026-04-30",
+     "date_max": "2026-05-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The washroom was confusing, the entrance friendly enough. We came late evening, the location is easy to find. Might try once more.",
      "travel_group": null
     },
     {
@@ -2376,11 +3156,11 @@
      "place_key": "p8c08832dc9ff",
      "rating": 4,
      "relative_date": "7 months ago",
-     "date_min": "2025-10-31",
-     "date_max": "2025-11-30",
+     "date_min": "2025-11-01",
+     "date_max": "2025-12-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lift was a bit noisy, the lighting painfully slow. We came after work, everything was neat and clean and it was crowded but manageable. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2389,11 +3169,11 @@
      "place_key": "pc7879427e0e3",
      "rating": 2,
      "relative_date": "6 months ago",
-     "date_min": "2025-11-30",
-     "date_max": "2025-12-30",
+     "date_min": "2025-12-01",
+     "date_max": "2025-12-31",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The queue was a bit noisy, the lighting friendly enough. First time here on a weekday, the waiting time was long and the staff were polite but slow. Okay overall.",
      "travel_group": null
     },
     {
@@ -2402,11 +3182,11 @@
      "place_key": "p8e91661ab2e6",
      "rating": 5,
      "relative_date": "4 months ago",
-     "date_min": "2026-01-29",
-     "date_max": "2026-02-28",
+     "date_min": "2026-01-30",
+     "date_max": "2026-03-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The washroom was surprisingly good, the AC well organised. We came for a birthday, service could be better and prices felt a little high. Would come again.",
      "travel_group": null
     },
     {
@@ -2415,11 +3195,11 @@
      "place_key": "p47d35e92432c",
      "rating": 3,
      "relative_date": "a month ago",
-     "date_min": "2026-04-29",
-     "date_max": "2026-05-29",
+     "date_min": "2026-04-30",
+     "date_max": "2026-05-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The manager was surprisingly good, the security guard a little dusty. Went here last weekend, the waiting time was long. Might try once more.",
      "travel_group": null
     },
     {
@@ -2428,11 +3208,11 @@
      "place_key": "p768829ab9370",
      "rating": 4,
      "relative_date": "5 months ago",
-     "date_min": "2025-12-30",
-     "date_max": "2026-01-29",
+     "date_min": "2025-12-31",
+     "date_max": "2026-01-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The security guard was surprisingly good, the chai a bit noisy. Stopped by on a rainy day, prices felt a little high and the waiting time was long. Average experience.",
      "travel_group": null
     },
     {
@@ -2441,11 +3221,11 @@
      "place_key": "p3b61b481b4cc",
      "rating": 2,
      "relative_date": "18 months ago",
-     "date_min": "2024-12-05",
-     "date_max": "2025-01-04",
+     "date_min": "2024-12-06",
+     "date_max": "2025-01-05",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The waiting area was a little dusty, the queue friendly enough. First time here during the holidays, they fixed our issue quickly and the menu had fewer options now. Recommended for families.",
      "travel_group": null
     },
     {
@@ -2454,11 +3234,11 @@
      "place_key": "p6c86619538b2",
      "rating": 4,
      "relative_date": "6 months ago",
-     "date_min": "2025-11-30",
-     "date_max": "2025-12-30",
+     "date_min": "2025-12-01",
+     "date_max": "2025-12-31",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The queue was surprisingly good, the lobby too cold. Came with family during the holidays, the staff were polite but slow. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2467,11 +3247,11 @@
      "place_key": "pd746feb4ada7",
      "rating": 2,
      "relative_date": "5 months ago",
-     "date_min": "2025-12-30",
-     "date_max": "2026-01-29",
+     "date_min": "2025-12-31",
+     "date_max": "2026-01-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The security guard was a bit noisy, the payment process freshly renovated. Stopped by late evening, the staff were polite but slow and the staff were polite but slow. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2480,11 +3260,11 @@
      "place_key": "p1047f8376f40",
      "rating": 5,
      "relative_date": "20 months ago",
-     "date_min": "2024-10-06",
-     "date_max": "2024-11-05",
+     "date_min": "2024-10-07",
+     "date_max": "2024-11-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The payment process was freshly renovated, the entrance quite outdated. First time here for a birthday, quality was consistent with before and service could be better. Average experience.",
      "travel_group": null
     },
     {
@@ -2493,11 +3273,11 @@
      "place_key": "pf53e6a2d47bf",
      "rating": 4,
      "relative_date": "7 months ago",
-     "date_min": "2025-10-31",
-     "date_max": "2025-11-30",
+     "date_min": "2025-11-01",
+     "date_max": "2025-12-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The security guard was quite outdated, the music well organised. Dropped in in the morning, prices felt a little high and the location is easy to find. Recommended for families.",
      "travel_group": null
     },
     {
@@ -2506,11 +3286,11 @@
      "place_key": "p6ca89c20c6d0",
      "rating": 5,
      "relative_date": "12 months ago",
-     "date_min": "2025-06-03",
-     "date_max": "2025-07-03",
+     "date_min": "2025-06-04",
+     "date_max": "2025-07-04",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The seating was very efficient, the payment process confusing. First time here late evening, it was crowded but manageable and everything was neat and clean. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2519,11 +3299,11 @@
      "place_key": "p8e574f8b91b5",
      "rating": 2,
      "relative_date": "5 months ago",
-     "date_min": "2025-12-30",
-     "date_max": "2026-01-29",
+     "date_min": "2025-12-31",
+     "date_max": "2026-01-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lighting was friendly enough, the lift a bit noisy. Booked in advance for a birthday, service could be better and value for money is decent. Would come again.",
      "travel_group": null
     },
     {
@@ -2532,11 +3312,11 @@
      "place_key": "p26f556ad3a5b",
      "rating": 5,
      "relative_date": "23 months ago",
-     "date_min": "2024-07-08",
-     "date_max": "2024-08-07",
+     "date_min": "2024-07-09",
+     "date_max": "2024-08-08",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The billing counter was well organised, the seating a little dusty. Booked in advance before a flight, it was crowded but manageable and parking was a real problem. Decent enough.",
      "travel_group": null
     },
     {
@@ -2545,11 +3325,11 @@
      "place_key": "p568245f4582c",
      "rating": 3,
      "relative_date": "3 months ago",
-     "date_min": "2026-02-28",
-     "date_max": "2026-03-30",
+     "date_min": "2026-03-01",
+     "date_max": "2026-03-31",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The seating was freshly renovated, the signboard quite outdated. Our second visit for a birthday, it was crowded but manageable and it was crowded but manageable. Would come again.",
      "travel_group": null
     },
     {
@@ -2558,11 +3338,11 @@
      "place_key": "p00e39884d8b4",
      "rating": 4,
      "relative_date": "4 months ago",
-     "date_min": "2026-01-29",
-     "date_max": "2026-02-28",
+     "date_min": "2026-01-30",
+     "date_max": "2026-03-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The queue was painfully slow, the music a bit noisy. Came with family with friends, everything was neat and clean. Recommended for families.",
      "travel_group": null
     },
     {
@@ -2571,11 +3351,11 @@
      "place_key": "pb8fe66012826",
      "rating": 2,
      "relative_date": "21 months ago",
-     "date_min": "2024-09-06",
-     "date_max": "2024-10-06",
+     "date_min": "2024-09-07",
+     "date_max": "2024-10-07",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The queue was freshly renovated, the lift friendly enough. Came with family on a rainy day, prices felt a little high. Would come again.",
      "travel_group": null
     },
     {
@@ -2584,8 +3364,192 @@
      "place_key": "pa8129cf95546",
      "rating": 3,
      "relative_date": "15 weeks ago",
-     "date_min": "2026-03-08",
-     "date_max": "2026-03-15",
+     "date_min": "2026-03-09",
+     "date_max": "2026-03-16",
+     "edited": false,
+     "image_dates": [],
+     "text": null,
+     "travel_group": null
+    }
+   ],
+   "u47ecd89155b3": [
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "r4eb238405ba8",
+     "place_key": "p6720abfec45d",
+     "rating": 4,
+     "relative_date": "15 months ago",
+     "date_min": "2025-03-06",
+     "date_max": "2025-04-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The washroom was a little dusty, the lobby a bit noisy. Visited last weekend, they fixed our issue quickly and the menu had fewer options now. Would come again.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "r1f2fc4752f9e",
+     "place_key": "pf14704245cd9",
+     "rating": 4,
+     "relative_date": "18 months ago",
+     "date_min": "2024-12-06",
+     "date_max": "2025-01-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The payment process was very efficient, the seating surprisingly good. Stopped by for a birthday, parking was a real problem and the waiting time was long. Okay overall.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "r27c54d885c30",
+     "place_key": "p2b99596cdbc5",
+     "rating": 3,
+     "relative_date": "21 months ago",
+     "date_min": "2024-09-07",
+     "date_max": "2024-10-07",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lobby was freshly renovated, the menu card too cold. Went here after work, it was crowded but manageable and the menu had fewer options now. Mixed feelings.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "r3a8f6e6b0f98",
+     "place_key": "p6dc66ee18f2a",
+     "rating": 2,
+     "relative_date": "17 months ago",
+     "date_min": "2025-01-05",
+     "date_max": "2025-02-04",
+     "edited": false,
+     "image_dates": [],
+     "text": "The payment process was freshly renovated, the AC quite outdated. Booked in advance late evening, value for money is decent and parking was a real problem. Average experience.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "re6dc459cfdb5",
+     "place_key": "p1afd7edbf8f5",
+     "rating": 5,
+     "relative_date": "10 months ago",
+     "date_min": "2025-08-03",
+     "date_max": "2025-09-02",
+     "edited": false,
+     "image_dates": [],
+     "text": "The manager was confusing, the washroom quite outdated. Dropped in with friends, quality was consistent with before and it was crowded but manageable. Would come again.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "rd26b43ed991e",
+     "place_key": "p572502295bd0",
+     "rating": 4,
+     "relative_date": "19 months ago",
+     "date_min": "2024-11-06",
+     "date_max": "2024-12-06",
+     "edited": false,
+     "image_dates": [],
+     "text": "The menu card was a little dusty, the lighting painfully slow. Our second visit with friends, parking was a real problem and the waiting time was long. Mixed feelings.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "r4ae040200dba",
+     "place_key": "pf36a506db154",
+     "rating": 4,
+     "relative_date": "14 months ago",
+     "date_min": "2025-04-05",
+     "date_max": "2025-05-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The chai was better than expected, the entrance too cold. We came for a birthday, parking was a real problem and the staff were polite but slow. Decent enough.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "rf9b273f1c04b",
+     "place_key": "p348e868863a3",
+     "rating": 5,
+     "relative_date": "14 months ago",
+     "date_min": "2025-04-05",
+     "date_max": "2025-05-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lobby was a bit noisy, the AC surprisingly good. Came with family during the holidays, prices felt a little high. Might try once more.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "r6b1308c5748c",
+     "place_key": "p6f3f2b7d1ace",
+     "rating": 2,
+     "relative_date": "7 months ago",
+     "date_min": "2025-11-01",
+     "date_max": "2025-12-01",
+     "edited": false,
+     "image_dates": [],
+     "text": "The billing counter was a bit noisy, the entrance a little dusty. Booked in advance after work, quality was consistent with before and parking was a real problem. Average experience.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "r7e3db05bdbdd",
+     "place_key": "p8919cbaf7168",
+     "rating": 3,
+     "relative_date": "22 months ago",
+     "date_min": "2024-08-08",
+     "date_max": "2024-09-07",
+     "edited": false,
+     "image_dates": [],
+     "text": "The signboard was a bit noisy, the signboard friendly enough. Went here after work, they fixed our issue quickly and they fixed our issue quickly. Would come again.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "r2cbd750c0561",
+     "place_key": "p9812aab4622b",
+     "rating": 4,
+     "relative_date": "16 months ago",
+     "date_min": "2025-02-04",
+     "date_max": "2025-03-06",
+     "edited": false,
+     "image_dates": [],
+     "text": "The waiting area was a little dusty, the music better than expected. Dropped in late evening, prices felt a little high. Recommended for families.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "rc2ee5751b5aa",
+     "place_key": "p71fe04fbb1a2",
+     "rating": 3,
+     "relative_date": "6 months ago",
+     "date_min": "2025-12-01",
+     "date_max": "2025-12-31",
+     "edited": false,
+     "image_dates": [],
+     "text": "The payment process was a bit noisy, the signboard painfully slow. Came with family on a rainy day, parking was a real problem and value for money is decent. Decent enough.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "r974f117e8ced",
+     "place_key": "pee6aef3df4e5",
+     "rating": 2,
+     "relative_date": "3 months ago",
+     "date_min": "2026-03-01",
+     "date_max": "2026-03-31",
+     "edited": false,
+     "image_dates": [],
+     "text": "The ac was quite outdated, the washroom quite outdated. Our second visit for a birthday, they fixed our issue quickly and it was crowded but manageable. Okay overall.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u47ecd89155b3",
+     "review_id": "rb5542fc9d610",
+     "place_key": "pa8129cf95546",
+     "rating": 4,
+     "relative_date": "3 weeks ago",
+     "date_min": "2026-06-01",
+     "date_max": "2026-06-08",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2599,8 +3563,8 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "8 weeks ago",
-     "date_min": "2026-04-26",
-     "date_max": "2026-05-03",
+     "date_min": "2026-04-27",
+     "date_max": "2026-05-04",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2614,11 +3578,11 @@
      "place_key": "p474ddd8a007d",
      "rating": 5,
      "relative_date": "6 months ago",
-     "date_min": "2025-11-30",
-     "date_max": "2025-12-30",
+     "date_min": "2025-12-01",
+     "date_max": "2025-12-31",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lobby was a bit noisy, the waiting area quite outdated. First time here on a rainy day, the waiting time was long and value for money is decent. Okay overall.",
      "travel_group": null
     },
     {
@@ -2627,11 +3591,11 @@
      "place_key": "p2a90c307e5ba",
      "rating": 4,
      "relative_date": "20 months ago",
-     "date_min": "2024-10-06",
-     "date_max": "2024-11-05",
+     "date_min": "2024-10-07",
+     "date_max": "2024-11-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The ac was a bit noisy, the payment process quite outdated. I tried this place late evening, value for money is decent. Would come again.",
      "travel_group": null
     },
     {
@@ -2640,11 +3604,11 @@
      "place_key": "pd859a3b0220a",
      "rating": 2,
      "relative_date": "21 months ago",
-     "date_min": "2024-09-06",
-     "date_max": "2024-10-06",
+     "date_min": "2024-09-07",
+     "date_max": "2024-10-07",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lift was friendly enough, the lighting a little dusty. Visited during the holidays, they fixed our issue quickly and service could be better. Would come again.",
      "travel_group": null
     },
     {
@@ -2653,11 +3617,11 @@
      "place_key": "p853c69be9a7c",
      "rating": 4,
      "relative_date": "6 months ago",
-     "date_min": "2025-11-30",
-     "date_max": "2025-12-30",
+     "date_min": "2025-12-01",
+     "date_max": "2025-12-31",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lobby was too cold, the music too cold. Our second visit in the morning, they fixed our issue quickly and the menu had fewer options now. Average experience.",
      "travel_group": null
     },
     {
@@ -2666,11 +3630,11 @@
      "place_key": "pf5b192377ea6",
      "rating": 5,
      "relative_date": "18 months ago",
-     "date_min": "2024-12-05",
-     "date_max": "2025-01-04",
+     "date_min": "2024-12-06",
+     "date_max": "2025-01-05",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The entrance was friendly enough, the queue quite outdated. Went here in the morning, value for money is decent and the location is easy to find. Okay overall.",
      "travel_group": null
     },
     {
@@ -2679,11 +3643,11 @@
      "place_key": "p0067b11179ed",
      "rating": 4,
      "relative_date": "20 months ago",
-     "date_min": "2024-10-06",
-     "date_max": "2024-11-05",
+     "date_min": "2024-10-07",
+     "date_max": "2024-11-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The seating was freshly renovated, the queue better than expected. First time here with friends, prices felt a little high and parking was a real problem. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2692,11 +3656,11 @@
      "place_key": "p2d0125032283",
      "rating": 4,
      "relative_date": "12 months ago",
-     "date_min": "2025-06-03",
-     "date_max": "2025-07-03",
+     "date_min": "2025-06-04",
+     "date_max": "2025-07-04",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The waiting area was better than expected, the queue friendly enough. Came with family last weekend, the menu had fewer options now. Average experience.",
      "travel_group": null
     },
     {
@@ -2705,11 +3669,11 @@
      "place_key": "p63df68c66dc6",
      "rating": 3,
      "relative_date": "5 months ago",
-     "date_min": "2025-12-30",
-     "date_max": "2026-01-29",
+     "date_min": "2025-12-31",
+     "date_max": "2026-01-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The manager was very efficient, the chai confusing. We came before a flight, the waiting time was long and parking was a real problem. Okay overall.",
      "travel_group": null
     },
     {
@@ -2718,11 +3682,11 @@
      "place_key": "p6256b48e86ee",
      "rating": 5,
      "relative_date": "16 months ago",
-     "date_min": "2025-02-03",
-     "date_max": "2025-03-05",
+     "date_min": "2025-02-04",
+     "date_max": "2025-03-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lobby was freshly renovated, the security guard better than expected. Booked in advance before a flight, value for money is decent and quality was consistent with before. Might try once more.",
      "travel_group": null
     },
     {
@@ -2731,11 +3695,11 @@
      "place_key": "pdca58f44d51c",
      "rating": 4,
      "relative_date": "22 months ago",
-     "date_min": "2024-08-07",
-     "date_max": "2024-09-06",
+     "date_min": "2024-08-08",
+     "date_max": "2024-09-07",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The seating was painfully slow, the seating too cold. Visited during the holidays, parking was a real problem and the location is easy to find. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2744,11 +3708,11 @@
      "place_key": "p31ca8d7fb7a7",
      "rating": 4,
      "relative_date": "11 months ago",
-     "date_min": "2025-07-03",
-     "date_max": "2025-08-02",
+     "date_min": "2025-07-04",
+     "date_max": "2025-08-03",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The waiting area was confusing, the waiting area friendly enough. Came with family on a weekday, the waiting time was long and parking was a real problem. Okay overall.",
      "travel_group": null
     },
     {
@@ -2757,8 +3721,8 @@
      "place_key": "pa8129cf95546",
      "rating": 1,
      "relative_date": "10 weeks ago",
-     "date_min": "2026-04-12",
-     "date_max": "2026-04-19",
+     "date_min": "2026-04-13",
+     "date_max": "2026-04-20",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2772,8 +3736,8 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "6 weeks ago",
-     "date_min": "2026-05-10",
-     "date_max": "2026-05-17",
+     "date_min": "2026-05-11",
+     "date_max": "2026-05-18",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2787,8 +3751,8 @@
      "place_key": "pa8129cf95546",
      "rating": 4,
      "relative_date": "a week ago",
-     "date_min": "2026-06-14",
-     "date_max": "2026-06-21",
+     "date_min": "2026-06-15",
+     "date_max": "2026-06-22",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2802,8 +3766,664 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "2 weeks ago",
-     "date_min": "2026-06-07",
-     "date_max": "2026-06-14",
+     "date_min": "2026-06-08",
+     "date_max": "2026-06-15",
+     "edited": false,
+     "image_dates": [],
+     "text": null,
+     "travel_group": null
+    }
+   ],
+   "u80ff81b50601": [
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "r711d4c1afbb8",
+     "place_key": "pb63fa4d9dfbb",
+     "rating": 5,
+     "relative_date": "17 months ago",
+     "date_min": "2025-01-05",
+     "date_max": "2025-02-04",
+     "edited": false,
+     "image_dates": [],
+     "text": "The signboard was a bit noisy, the lobby better than expected. First time here late evening, prices felt a little high. Recommended for families.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "re6528bd15606",
+     "place_key": "pc84db12046a0",
+     "rating": 2,
+     "relative_date": "8 months ago",
+     "date_min": "2025-10-02",
+     "date_max": "2025-11-01",
+     "edited": false,
+     "image_dates": [],
+     "text": "The manager was very efficient, the lobby very efficient. I tried this place before a flight, value for money is decent. Not sure I will return.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "r6b4a8c2bbec7",
+     "place_key": "p9592d2a15f57",
+     "rating": 4,
+     "relative_date": "10 months ago",
+     "date_min": "2025-08-03",
+     "date_max": "2025-09-02",
+     "edited": false,
+     "image_dates": [],
+     "text": "The menu card was painfully slow, the seating surprisingly good. Went here during the holidays, the location is easy to find. Would come again.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "r65b5e0edaf38",
+     "place_key": "p256468a4bb4a",
+     "rating": 2,
+     "relative_date": "21 months ago",
+     "date_min": "2024-09-07",
+     "date_max": "2024-10-07",
+     "edited": false,
+     "image_dates": [],
+     "text": "The queue was very efficient, the billing counter a little dusty. We came in the morning, the waiting time was long and prices felt a little high. Would come again.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "rb7c2b45fb91a",
+     "place_key": "p36903699070e",
+     "rating": 4,
+     "relative_date": "22 months ago",
+     "date_min": "2024-08-08",
+     "date_max": "2024-09-07",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lobby was confusing, the lift a little dusty. Booked in advance after work, value for money is decent. Might try once more.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "r0035bf73e29e",
+     "place_key": "p2b7ae61524f7",
+     "rating": 3,
+     "relative_date": "15 months ago",
+     "date_min": "2025-03-06",
+     "date_max": "2025-04-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lobby was friendly enough, the lighting well organised. First time here during the holidays, prices felt a little high and the waiting time was long. Average experience.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "r44cef73386d6",
+     "place_key": "p9c9953fe84ad",
+     "rating": 4,
+     "relative_date": "a month ago",
+     "date_min": "2026-04-30",
+     "date_max": "2026-05-30",
+     "edited": false,
+     "image_dates": [],
+     "text": "The billing counter was confusing, the payment process a little dusty. Went here on a weekday, quality was consistent with before and service could be better. Average experience.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "r184096b48a91",
+     "place_key": "pf4b243e53ecf",
+     "rating": 3,
+     "relative_date": "19 months ago",
+     "date_min": "2024-11-06",
+     "date_max": "2024-12-06",
+     "edited": false,
+     "image_dates": [],
+     "text": "The chai was a little dusty, the washroom very efficient. Visited last weekend, parking was a real problem and everything was neat and clean. Not sure I will return.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "r6c86fd57a502",
+     "place_key": "pf8f44502eea2",
+     "rating": 4,
+     "relative_date": "13 months ago",
+     "date_min": "2025-05-05",
+     "date_max": "2025-06-04",
+     "edited": false,
+     "image_dates": [],
+     "text": "The seating was quite outdated, the music freshly renovated. Booked in advance on a weekday, the menu had fewer options now and service could be better. Decent enough.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "r8c2829bd3768",
+     "place_key": "p7ff3ba62ff6a",
+     "rating": 4,
+     "relative_date": "9 months ago",
+     "date_min": "2025-09-02",
+     "date_max": "2025-10-02",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lighting was better than expected, the payment process too cold. Visited for a birthday, parking was a real problem. Might try once more.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "r123dedd46c4e",
+     "place_key": "p35c451bd12bd",
+     "rating": 4,
+     "relative_date": "7 months ago",
+     "date_min": "2025-11-01",
+     "date_max": "2025-12-01",
+     "edited": false,
+     "image_dates": [],
+     "text": "The chai was very efficient, the waiting area well organised. Dropped in for a birthday, quality was consistent with before. Might try once more.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "r51d188e55cb1",
+     "place_key": "pd94cf8f038d3",
+     "rating": 4,
+     "relative_date": "15 months ago",
+     "date_min": "2025-03-06",
+     "date_max": "2025-04-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The security guard was well organised, the manager better than expected. Went here before a flight, it was crowded but manageable. Average experience.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "r8cb802bf9814",
+     "place_key": "p46695fe11f63",
+     "rating": 4,
+     "relative_date": "22 months ago",
+     "date_min": "2024-08-08",
+     "date_max": "2024-09-07",
+     "edited": false,
+     "image_dates": [],
+     "text": "The billing counter was freshly renovated, the chai better than expected. Visited for a birthday, the waiting time was long and the location is easy to find. Decent enough.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "r0463bdc93c15",
+     "place_key": "p7757b77ecaf7",
+     "rating": 5,
+     "relative_date": "5 months ago",
+     "date_min": "2025-12-31",
+     "date_max": "2026-01-30",
+     "edited": false,
+     "image_dates": [],
+     "text": "The menu card was freshly renovated, the security guard painfully slow. Went here before a flight, value for money is decent. Mixed feelings.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "r77d65a17480a",
+     "place_key": "p09d16e0b5f7c",
+     "rating": 4,
+     "relative_date": "21 months ago",
+     "date_min": "2024-09-07",
+     "date_max": "2024-10-07",
+     "edited": false,
+     "image_dates": [],
+     "text": "The entrance was surprisingly good, the security guard surprisingly good. Stopped by last weekend, the staff were polite but slow and value for money is decent. Decent enough.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u80ff81b50601",
+     "review_id": "rdbe58e797e4d",
+     "place_key": "pa8129cf95546",
+     "rating": 5,
+     "relative_date": "15 weeks ago",
+     "date_min": "2026-03-09",
+     "date_max": "2026-03-16",
+     "edited": false,
+     "image_dates": [],
+     "text": null,
+     "travel_group": null
+    }
+   ],
+   "u8f42b928a317": [
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "rc7c6ef974956",
+     "place_key": "pf36ec1b8e5bc",
+     "rating": 4,
+     "relative_date": "18 months ago",
+     "date_min": "2024-12-06",
+     "date_max": "2025-01-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The security guard was surprisingly good, the payment process better than expected. Dropped in before a flight, they fixed our issue quickly. Not sure I will return.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "rb534c4866370",
+     "place_key": "pc06b3383b9bb",
+     "rating": 4,
+     "relative_date": "15 months ago",
+     "date_min": "2025-03-06",
+     "date_max": "2025-04-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The music was a bit noisy, the chai confusing. I tried this place after work, quality was consistent with before and service could be better. Decent enough.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "ra6a696ab1777",
+     "place_key": "p2cc66b84b72b",
+     "rating": 5,
+     "relative_date": "10 months ago",
+     "date_min": "2025-08-03",
+     "date_max": "2025-09-02",
+     "edited": false,
+     "image_dates": [],
+     "text": "The music was freshly renovated, the queue painfully slow. Visited late evening, the location is easy to find. Average experience.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "r8f4e72586157",
+     "place_key": "p2a7f598af228",
+     "rating": 4,
+     "relative_date": "6 months ago",
+     "date_min": "2025-12-01",
+     "date_max": "2025-12-31",
+     "edited": false,
+     "image_dates": [],
+     "text": "The menu card was too cold, the chai painfully slow. Booked in advance in the morning, the menu had fewer options now and prices felt a little high. Recommended for families.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "r2a7d33d244b8",
+     "place_key": "pc23d2b2f1f97",
+     "rating": 4,
+     "relative_date": "4 months ago",
+     "date_min": "2026-01-30",
+     "date_max": "2026-03-01",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lobby was friendly enough, the billing counter a little dusty. Dropped in in the morning, the waiting time was long. Mixed feelings.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "r02ada9c7be99",
+     "place_key": "p5c5465e2bfe1",
+     "rating": 4,
+     "relative_date": "22 months ago",
+     "date_min": "2024-08-08",
+     "date_max": "2024-09-07",
+     "edited": false,
+     "image_dates": [],
+     "text": "The washroom was well organised, the seating painfully slow. Dropped in last weekend, parking was a real problem and the staff were polite but slow. Decent enough.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "r9ff8a9ff57c2",
+     "place_key": "p4b3571e83423",
+     "rating": 5,
+     "relative_date": "7 months ago",
+     "date_min": "2025-11-01",
+     "date_max": "2025-12-01",
+     "edited": false,
+     "image_dates": [],
+     "text": "The washroom was painfully slow, the waiting area quite outdated. Visited last weekend, the location is easy to find. Decent enough.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "r1d7c767e2526",
+     "place_key": "p3c8b6255b337",
+     "rating": 5,
+     "relative_date": "18 months ago",
+     "date_min": "2024-12-06",
+     "date_max": "2025-01-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lift was a bit noisy, the signboard surprisingly good. Our second visit with friends, quality was consistent with before. Average experience.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "rcb40e4ee9e18",
+     "place_key": "p80c715a38d32",
+     "rating": 3,
+     "relative_date": "21 months ago",
+     "date_min": "2024-09-07",
+     "date_max": "2024-10-07",
+     "edited": false,
+     "image_dates": [],
+     "text": "The queue was quite outdated, the waiting area painfully slow. Came with family after work, the menu had fewer options now and value for money is decent. Would come again.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "r9a08c06bba38",
+     "place_key": "p35004ac2b77b",
+     "rating": 3,
+     "relative_date": "a month ago",
+     "date_min": "2026-04-30",
+     "date_max": "2026-05-30",
+     "edited": false,
+     "image_dates": [],
+     "text": "The signboard was surprisingly good, the queue painfully slow. First time here late evening, the waiting time was long. Recommended for families.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "r49f8d268e36b",
+     "place_key": "p8a20fa582682",
+     "rating": 2,
+     "relative_date": "3 months ago",
+     "date_min": "2026-03-01",
+     "date_max": "2026-03-31",
+     "edited": false,
+     "image_dates": [],
+     "text": "The queue was well organised, the menu card very efficient. Our second visit in the morning, parking was a real problem and prices felt a little high. Decent enough.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "r996945668c69",
+     "place_key": "pe07eaa1884a3",
+     "rating": 4,
+     "relative_date": "a month ago",
+     "date_min": "2026-04-30",
+     "date_max": "2026-05-30",
+     "edited": false,
+     "image_dates": [],
+     "text": "The music was a bit noisy, the manager very efficient. We came on a rainy day, quality was consistent with before and everything was neat and clean. Decent enough.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "r9b6e3bd3f510",
+     "place_key": "pdb79d20eb3e8",
+     "rating": 5,
+     "relative_date": "17 months ago",
+     "date_min": "2025-01-05",
+     "date_max": "2025-02-04",
+     "edited": false,
+     "image_dates": [],
+     "text": "The seating was confusing, the billing counter a bit noisy. Went here after work, service could be better and it was crowded but manageable. Okay overall.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "rbdb4a2193365",
+     "place_key": "pe6810224f79c",
+     "rating": 2,
+     "relative_date": "21 months ago",
+     "date_min": "2024-09-07",
+     "date_max": "2024-10-07",
+     "edited": false,
+     "image_dates": [],
+     "text": "The menu card was a little dusty, the seating freshly renovated. Visited last weekend, it was crowded but manageable and everything was neat and clean. Decent enough.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "rab851e41db06",
+     "place_key": "p1fc10ac58129",
+     "rating": 5,
+     "relative_date": "15 months ago",
+     "date_min": "2025-03-06",
+     "date_max": "2025-04-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The music was confusing, the security guard confusing. I tried this place on a weekday, value for money is decent and everything was neat and clean. Recommended for families.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "rb5692a2642b9",
+     "place_key": "p2cb715d63092",
+     "rating": 5,
+     "relative_date": "19 months ago",
+     "date_min": "2024-11-06",
+     "date_max": "2024-12-06",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lift was well organised, the manager quite outdated. I tried this place in the morning, quality was consistent with before and the location is easy to find. Might try once more.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "r54c86d0e10ae",
+     "place_key": "pc0d254db85ab",
+     "rating": 5,
+     "relative_date": "8 months ago",
+     "date_min": "2025-10-02",
+     "date_max": "2025-11-01",
+     "edited": false,
+     "image_dates": [],
+     "text": "The security guard was too cold, the payment process a bit noisy. Visited before a flight, prices felt a little high and they fixed our issue quickly. Might try once more.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "r3ebbbbd4569c",
+     "place_key": "pe4cb734154ce",
+     "rating": 2,
+     "relative_date": "14 months ago",
+     "date_min": "2025-04-05",
+     "date_max": "2025-05-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The washroom was confusing, the waiting area friendly enough. I tried this place with friends, prices felt a little high and it was crowded but manageable. Okay overall.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "reb2850a98d58",
+     "place_key": "p405692ac9517",
+     "rating": 2,
+     "relative_date": "7 months ago",
+     "date_min": "2025-11-01",
+     "date_max": "2025-12-01",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lighting was a bit noisy, the seating freshly renovated. Visited last weekend, the waiting time was long and the location is easy to find. Might try once more.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "u8f42b928a317",
+     "review_id": "r04c700ac60de",
+     "place_key": "pa8129cf95546",
+     "rating": 4,
+     "relative_date": "3 weeks ago",
+     "date_min": "2026-06-01",
+     "date_max": "2026-06-08",
+     "edited": false,
+     "image_dates": [],
+     "text": null,
+     "travel_group": null
+    }
+   ],
+   "ua507385881cb": [
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "r31a35efe97d1",
+     "place_key": "p4e276bfc507e",
+     "rating": 5,
+     "relative_date": "23 months ago",
+     "date_min": "2024-07-09",
+     "date_max": "2024-08-08",
+     "edited": false,
+     "image_dates": [],
+     "text": "The washroom was a little dusty, the entrance friendly enough. Came with family for a birthday, everything was neat and clean. Decent enough.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "r11395562ee7b",
+     "place_key": "p12b5af6e09f0",
+     "rating": 3,
+     "relative_date": "7 months ago",
+     "date_min": "2025-11-01",
+     "date_max": "2025-12-01",
+     "edited": false,
+     "image_dates": [],
+     "text": "The security guard was a bit noisy, the queue quite outdated. Came with family during the holidays, prices felt a little high and service could be better. Recommended for families.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "ra02a20f1b2e3",
+     "place_key": "p1796b977a5e2",
+     "rating": 4,
+     "relative_date": "18 months ago",
+     "date_min": "2024-12-06",
+     "date_max": "2025-01-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The manager was a bit noisy, the washroom quite outdated. Stopped by with friends, it was crowded but manageable and the menu had fewer options now. Average experience.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "rc31dfe1c082a",
+     "place_key": "p1afd2fdc7cd9",
+     "rating": 2,
+     "relative_date": "14 months ago",
+     "date_min": "2025-04-05",
+     "date_max": "2025-05-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lift was confusing, the lift quite outdated. Dropped in on a rainy day, everything was neat and clean and everything was neat and clean. Not sure I will return.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "rbba238365d41",
+     "place_key": "pa3cce419d532",
+     "rating": 2,
+     "relative_date": "8 months ago",
+     "date_min": "2025-10-02",
+     "date_max": "2025-11-01",
+     "edited": false,
+     "image_dates": [],
+     "text": "The manager was too cold, the entrance too cold. Came with family in the morning, the staff were polite but slow. Mixed feelings.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "r732b60fb5a7b",
+     "place_key": "pd07302a532d6",
+     "rating": 4,
+     "relative_date": "7 months ago",
+     "date_min": "2025-11-01",
+     "date_max": "2025-12-01",
+     "edited": false,
+     "image_dates": [],
+     "text": "The music was a little dusty, the menu card well organised. Stopped by in the morning, parking was a real problem. Mixed feelings.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "rdad87f536897",
+     "place_key": "p0aa2369fb42e",
+     "rating": 5,
+     "relative_date": "4 months ago",
+     "date_min": "2026-01-30",
+     "date_max": "2026-03-01",
+     "edited": false,
+     "image_dates": [],
+     "text": "The security guard was well organised, the AC quite outdated. First time here last weekend, parking was a real problem and parking was a real problem. Not sure I will return.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "rfe7b3e7d97f0",
+     "place_key": "p37ee6016b9e4",
+     "rating": 4,
+     "relative_date": "10 months ago",
+     "date_min": "2025-08-03",
+     "date_max": "2025-09-02",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lift was surprisingly good, the music very efficient. Came with family after work, value for money is decent. Might try once more.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "r3db1c1cf7233",
+     "place_key": "pfb86c41b35bf",
+     "rating": 4,
+     "relative_date": "6 months ago",
+     "date_min": "2025-12-01",
+     "date_max": "2025-12-31",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lighting was freshly renovated, the signboard very efficient. Our second visit on a weekday, prices felt a little high. Would come again.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "rc85b9a363c16",
+     "place_key": "p73bf9a126f1f",
+     "rating": 2,
+     "relative_date": "19 months ago",
+     "date_min": "2024-11-06",
+     "date_max": "2024-12-06",
+     "edited": false,
+     "image_dates": [],
+     "text": "The music was confusing, the music painfully slow. Visited during the holidays, it was crowded but manageable and quality was consistent with before. Average experience.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "rd0cd34bd3b20",
+     "place_key": "p17cb97010ff5",
+     "rating": 5,
+     "relative_date": "22 months ago",
+     "date_min": "2024-08-08",
+     "date_max": "2024-09-07",
+     "edited": false,
+     "image_dates": [],
+     "text": "The ac was painfully slow, the music a bit noisy. Dropped in late evening, everything was neat and clean and everything was neat and clean. Not sure I will return.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "r1027814b037a",
+     "place_key": "p1aadb8a3a9b0",
+     "rating": 5,
+     "relative_date": "a month ago",
+     "date_min": "2026-04-30",
+     "date_max": "2026-05-30",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lighting was well organised, the music freshly renovated. I tried this place during the holidays, prices felt a little high and prices felt a little high. Not sure I will return.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "r6b6fa19541ed",
+     "place_key": "paac5f6b9dce7",
+     "rating": 2,
+     "relative_date": "12 months ago",
+     "date_min": "2025-06-04",
+     "date_max": "2025-07-04",
+     "edited": false,
+     "image_dates": [],
+     "text": "The entrance was quite outdated, the seating too cold. First time here after work, service could be better and the staff were polite but slow. Okay overall.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "ua507385881cb",
+     "review_id": "rcfc69b66263c",
+     "place_key": "pa8129cf95546",
+     "rating": 5,
+     "relative_date": "15 weeks ago",
+     "date_min": "2026-03-09",
+     "date_max": "2026-03-16",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2817,8 +4437,8 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "2 weeks ago",
-     "date_min": "2026-06-07",
-     "date_max": "2026-06-14",
+     "date_min": "2026-06-08",
+     "date_max": "2026-06-15",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2832,11 +4452,11 @@
      "place_key": "p45ab3f56150c",
      "rating": 5,
      "relative_date": "2 weeks ago",
-     "date_min": "2026-06-07",
-     "date_max": "2026-06-14",
+     "date_min": "2026-06-08",
+     "date_max": "2026-06-15",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "Good",
      "travel_group": null
     },
     {
@@ -2845,11 +4465,11 @@
      "place_key": "pa4167847cd83",
      "rating": 5,
      "relative_date": "3 weeks ago",
-     "date_min": "2026-05-31",
-     "date_max": "2026-06-07",
+     "date_min": "2026-06-01",
+     "date_max": "2026-06-08",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "Good",
      "travel_group": null
     },
     {
@@ -2858,11 +4478,11 @@
      "place_key": "p6c345c85f7cf",
      "rating": 5,
      "relative_date": "3 weeks ago",
-     "date_min": "2026-05-31",
-     "date_max": "2026-06-07",
+     "date_min": "2026-06-01",
+     "date_max": "2026-06-08",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "Good",
      "travel_group": null
     },
     {
@@ -2871,11 +4491,11 @@
      "place_key": "pb271e11f7930",
      "rating": 5,
      "relative_date": "3 weeks ago",
-     "date_min": "2026-05-31",
-     "date_max": "2026-06-07",
+     "date_min": "2026-06-01",
+     "date_max": "2026-06-08",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "Good",
      "travel_group": null
     },
     {
@@ -2884,11 +4504,11 @@
      "place_key": "p92eda2e35f44",
      "rating": 5,
      "relative_date": "4 weeks ago",
-     "date_min": "2026-05-24",
-     "date_max": "2026-05-31",
+     "date_min": "2026-05-25",
+     "date_max": "2026-06-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "Good",
      "travel_group": null
     },
     {
@@ -2897,11 +4517,11 @@
      "place_key": "p2f68717f4e21",
      "rating": 5,
      "relative_date": "4 weeks ago",
-     "date_min": "2026-05-24",
-     "date_max": "2026-05-31",
+     "date_min": "2026-05-25",
+     "date_max": "2026-06-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "Good",
      "travel_group": null
     },
     {
@@ -2910,11 +4530,11 @@
      "place_key": "p1e067dc91958",
      "rating": 5,
      "relative_date": "4 weeks ago",
-     "date_min": "2026-05-24",
-     "date_max": "2026-05-31",
+     "date_min": "2026-05-25",
+     "date_max": "2026-06-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "Good",
      "travel_group": null
     },
     {
@@ -2923,11 +4543,11 @@
      "place_key": "p8ea348f57056",
      "rating": 5,
      "relative_date": "4 weeks ago",
-     "date_min": "2026-05-24",
-     "date_max": "2026-05-31",
+     "date_min": "2026-05-25",
+     "date_max": "2026-06-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "Good",
      "travel_group": null
     },
     {
@@ -2936,11 +4556,11 @@
      "place_key": "p40f71d383ba1",
      "rating": 5,
      "relative_date": "5 weeks ago",
-     "date_min": "2026-05-17",
-     "date_max": "2026-05-24",
+     "date_min": "2026-05-18",
+     "date_max": "2026-05-25",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "Good",
      "travel_group": null
     },
     {
@@ -2949,11 +4569,11 @@
      "place_key": "p7256cceb8819",
      "rating": 5,
      "relative_date": "5 weeks ago",
-     "date_min": "2026-05-17",
-     "date_max": "2026-05-24",
+     "date_min": "2026-05-18",
+     "date_max": "2026-05-25",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "Good",
      "travel_group": null
     },
     {
@@ -2962,11 +4582,11 @@
      "place_key": "p0633ef55ccb8",
      "rating": 5,
      "relative_date": "5 weeks ago",
-     "date_min": "2026-05-17",
-     "date_max": "2026-05-24",
+     "date_min": "2026-05-18",
+     "date_max": "2026-05-25",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "Good",
      "travel_group": null
     },
     {
@@ -2975,11 +4595,11 @@
      "place_key": "paef6606354be",
      "rating": 5,
      "relative_date": "6 weeks ago",
-     "date_min": "2026-05-10",
-     "date_max": "2026-05-17",
+     "date_min": "2026-05-11",
+     "date_max": "2026-05-18",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "Good",
      "travel_group": null
     },
     {
@@ -2988,8 +4608,8 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "2 weeks ago",
-     "date_min": "2026-06-07",
-     "date_max": "2026-06-14",
+     "date_min": "2026-06-08",
+     "date_max": "2026-06-15",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -3003,8 +4623,8 @@
      "place_key": "pa8129cf95546",
      "rating": 4,
      "relative_date": "6 weeks ago",
-     "date_min": "2026-05-10",
-     "date_max": "2026-05-17",
+     "date_min": "2026-05-11",
+     "date_max": "2026-05-18",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -3062,14 +4682,35 @@
     "contributor_id": "u27d2c92b7549",
     "round": 1,
     "reason": "baseline"
+   },
+   {
+    "contributor_id": "u47ecd89155b3",
+    "round": 1,
+    "reason": "voice"
+   },
+   {
+    "contributor_id": "ua507385881cb",
+    "round": 1,
+    "reason": "voice"
+   },
+   {
+    "contributor_id": "u80ff81b50601",
+    "round": 1,
+    "reason": "voice"
+   },
+   {
+    "contributor_id": "u8f42b928a317",
+    "round": 1,
+    "reason": "voice"
    }
   ],
-  "fetched_at": "2026-06-28T11:36:57.576427+00:00",
+  "fetched_at": "2026-06-28T21:11:59.762157+00:00",
   "params": {
    "n": 100,
    "k1": 8,
    "baseline": 2,
    "k2": 15,
+   "voice_picks": 4,
    "stop_after_round1": false,
    "force_refresh": false,
    "pick": null
@@ -3327,6 +4968,123 @@
     "cluster": null,
     "target_cluster": null
    },
+   "h:u47ecd89155b3:r1f2fc4752f9e": {
+    "text_id": "h:u47ecd89155b3:r1f2fc4752f9e",
+    "owner": "u47ecd89155b3",
+    "length": 164,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u47ecd89155b3:r27c54d885c30": {
+    "text_id": "h:u47ecd89155b3:r27c54d885c30",
+    "owner": "u47ecd89155b3",
+    "length": 155,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u47ecd89155b3:r2cbd750c0561": {
+    "text_id": "h:u47ecd89155b3:r2cbd750c0561",
+    "owner": "u47ecd89155b3",
+    "length": 141,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u47ecd89155b3:r3a8f6e6b0f98": {
+    "text_id": "h:u47ecd89155b3:r3a8f6e6b0f98",
+    "owner": "u47ecd89155b3",
+    "length": 170,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u47ecd89155b3:r4ae040200dba": {
+    "text_id": "h:u47ecd89155b3:r4ae040200dba",
+    "owner": "u47ecd89155b3",
+    "length": 154,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u47ecd89155b3:r4eb238405ba8": {
+    "text_id": "h:u47ecd89155b3:r4eb238405ba8",
+    "owner": "u47ecd89155b3",
+    "length": 155,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u47ecd89155b3:r6b1308c5748c": {
+    "text_id": "h:u47ecd89155b3:r6b1308c5748c",
+    "owner": "u47ecd89155b3",
+    "length": 177,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u47ecd89155b3:r7e3db05bdbdd": {
+    "text_id": "h:u47ecd89155b3:r7e3db05bdbdd",
+    "owner": "u47ecd89155b3",
+    "length": 159,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u47ecd89155b3:r974f117e8ced": {
+    "text_id": "h:u47ecd89155b3:r974f117e8ced",
+    "owner": "u47ecd89155b3",
+    "length": 161,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u47ecd89155b3:rc2ee5751b5aa": {
+    "text_id": "h:u47ecd89155b3:rc2ee5751b5aa",
+    "owner": "u47ecd89155b3",
+    "length": 167,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u47ecd89155b3:rd26b43ed991e": {
+    "text_id": "h:u47ecd89155b3:rd26b43ed991e",
+    "owner": "u47ecd89155b3",
+    "length": 162,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u47ecd89155b3:re6dc459cfdb5": {
+    "text_id": "h:u47ecd89155b3:re6dc459cfdb5",
+    "owner": "u47ecd89155b3",
+    "length": 163,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u47ecd89155b3:rf9b273f1c04b": {
+    "text_id": "h:u47ecd89155b3:rf9b273f1c04b",
+    "owner": "u47ecd89155b3",
+    "length": 133,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
    "h:u49d31d058fa9:r0ae0672fa668": {
     "text_id": "h:u49d31d058fa9:r0ae0672fa668",
     "owner": "u49d31d058fa9",
@@ -3421,6 +5179,429 @@
     "text_id": "h:u49d31d058fa9:rf31ae181ff2a",
     "owner": "u49d31d058fa9",
     "length": 147,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:r0035bf73e29e": {
+    "text_id": "h:u80ff81b50601:r0035bf73e29e",
+    "owner": "u80ff81b50601",
+    "length": 168,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:r0463bdc93c15": {
+    "text_id": "h:u80ff81b50601:r0463bdc93c15",
+    "owner": "u80ff81b50601",
+    "length": 136,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:r123dedd46c4e": {
+    "text_id": "h:u80ff81b50601:r123dedd46c4e",
+    "owner": "u80ff81b50601",
+    "length": 140,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:r184096b48a91": {
+    "text_id": "h:u80ff81b50601:r184096b48a91",
+    "owner": "u80ff81b50601",
+    "length": 160,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:r44cef73386d6": {
+    "text_id": "h:u80ff81b50601:r44cef73386d6",
+    "owner": "u80ff81b50601",
+    "length": 173,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:r51d188e55cb1": {
+    "text_id": "h:u80ff81b50601:r51d188e55cb1",
+    "owner": "u80ff81b50601",
+    "length": 145,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:r65b5e0edaf38": {
+    "text_id": "h:u80ff81b50601:r65b5e0edaf38",
+    "owner": "u80ff81b50601",
+    "length": 159,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:r6b4a8c2bbec7": {
+    "text_id": "h:u80ff81b50601:r6b4a8c2bbec7",
+    "owner": "u80ff81b50601",
+    "length": 138,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:r6c86fd57a502": {
+    "text_id": "h:u80ff81b50601:r6c86fd57a502",
+    "owner": "u80ff81b50601",
+    "length": 162,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:r711d4c1afbb8": {
+    "text_id": "h:u80ff81b50601:r711d4c1afbb8",
+    "owner": "u80ff81b50601",
+    "length": 140,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:r77d65a17480a": {
+    "text_id": "h:u80ff81b50601:r77d65a17480a",
+    "owner": "u80ff81b50601",
+    "length": 170,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:r8c2829bd3768": {
+    "text_id": "h:u80ff81b50601:r8c2829bd3768",
+    "owner": "u80ff81b50601",
+    "length": 136,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:r8cb802bf9814": {
+    "text_id": "h:u80ff81b50601:r8cb802bf9814",
+    "owner": "u80ff81b50601",
+    "length": 167,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:rb7c2b45fb91a": {
+    "text_id": "h:u80ff81b50601:rb7c2b45fb91a",
+    "owner": "u80ff81b50601",
+    "length": 122,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u80ff81b50601:re6528bd15606": {
+    "text_id": "h:u80ff81b50601:re6528bd15606",
+    "owner": "u80ff81b50601",
+    "length": 139,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:r02ada9c7be99": {
+    "text_id": "h:u8f42b928a317:r02ada9c7be99",
+    "owner": "u8f42b928a317",
+    "length": 158,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:r1d7c767e2526": {
+    "text_id": "h:u8f42b928a317:r1d7c767e2526",
+    "owner": "u8f42b928a317",
+    "length": 140,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:r2a7d33d244b8": {
+    "text_id": "h:u8f42b928a317:r2a7d33d244b8",
+    "owner": "u8f42b928a317",
+    "length": 131,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:r3ebbbbd4569c": {
+    "text_id": "h:u8f42b928a317:r3ebbbbd4569c",
+    "owner": "u8f42b928a317",
+    "length": 164,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:r49f8d268e36b": {
+    "text_id": "h:u8f42b928a317:r49f8d268e36b",
+    "owner": "u8f42b928a317",
+    "length": 160,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:r54c86d0e10ae": {
+    "text_id": "h:u8f42b928a317:r54c86d0e10ae",
+    "owner": "u8f42b928a317",
+    "length": 166,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:r8f4e72586157": {
+    "text_id": "h:u8f42b928a317:r8f4e72586157",
+    "owner": "u8f42b928a317",
+    "length": 169,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:r996945668c69": {
+    "text_id": "h:u8f42b928a317:r996945668c69",
+    "owner": "u8f42b928a317",
+    "length": 158,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:r9a08c06bba38": {
+    "text_id": "h:u8f42b928a317:r9a08c06bba38",
+    "owner": "u8f42b928a317",
+    "length": 140,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:r9b6e3bd3f510": {
+    "text_id": "h:u8f42b928a317:r9b6e3bd3f510",
+    "owner": "u8f42b928a317",
+    "length": 149,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:r9ff8a9ff57c2": {
+    "text_id": "h:u8f42b928a317:r9ff8a9ff57c2",
+    "owner": "u8f42b928a317",
+    "length": 127,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:ra6a696ab1777": {
+    "text_id": "h:u8f42b928a317:ra6a696ab1777",
+    "owner": "u8f42b928a317",
+    "length": 125,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:rab851e41db06": {
+    "text_id": "h:u8f42b928a317:rab851e41db06",
+    "owner": "u8f42b928a317",
+    "length": 169,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:rb534c4866370": {
+    "text_id": "h:u8f42b928a317:rb534c4866370",
+    "owner": "u8f42b928a317",
+    "length": 151,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:rb5692a2642b9": {
+    "text_id": "h:u8f42b928a317:rb5692a2642b9",
+    "owner": "u8f42b928a317",
+    "length": 176,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:rbdb4a2193365": {
+    "text_id": "h:u8f42b928a317:rbdb4a2193365",
+    "owner": "u8f42b928a317",
+    "length": 161,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:rc7c6ef974956": {
+    "text_id": "h:u8f42b928a317:rc7c6ef974956",
+    "owner": "u8f42b928a317",
+    "length": 160,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:rcb40e4ee9e18": {
+    "text_id": "h:u8f42b928a317:rcb40e4ee9e18",
+    "owner": "u8f42b928a317",
+    "length": 166,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:u8f42b928a317:reb2850a98d58": {
+    "text_id": "h:u8f42b928a317:reb2850a98d58",
+    "owner": "u8f42b928a317",
+    "length": 158,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:ua507385881cb:r1027814b037a": {
+    "text_id": "h:ua507385881cb:r1027814b037a",
+    "owner": "ua507385881cb",
+    "length": 177,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:ua507385881cb:r11395562ee7b": {
+    "text_id": "h:ua507385881cb:r11395562ee7b",
+    "owner": "ua507385881cb",
+    "length": 175,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:ua507385881cb:r31a35efe97d1": {
+    "text_id": "h:ua507385881cb:r31a35efe97d1",
+    "owner": "ua507385881cb",
+    "length": 136,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:ua507385881cb:r3db1c1cf7233": {
+    "text_id": "h:ua507385881cb:r3db1c1cf7233",
+    "owner": "ua507385881cb",
+    "length": 136,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:ua507385881cb:r6b6fa19541ed": {
+    "text_id": "h:ua507385881cb:r6b6fa19541ed",
+    "owner": "ua507385881cb",
+    "length": 151,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:ua507385881cb:r732b60fb5a7b": {
+    "text_id": "h:ua507385881cb:r732b60fb5a7b",
+    "owner": "ua507385881cb",
+    "length": 125,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:ua507385881cb:ra02a20f1b2e3": {
+    "text_id": "h:ua507385881cb:ra02a20f1b2e3",
+    "owner": "ua507385881cb",
+    "length": 163,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:ua507385881cb:rbba238365d41": {
+    "text_id": "h:ua507385881cb:rbba238365d41",
+    "owner": "ua507385881cb",
+    "length": 124,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:ua507385881cb:rc31dfe1c082a": {
+    "text_id": "h:ua507385881cb:rc31dfe1c082a",
+    "owner": "ua507385881cb",
+    "length": 159,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:ua507385881cb:rc85b9a363c16": {
+    "text_id": "h:ua507385881cb:rc85b9a363c16",
+    "owner": "ua507385881cb",
+    "length": 164,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:ua507385881cb:rd0cd34bd3b20": {
+    "text_id": "h:ua507385881cb:rd0cd34bd3b20",
+    "owner": "ua507385881cb",
+    "length": 158,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:ua507385881cb:rdad87f536897": {
+    "text_id": "h:ua507385881cb:rdad87f536897",
+    "owner": "ua507385881cb",
+    "length": 169,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:ua507385881cb:rfe7b3e7d97f0": {
+    "text_id": "h:ua507385881cb:rfe7b3e7d97f0",
+    "owner": "ua507385881cb",
+    "length": 129,
     "script": "latin",
     "short": false,
     "cluster": null,
@@ -5155,6 +7336,44 @@
     "cues": [],
     "model": "synthetic example"
    }
+  },
+  "voice_judgements": {
+   "u27d2c92b7549": {
+    "verdict": "same_voice",
+    "here": "",
+    "elsewhere": "",
+    "model": "synthetic example"
+   },
+   "u47ecd89155b3": {
+    "verdict": "same_voice",
+    "here": "",
+    "elsewhere": "",
+    "model": "synthetic example"
+   },
+   "u49d31d058fa9": {
+    "verdict": "same_voice",
+    "here": "",
+    "elsewhere": "",
+    "model": "synthetic example"
+   },
+   "u80ff81b50601": {
+    "verdict": "same_voice",
+    "here": "",
+    "elsewhere": "",
+    "model": "synthetic example"
+   },
+   "u8f42b928a317": {
+    "verdict": "same_voice",
+    "here": "",
+    "elsewhere": "",
+    "model": "synthetic example"
+   },
+   "ua507385881cb": {
+    "verdict": "same_voice",
+    "here": "",
+    "elsewhere": "",
+    "model": "synthetic example"
+   }
   }
  },
  "report": {
@@ -5174,8 +7393,8 @@
    "examined": 100,
    "first": "2026-02-21",
    "last": "2026-06-18",
-   "expanded": 10,
-   "histories_ok": 10,
+   "expanded": 14,
+   "histories_ok": 14,
    "baseline": [
     "u49d31d058fa9",
     "u27d2c92b7549"
@@ -5286,12 +7505,22 @@
     "other_first_time": 5,
     "ratio": 3.4,
     "flagged": false
+   },
+   "T10": {
+    "flagged": false,
+    "accounts": 0,
+    "with_text": 100,
+    "needed": 8.0,
+    "review_ids": [],
+    "phrases": {}
    }
   },
   "sieve": {
    "order": [
     "chatbot_text",
     "copied_text",
+    "voice_mismatch",
+    "keyword_style",
     "first_time_burst",
     "linked_group",
     "ai_style",
@@ -5301,6 +7530,8 @@
    "set_aside_by_default": [
     "chatbot_text",
     "copied_text",
+    "voice_mismatch",
+    "keyword_style",
     "first_time_burst",
     "linked_group"
    ],
@@ -5319,6 +7550,24 @@
      "short": "Copied text",
      "strength": "strong",
      "explain": "Near-identical to a review that another account wrote.",
+     "count": 0,
+     "mean": null,
+     "set_aside_by_default": true
+    },
+    "voice_mismatch": {
+     "name": "Not in the reviewer's own voice",
+     "short": "Not their own voice",
+     "strength": "strong",
+     "explain": "The reviewer's other reviews are written very differently. An AI model compared them and quotes the difference; both are shown side by side. Typical of scripted or incentivised reviews posted from real accounts.",
+     "count": 0,
+     "mean": null,
+     "set_aside_by_default": true
+    },
+    "keyword_style": {
+     "name": "Written like a search ad",
+     "short": "Search-ad phrasing",
+     "strength": "strong",
+     "explain": "Names the business or its category together with its neighbourhood or city, the way search ads are written (“packers and movers in [area], [city]”), as several accounts here do.",
      "count": 0,
      "mean": null,
      "set_aside_by_default": true
@@ -5390,6 +7639,14 @@
     "no_text": 0,
     "ai_style": 3,
     "human_style": 4,
+    "unclear": 0,
+    "model": "synthetic example"
+   },
+   "voice": {
+    "eligible": 6,
+    "compared": 6,
+    "different_voice": 0,
+    "same_voice": 6,
     "unclear": 0,
     "model": "synthetic example"
    }
@@ -5481,7 +7738,7 @@
        "Kochi",
        "Kolkata"
       ],
-      "from": "2026-05-10",
+      "from": "2026-05-11",
       "km": 1895
      },
      {
@@ -5502,8 +7759,8 @@
        "Kolkata",
        "Mumbai"
       ],
-      "from": "2026-05-13",
-      "to": "2026-06-10",
+      "from": "2026-05-14",
+      "to": "2026-06-11",
       "five_star_share": 1.0
      }
     ]
@@ -5611,6 +7868,54 @@
     "visible_reviews": 29,
     "total_reviews": 82,
     "badges": []
+   },
+   {
+    "contributor_id": "u47ecd89155b3",
+    "round": 1,
+    "reason": "voice",
+    "status": "ok",
+    "label": "no_flags",
+    "group": null,
+    "truncated": true,
+    "visible_reviews": 14,
+    "total_reviews": 50,
+    "badges": []
+   },
+   {
+    "contributor_id": "ua507385881cb",
+    "round": 1,
+    "reason": "voice",
+    "status": "ok",
+    "label": "no_flags",
+    "group": null,
+    "truncated": true,
+    "visible_reviews": 14,
+    "total_reviews": 42,
+    "badges": []
+   },
+   {
+    "contributor_id": "u80ff81b50601",
+    "round": 1,
+    "reason": "voice",
+    "status": "ok",
+    "label": "no_flags",
+    "group": null,
+    "truncated": true,
+    "visible_reviews": 16,
+    "total_reviews": 68,
+    "badges": []
+   },
+   {
+    "contributor_id": "u8f42b928a317",
+    "round": 1,
+    "reason": "voice",
+    "status": "ok",
+    "label": "no_flags",
+    "group": null,
+    "truncated": true,
+    "visible_reviews": 20,
+    "total_reviews": 34,
+    "badges": []
    }
   ],
   "histories": {
@@ -5620,7 +7925,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-06-10",
+      "day": "2026-06-11",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5638,7 +7943,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-06-10",
+      "day": "2026-06-11",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5656,7 +7961,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-06-10",
+      "day": "2026-06-11",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5674,7 +7979,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-05-13",
+      "day": "2026-05-14",
       "rating": 5,
       "place_key": "paef6606354be",
       "this": false,
@@ -5685,7 +7990,7 @@
       "km": 1311.4
      },
      {
-      "day": "2026-05-20",
+      "day": "2026-05-21",
       "rating": 5,
       "place_key": "p40f71d383ba1",
       "this": false,
@@ -5696,7 +8001,7 @@
       "km": 1497.9
      },
      {
-      "day": "2026-05-20",
+      "day": "2026-05-21",
       "rating": 5,
       "place_key": "p7256cceb8819",
       "this": false,
@@ -5707,7 +8012,7 @@
       "km": 2070.4
      },
      {
-      "day": "2026-05-20",
+      "day": "2026-05-21",
       "rating": 5,
       "place_key": "p0633ef55ccb8",
       "this": false,
@@ -5718,7 +8023,7 @@
       "km": 1251.4
      },
      {
-      "day": "2026-05-27",
+      "day": "2026-05-28",
       "rating": 5,
       "place_key": "p92eda2e35f44",
       "this": false,
@@ -5729,7 +8034,7 @@
       "km": 1252.4
      },
      {
-      "day": "2026-05-27",
+      "day": "2026-05-28",
       "rating": 5,
       "place_key": "p2f68717f4e21",
       "this": false,
@@ -5740,7 +8045,7 @@
       "km": 1305.3
      },
      {
-      "day": "2026-05-27",
+      "day": "2026-05-28",
       "rating": 5,
       "place_key": "p1e067dc91958",
       "this": false,
@@ -5751,7 +8056,7 @@
       "km": 1153.3
      },
      {
-      "day": "2026-05-27",
+      "day": "2026-05-28",
       "rating": 5,
       "place_key": "p8ea348f57056",
       "this": false,
@@ -5762,7 +8067,7 @@
       "km": 239.8
      },
      {
-      "day": "2026-06-03",
+      "day": "2026-06-04",
       "rating": 5,
       "place_key": "pa4167847cd83",
       "this": false,
@@ -5773,7 +8078,7 @@
       "km": 233.9
      },
      {
-      "day": "2026-06-03",
+      "day": "2026-06-04",
       "rating": 5,
       "place_key": "p6c345c85f7cf",
       "this": false,
@@ -5784,7 +8089,7 @@
       "km": 1506.4
      },
      {
-      "day": "2026-06-03",
+      "day": "2026-06-04",
       "rating": 5,
       "place_key": "pb271e11f7930",
       "this": false,
@@ -5795,7 +8100,7 @@
       "km": 2082.0
      },
      {
-      "day": "2026-06-10",
+      "day": "2026-06-11",
       "rating": 5,
       "place_key": "p45ab3f56150c",
       "this": false,
@@ -5806,7 +8111,7 @@
       "km": 1153.3
      },
      {
-      "day": "2026-06-10",
+      "day": "2026-06-11",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5824,7 +8129,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-05-13",
+      "day": "2026-05-14",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5842,7 +8147,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-04-29",
+      "day": "2026-04-30",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5860,7 +8165,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-06-17",
+      "day": "2026-06-18",
       "rating": 4,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5878,7 +8183,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-05-13",
+      "day": "2026-05-14",
       "rating": 4,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5896,7 +8201,7 @@
     "home_area": "Delhi NCR",
     "items": [
      {
-      "day": "2024-08-22",
+      "day": "2024-08-23",
       "rating": 4,
       "place_key": "pdca58f44d51c",
       "this": false,
@@ -5907,7 +8212,7 @@
       "km": 0.0
      },
      {
-      "day": "2024-09-21",
+      "day": "2024-09-22",
       "rating": 2,
       "place_key": "pd859a3b0220a",
       "this": false,
@@ -5918,7 +8223,7 @@
       "km": 9.8
      },
      {
-      "day": "2024-10-21",
+      "day": "2024-10-22",
       "rating": 4,
       "place_key": "p2a90c307e5ba",
       "this": false,
@@ -5929,7 +8234,7 @@
       "km": 9.8
      },
      {
-      "day": "2024-10-21",
+      "day": "2024-10-22",
       "rating": 4,
       "place_key": "p0067b11179ed",
       "this": false,
@@ -5940,7 +8245,7 @@
       "km": 14.8
      },
      {
-      "day": "2024-12-20",
+      "day": "2024-12-21",
       "rating": 5,
       "place_key": "pf5b192377ea6",
       "this": false,
@@ -5951,7 +8256,7 @@
       "km": 14.8
      },
      {
-      "day": "2025-02-18",
+      "day": "2025-02-19",
       "rating": 5,
       "place_key": "p6256b48e86ee",
       "this": false,
@@ -5962,7 +8267,7 @@
       "km": 9.8
      },
      {
-      "day": "2025-06-18",
+      "day": "2025-06-19",
       "rating": 4,
       "place_key": "p2d0125032283",
       "this": false,
@@ -5973,7 +8278,7 @@
       "km": 11.1
      },
      {
-      "day": "2025-07-18",
+      "day": "2025-07-19",
       "rating": 4,
       "place_key": "p31ca8d7fb7a7",
       "this": false,
@@ -5984,7 +8289,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-12-15",
+      "day": "2025-12-16",
       "rating": 5,
       "place_key": "p474ddd8a007d",
       "this": false,
@@ -5995,7 +8300,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-12-15",
+      "day": "2025-12-16",
       "rating": 4,
       "place_key": "p853c69be9a7c",
       "this": false,
@@ -6006,7 +8311,7 @@
       "km": 11.1
      },
      {
-      "day": "2026-01-14",
+      "day": "2026-01-15",
       "rating": 3,
       "place_key": "p63df68c66dc6",
       "this": false,
@@ -6017,7 +8322,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-04-15",
+      "day": "2026-04-16",
       "rating": 1,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -6035,7 +8340,7 @@
     "home_area": "Delhi NCR",
     "items": [
      {
-      "day": "2024-07-23",
+      "day": "2024-07-24",
       "rating": 5,
       "place_key": "p26f556ad3a5b",
       "this": false,
@@ -6046,7 +8351,7 @@
       "km": 0.0
      },
      {
-      "day": "2024-09-21",
+      "day": "2024-09-22",
       "rating": 2,
       "place_key": "pb8fe66012826",
       "this": false,
@@ -6057,7 +8362,7 @@
       "km": 11.1
      },
      {
-      "day": "2024-10-21",
+      "day": "2024-10-22",
       "rating": 5,
       "place_key": "p1047f8376f40",
       "this": false,
@@ -6068,7 +8373,7 @@
       "km": 0.0
      },
      {
-      "day": "2024-12-20",
+      "day": "2024-12-21",
       "rating": 2,
       "place_key": "p3b61b481b4cc",
       "this": false,
@@ -6079,7 +8384,7 @@
       "km": 9.8
      },
      {
-      "day": "2025-01-19",
+      "day": "2025-01-20",
       "rating": 5,
       "place_key": "p2926af2d8cf4",
       "this": false,
@@ -6090,7 +8395,7 @@
       "km": 14.8
      },
      {
-      "day": "2025-05-19",
+      "day": "2025-05-20",
       "rating": 4,
       "place_key": "p1f39c9a7eb0a",
       "this": false,
@@ -6101,7 +8406,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-06-18",
+      "day": "2025-06-19",
       "rating": 4,
       "place_key": "p7b9a0c236d2f",
       "this": false,
@@ -6112,7 +8417,7 @@
       "km": 11.1
      },
      {
-      "day": "2025-06-18",
+      "day": "2025-06-19",
       "rating": 5,
       "place_key": "p6ca89c20c6d0",
       "this": false,
@@ -6123,7 +8428,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-08-17",
+      "day": "2025-08-18",
       "rating": 2,
       "place_key": "p1f15b2b776bc",
       "this": false,
@@ -6134,7 +8439,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-08-17",
+      "day": "2025-08-18",
       "rating": 4,
       "place_key": "pad9276a16e64",
       "this": false,
@@ -6145,7 +8450,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-09-16",
+      "day": "2025-09-17",
       "rating": 2,
       "place_key": "p4c7f7948d5d6",
       "this": false,
@@ -6156,7 +8461,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-11-15",
+      "day": "2025-11-16",
       "rating": 4,
       "place_key": "p8c08832dc9ff",
       "this": false,
@@ -6167,7 +8472,7 @@
       "km": 11.1
      },
      {
-      "day": "2025-11-15",
+      "day": "2025-11-16",
       "rating": 4,
       "place_key": "pf53e6a2d47bf",
       "this": false,
@@ -6178,7 +8483,7 @@
       "km": 11.1
      },
      {
-      "day": "2025-12-15",
+      "day": "2025-12-16",
       "rating": 2,
       "place_key": "pc7879427e0e3",
       "this": false,
@@ -6189,7 +8494,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-12-15",
+      "day": "2025-12-16",
       "rating": 4,
       "place_key": "p6c86619538b2",
       "this": false,
@@ -6200,7 +8505,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-01-14",
+      "day": "2026-01-15",
       "rating": 2,
       "place_key": "pb82c2c45a8b6",
       "this": false,
@@ -6211,7 +8516,7 @@
       "km": 9.8
      },
      {
-      "day": "2026-01-14",
+      "day": "2026-01-15",
       "rating": 4,
       "place_key": "p768829ab9370",
       "this": false,
@@ -6222,7 +8527,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-01-14",
+      "day": "2026-01-15",
       "rating": 2,
       "place_key": "pd746feb4ada7",
       "this": false,
@@ -6233,7 +8538,7 @@
       "km": 11.1
      },
      {
-      "day": "2026-01-14",
+      "day": "2026-01-15",
       "rating": 2,
       "place_key": "p8e574f8b91b5",
       "this": false,
@@ -6244,7 +8549,7 @@
       "km": 14.8
      },
      {
-      "day": "2026-02-13",
+      "day": "2026-02-14",
       "rating": 5,
       "place_key": "pf4e96e1ba111",
       "this": false,
@@ -6255,7 +8560,7 @@
       "km": 14.8
      },
      {
-      "day": "2026-02-13",
+      "day": "2026-02-14",
       "rating": 5,
       "place_key": "p8e91661ab2e6",
       "this": false,
@@ -6266,7 +8571,7 @@
       "km": 14.8
      },
      {
-      "day": "2026-02-13",
+      "day": "2026-02-14",
       "rating": 4,
       "place_key": "p00e39884d8b4",
       "this": false,
@@ -6277,7 +8582,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-03-11",
+      "day": "2026-03-12",
       "rating": 3,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -6288,7 +8593,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-03-15",
+      "day": "2026-03-16",
       "rating": 2,
       "place_key": "p664b19b10456",
       "this": false,
@@ -6299,7 +8604,7 @@
       "km": 14.8
      },
      {
-      "day": "2026-03-15",
+      "day": "2026-03-16",
       "rating": 3,
       "place_key": "p568245f4582c",
       "this": false,
@@ -6310,7 +8615,7 @@
       "km": 9.8
      },
      {
-      "day": "2026-04-14",
+      "day": "2026-04-15",
       "rating": 5,
       "place_key": "p9776663e4422",
       "this": false,
@@ -6321,7 +8626,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-05-14",
+      "day": "2026-05-15",
       "rating": 5,
       "place_key": "pdd4d7da291ff",
       "this": false,
@@ -6332,7 +8637,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-05-14",
+      "day": "2026-05-15",
       "rating": 5,
       "place_key": "p2647e5935803",
       "this": false,
@@ -6343,12 +8648,744 @@
       "km": 9.8
      },
      {
-      "day": "2026-05-14",
+      "day": "2026-05-15",
       "rating": 3,
       "place_key": "p47d35e92432c",
       "this": false,
       "area": "Delhi NCR",
       "type_group": "Beauty & wellness",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     }
+    ]
+   },
+   "u47ecd89155b3": {
+    "total_reviews": 50,
+    "visible": 14,
+    "home_area": "Lucknow",
+    "items": [
+     {
+      "day": "2024-08-23",
+      "rating": 3,
+      "place_key": "p8919cbaf7168",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 81.0,
+      "km": 419.0
+     },
+     {
+      "day": "2024-09-22",
+      "rating": 3,
+      "place_key": "p2b99596cdbc5",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Food & drink",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 415.6
+     },
+     {
+      "day": "2024-11-21",
+      "rating": 4,
+      "place_key": "p572502295bd0",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 81.0,
+      "km": 419.0
+     },
+     {
+      "day": "2024-12-21",
+      "rating": 4,
+      "place_key": "pf14704245cd9",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 80.9,
+      "km": 410.2
+     },
+     {
+      "day": "2025-01-20",
+      "rating": 2,
+      "place_key": "p6dc66ee18f2a",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Food & drink",
+      "lat": 26.8,
+      "lng": 81.0,
+      "km": 424.3
+     },
+     {
+      "day": "2025-02-19",
+      "rating": 4,
+      "place_key": "p9812aab4622b",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 80.9,
+      "km": 410.2
+     },
+     {
+      "day": "2025-03-21",
+      "rating": 4,
+      "place_key": "p6720abfec45d",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Health",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 415.6
+     },
+     {
+      "day": "2025-04-20",
+      "rating": 4,
+      "place_key": "pf36a506db154",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Retail",
+      "lat": 26.8,
+      "lng": 81.0,
+      "km": 424.3
+     },
+     {
+      "day": "2025-04-20",
+      "rating": 5,
+      "place_key": "p348e868863a3",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Retail",
+      "lat": 26.9,
+      "lng": 80.9,
+      "km": 410.2
+     },
+     {
+      "day": "2025-08-18",
+      "rating": 5,
+      "place_key": "p1afd7edbf8f5",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Other",
+      "lat": 26.9,
+      "lng": 81.0,
+      "km": 419.0
+     },
+     {
+      "day": "2025-11-16",
+      "rating": 2,
+      "place_key": "p6f3f2b7d1ace",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Health",
+      "lat": 26.8,
+      "lng": 81.0,
+      "km": 424.3
+     },
+     {
+      "day": "2025-12-16",
+      "rating": 3,
+      "place_key": "p71fe04fbb1a2",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Food & drink",
+      "lat": 26.8,
+      "lng": 80.9,
+      "km": 415.6
+     },
+     {
+      "day": "2026-03-16",
+      "rating": 2,
+      "place_key": "pee6aef3df4e5",
+      "this": false,
+      "area": "Lucknow",
+      "type_group": "Food & drink",
+      "lat": 26.9,
+      "lng": 81.0,
+      "km": 419.0
+     },
+     {
+      "day": "2026-06-04",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Delhi NCR",
+      "type_group": "Lodging",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     }
+    ]
+   },
+   "ua507385881cb": {
+    "total_reviews": 42,
+    "visible": 14,
+    "home_area": "Delhi NCR",
+    "items": [
+     {
+      "day": "2024-07-24",
+      "rating": 5,
+      "place_key": "p4e276bfc507e",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Beauty & wellness",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2024-08-23",
+      "rating": 5,
+      "place_key": "p17cb97010ff5",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2024-11-21",
+      "rating": 2,
+      "place_key": "p73bf9a126f1f",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Beauty & wellness",
+      "lat": 28.5,
+      "lng": 77.2,
+      "km": 11.1
+     },
+     {
+      "day": "2024-12-21",
+      "rating": 4,
+      "place_key": "p1796b977a5e2",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Beauty & wellness",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2025-04-20",
+      "rating": 2,
+      "place_key": "p1afd2fdc7cd9",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2025-06-19",
+      "rating": 2,
+      "place_key": "paac5f6b9dce7",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Retail",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-18",
+      "rating": 4,
+      "place_key": "p37ee6016b9e4",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Beauty & wellness",
+      "lat": 28.6,
+      "lng": 77.3,
+      "km": 9.8
+     },
+     {
+      "day": "2025-10-17",
+      "rating": 2,
+      "place_key": "pa3cce419d532",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Beauty & wellness",
+      "lat": 28.6,
+      "lng": 77.3,
+      "km": 9.8
+     },
+     {
+      "day": "2025-11-16",
+      "rating": 3,
+      "place_key": "p12b5af6e09f0",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2025-11-16",
+      "rating": 4,
+      "place_key": "pd07302a532d6",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Health",
+      "lat": 28.6,
+      "lng": 77.3,
+      "km": 9.8
+     },
+     {
+      "day": "2025-12-16",
+      "rating": 4,
+      "place_key": "pfb86c41b35bf",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Beauty & wellness",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2026-02-14",
+      "rating": 5,
+      "place_key": "p0aa2369fb42e",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Health",
+      "lat": 28.5,
+      "lng": 77.2,
+      "km": 11.1
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Delhi NCR",
+      "type_group": "Lodging",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-15",
+      "rating": 5,
+      "place_key": "p1aadb8a3a9b0",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Retail",
+      "lat": 28.6,
+      "lng": 77.1,
+      "km": 9.8
+     }
+    ]
+   },
+   "u80ff81b50601": {
+    "total_reviews": 68,
+    "visible": 16,
+    "home_area": "Delhi NCR",
+    "items": [
+     {
+      "day": "2024-08-23",
+      "rating": 4,
+      "place_key": "p36903699070e",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Health",
+      "lat": 28.7,
+      "lng": 77.2,
+      "km": 11.1
+     },
+     {
+      "day": "2024-08-23",
+      "rating": 4,
+      "place_key": "p46695fe11f63",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Retail",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2024-09-22",
+      "rating": 2,
+      "place_key": "p256468a4bb4a",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Retail",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2024-09-22",
+      "rating": 4,
+      "place_key": "p09d16e0b5f7c",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Retail",
+      "lat": 28.7,
+      "lng": 77.2,
+      "km": 11.1
+     },
+     {
+      "day": "2024-11-21",
+      "rating": 3,
+      "place_key": "pf4b243e53ecf",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Beauty & wellness",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2025-01-20",
+      "rating": 5,
+      "place_key": "pb63fa4d9dfbb",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.6,
+      "lng": 77.3,
+      "km": 9.8
+     },
+     {
+      "day": "2025-03-21",
+      "rating": 3,
+      "place_key": "p2b7ae61524f7",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Health",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2025-03-21",
+      "rating": 4,
+      "place_key": "pd94cf8f038d3",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Health",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2025-05-20",
+      "rating": 4,
+      "place_key": "pf8f44502eea2",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-18",
+      "rating": 4,
+      "place_key": "p9592d2a15f57",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2025-09-17",
+      "rating": 4,
+      "place_key": "p7ff3ba62ff6a",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.6,
+      "lng": 77.3,
+      "km": 9.8
+     },
+     {
+      "day": "2025-10-17",
+      "rating": 2,
+      "place_key": "pc84db12046a0",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Beauty & wellness",
+      "lat": 28.6,
+      "lng": 77.3,
+      "km": 9.8
+     },
+     {
+      "day": "2025-11-16",
+      "rating": 4,
+      "place_key": "p35c451bd12bd",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Retail",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2026-01-15",
+      "rating": 5,
+      "place_key": "p7757b77ecaf7",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Retail",
+      "lat": 28.6,
+      "lng": 77.3,
+      "km": 9.8
+     },
+     {
+      "day": "2026-03-12",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Delhi NCR",
+      "type_group": "Lodging",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-15",
+      "rating": 4,
+      "place_key": "p9c9953fe84ad",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Retail",
+      "lat": 28.7,
+      "lng": 77.1,
+      "km": 14.8
+     }
+    ]
+   },
+   "u8f42b928a317": {
+    "total_reviews": 34,
+    "visible": 20,
+    "home_area": "Delhi NCR",
+    "items": [
+     {
+      "day": "2024-08-23",
+      "rating": 4,
+      "place_key": "p5c5465e2bfe1",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Retail",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2024-09-22",
+      "rating": 3,
+      "place_key": "p80c715a38d32",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2024-09-22",
+      "rating": 2,
+      "place_key": "pe6810224f79c",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Retail",
+      "lat": 28.7,
+      "lng": 77.2,
+      "km": 11.1
+     },
+     {
+      "day": "2024-11-21",
+      "rating": 5,
+      "place_key": "p2cb715d63092",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Other",
+      "lat": 28.6,
+      "lng": 77.1,
+      "km": 9.8
+     },
+     {
+      "day": "2024-12-21",
+      "rating": 4,
+      "place_key": "pf36ec1b8e5bc",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Beauty & wellness",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2024-12-21",
+      "rating": 5,
+      "place_key": "p3c8b6255b337",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.7,
+      "lng": 77.2,
+      "km": 11.1
+     },
+     {
+      "day": "2025-01-20",
+      "rating": 5,
+      "place_key": "pdb79d20eb3e8",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.7,
+      "lng": 77.2,
+      "km": 11.1
+     },
+     {
+      "day": "2025-03-21",
+      "rating": 4,
+      "place_key": "pc06b3383b9bb",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Other",
+      "lat": 28.7,
+      "lng": 77.2,
+      "km": 11.1
+     },
+     {
+      "day": "2025-03-21",
+      "rating": 5,
+      "place_key": "p1fc10ac58129",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.7,
+      "lng": 77.3,
+      "km": 14.8
+     },
+     {
+      "day": "2025-04-20",
+      "rating": 2,
+      "place_key": "pe4cb734154ce",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Retail",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2025-08-18",
+      "rating": 5,
+      "place_key": "p2cc66b84b72b",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Other",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2025-10-17",
+      "rating": 5,
+      "place_key": "pc0d254db85ab",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Health",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2025-11-16",
+      "rating": 5,
+      "place_key": "p4b3571e83423",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.6,
+      "lng": 77.1,
+      "km": 9.8
+     },
+     {
+      "day": "2025-11-16",
+      "rating": 2,
+      "place_key": "p405692ac9517",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Retail",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2025-12-16",
+      "rating": 4,
+      "place_key": "p2a7f598af228",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.7,
+      "lng": 77.2,
+      "km": 11.1
+     },
+     {
+      "day": "2026-02-14",
+      "rating": 4,
+      "place_key": "pc23d2b2f1f97",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.7,
+      "lng": 77.2,
+      "km": 11.1
+     },
+     {
+      "day": "2026-03-16",
+      "rating": 2,
+      "place_key": "p8a20fa582682",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.6,
+      "lng": 77.1,
+      "km": 9.8
+     },
+     {
+      "day": "2026-05-15",
+      "rating": 3,
+      "place_key": "p35004ac2b77b",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Retail",
+      "lat": 28.6,
+      "lng": 77.2,
+      "km": 0.0
+     },
+     {
+      "day": "2026-05-15",
+      "rating": 4,
+      "place_key": "pe07eaa1884a3",
+      "this": false,
+      "area": "Delhi NCR",
+      "type_group": "Food & drink",
+      "lat": 28.5,
+      "lng": 77.2,
+      "km": 11.1
+     },
+     {
+      "day": "2026-06-04",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Delhi NCR",
+      "type_group": "Lodging",
       "lat": 28.6,
       "lng": 77.2,
       "km": 0.0
@@ -6397,6 +9434,22 @@
     {
      "id": "u27d2c92b7549",
      "label": "no_flags"
+    },
+    {
+     "id": "u47ecd89155b3",
+     "label": "no_flags"
+    },
+    {
+     "id": "ua507385881cb",
+     "label": "no_flags"
+    },
+    {
+     "id": "u80ff81b50601",
+     "label": "no_flags"
+    },
+    {
+     "id": "u8f42b928a317",
+     "label": "no_flags"
     }
    ],
    "edges": []
@@ -6422,7 +9475,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r28f85c5e31dd",
@@ -6443,7 +9498,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r4a8131dff8df",
@@ -6464,7 +9521,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r4b3aeae2cb64",
@@ -6488,7 +9547,9 @@
     "ai": {
      "verdict": "human_style",
      "cues": []
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "reea71b2f4d7b",
@@ -6513,7 +9574,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rc3863adbcff1",
@@ -6534,7 +9597,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r7b4abec23363",
@@ -6555,7 +9620,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r362ed4b81ff4",
@@ -6576,7 +9643,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r2c0d02b08b54",
@@ -6597,7 +9666,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r66180eb3b512",
@@ -6618,7 +9689,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rcefde3168abe",
@@ -6639,7 +9712,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rb873ff4e10eb",
@@ -6660,7 +9735,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rf6ec52e92d59",
@@ -6681,7 +9758,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rb31e6e1055b1",
@@ -6702,7 +9781,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r09f372fd0354",
@@ -6734,7 +9815,9 @@
       "Exceptional hospitality and top-notch service",
       "A truly delightful stay that exceeded all my expectations"
      ]
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r0c9996978986",
@@ -6765,7 +9848,9 @@
       "Our stay was nothing short of exceptional",
       "offering a peaceful retreat after a long day of sightseeing"
      ]
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r7549d8f9cf59",
@@ -6793,7 +9878,9 @@
     "signs": [
      "review_spree"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r837844ed509f",
@@ -6824,7 +9911,9 @@
       "Nestled in the heart of the city",
       "a hidden gem that truly delivers"
      ]
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r151831f3be19",
@@ -6845,7 +9934,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rd8f66699fda0",
@@ -6866,7 +9957,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r40cbbd6356ee",
@@ -6874,7 +9967,7 @@
     "rating": 4,
     "date": "2026-05-26T06:00:00+00:00",
     "day": "2026-05-26",
-    "label": "not_checked",
+    "label": "no_flags",
     "badges": [],
     "text": "Stayed 2 nights with family. Staff was helpful, Mr. Arjun at reception arranged early check in at 8am for us without extra charge. Rooms are small but clean, bedsheets were fresh. Lift was not working one day, we were on 4th floor so it was difficult with luggage and my father's knee problem.",
     "text_length": 285,
@@ -6890,6 +9983,17 @@
     "ai": {
      "verdict": "human_style",
      "cues": []
+    },
+    "keyword_phrase": null,
+    "voice": {
+     "verdict": "same_voice",
+     "here": "",
+     "elsewhere": "",
+     "others": [
+      "The washroom was a little dusty, the lobby a bit noisy. Visited last weekend, they fixed our issue quickly and the menu had fewer options now. Would come again.",
+      "The payment process was very efficient, the seating surprisingly good. Stopped by for a birthday, parking was a real problem and the waiting time was long. Okay overall.",
+      "The lobby was freshly renovated, the menu card too cold. Went here after work, it was crowded but manageable and the menu had fewer options now. Mixed feelings."
+     ]
     }
    },
    {
@@ -6911,7 +10015,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r767a28eadd43",
@@ -6932,7 +10038,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r55e0e2b0006d",
@@ -6940,7 +10048,7 @@
     "rating": 4,
     "date": "2026-05-22T13:32:58.074438+00:00",
     "day": "2026-05-22",
-    "label": "not_checked",
+    "label": "no_flags",
     "badges": [],
     "text": "The queue was painfully slow, the manager a little dusty. Came with family on a weekday, the waiting time was long and everything was neat and clean. Might try once more.",
     "text_length": 165,
@@ -6953,7 +10061,18 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": {
+     "verdict": "same_voice",
+     "here": "",
+     "elsewhere": "",
+     "others": [
+      "The security guard was surprisingly good, the payment process better than expected. Dropped in before a flight, they fixed our issue quickly. Not sure I will return.",
+      "The music was a bit noisy, the chai confusing. I tried this place after work, quality was consistent with before and service could be better. Decent enough.",
+      "The music was freshly renovated, the queue painfully slow. Visited late evening, the location is easy to find. Average experience."
+     ]
+    }
    },
    {
     "review_id": "r329e1fb5912a",
@@ -6974,7 +10093,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rdcb7e556a87c",
@@ -6995,7 +10116,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r38f34bc78da1",
@@ -7016,7 +10139,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r677a3106b724",
@@ -7037,7 +10162,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rb85d2695e71c",
@@ -7058,7 +10185,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r510d9c2478fe",
@@ -7079,7 +10208,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "racda4f36977d",
@@ -7100,7 +10231,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "ra40f1867529a",
@@ -7121,7 +10254,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r00855c89a983",
@@ -7142,7 +10277,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r06a7424c4a91",
@@ -7163,7 +10300,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r8ddca04aa4e8",
@@ -7184,7 +10323,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rae8ce9bf8a41",
@@ -7209,7 +10350,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r1ce61db1dc1e",
@@ -7235,7 +10378,9 @@
      "chatbot_text",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r788fab6c9e48",
@@ -7256,7 +10401,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r90a762ddcc14",
@@ -7277,7 +10424,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rd90b755a1bd0",
@@ -7301,7 +10450,9 @@
     "ai": {
      "verdict": "human_style",
      "cues": []
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rd8fc99cf3ba2",
@@ -7322,7 +10473,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "recc68088f7f4",
@@ -7343,7 +10496,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rb0390acd6ef5",
@@ -7364,7 +10519,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r22bb8c96b72f",
@@ -7385,7 +10542,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rc8bde8f2c196",
@@ -7406,7 +10565,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r557f537b5978",
@@ -7427,7 +10588,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rfb2f345644af",
@@ -7448,7 +10611,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r0a67931353df",
@@ -7469,7 +10634,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r88a1ada8fbd1",
@@ -7494,7 +10661,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "ree3b330dd3cb",
@@ -7515,7 +10684,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r74f226a769c7",
@@ -7536,7 +10707,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r58c1508cf457",
@@ -7560,7 +10733,9 @@
     "ai": {
      "verdict": "human_style",
      "cues": []
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "re76d9556242c",
@@ -7581,7 +10756,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r4929bd1cc569",
@@ -7602,7 +10779,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r49dcd76cc4c4",
@@ -7623,7 +10802,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rfd18c1285509",
@@ -7644,7 +10825,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r178c912ff23a",
@@ -7665,7 +10848,18 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": {
+     "verdict": "same_voice",
+     "here": "",
+     "elsewhere": "",
+     "others": [
+      "The lobby was a bit noisy, the waiting area quite outdated. First time here on a rainy day, the waiting time was long and value for money is decent. Okay overall.",
+      "The ac was a bit noisy, the payment process quite outdated. I tried this place late evening, value for money is decent. Would come again.",
+      "The lift was friendly enough, the lighting a little dusty. Visited during the holidays, they fixed our issue quickly and service could be better. Would come again."
+     ]
+    }
    },
    {
     "review_id": "rb13bd061a6b4",
@@ -7686,7 +10880,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r048948feef65",
@@ -7707,7 +10903,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r770d5fe1b533",
@@ -7730,7 +10928,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rb9e18f0694ba",
@@ -7751,7 +10951,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r5a088a1ab42c",
@@ -7772,7 +10974,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r9884f7d4f90d",
@@ -7793,7 +10997,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r0b6b0b40fa88",
@@ -7814,7 +11020,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r00aae89284cd",
@@ -7835,7 +11043,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r70ee62172384",
@@ -7856,7 +11066,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rc8bbe607903c",
@@ -7877,7 +11089,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rcd5c754fc488",
@@ -7898,7 +11112,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rdfb803be5767",
@@ -7919,7 +11135,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r513f3dbf435a",
@@ -7940,7 +11158,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r08772c74e6a7",
@@ -7961,7 +11181,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r66e6043336e8",
@@ -7982,7 +11204,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r4cbad0d895c2",
@@ -8005,7 +11229,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r3048984323f2",
@@ -8026,7 +11252,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rcaf8e06009ca",
@@ -8047,7 +11275,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r02e0d3838689",
@@ -8068,7 +11298,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rf58b713686ee",
@@ -8089,7 +11321,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r537373dbb7f3",
@@ -8110,7 +11344,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rfd54c991975f",
@@ -8131,7 +11367,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "re2ca46e3889e",
@@ -8154,7 +11392,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r3d406c3cd3fe",
@@ -8175,7 +11415,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r78d33cbd5faa",
@@ -8196,7 +11438,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rf4a3bccae224",
@@ -8217,7 +11461,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r373b08f3ccb2",
@@ -8238,7 +11484,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r353c19a67c5c",
@@ -8259,7 +11507,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r06ff738cf785",
@@ -8267,7 +11517,7 @@
     "rating": 5,
     "date": "2026-03-03T12:39:23.402942+00:00",
     "day": "2026-03-03",
-    "label": "not_checked",
+    "label": "no_flags",
     "badges": [],
     "text": "The music was better than expected, the billing counter friendly enough. I tried this place late evening, they fixed our issue quickly and prices felt a little high. Not sure I will return.",
     "text_length": 184,
@@ -8280,7 +11530,18 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": {
+     "verdict": "same_voice",
+     "here": "",
+     "elsewhere": "",
+     "others": [
+      "The washroom was a little dusty, the entrance friendly enough. Came with family for a birthday, everything was neat and clean. Decent enough.",
+      "The security guard was a bit noisy, the queue quite outdated. Came with family during the holidays, prices felt a little high and service could be better. Recommended for families.",
+      "The manager was a bit noisy, the washroom quite outdated. Stopped by with friends, it was crowded but manageable and the menu had fewer options now. Average experience."
+     ]
+    }
    },
    {
     "review_id": "r3f488806e59e",
@@ -8288,7 +11549,7 @@
     "rating": 5,
     "date": "2026-03-03T04:46:39.088130+00:00",
     "day": "2026-03-03",
-    "label": "not_checked",
+    "label": "no_flags",
     "badges": [],
     "text": "The ac was quite outdated, the lift a bit noisy. Booked in advance for a birthday, everything was neat and clean and everything was neat and clean. Not sure I will return.",
     "text_length": 166,
@@ -8301,7 +11562,18 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": {
+     "verdict": "same_voice",
+     "here": "",
+     "elsewhere": "",
+     "others": [
+      "The signboard was a bit noisy, the lobby better than expected. First time here late evening, prices felt a little high. Recommended for families.",
+      "The manager was very efficient, the lobby very efficient. I tried this place before a flight, value for money is decent. Not sure I will return.",
+      "The menu card was painfully slow, the seating surprisingly good. Went here during the holidays, the location is easy to find. Would come again."
+     ]
+    }
    },
    {
     "review_id": "rc242ca3ee8f3",
@@ -8322,7 +11594,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r73c3d3742b2a",
@@ -8343,7 +11617,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r5a2d55f7f5b8",
@@ -8364,7 +11640,18 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": {
+     "verdict": "same_voice",
+     "here": "",
+     "elsewhere": "",
+     "others": [
+      "The entrance was freshly renovated, the AC friendly enough. Went here with friends, the waiting time was long. Okay overall.",
+      "The security guard was a little dusty, the entrance friendly enough. Visited with friends, prices felt a little high and they fixed our issue quickly. Might try once more.",
+      "The menu card was painfully slow, the receptionist well organised. Stopped by late evening, the waiting time was long. Recommended for families."
+     ]
+    }
    },
    {
     "review_id": "rc2d037d25420",
@@ -8385,7 +11672,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rf48917617af1",
@@ -8406,7 +11695,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r68e2cb49b3f6",
@@ -8427,7 +11718,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rb77a06c3b9de",
@@ -8448,7 +11741,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rca83110c0e0b",
@@ -8469,7 +11764,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rb515368f468f",
@@ -8490,7 +11787,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "ra0874f3dd7ac",
@@ -8511,7 +11810,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r33d0417b29f2",
@@ -8532,7 +11833,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r9a7702279133",
@@ -8553,7 +11856,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rafa49a4e7485",
@@ -8574,7 +11879,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    }
   ],
   "label_counts": {
@@ -8583,8 +11890,8 @@
    "suspicious": 0,
    "single_use_burst": 0,
    "group_trip": 0,
-   "no_flags": 10,
-   "not_checked": 90
+   "no_flags": 14,
+   "not_checked": 86
   },
   "client_lists": {},
   "places": {
@@ -8627,7 +11934,7 @@
   ],
   "caveats": [
    "This is a pattern, not proof.",
-   "Only the newest 100 reviews and the 10 highest-priority reviewers were examined.",
+   "Only the newest 100 reviews and the 14 highest-priority reviewers were examined.",
    "Private profiles can't be checked.",
    "Dates in reviewer histories are approximate.",
    "Rings within a single city aren't detected.",
@@ -8639,71 +11946,99 @@
    {
     "relative": "2 weeks ago",
     "true_date": "2026-05-31",
-    "estimated_from": "2026-06-07",
-    "estimated_to": "2026-06-14",
+    "estimated_from": "2026-06-08",
+    "estimated_to": "2026-06-15",
     "inside": false
    },
    {
     "relative": "15 weeks ago",
     "true_date": "2026-03-02",
-    "estimated_from": "2026-03-08",
-    "estimated_to": "2026-03-15",
+    "estimated_from": "2026-03-09",
+    "estimated_to": "2026-03-16",
+    "inside": false
+   },
+   {
+    "relative": "3 weeks ago",
+    "true_date": "2026-05-26",
+    "estimated_from": "2026-06-01",
+    "estimated_to": "2026-06-08",
     "inside": false
    },
    {
     "relative": "8 weeks ago",
     "true_date": "2026-04-17",
-    "estimated_from": "2026-04-26",
-    "estimated_to": "2026-05-03",
+    "estimated_from": "2026-04-27",
+    "estimated_to": "2026-05-04",
     "inside": false
    },
    {
     "relative": "10 weeks ago",
     "true_date": "2026-04-05",
-    "estimated_from": "2026-04-12",
-    "estimated_to": "2026-04-19",
+    "estimated_from": "2026-04-13",
+    "estimated_to": "2026-04-20",
     "inside": false
    },
    {
     "relative": "6 weeks ago",
     "true_date": "2026-05-06",
-    "estimated_from": "2026-05-10",
-    "estimated_to": "2026-05-17",
+    "estimated_from": "2026-05-11",
+    "estimated_to": "2026-05-18",
     "inside": false
    },
    {
     "relative": "a week ago",
     "true_date": "2026-06-14",
-    "estimated_from": "2026-06-14",
-    "estimated_to": "2026-06-21",
-    "inside": true
-   },
-   {
-    "relative": "2 weeks ago",
-    "true_date": "2026-05-31",
-    "estimated_from": "2026-06-07",
-    "estimated_to": "2026-06-14",
+    "estimated_from": "2026-06-15",
+    "estimated_to": "2026-06-22",
     "inside": false
    },
    {
     "relative": "2 weeks ago",
     "true_date": "2026-05-31",
-    "estimated_from": "2026-06-07",
-    "estimated_to": "2026-06-14",
+    "estimated_from": "2026-06-08",
+    "estimated_to": "2026-06-15",
+    "inside": false
+   },
+   {
+    "relative": "15 weeks ago",
+    "true_date": "2026-03-03",
+    "estimated_from": "2026-03-09",
+    "estimated_to": "2026-03-16",
+    "inside": false
+   },
+   {
+    "relative": "3 weeks ago",
+    "true_date": "2026-05-22",
+    "estimated_from": "2026-06-01",
+    "estimated_to": "2026-06-08",
+    "inside": false
+   },
+   {
+    "relative": "15 weeks ago",
+    "true_date": "2026-03-03",
+    "estimated_from": "2026-03-09",
+    "estimated_to": "2026-03-16",
     "inside": false
    },
    {
     "relative": "2 weeks ago",
     "true_date": "2026-05-31",
-    "estimated_from": "2026-06-07",
-    "estimated_to": "2026-06-14",
+    "estimated_from": "2026-06-08",
+    "estimated_to": "2026-06-15",
+    "inside": false
+   },
+   {
+    "relative": "2 weeks ago",
+    "true_date": "2026-05-31",
+    "estimated_from": "2026-06-08",
+    "estimated_to": "2026-06-15",
     "inside": false
    },
    {
     "relative": "6 weeks ago",
     "true_date": "2026-05-06",
-    "estimated_from": "2026-05-10",
-    "estimated_to": "2026-05-17",
+    "estimated_from": "2026-05-11",
+    "estimated_to": "2026-05-18",
     "inside": false
    }
   ],

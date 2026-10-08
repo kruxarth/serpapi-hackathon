@@ -128,3 +128,6 @@ class AnalysisInput:
     # An AI model's opinion of each long-enough review text, by review_id: {"verdict": "ai_style" | "human_style" |
     # "unclear", "cues": [phrases quoted from the text]}. Never decides anything; fixtures carry it.
     text_judgements: dict[str, dict[str, Any]] = field(default_factory=dict)
+    # Is a checked reviewer's review of this business in their own voice? By contributor_id: {"verdict":
+    # "different_voice" | "same_voice" | "unclear", "here": a phrase from it, "elsewhere": one from their others}.
+    voice_judgements: dict[str, dict[str, Any]] = field(default_factory=dict)

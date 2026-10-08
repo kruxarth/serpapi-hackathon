@@ -111,7 +111,7 @@ class FakeSerpApi:
         body: dict[str, Any] = {
             "place_info": {
                 "title": w.target.title,
-                "address": _address(w.target.area),
+                "address": w.target.address or _address(w.target.area),
                 "rating": w.target.rating,
                 "reviews": w.target.total_reviews,
                 "type": w.target.type,

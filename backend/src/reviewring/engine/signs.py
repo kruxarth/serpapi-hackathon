@@ -34,6 +34,21 @@ SIGNS: dict[str, dict[str, str]] = {
         "strength": "strong",
         "explain": "Near-identical to a review that another account wrote.",
     },
+    "voice_mismatch": {
+        "name": "Not in the reviewer's own voice",
+        "short": "Not their own voice",
+        "strength": "strong",
+        "explain": "The reviewer's other reviews are written very differently. An AI model compared them and quotes "
+        "the difference; both are shown side by side. Typical of scripted or incentivised reviews posted from real "
+        "accounts.",
+    },
+    "keyword_style": {
+        "name": "Written like a search ad",
+        "short": "Search-ad phrasing",
+        "strength": "strong",
+        "explain": "Names the business or its category together with its neighbourhood or city, the way search ads are "
+        "written (\u201cpackers and movers in [area], [city]\u201d), as several accounts here do.",
+    },
     "first_time_burst": {
         "name": "First-time accounts in a burst",
         "short": "Burst of first-time accounts",
@@ -93,11 +108,15 @@ def review_signs(
     label: str,
     judgement: dict[str, Any] | None,
     spree: bool,
+    keyword: bool = False,
+    voice: dict[str, Any] | None = None,
 ) -> list[str]:
     """Every sign that applies to one review, in sieve order."""
     found = {
         "chatbot_text": bool(marker),
         "copied_text": copied,
+        "voice_mismatch": bool(voice and voice.get("verdict") == "different_voice"),
+        "keyword_style": keyword,
         "first_time_burst": in_first_time_burst,
         "linked_group": label in ("ring", "possible_ring_trip"),
         "ai_style": bool(judgement and judgement.get("verdict") == "ai_style"),
@@ -190,4 +209,18 @@ def first_time_skew(reviews: list[TargetReview]) -> dict[str, Any]:
         "other_first_time": fo,
         "ratio": round(ratio, 1),
         "flagged": flagged,
+    }
+
+
+def voice_coverage(inp_voice: dict[str, dict[str, Any]], eligible: int) -> dict[str, Any]:
+    """How many checked reviewers' writing was compared, and how many reviews were not in their author's voice."""
+    verdicts = [v.get("verdict") for v in inp_voice.values()]
+    models = sorted({str(v.get("model")) for v in inp_voice.values() if v.get("model")})
+    return {
+        "eligible": eligible,
+        "compared": len(verdicts),
+        "different_voice": verdicts.count("different_voice"),
+        "same_voice": verdicts.count("same_voice"),
+        "unclear": verdicts.count("unclear"),
+        "model": models[0] if models else None,
     }

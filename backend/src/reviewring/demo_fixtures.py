@@ -17,7 +17,7 @@ from .collect import Collector
 from .exporter import build_fixture, write_fixture
 from .fake_serp import FakeSerpApi
 from .leakcheck import originals_from_cache
-from .llm import valid_cues
+from .llm import valid_cues, voice_items
 from .model import AnalysisInput
 from .serp.gateway import Gateway
 from .synth import CLIENT_TYPES, FETCHED, World, ordinary_reviewers, plant_ring
@@ -149,7 +149,31 @@ def hotel_world() -> World:
     return w
 
 
+def scripted_world() -> World:
+    """Scripted reviews from real-looking aged accounts: written like search ads, and not in the reviewers' own voice.
+    The pattern every account-based check misses (docs/research-2026-10-08.md)."""
+    w = World(target_city="Pune", target_type="Packers and movers", total_reviews=1800, rating=4.6, seed=606)
+    w.target.title = "Shubh Yatra Movers"  # its reviews spell out "Shubh Yatra Packers and Movers"
+    w.target.address = "Shop 12, Kothrud, Pune, Maharashtra"
+    ordinary_reviewers(w, 52, home="Pune", rating_pool=(5, 5, 4, 4, 3, 1))
+    for i in range(len(T.SCRIPTED)):
+        text, _, own = T.SCRIPTED[i]
+        cid = w.reviewer(total=w.rng.randint(3, 40), photos=w.rng.randint(0, 6))
+        for j, t in enumerate(own):
+            w.add_history(
+                cid,
+                w.place("Pune", ("Restaurant", "Corporate office", "Hardware store")[j % 3]),
+                5,
+                days_ago=w.rng.randint(300, 2500),
+                precision="year",
+                text=t,
+            )
+        w.review_target(cid, rating=5, when=FETCHED - timedelta(days=3 + i * 3, hours=i), text=text)
+    return w
+
+
 AI_CUES = {text: cues for text, cues in [*T.MOVERS_AI, T.MOVERS_POLISHED, *T.HOTEL_AI]}
+SCRIPTED = {text: (here, own) for text, here, own in T.SCRIPTED}
 
 
 def synthetic_judgements(inp: AnalysisInput) -> dict[str, dict]:
@@ -170,9 +194,33 @@ def synthetic_judgements(inp: AnalysisInput) -> dict[str, dict]:
     return out
 
 
+def synthetic_voices(inp: AnalysisInput) -> dict[str, dict]:
+    """The voice comparison for invented texts, written with them (demo mode never calls a model). Covers exactly the
+    reviewers the real job would compare."""
+    out = {}
+    for item in voice_items(inp):
+        scripted = SCRIPTED.get(item["here"])
+        out[item["contributor_id"]] = (
+            {
+                "verdict": "different_voice",
+                "here": scripted[0],
+                "elsewhere": scripted[1][0],
+                "model": "synthetic example",
+            }
+            if scripted
+            else {"verdict": "same_voice", "here": "", "elsewhere": "", "model": "synthetic example"}
+        )
+    return out
+
+
 CASES = [
     ("synthetic-movers", "Synthetic example: movers with a burst of first-time accounts", movers_world),
     ("synthetic-hotel", "Synthetic example: hotel whose rating is carried by old reviews", hotel_world),
+    (
+        "synthetic-scripted",
+        "Synthetic example: movers with scripted reviews from real-looking accounts",
+        scripted_world,
+    ),
     ("synthetic-ring", "Synthetic example: dental clinic with a country-wide ring", ring_world),
     ("synthetic-trip", "Synthetic example: resort with a family trip (ruled out)", trip_world),
     ("synthetic-regional", "Synthetic example: hotel with a regional possible ring", regional_world),
@@ -197,6 +245,7 @@ def make_all(directory: Path | None = None) -> list[Path]:
                 if out.status != "done" or out.input is None:
                     raise RuntimeError(f"{slug}: collection ended with {out.status}: {out.message}")
                 out.input.text_judgements = synthetic_judgements(out.input)
+                out.input.voice_judgements = synthetic_voices(out.input)
                 fixture = build_fixture(out.input, slug, title=title, synthetic=True, salt_value=SALT)
                 paths.append(write_fixture(fixture, originals=originals_from_cache(), directory=directory))
     finally:

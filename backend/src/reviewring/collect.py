@@ -23,8 +23,9 @@ from typing import Any
 from . import ALGORITHM_VERSION, config, db
 from .engine.features import compute_text_features
 from .engine.graph import build_pairs, edges
-from .engine.priority import Selection, score_reviews, select_round1, select_round2
+from .engine.priority import Selection, score_reviews, select_round1, select_round2, select_voice
 from .engine.target_signals import detect_bursts
+from .engine.textstyle import keyword_style
 from .model import AnalysisInput, Contributor, Expansion, HistoryReview, Place
 from .normalize.geo import AreaPoint, assign_areas
 from .parse import contributor_history, lookup_place, target_place, target_reviews
@@ -64,6 +65,7 @@ class CollectParams:
     k1: int = 0
     baseline: int = 0
     k2: int = 0
+    voice_picks: int = 0
     stop_after_round1: bool = False
     force_refresh: bool = False
     pick: str | None = None  # data_id chosen from name-search candidates
@@ -71,7 +73,7 @@ class CollectParams:
     @classmethod
     def from_config(cls, **overrides: Any) -> CollectParams:
         c = config.load_tunables()["collection"]
-        p = cls(n=c["n_reviews"], k1=c["k1"], baseline=c["baseline"], k2=c["k2"])
+        p = cls(n=c["n_reviews"], k1=c["k1"], baseline=c["baseline"], k2=c["k2"], voice_picks=c.get("voice_picks", 0))
         for k, v in overrides.items():
             if v is not None:
                 setattr(p, k, v)
@@ -389,21 +391,27 @@ class Collector:
         self.emit("scoring", "Scoring reviewers")
         features = compute_text_features(inp)
         bursts = detect_bursts(inp.target_reviews)
-        candidates = score_reviews(inp.target_reviews, bursts, features)
+        keyword_ids = set(keyword_style(inp.target_reviews, inp.target)["review_ids"])
+        candidates = score_reviews(inp.target_reviews, bursts, features, keyword_ids)
         selection = select_round1(candidates, data_id, self.params.k1, self.params.baseline)
-        round1 = selection.round1 + selection.baseline
+        add_voice_picks(selection, inp.target_reviews, self.params.voice_picks, keyword_ids)
+        round1 = selection.round1 + selection.baseline + selection.voice
         self.state["selection"] = {
             "round1": selection.round1,
             "baseline": selection.baseline,
+            "voice": selection.voice,
             "candidates": len(candidates),
         }
         self._show_picks(
-            [(c, "priority", 1) for c in selection.round1] + [(c, "baseline", 1) for c in selection.baseline]
+            [(c, "priority", 1) for c in selection.round1]
+            + [(c, "baseline", 1) for c in selection.baseline]
+            + [(c, "voice", 1) for c in selection.voice]
         )
 
         self._expand(round1, 1)
         expansions = [Expansion(c, 1, "priority") for c in selection.round1]
         expansions += [Expansion(c, 1, "baseline") for c in selection.baseline]
+        expansions += [Expansion(c, 1, "voice") for c in selection.voice]
         inp = build_input(self.gw, data_id, pages, self.params.n, expansions, self.state)
         self._ensure_target_coords(inp, data_id)
         inp = build_input(self.gw, data_id, pages, self.params.n, expansions, self.state)
@@ -626,7 +634,7 @@ def estimate(resolved: ResolvedInput, params: CollectParams, db_path=None) -> Es
     if pages and pages.complete and data_id:
         inp = build_input(gw, data_id, pages.responses, params.n, [], state)
         sel = selection_for_params(inp, params)
-        r1 = sel.round1 + sel.baseline
+        r1 = sel.round1 + sel.baseline + sel.voice
         todo = sum(1 for c in r1 if gw.lookup_cache(catalog.contributor_history(c)) is None)
         lo += todo
         hi += todo
@@ -635,8 +643,8 @@ def estimate(resolved: ResolvedInput, params: CollectParams, db_path=None) -> Es
         coords_known = inp.target.lat is not None
     else:
         lo += k_round1
-        hi += k_round1
-        lines.append(f"Round 1: up to {k_round1} reviewer histories")
+        hi += k_round1 + params.voice_picks
+        lines.append(f"Round 1: up to {k_round1 + params.voice_picks} reviewer histories")
         r2_max = 0 if params.stop_after_round1 else params.k2
         coords_known = resolved.lat is not None
     if r2_max:
@@ -659,5 +667,16 @@ def estimate(resolved: ResolvedInput, params: CollectParams, db_path=None) -> Es
 
 def selection_for_params(inp: AnalysisInput, params: CollectParams) -> Selection:
     features = compute_text_features(inp)
-    cands = score_reviews(inp.target_reviews, detect_bursts(inp.target_reviews), features)
-    return select_round1(cands, inp.target.place_key, params.k1, params.baseline)
+    keyword_ids = set(keyword_style(inp.target_reviews, inp.target)["review_ids"])
+    cands = score_reviews(inp.target_reviews, detect_bursts(inp.target_reviews), features, keyword_ids)
+    sel = select_round1(cands, inp.target.place_key, params.k1, params.baseline)
+    add_voice_picks(sel, inp.target_reviews, params.voice_picks, keyword_ids)
+    return sel
+
+
+def add_voice_picks(sel: Selection, reviews: list, k: int, keyword_ids: set[str]) -> None:
+    """Round 1 also opens the authors of long reviews, so their writing can be compared with their own."""
+    if k <= 0:
+        return
+    sel.voice = select_voice(reviews, set(sel.round1) | set(sel.baseline), k, keyword_ids)
+    sel.remaining = [c for c in sel.remaining if c.contributor_id not in set(sel.voice)]

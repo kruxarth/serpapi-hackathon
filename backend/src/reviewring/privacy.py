@@ -243,7 +243,7 @@ def pseudonymize_report(report: dict[str, Any], salt_value: str | None = None) -
         rev["contributor_id"] = ps.person(cid)
         rev["display_name"] = ps.reviewers.get(cid)
         for b in rev.get("badges", []):
-            if "places" in b:
+            if isinstance(b.get("places"), list):  # place keys (A9 keeps a count under the same name)
                 b["places"] = [ps.place(k) for k in b["places"]]
             for occ in b.get("occasions", []):
                 occ["places"] = [ps.place(k) for k in occ["places"]]
@@ -293,6 +293,15 @@ def pseudonymize_report(report: dict[str, Any], salt_value: str | None = None) -
         row["cluster"] = ps.cluster(orig.get("cluster"))
         if orig.get("excerpt"):
             row["excerpt"] = scrub_text(orig["excerpt"], business_words)[:EXCERPT_KEEP_CHARS]
+        if orig.get("voice"):
+            row["voice"] = {
+                **orig["voice"],
+                "here": scrub_text(orig["voice"].get("here", ""), business_words)[:CUE_KEEP_CHARS],
+                "elsewhere": scrub_text(orig["voice"].get("elsewhere", ""), business_words)[:CUE_KEEP_CHARS],
+                "others": [],  # the reviewer's own words elsewhere stay private in a recording
+            }
+        if orig.get("keyword_phrase"):
+            row["keyword_phrase"] = scrub_text(orig["keyword_phrase"], business_words)
         if orig.get("ai"):
             row["ai"] = {
                 **orig["ai"],
@@ -309,6 +318,10 @@ def pseudonymize_report(report: dict[str, Any], salt_value: str | None = None) -
         hit["review_id"] = ps.review(hit["review_id"])
         if hit.get("excerpt"):
             hit["excerpt"] = scrub_text(hit["excerpt"], business_words)[:EXCERPT_KEEP_CHARS]
+    t10 = r.get("signals", {}).get("T10")
+    if t10:
+        t10["review_ids"] = [ps.review(x) for x in t10.get("review_ids", [])]
+        t10["phrases"] = {scrub_text(k, business_words): v for k, v in t10.get("phrases", {}).items()}
     t1 = r.get("signals", {}).get("T1", {})
     for b in t1.get("bursts", []):
         b["review_ids"] = [ps.review(x) for x in b.get("review_ids", [])]

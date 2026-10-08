@@ -119,7 +119,14 @@ def test_signs_in_sieve_order_and_defaults():
     }
     report = analyze(inp)
     sieve = report["sieve"]
-    assert sieve["order"][:4] == ["chatbot_text", "copied_text", "first_time_burst", "linked_group"]
+    assert sieve["order"][:6] == [
+        "chatbot_text",
+        "copied_text",
+        "voice_mismatch",
+        "keyword_style",
+        "first_time_burst",
+        "linked_group",
+    ]
     assert sieve["signs"]["first_time_burst"]["count"] >= 10
     assert sieve["signs"]["chatbot_text"]["count"] == 1 and sieve["signs"]["ai_style"]["count"] == 1
     assert by_text(report, POLISHED)["signs"] == ["ai_style"]
@@ -206,6 +213,17 @@ def test_reviewing_spree_is_context_only():
     assert report["level"]["level"] == "Low"  # never raises the level
 
 
+def test_presentation_mode_handles_a_spree_badge():
+    w, cid = spree_world()
+    report = analyze(w.build())
+    shown = pseudonymize_report(report, salt_value="s")
+    badge = next(b for r in shown["reviewers"] for b in r["badges"] if b["code"] == "A9")
+    assert (
+        isinstance(badge["places"], int)
+        and badge["from"] != next(b for r in report["reviewers"] for b in r["badges"] if b["code"] == "A9")["from"]
+    )  # dates shifted
+
+
 def test_travellers_with_mixed_ratings_are_not_a_spree():
     w, cid = spree_world(ratings=(5, 3, 4, 2))
     report = analyze(w.build())
@@ -239,3 +257,127 @@ def test_fixture_input_carries_hashed_judgements():
     assert analyze(again)["sieve"]["signs"]["ai_style"]["count"] == 1
     kept = pseudonymize_input(inp, "s", keep_texts=True)  # synthetic worlds keep their invented texts
     assert any(r.text == POLISHED for r in kept.target_reviews)
+
+
+# ---------------------------------------------------------------------- written like a search ad
+
+
+def keyword_world(n_keyword=6):
+    w = World(target_city="Pune", target_type="Packers and movers")
+    w.target.title = "Om Shanti Packers and Movers"
+    w.target.address = "Shop 4, Hadapsar, Pune, Maharashtra 411028"
+    ordinary_reviewers(w, 30, home="Pune")
+    phrases = [
+        "Most trusted and reliable Packers And Movers In Hadapsar, Pune. Very happy with the service.",
+        "I recently used Om Shanti Packers and Movers, Hadapsar, Pune for my home relocation and it was smooth.",
+        "If you are looking for packers and movers in Pune go for them, careful packing and on time.",
+    ]
+    ids = []
+    for i in range(n_keyword):
+        cid = w.reviewer(total=3, photos=0)
+        w.personal_history(cid, "Pune", 2)
+        ids.append(w.review_target(cid, rating=5, text=phrases[i % 3]).review_id)
+    return w, ids
+
+
+def test_search_ad_phrasing_needs_several_accounts():
+    from reviewring.engine.textstyle import keyword_phrase, name_tokens, place_tokens
+
+    w, ids = keyword_world()
+    names, places = name_tokens(w.target), place_tokens(w.target)
+    assert keyword_phrase("The movers reached Pune on time and the team was polite.", names, places) is None
+    assert keyword_phrase("Shifted from Hadapsar to Baner. Packers were careful.", names, places) is None
+    assert keyword_phrase("Thanks to the packers and new team", names, places) is None
+    report = analyze(w.build())
+    rows = [r for r in report["reviews"] if r["review_id"] in ids]
+    assert all("keyword_style" in r["signs"] and r["keyword_phrase"] for r in rows)
+    assert report["signals"]["T10"]["flagged"] and report["level"]["level"] == "Elevated"
+    assert "keyword_style" in report["sieve"]["set_aside_by_default"]
+    one, ids1 = keyword_world(n_keyword=1)
+    lone = next(r for r in analyze(one.build())["reviews"] if r["review_id"] == ids1[0])
+    assert "keyword_style" not in lone["signs"]  # one customer writing it means nothing
+
+
+def test_keyword_reviewers_are_opened_first():
+    from reviewring.engine.features import compute_text_features
+    from reviewring.engine.priority import score_reviews
+    from reviewring.engine.target_signals import detect_bursts
+
+    w, ids = keyword_world()
+    inp = w.build()
+    plain = score_reviews(inp.target_reviews, detect_bursts(inp.target_reviews), compute_text_features(inp))
+    boosted = score_reviews(inp.target_reviews, detect_bursts(inp.target_reviews), compute_text_features(inp), set(ids))
+    score = lambda cands: next(c for c in cands if c.review_id == ids[0])  # noqa: E731
+    assert score(boosted).parts.get("keyword_style") == 2 and score(boosted).score == score(plain).score + 2
+
+
+# ---------------------------------------------------------------------- not in the reviewer's own voice
+
+
+def voice_world():
+    w = World(target_city="Bengaluru", target_type="Packers and movers")
+    ordinary_reviewers(w, 15, home="Bengaluru")
+    cid = w.reviewer(total=5, photos=2)
+    for t in ["food is tasty good and higenic staff is good", "nice miting and company", "bahut badiya office hai"]:
+        w.add_history(cid, w.place("Bengaluru", "Restaurant"), 5, text=t)
+    script = (
+        "The house shifting went smoothly. Everything arrived damage free, packed neatly, and the team handled "
+        "fragile items with care. Highly reliable and reasonably priced."
+    )
+    r = w.review_target(cid, rating=5, text=script)
+    w.expand(cid)
+    return w, cid, r
+
+
+def test_voice_mismatch_needs_a_quote_from_each_side():
+    from reviewring.llm import judge_voices
+
+    w, cid, _ = voice_world()
+    inp = w.build()
+
+    def reply(payload):
+        items = []
+        for it in payload["items"]:
+            good = "nice miting" in " ".join(it["other_reviews"])
+            items.append(
+                {
+                    "index": it["index"],
+                    "verdict": "different_voice",
+                    "here": "Everything arrived damage free" if good else "not in the text",
+                    "elsewhere": "nice miting and company" if good else "nor this",
+                }
+            )
+        return json.dumps({"items": items})
+
+    t = FakeTransport(reply)
+    out = judge_voices(inp, gw(t), set())
+    assert out[cid]["verdict"] == "different_voice" and out[cid]["here"] == "Everything arrived damage free"
+    others = [o for c, o in out.items() if c != cid]
+    assert all(o["verdict"] == "unclear" for o in others)  # invented quotes are not evidence
+    sent = t.calls[0]["items"]
+    assert all("contributor" not in json.dumps(it) for it in sent)
+
+
+def test_voice_mismatch_sign_report_and_privacy():
+    w, cid, r = voice_world()
+    inp = w.build()
+    inp.voice_judgements = {
+        cid: {
+            "verdict": "different_voice",
+            "here": "Everything arrived damage free",
+            "elsewhere": "nice miting and company",
+            "model": "m",
+        }
+    }
+    report = analyze(inp)
+    row = next(x for x in report["reviews"] if x["review_id"] == r.review_id)
+    assert row["signs"][0] == "voice_mismatch" and row["voice"]["others"]
+    assert report["sieve"]["voice"]["different_voice"] == 1
+    assert any(e["kind"] == "voice_mismatch" for e in report["evidence"])
+    shown = pseudonymize_report(report, salt_value="s")
+    srow = next(x for x in shown["reviews"] if x.get("voice"))
+    assert srow["voice"]["others"] == [] and srow["voice"]["here"] == "Everything arrived damage free"
+    pseudo = pseudonymize_input(inp, "s")
+    assert cid not in pseudo.voice_judgements and len(pseudo.voice_judgements) == 1
+    again = input_from_dict(json.loads(json.dumps(input_to_dict(pseudo), default=str)))
+    assert analyze(again)["sieve"]["signs"]["voice_mismatch"]["count"] == 1

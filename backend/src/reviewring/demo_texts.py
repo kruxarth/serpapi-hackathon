@@ -193,3 +193,80 @@ HOTEL_OLD_BATCH = [
     "Awesome stay",
     "",
 ]
+
+# The scripted pattern found on real listings (docs/research-2026-10-08.md): aged accounts whose own reviews are casual,
+# posting polished reviews written like search ads. (their review here, a phrase from it, their own other reviews)
+SCRIPTED: list[tuple[str, str, list[str]]] = [
+    (
+        "I recently shifted my household items with Shubh Yatra Packers and Movers, Kothrud, Pune, and the experience "
+        "was excellent. The team arrived on time and handled every item with care.",
+        "the experience was excellent",
+        ["nice miting and company", "gud food"],
+    ),
+    (
+        "Most trusted and reliable Packers And Movers In Kothrud, Pune. The staff is talented and professional and I "
+        "recommend them for home relocation.",
+        "Most trusted and reliable Packers And Movers",
+        ["bahut badiya office hai staff bahut acha hai", "ok ok"],
+    ),
+    (
+        "If you are looking for packers and movers in Pune, Shubh Yatra Packers and Movers Kothrud is the best choice. "
+        "Smooth, organised and completed within the promised time.",
+        "If you are looking for packers and movers in Pune",
+        ["bike service late hua but staff ne help kiya", "nice place"],
+    ),
+    (
+        "I had a smooth and hassle-free shifting experience with Shubh Yatra Packers and Movers in Kothrud, Pune. The "
+        "team was professional, punctual and polite.",
+        "smooth and hassle-free shifting experience",
+        ["Nicely treat and staff is dealing so politely", "very gud"],
+    ),
+    (
+        "Shubh Yatra Packers And Movers In Kothrud, Pune ensure safe shifting, packing and transport with minimal "
+        "downtime and timely delivery. Highly recommended for office relocation.",
+        "ensure safe shifting, packing and transport",
+        ["Treated my knee very well, 100 percent result", "good"],
+    ),
+    (
+        "The entire moving process with Shubh Yatra Packers and Movers Kothrud Pune was smooth, organised and "
+        "completed within the promised time. Pricing was transparent.",
+        "smooth, organised and completed within the promised time",
+        ["Best Hardware Showroom In Pune", "nice"],
+    ),
+    (
+        "Booked Shubh Yatra Packers and Movers in Kothrud, Pune for a 2BHK shifting. Professional packing, safe "
+        "transport and polite staff throughout the move.",
+        "Professional packing, safe transport and polite staff",
+        ["kal ka khana accha tha", "theek hai"],
+    ),
+    (
+        "Best packers and movers in Kothrud Pune. Shubh Yatra team packed everything carefully and delivered on time, "
+        "a stress-free relocation experience.",
+        "a stress-free relocation experience",
+        ["good chai", "staff ok not much rush"],
+    ),
+    (
+        "Highly recommended Packers And Movers In Pune for household and office shifting. Shubh Yatra Packers and "
+        "Movers provides reliable, affordable and timely service.",
+        "reliable, affordable and timely service",
+        ["parking problem hai otherwise fine", "gud"],
+    ),
+    (
+        "Thanks to Shubh Yatra Packers and Movers, Kothrud, Pune for a seamless local shifting. Every item reached "
+        "safely and the unpacking was neat and quick.",
+        "a seamless local shifting",
+        ["nice experiance", "price thoda jyada"],
+    ),
+    (
+        "Excellent service by packers and movers in Kothrud, Pune. The Shubh Yatra crew was punctual, courteous and "
+        "handled fragile items with great care.",
+        "punctual, courteous and handled fragile items with great care",
+        ["docter is very good and kind", "ok"],
+    ),
+    (
+        "For anyone searching for trusted packers and movers in Pune, Shubh Yatra Packers and Movers Kothrud offers "
+        "transparent pricing and professional handling.",
+        "transparent pricing and professional handling",
+        ["sweets r fresh", "nice"],
+    ),
+]

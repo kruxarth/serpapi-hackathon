@@ -111,6 +111,53 @@ def _collect(data: dict[str, Any], out: dict[str, set[str]]) -> None:
         out["contributor id"].add(str(params["contributor_id"]))
 
 
+# Words that say what or where a business is, not which one. A business title made only of these ("New Delhi",
+# "Best Packers And Movers") names nothing a fixture could leak, and matching it would flag every review that uses
+# the phrase.
+GENERIC_TITLE_WORDS = {
+    "best",
+    "top",
+    "good",
+    "the",
+    "and",
+    "&",
+    "new",
+    "old",
+    "packers",
+    "movers",
+    "packaging",
+    "transport",
+    "logistics",
+    "relocation",
+    "services",
+    "service",
+    "hotel",
+    "hotels",
+    "clinic",
+    "care",
+    "skin",
+    "dental",
+    "hospital",
+    "restaurant",
+    "cafe",
+    "store",
+    "shop",
+    "india",
+    "co",
+    "company",
+    "pvt",
+    "ltd",
+}
+
+
+def _generic_title(value: str) -> bool:
+    from .normalize.geo import known_area_names
+
+    places = {w.casefold() for name in known_area_names() for w in name.split()}
+    words = [w.casefold() for w in re.findall(r"[\w&]+", value)]
+    return len(value) < 6 or all(w in GENERIC_TITLE_WORDS or w in places for w in words)
+
+
 def _original_patterns(originals: dict[str, set[str]]) -> list[tuple[str, re.Pattern[str]]]:
     patterns = []
     for kind, values in originals.items():
@@ -118,6 +165,8 @@ def _original_patterns(originals: dict[str, set[str]]) -> list[tuple[str, re.Pat
             value = value.strip()
             if len(value) < 4:
                 continue  # too short to match without false positives
+            if kind == "business title" and _generic_title(value):
+                continue
             patterns.append((kind, re.compile(r"(?<!\w)" + re.escape(value) + r"(?!\w)", re.IGNORECASE)))
     return patterns
 

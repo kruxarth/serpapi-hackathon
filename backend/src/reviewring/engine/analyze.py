@@ -20,7 +20,7 @@ from .features import compute_text_features, target_text_id
 from .graph import build_pairs, distance_km, edges, is_popular_type, surprise
 from .groups import Group, detect_groups, type_group
 from .homes import compute_homes
-from .signs import ai_coverage, first_time_skew, review_signs, sieve_summary
+from .signs import ai_coverage, first_time_skew, review_signs, sieve_summary, voice_coverage
 from .target_signals import (
     detect_bursts,
     generated_excerpt,
@@ -33,6 +33,7 @@ from .target_signals import (
     top_rated_sample,
     young_business,
 )
+from .textstyle import keyword_style
 
 EVIDENCE_ORDER = {
     k: i
@@ -41,6 +42,8 @@ EVIDENCE_ORDER = {
             "ring",
             "possible_ring",
             "generated_text",
+            "voice_mismatch",
+            "keyword_style",
             "single_use_burst",
             "rating_gap",
             "top_rated",
@@ -136,6 +139,9 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
     single_bursts = single_use_bursts(inp.target_reviews, bursts)
     single_ids = {i for b in single_bursts if b["flagged"] for i in b["review_ids"]}
 
+    kw = keyword_style(inp.target_reviews, inp.target)
+    kw_ids = set(kw["review_ids"])
+    voice_others = _voice_others(inp)
     review_rows = []
     for r in inp.target_reviews:
         label = reviewer_label.get(r.contributor_id or "", "not_checked")
@@ -152,7 +158,10 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             label=label,
             judgement=judgement,
             spree=bool(r.contributor_id in signals and signals[r.contributor_id].has("A9")),
+            keyword=r.review_id in kw_ids,
+            voice=inp.voice_judgements.get(r.contributor_id or ""),
         )
+        voice = inp.voice_judgements.get(r.contributor_id or "")
         review_rows.append(
             {
                 "review_id": r.review_id,
@@ -176,6 +185,15 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
                 "ai": None
                 if judgement is None
                 else {"verdict": judgement.get("verdict"), "cues": judgement.get("cues", [])},
+                "keyword_phrase": kw["hits"].get(r.review_id) if r.review_id in kw_ids else None,
+                "voice": None
+                if voice is None
+                else {
+                    "verdict": voice.get("verdict"),
+                    "here": voice.get("here", ""),
+                    "elsewhere": voice.get("elsewhere", ""),
+                    "others": voice_others.get(r.contributor_id or "", []),
+                },
             }
         )
     label_counts = Counter(row["label"] for row in review_rows)
@@ -210,6 +228,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             "no_visible_change": lo <= displayed <= hi,
         }
     sieve = sieve_summary(review_rows, ai_coverage(inp.target_reviews, inp.text_judgements))
+    sieve["voice"] = voice_coverage(inp.voice_judgements, len(voice_others))
     ratings = {
         "examined": examined,
         "sample_mean": sample_mean,
@@ -229,6 +248,9 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
     generated = [row for row in review_rows if row["generated_marker"]] + (top.get("generated") or [])
     generated_ids = {g["review_id"] for g in generated}
     raise_generated = bool(generated_ids) and config.tunable("generated_text", "raises_level")
+    raise_keyword = kw["flagged"] and config.tunable("keyword_style", "raises_level")
+    voice_reviews = [row for row in review_rows if "voice_mismatch" in row["signs"]]
+    raise_voice = len(voice_reviews) >= int(config.tunable("voice", "raises_level_at"))
     rings = [g for g in groups if g.verdict == "ring"]
     possibles = [g for g in groups if g.verdict in ("possible_ring", "possible_ring_trip")]
     level_cfg = config.load_tunables()["level"]
@@ -250,6 +272,8 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
         or suspicious_share >= level_cfg["elevated_suspicious_share"]
         or (single_ids and config.tunable("single_use", "raises_level"))
         or raise_generated
+        or raise_keyword
+        or raise_voice
     ):
         level = "Elevated"
         if rings:
@@ -266,6 +290,16 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
                 f"{_plural(len(generated_ids), 'review')} {'contains' if len(generated_ids) == 1 else 'contain'} "
                 "text that only a chatbot or an unfilled "
                 "template would produce, pasted in as a customer review."
+            )
+        if raise_voice:
+            reasons.append(
+                f"{len(voice_reviews)} reviews are not written in their author's own voice: the same accounts "
+                "write very differently everywhere else."
+            )
+        if raise_keyword:
+            reasons.append(
+                f"{kw['accounts']} accounts wrote their review like a search ad, naming the business or its category "
+                "with its neighbourhood or city."
             )
         for b in single_bursts:
             if b["flagged"]:
@@ -296,6 +330,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
     evidence += rating_evidence(gap, top, [row for row in review_rows if row["generated_marker"]])
     skew = first_time_skew(inp.target_reviews)
     evidence += review_text_evidence(sieve, skew)
+    evidence += voice_keyword_evidence(voice_reviews, sieve["voice"], kw)
     evidence.sort(key=lambda e: EVIDENCE_ORDER.get(e["kind"], len(EVIDENCE_ORDER)))  # stable: the strongest first
 
     popular_target = is_popular_type(inp.target.type)
@@ -343,6 +378,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             "T7": gap,
             "T8": top,
             "T9": skew,
+            "T10": {k: v for k, v in kw.items() if k != "hits"},
         },
         "sieve": sieve,
         "reviewers": [
@@ -696,3 +732,44 @@ def date_calibration(inp: AnalysisInput) -> list[dict[str, Any]]:
                 )
                 break
     return rows
+
+
+def _voice_others(inp: AnalysisInput) -> dict[str, list[str]]:
+    """Up to three of each checked reviewer's other review texts: what their own writing looks like."""
+    min_words = int(config.tunable("voice", "min_other_words"))
+    out: dict[str, list[str]] = {}
+    for e in inp.expansions:
+        texts = [
+            " ".join(h.text.split())[:200]
+            for h in inp.histories.get(e.contributor_id, [])
+            if h.place_key != inp.target.place_key and h.text and len(h.text.split()) >= min_words
+        ]
+        if texts:
+            out[e.contributor_id] = texts[:3]
+    return out
+
+
+def voice_keyword_evidence(voice_reviews: list[dict[str, Any]], voice: dict[str, Any], kw: dict[str, Any]) -> list:
+    out: list[dict[str, Any]] = []
+    if voice_reviews:
+        out.append(
+            {
+                "kind": "voice_mismatch",
+                "visual": "reviews",
+                "text": f"{len(voice_reviews)} of the {voice['compared']} checked reviewers wrote their review of this "
+                "business in a different voice from all their other reviews. Scripted or incentivised reviews are "
+                "often posted from real accounts this way.",
+            }
+        )
+    if kw["flagged"]:
+        top = next(iter(kw["phrases"]), "")
+        out.append(
+            {
+                "kind": "keyword_style",
+                "visual": "reviews",
+                "text": f"{kw['accounts']} of the {kw['with_text']} reviews with text read like search ads, naming the "
+                f"business or its category with its neighbourhood or city (\u201c{top}\u201d). Customers rarely "
+                "write that way; search-ranking copy does.",
+            }
+        )
+    return out

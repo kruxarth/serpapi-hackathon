@@ -9,7 +9,7 @@
    "place_key": "pa8129cf95546",
    "data_id": null,
    "title": "Packers and movers A",
-   "address": null,
+   "address": "Invented Road, Bengaluru, Karnataka",
    "lat": 13.0,
    "lng": 77.6,
    "type": "Packers and movers",
@@ -1418,6 +1418,18 @@
     "rating": null,
     "total_reviews": null
    },
+   "p03b93e40faf8": {
+    "place_key": "p03b93e40faf8",
+    "data_id": null,
+    "title": "Restaurant BF",
+    "address": null,
+    "lat": 12.9,
+    "lng": 77.6,
+    "type": "Restaurant",
+    "area": "Bengaluru",
+    "rating": null,
+    "total_reviews": null
+   },
    "p06f2ac0302bd": {
     "place_key": "p06f2ac0302bd",
     "data_id": null,
@@ -1502,6 +1514,18 @@
     "rating": null,
     "total_reviews": null
    },
+   "p381b43aa4b8f": {
+    "place_key": "p381b43aa4b8f",
+    "data_id": null,
+    "title": "Bakery BD",
+    "address": null,
+    "lat": 12.9,
+    "lng": 77.5,
+    "type": "Bakery",
+    "area": "Bengaluru",
+    "rating": null,
+    "total_reviews": null
+   },
    "p3f55fa814337": {
     "place_key": "p3f55fa814337",
     "data_id": null,
@@ -1522,6 +1546,18 @@
     "lat": 12.9,
     "lng": 77.6,
     "type": "Cafe",
+    "area": "Bengaluru",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p48e6a89548ae": {
+    "place_key": "p48e6a89548ae",
+    "data_id": null,
+    "title": "Electronics store BC",
+    "address": null,
+    "lat": 12.9,
+    "lng": 77.6,
+    "type": "Electronics store",
     "area": "Bengaluru",
     "rating": null,
     "total_reviews": null
@@ -1610,6 +1646,18 @@
     "rating": null,
     "total_reviews": null
    },
+   "p739819061ff0": {
+    "place_key": "p739819061ff0",
+    "data_id": null,
+    "title": "Dentist AZ",
+    "address": null,
+    "lat": 13.0,
+    "lng": 77.5,
+    "type": "Dentist",
+    "area": "Bengaluru",
+    "rating": null,
+    "total_reviews": null
+   },
    "p73d8d69860a0": {
     "place_key": "p73d8d69860a0",
     "data_id": null,
@@ -1622,6 +1670,18 @@
     "rating": null,
     "total_reviews": null
    },
+   "p79417ab74570": {
+    "place_key": "p79417ab74570",
+    "data_id": null,
+    "title": "Cafe BE",
+    "address": null,
+    "lat": 13.0,
+    "lng": 77.5,
+    "type": "Cafe",
+    "area": "Bengaluru",
+    "rating": null,
+    "total_reviews": null
+   },
    "p7a31cdf21c5b": {
     "place_key": "p7a31cdf21c5b",
     "data_id": null,
@@ -1630,6 +1690,18 @@
     "lat": 13.0,
     "lng": 77.6,
     "type": "Bookstore",
+    "area": "Bengaluru",
+    "rating": null,
+    "total_reviews": null
+   },
+   "p96aa02171d6a": {
+    "place_key": "p96aa02171d6a",
+    "data_id": null,
+    "title": "Grocery store BG",
+    "address": null,
+    "lat": 12.9,
+    "lng": 77.6,
+    "type": "Grocery store",
     "area": "Bengaluru",
     "rating": null,
     "total_reviews": null
@@ -1754,6 +1826,18 @@
     "rating": null,
     "total_reviews": null
    },
+   "pb2daba11047f": {
+    "place_key": "pb2daba11047f",
+    "data_id": null,
+    "title": "Restaurant BA",
+    "address": null,
+    "lat": 13.0,
+    "lng": 77.7,
+    "type": "Restaurant",
+    "area": "Bengaluru",
+    "rating": null,
+    "total_reviews": null
+   },
    "pb4d08f92744a": {
     "place_key": "pb4d08f92744a",
     "data_id": null,
@@ -1762,6 +1846,18 @@
     "lat": 13.0,
     "lng": 77.6,
     "type": "Restaurant",
+    "area": "Bengaluru",
+    "rating": null,
+    "total_reviews": null
+   },
+   "pb7e4e1938136": {
+    "place_key": "pb7e4e1938136",
+    "data_id": null,
+    "title": "Bakery BB",
+    "address": null,
+    "lat": 12.9,
+    "lng": 77.6,
+    "type": "Bakery",
     "area": "Bengaluru",
     "rating": null,
     "total_reviews": null
@@ -1994,6 +2090,18 @@
     "rating": null,
     "total_reviews": null
    },
+   "pff00100d7f7d": {
+    "place_key": "pff00100d7f7d",
+    "data_id": null,
+    "title": "Cafe AY",
+    "address": null,
+    "lat": 12.9,
+    "lng": 77.7,
+    "type": "Cafe",
+    "area": "Bengaluru",
+    "rating": null,
+    "total_reviews": null
+   },
    "pffe727a9f81e": {
     "place_key": "pffe727a9f81e",
     "data_id": null,
@@ -2021,7 +2129,7 @@
     "reviews_returned": 22,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:56+00:00"
+    "fetched_at": "2026-06-28T21:11:58+00:00"
    },
    "u325fe16b1fb9": {
     "contributor_id": "u325fe16b1fb9",
@@ -2036,7 +2144,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:56+00:00"
+    "fetched_at": "2026-06-28T21:11:58+00:00"
    },
    "u4eb65ae7ef18": {
     "contributor_id": "u4eb65ae7ef18",
@@ -2051,7 +2159,7 @@
     "reviews_returned": 29,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:56+00:00"
+    "fetched_at": "2026-06-28T21:11:58+00:00"
    },
    "u54120ec6c92c": {
     "contributor_id": "u54120ec6c92c",
@@ -2066,7 +2174,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:56+00:00"
+    "fetched_at": "2026-06-28T21:11:58+00:00"
    },
    "u5ca0908f928e": {
     "contributor_id": "u5ca0908f928e",
@@ -2081,7 +2189,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:56+00:00"
+    "fetched_at": "2026-06-28T21:11:58+00:00"
    },
    "u6334e32dd1a5": {
     "contributor_id": "u6334e32dd1a5",
@@ -2096,7 +2204,37 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:56+00:00"
+    "fetched_at": "2026-06-28T21:11:58+00:00"
+   },
+   "u68ed51848b68": {
+    "contributor_id": "u68ed51848b68",
+    "name": null,
+    "level": null,
+    "points": null,
+    "local_guide": null,
+    "contributions": {
+     "reviews": 3,
+     "photos": 0
+    },
+    "reviews_returned": 1,
+    "truncated": true,
+    "status": "ok",
+    "fetched_at": "2026-06-28T21:11:58+00:00"
+   },
+   "u7ef11f75e990": {
+    "contributor_id": "u7ef11f75e990",
+    "name": null,
+    "level": null,
+    "points": null,
+    "local_guide": null,
+    "contributions": {
+     "reviews": 3,
+     "photos": 0
+    },
+    "reviews_returned": 1,
+    "truncated": true,
+    "status": "ok",
+    "fetched_at": "2026-06-28T21:11:58+00:00"
    },
    "u80d2332b641d": {
     "contributor_id": "u80d2332b641d",
@@ -2111,7 +2249,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:56+00:00"
+    "fetched_at": "2026-06-28T21:11:58+00:00"
    },
    "u9707a84a7599": {
     "contributor_id": "u9707a84a7599",
@@ -2126,7 +2264,22 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:56+00:00"
+    "fetched_at": "2026-06-28T21:11:58+00:00"
+   },
+   "uae33cf26c736": {
+    "contributor_id": "uae33cf26c736",
+    "name": null,
+    "level": null,
+    "points": null,
+    "local_guide": null,
+    "contributions": {
+     "reviews": 3,
+     "photos": 0
+    },
+    "reviews_returned": 1,
+    "truncated": true,
+    "status": "ok",
+    "fetched_at": "2026-06-28T21:11:58+00:00"
    },
    "uafefa88f1318": {
     "contributor_id": "uafefa88f1318",
@@ -2141,7 +2294,22 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:56+00:00"
+    "fetched_at": "2026-06-28T21:11:58+00:00"
+   },
+   "uce9aba5a804e": {
+    "contributor_id": "uce9aba5a804e",
+    "name": null,
+    "level": null,
+    "points": null,
+    "local_guide": null,
+    "contributions": {
+     "reviews": 12,
+     "photos": 5
+    },
+    "reviews_returned": 10,
+    "truncated": true,
+    "status": "ok",
+    "fetched_at": "2026-06-28T21:11:58+00:00"
    },
    "uf329bd9411cd": {
     "contributor_id": "uf329bd9411cd",
@@ -2156,7 +2324,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T11:36:56+00:00"
+    "fetched_at": "2026-06-28T21:11:58+00:00"
    }
   },
   "histories": {
@@ -2167,11 +2335,11 @@
      "place_key": "pf0dbf3e413f5",
      "rating": 5,
      "relative_date": "8 months ago",
-     "date_min": "2025-10-01",
-     "date_max": "2025-10-31",
+     "date_min": "2025-10-02",
+     "date_max": "2025-11-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The waiting area was a bit noisy, the seating surprisingly good. First time here late evening, quality was consistent with before and the location is easy to find. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2180,11 +2348,11 @@
      "place_key": "pcf534fd7d3df",
      "rating": 5,
      "relative_date": "16 months ago",
-     "date_min": "2025-02-03",
-     "date_max": "2025-03-05",
+     "date_min": "2025-02-04",
+     "date_max": "2025-03-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The washroom was better than expected, the signboard better than expected. Came with family for a birthday, the waiting time was long and value for money is decent. Okay overall.",
      "travel_group": null
     },
     {
@@ -2193,11 +2361,11 @@
      "place_key": "pc32a441311f3",
      "rating": 5,
      "relative_date": "8 months ago",
-     "date_min": "2025-10-01",
-     "date_max": "2025-10-31",
+     "date_min": "2025-10-02",
+     "date_max": "2025-11-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lobby was painfully slow, the manager better than expected. Came with family late evening, the location is easy to find. Not sure I will return.",
      "travel_group": null
     },
     {
@@ -2206,11 +2374,11 @@
      "place_key": "p0b462881601c",
      "rating": 5,
      "relative_date": "5 months ago",
-     "date_min": "2025-12-30",
-     "date_max": "2026-01-29",
+     "date_min": "2025-12-31",
+     "date_max": "2026-01-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The payment process was too cold, the payment process very efficient. Dropped in last weekend, the waiting time was long. Recommended for families.",
      "travel_group": null
     },
     {
@@ -2219,11 +2387,11 @@
      "place_key": "p650751b69e05",
      "rating": 4,
      "relative_date": "4 months ago",
-     "date_min": "2026-01-29",
-     "date_max": "2026-02-28",
+     "date_min": "2026-01-30",
+     "date_max": "2026-03-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The manager was friendly enough, the lighting well organised. Stopped by before a flight, the staff were polite but slow. Not sure I will return.",
      "travel_group": null
     },
     {
@@ -2232,11 +2400,11 @@
      "place_key": "p9c2ffcaef2d5",
      "rating": 3,
      "relative_date": "19 months ago",
-     "date_min": "2024-11-05",
-     "date_max": "2024-12-05",
+     "date_min": "2024-11-06",
+     "date_max": "2024-12-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lift was too cold, the lighting confusing. Dropped in last weekend, they fixed our issue quickly. Decent enough.",
      "travel_group": null
     },
     {
@@ -2245,11 +2413,11 @@
      "place_key": "pfadc11945413",
      "rating": 3,
      "relative_date": "9 months ago",
-     "date_min": "2025-09-01",
-     "date_max": "2025-10-01",
+     "date_min": "2025-09-02",
+     "date_max": "2025-10-02",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The payment process was freshly renovated, the lift confusing. We came during the holidays, they fixed our issue quickly and parking was a real problem. Decent enough.",
      "travel_group": null
     },
     {
@@ -2258,11 +2426,11 @@
      "place_key": "p24f4402c2ee4",
      "rating": 5,
      "relative_date": "16 months ago",
-     "date_min": "2025-02-03",
-     "date_max": "2025-03-05",
+     "date_min": "2025-02-04",
+     "date_max": "2025-03-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The entrance was confusing, the menu card better than expected. First time here in the morning, prices felt a little high. Okay overall.",
      "travel_group": null
     },
     {
@@ -2271,11 +2439,11 @@
      "place_key": "p730c70f2e9fc",
      "rating": 3,
      "relative_date": "10 months ago",
-     "date_min": "2025-08-02",
-     "date_max": "2025-09-01",
+     "date_min": "2025-08-03",
+     "date_max": "2025-09-02",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The payment process was very efficient, the music quite outdated. First time here last weekend, parking was a real problem. Not sure I will return.",
      "travel_group": null
     },
     {
@@ -2284,11 +2452,11 @@
      "place_key": "pf6b46ad55c76",
      "rating": 4,
      "relative_date": "2 months ago",
-     "date_min": "2026-03-30",
-     "date_max": "2026-04-29",
+     "date_min": "2026-03-31",
+     "date_max": "2026-04-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The billing counter was very efficient, the washroom very efficient. First time here for a birthday, value for money is decent and it was crowded but manageable. Might try once more.",
      "travel_group": null
     },
     {
@@ -2297,11 +2465,11 @@
      "place_key": "p5079dd5a222d",
      "rating": 4,
      "relative_date": "21 months ago",
-     "date_min": "2024-09-06",
-     "date_max": "2024-10-06",
+     "date_min": "2024-09-07",
+     "date_max": "2024-10-07",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The music was a little dusty, the billing counter friendly enough. Our second visit on a weekday, prices felt a little high and it was crowded but manageable. Might try once more.",
      "travel_group": null
     },
     {
@@ -2310,11 +2478,11 @@
      "place_key": "pae17664b7408",
      "rating": 5,
      "relative_date": "8 months ago",
-     "date_min": "2025-10-01",
-     "date_max": "2025-10-31",
+     "date_min": "2025-10-02",
+     "date_max": "2025-11-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The ac was confusing, the security guard a bit noisy. Went here on a rainy day, value for money is decent. Might try once more.",
      "travel_group": null
     },
     {
@@ -2323,11 +2491,11 @@
      "place_key": "p9a1c49b596cb",
      "rating": 5,
      "relative_date": "a month ago",
-     "date_min": "2026-04-29",
-     "date_max": "2026-05-29",
+     "date_min": "2026-04-30",
+     "date_max": "2026-05-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The queue was a little dusty, the queue confusing. Booked in advance for a birthday, quality was consistent with before and prices felt a little high. Recommended for families.",
      "travel_group": null
     },
     {
@@ -2336,11 +2504,11 @@
      "place_key": "pbe2cf25741a6",
      "rating": 5,
      "relative_date": "20 months ago",
-     "date_min": "2024-10-06",
-     "date_max": "2024-11-05",
+     "date_min": "2024-10-07",
+     "date_max": "2024-11-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The payment process was a bit noisy, the signboard too cold. Dropped in on a rainy day, parking was a real problem. Average experience.",
      "travel_group": null
     },
     {
@@ -2349,11 +2517,11 @@
      "place_key": "p01940ac56c4d",
      "rating": 5,
      "relative_date": "9 months ago",
-     "date_min": "2025-09-01",
-     "date_max": "2025-10-01",
+     "date_min": "2025-09-02",
+     "date_max": "2025-10-02",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The payment process was a bit noisy, the lighting painfully slow. Our second visit for a birthday, service could be better. Okay overall.",
      "travel_group": null
     },
     {
@@ -2362,11 +2530,11 @@
      "place_key": "p1daa68c03991",
      "rating": 4,
      "relative_date": "13 months ago",
-     "date_min": "2025-05-04",
-     "date_max": "2025-06-03",
+     "date_min": "2025-05-05",
+     "date_max": "2025-06-04",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The ac was confusing, the billing counter freshly renovated. Visited before a flight, the location is easy to find and everything was neat and clean. Okay overall.",
      "travel_group": null
     },
     {
@@ -2375,11 +2543,11 @@
      "place_key": "p9e113d61bed7",
      "rating": 4,
      "relative_date": "5 months ago",
-     "date_min": "2025-12-30",
-     "date_max": "2026-01-29",
+     "date_min": "2025-12-31",
+     "date_max": "2026-01-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The manager was too cold, the receptionist better than expected. Stopped by last weekend, the menu had fewer options now. Not sure I will return.",
      "travel_group": null
     },
     {
@@ -2388,11 +2556,11 @@
      "place_key": "p9f3e593fd6e2",
      "rating": 4,
      "relative_date": "8 months ago",
-     "date_min": "2025-10-01",
-     "date_max": "2025-10-31",
+     "date_min": "2025-10-02",
+     "date_max": "2025-11-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The receptionist was surprisingly good, the menu card too cold. We came for a birthday, value for money is decent and prices felt a little high. Not sure I will return.",
      "travel_group": null
     },
     {
@@ -2401,11 +2569,11 @@
      "place_key": "pc3bc5c22b625",
      "rating": 5,
      "relative_date": "8 months ago",
-     "date_min": "2025-10-01",
-     "date_max": "2025-10-31",
+     "date_min": "2025-10-02",
+     "date_max": "2025-11-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The washroom was quite outdated, the payment process a bit noisy. Dropped in during the holidays, the location is easy to find. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2414,11 +2582,11 @@
      "place_key": "pfa53216ff6d1",
      "rating": 4,
      "relative_date": "22 months ago",
-     "date_min": "2024-08-07",
-     "date_max": "2024-09-06",
+     "date_min": "2024-08-08",
+     "date_max": "2024-09-07",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The security guard was too cold, the queue confusing. Went here for a birthday, it was crowded but manageable and parking was a real problem. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2427,11 +2595,11 @@
      "place_key": "p73d8d69860a0",
      "rating": 5,
      "relative_date": "2 months ago",
-     "date_min": "2026-03-30",
-     "date_max": "2026-04-29",
+     "date_min": "2026-03-31",
+     "date_max": "2026-04-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The queue was quite outdated, the security guard freshly renovated. I tried this place on a weekday, the staff were polite but slow and the waiting time was long. Not sure I will return.",
      "travel_group": null
     },
     {
@@ -2440,8 +2608,8 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "15 weeks ago",
-     "date_min": "2026-03-08",
-     "date_max": "2026-03-15",
+     "date_min": "2026-03-09",
+     "date_max": "2026-03-16",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2455,8 +2623,8 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "8 weeks ago",
-     "date_min": "2026-04-26",
-     "date_max": "2026-05-03",
+     "date_min": "2026-04-27",
+     "date_max": "2026-05-04",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2470,11 +2638,11 @@
      "place_key": "pbd88bb6cfd01",
      "rating": 5,
      "relative_date": "2 months ago",
-     "date_min": "2026-03-30",
-     "date_max": "2026-04-29",
+     "date_min": "2026-03-31",
+     "date_max": "2026-04-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lift was a bit noisy, the billing counter a bit noisy. Stopped by with friends, the menu had fewer options now and quality was consistent with before. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2483,11 +2651,11 @@
      "place_key": "pdb0743d30e13",
      "rating": 4,
      "relative_date": "12 months ago",
-     "date_min": "2025-06-03",
-     "date_max": "2025-07-03",
+     "date_min": "2025-06-04",
+     "date_max": "2025-07-04",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The receptionist was a bit noisy, the AC freshly renovated. Stopped by before a flight, they fixed our issue quickly and prices felt a little high. Not sure I will return.",
      "travel_group": null
     },
     {
@@ -2496,11 +2664,11 @@
      "place_key": "p4b9d03e6dade",
      "rating": 2,
      "relative_date": "a month ago",
-     "date_min": "2026-04-29",
-     "date_max": "2026-05-29",
+     "date_min": "2026-04-30",
+     "date_max": "2026-05-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lighting was friendly enough, the lift very efficient. Visited with friends, the menu had fewer options now and the staff were polite but slow. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2509,11 +2677,11 @@
      "place_key": "p189c1be389b3",
      "rating": 2,
      "relative_date": "a month ago",
-     "date_min": "2026-04-29",
-     "date_max": "2026-05-29",
+     "date_min": "2026-04-30",
+     "date_max": "2026-05-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The chai was confusing, the chai a bit noisy. Visited on a rainy day, it was crowded but manageable and the staff were polite but slow. Decent enough.",
      "travel_group": null
     },
     {
@@ -2522,11 +2690,11 @@
      "place_key": "p7a31cdf21c5b",
      "rating": 5,
      "relative_date": "19 months ago",
-     "date_min": "2024-11-05",
-     "date_max": "2024-12-05",
+     "date_min": "2024-11-06",
+     "date_max": "2024-12-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The security guard was a little dusty, the entrance better than expected. First time here on a rainy day, service could be better. Might try once more.",
      "travel_group": null
     },
     {
@@ -2535,11 +2703,11 @@
      "place_key": "pf671be2c3fc3",
      "rating": 2,
      "relative_date": "2 months ago",
-     "date_min": "2026-03-30",
-     "date_max": "2026-04-29",
+     "date_min": "2026-03-31",
+     "date_max": "2026-04-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The menu card was too cold, the music well organised. Our second visit for a birthday, service could be better. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2548,11 +2716,11 @@
      "place_key": "peb5c5f545d64",
      "rating": 2,
      "relative_date": "20 months ago",
-     "date_min": "2024-10-06",
-     "date_max": "2024-11-05",
+     "date_min": "2024-10-07",
+     "date_max": "2024-11-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The billing counter was quite outdated, the washroom too cold. I tried this place for a birthday, value for money is decent and the menu had fewer options now. Recommended for families.",
      "travel_group": null
     },
     {
@@ -2561,11 +2729,11 @@
      "place_key": "p0f60a1568ddb",
      "rating": 5,
      "relative_date": "20 months ago",
-     "date_min": "2024-10-06",
-     "date_max": "2024-11-05",
+     "date_min": "2024-10-07",
+     "date_max": "2024-11-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lighting was friendly enough, the seating friendly enough. Stopped by on a weekday, everything was neat and clean and service could be better. Not sure I will return.",
      "travel_group": null
     },
     {
@@ -2574,11 +2742,11 @@
      "place_key": "pad5f870dcce9",
      "rating": 4,
      "relative_date": "17 months ago",
-     "date_min": "2025-01-04",
-     "date_max": "2025-02-03",
+     "date_min": "2025-01-05",
+     "date_max": "2025-02-04",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lift was friendly enough, the lobby too cold. Went here late evening, service could be better. Might try once more.",
      "travel_group": null
     },
     {
@@ -2587,11 +2755,11 @@
      "place_key": "pa8cc3975b0fa",
      "rating": 4,
      "relative_date": "22 months ago",
-     "date_min": "2024-08-07",
-     "date_max": "2024-09-06",
+     "date_min": "2024-08-08",
+     "date_max": "2024-09-07",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The receptionist was better than expected, the queue surprisingly good. Stopped by after work, prices felt a little high and prices felt a little high. Might try once more.",
      "travel_group": null
     },
     {
@@ -2600,11 +2768,11 @@
      "place_key": "pc6631e2ff76f",
      "rating": 3,
      "relative_date": "8 months ago",
-     "date_min": "2025-10-01",
-     "date_max": "2025-10-31",
+     "date_min": "2025-10-02",
+     "date_max": "2025-11-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The security guard was better than expected, the lift freshly renovated. Booked in advance in the morning, the location is easy to find. Recommended for families.",
      "travel_group": null
     },
     {
@@ -2613,11 +2781,11 @@
      "place_key": "p61f37abfb355",
      "rating": 3,
      "relative_date": "13 months ago",
-     "date_min": "2025-05-04",
-     "date_max": "2025-06-03",
+     "date_min": "2025-05-05",
+     "date_max": "2025-06-04",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lift was well organised, the billing counter quite outdated. I tried this place for a birthday, the staff were polite but slow. Okay overall.",
      "travel_group": null
     },
     {
@@ -2626,11 +2794,11 @@
      "place_key": "pa33c47b4547d",
      "rating": 2,
      "relative_date": "19 months ago",
-     "date_min": "2024-11-05",
-     "date_max": "2024-12-05",
+     "date_min": "2024-11-06",
+     "date_max": "2024-12-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The seating was well organised, the lift painfully slow. Booked in advance on a weekday, everything was neat and clean. Decent enough.",
      "travel_group": null
     },
     {
@@ -2639,11 +2807,11 @@
      "place_key": "pea61aae66da3",
      "rating": 2,
      "relative_date": "2 months ago",
-     "date_min": "2026-03-30",
-     "date_max": "2026-04-29",
+     "date_min": "2026-03-31",
+     "date_max": "2026-04-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The security guard was freshly renovated, the entrance better than expected. Visited on a rainy day, the menu had fewer options now and the location is easy to find. Might try once more.",
      "travel_group": null
     },
     {
@@ -2652,11 +2820,11 @@
      "place_key": "pffe727a9f81e",
      "rating": 4,
      "relative_date": "10 months ago",
-     "date_min": "2025-08-02",
-     "date_max": "2025-09-01",
+     "date_min": "2025-08-03",
+     "date_max": "2025-09-02",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The seating was confusing, the queue better than expected. Dropped in on a rainy day, everything was neat and clean and they fixed our issue quickly. Might try once more.",
      "travel_group": null
     },
     {
@@ -2665,11 +2833,11 @@
      "place_key": "p07db817b0cd5",
      "rating": 3,
      "relative_date": "14 months ago",
-     "date_min": "2025-04-04",
-     "date_max": "2025-05-04",
+     "date_min": "2025-04-05",
+     "date_max": "2025-05-05",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The queue was freshly renovated, the lobby well organised. Our second visit on a weekday, it was crowded but manageable. Decent enough.",
      "travel_group": null
     },
     {
@@ -2678,11 +2846,11 @@
      "place_key": "p06f2ac0302bd",
      "rating": 5,
      "relative_date": "13 months ago",
-     "date_min": "2025-05-04",
-     "date_max": "2025-06-03",
+     "date_min": "2025-05-05",
+     "date_max": "2025-06-04",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The queue was confusing, the billing counter too cold. Booked in advance on a rainy day, service could be better and the location is easy to find. Might try once more.",
      "travel_group": null
     },
     {
@@ -2691,11 +2859,11 @@
      "place_key": "pb4d08f92744a",
      "rating": 2,
      "relative_date": "13 months ago",
-     "date_min": "2025-05-04",
-     "date_max": "2025-06-03",
+     "date_min": "2025-05-05",
+     "date_max": "2025-06-04",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The security guard was confusing, the receptionist too cold. Went here during the holidays, value for money is decent. Might try once more.",
      "travel_group": null
     },
     {
@@ -2704,11 +2872,11 @@
      "place_key": "p4632044e47b7",
      "rating": 4,
      "relative_date": "5 months ago",
-     "date_min": "2025-12-30",
-     "date_max": "2026-01-29",
+     "date_min": "2025-12-31",
+     "date_max": "2026-01-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lift was a little dusty, the entrance friendly enough. I tried this place with friends, everything was neat and clean and it was crowded but manageable. Okay overall.",
      "travel_group": null
     },
     {
@@ -2717,11 +2885,11 @@
      "place_key": "pacaff7f006b2",
      "rating": 2,
      "relative_date": "10 months ago",
-     "date_min": "2025-08-02",
-     "date_max": "2025-09-01",
+     "date_min": "2025-08-03",
+     "date_max": "2025-09-02",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The receptionist was too cold, the payment process well organised. Our second visit with friends, prices felt a little high. Might try once more.",
      "travel_group": null
     },
     {
@@ -2730,11 +2898,11 @@
      "place_key": "p5583e5665879",
      "rating": 5,
      "relative_date": "8 months ago",
-     "date_min": "2025-10-01",
-     "date_max": "2025-10-31",
+     "date_min": "2025-10-02",
+     "date_max": "2025-11-01",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The chai was very efficient, the chai a little dusty. We came with friends, prices felt a little high and the menu had fewer options now. Average experience.",
      "travel_group": null
     },
     {
@@ -2743,11 +2911,11 @@
      "place_key": "pcafa9c526336",
      "rating": 4,
      "relative_date": "12 months ago",
-     "date_min": "2025-06-03",
-     "date_max": "2025-07-03",
+     "date_min": "2025-06-04",
+     "date_max": "2025-07-04",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lobby was freshly renovated, the billing counter well organised. Went here with friends, service could be better and the menu had fewer options now. Average experience.",
      "travel_group": null
     },
     {
@@ -2756,11 +2924,11 @@
      "place_key": "pc61859a6b2c7",
      "rating": 2,
      "relative_date": "19 months ago",
-     "date_min": "2024-11-05",
-     "date_max": "2024-12-05",
+     "date_min": "2024-11-06",
+     "date_max": "2024-12-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The ac was freshly renovated, the lift very efficient. Stopped by with friends, the menu had fewer options now and prices felt a little high. Decent enough.",
      "travel_group": null
     },
     {
@@ -2769,11 +2937,11 @@
      "place_key": "pcfbaedea0392",
      "rating": 4,
      "relative_date": "20 months ago",
-     "date_min": "2024-10-06",
-     "date_max": "2024-11-05",
+     "date_min": "2024-10-07",
+     "date_max": "2024-11-06",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lobby was very efficient, the entrance better than expected. Dropped in on a rainy day, the staff were polite but slow and everything was neat and clean. Might try once more.",
      "travel_group": null
     },
     {
@@ -2782,11 +2950,11 @@
      "place_key": "p3f55fa814337",
      "rating": 5,
      "relative_date": "12 months ago",
-     "date_min": "2025-06-03",
-     "date_max": "2025-07-03",
+     "date_min": "2025-06-04",
+     "date_max": "2025-07-04",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The waiting area was friendly enough, the queue better than expected. We came late evening, the staff were polite but slow and everything was neat and clean. Would come again.",
      "travel_group": null
     },
     {
@@ -2795,11 +2963,11 @@
      "place_key": "pe3093a803c85",
      "rating": 5,
      "relative_date": "a month ago",
-     "date_min": "2026-04-29",
-     "date_max": "2026-05-29",
+     "date_min": "2026-04-30",
+     "date_max": "2026-05-30",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The security guard was confusing, the music a bit noisy. Visited late evening, value for money is decent. Mixed feelings.",
      "travel_group": null
     },
     {
@@ -2808,11 +2976,11 @@
      "place_key": "p5c4b46d5a12b",
      "rating": 2,
      "relative_date": "10 months ago",
-     "date_min": "2025-08-02",
-     "date_max": "2025-09-01",
+     "date_min": "2025-08-03",
+     "date_max": "2025-09-02",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The lighting was freshly renovated, the receptionist very efficient. Dropped in before a flight, the menu had fewer options now and they fixed our issue quickly. Okay overall.",
      "travel_group": null
     },
     {
@@ -2821,11 +2989,11 @@
      "place_key": "pdc3ff4162071",
      "rating": 5,
      "relative_date": "18 months ago",
-     "date_min": "2024-12-05",
-     "date_max": "2025-01-04",
+     "date_min": "2024-12-06",
+     "date_max": "2025-01-05",
      "edited": false,
      "image_dates": [],
-     "text": null,
+     "text": "The ac was a little dusty, the seating very efficient. First time here during the holidays, value for money is decent and quality was consistent with before. Okay overall.",
      "travel_group": null
     },
     {
@@ -2834,8 +3002,8 @@
      "place_key": "pa8129cf95546",
      "rating": 3,
      "relative_date": "11 weeks ago",
-     "date_min": "2026-04-05",
-     "date_max": "2026-04-12",
+     "date_min": "2026-04-06",
+     "date_max": "2026-04-13",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2849,8 +3017,8 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "8 weeks ago",
-     "date_min": "2026-04-26",
-     "date_max": "2026-05-03",
+     "date_min": "2026-04-27",
+     "date_max": "2026-05-04",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2864,8 +3032,8 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "8 weeks ago",
-     "date_min": "2026-04-26",
-     "date_max": "2026-05-03",
+     "date_min": "2026-04-27",
+     "date_max": "2026-05-04",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2879,8 +3047,38 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "8 weeks ago",
-     "date_min": "2026-04-26",
-     "date_max": "2026-05-03",
+     "date_min": "2026-04-27",
+     "date_max": "2026-05-04",
+     "edited": false,
+     "image_dates": [],
+     "text": null,
+     "travel_group": null
+    }
+   ],
+   "u68ed51848b68": [
+    {
+     "contributor_id": "u68ed51848b68",
+     "review_id": "r5a74dd6341f2",
+     "place_key": "pa8129cf95546",
+     "rating": 5,
+     "relative_date": "10 weeks ago",
+     "date_min": "2026-04-13",
+     "date_max": "2026-04-20",
+     "edited": false,
+     "image_dates": [],
+     "text": null,
+     "travel_group": null
+    }
+   ],
+   "u7ef11f75e990": [
+    {
+     "contributor_id": "u7ef11f75e990",
+     "review_id": "r564bf6fec88c",
+     "place_key": "pa8129cf95546",
+     "rating": 5,
+     "relative_date": "8 weeks ago",
+     "date_min": "2026-04-27",
+     "date_max": "2026-05-04",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2894,8 +3092,8 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "8 weeks ago",
-     "date_min": "2026-04-26",
-     "date_max": "2026-05-03",
+     "date_min": "2026-04-27",
+     "date_max": "2026-05-04",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2909,8 +3107,23 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "8 weeks ago",
-     "date_min": "2026-04-26",
-     "date_max": "2026-05-03",
+     "date_min": "2026-04-27",
+     "date_max": "2026-05-04",
+     "edited": false,
+     "image_dates": [],
+     "text": null,
+     "travel_group": null
+    }
+   ],
+   "uae33cf26c736": [
+    {
+     "contributor_id": "uae33cf26c736",
+     "review_id": "rb09e52ab7233",
+     "place_key": "pa8129cf95546",
+     "rating": 5,
+     "relative_date": "a week ago",
+     "date_min": "2026-06-15",
+     "date_max": "2026-06-22",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2924,8 +3137,140 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "8 weeks ago",
-     "date_min": "2026-04-26",
-     "date_max": "2026-05-03",
+     "date_min": "2026-04-27",
+     "date_max": "2026-05-04",
+     "edited": false,
+     "image_dates": [],
+     "text": null,
+     "travel_group": null
+    }
+   ],
+   "uce9aba5a804e": [
+    {
+     "contributor_id": "uce9aba5a804e",
+     "review_id": "rbc7035dcef75",
+     "place_key": "pff00100d7f7d",
+     "rating": 3,
+     "relative_date": "19 months ago",
+     "date_min": "2024-11-06",
+     "date_max": "2024-12-06",
+     "edited": false,
+     "image_dates": [],
+     "text": "The washroom was a little dusty, the lighting friendly enough. Booked in advance late evening, the location is easy to find. Not sure I will return.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "uce9aba5a804e",
+     "review_id": "r0bb4570d783e",
+     "place_key": "p739819061ff0",
+     "rating": 3,
+     "relative_date": "14 months ago",
+     "date_min": "2025-04-05",
+     "date_max": "2025-05-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The seating was friendly enough, the payment process painfully slow. Stopped by last weekend, quality was consistent with before and service could be better. Mixed feelings.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "uce9aba5a804e",
+     "review_id": "r3e1f0ca3ad19",
+     "place_key": "pb2daba11047f",
+     "rating": 4,
+     "relative_date": "17 months ago",
+     "date_min": "2025-01-05",
+     "date_max": "2025-02-04",
+     "edited": false,
+     "image_dates": [],
+     "text": "The manager was freshly renovated, the signboard a bit noisy. I tried this place on a rainy day, the location is easy to find. Not sure I will return.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "uce9aba5a804e",
+     "review_id": "rb5e55d19af92",
+     "place_key": "pb7e4e1938136",
+     "rating": 4,
+     "relative_date": "a month ago",
+     "date_min": "2026-04-30",
+     "date_max": "2026-05-30",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lobby was very efficient, the waiting area too cold. First time here before a flight, the staff were polite but slow and everything was neat and clean. Might try once more.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "uce9aba5a804e",
+     "review_id": "rded9d6994022",
+     "place_key": "p48e6a89548ae",
+     "rating": 3,
+     "relative_date": "2 months ago",
+     "date_min": "2026-03-31",
+     "date_max": "2026-04-30",
+     "edited": false,
+     "image_dates": [],
+     "text": "The billing counter was painfully slow, the signboard very efficient. Came with family for a birthday, quality was consistent with before. Might try once more.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "uce9aba5a804e",
+     "review_id": "rd73a3d058149",
+     "place_key": "p381b43aa4b8f",
+     "rating": 5,
+     "relative_date": "a month ago",
+     "date_min": "2026-04-30",
+     "date_max": "2026-05-30",
+     "edited": false,
+     "image_dates": [],
+     "text": "The menu card was confusing, the payment process quite outdated. Stopped by on a rainy day, it was crowded but manageable. Mixed feelings.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "uce9aba5a804e",
+     "review_id": "rf9dabf380791",
+     "place_key": "p79417ab74570",
+     "rating": 3,
+     "relative_date": "16 months ago",
+     "date_min": "2025-02-04",
+     "date_max": "2025-03-06",
+     "edited": false,
+     "image_dates": [],
+     "text": "The lift was surprisingly good, the payment process quite outdated. Our second visit for a birthday, the location is easy to find and they fixed our issue quickly. Okay overall.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "uce9aba5a804e",
+     "review_id": "re978cdbe5d01",
+     "place_key": "p03b93e40faf8",
+     "rating": 4,
+     "relative_date": "15 months ago",
+     "date_min": "2025-03-06",
+     "date_max": "2025-04-05",
+     "edited": false,
+     "image_dates": [],
+     "text": "The chai was a little dusty, the lighting friendly enough. Dropped in after work, service could be better. Okay overall.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "uce9aba5a804e",
+     "review_id": "rca6e9bcad781",
+     "place_key": "p96aa02171d6a",
+     "rating": 4,
+     "relative_date": "19 months ago",
+     "date_min": "2024-11-06",
+     "date_max": "2024-12-06",
+     "edited": false,
+     "image_dates": [],
+     "text": "The music was well organised, the queue surprisingly good. Our second visit with friends, it was crowded but manageable and the staff were polite but slow. Would come again.",
+     "travel_group": null
+    },
+    {
+     "contributor_id": "uce9aba5a804e",
+     "review_id": "r34cef379abf6",
+     "place_key": "pa8129cf95546",
+     "rating": 4,
+     "relative_date": "12 weeks ago",
+     "date_min": "2026-03-30",
+     "date_max": "2026-04-06",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2939,8 +3284,8 @@
      "place_key": "pa8129cf95546",
      "rating": 5,
      "relative_date": "8 weeks ago",
-     "date_min": "2026-04-26",
-     "date_max": "2026-05-03",
+     "date_min": "2026-04-27",
+     "date_max": "2026-05-04",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2998,14 +3343,35 @@
     "contributor_id": "u2ac3d3b4fc6d",
     "round": 1,
     "reason": "baseline"
+   },
+   {
+    "contributor_id": "uae33cf26c736",
+    "round": 1,
+    "reason": "voice"
+   },
+   {
+    "contributor_id": "u68ed51848b68",
+    "round": 1,
+    "reason": "voice"
+   },
+   {
+    "contributor_id": "u7ef11f75e990",
+    "round": 1,
+    "reason": "voice"
+   },
+   {
+    "contributor_id": "uce9aba5a804e",
+    "round": 1,
+    "reason": "voice"
    }
   ],
-  "fetched_at": "2026-06-28T11:36:56.855526+00:00",
+  "fetched_at": "2026-06-28T21:11:58.884231+00:00",
   "params": {
    "n": 100,
    "k1": 8,
    "baseline": 2,
    "k2": 15,
+   "voice_picks": 4,
    "stop_after_round1": false,
    "force_refresh": false,
    "pick": null
@@ -3447,6 +3813,87 @@
     "text_id": "h:u4eb65ae7ef18:rfbe5cbf1e9ec",
     "owner": "u4eb65ae7ef18",
     "length": 134,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:uce9aba5a804e:r0bb4570d783e": {
+    "text_id": "h:uce9aba5a804e:r0bb4570d783e",
+    "owner": "uce9aba5a804e",
+    "length": 168,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:uce9aba5a804e:r3e1f0ca3ad19": {
+    "text_id": "h:uce9aba5a804e:r3e1f0ca3ad19",
+    "owner": "uce9aba5a804e",
+    "length": 145,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:uce9aba5a804e:rb5e55d19af92": {
+    "text_id": "h:uce9aba5a804e:rb5e55d19af92",
+    "owner": "uce9aba5a804e",
+    "length": 171,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:uce9aba5a804e:rbc7035dcef75": {
+    "text_id": "h:uce9aba5a804e:rbc7035dcef75",
+    "owner": "uce9aba5a804e",
+    "length": 143,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:uce9aba5a804e:rca6e9bcad781": {
+    "text_id": "h:uce9aba5a804e:rca6e9bcad781",
+    "owner": "uce9aba5a804e",
+    "length": 168,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:uce9aba5a804e:rd73a3d058149": {
+    "text_id": "h:uce9aba5a804e:rd73a3d058149",
+    "owner": "uce9aba5a804e",
+    "length": 133,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:uce9aba5a804e:rded9d6994022": {
+    "text_id": "h:uce9aba5a804e:rded9d6994022",
+    "owner": "uce9aba5a804e",
+    "length": 154,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:uce9aba5a804e:re978cdbe5d01": {
+    "text_id": "h:uce9aba5a804e:re978cdbe5d01",
+    "owner": "uce9aba5a804e",
+    "length": 115,
+    "script": "latin",
+    "short": false,
+    "cluster": null,
+    "target_cluster": null
+   },
+   "h:uce9aba5a804e:rf9dabf380791": {
+    "text_id": "h:uce9aba5a804e:rf9dabf380791",
+    "owner": "uce9aba5a804e",
+    "length": 172,
     "script": "latin",
     "short": false,
     "cluster": null,
@@ -4433,6 +4880,26 @@
     ],
     "model": "synthetic example"
    }
+  },
+  "voice_judgements": {
+   "u2ac3d3b4fc6d": {
+    "verdict": "same_voice",
+    "here": "",
+    "elsewhere": "",
+    "model": "synthetic example"
+   },
+   "u4eb65ae7ef18": {
+    "verdict": "same_voice",
+    "here": "",
+    "elsewhere": "",
+    "model": "synthetic example"
+   },
+   "uce9aba5a804e": {
+    "verdict": "same_voice",
+    "here": "",
+    "elsewhere": "",
+    "model": "synthetic example"
+   }
   }
  },
  "report": {
@@ -4452,8 +4919,8 @@
    "examined": 99,
    "first": "2026-02-19",
    "last": "2026-06-18",
-   "expanded": 10,
-   "histories_ok": 10,
+   "expanded": 14,
+   "histories_ok": 14,
    "baseline": [
     "u4eb65ae7ef18",
     "u2ac3d3b4fc6d"
@@ -4637,12 +5104,22 @@
     "other_first_time": 8,
     "ratio": 2.6,
     "flagged": true
+   },
+   "T10": {
+    "flagged": false,
+    "accounts": 0,
+    "with_text": 97,
+    "needed": 7.8,
+    "review_ids": [],
+    "phrases": {}
    }
   },
   "sieve": {
    "order": [
     "chatbot_text",
     "copied_text",
+    "voice_mismatch",
+    "keyword_style",
     "first_time_burst",
     "linked_group",
     "ai_style",
@@ -4652,6 +5129,8 @@
    "set_aside_by_default": [
     "chatbot_text",
     "copied_text",
+    "voice_mismatch",
+    "keyword_style",
     "first_time_burst",
     "linked_group"
    ],
@@ -4672,6 +5151,24 @@
      "explain": "Near-identical to a review that another account wrote.",
      "count": 7,
      "mean": 4.86,
+     "set_aside_by_default": true
+    },
+    "voice_mismatch": {
+     "name": "Not in the reviewer's own voice",
+     "short": "Not their own voice",
+     "strength": "strong",
+     "explain": "The reviewer's other reviews are written very differently. An AI model compared them and quotes the difference; both are shown side by side. Typical of scripted or incentivised reviews posted from real accounts.",
+     "count": 0,
+     "mean": null,
+     "set_aside_by_default": true
+    },
+    "keyword_style": {
+     "name": "Written like a search ad",
+     "short": "Search-ad phrasing",
+     "strength": "strong",
+     "explain": "Names the business or its category together with its neighbourhood or city, the way search ads are written (“packers and movers in [area], [city]”), as several accounts here do.",
+     "count": 0,
+     "mean": null,
      "set_aside_by_default": true
     },
     "first_time_burst": {
@@ -4741,6 +5238,14 @@
     "no_text": 2,
     "ai_style": 7,
     "human_style": 6,
+    "unclear": 0,
+    "model": "synthetic example"
+   },
+   "voice": {
+    "eligible": 3,
+    "compared": 3,
+    "different_voice": 0,
+    "same_voice": 3,
     "unclear": 0,
     "model": "synthetic example"
    }
@@ -5025,6 +5530,78 @@
     "visible_reviews": 22,
     "total_reviews": 16,
     "badges": []
+   },
+   {
+    "contributor_id": "uae33cf26c736",
+    "round": 1,
+    "reason": "voice",
+    "status": "ok",
+    "label": "no_flags",
+    "group": null,
+    "truncated": true,
+    "visible_reviews": 1,
+    "total_reviews": 3,
+    "badges": [
+     {
+      "code": "A1",
+      "name": "Thin profile",
+      "total_reviews": 3,
+      "photos": 0,
+      "level": null
+     }
+    ]
+   },
+   {
+    "contributor_id": "u68ed51848b68",
+    "round": 1,
+    "reason": "voice",
+    "status": "ok",
+    "label": "no_flags",
+    "group": null,
+    "truncated": true,
+    "visible_reviews": 1,
+    "total_reviews": 3,
+    "badges": [
+     {
+      "code": "A1",
+      "name": "Thin profile",
+      "total_reviews": 3,
+      "photos": 0,
+      "level": null
+     }
+    ]
+   },
+   {
+    "contributor_id": "u7ef11f75e990",
+    "round": 1,
+    "reason": "voice",
+    "status": "ok",
+    "label": "no_flags",
+    "group": null,
+    "truncated": true,
+    "visible_reviews": 1,
+    "total_reviews": 3,
+    "badges": [
+     {
+      "code": "A1",
+      "name": "Thin profile",
+      "total_reviews": 3,
+      "photos": 0,
+      "level": null
+     }
+    ]
+   },
+   {
+    "contributor_id": "uce9aba5a804e",
+    "round": 1,
+    "reason": "voice",
+    "status": "ok",
+    "label": "no_flags",
+    "group": null,
+    "truncated": true,
+    "visible_reviews": 10,
+    "total_reviews": 12,
+    "badges": []
    }
   ],
   "histories": {
@@ -5034,7 +5611,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-04-29",
+      "day": "2026-04-30",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5052,7 +5629,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-04-29",
+      "day": "2026-04-30",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5070,7 +5647,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-04-29",
+      "day": "2026-04-30",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5088,7 +5665,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-04-29",
+      "day": "2026-04-30",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5106,7 +5683,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-04-29",
+      "day": "2026-04-30",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5124,7 +5701,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-04-29",
+      "day": "2026-04-30",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5142,7 +5719,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-04-29",
+      "day": "2026-04-30",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5160,7 +5737,7 @@
     "home_area": null,
     "items": [
      {
-      "day": "2026-04-29",
+      "day": "2026-04-30",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5178,7 +5755,7 @@
     "home_area": "Bengaluru",
     "items": [
      {
-      "day": "2024-08-22",
+      "day": "2024-08-23",
       "rating": 4,
       "place_key": "pa8cc3975b0fa",
       "this": false,
@@ -5189,7 +5766,7 @@
       "km": 11.1
      },
      {
-      "day": "2024-10-21",
+      "day": "2024-10-22",
       "rating": 2,
       "place_key": "peb5c5f545d64",
       "this": false,
@@ -5200,7 +5777,7 @@
       "km": 0.0
      },
      {
-      "day": "2024-10-21",
+      "day": "2024-10-22",
       "rating": 5,
       "place_key": "p0f60a1568ddb",
       "this": false,
@@ -5211,7 +5788,7 @@
       "km": 0.0
      },
      {
-      "day": "2024-10-21",
+      "day": "2024-10-22",
       "rating": 4,
       "place_key": "pcfbaedea0392",
       "this": false,
@@ -5222,7 +5799,7 @@
       "km": 0.0
      },
      {
-      "day": "2024-11-20",
+      "day": "2024-11-21",
       "rating": 5,
       "place_key": "p7a31cdf21c5b",
       "this": false,
@@ -5233,7 +5810,7 @@
       "km": 0.0
      },
      {
-      "day": "2024-11-20",
+      "day": "2024-11-21",
       "rating": 2,
       "place_key": "pa33c47b4547d",
       "this": false,
@@ -5244,7 +5821,7 @@
       "km": 0.0
      },
      {
-      "day": "2024-11-20",
+      "day": "2024-11-21",
       "rating": 2,
       "place_key": "pc61859a6b2c7",
       "this": false,
@@ -5255,7 +5832,7 @@
       "km": 0.0
      },
      {
-      "day": "2024-12-20",
+      "day": "2024-12-21",
       "rating": 5,
       "place_key": "pdc3ff4162071",
       "this": false,
@@ -5266,7 +5843,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-01-19",
+      "day": "2025-01-20",
       "rating": 4,
       "place_key": "pad5f870dcce9",
       "this": false,
@@ -5277,7 +5854,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-04-19",
+      "day": "2025-04-20",
       "rating": 3,
       "place_key": "p07db817b0cd5",
       "this": false,
@@ -5288,7 +5865,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-05-19",
+      "day": "2025-05-20",
       "rating": 3,
       "place_key": "p61f37abfb355",
       "this": false,
@@ -5299,7 +5876,7 @@
       "km": 11.1
      },
      {
-      "day": "2025-05-19",
+      "day": "2025-05-20",
       "rating": 5,
       "place_key": "p06f2ac0302bd",
       "this": false,
@@ -5310,7 +5887,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-05-19",
+      "day": "2025-05-20",
       "rating": 2,
       "place_key": "pb4d08f92744a",
       "this": false,
@@ -5321,7 +5898,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-06-18",
+      "day": "2025-06-19",
       "rating": 4,
       "place_key": "pdb0743d30e13",
       "this": false,
@@ -5332,7 +5909,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-06-18",
+      "day": "2025-06-19",
       "rating": 4,
       "place_key": "pcafa9c526336",
       "this": false,
@@ -5343,7 +5920,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-06-18",
+      "day": "2025-06-19",
       "rating": 5,
       "place_key": "p3f55fa814337",
       "this": false,
@@ -5354,7 +5931,7 @@
       "km": 11.1
      },
      {
-      "day": "2025-08-17",
+      "day": "2025-08-18",
       "rating": 4,
       "place_key": "pffe727a9f81e",
       "this": false,
@@ -5365,7 +5942,7 @@
       "km": 11.1
      },
      {
-      "day": "2025-08-17",
+      "day": "2025-08-18",
       "rating": 2,
       "place_key": "pacaff7f006b2",
       "this": false,
@@ -5376,7 +5953,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-08-17",
+      "day": "2025-08-18",
       "rating": 2,
       "place_key": "p5c4b46d5a12b",
       "this": false,
@@ -5387,7 +5964,7 @@
       "km": 11.1
      },
      {
-      "day": "2025-10-16",
+      "day": "2025-10-17",
       "rating": 3,
       "place_key": "pc6631e2ff76f",
       "this": false,
@@ -5398,7 +5975,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-10-16",
+      "day": "2025-10-17",
       "rating": 5,
       "place_key": "p5583e5665879",
       "this": false,
@@ -5409,7 +5986,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-01-14",
+      "day": "2026-01-15",
       "rating": 4,
       "place_key": "p4632044e47b7",
       "this": false,
@@ -5420,7 +5997,7 @@
       "km": 11.1
      },
      {
-      "day": "2026-04-08",
+      "day": "2026-04-09",
       "rating": 3,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5431,7 +6008,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-04-14",
+      "day": "2026-04-15",
       "rating": 5,
       "place_key": "pbd88bb6cfd01",
       "this": false,
@@ -5442,7 +6019,7 @@
       "km": 11.1
      },
      {
-      "day": "2026-04-14",
+      "day": "2026-04-15",
       "rating": 2,
       "place_key": "pf671be2c3fc3",
       "this": false,
@@ -5453,7 +6030,7 @@
       "km": 15.5
      },
      {
-      "day": "2026-04-14",
+      "day": "2026-04-15",
       "rating": 2,
       "place_key": "pea61aae66da3",
       "this": false,
@@ -5464,7 +6041,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-05-14",
+      "day": "2026-05-15",
       "rating": 2,
       "place_key": "p4b9d03e6dade",
       "this": false,
@@ -5475,7 +6052,7 @@
       "km": 10.8
      },
      {
-      "day": "2026-05-14",
+      "day": "2026-05-15",
       "rating": 2,
       "place_key": "p189c1be389b3",
       "this": false,
@@ -5486,7 +6063,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-05-14",
+      "day": "2026-05-15",
       "rating": 5,
       "place_key": "pe3093a803c85",
       "this": false,
@@ -5504,7 +6081,7 @@
     "home_area": "Bengaluru",
     "items": [
      {
-      "day": "2024-08-22",
+      "day": "2024-08-23",
       "rating": 4,
       "place_key": "pfa53216ff6d1",
       "this": false,
@@ -5515,7 +6092,7 @@
       "km": 0.0
      },
      {
-      "day": "2024-09-21",
+      "day": "2024-09-22",
       "rating": 4,
       "place_key": "p5079dd5a222d",
       "this": false,
@@ -5526,7 +6103,7 @@
       "km": 11.1
      },
      {
-      "day": "2024-10-21",
+      "day": "2024-10-22",
       "rating": 5,
       "place_key": "pbe2cf25741a6",
       "this": false,
@@ -5537,7 +6114,7 @@
       "km": 0.0
      },
      {
-      "day": "2024-11-20",
+      "day": "2024-11-21",
       "rating": 3,
       "place_key": "p9c2ffcaef2d5",
       "this": false,
@@ -5548,7 +6125,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-02-18",
+      "day": "2025-02-19",
       "rating": 5,
       "place_key": "pcf534fd7d3df",
       "this": false,
@@ -5559,7 +6136,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-02-18",
+      "day": "2025-02-19",
       "rating": 5,
       "place_key": "p24f4402c2ee4",
       "this": false,
@@ -5570,7 +6147,7 @@
       "km": 10.8
      },
      {
-      "day": "2025-05-19",
+      "day": "2025-05-20",
       "rating": 4,
       "place_key": "p1daa68c03991",
       "this": false,
@@ -5581,7 +6158,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-08-17",
+      "day": "2025-08-18",
       "rating": 3,
       "place_key": "p730c70f2e9fc",
       "this": false,
@@ -5592,7 +6169,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-09-16",
+      "day": "2025-09-17",
       "rating": 3,
       "place_key": "pfadc11945413",
       "this": false,
@@ -5603,7 +6180,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-09-16",
+      "day": "2025-09-17",
       "rating": 5,
       "place_key": "p01940ac56c4d",
       "this": false,
@@ -5614,7 +6191,7 @@
       "km": 10.8
      },
      {
-      "day": "2025-10-16",
+      "day": "2025-10-17",
       "rating": 5,
       "place_key": "pf0dbf3e413f5",
       "this": false,
@@ -5625,7 +6202,7 @@
       "km": 10.8
      },
      {
-      "day": "2025-10-16",
+      "day": "2025-10-17",
       "rating": 5,
       "place_key": "pc32a441311f3",
       "this": false,
@@ -5636,7 +6213,7 @@
       "km": 10.8
      },
      {
-      "day": "2025-10-16",
+      "day": "2025-10-17",
       "rating": 5,
       "place_key": "pae17664b7408",
       "this": false,
@@ -5647,7 +6224,7 @@
       "km": 10.8
      },
      {
-      "day": "2025-10-16",
+      "day": "2025-10-17",
       "rating": 4,
       "place_key": "p9f3e593fd6e2",
       "this": false,
@@ -5658,7 +6235,7 @@
       "km": 0.0
      },
      {
-      "day": "2025-10-16",
+      "day": "2025-10-17",
       "rating": 5,
       "place_key": "pc3bc5c22b625",
       "this": false,
@@ -5669,7 +6246,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-01-14",
+      "day": "2026-01-15",
       "rating": 5,
       "place_key": "p0b462881601c",
       "this": false,
@@ -5680,7 +6257,7 @@
       "km": 10.8
      },
      {
-      "day": "2026-01-14",
+      "day": "2026-01-15",
       "rating": 4,
       "place_key": "p9e113d61bed7",
       "this": false,
@@ -5691,7 +6268,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-02-13",
+      "day": "2026-02-14",
       "rating": 4,
       "place_key": "p650751b69e05",
       "this": false,
@@ -5702,7 +6279,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-03-11",
+      "day": "2026-03-12",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5713,7 +6290,7 @@
       "km": 0.0
      },
      {
-      "day": "2026-04-14",
+      "day": "2026-04-15",
       "rating": 4,
       "place_key": "pf6b46ad55c76",
       "this": false,
@@ -5724,7 +6301,7 @@
       "km": 11.1
      },
      {
-      "day": "2026-04-14",
+      "day": "2026-04-15",
       "rating": 5,
       "place_key": "p73d8d69860a0",
       "this": false,
@@ -5735,7 +6312,7 @@
       "km": 11.1
      },
      {
-      "day": "2026-05-14",
+      "day": "2026-05-15",
       "rating": 5,
       "place_key": "p9a1c49b596cb",
       "this": false,
@@ -5744,6 +6321,177 @@
       "lat": 13.0,
       "lng": 77.6,
       "km": 0.0
+     }
+    ]
+   },
+   "uae33cf26c736": {
+    "total_reviews": 3,
+    "visible": 1,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2026-06-18",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Bengaluru",
+      "type_group": "Home & moving services",
+      "lat": 13.0,
+      "lng": 77.6,
+      "km": 0.0
+     }
+    ]
+   },
+   "u68ed51848b68": {
+    "total_reviews": 3,
+    "visible": 1,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2026-04-16",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Bengaluru",
+      "type_group": "Home & moving services",
+      "lat": 13.0,
+      "lng": 77.6,
+      "km": 0.0
+     }
+    ]
+   },
+   "u7ef11f75e990": {
+    "total_reviews": 3,
+    "visible": 1,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2026-04-30",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Bengaluru",
+      "type_group": "Home & moving services",
+      "lat": 13.0,
+      "lng": 77.6,
+      "km": 0.0
+     }
+    ]
+   },
+   "uce9aba5a804e": {
+    "total_reviews": 12,
+    "visible": 10,
+    "home_area": "Bengaluru",
+    "items": [
+     {
+      "day": "2024-11-21",
+      "rating": 3,
+      "place_key": "pff00100d7f7d",
+      "this": false,
+      "area": "Bengaluru",
+      "type_group": "Food & drink",
+      "lat": 12.9,
+      "lng": 77.7,
+      "km": 15.5
+     },
+     {
+      "day": "2024-11-21",
+      "rating": 4,
+      "place_key": "p96aa02171d6a",
+      "this": false,
+      "area": "Bengaluru",
+      "type_group": "Retail",
+      "lat": 12.9,
+      "lng": 77.6,
+      "km": 11.1
+     },
+     {
+      "day": "2025-01-20",
+      "rating": 4,
+      "place_key": "pb2daba11047f",
+      "this": false,
+      "area": "Bengaluru",
+      "type_group": "Food & drink",
+      "lat": 13.0,
+      "lng": 77.7,
+      "km": 10.8
+     },
+     {
+      "day": "2025-02-19",
+      "rating": 3,
+      "place_key": "p79417ab74570",
+      "this": false,
+      "area": "Bengaluru",
+      "type_group": "Food & drink",
+      "lat": 13.0,
+      "lng": 77.5,
+      "km": 10.8
+     },
+     {
+      "day": "2025-03-21",
+      "rating": 4,
+      "place_key": "p03b93e40faf8",
+      "this": false,
+      "area": "Bengaluru",
+      "type_group": "Food & drink",
+      "lat": 12.9,
+      "lng": 77.6,
+      "km": 11.1
+     },
+     {
+      "day": "2025-04-20",
+      "rating": 3,
+      "place_key": "p739819061ff0",
+      "this": false,
+      "area": "Bengaluru",
+      "type_group": "Health",
+      "lat": 13.0,
+      "lng": 77.5,
+      "km": 10.8
+     },
+     {
+      "day": "2026-04-02",
+      "rating": 4,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Bengaluru",
+      "type_group": "Home & moving services",
+      "lat": 13.0,
+      "lng": 77.6,
+      "km": 0.0
+     },
+     {
+      "day": "2026-04-15",
+      "rating": 3,
+      "place_key": "p48e6a89548ae",
+      "this": false,
+      "area": "Bengaluru",
+      "type_group": "Retail",
+      "lat": 12.9,
+      "lng": 77.6,
+      "km": 11.1
+     },
+     {
+      "day": "2026-05-15",
+      "rating": 4,
+      "place_key": "pb7e4e1938136",
+      "this": false,
+      "area": "Bengaluru",
+      "type_group": "Food & drink",
+      "lat": 12.9,
+      "lng": 77.6,
+      "km": 11.1
+     },
+     {
+      "day": "2026-05-15",
+      "rating": 5,
+      "place_key": "p381b43aa4b8f",
+      "this": false,
+      "area": "Bengaluru",
+      "type_group": "Food & drink",
+      "lat": 12.9,
+      "lng": 77.5,
+      "km": 15.5
      }
     ]
    }
@@ -5789,6 +6537,22 @@
     {
      "id": "u2ac3d3b4fc6d",
      "label": "no_flags"
+    },
+    {
+     "id": "uae33cf26c736",
+     "label": "no_flags"
+    },
+    {
+     "id": "u68ed51848b68",
+     "label": "no_flags"
+    },
+    {
+     "id": "u7ef11f75e990",
+     "label": "no_flags"
+    },
+    {
+     "id": "uce9aba5a804e",
+     "label": "no_flags"
     }
    ],
    "edges": []
@@ -5814,7 +6578,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r21972230adcb",
@@ -5838,7 +6604,9 @@
     "ai": {
      "verdict": "human_style",
      "cues": []
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r076202bb730a",
@@ -5859,7 +6627,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r1ce5e6458e33",
@@ -5882,7 +6652,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rf4f512a0e422",
@@ -5890,8 +6662,10 @@
     "rating": 5,
     "date": "2026-06-11T06:00:00+00:00",
     "day": "2026-06-11",
-    "label": "not_checked",
-    "badges": [],
+    "label": "no_flags",
+    "badges": [
+     "A1"
+    ],
     "text": "I recently used their packing and moving services for my relocation, and I must say the experience was absolutely seamless. From the initial survey to the final delivery, the team demonstrated impeccable professionalism and attention to detail. Every item was packed with care and arrived in perfect condition. Overall, I can't recommend them enough for anyone looking for a stress-free move!",
     "text_length": 385,
     "script": "latin",
@@ -5911,7 +6685,9 @@
       "the experience was absolutely seamless",
       "impeccable professionalism and attention to detail"
      ]
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r8b43576da20b",
@@ -5932,7 +6708,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r7e714384086e",
@@ -5953,7 +6731,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r3464654e2409",
@@ -5974,7 +6754,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rbf3bfd72821b",
@@ -6003,7 +6785,9 @@
       "made the entire process effortless",
       "Whether you're moving across the city or across the country"
      ]
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "ra74805e2d84a",
@@ -6027,7 +6811,9 @@
     "ai": {
      "verdict": "human_style",
      "cues": []
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r2c0d02b08b54",
@@ -6048,7 +6834,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rf94f8da7c44e",
@@ -6069,7 +6857,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r2dd1dae94485",
@@ -6098,7 +6888,9 @@
       "Overall, the experience was smooth and well-coordinated",
       "Communication was prompt and professional throughout"
      ]
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r9f771f990f6f",
@@ -6119,7 +6911,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r91d3a97f2852",
@@ -6140,7 +6934,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rc662e23f8b7d",
@@ -6161,7 +6957,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r33526c4b47a5",
@@ -6182,7 +6980,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r5763794c4cdf",
@@ -6212,7 +7012,9 @@
       "Exceptional service from start to finish",
       "Truly a hassle-free experience that exceeded my expectations"
      ]
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "radb968c02c04",
@@ -6233,7 +7035,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r60f904a601d0",
@@ -6254,7 +7058,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r01a05fc80749",
@@ -6278,7 +7084,9 @@
     "ai": {
      "verdict": "human_style",
      "cues": []
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r867a5ed0af3a",
@@ -6307,7 +7115,9 @@
       "Cons: None that I can think of",
       "A testament to their commitment to quality"
      ]
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r76f5f8467110",
@@ -6328,7 +7138,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r7befb342fb6c",
@@ -6349,7 +7161,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r1cd1d8bca214",
@@ -6370,7 +7184,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "ra6a15577116e",
@@ -6391,7 +7207,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rb563aaba624a",
@@ -6415,7 +7233,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r395c4d79cce5",
@@ -6436,7 +7256,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rd7107ec16945",
@@ -6457,7 +7279,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r27309a0f75ee",
@@ -6481,7 +7305,9 @@
     "ai": {
      "verdict": "human_style",
      "cues": []
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rf18b8406fef5",
@@ -6510,7 +7336,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r9553017cf5c2",
@@ -6538,7 +7366,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r244acd3f9739",
@@ -6566,7 +7396,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r76961ccf10b9",
@@ -6590,7 +7422,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "ra351dba6db41",
@@ -6614,7 +7448,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r4815528aab01",
@@ -6643,7 +7479,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rc192e04e5d75",
@@ -6667,7 +7505,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r064937453c6c",
@@ -6691,7 +7531,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r062573a4fa40",
@@ -6715,7 +7557,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r8f41a150336a",
@@ -6739,7 +7583,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r1b1f7e4030c0",
@@ -6768,7 +7614,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r414e54155f78",
@@ -6792,7 +7640,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rc549dfa60542",
@@ -6816,7 +7666,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r0fa1745c013e",
@@ -6840,7 +7692,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r6cc8834f3ea5",
@@ -6864,7 +7718,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r507dc44c7900",
@@ -6893,7 +7749,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r9b5fa29ec30b",
@@ -6917,7 +7775,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r433c36c33ffe",
@@ -6941,7 +7801,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r01093eaa9a5d",
@@ -6965,7 +7827,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r46da2a50d337",
@@ -6986,7 +7850,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r36ef64f39098",
@@ -7010,7 +7876,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r8a140cd6a548",
@@ -7039,7 +7907,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r8d92ce9705d0",
@@ -7063,7 +7933,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r0082109c4d86",
@@ -7087,7 +7959,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r31a5cc2c0d33",
@@ -7111,7 +7985,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r8d954a4ee197",
@@ -7135,7 +8011,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r0bfbe94ac1a6",
@@ -7164,7 +8042,9 @@
      "first_time_burst",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r8ddca04aa4e8",
@@ -7172,8 +8052,10 @@
     "rating": 5,
     "date": "2026-04-20T02:00:00+00:00",
     "day": "2026-04-20",
-    "label": "not_checked",
-    "badges": [],
+    "label": "no_flags",
+    "badges": [
+     "A1"
+    ],
     "text": "I was nervous about shifting my entire household, but this company turned what could have been a stressful ordeal into a smooth and seamless experience. The team arrived on time, wrapped everything meticulously, and unpacked with remarkable efficiency. Their dedication to customer satisfaction is evident in every step. In conclusion, an excellent choice for anyone relocating.",
     "text_length": 370,
     "script": "latin",
@@ -7193,7 +8075,9 @@
       "a smooth and seamless experience",
       "Their dedication to customer satisfaction is evident in ever"
      ]
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r8ea33298c254",
@@ -7214,7 +8098,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "ra0874f3dd7ac",
@@ -7237,7 +8123,9 @@
     "signs": [
      "copied_text"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "ra77af0332906",
@@ -7261,7 +8149,9 @@
      "chatbot_text",
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rf93822ed1b60",
@@ -7282,7 +8172,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r97df4f9bb6ef",
@@ -7303,7 +8195,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r81eb198fd59a",
@@ -7324,7 +8218,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rb0fe2d0be4b0",
@@ -7345,7 +8241,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rea99d02d4083",
@@ -7366,7 +8264,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r4d6967eb7c66",
@@ -7387,7 +8287,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r66ba321be340",
@@ -7408,7 +8310,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r403033104e03",
@@ -7432,7 +8336,9 @@
     "ai": {
      "verdict": "human_style",
      "cues": []
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rd6f6a22074a8",
@@ -7440,8 +8346,10 @@
     "rating": 5,
     "date": "2026-04-07T01:00:00+00:00",
     "day": "2026-04-07",
-    "label": "not_checked",
-    "badges": [],
+    "label": "no_flags",
+    "badges": [
+     "A1"
+    ],
     "text": "From the moment I contacted them, I knew I was in good hands. The representative patiently answered all my questions and provided a detailed quotation. On moving day, the crew worked like a well-oiled machine, packing, loading, and transporting everything with precision. Not a single scratch on my furniture! Truly a five-star service that I would wholeheartedly recommend.",
     "text_length": 364,
     "script": "latin",
@@ -7461,7 +8369,9 @@
       "the crew worked like a well-oiled machine",
       "a five-star service that I would wholeheartedly recommend"
      ]
-    }
+    },
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r61f55cf097eb",
@@ -7482,7 +8392,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "ref321ee329bf",
@@ -7503,7 +8415,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rf8245558bb02",
@@ -7526,7 +8440,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r51e6162da7f9",
@@ -7549,7 +8465,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "re63f8be541ff",
@@ -7570,7 +8488,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r8d44f5eb9987",
@@ -7591,7 +8511,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r94fd959bd2d3",
@@ -7612,7 +8534,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r61f675e26f8f",
@@ -7633,7 +8557,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r5b100e524efe",
@@ -7656,7 +8582,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rac375bf5a63d",
@@ -7679,7 +8607,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r8e7f7dfab5c4",
@@ -7700,7 +8630,18 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": {
+     "verdict": "same_voice",
+     "here": "",
+     "elsewhere": "",
+     "others": [
+      "The lift was a bit noisy, the billing counter a bit noisy. Stopped by with friends, the menu had fewer options now and quality was consistent with before. Mixed feelings.",
+      "The receptionist was a bit noisy, the AC freshly renovated. Stopped by before a flight, they fixed our issue quickly and prices felt a little high. Not sure I will return.",
+      "The lighting was friendly enough, the lift very efficient. Visited with friends, the menu had fewer options now and the staff were polite but slow. Mixed feelings."
+     ]
+    }
    },
    {
     "review_id": "r81189e4d3726",
@@ -7723,7 +8664,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r5fdec2dfbaa9",
@@ -7744,7 +8687,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r364e069a30ca",
@@ -7765,7 +8710,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r151831f3be19",
@@ -7773,7 +8720,7 @@
     "rating": 4,
     "date": "2026-03-21T06:00:00+00:00",
     "day": "2026-03-21",
-    "label": "not_checked",
+    "label": "no_flags",
     "badges": [],
     "text": "Was a little skeptical after reading mixed reviews but the experience was decent. They gave written quotation of Rs 18,000 for 2BHK to Chennai with insurance. Truck came one day late due to some issue at the state border, they informed in advance though. All items reached fine except a small dent on the washing machine.",
     "text_length": 316,
@@ -7789,6 +8736,17 @@
     "ai": {
      "verdict": "human_style",
      "cues": []
+    },
+    "keyword_phrase": null,
+    "voice": {
+     "verdict": "same_voice",
+     "here": "",
+     "elsewhere": "",
+     "others": [
+      "The washroom was a little dusty, the lighting friendly enough. Booked in advance late evening, the location is easy to find. Not sure I will return.",
+      "The seating was friendly enough, the payment process painfully slow. Stopped by last weekend, quality was consistent with before and service could be better. Mixed feelings.",
+      "The manager was freshly renovated, the signboard a bit noisy. I tried this place on a rainy day, the location is easy to find. Not sure I will return."
+     ]
     }
    },
    {
@@ -7810,7 +8768,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r3c7b2a1dc825",
@@ -7833,7 +8793,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rcb1a2ac90731",
@@ -7854,7 +8816,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r28867a7e2e38",
@@ -7875,7 +8839,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r565b4b7b8dcb",
@@ -7896,7 +8862,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rc47bc1a0e9ad",
@@ -7919,7 +8887,9 @@
     "signs": [
      "first_time_account"
     ],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rc1547876470b",
@@ -7940,7 +8910,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r49f39d56b7c6",
@@ -7961,7 +8933,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r5e0d5b1ff6f3",
@@ -7982,7 +8956,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r4b05cecb847e",
@@ -8003,7 +8979,18 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": {
+     "verdict": "same_voice",
+     "here": "",
+     "elsewhere": "",
+     "others": [
+      "The waiting area was a bit noisy, the seating surprisingly good. First time here late evening, quality was consistent with before and the location is easy to find. Mixed feelings.",
+      "The washroom was better than expected, the signboard better than expected. Came with family for a birthday, the waiting time was long and value for money is decent. Okay overall.",
+      "The lobby was painfully slow, the manager better than expected. Came with family late evening, the location is easy to find. Not sure I will return."
+     ]
+    }
    },
    {
     "review_id": "r8723f4b9ef44",
@@ -8024,7 +9011,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rfbe82c7f8d53",
@@ -8045,7 +9034,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "rcf7f219766c9",
@@ -8066,7 +9057,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    },
    {
     "review_id": "r8d0d2fd63752",
@@ -8087,7 +9080,9 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": null
+    "ai": null,
+    "keyword_phrase": null,
+    "voice": null
    }
   ],
   "label_counts": {
@@ -8096,8 +9091,8 @@
    "suspicious": 6,
    "single_use_burst": 21,
    "group_trip": 0,
-   "no_flags": 2,
-   "not_checked": 70
+   "no_flags": 6,
+   "not_checked": 66
   },
   "client_lists": {},
   "places": {
@@ -8145,7 +9140,7 @@
   ],
   "caveats": [
    "This is a pattern, not proof.",
-   "Only the newest 99 reviews and the 10 highest-priority reviewers were examined.",
+   "Only the newest 99 reviews and the 14 highest-priority reviewers were examined.",
    "Private profiles can't be checked.",
    "Dates in reviewer histories are approximate.",
    "Rings within a single city aren't detected.",
@@ -8157,71 +9152,99 @@
    {
     "relative": "15 weeks ago",
     "true_date": "2026-03-05",
-    "estimated_from": "2026-03-08",
-    "estimated_to": "2026-03-15",
+    "estimated_from": "2026-03-09",
+    "estimated_to": "2026-03-16",
     "inside": false
    },
    {
     "relative": "8 weeks ago",
     "true_date": "2026-04-22",
-    "estimated_from": "2026-04-26",
-    "estimated_to": "2026-05-03",
+    "estimated_from": "2026-04-27",
+    "estimated_to": "2026-05-04",
     "inside": false
    },
    {
     "relative": "11 weeks ago",
     "true_date": "2026-03-27",
-    "estimated_from": "2026-04-05",
-    "estimated_to": "2026-04-12",
+    "estimated_from": "2026-04-06",
+    "estimated_to": "2026-04-13",
     "inside": false
    },
    {
     "relative": "8 weeks ago",
     "true_date": "2026-04-23",
-    "estimated_from": "2026-04-26",
-    "estimated_to": "2026-05-03",
+    "estimated_from": "2026-04-27",
+    "estimated_to": "2026-05-04",
     "inside": false
    },
    {
     "relative": "8 weeks ago",
     "true_date": "2026-04-23",
-    "estimated_from": "2026-04-26",
-    "estimated_to": "2026-05-03",
+    "estimated_from": "2026-04-27",
+    "estimated_to": "2026-05-04",
     "inside": false
    },
    {
     "relative": "8 weeks ago",
     "true_date": "2026-04-22",
-    "estimated_from": "2026-04-26",
-    "estimated_to": "2026-05-03",
+    "estimated_from": "2026-04-27",
+    "estimated_to": "2026-05-04",
+    "inside": false
+   },
+   {
+    "relative": "10 weeks ago",
+    "true_date": "2026-04-07",
+    "estimated_from": "2026-04-13",
+    "estimated_to": "2026-04-20",
+    "inside": false
+   },
+   {
+    "relative": "8 weeks ago",
+    "true_date": "2026-04-20",
+    "estimated_from": "2026-04-27",
+    "estimated_to": "2026-05-04",
     "inside": false
    },
    {
     "relative": "8 weeks ago",
     "true_date": "2026-04-24",
-    "estimated_from": "2026-04-26",
-    "estimated_to": "2026-05-03",
+    "estimated_from": "2026-04-27",
+    "estimated_to": "2026-05-04",
     "inside": false
    },
    {
     "relative": "8 weeks ago",
     "true_date": "2026-04-24",
-    "estimated_from": "2026-04-26",
-    "estimated_to": "2026-05-03",
+    "estimated_from": "2026-04-27",
+    "estimated_to": "2026-05-04",
+    "inside": false
+   },
+   {
+    "relative": "a week ago",
+    "true_date": "2026-06-11",
+    "estimated_from": "2026-06-15",
+    "estimated_to": "2026-06-22",
     "inside": false
    },
    {
     "relative": "8 weeks ago",
     "true_date": "2026-04-24",
-    "estimated_from": "2026-04-26",
-    "estimated_to": "2026-05-03",
+    "estimated_from": "2026-04-27",
+    "estimated_to": "2026-05-04",
+    "inside": false
+   },
+   {
+    "relative": "12 weeks ago",
+    "true_date": "2026-03-21",
+    "estimated_from": "2026-03-30",
+    "estimated_to": "2026-04-06",
     "inside": false
    },
    {
     "relative": "8 weeks ago",
     "true_date": "2026-04-23",
-    "estimated_from": "2026-04-26",
-    "estimated_to": "2026-05-03",
+    "estimated_from": "2026-04-27",
+    "estimated_to": "2026-05-04",
     "inside": false
    }
   ],

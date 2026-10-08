@@ -113,6 +113,8 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str, *, keep_texts: bool 
 
     target = place(inp.target)
     target.total_reviews = approx_count(target.total_reviews)
+    if keep_texts:
+        target.address = inp.target.address  # invented: keeps neighbourhood phrases in reviews readable
     shift = timedelta(days=date_offset_days(salt_value, inp.target.place_key))
 
     def dt(v):
@@ -171,7 +173,10 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str, *, keep_texts: bool 
                 dt(h.date_max),
                 h.edited,
                 shifted_images(h.image_dates),
-                None if h.place_key == inp.target.place_key else text_for(history_text_id(cid, h.review_id), h.text),
+                None
+                if h.place_key == inp.target.place_key
+                else (scrub_text(h.text, title_words)[:400] if keep_texts and h.text else None)
+                or text_for(history_text_id(cid, h.review_id), h.text),
                 h.travel_group,
             )
             for h in hs
@@ -230,6 +235,15 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str, *, keep_texts: bool 
             }
             for k, j in sorted(inp.text_judgements.items())
         },
+        voice_judgements={
+            uid(k): {
+                "verdict": j.get("verdict"),
+                "here": scrub_text(j.get("here", ""), title_words)[:CUE_KEEP_CHARS],
+                "elsewhere": scrub_text(j.get("elsewhere", ""), title_words)[:CUE_KEEP_CHARS],
+                "model": j.get("model"),
+            }
+            for k, j in sorted(inp.voice_judgements.items())
+        },
     )
 
 
@@ -256,6 +270,7 @@ def input_to_dict(inp: AnalysisInput) -> dict[str, Any]:
         "notes": inp.notes,
         "top_rated": [asdict(r) for r in inp.top_rated],
         "text_judgements": dict(sorted(inp.text_judgements.items())),
+        "voice_judgements": dict(sorted(inp.voice_judgements.items())),
     }
 
 
@@ -286,6 +301,7 @@ def input_from_dict(d: dict[str, Any]) -> AnalysisInput:
         notes=d.get("notes", []),
         top_rated=[TargetReview(**{**r, "posted_at": _dt(r["posted_at"])}) for r in d.get("top_rated", [])],
         text_judgements=d.get("text_judgements", {}),
+        voice_judgements=d.get("voice_judgements", {}),
     )
 
 

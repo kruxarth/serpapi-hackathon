@@ -10,7 +10,7 @@ from typing import Any
 
 from . import db, settings
 from .engine.analyze import LABEL_TEXT, analyze
-from .llm import LLMGateway, LLMRefused, judge_texts, paraphrase_groups, summarize
+from .llm import LLMGateway, LLMRefused, judge_texts, judge_voices, paraphrase_groups, summarize
 from .model import AnalysisInput
 from .serp.gateway import Gateway
 from .store import save_parsed
@@ -72,6 +72,10 @@ def store_report(
         if on_progress and llm.can_call:
             on_progress("Reading the longer reviews for AI-written style")
         inp.text_judgements = judge_texts(texts, llm, words)
+    if inp.expansions and not inp.voice_judgements:
+        if on_progress and llm.can_call:
+            on_progress("Comparing reviewers' writing with their other reviews")
+        inp.voice_judgements = judge_voices(inp, llm, words)
     paraphrase = None
     if settings.load().get("paraphrase_signal"):
         try:

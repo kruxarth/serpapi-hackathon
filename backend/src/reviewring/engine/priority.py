@@ -24,9 +24,13 @@ class Candidate:
 
 
 def score_reviews(
-    reviews: list[TargetReview], bursts: BurstResult, features: dict[str, TextFeatures]
+    reviews: list[TargetReview],
+    bursts: BurstResult,
+    features: dict[str, TextFeatures],
+    keyword_ids: frozenset[str] | set[str] = frozenset(),
 ) -> list[Candidate]:
-    """One candidate per contributor (their highest-scoring review), best first."""
+    """One candidate per contributor (their highest-scoring review), best first. ``keyword_ids``: reviews written like
+    search ads, whose authors are worth opening first so their own writing can be compared."""
     w = config.load_tunables()["priority"]
     dup_clusters: dict[str, int] = {}
     for r in reviews:
@@ -67,6 +71,8 @@ def score_reviews(
             parts["short_text"] = w["short_text"]
         if f is not None and f.target_cluster and dup_clusters.get(f.target_cluster, 0) >= 2:
             parts["duplicate_cluster"] = w["duplicate_cluster"]
+        if r.review_id in keyword_ids:
+            parts["keyword_style"] = int(config.tunable("keyword_style", "priority_points"))
         if r.local_guide and w["local_guide"]:
             parts["local_guide"] = w["local_guide"]
         cand = Candidate(
@@ -87,6 +93,7 @@ class Selection:
     round1: list[str]  # priority picks
     baseline: list[str]
     remaining: list[Candidate]  # ranked, for round 2
+    voice: list[str] = field(default_factory=list)  # authors of long reviews, opened to compare their voice
 
 
 def select_round1(candidates: list[Candidate], seed_key: str, k1: int, b: int) -> Selection:
@@ -142,3 +149,30 @@ def select_round2(
         return (-(c.score + extra), -c.posted_ts, c.contributor_id)
 
     return [c.contributor_id for c in sorted(selection.remaining, key=adjusted)[:k2]]
+
+
+def select_voice(
+    reviews: list[TargetReview], exclude: set[str], k: int, keyword_ids: frozenset[str] | set[str] = frozenset()
+) -> list[str]:
+    """Authors worth opening to compare their voice: the longest 4-5 star reviews from accounts that have other
+    reviews, search-ad phrasing first. The priority score favours thin, short and bursty reviews, which leave
+    nothing to compare."""
+    cfg = config.load_tunables()["voice"]
+    pool = [
+        r
+        for r in reviews
+        if r.contributor_id
+        and r.contributor_id not in exclude
+        and (r.rating or 0) >= 4
+        and r.text
+        and len(r.text.split()) >= int(cfg["pick_min_words"])
+        and (r.reviewer_reviews or 0) >= int(cfg["pick_min_account_reviews"])
+    ]
+    pool.sort(key=lambda r: (r.review_id not in keyword_ids, -len(r.text.split()), r.contributor_id))  # type: ignore[union-attr]
+    out: list[str] = []
+    for r in pool:
+        if r.contributor_id not in out:
+            out.append(r.contributor_id)  # type: ignore[arg-type]
+        if len(out) >= k:
+            break
+    return out

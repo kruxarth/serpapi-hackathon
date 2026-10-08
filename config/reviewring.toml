@@ -4,7 +4,7 @@
 [budget]
 monthly_cap = 250            # free plan
 hourly_cap = 50              # free plan, rolling 60 minutes
-per_analysis_cap = 36        # 6 pages + 25 histories + 3 top-rated + 1 coordinates lookup + 1 spare
+per_analysis_cap = 40        # 6 pages + 29 histories + 3 top-rated + 1 coordinates lookup + 1 spare
 retry_delay_seconds = 30     # 5xx / timeout: retry once after this, then pause
 request_timeout_seconds = 60
 
@@ -13,6 +13,7 @@ n_reviews = 100              # newest target reviews: 6 pages (8 + 5 x 20 = 108)
 k1 = 8                       # round-1 reviewers
 baseline = 2                 # B: random baseline reviewers
 k2 = 15                      # round-2 reviewers
+voice_picks = 4              # round 1 also opens the authors of the longest 4-5 star reviews, to compare their voice
 history_concurrency = 3
 seed = 20261010
 
@@ -93,13 +94,34 @@ min_cues = 2
 
 [signs]
 # Per-review warning signs, strongest first. A review is drawn in the first branch that is set aside.
-order = ["chatbot_text", "copied_text", "first_time_burst", "linked_group", "ai_style", "review_spree", "first_time_account"]
-set_aside_by_default = ["chatbot_text", "copied_text", "first_time_burst", "linked_group"]
+order = ["chatbot_text", "copied_text", "voice_mismatch", "keyword_style", "first_time_burst", "linked_group", "ai_style", "review_spree", "first_time_account"]
+set_aside_by_default = ["chatbot_text", "copied_text", "voice_mismatch", "keyword_style", "first_time_burst", "linked_group"]
 first_time_max_reviews = 1   # an account showing at most this many reviews is "first-time"
 skew_min_ratio = 2.0         # 5-star reviews this many times as likely to be first-time as other reviews...
 skew_min_five_star = 10      # ...with at least this many 5-star and
 skew_min_other = 5           # this many other reviews to compare
 skew_min_share = 0.35        # and at least this share of the 5-star reviews (a fifth is normal for real customers)
+
+[keyword_style]
+# Reviews written like search ads: the business or its category, then its neighbourhood or city
+# ("packers and movers in [area], [city]"). Counts only when several accounts at the listing write this way.
+min_accounts = 3
+min_share = 0.08             # of the reviews with text
+raises_level = true          # flagged: the level is at least Elevated (never High)
+priority_points = 2          # open these reviewers' histories first, so their voice can be compared
+
+[voice]
+# Not in the reviewer's own voice: an AI model compares a checked reviewer's review of this business with their own
+# other reviews and must quote one phrase from each side that shows the difference. Real data: scripted reviews posted
+# from real, aged accounts (docs/research-2026-10-08.md).
+enabled = true
+min_words_here = 12          # the review of this business needs this many words to compare
+min_other_words = 3          # an other review counts as their writing with this many words
+max_others = 5               # other reviews sent per reviewer
+batch_size = 6               # reviewers per call
+pick_min_words = 20          # a voice pick's review needs this many words...
+pick_min_account_reviews = 3 # ...and its author at least this many reviews (some writing to compare)
+raises_level_at = 3          # this many reviews not in their author's voice make the level at least Elevated
 
 [spree]
 # A checked reviewer who rated many unrelated businesses in several cities within a month, almost all 5 stars:

@@ -109,7 +109,7 @@ def test_full_analysis_flow(client, server):
     types = [e["type"] for e in events]
     assert types[0] == "queued" and types[-1] == "done"
     assert "expanding" in types and "finding_groups" in types
-    assert events[-1]["searches_used"] == 28  # 3 review pages (48 reviews) + 25 histories
+    assert events[-1]["searches_used"] == 32  # 3 review pages (48 reviews) + 25 histories + 4 voice picks
 
     full = client.get(f"/api/analyses/{aid}").json()
     assert full["status"] == "done" and full["report"]["level"]["level"] == "High"

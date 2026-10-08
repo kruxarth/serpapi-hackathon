@@ -32,7 +32,7 @@ def test_ring_business_runs_both_rounds():
     assert out.status == "done" and not out.early_stop
     engines = [c["engine"] for c in server.calls]
     assert engines.count("google_maps_reviews") == 5
-    assert engines.count("google_maps_contributor_reviews") == 25
+    assert engines.count("google_maps_contributor_reviews") == 29
     assert "google_maps" not in engines  # target coordinates came free from a history
     assert out.input.target.lat is not None
     assert {e.type for e in events} >= {"resolving", "fetching_reviews", "scoring", "expanding", "building_graph"}
@@ -46,7 +46,7 @@ def test_clean_business_stops_early():
     server = FakeSerpApi(w)
     out = Collector(gateway(server), URL).run()
     assert out.status == "done" and out.early_stop
-    assert len(server.calls) == 15  # 5 pages + 8 + 2
+    assert len(server.calls) == 19  # 5 pages + 8 + 2 + 4 voice picks
 
 
 def test_pause_on_hourly_limit_then_resume_without_refetching(monkeypatch):
@@ -82,7 +82,7 @@ def test_cancel_keeps_cache():
     assert n >= 5
     out2 = Collector(gateway(server), URL).run()
     assert out2.status == "done"
-    assert len(server.calls) - n <= 30 - 5
+    assert len(server.calls) - n <= 34 - 5
 
 
 def test_private_profiles_are_marked():
@@ -106,7 +106,7 @@ def test_offline_mode_reports_missing():
     c2 = Collector(offline, URL)
     out2 = c2.run()
     assert out2.status == "done"
-    assert c2.state["missing"]["reviewer histories"] == 10
+    assert c2.state["missing"]["reviewer histories"] == 14
     assert all(x.status == "missing" for x in out2.input.contributors.values())
 
 
@@ -114,7 +114,7 @@ def test_stop_after_round1():
     w, _ = ring_world()
     server = FakeSerpApi(w)
     out = Collector(gateway(server), URL, CollectParams.from_config(stop_after_round1=True)).run()
-    assert out.status == "done" and out.early_stop and len(server.calls) == 15
+    assert out.status == "done" and out.early_stop and len(server.calls) == 19
 
 
 def test_name_search_needs_pick_then_continues():
@@ -158,7 +158,7 @@ def test_live_view_events_carry_no_ids_or_names():
     assert len(loaded["reviews"]) > 0 and all(len(row) == 3 for row in loaded["reviews"])
     picks = [p for e in by_type["picks"] for p in e.data["picks"]]
     histories = by_type["history"]
-    assert len(picks) == 25 and len(histories) == 25
+    assert len(picks) == 29 and len(histories) == 29
     assert {h.data["index"] for h in histories} == {p[0] for p in picks}
     assert any(e.data["pairs"] for e in by_type["links"])  # the planted ring links up
     text = repr([e.data for e in events])
