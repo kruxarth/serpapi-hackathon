@@ -1,7 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { CircleAlert, Search } from 'lucide-react'
-import { AnimatePresence, motion } from 'motion/react'
-import { useState } from 'react'
+import Lenis from 'lenis'
+import 'lenis/dist/lenis.css'
+import { ChevronDown, CircleAlert, Search } from 'lucide-react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../api'
 import { SieveGraph, useSieve } from '../components/Sieve'
@@ -10,6 +12,9 @@ import { exampleSource } from '../example'
 import { ageText, fmt } from '../labels'
 import { EASE } from '../motion'
 import { usePresentation } from '../presentation'
+import { RevealText } from '../story/RevealText'
+import { HotelScene, SieveScene, StackScene, WritingScene } from '../story/Scenes'
+import { StarField, StarKey } from '../story/StarField'
 import type { AnalysisListItem, Candidate, ResolveResult } from '../types'
 
 
@@ -19,58 +24,150 @@ const rise = (i: number) => ({
   transition: { duration: 0.7, ease: EASE, delay: 0.08 * i },
 })
 
+const CHAPTERS = [
+  ['top', 'Look closer'],
+  ['hotel', 'A rating, unpacked'],
+  ['sort', 'Sort the reviews'],
+  ['writing', 'Read the writing'],
+  ['how', 'How it works'],
+  ['check', 'Check a place'],
+] as const
+
+let smooth: Lenis | null = null
+/** Scroll to a chapter through the smooth scroller when it runs, so the two never fight. */
+function jumpTo(id: string) {
+  const el = document.getElementById(id)
+  if (!el) return
+  if (smooth) smooth.scrollTo(el)
+  else el.scrollIntoView({ behavior: 'smooth' })
+}
+
+/** The home page is the story: real findings told scene by scene, then the search. */
 export function HomePage() {
-  const pres = usePresentation()
   const health = useQuery({ queryKey: ['health'], queryFn: api.health })
-  const list = useQuery({ queryKey: ['analyses', pres.on, 'per-place'], queryFn: () => api.list(pres.on, true), refetchInterval: 10000 })
-  const demo = health.data?.mode === 'demo'
+  const mode = health.data?.mode
+  const reduce = useReducedMotion()
+
+  useEffect(() => {
+    if (reduce) return
+    const lenis = new Lenis({ autoRaf: true, lerp: 0.11 })
+    smooth = lenis
+    return () => {
+      lenis.destroy()
+      smooth = null
+    }
+  }, [reduce])
 
   return (
-    <div>
-      <section className="home-hero">
+    <div className="story">
+      <StoryNav />
+      <Hero mode={mode} />
+      <HotelScene />
+      <SieveScene />
+      <WritingScene />
+      <StackScene />
+      <CheckScene mode={mode} />
+    </div>
+  )
+}
+
+/* ---------- 1. the hero: a field of stars and a lens ---------- */
+
+function Hero({ mode }: { mode: string | undefined }) {
+  return (
+    <section id="top" className="hero-scene" aria-label="ReviewRing">
+      <StarField className="star-field" />
+      <div className="hero-copy">
+        <motion.h1 {...rise(0)}>A Google rating is a number.</motion.h1>
+        <motion.p className="hero-sub" {...rise(1)}>Look closer.</motion.p>
+        <motion.p className="lede" {...rise(2)}>
+          ReviewRing reads a listing's newest 100 reviews, marks the ones with warning signs, and shows you the rating without
+          them. You choose what to set aside; every sign comes with its evidence.
+        </motion.p>
+        <motion.div {...rise(3)}>
+          {mode === 'demo' ? <DemoNote /> : <Analyse mode={mode} />}
+        </motion.div>
+      </div>
+      <motion.div className="hero-foot" {...rise(5)}>
         <div>
-          <motion.h1 {...rise(0)}>A Google rating is a number.</motion.h1>
-          <motion.p className="hero-sub" {...rise(1)}>ReviewRing shows where it comes from.</motion.p>
-          <motion.p className="lede" {...rise(2)}>
-            Paste a Google Maps link. ReviewRing reads the newest 100 reviews, marks the ones with warning signs, and shows
-            you the rating without them. You choose what to set aside; every sign comes with its evidence.
-          </motion.p>
-          <motion.div {...rise(3)}>
-            {demo ? (
-              <div className="notice" style={{ marginTop: 28 }}>
-                <CircleAlert size={16} /> Demo mode can't analyse new places. Open one of the prepared, synthetic examples below.
-              </div>
-            ) : (
-              <Analyse mode={health.data?.mode} />
-            )}
-          </motion.div>
-          <motion.p className="small secondary" style={{ marginTop: 22, maxWidth: '58ch' }} {...rise(4)}>
-            It also checks whether the rating is carried by old reviews, and whether reviewers belong to linked groups that
-            review the same unrelated businesses across cities.
-          </motion.p>
+          <div className="tiny muted" style={{ marginBottom: 6 }}>Move your cursor over the stars. Under it:</div>
+          <StarKey />
+        </div>
+        <a href="#hotel" className="scroll-cue" onClick={(e) => { e.preventDefault(); jumpTo('hotel') }}>
+          <ChevronDown size={16} /> Scroll for a real case
+        </a>
+      </motion.div>
+    </section>
+  )
+}
+
+function DemoNote() {
+  return (
+    <div className="notice" style={{ marginTop: 28 }}>
+      <CircleAlert size={16} /> Demo mode can't check new places. The prepared, synthetic examples are at the end of this page.
+    </div>
+  )
+}
+
+/** Chapter dots on the right edge: where you are in the story, and a way to jump. */
+function StoryNav() {
+  const [active, setActive] = useState<string>('top')
+  useEffect(() => {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id) })
+    }, { rootMargin: '-45% 0px -45% 0px' })
+    CHAPTERS.forEach(([id]) => { const el = document.getElementById(id); if (el) io.observe(el) })
+    return () => io.disconnect()
+  }, [])
+  return (
+    <nav className="story-nav" aria-label="Story chapters">
+      {CHAPTERS.map(([id, text]) => (
+        <a key={id} href={`#${id}`} className={active === id ? 'on' : ''} aria-current={active === id ? 'true' : undefined}
+          onClick={(e) => { e.preventDefault(); jumpTo(id) }}>
+          <span className="story-nav-label">{text}</span><i />
+        </a>
+      ))}
+    </nav>
+  )
+}
+
+/* ---------- 6. check a place ---------- */
+
+function CheckScene({ mode }: { mode: string | undefined }) {
+  const pres = usePresentation()
+  const list = useQuery({ queryKey: ['analyses', pres.on, 'per-place'], queryFn: () => api.list(pres.on, true), refetchInterval: 10000 })
+  const demo = mode === 'demo'
+  return (
+    <section id="check" className="check-scene">
+      <div className="check-grid">
+        <div>
+          <RevealText text="Check a place." className="scene-title big" />
+          <p className="lede">
+            Paste a Google Maps link, or a name and city. A check takes about a minute; places checked before open instantly.
+          </p>
+          {demo ? <DemoNote /> : <Analyse mode={mode} />}
+          <p className="small secondary" style={{ marginTop: 22, maxWidth: '58ch' }}>
+            Or use the Chrome extension: open a place on Google Maps, or paste a link into its side panel, and set signs aside
+            right there. It also checks whether a rating is carried by old reviews, and whether reviewers belong to linked
+            groups that review the same unrelated businesses across cities.
+          </p>
         </div>
         <HeroIllustration />
-      </section>
+      </div>
 
-      <section>
-        <div className="section-title">
-          <h2>{demo ? 'Prepared examples' : 'Recent analyses'}</h2>
-          {demo && <span className="muted">Synthetic businesses, made to show each kind of finding</span>}
-        </div>
-        {list.isLoading && <div className="analysis-list">{[0, 1, 2].map((i) => <div key={i} className="skeleton" style={{ height: 76 }} />)}</div>}
-        {list.isError && <p className="muted">{(list.error as Error).message}</p>}
-        {list.data?.length === 0 && (
-          <p className="muted">{demo ? 'No demo fixtures found in fixtures/.' : 'No analyses yet. Paste a Google Maps link above.'}</p>
-        )}
-        <div className="analysis-list">
-          {list.data?.map((a, i) => (
-            <motion.div key={a.id} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: EASE, delay: 0.3 + i * 0.06 }}>
-              <AnalysisRow a={a} />
-            </motion.div>
-          ))}
-        </div>
-      </section>
-    </div>
+      <div className="section-title" style={{ marginTop: 96 }}>
+        <h2>{demo ? 'Prepared examples' : 'Recent checks'}</h2>
+        {demo && <span className="muted">Synthetic businesses, made to show each kind of finding</span>}
+      </div>
+      {list.isLoading && <div className="analysis-list">{[0, 1, 2].map((i) => <div key={i} className="skeleton" style={{ height: 76 }} />)}</div>}
+      {list.isError && <p className="muted">{(list.error as Error).message}</p>}
+      {list.data?.length === 0 && (
+        <p className="muted">{demo ? 'No demo fixtures found in fixtures/.' : 'No checks yet. Paste a Google Maps link above.'}</p>
+      )}
+      <div className="analysis-list">
+        {list.data?.map((a) => <AnalysisRow key={a.id} a={a} />)}
+      </div>
+    </section>
   )
 }
 
@@ -80,9 +177,9 @@ const EXAMPLE = exampleSource()
 function HeroIllustration() {
   const state = useSieve(EXAMPLE)
   return (
-    <motion.div className="hero-ill panel" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: EASE, delay: 0.35 }}>
+    <motion.div className="hero-ill panel" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9, ease: EASE }}>
       <div className="row" style={{ justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 14 }}>
-        <strong>Try it: switch a sign on or off</strong>
+        <strong>Try it on invented reviews</strong>
         <span className="small secondary">Google shows <span className="num">{EXAMPLE.shown}</span><span style={{ color: 'var(--gold)' }}>★</span></span>
       </div>
       <SieveGraph report={EXAMPLE} state={state} compact />

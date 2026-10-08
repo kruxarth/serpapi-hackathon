@@ -64,7 +64,12 @@ function ReviewItem({ r, report, namer, branch, presentation }: { r: ReviewRow; 
   const account = r.reviewer_reviews == null ? null : first ? 'No other reviews' : `${r.reviewer_reviews} reviews`
   const text = r.text ?? r.excerpt ?? null
   const long = (text?.length ?? 0) > 320
-  const marks = useMemo(() => [...(r.ai?.verdict === 'ai_style' ? r.ai.cues : []), ...(r.generated_marker ? [r.generated_marker] : [])], [r])
+  const marks = useMemo(() => [
+    ...(r.ai?.verdict === 'ai_style' ? r.ai.cues : []),
+    ...(r.generated_marker ? [r.generated_marker] : []),
+    ...(r.voice?.verdict === 'different_voice' && r.voice.here ? [r.voice.here] : []),
+  ], [r])
+  const keyword = r.keyword_phrase ?? null
   return (
     <article className={`review-item ${branch === 'kept' ? '' : 'aside'}`}>
       <header className="row" style={{ gap: 10 }}>
@@ -79,9 +84,18 @@ function ReviewItem({ r, report, namer, branch, presentation }: { r: ReviewRow; 
         </div>
       </header>
       <div className={`review-text ${long && !open ? 'clamped' : ''}`}>
-        {text ? <Marked text={text} marks={marks} /> : <span className="muted small">{presentation || report.pseudonymized ? 'Text hidden in presentation mode.' : 'No text, only stars.'}</span>}
+        {text ? <Marked text={text} marks={marks} keyword={keyword} /> : <span className="muted small">{presentation || report.pseudonymized ? 'Text hidden in presentation mode.' : 'No text, only stars.'}</span>}
       </div>
       {long && <button className="link-btn tiny" onClick={() => setOpen(!open)}>{open ? 'Show less' : 'Show all'}</button>}
+      {r.voice?.verdict === 'different_voice' && (
+        <div className="voice-compare">
+          <div className="tiny muted">How this account writes elsewhere</div>
+          {r.voice.others.length
+            ? r.voice.others.map((o) => <p key={o} className="voice-other"><Marked text={o} marks={r.voice!.elsewhere ? [r.voice!.elsewhere] : []} /></p>)
+            : <p className="voice-other">{r.voice.elsewhere ? <>&ldquo;<mark className="cue">{r.voice.elsewhere}</mark>&rdquo;</> : 'Hidden in presentation mode.'}</p>}
+          <div className="tiny muted">An AI model compared the two and quoted the underlined phrases. Judge for yourself.</div>
+        </div>
+      )}
       {r.ai?.verdict === 'ai_style' && (
         <div className="ai-note tiny"><Bot size={13} /> An AI model thinks this reads as AI-written because of the highlighted phrases. An opinion, not proof.</div>
       )}
@@ -98,21 +112,32 @@ function ReviewItem({ r, report, namer, branch, presentation }: { r: ReviewRow; 
   )
 }
 
+/** Where a normalized search-ad phrase ("packers and movers in hadapsar pune") sits in the original text. */
+function phraseSpan(text: string, phrase: string): [number, number] | null {
+  const words = phrase.split(' ').filter(Boolean)
+  if (!words.length) return null
+  const re = new RegExp(words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('[^a-z0-9]+'), 'i')
+  const m = re.exec(text)
+  return m ? [m.index, m.index + m[0].length] : null
+}
+
 /** The text with each quoted phrase highlighted where it occurs (case-insensitive, first occurrence). */
-function Marked({ text, marks }: { text: string; marks: string[] }) {
-  const spans: [number, number][] = []
+function Marked({ text, marks, keyword }: { text: string; marks: string[]; keyword?: string | null }) {
+  const spans: [number, number, string][] = []
   const low = text.toLowerCase()
   for (const m of marks) {
     const i = low.indexOf(m.toLowerCase())
-    if (i >= 0 && m) spans.push([i, i + m.length])
+    if (i >= 0 && m) spans.push([i, i + m.length, 'cue'])
   }
+  const k = keyword ? phraseSpan(text, keyword) : null
+  if (k) spans.push([k[0], k[1], 'keyword'])
   spans.sort((a, b) => a[0] - b[0])
   const out: ReactNode[] = []
   let pos = 0
-  spans.forEach(([s, e], k) => {
+  spans.forEach(([s, e, cls], k) => {
     if (s < pos) return
     out.push(text.slice(pos, s))
-    out.push(<mark key={k} className="cue">{text.slice(s, e)}</mark>)
+    out.push(<mark key={k} className={cls}>{text.slice(s, e)}</mark>)
     pos = e
   })
   out.push(text.slice(pos))

@@ -281,7 +281,7 @@ function Replay({ report, onClose }: { report: Report; onClose: () => void }) {
         <div className="row" style={{ justifyContent: 'space-between', marginBottom: 18 }}>
           <div>
             <div className="muted small">Replay, rebuilt from the report</div>
-            <h2 style={{ fontSize: '2.2rem', fontStretch: '82%' }}>{report.place.title ?? 'This business'}</h2>
+            <h2 style={{ fontSize: '2.2rem' }}>{report.place.title ?? 'This business'}</h2>
           </div>
           <div className="row">
             <button className="btn sm" onClick={() => setRun((x) => x + 1)}><RotateCcw size={14} /> Restart</button>

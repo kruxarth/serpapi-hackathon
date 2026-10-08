@@ -19,10 +19,14 @@ const mean = (rows: ReviewRow[]) => {
   return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null
 }
 
-/** The reader's choice of signs to set aside, and where each review lands because of it. */
-export function useSieve(report: SieveSource) {
+/** The reader's choice of signs to set aside, and where each review lands because of it. With ``controlled``, the
+ *  choice comes from the caller (the home page's story sets signs aside as you scroll) and the switches do nothing. */
+export function useSieve(report: SieveSource, controlled?: readonly SignKey[]) {
   const sieve = report.sieve
-  const [aside, setAside] = useState<Set<SignKey>>(() => new Set(sieve?.set_aside_by_default ?? []))
+  const [own, setAside] = useState<Set<SignKey>>(() => new Set(sieve?.set_aside_by_default ?? []))
+  const controlKey = controlled?.join(',')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const aside = useMemo(() => (controlled ? new Set(controlled) : own), [controlKey, own])
   const toggle = useCallback((k: SignKey) => setAside((prev) => {
     const next = new Set(prev)
     if (next.has(k)) next.delete(k)

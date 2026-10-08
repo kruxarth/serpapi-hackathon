@@ -23,6 +23,8 @@ const KIND: Record<string, { text: string; tone: string }> = {
   social_circle: { text: 'Set aside: consistent with friends or family', tone: 'var(--label-trip)' },
   duplicates: { text: 'Near-identical texts', tone: 'var(--ink-2)' },
   ai_style: { text: "Reads as AI-written (an AI model's opinion)", tone: 'var(--label-suspicious)' },
+  voice_mismatch: { text: "Not in the reviewer's own voice", tone: 'var(--label-suspicious)' },
+  keyword_style: { text: 'Written like a search ad', tone: 'var(--label-suspicious)' },
   first_time_skew: { text: 'Five-star reviews from first-time accounts', tone: 'var(--ink-2)' },
   baseline: { text: 'Random baseline', tone: 'var(--ink-2)' },
 }

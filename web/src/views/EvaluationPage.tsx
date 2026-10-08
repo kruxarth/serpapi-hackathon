@@ -38,7 +38,7 @@ export function EvaluationPage() {
   return (
     <div className="col" style={{ gap: 28, maxWidth: 1120 }}>
       <div>
-        <h1 style={{ fontSize: '2.6rem', fontStretch: '82%' }}>How well it finds planted rings</h1>
+        <h1 style={{ fontSize: '2.6rem' }}>How well it finds planted rings</h1>
         {lead && (
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ ease: EASE, duration: 0.7 }} style={{ marginTop: 16 }}>
             <div className="row" style={{ alignItems: 'baseline', gap: 18 }}>

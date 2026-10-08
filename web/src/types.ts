@@ -90,7 +90,7 @@ export interface ReviewerRow {
   contributor_id: string
   display_name?: string
   round: number
-  reason: 'priority' | 'baseline'
+  reason: 'priority' | 'baseline' | 'voice'
   status: string
   label: Label
   group: string | null
@@ -184,11 +184,17 @@ export interface ReviewRow {
   signs?: SignKey[]
   /** An AI model's opinion of the text, with the phrases it quotes; null when the text wasn't judged. */
   ai?: { verdict: 'ai_style' | 'human_style' | 'unclear'; cues: string[] } | null
+  /** The search-ad phrase in the text, when several accounts here write that way. */
+  keyword_phrase?: string | null
+  /** For checked reviewers: is this review in their own voice? `others` are their own other reviews (hidden when pseudonymized). */
+  voice?: { verdict: 'different_voice' | 'same_voice' | 'unclear'; here: string; elsewhere: string; others: string[] } | null
 }
 
 export type SignKey =
   | 'chatbot_text'
   | 'copied_text'
+  | 'voice_mismatch'
+  | 'keyword_style'
   | 'first_time_burst'
   | 'linked_group'
   | 'ai_style'
@@ -227,6 +233,7 @@ export interface Sieve {
   no_signs: { count: number; mean: number | null }
   all: { count: number; mean: number | null }
   ai: AiCoverage
+  voice?: { eligible: number; compared: number; different_voice: number; same_voice: number; unclear: number; model: string | null }
 }
 
 export interface FirstTimeSkew {
