@@ -1,6 +1,7 @@
 // Side panel: check a place's reviews and read the ones worth reading. The place comes from the Google Maps tab, or
 // from a link pasted at the top. Nothing is fetched without the "Check reviews" click (Rule 7). The reader chooses
 // which warning signs to set aside; the rating and the list of kept reviews follow that choice.
+import '@fontsource-variable/mona-sans/standard.css'
 import { backend, getSettings, lookupPlace, post, tabKey, type Lookup, type TabPlace } from './shared'
 
 const app = document.getElementById('app') as HTMLElement
