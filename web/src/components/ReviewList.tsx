@@ -1,9 +1,11 @@
 // The reviews behind a branch of the sieve: what the reader keeps, or what a sign set aside. Each card shows every
-// sign the review carries; the phrases an AI model quoted are highlighted where they occur in the text.
+// sign the review carries with its evidence: the phrases an AI model quoted, the search phrase, and for copied text
+// the review it matches, with the shared wording marked.
 
-import { Bot, ChevronDown, User } from 'lucide-react'
+import { Bot, ChevronDown, Copy, User } from 'lucide-react'
 import { useMemo, useState, type ReactNode } from 'react'
 import { day } from '../labels'
+import { phraseSpan } from '../text'
 import type { Namer } from '../names'
 import type { Report, ReviewRow, SignKey } from '../types'
 import { type Branch, type SieveState, signTone } from './Sieve'
@@ -67,9 +69,9 @@ function ReviewItem({ r, report, namer, branch, presentation }: { r: ReviewRow; 
   const marks = useMemo(() => [
     ...(r.ai?.verdict === 'ai_style' ? r.ai.cues : []),
     ...(r.generated_marker ? [r.generated_marker] : []),
-    ...(r.voice?.verdict === 'different_voice' && r.voice.here ? [r.voice.here] : []),
   ], [r])
   const keyword = r.keyword_phrase ?? null
+  const twins = useMemo(() => (r.copied_with ?? []).map((id) => report.reviews.find((x) => x.review_id === id)).filter((x): x is ReviewRow => !!x), [r, report])
   return (
     <article className={`review-item ${branch === 'kept' ? '' : 'aside'}`}>
       <header className="row" style={{ gap: 10 }}>
@@ -84,16 +86,21 @@ function ReviewItem({ r, report, namer, branch, presentation }: { r: ReviewRow; 
         </div>
       </header>
       <div className={`review-text ${long && !open ? 'clamped' : ''}`}>
-        {text ? <Marked text={text} marks={marks} keyword={keyword} /> : <span className="muted small">{presentation || report.pseudonymized ? 'Text hidden in presentation mode.' : 'No text, only stars.'}</span>}
+        {text ? <Marked text={text} marks={marks} keyword={keyword} named={!r.signs?.includes('keyword_style')} /> : <span className="muted small">{presentation || report.pseudonymized ? 'Text hidden in presentation mode.' : 'No text, only stars.'}</span>}
       </div>
       {long && <button className="link-btn tiny" onClick={() => setOpen(!open)}>{open ? 'Show less' : 'Show all'}</button>}
-      {r.voice?.verdict === 'different_voice' && (
-        <div className="voice-compare">
-          <div className="tiny muted">How this account writes elsewhere</div>
-          {r.voice.others.length
-            ? r.voice.others.map((o) => <p key={o} className="voice-other"><Marked text={o} marks={r.voice!.elsewhere ? [r.voice!.elsewhere] : []} /></p>)
-            : <p className="voice-other">{r.voice.elsewhere ? <>&ldquo;<mark className="cue">{r.voice.elsewhere}</mark>&rdquo;</> : 'Hidden in presentation mode.'}</p>}
-          <div className="tiny muted">An AI model compared the two and quoted the underlined phrases. Judge for yourself.</div>
+      {r.signs?.includes('copied_text') && (
+        <div className="twin">
+          <div className="tiny muted row" style={{ gap: 6 }}><Copy size={12} />
+            {twins.length ? `Near-identical to ${twins.length === 1 ? 'a review' : `${twins.length} reviews`} by another account here` : 'Near-identical to a review another account wrote about a different place'}
+          </div>
+          {twins.map((t) => (
+            <div key={t.review_id} className="twin-text">
+              <span className="tiny muted">{namer.reviewer(t.contributor_id)} · {day(t.day)}</span>
+              <p>{t.text && text ? <Shared text={t.text} other={text} /> : <span className="muted">{presentation || report.pseudonymized ? 'Text hidden in presentation mode.' : 'No text.'}</span>}</p>
+            </div>
+          ))}
+          {twins.length > 0 && text && <div className="tiny muted">Wording both reviews share is marked.</div>}
         </div>
       )}
       {r.ai?.verdict === 'ai_style' && (
@@ -112,17 +119,38 @@ function ReviewItem({ r, report, namer, branch, presentation }: { r: ReviewRow; 
   )
 }
 
-/** Where a normalized search-ad phrase ("packers and movers in hadapsar pune") sits in the original text. */
-function phraseSpan(text: string, phrase: string): [number, number] | null {
-  const words = phrase.split(' ').filter(Boolean)
-  if (!words.length) return null
-  const re = new RegExp(words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('[^a-z0-9]+'), 'i')
-  const m = re.exec(text)
-  return m ? [m.index, m.index + m[0].length] : null
+const WORD = /[\p{L}\p{N}]+/gu
+
+/** The text with every run of three or more words that also occurs in `other` marked. */
+export function Shared({ text, other }: { text: string; other: string }) {
+  const words = [...text.matchAll(WORD)]
+  const theirs = [...other.matchAll(WORD)].map((m) => m[0].toLowerCase())
+  const grams = new Set(theirs.slice(0, -2).map((_, i) => theirs.slice(i, i + 3).join(' ')))
+  const lower = words.map((m) => m[0].toLowerCase())
+  const hit = new Array(words.length).fill(false)
+  for (let i = 0; i + 2 < words.length; i++) {
+    if (grams.has(lower.slice(i, i + 3).join(' '))) hit[i] = hit[i + 1] = hit[i + 2] = true
+  }
+  const out: ReactNode[] = []
+  let pos = 0
+  let i = 0
+  while (i < words.length) {
+    if (!hit[i]) { i++; continue }
+    let j = i
+    while (j + 1 < words.length && hit[j + 1]) j++
+    const s = words[i].index!
+    const e = words[j].index! + words[j][0].length
+    out.push(text.slice(pos, s), <mark key={s} className="shared">{text.slice(s, e)}</mark>)
+    pos = e
+    i = j + 1
+  }
+  out.push(text.slice(pos))
+  return <>{out}</>
 }
 
-/** The text with each quoted phrase highlighted where it occurs (case-insensitive, first occurrence). */
-function Marked({ text, marks, keyword }: { text: string; marks: string[]; keyword?: string | null }) {
+/** The text with each quoted phrase highlighted where it occurs (case-insensitive, first occurrence). A search
+ * phrase is tinted as a warning sign, or neutral when it only names the business with its area (`named`). */
+export function Marked({ text, marks, keyword, named }: { text: string; marks: string[]; keyword?: string | null; named?: boolean }) {
   const spans: [number, number, string][] = []
   const low = text.toLowerCase()
   for (const m of marks) {
@@ -130,7 +158,7 @@ function Marked({ text, marks, keyword }: { text: string; marks: string[]; keywo
     if (i >= 0 && m) spans.push([i, i + m.length, 'cue'])
   }
   const k = keyword ? phraseSpan(text, keyword) : null
-  if (k) spans.push([k[0], k[1], 'keyword'])
+  if (k) spans.push([k[0], k[1], named ? 'keyword named' : 'keyword'])
   spans.sort((a, b) => a[0] - b[0])
   const out: ReactNode[] = []
   let pos = 0

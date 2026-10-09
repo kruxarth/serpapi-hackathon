@@ -184,8 +184,11 @@ export interface ReviewRow {
   signs?: SignKey[]
   /** An AI model's opinion of the text, with the phrases it quotes; null when the text wasn't judged. */
   ai?: { verdict: 'ai_style' | 'human_style' | 'unclear'; cues: string[] } | null
-  /** The search-ad phrase in the text, when several accounts here write that way. */
+  /** The search phrase in the text (an ad-like one, or the business named with its area), when several accounts here write that way. */
   keyword_phrase?: string | null
+  /** Copied text: the other reviews of this business it matches (at most 3), and how many matches were elsewhere. */
+  copied_with?: string[]
+  copied_elsewhere?: number
   /** For checked reviewers: is this review in their own voice? `others` are their own other reviews (hidden when pseudonymized). */
   voice?: { verdict: 'different_voice' | 'same_voice' | 'unclear'; here: string; elsewhere: string; others: string[] } | null
 }
@@ -195,6 +198,8 @@ export type SignKey =
   | 'copied_text'
   | 'voice_mismatch'
   | 'keyword_style'
+  | 'names_area'
+  | 'review_burst'
   | 'first_time_burst'
   | 'linked_group'
   | 'ai_style'
@@ -218,6 +223,8 @@ export interface AiCoverage {
   too_short: number
   no_text: number
   ai_style: number
+  /** False once the AI-written opinion is switched off (older reports don't say). */
+  enabled?: boolean
   human_style: number
   unclear: number
   model: string | null
@@ -253,6 +260,24 @@ export interface Burst {
   count: number
   matching: number
   p_value: number
+  review_ids: string[]
+}
+
+/** A burst of same-star reviews (signals.T11): only reviews of that rating, exact times, against the usual pace. */
+export interface SameStarBurst {
+  direction: 'positive' | 'negative'
+  stars: 5 | 1
+  count: number
+  share: number
+  start: string
+  end: string
+  minutes: number
+  core: { count: number; minutes: number; start: string; end: string }
+  usual_per_day: number
+  pace: number | null
+  offsets: number[]
+  first_time: number
+  flagged: boolean
   review_ids: string[]
 }
 
@@ -369,7 +394,7 @@ export interface Report {
   level: { level: Level; reasons: string[] }
   ratings: {
     examined: number
-    single_use_burst_reviews?: number
+    burst_reviews?: number
     sample_mean: number | null
     kept_mean?: number | null
     kept_count?: number
@@ -403,6 +428,7 @@ export interface Report {
     T4: { clusters: Record<string, string[]>; stock_phrase_clusters: string[] }
     T5: { young: boolean; total_reviews: number | null; sample_span_days: number }
     T6?: { single_use_bursts: SingleUseBurst[] }
+    T11?: { examined: number; pace_per_day?: number; clusters: SameStarBurst[] }
     T7?: RatingGap
     T8?: TopRated
     T9?: FirstTimeSkew

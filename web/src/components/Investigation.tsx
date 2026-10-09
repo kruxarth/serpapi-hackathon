@@ -1,12 +1,12 @@
 // The investigation, shown as it happens: the newest reviews land on a timeline, the most unusual reviewers are
 // picked, their histories open one by one, and any links between them are drawn. Fed by the live progress events,
-// or rebuilt from a finished report for a replay. Events carry counts, stars and day offsets only, never names.
+// which carry counts, stars and day offsets only, never names. A finished check is told by CaseStory instead.
 
 import { Link2, Shuffle } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { EASE, useWidth } from '../motion'
-import type { ProgressEvent, Report } from '../types'
+import type { ProgressEvent } from '../types'
 import { HistoryStrip, starFill } from './Reviewer'
 
 /* ---------- model ---------- */
@@ -88,54 +88,6 @@ export function usePlayback(events: ProgressEvent[], speed = 1) {
   const played = useMemo(() => events.slice(0, cursor), [events, cursor])
   const state = useMemo(() => played.reduce(reduce, EMPTY), [played])
   return { state, played, caughtUp: cursor >= events.length, restart: () => setCursor(0) }
-}
-
-/** The same events, rebuilt from a finished report: a replay costs nothing. */
-export function eventsFromReport(report: Report): ProgressEvent[] {
-  const dn = (d: string) => Date.parse(`${d.slice(0, 10)}T00:00:00Z`) / 86_400_000
-  const newest = Math.max(...report.reviews.filter((r) => r.day).map((r) => dn(r.day!)))
-  const index = new Map<string, number>()
-  report.reviews.forEach((r, i) => r.contributor_id && !index.has(r.contributor_id) && index.set(r.contributor_id, i))
-  const ev = (type: string, message: string, data: Record<string, unknown> = {}): ProgressEvent => ({ type, message, searches_used: 0, data })
-  const out: ProgressEvent[] = [
-    ev('fetching_reviews', `Fetching the newest ${report.sample.examined} reviews`),
-    ev('reviews_loaded', `Read ${report.reviews.length} reviews`, {
-      rating: report.place.rating, total: report.place.total_reviews,
-      reviews: report.reviews.map((r) => [r.rating, r.day ? newest - dn(r.day) : null, r.reviewer_reviews]),
-    }),
-    ev('scoring', 'Scoring reviewers'),
-  ]
-  const histOf = (cid: string) => {
-    const h = report.histories?.[cid]
-    const row = report.reviewers.find((r) => r.contributor_id === cid)
-    if (!h) return ev('history', 'A reviewer history was unavailable', { index: index.get(cid), status: row?.status ?? 'missing', total: null, visible: 0, areas: 0, points: [] })
-    const hn = Math.max(newest, ...h.items.filter((i) => i.day).map((i) => dn(i.day!)))
-    return ev('history', `Opened a reviewer with ${h.total_reviews ?? h.visible} reviews`, {
-      index: index.get(cid), status: 'ok', total: h.total_reviews, visible: h.visible,
-      areas: new Set(h.items.map((i) => i.area).filter(Boolean)).size,
-      points: h.items.filter((i) => i.day).map((i) => [hn - dn(i.day!), i.rating]),
-    })
-  }
-  for (const round of [1, 2]) {
-    const rows = report.reviewers.filter((r) => r.round === round && index.has(r.contributor_id))
-    if (!rows.length) continue
-    out.push(ev('picks', `Picked ${rows.length} reviewers to open`, { picks: rows.map((r) => [index.get(r.contributor_id), r.reason, r.round]) }))
-    out.push(ev('expanding', `Round ${round}: opening reviewer histories`, { round, done: 0, total: rows.length }))
-    rows.forEach((r, i) => {
-      out.push(histOf(r.contributor_id))
-      out.push(ev('expanding', `Round ${round}: ${i + 1} of ${rows.length} reviewer histories`, { round, done: i + 1, total: rows.length }))
-    })
-    const opened = new Set(report.reviewers.filter((r) => r.round <= round).map((r) => r.contributor_id))
-    const pairs = report.graph.edges
-      .filter((e) => opened.has(e.source) && opened.has(e.target) && index.has(e.source) && index.has(e.target))
-      .map((e) => [index.get(e.source)!, index.get(e.target)!].sort((a, b) => a - b))
-    out.push(ev('building_graph', 'Checking reviewers for shared places'))
-    out.push(ev('links', `${pairs.length} linked pairs of reviewers`, { pairs }))
-  }
-  if (report.analysis?.early_stop?.reason === 'no_overlap') out.push(ev('early_stop', 'No ring-like pattern among the highest-priority reviewers'))
-  out.push(ev('finding_groups', 'Testing groups against rings, trips and friends'))
-  out.push(ev('done', 'Report ready'))
-  return out
 }
 
 /* ---------- view ---------- */

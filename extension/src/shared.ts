@@ -35,6 +35,7 @@ export type Lookup =
   | { state: 'demo'; message: string }
   | { state: 'down' }
   | { state: 'no_place' }
+  | { state: 'needs_lookup'; query?: string } // a share.google link: it names the place, a lookup finds it
 
 export interface TabPlace {
   url: string
@@ -76,12 +77,14 @@ export async function lookupPlace(url: string): Promise<Lookup> {
       age_days?: number
       summary?: Summary
       data_id?: string
+      query?: string
     }>(`/api/places/latest?url=${encodeURIComponent(url)}&presentation=${presentation ? 1 : 0}`)
     if (r.found && r.summary && r.analysis_id) {
       return { state: 'found', analysisId: r.analysis_id, ageDays: r.age_days ?? 0, summary: r.summary }
     }
     if (r.reason === 'demo') return { state: 'demo', message: r.message ?? '' }
     if (r.reason === 'no_place') return { state: 'no_place' }
+    if (r.reason === 'needs_lookup') return { state: 'needs_lookup', query: r.query }
     return { state: 'none', dataId: r.data_id }
   } catch (e) {
     if (e instanceof TypeError) return { state: 'down' } // fetch failed: backend not running

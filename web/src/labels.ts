@@ -4,7 +4,7 @@ export const LABEL_TEXT: Record<Label, string> = {
   ring: 'Ring-like group',
   possible_ring_trip: 'Possible ring-like group (trip-like)',
   suspicious: 'Suspicious',
-  single_use_burst: 'First-time account in a burst',
+  single_use_burst: 'In a burst of same-star reviews',
   group_trip: 'Trip or social group',
   no_flags: 'No flags',
   not_checked: 'Not checked',
@@ -77,3 +77,36 @@ export function ageText(iso: string | null | undefined): string {
   if (days < 2) return 'yesterday'
   return `${Math.floor(days)} days ago`
 }
+
+/** How long a burst took, in the unit a reader would use ("89 minutes", "18 hours", "3 days"). Same as the backend. */
+export function spanText(minutes: number): string {
+  if (minutes < 120) {
+    const n = Math.max(1, Math.round(minutes))
+    return `${n} minute${n === 1 ? '' : 's'}`
+  }
+  if (minutes < 48 * 60) return `${Math.round(minutes / 60)} hours`
+  return `${Math.round(minutes / 1440)} days`
+}
+
+/** A listing's usual pace ("about one review every 18 days"). Same as the backend. */
+export function paceText(perDay: number): string {
+  if (perDay >= 1.5) return `about ${Math.round(perDay)} reviews a day`
+  if (perDay >= 0.9) return 'about one review a day'
+  const perWeek = perDay * 7
+  if (perWeek >= 1.5) return `about ${Math.round(perWeek)} reviews a week`
+  if (perWeek >= 0.9) return 'about one review a week'
+  return perDay > 0 ? `about one review every ${Math.round(1 / perDay)} days` : 'almost no reviews'
+}
+
+const IST = 'Asia/Kolkata'
+/** "17:47" in India time. */
+export const istTime = (iso: string) => new Date(iso).toLocaleTimeString('en-GB', { timeZone: IST, hour: '2-digit', minute: '2-digit' })
+/** "12 Sep 2023" in India time, written like `day()`. */
+export const istDay = (iso: string) => day(new Date(iso).toLocaleDateString('en-CA', { timeZone: IST }))
+/** "on 12 Sep 2023, 17:47 to 19:16" or "from 12 May 2025 16:54 to 13 May 2025 20:42". */
+export function burstWhen(start: string, end: string): string {
+  return istDay(start) === istDay(end)
+    ? `on ${istDay(start)}, ${istTime(start)} to ${istTime(end)}`
+    : `from ${istDay(start)} ${istTime(start)} to ${istDay(end)} ${istTime(end)}`
+}
+

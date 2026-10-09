@@ -1,6 +1,6 @@
 // The hero's background: a listing's reviews seen from far away, every one a small gold star. Under the cursor
 // (a lens) each star shows what it really is: most stay gold, some turn out to come from an account with no other
-// reviews, from a burst, to be written like a search ad, or not to be in the reviewer's own voice. Illustrative, not data. The lens drifts on its own
+// reviews, from a burst, to be written like a search ad, or to contain chatbot text. Illustrative, not data. The lens drifts on its own
 // until the mouse moves, so the idea also reads in a recording; with reduced motion it stays still.
 
 import { useReducedMotion } from 'motion/react'
@@ -175,7 +175,7 @@ export function StarKey() {
       {item('first', 'from an account with no other reviews')}
       {item('burst', 'posted in a burst')}
       {item('copied', 'written like a search ad')}
-      {item('ai', "not in the reviewer's own voice")}
+      {item('ai', 'contains chatbot text')}
     </div>
   )
 }

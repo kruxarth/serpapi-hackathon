@@ -3,7 +3,7 @@
 // 4. One reviewer's route across cities.  5. How it works, as a stack of layers.
 
 import { motion, type MotionValue } from 'motion/react'
-import { useMemo } from 'react'
+import { useMemo, type ReactNode } from 'react'
 import { SieveGraph, useSieve } from '../components/Sieve'
 import { starFill } from '../components/Reviewer'
 import { sourceFrom } from '../example'
@@ -115,11 +115,11 @@ function HotelStage({ progress }: { progress: MotionValue<number> }) {
 /* ---------------------------------------------------------------- 3. the mover, sorted */
 
 const MOVER_SOURCE = sourceFrom(M.reviews)
-const STEPS_ASIDE: SignKey[][] = [[], ['first_time_burst'], ['first_time_burst', 'ai_style'], ['first_time_burst', 'ai_style'], ['first_time_burst']]
+const STEPS_ASIDE: SignKey[][] = [[], ['review_burst'], ['review_burst'], ['review_burst']]
 
 export function SieveScene() {
   return (
-    <Pinned id="sort" screens={5} label="A mover's newest reviews, sorted by warning signs">
+    <Pinned id="sort" screens={4.2} label="A mover's newest reviews, sorted by warning signs">
       {(progress) => <SieveStage progress={progress} />}
     </Pinned>
   )
@@ -127,7 +127,7 @@ export function SieveScene() {
 
 function SieveStage({ progress }: { progress: MotionValue<number> }) {
   const p = useProgress(progress)
-  const step = stepOf(p, [0.18, 0.4, 0.6, 0.8])
+  const step = stepOf(p, [0.22, 0.48, 0.74])
   const state = useSieve(MOVER_SOURCE, STEPS_ASIDE[step])
   const spread = Math.round(Math.max(...M.days) / 365 * 10) / 10
   return (
@@ -137,12 +137,11 @@ function SieveStage({ progress }: { progress: MotionValue<number> }) {
         <Captions step={step} items={[
           <>A mover in {M.area} shows <b>{M.shown.toFixed(1)}★</b>. Its newest 100 reviews average <b>{fmt(M.mean, 2)}★</b>. Every dot is one of them.</>,
           <>
-            <b>{M.burst.count}</b> of them arrived within {M.burst.days} days, and {M.burst.first_time} came from accounts that had never reviewed anything else. The other {100 - M.burst.count} took almost {Math.round(spread)} years.
+            <b>{M.burst.count}</b> five-star reviews arrived in {M.burst.minutes} minutes one evening, {M.burst.core} of them within {M.burst.core_minutes} minutes. The other {100 - M.burst.count} took almost {Math.round(spread)} years: about one every {M.burst.usual_every_days} days. {M.burst.first_time} of the {M.burst.count} came from accounts that had never reviewed anything else.
             {step === 1 && <BurstStrip />}
           </>,
-          <>{M.ai.ai_style} of its {M.ai.judged} longer reviews read as AI-written to an AI model: all five-star, all from new accounts. At the {H.area} hotel, {H.ai.ratings.filter((r) => r <= 3).length} of the {H.ai.ai_style} it flagged were complaints. Same signal, different meaning, so it's your call.</>,
           <>{M.first_time_accounts} came from first-time accounts. Most real customers review only once, so on its own that isn't a warning sign. It stays kept.</>,
-          <>With only the strong signs set aside: <b>{M.kept}</b> reviews, averaging <b>{fmt(M.kept_mean, 2)}★</b>. The number barely moves; which reviews you can trust does. Busy isn't the same as bought: another {C.area} mover's reviews also arrive in waves, yet {C.voice_same} of the {C.voice_compared} reviewers compared write that way everywhere.</>,
+          <>With only the strong signs set aside: <b>{M.kept}</b> reviews, averaging <b>{fmt(M.kept_mean, 2)}★</b>. The number barely moves; which reviews you can trust does. Busy isn't the same as bought: another {C.area} mover's reviews also arrive in waves, but from established local accounts, with no strong signs at all.</>,
         ]} />
       </div>
       <div className="scene-stage sieve-stage">
@@ -150,7 +149,7 @@ function SieveStage({ progress }: { progress: MotionValue<number> }) {
           <span className="small secondary">The newest 100 reviews of a real listing</span>
           <span className="small secondary">Google shows {M.shown.toFixed(1)}<span style={{ color: 'var(--gold)' }}>★</span></span>
         </div>
-        <SieveGraph report={MOVER_SOURCE} state={state} compact selected={step === 3 ? 'first_time_account' : undefined} />
+        <SieveGraph report={MOVER_SOURCE} state={state} compact selected={step === 2 ? 'first_time_account' : undefined} />
       </div>
     </div>
   )
@@ -163,7 +162,7 @@ function BurstStrip() {
   M.days.forEach((d, i) => {
     const b = Math.round(((max - d) / max) * 60)
     const list = bins.get(b) ?? []
-    list.push({ burst: M.reviews[i].signs.includes('first_time_burst'), r: M.reviews[i].rating })
+    list.push({ burst: M.reviews[i].signs.includes('review_burst'), r: M.reviews[i].rating })
     bins.set(b, list)
   })
   return (
@@ -185,7 +184,7 @@ const RES = STORY.research
 
 export function WritingScene() {
   return (
-    <Pinned id="writing" screens={4.4} label="Reviews written like search ads, and not in their authors' voice">
+    <Pinned id="writing" screens={6.4} label="Reviews written like search ads, copied between accounts, or the same script for competitors">
       {(progress) => <WritingStage progress={progress} />}
     </Pinned>
   )
@@ -193,7 +192,10 @@ export function WritingScene() {
 
 function WritingStage({ progress }: { progress: MotionValue<number> }) {
   const p = useProgress(progress)
-  const step = stepOf(p, [0.24, 0.5, 0.76])
+  const step = stepOf(p, [0.17, 0.33, 0.5, 0.67, 0.83])
+  const tpl = S.copies.template
+  const script = S.same_script[0]
+  const voice = C.voice
   return (
     <div className="scene-grid">
       <div className="scene-copy">
@@ -201,8 +203,10 @@ function WritingStage({ progress }: { progress: MotionValue<number> }) {
         <Captions step={step} items={[
           <>A mover in {S.area} shows <b>{S.shown}★</b>. In its newest 100 reviews, <b>{S.keyword_accounts}</b> accounts wrote the same kind of sentence: the business, then its neighbourhood and city.</>,
           <>Customers write &ldquo;the team&rdquo;. Search-ranking copy writes the search phrase. Across nine movers in three cities, two listings do it and seven don't.</>,
-          <>We opened the authors' own other reviews. {S.voice.different} of the {S.voice.compared} compared write very differently everywhere else, like this pair. An AI model compares; you see both and decide.</>,
-          <>Set those reviews aside and <b>{S.kept}</b> of 100 remain, averaging <b>{fmt(S.kept_mean, 1)}★</b> instead of {fmt(S.mean, 2)}★.</>,
+          <>Not every one is an ad. <b>{S.ads}</b> use the bare search term, or repeat the name and area, and are set aside. <b>{S.signs.names_area}</b> just name the business with its area, as real customers also do, so they stay unless you choose.</>,
+          <>And <b>{S.copies.count}</b> are near copies of one another: {S.copies.templates} templates, each posted by different accounts. Not just a common phrase: the same sentences in the same order, with only the cities changed, and the same odd mistakes. Customers don&rsquo;t write each other&rsquo;s reviews. Copies are set aside.</>,
+          <>Some accounts write the same lines for competitors: this one reviewed two Pune movers in the same words. A real customer sounds like themselves everywhere. A reviewer of a {C.area} mover writes about the crew the way they write about a restaurant or a clothing store.</>,
+          <>Set the ad-like and copied reviews aside and <b>{S.kept}</b> of 100 remain at <b>{fmt(S.kept_mean, 1)}★</b>. Set aside the name-with-area ones too, and <b>{S.kept_named}</b> remain at <b>{fmt(S.kept_named_mean, 1)}★</b>. Your call.</>,
         ]} />
       </div>
       <div className="scene-stage writing-stage">
@@ -216,7 +220,7 @@ function WritingStage({ progress }: { progress: MotionValue<number> }) {
         </motion.div>
 
         <motion.div className="keyword-bars" animate={{ opacity: step === 1 ? 1 : 0 }} transition={{ duration: 0.5 }} aria-hidden={step !== 1}>
-          <div className="small secondary" style={{ marginBottom: 14 }}>Reviews written like a search ad, newest 45–48 reviews of nine movers</div>
+          <div className="small secondary" style={{ marginBottom: 14 }}>Reviews naming the business or its category with its area, newest 45–48 reviews of nine movers</div>
           {RES.map((r) => {
             const share = r.with_text ? r.keyword_accounts / r.with_text : 0
             return (
@@ -229,24 +233,69 @@ function WritingStage({ progress }: { progress: MotionValue<number> }) {
           })}
         </motion.div>
 
-        <motion.div className="voice-pair" animate={{ opacity: step === 2 ? 1 : 0 }} transition={{ duration: 0.5 }} aria-hidden={step !== 2}>
-          <div className="voice-card">
-            <div className="tiny muted">The same account, reviewing other places</div>
-            <p>&ldquo;{S.voice.elsewhere}&hellip;&rdquo;</p>
+        <motion.div className="phrase-split" animate={{ opacity: step === 2 ? 1 : 0 }} transition={{ duration: 0.5 }} aria-hidden={step !== 2}>
+          <div className="phrase-col ad">
+            <div className="phrase-col-head"><span className="fig">{S.ads}</span> read like an ad <span className="tiny muted">set aside</span></div>
+            {S.ad_phrases.map((ph) => <div key={ph} className="phrase">&ldquo;{ph}&rdquo;</div>)}
+            <div className="tiny muted">or the name and area twice in one review</div>
           </div>
-          <div className="voice-arrow" aria-hidden>→</div>
-          <div className="voice-card here">
-            <div className="tiny muted">Its review of this mover</div>
-            <p>&ldquo;&hellip;<mark className="cue">{S.voice.here}</mark>&hellip;&rdquo;</p>
+          <div className="phrase-col named">
+            <div className="phrase-col-head"><span className="fig">{S.signs.names_area}</span> name the business <span className="tiny muted">kept</span></div>
+            {S.name_phrases.map((ph) => <div key={ph} className="phrase">&ldquo;{ph}&rdquo;</div>)}
+            <div className="tiny muted">how customers refer to it too</div>
           </div>
         </motion.div>
 
-        <motion.div className="writing-result" animate={{ opacity: step === 3 ? 1 : 0 }} transition={{ duration: 0.5 }} aria-hidden={step !== 3}>
+        <motion.div className="copy-stack" animate={{ opacity: step === 3 ? 1 : 0 }} transition={{ duration: 0.5 }} aria-hidden={step !== 3}>
+          {tpl && (
+            <>
+              <div className="small secondary">The template behind {tpl.accounts} of them, rebuilt from their shared sentences</div>
+              <div className="tpl-card">
+                {tpl.lines.map((l, i) => (
+                  <motion.p key={i} animate={{ opacity: step === 3 ? 1 : 0, x: step === 3 ? 0 : 20 }} transition={{ duration: 0.45, delay: step === 3 ? 0.15 + i * 0.16 : 0 }}>
+                    <TemplateLine words={l.words} typo={tpl.typo} />
+                    <span className="tpl-count tiny">in {l.copies} of {tpl.accounts}</span>
+                  </motion.p>
+                ))}
+              </div>
+              <div className="tpl-facts small">
+                <span><b>{tpl.accounts}</b> accounts{tpl.first_time === tpl.accounts ? ', none with any other review' : ''}</span>
+                <span>{tpl.five_star === tpl.accounts ? 'all 5★' : `${tpl.five_star} of them 5★`}</span>
+                <span>posted over {tpl.months} months</span>
+                {tpl.typo && <span>the same misspelling, <mark className="tpl-typo">&ldquo;{tpl.typo.written[0]}&rdquo;</mark>, from <b>{tpl.typo.accounts}</b> different accounts here</span>}
+              </div>
+              <div className="tiny muted">Blanks are where the copies differ. Names and places are hidden.</div>
+            </>
+          )}
+        </motion.div>
+
+        <motion.div className="voice-split" animate={{ opacity: step === 4 ? 1 : 0 }} transition={{ duration: 0.5 }} aria-hidden={step !== 4}>
+          {script && (
+            <div className="voice-col script">
+              <div className="small secondary">Same account, two competing movers</div>
+              <p><span className="tiny muted">this mover</span><TemplateLine words={script.here} typo={null} /></p>
+              <p><span className="tiny muted">another mover</span><TemplateLine words={script.there} typo={null} /></p>
+              <div className="tiny muted">Only the words both reviews share are shown.</div>
+            </div>
+          )}
+          {voice && (
+            <div className="voice-col own">
+              <div className="small secondary">One person, their own voice everywhere</div>
+              {voice.lines.map((l) => (
+                <p key={l.text}><span className="tiny muted">{l.here ? 'the mover' : l.place.toLowerCase()}</span><span className="voice-quote">&ldquo;{l.text}&rdquo;</span></p>
+              ))}
+              <div className="tiny muted">Short lines from {voice.reviews} public reviews; names hidden.</div>
+            </div>
+          )}
+        </motion.div>
+
+        <motion.div className="writing-result" animate={{ opacity: step === 5 ? 1 : 0 }} transition={{ duration: 0.5 }} aria-hidden={step !== 5}>
           <div><span className="fig big-fig">100</span><span className="muted"> reviews</span></div>
           <div className="result-arrow">→</div>
-          <div><span className="fig big-fig">{S.kept}</span><span className="muted"> kept, averaging </span><span className="fig">{fmt(S.kept_mean, 1)}<span style={{ color: 'var(--gold)' }}>★</span></span></div>
+          <div><span className="fig big-fig">{S.kept}</span><span className="muted"> kept at </span><span className="fig">{fmt(S.kept_mean, 1)}<span style={{ color: 'var(--gold)' }}>★</span></span></div>
           <div className="small secondary" style={{ gridColumn: '1 / -1', marginTop: 10 }}>
-            Set aside: {S.signs.keyword_style} written like search ads, {S.signs.copied_text} copied, {S.signs.voice_mismatch} not in their author's voice (reviews can carry several).
+            Set aside: {S.signs.keyword_style} written like search ads and {S.signs.copied_text} copied (reviews can carry both).
+            Also set aside the {S.signs.names_area} that name the business with its area: <b className="num">{S.kept_named}</b> kept at <b className="num">{fmt(S.kept_named_mean, 1)}★</b>.
           </div>
         </motion.div>
       </div>
@@ -254,12 +303,27 @@ function WritingStage({ progress }: { progress: MotionValue<number> }) {
   )
 }
 
+/** One sentence of a copied template: shared words as written, blanks where the copies differ, hidden names and
+ * places as slots, and the shared misspelling as the copies wrote it. */
+function TemplateLine({ words, typo }: { words: [string, string][]; typo: { written: string[] } | null }) {
+  const out: ReactNode[] = []
+  words.forEach(([w, kind], i) => {
+    const next = words[i + 1]
+    if (kind === 'blank' && next?.[1] === 'typo') return // the misspelling is shown whole, as the copies wrote it
+    if (kind === 'blank') out.push(<span key={i} className="tpl-blank" aria-label="a word that differs" />)
+    else if (kind === 'slot') out.push(<span key={i} className="tpl-slot">{w === '[area]' ? 'area' : 'name'}</span>)
+    else if (kind === 'typo') out.push(<mark key={i} className="tpl-typo">{typo?.written[0] ?? w}</mark>)
+    else out.push(<span key={i}>{w}</span>)
+  })
+  return <span className="tpl-line">{out}</span>
+}
+
 /* ---------------------------------------------------------------- 5. how it works */
 
 const LAYERS = [
   { n: 1, title: 'The newest reviews', api: 'SerpApi · Google Maps Reviews API', text: 'The newest 100 reviews in six searches: stars, exact dates, text, and how many reviews each account has written.' },
   { n: 2, title: 'Reviewer histories', api: 'SerpApi · Google Maps Contributor Reviews API', text: "Each unusual reviewer's whole public history in one search: what else they reviewed, where and when. Google's own Places API has no reviewer histories." },
-  { n: 3, title: 'Warning signs', api: 'Fixed rules, plus AI comparisons', text: 'Search-ad phrasing, chatbot and copied text, bursts of first-time accounts, and reviews not in their author\u2019s own voice, each shown with its evidence: the phrase, the burst, or both texts side by side.' },
+  { n: 3, title: 'Warning signs', api: 'Fixed rules you can audit', text: 'Search-ad phrasing, chatbot and copied text, bursts of first-time accounts, and reviewing sprees, each shown with its evidence: the phrase, the burst, or both texts side by side.' },
   { n: 4, title: 'Your choice', api: 'The rating, recomputed', text: 'You set aside what you don’t trust and read the rest, with the rating they give. Nothing is called fake.' },
 ]
 
@@ -319,15 +383,15 @@ function LayerArt({ n }: { n: number }) {
   if (n === 3) {
     return (
       <div className="layer-chips">
-        {['Search-ad phrasing', 'Not their own voice', 'Chatbot text', 'Copied text', 'Burst of first-time accounts', 'Reads as AI-written'].map((c, i) => (
-          <span key={c} className={i === 5 ? 'opinion' : ''}>{c}</span>
+        {['Search-ad phrasing', 'Chatbot text', 'Copied text', 'Burst of first-time accounts', 'First-time account'].map((c, i) => (
+          <span key={c} className={i === 4 ? 'context' : ''}>{c}</span>
         ))}
       </div>
     )
   }
   return (
     <div className="layer-choice">
-      {[['Burst of first-time accounts', true], ['Reads as AI-written', false]].map(([t, on]) => (
+      {[['Burst of first-time accounts', true], ['First-time account', false]].map(([t, on]) => (
         <div key={String(t)}><span className={`switch-track ${on ? 'on' : ''}`}><span className="switch-thumb" /></span>{t}</div>
       ))}
       <div className="layer-kept"><span className="fig">{fmt(M.kept_mean, 2)}</span><span style={{ color: 'var(--gold)' }}>★</span> kept</div>

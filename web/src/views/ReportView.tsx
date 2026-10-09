@@ -1,10 +1,10 @@
-import { ArrowLeft, ChevronRight, Info, Network, Play, RotateCcw, ShieldAlert, Sparkles, Undo2, X } from 'lucide-react'
+import { ArrowLeft, ChevronRight, Info, Network, Play, ShieldAlert, Sparkles, Undo2 } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { api } from '../api'
+import { CaseStory } from '../components/CaseStory'
 import { Finding, pairEvidence, Strength } from '../components/Findings'
-import { eventsFromReport, Investigation, usePlayback } from '../components/Investigation'
 import { MapView } from '../components/MapView'
 import { CheckedGrid, ReviewerProvider } from '../components/Reviewer'
 import { BranchTabs, ReviewList } from '../components/ReviewList'
@@ -16,7 +16,7 @@ import { LevelBadge, StarBar } from '../components/ui'
 import { ageText, day, FLAGGED_VERDICTS, fmt, levelClass, VERDICT_TEXT } from '../labels'
 import { makeNamer } from '../names'
 import { usePresentation } from '../presentation'
-import type { AnalysisDetail, ProgressEvent, Report } from '../types'
+import type { AnalysisDetail, Report } from '../types'
 
 const CHAPTERS = [
   ['verdict', 'Verdict'],
@@ -38,7 +38,10 @@ export function ReportView({ detail }: { detail: AnalysisDetail }) {
     document.getElementById('linked')?.scrollIntoView({ behavior: 'smooth' })
   }
   const findings = useMemo(() => pairEvidence(report), [report])
-  const [replay, setReplay] = useState(false)
+  // ?story=1 opens the walkthrough: a check that just finished, or a recording.
+  const [params, setParams] = useSearchParams()
+  const story = params.get('story') === '1' && !!report.sieve
+  const setStory = (on: boolean) => setParams((p) => { if (on) p.set('story', '1'); else p.delete('story'); return p }, { replace: true })
   const sieve = useSieve(report)
 
   return (
@@ -46,7 +49,7 @@ export function ReportView({ detail }: { detail: AnalysisDetail }) {
     <div className="report">
       <Rail />
       <div>
-        <Verdict report={report} detail={detail} sieve={sieve} onReplay={() => setReplay(true)} />
+        <Verdict report={report} detail={detail} sieve={sieve} onReplay={() => setStory(true)} />
 
         {report.sieve
           ? <Sorting report={report} state={sieve} namer={namer} presentation={pres.on || !!report.pseudonymized} />
@@ -89,7 +92,15 @@ export function ReportView({ detail }: { detail: AnalysisDetail }) {
         <Checked report={report} detail={detail} />
       </div>
     </div>
-    <AnimatePresence>{replay && <Replay report={report} onClose={() => setReplay(false)} />}</AnimatePresence>
+    <AnimatePresence>
+      {story && (
+        <CaseStory report={report} namer={namer} synthetic={detail.synthetic} onClose={() => setStory(false)}
+          onRead={() => {
+            setStory(false)
+            window.setTimeout(() => document.getElementById('reviews')?.scrollIntoView({ behavior: 'smooth' }), 80)
+          }} />
+      )}
+    </AnimatePresence>
     </ReviewerProvider>
   )
 }
@@ -183,12 +194,12 @@ function Verdict({ report, detail, sieve, onReplay }: { report: Report; detail: 
             {report.warnings.map((w) => <div key={w} className="notice warn small"><ShieldAlert size={15} />{w}</div>)}
             {stale && <div className="notice small"><Info size={15} />Analysed {ageText(detail.finished_at)}. Reviews may have changed since.</div>}
           </div>
-          {report.sample.expanded > 0 && (
+          {report.sieve && (
             <button className="replay-cta" onClick={onReplay}>
               <span className="replay-icon"><Play size={16} fill="currentColor" /></span>
               <span className="col" style={{ alignItems: 'flex-start' }}>
-                <strong>Watch the investigation</strong>
-                <span className="muted small">{report.sample.examined} reviews read, {report.sample.expanded} reviewer histories opened</span>
+                <strong>Watch what we found</strong>
+                <span className="muted small">A one-minute walkthrough of this check, finding by finding</span>
               </span>
             </button>
           )}
@@ -240,13 +251,13 @@ function Sorting({ report, state, namer, presentation }: { report: Report; state
         <div className="sieve-foot">
           <div className="legend">
             <span><i className="swatch" style={{ background: 'var(--label-suspicious)' }} /> Near-certain signs, set aside at first</span>
-            <span><i className="swatch dashed" style={{ ['--tone' as string]: 'var(--label-suspicious)' }} /> An AI model's opinion</span>
+            {sieve.order.some((k) => sieve.signs[k].strength === 'opinion') && <span><i className="swatch dashed" style={{ ['--tone' as string]: 'var(--label-suspicious)' }} /> An AI model's opinion</span>}
             <span><i className="swatch" style={{ background: 'var(--label-none)' }} /> True of many real customers too</span>
             {!state.isDefault && <button className="btn ghost sm" onClick={state.reset}><Undo2 size={14} /> Back to the defaults</button>}
           </div>
           <div className="small secondary col" style={{ gap: 4 }}>
             {none.length > 0 && <span>Also checked, none found: {none.map((k) => sieve.signs[k].short.charAt(0).toLowerCase() + sieve.signs[k].short.slice(1)).join(', ')}.</span>}
-            {ai.judged > 0
+            {ai.enabled === false ? null : ai.judged > 0
               ? <span>An AI model read the {ai.judged} review{ai.judged === 1 ? '' : 's'} with at least {ai.min_words} words for AI-written style; {ai.too_short} {ai.too_short === 1 ? 'was' : 'were'} too short to judge.</span>
               : ai.eligible > 0
                 ? <span>The AI-written check didn't run for this analysis (no AI key was set). {ai.eligible} reviews are long enough to judge.</span>
@@ -259,52 +270,6 @@ function Sorting({ report, state, namer, presentation }: { report: Report; state
         <ReviewList key={shown} report={report} state={state} branch={shown} namer={namer} presentation={presentation} />
       </div>
     </section>
-  )
-}
-
-/** The investigation again, rebuilt from the report: costs nothing, good for recordings. */
-function Replay({ report, onClose }: { report: Report; onClose: () => void }) {
-  const events = useMemo(() => eventsFromReport(report), [report])
-  const [run, setRun] = useState(0)
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
-    window.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
-  }, [onClose])
-  return (
-    <motion.div className="replay" role="dialog" aria-modal="true" aria-label="Investigation replay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-      <div className="replay-inner">
-        <div className="row" style={{ justifyContent: 'space-between', marginBottom: 18 }}>
-          <div>
-            <div className="muted small">Replay, rebuilt from the report</div>
-            <h2 style={{ fontSize: '2.2rem' }}>{report.place.title ?? 'This business'}</h2>
-          </div>
-          <div className="row">
-            <button className="btn sm" onClick={() => setRun((x) => x + 1)}><RotateCcw size={14} /> Restart</button>
-            <button className="icon-btn" onClick={onClose} aria-label="Close replay"><X size={16} /></button>
-          </div>
-        </div>
-        <ReplayPlayer key={run} events={events} onDone={onClose} />
-      </div>
-    </motion.div>
-  )
-}
-
-function ReplayPlayer({ events, onDone }: { events: ProgressEvent[]; onDone: () => void }) {
-  const { state } = usePlayback(events)
-  return (
-    <div className="panel pad">
-      <Investigation state={state} />
-      {state.finished && (
-        <motion.div className="row" style={{ marginTop: 18, justifyContent: 'flex-end' }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
-          <button className="btn primary" onClick={onDone}>See the evidence <ChevronRight size={16} /></button>
-        </motion.div>
-      )}
-    </div>
   )
 }
 

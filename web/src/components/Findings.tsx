@@ -6,7 +6,8 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { day, dayCount, fmt, pct } from '../labels'
 import { CountUp, EASE } from '../motion'
 import type { Namer } from '../names'
-import type { Burst, Evidence, Group, Report, SingleUseBurst } from '../types'
+import type { Burst, Evidence, Group, Report, SameStarBurst } from '../types'
+import { BurstZoom } from './BurstZoom'
 import { Timeline } from './Timeline'
 import { Stars } from './ui'
 
@@ -14,6 +15,7 @@ const KIND: Record<string, { text: string; tone: string }> = {
   rating_gap: { text: 'Rating carried by older reviews', tone: 'var(--status-serious)' },
   top_rated: { text: 'Highest-rated reviews cluster in time', tone: 'var(--label-suspicious)' },
   generated_text: { text: 'Chatbot or template text', tone: 'var(--label-suspicious)' },
+  review_burst: { text: 'Burst of same-star reviews', tone: 'var(--label-suspicious)' },
   single_use_burst: { text: 'Burst of first-time accounts', tone: 'var(--label-suspicious)' },
   burst: { text: 'Review burst', tone: 'var(--ink-2)' },
   ring: { text: 'Ring-like group of linked reviewers', tone: 'var(--label-ring)' },
@@ -39,7 +41,7 @@ interface Ctx {
 /** Pair each burst-type evidence item with its signal, in the order the backend lists them. */
 export function pairEvidence(report: Report) {
   const bursts = [...report.signals.T1.bursts]
-  const single = (report.signals.T6?.single_use_bursts ?? []).filter((b) => b.flagged)
+  const same = (report.signals.T11?.clusters ?? []).filter((c) => c.flagged)
   let si = 0
   return report.evidence.map((e) => {
     if (e.kind === 'burst') {
@@ -47,12 +49,12 @@ export function pairEvidence(report: Report) {
       const i = bursts.findIndex((b) => b.count === lead)
       return { e, burst: bursts.splice(i >= 0 ? i : 0, 1)[0] }
     }
-    if (e.kind === 'single_use_burst') return { e, single: single[si++] }
+    if (e.kind === 'review_burst') return { e, same: same[si++] }
     return { e }
   })
 }
 
-export function Finding({ e, burst, single, ctx }: { e: Evidence; burst?: Burst; single?: SingleUseBurst; ctx: Ctx }) {
+export function Finding({ e, burst, same, ctx }: { e: Evidence; burst?: Burst; same?: SameStarBurst; ctx: Ctx }) {
   const k = KIND[e.kind] ?? { text: e.kind.replace(/_/g, ' '), tone: 'var(--ink-2)' }
   const group = e.group ? ctx.report.groups.find((g) => g.group_id === e.group) : undefined
   const quiet = QUIET.has(e.kind)
@@ -71,7 +73,7 @@ export function Finding({ e, burst, single, ctx }: { e: Evidence; burst?: Burst;
           {e.kind === 'rating_gap' && <RatingGapVisual report={ctx.report} />}
           {e.kind === 'top_rated' && <TopRatedVisual report={ctx.report} />}
           {e.kind === 'generated_text' && <GeneratedVisual report={ctx.report} text={e.text} />}
-          {e.kind === 'single_use_burst' && single && <SingleUseVisual report={ctx.report} b={single} />}
+          {e.kind === 'review_burst' && same && <BurstZoom report={ctx.report} burst={same} />}
           {e.kind === 'burst' && burst && <BurstVisual report={ctx.report} b={burst} />}
           {e.kind === 'ai_style' && <AiStyleVisual report={ctx.report} />}
           {e.kind === 'first_time_skew' && <FirstTimeSkewVisual report={ctx.report} />}
@@ -285,30 +287,6 @@ function ReviewCard({ marker, text, rating, date, reviews }: { marker: string; t
 }
 
 /* ---------- bursts ---------- */
-
-function SingleUseVisual({ report, b }: { report: Report; b: SingleUseBurst }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '0px 0px -60px 0px' })
-  return (
-    <div ref={ref} className="col" style={{ gap: 22 }}>
-      <div>
-        <div className="row" style={{ alignItems: 'baseline', gap: 10, marginBottom: 12 }}>
-          <span className="big-num num"><CountUp value={b.single_use} /></span>
-          <span className="secondary">of <strong className="num">{b.count}</strong> reviews in {dayCount(b.start, b.end)} days came from first-time accounts</span>
-        </div>
-        <div className="propbar" role="img" aria-label={`${b.single_use} of ${b.count}`}>
-          <motion.div className="seg-hatch" initial={{ width: 0 }} animate={inView ? { width: `${(b.single_use / b.count) * 100}%` } : {}} transition={{ duration: 1.2, ease: EASE, delay: 0.2 }} />
-        </div>
-        <div className="legend" style={{ marginTop: 10 }}>
-          <span><i className="swatch single_use_burst" /> accounts that have reviewed nothing else</span>
-          <span><i className="swatch" style={{ background: 'var(--surface-3)' }} /> other accounts</span>
-        </div>
-      </div>
-      <Timeline report={report} height={170} legend={false}
-        highlights={[{ start: b.start, end: b.end, text: `${b.count} in ${dayCount(b.start, b.end)} days`, tone: 'suspicious' }]} />
-    </div>
-  )
-}
 
 function BurstVisual({ report, b }: { report: Report; b: Burst }) {
   return (

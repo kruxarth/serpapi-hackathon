@@ -278,7 +278,7 @@ function Analyse({ mode }: { mode: string | undefined }) {
         </button>
       </form>
       <p className="muted small" style={{ marginTop: 10 }}>
-        {offline ? 'Offline mode: only places already fetched can be checked.' : <>Share links (<code>maps.app.goo.gl</code>) work too. Places checked before open instantly.</>}
+        {offline ? 'Offline mode: only places already fetched can be checked.' : <>Share links (<code>maps.app.goo.gl</code>, <code>share.google</code>) work too. Places checked before open instantly.</>}
       </p>
 
       <AnimatePresence mode="popLayout">

@@ -71,6 +71,9 @@ function show(url: string, lookup: Lookup) {
       return
     case 'none':
       offer(url)
+      return
+    case 'needs_lookup':
+      offerLookup(url, lookup.query)
   }
 }
 
@@ -161,7 +164,7 @@ async function reviews(analysisId: string, ageDays: number, url: string) {
             <input type="checkbox" data-sign="${esc(k)}" ${aside.has(k) ? 'checked' : ''} />
             <span class="sign-name">${esc(s.name)}</span><span class="num muted">${s.count}</span></label>`
         }).join('') : '<p class="secondary small">No warning signs among these reviews.</p>'}
-        <p class="muted small">Solid signs are near-certain. "Reads as AI-written" is an AI model's opinion, and first-time accounts are often real customers, so those start kept.</p>
+        <p class="muted small">Solid signs are near-certain. First-time accounts and reviews that name the business with its area are true of many real customers too, so those start kept.</p>
       </div>
       <div class="list-head"><strong>Reviews you kept</strong> <span class="muted small">${kept.length}</span></div>
       ${kept.slice(0, shown).map((r) => {
@@ -205,12 +208,50 @@ function offer(url: string) {
   document.getElementById('run')!.onclick = () => run(url)
 }
 
-async function run(url: string) {
+interface Candidate { data_id: string | null; title: string | null; address: string | null; rating: number | null; reviews: number | null }
+
+/** A share.google link opens a Google Search page for the place, not Maps: find it on Maps first. */
+function offerLookup(url: string, query?: string) {
+  app.innerHTML = `
+    <div class="box">
+      <strong>This link opens a Google Search page, not a Maps place.</strong>
+      <p class="secondary small">ReviewRing finds ${query ? `“${esc(query)}”` : 'the place'} on Google Maps, then reads its newest 100 reviews and the histories of the most unusual reviewers. It takes about a minute.</p>
+      <button class="primary" id="run">Check reviews</button>
+    </div>`
+  document.getElementById('run')!.onclick = () => find(url)
+}
+
+async function find(url: string) {
+  app.innerHTML = `<div class="box">Finding the place on Google Maps…</div>`
+  let found: Candidate[]
+  try {
+    found = (await post<{ candidates?: Candidate[] }>('/api/resolve', { input: url, confirm_lookup: true })).candidates ?? []
+  } catch (err) {
+    app.innerHTML = `<div class="box">${esc((err as Error).message)}</div>`
+    return
+  }
+  found = found.filter((c) => c.data_id)
+  if (found.length === 1) return run(url, found[0].data_id!)
+  if (!found.length) {
+    app.innerHTML = `<div class="box">Couldn't find that place on Google Maps. Open it on Google Maps and copy its link instead.</div>`
+    return
+  }
+  app.innerHTML = `<div class="box"><strong>Which place?</strong>
+    ${found.map((c, i) => `<button class="cand" data-i="${i}"><span>${esc(c.title ?? 'Unnamed place')}</span>
+      ${c.address ? `<span class="small secondary">${esc(c.address)}</span>` : ''}
+      ${c.rating != null ? `<span class="small muted">${c.rating}★${c.reviews != null ? ` · ${c.reviews} reviews` : ''}</span>` : ''}</button>`).join('')}
+  </div>`
+  app.querySelectorAll<HTMLButtonElement>('button.cand').forEach((b) => {
+    b.onclick = () => run(url, found[Number(b.dataset.i)].data_id!)
+  })
+}
+
+async function run(url: string, pick?: string) {
   const { backendUrl } = await getSettings()
   app.innerHTML = `<div class="box">Starting…</div>`
   let id: string
   try {
-    id = (await post<{ analysis_id: string }>('/api/analyses', { input: url })).analysis_id
+    id = (await post<{ analysis_id: string }>('/api/analyses', { input: url, pick })).analysis_id
   } catch (err) {
     app.innerHTML = `<div class="box">${esc((err as Error).message)}</div>`
     return

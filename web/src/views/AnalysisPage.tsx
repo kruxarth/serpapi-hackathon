@@ -2,7 +2,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { ArrowLeft, Ban, Check, CircleAlert, Clock, Database, Pause } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState, type ReactNode } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { api } from '../api'
 import { Investigation, usePlayback } from '../components/Investigation'
 import { EASE } from '../motion'
@@ -19,7 +19,6 @@ const STAGES: { key: string; title: string; note: string; optional?: boolean }[]
   { key: 'expanding', title: 'Open reviewer histories', note: 'Every other place each account reviewed' },
   { key: 'building_graph', title: 'Build the co-review graph', note: 'Link accounts that share unrelated places' },
   { key: 'finding_groups', title: 'Find groups', note: 'Test each group against rings, trips and friends' },
-  { key: 'reading_texts', title: 'Read the longer reviews', note: 'An AI opinion on AI-written style', optional: true },
 ]
 const TERMINAL = ['done', 'cancelled', 'error', 'paused', 'needs_input']
 const RUNNING = new Set(['queued', 'running', 'collected'])
@@ -39,6 +38,7 @@ export function AnalysisPage() {
 function Progress({ detail }: { detail: AnalysisDetail }) {
   const qc = useQueryClient()
   const pres = usePresentation()
+  const navigate = useNavigate()
   const [events, setEvents] = useState<ProgressEvent[]>([])
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -60,17 +60,19 @@ function Progress({ detail }: { detail: AnalysisDetail }) {
     return () => es.close()
   }, [detail.id, live, qc])
 
-  // The report opens once the viewer has seen the investigation through, not the instant the backend finishes.
+  // The report opens once the viewer has seen the investigation through, not the instant the backend finishes, and
+  // a check that just finished opens on its walkthrough.
   const ended = played.find((e) => TERMINAL.includes(e.type))
   useEffect(() => {
     if (!ended || !caughtUp) return
     const t = window.setTimeout(() => {
+      if (ended.type === 'done' && live) navigate(`/analysis/${detail.id}?story=1`, { replace: true })
       qc.invalidateQueries({ queryKey: ['analysis', detail.id] })
       qc.invalidateQueries({ queryKey: ['budget'] })
       qc.invalidateQueries({ queryKey: ['analyses'] })
     }, ended.type === 'done' ? 1600 : 0)
     return () => clearTimeout(t)
-  }, [ended, caughtUp, detail.id, qc])
+  }, [ended, caughtUp, detail.id, qc, live, navigate])
 
   const last = played[played.length - 1]
   const expanding = [...played].reverse().find((e) => e.type === 'expanding')
