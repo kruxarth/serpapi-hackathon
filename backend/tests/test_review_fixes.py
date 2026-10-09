@@ -1,4 +1,4 @@
-"""Scenarios raised by the external design review (docs/SYSTEM-OVERVIEW.md, section 11)."""
+"""Scenarios raised by the external design review."""
 
 from datetime import timedelta
 

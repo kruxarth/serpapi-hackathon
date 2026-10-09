@@ -26,3 +26,10 @@ extension/dist/
 .vscode/
 
 IMPLEMENTATION.md
+
+# Notes for the developer and coding agents, kept local
+CLAUDE.md
+docs/DECISIONS.md
+docs/SYSTEM-OVERVIEW.md
+docs/QA-extension.md
+docs/research-*.md
