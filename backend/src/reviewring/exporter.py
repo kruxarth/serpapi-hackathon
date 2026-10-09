@@ -27,6 +27,7 @@ from .privacy import (
     TEXT_KEEP_CHARS,
     TEXT_KEEP_MIN_ACCOUNTS,
     approx_count,
+    business_terms,
     date_offset_days,
     hashed,
     letters,
@@ -79,7 +80,7 @@ def pseudonymize_input(inp: AnalysisInput, salt_value: str, *, keep_texts: bool 
         if f.cluster:
             accounts.setdefault(f.cluster, set()).add(f.owner or f.text_id)
 
-    title_words = {w for w in re.split(r"\W+", inp.target.title or "") if len(w) >= 4}
+    title_words = business_terms(inp.target.title)
     for p in inp.places.values():
         if p.title and p.place_key != inp.target.place_key:
             title_words |= {w for w in re.split(r"\W+", p.title) if len(w) >= 5}

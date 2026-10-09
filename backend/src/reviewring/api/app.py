@@ -24,7 +24,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from .. import ALGORITHM_VERSION, config, db, redact, settings
 from ..collect import CollectParams, estimate
 from ..privacy import pseudonymize_report
-from ..resolve import InputRefused, lookup, lookup_request, parse_input
+from ..resolve import InputRefused, ResolvedInput, candidates_from_body, lookup, lookup_request, parse_input
 from ..serp.errors import GatewayError, InvalidApiKey, NoApiKey, NotCached
 from ..serp.gateway import Gateway
 from .jobs import JobManager
@@ -360,18 +360,46 @@ def create_app(
         path = export_analysis(analysis_id)
         return {"fixture": path.name}
 
+    def known_place(text: str, resolved: ResolvedInput) -> str | None:
+        """The place an input without a Maps id already led to: an earlier analysis started from the same input, or
+        a cached lookup that found exactly one place. Free."""
+        row = (
+            db.connect()
+            .execute(
+                "SELECT place_key FROM analyses WHERE input = ? AND place_key IS NOT NULL "
+                "ORDER BY started_at DESC LIMIT 1",
+                (text,),
+            )
+            .fetchone()
+        )
+        if row is not None:
+            return row["place_key"]
+        req = lookup_request(resolved)
+        cached = factory("offline").lookup_cache(req) if req is not None else None
+        found = candidates_from_body(cached.body) if cached is not None else []
+        return found[0].data_id if len(found) == 1 else None
+
     @app.get("/api/places/latest")
     def latest(request: Request, data_id: str | None = None, url: str | None = None) -> dict[str, Any]:
-        """The newest finished analysis for a place (free). Used by the extension."""
+        """The newest finished analysis for a place (free). Used by the extension.
+
+        A share.google link names a place without identifying it; until a lookup has found it the reason is
+        ``needs_lookup``, and checking it starts with that lookup.
+        """
+        query = None
         if url and not data_id:
             try:
-                data_id = parse_input(url).data_id
+                resolved = parse_input(url.strip())
             except InputRefused:
-                data_id = None
-        if not data_id:
+                return {"found": False, "reason": "no_place"}
+            data_id = resolved.data_id or known_place(url.strip(), resolved)
+            query = resolved.query
+        if not data_id and not query:
             return {"found": False, "reason": "no_place"}
         if mode() == "demo":
             return {"found": False, "reason": "demo", "message": "Demo mode can't match real Maps pages."}
+        if not data_id:
+            return {"found": False, "reason": "needs_lookup", **({} if present(request) else {"query": query})}
         row = (
             db.connect()
             .execute(
@@ -427,7 +455,8 @@ def create_app(
 HEADLINES = [  # (evidence kind, short reason for the badge), strongest first
     ("ring", "linked reviewer group"),
     ("generated_text", "chatbot text in reviews"),
-    ("single_use_burst", "burst of first-time accounts"),
+    ("review_burst", "burst of same-star reviews"),
+    ("keyword_style", "reviews written like search ads"),
     ("possible_ring_trip", "possible linked group"),
     ("rating_gap", "rating carried by old reviews"),
 ]

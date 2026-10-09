@@ -8,6 +8,7 @@ from reviewring.engine.homes import compute_homes
 from reviewring.engine.priority import score_reviews
 from reviewring.engine.target_signals import detect_bursts
 from reviewring.parse import contributor_history
+from reviewring.privacy import pseudonymize_report
 from reviewring.synth import FETCHED, World, ordinary_reviewers, plant_ring
 
 
@@ -225,36 +226,60 @@ def test_presentation_mode_shifts_dates_and_rounds():
     assert all(round(p["lat"], 1) == p["lat"] for p in shown["places"].values() if p["lat"] is not None)
 
 
-def test_burst_of_single_use_accounts_raises_level_to_elevated():
+def burst_world(n=16, *, stars=5, every=timedelta(minutes=5), total=1, alternate=None):
+    """40 ordinary reviews over four months, plus `n` reviews packed together a month ago."""
     w = World(total_reviews=900)
     ordinary_reviewers(w, 40)
     t = FETCHED - timedelta(days=30)
-    burners = []
-    for i in range(12):
-        cid = w.reviewer(total=1, photos=0)
-        w.histories[cid] = []  # the account's only review is this business
-        r = w.review_target(cid, rating=5, when=t + timedelta(hours=i * 3), total=1, photos=0)
-        burners.append(r.review_id)
-    inp = w.build()
-    report = analyze(inp)
-    t6 = report["signals"]["T6"]["single_use_bursts"]
-    assert any(b["flagged"] and b["single_use"] >= 10 for b in t6)
-    assert report["level"]["level"] == "Elevated"
-    labels = {r["review_id"]: r["label"] for r in report["reviews"]}
-    assert sum(labels[b] == "single_use_burst" for b in burners) >= 10
-    assert any(e["kind"] == "single_use_burst" for e in report["evidence"])
+    ids = []
+    for i in range(n):
+        cid = w.reviewer(total=total, photos=0)
+        if total == 1:
+            w.histories[cid] = []  # the account's only review is this business
+        rating = alternate if alternate and i % 2 else stars
+        ids.append(w.review_target(cid, rating=rating, when=t + every * i, total=total, photos=0).review_id)
+    return w, ids
 
 
-def test_burst_of_established_accounts_does_not_raise_level():
-    w = World(total_reviews=900)
-    ordinary_reviewers(w, 40)
-    t = FETCHED - timedelta(days=30)
-    for i in range(12):
-        cid = w.reviewer(total=40, photos=10)
-        w.review_target(cid, rating=5, when=t + timedelta(hours=i * 3))
+def test_a_burst_of_five_star_reviews_is_told_in_minutes_and_raises_the_level():
+    w, ids = burst_world()
     report = analyze(w.build())
-    assert not any(b["flagged"] for b in report["signals"]["T6"]["single_use_bursts"])
-    assert report["level"]["level"] == "Low"
+    flagged = [c for c in report["signals"]["T11"]["clusters"] if c["flagged"]]
+    assert len(flagged) == 1 and set(ids) <= set(flagged[0]["review_ids"]) and 75 <= flagged[0]["minutes"] < 90
+    c0 = flagged[0]
+    assert c0["first_time"] == 16 and c0["pace"] >= 10 and len(c0["offsets"]) == c0["count"]
+    assert report["level"]["level"] == "Elevated"
+    assert any(f"{flagged[0]['count']} five-star reviews arrived in" in x for x in report["level"]["reasons"])
+    labels = {r["review_id"]: r for r in report["reviews"]}
+    assert all("review_burst" in labels[i]["signs"] and labels[i]["label"] == "single_use_burst" for i in ids)
+    assert any(e["kind"] == "review_burst" for e in report["evidence"])
+    shown = pseudonymize_report(report, salt_value="s")
+    c = next(c for c in shown["signals"]["T11"]["clusters"] if c["flagged"])
+    assert set(c["review_ids"]) <= {r["review_id"] for r in shown["reviews"]} and c["start"] != flagged[0]["start"]
+    assert c["offsets"] == flagged[0]["offsets"] and c["start"][11:] == flagged[0]["start"][11:]  # days shift only
+
+
+def test_established_accounts_count_too_and_one_star_attacks_are_flagged():
+    w, _ = burst_world(total=40)
+    report = analyze(w.build())
+    c = next(c for c in report["signals"]["T11"]["clusters"] if c["flagged"])
+    assert c["first_time"] == 0 and report["level"]["level"] == "Elevated"
+    w, ids = burst_world(stars=1, every=timedelta(minutes=8))
+    report = analyze(w.build())
+    c = next(c for c in report["signals"]["T11"]["clusters"] if c["flagged"])
+    assert c["stars"] == 1 and set(ids) <= set(c["review_ids"])
+    assert any("16 one-star reviews" in x for x in report["level"]["reasons"])
+
+
+def test_a_slow_trickle_mixed_stars_or_a_busy_listing_is_not_a_burst():
+    for w, _ in (burst_world(every=timedelta(hours=12)), burst_world(alternate=4)):
+        assert not any(c["flagged"] for c in analyze(w.build())["signals"]["T11"]["clusters"])
+    busy = World(total_reviews=5000)  # the newest 100 reviews span three days
+    for i in range(100):
+        cid = busy.reviewer(total=10, photos=1)
+        busy.review_target(cid, rating=5 if i % 3 else 4, when=FETCHED - timedelta(minutes=43 * i))
+    clusters = analyze(busy.build())["signals"]["T11"]["clusters"]
+    assert clusters and not any(c["flagged"] for c in clusters)  # most reviews are 5★ there, at the usual pace
 
 
 def test_rating_gap_top_rated_sample_and_generated_text():
@@ -365,3 +390,24 @@ def test_chatbot_excerpt_is_kept_and_scrubbed():
     shown = pseudonymize_report(report, salt_value="s")
     srow = next(r for r in shown["reviews"] if r["generated_marker"])
     assert "unable to generate" in srow["excerpt"] and "9876543210" not in srow["excerpt"]
+
+
+def test_presentation_mode_hides_short_business_names_and_the_neighbourhood():
+    import json
+
+    from reviewring.privacy import business_terms, pseudonymize_report, scrub_text
+
+    from .test_signs import keyword_world
+
+    assert business_terms("Om Sai Packers And Movers") >= {"Om Sai", "Sai", "Packers", "Movers"}
+    assert "And" not in business_terms("Om Sai Packers And Movers")
+    assert scrub_text("Thanks om-sai packers, Hadapsar!", business_terms("Om Sai Packers"), {"hadapsar"}) == (
+        "Thanks [business] [business], [area]!"
+    )
+    w, _ = keyword_world()
+    report = analyze(w.build())
+    assert {"hadapsar", "maharashtra"} <= set(report["place"]["locality"]) and "pune" not in report["place"]["locality"]
+    shown = pseudonymize_report(report, salt_value="s")
+    dump = json.dumps(shown).casefold()
+    assert "shanti" not in dump and "hadapsar" not in dump and "locality" not in dump
+    assert "[area]" in dump  # the copied texts are kept, with the neighbourhood scrubbed

@@ -37,7 +37,7 @@ log = logging.getLogger(__name__)
 SUMMARY_PROMPT = "summary-v1"
 PARAPHRASE_PROMPT = "paraphrase-v1"
 AI_STYLE_PROMPT = "ai-style-v1"
-VOICE_PROMPT = "voice-v1"
+VOICE_PROMPT = "voice-v2"
 BANNED = [
     "fake",
     "fakes",
@@ -525,7 +525,7 @@ def voice_items(inp) -> list[dict[str, Any]]:
             for h in inp.histories.get(cid, [])
             if h.place_key != target and h.text and word_count(h.text) >= cfg["min_other_words"]
         ]
-        if others:
+        if len(others) >= int(cfg.get("min_others", 2)):  # one other review is too little to know how they write
             items.append({"contributor_id": cid, "here": here_by[cid], "others": others[: int(cfg["max_others"])]})
     return items
 
@@ -570,12 +570,20 @@ def judge_voices(inp, gateway: LLMGateway, business_words: set[str]) -> dict[str
             i = rep.get("index")
             if not isinstance(i, int) or not 0 <= i < len(batch) or batch[i]["contributor_id"] in out:
                 continue
-            verdict = rep.get("verdict")
+            # One vote per other review: a mismatch needs most of their writing to differ, not one short outlier.
+            votes = [v for v in rep.get("votes") or [] if v in ("same", "different", "unclear")]
+            decided = [v for v in votes if v != "unclear"]
+            n_diff = decided.count("different")
+            min_diff = int(cfg.get("min_different_votes", 2))
+            if n_diff >= min_diff and n_diff > len(decided) / 2 and decided.count("same") == 0:
+                verdict = "different_voice"
+            elif decided and decided.count("same") >= n_diff:
+                verdict = "same_voice"
+            else:
+                verdict = "unclear"
             here = valid_cues([rep.get("here")], sent[i]["this_review"])
             elsewhere = valid_cues([rep.get("elsewhere")], " \n ".join(sent[i]["other_reviews"]))
             if verdict == "different_voice" and not (here and elsewhere):
-                verdict = "unclear"
-            if verdict not in ("different_voice", "same_voice", "unclear"):
                 verdict = "unclear"
             different = verdict == "different_voice"
             out[batch[i]["contributor_id"]] = {

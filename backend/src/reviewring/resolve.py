@@ -3,6 +3,11 @@
 Order of preference: a URL with a data_id (free), a short link (free to
 expand, no SerpApi), a CID URL (1 search), a place_id-only URL (1 search),
 then name + city text (1 search, the user picks a candidate).
+
+Google's newer share links (share.google, g.co/kgs) open a Google Search page
+for the place, which carries its name and Knowledge Graph id but no Maps id.
+Plain HTTP can't get further (the page needs JavaScript), so those become a
+name search.
 """
 
 from __future__ import annotations
@@ -25,7 +30,7 @@ PLACE_ID_TOKEN = re.compile(r"!1s(ChIJ[A-Za-z0-9_\-]+)")
 PLACE_ID_Q = re.compile(r"place_id:(ChIJ[A-Za-z0-9_\-]+)")
 GOOGLE_HOST = re.compile(r"^(?:www\.)?google\.[a-z]{2,3}(?:\.[a-z]{2})?$")
 MAPS_HOST = re.compile(r"^maps\.google\.[a-z]{2,3}(?:\.[a-z]{2})?$")
-SHORT_HOSTS = {"maps.app.goo.gl", "goo.gl"}
+SHORT_HOSTS = {"maps.app.goo.gl", "goo.gl", "share.google", "g.co"}
 
 
 class InputRefused(ValueError):
@@ -84,7 +89,13 @@ def _split(url: str):
 
 def _is_short(parts) -> bool:
     host = (parts.hostname or "").lower()
-    return host == "maps.app.goo.gl" or (host == "goo.gl" and parts.path.startswith("/maps"))
+    return (
+        host in ("maps.app.goo.gl", "share.google")
+        or (host == "goo.gl" and parts.path.startswith("/maps"))
+        or (host == "g.co" and parts.path.startswith("/kgs/"))
+        # share.google first hops to google.com/share.google?q=<code>, which redirects again
+        or (bool(GOOGLE_HOST.match(host)) and parts.path == "/share.google")
+    )
 
 
 def _is_maps(parts) -> bool:
@@ -131,8 +142,35 @@ def parse_maps_url(url: str) -> ResolvedInput:
     raise InputRefused("Couldn't find a place in that link. Open the place on Google Maps and copy its link.")
 
 
+def _is_search(parts) -> bool:
+    return bool(GOOGLE_HOST.match((parts.hostname or "").lower())) and parts.path == "/search"
+
+
+def parse_search_url(url: str) -> ResolvedInput:
+    """A Google Search link for one place (what share.google links open): its name becomes a name search.
+
+    Only links with a Knowledge Graph id (``kgmid``) name a single place; an ordinary search is refused.
+    """
+    url, parts = _split(url.strip())
+    query = parse_qs(parts.query)
+    name = " ".join(((query.get("q") or [""])[0]).split())
+    if not _is_search(parts) or not query.get("kgmid") or len(name) < 3:
+        raise InputRefused(
+            "That link opens a Google search, not a place. Open the place on Google Maps and copy its link."
+        )
+    return ResolvedInput(kind="name", cost=1, url=url, query=name)
+
+
+def _parse_link(url: str) -> ResolvedInput:
+    _, parts = _split(url)
+    return parse_search_url(url) if _is_search(parts) else parse_maps_url(url)
+
+
 def expand_short_link(url: str, session: requests.Session | None = None) -> str:
-    """Follow a maps.app.goo.gl / goo.gl/maps redirect chain with plain HTTP (not SerpApi)."""
+    """Follow a short link's redirect chain (maps.app.goo.gl, share.google, ...) with plain HTTP (not SerpApi)."""
+    if session is None and url in _expanded:
+        return _expanded[url]
+    real = session is None
     session = session or requests.Session()
     timeout = config.tunable("resolve", "short_link_timeout_seconds")
     max_redirects = config.tunable("resolve", "short_link_max_redirects")
@@ -151,6 +189,10 @@ def expand_short_link(url: str, session: requests.Session | None = None) -> str:
             current = target
             continue
         if not _is_short(parts):
+            if real:
+                if len(_expanded) >= 256:
+                    _expanded.clear()
+                _expanded[url] = current
             return current
         try:
             resp = session.get(current, headers=headers, timeout=timeout, allow_redirects=False)
@@ -160,8 +202,8 @@ def expand_short_link(url: str, session: requests.Session | None = None) -> str:
             resp = _fetch_via_doh(current, headers, timeout)
             if resp is None:
                 raise InputRefused(
-                    "Couldn't open that short link: your network may be blocking goo.gl links. Open it in your "
-                    "browser and paste the full google.com/maps link instead."
+                    "Couldn't open that short link: your network may be blocking it. Open it in your browser and "
+                    "paste the full google.com/maps link instead."
                 ) from None
         location = resp.headers.get("Location")
         if resp.status_code not in (301, 302, 303, 307, 308) or not location:
@@ -169,6 +211,10 @@ def expand_short_link(url: str, session: requests.Session | None = None) -> str:
         current = urljoin(current, location)
     raise InputRefused("That short link redirects too many times.")
 
+
+# Short links already followed in this process: the side panel asks about the same pasted link on every refresh,
+# and a goo.gl link can take ~20 s on networks that need the DNS-over-HTTPS fallback.
+_expanded: dict[str, str] = {}
 
 DOH_ENDPOINTS = (
     ("https://dns.google/resolve", {}),
@@ -230,10 +276,10 @@ def parse_input(text: str, session: requests.Session | None = None) -> ResolvedI
         url, parts = _split(text)
         if _is_short(parts):
             target = expand_short_link(url, session)
-            resolved = parse_maps_url(target)
+            resolved = _parse_link(target)
             resolved.expanded_from = url
             return resolved
-        return parse_maps_url(url)
+        return _parse_link(url)
     if len(text) < 3:
         raise InputRefused("Type a business name and city, e.g. 'Sunrise Dental Clinic, Pune'.")
     return ResolvedInput(kind="name", cost=1, query=text)

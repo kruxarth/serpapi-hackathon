@@ -3,6 +3,8 @@
 import json
 from datetime import timedelta
 
+import pytest
+
 from reviewring import config
 from reviewring.engine.analyze import analyze
 from reviewring.engine.signs import first_time_skew
@@ -42,9 +44,34 @@ def by_text(report, text):
     return next(r for r in report["reviews"] if r["text"] == text)
 
 
-# ---------------------------------------------------------------------- the AI-written opinion
+# ---------------------------------------------------------------------- the AI-written opinion (off)
 
 
+@pytest.fixture
+def ai_on(monkeypatch):
+    t = config.load_tunables()
+    monkeypatch.setitem(t["ai_text"], "enabled", True)
+    monkeypatch.setitem(t["signs"], "order", [*t["signs"]["order"][:5], "ai_style", *t["signs"]["order"][5:]])
+
+
+def test_ai_written_opinion_is_off_by_default():
+    w = World(target_city="Pune")
+    ordinary_reviewers(w, 20, home="Pune")
+    cid = w.reviewer(total=4, photos=0)
+    w.personal_history(cid, "Pune", 3)
+    r = w.review_target(cid, rating=5, text=POLISHED)
+    t = FakeTransport("{}")
+    assert judge_texts({r.review_id: POLISHED}, gw(t), set()) == {} and t.calls == []  # nothing is sent
+    inp = w.build()
+    inp.text_judgements = {r.review_id: {"verdict": "ai_style", "cues": ["absolutely seamless"], "model": "m"}}
+    report = analyze(inp)
+    row = next(x for x in report["reviews"] if x["review_id"] == r.review_id)
+    assert row["signs"] == [] and row["ai"] is None  # stored opinions are ignored too
+    assert "ai_style" not in report["sieve"]["order"] and report["sieve"]["ai"]["enabled"] is False
+    assert not any(e["kind"] == "ai_style" for e in report["evidence"])
+
+
+@pytest.mark.usefixtures("ai_on")
 def test_only_long_reviews_are_sent_and_cues_must_be_quoted():
     texts = {"r1": POLISHED, "r2": TYPED, "r3": "Very good service, highly recommended"}
 
@@ -67,6 +94,7 @@ def test_only_long_reviews_are_sent_and_cues_must_be_quoted():
     assert "r3" not in out
 
 
+@pytest.mark.usefixtures("ai_on")
 def test_quotes_crossing_a_scrubbed_name_count_but_are_not_shown():
     text = POLISHED + " Overall, Gold Movers is a truly seamless choice for every family moving homes."
     cues = ["absolutely seamless", "Overall, [business] [business] is a truly seamless choice"]
@@ -75,6 +103,7 @@ def test_quotes_crossing_a_scrubbed_name_count_but_are_not_shown():
     assert out["r1"]["verdict"] == "ai_style" and out["r1"]["cues"] == ["absolutely seamless"]
 
 
+@pytest.mark.usefixtures("ai_on")
 def test_texts_are_scrubbed_before_sending():
     text = POLISHED + " Call 9876543210 or see www.example.com, ask for Gold Movers."
     t = FakeTransport(json.dumps({"items": [{"index": 0, "verdict": "human_style", "cues": []}]}))
@@ -96,7 +125,7 @@ def test_offline_gateway_never_calls():
 # ---------------------------------------------------------------------- signs and the sieve
 
 
-def movers(burst=12):
+def movers(burst=16):
     w = World(total_reviews=600)
     ordinary_reviewers(w, 40)
     t = FETCHED - timedelta(days=30)
@@ -110,6 +139,7 @@ def movers(burst=12):
     return w, chatbot, ai, typed
 
 
+@pytest.mark.usefixtures("ai_on")
 def test_signs_in_sieve_order_and_defaults():
     w, chatbot, ai, typed = movers()
     inp = w.build()
@@ -122,12 +152,14 @@ def test_signs_in_sieve_order_and_defaults():
     assert sieve["order"][:6] == [
         "chatbot_text",
         "copied_text",
-        "voice_mismatch",
         "keyword_style",
-        "first_time_burst",
+        "review_burst",
         "linked_group",
+        "ai_style",
     ]
-    assert sieve["signs"]["first_time_burst"]["count"] >= 10
+    assert "voice_mismatch" not in sieve["order"]  # switched off: wrong on nearly every real flag
+    assert "ai_style" not in sieve["set_aside_by_default"]  # an AI opinion: kept unless the reader chooses
+    assert sieve["signs"]["review_burst"]["count"] >= 16
     assert sieve["signs"]["chatbot_text"]["count"] == 1 and sieve["signs"]["ai_style"]["count"] == 1
     assert by_text(report, POLISHED)["signs"] == ["ai_style"]
     assert by_text(report, POLISHED)["ai"]["cues"] == ["absolutely seamless", "Overall, I can't recommend"]
@@ -144,9 +176,9 @@ def test_signs_in_sieve_order_and_defaults():
 def test_burst_reviews_also_carry_the_first_time_sign():
     w, *_ = movers()
     report = analyze(w.build())
-    burst = [r for r in report["reviews"] if "first_time_burst" in r["signs"]]
-    assert burst and all("first_time_account" in r["signs"] for r in burst)
-    assert all(r["signs"].index("first_time_burst") < r["signs"].index("first_time_account") for r in burst)
+    burst = [r for r in report["reviews"] if "review_burst" in r["signs"] and r["reviewer_reviews"] == 1]
+    assert len(burst) == 16 and all("first_time_account" in r["signs"] for r in burst)
+    assert all(r["signs"].index("review_burst") < r["signs"].index("first_time_account") for r in burst)
 
 
 def test_ring_members_get_linked_group_and_copied_text():
@@ -234,6 +266,7 @@ def test_travellers_with_mixed_ratings_are_not_a_spree():
 # ---------------------------------------------------------------------- privacy
 
 
+@pytest.mark.usefixtures("ai_on")
 def test_presentation_mode_scrubs_ai_cues_and_hides_texts():
     w, _, ai, _ = movers()
     inp = w.build()
@@ -245,6 +278,7 @@ def test_presentation_mode_scrubs_ai_cues_and_hides_texts():
     assert row["signs"] == ["ai_style"]
 
 
+@pytest.mark.usefixtures("ai_on")
 def test_fixture_input_carries_hashed_judgements():
     w, _, ai, _ = movers()
     inp = w.build()
@@ -290,9 +324,24 @@ def test_search_ad_phrasing_needs_several_accounts():
     assert keyword_phrase("Thanks to the packers and new team", names, places) is None
     report = analyze(w.build())
     rows = [r for r in report["reviews"] if r["review_id"] in ids]
-    assert all("keyword_style" in r["signs"] and r["keyword_phrase"] for r in rows)
+    ads = [r for r in rows if "Om Shanti" not in r["text"]]
+    named = [r for r in rows if "Om Shanti" in r["text"]]
+    assert ads and all("keyword_style" in r["signs"] and r["keyword_phrase"] for r in ads)
+    # Naming the business with its area once is how customers refer to it: context, kept by default.
+    assert named and all("names_area" in r["signs"] and "keyword_style" not in r["signs"] for r in named)
+    # The texts repeat, so each copy names the reviews it matches; presentation mode hashes them like review ids.
+    a, b = named[0], named[1]
+    assert a["copied_with"] == [b["review_id"]] and b["copied_with"] == [a["review_id"]]
+    shown = pseudonymize_report(report, salt_value="s")
+    sa = next(
+        x for x in shown["reviews"] if x["copied_with"] and x["keyword_phrase"] and "shanti" not in x["keyword_phrase"]
+    )
+    assert all(x in {y["review_id"] for y in shown["reviews"]} for x in sa["copied_with"])
+    assert set(shown["signals"]["T10"]["named_ids"]) <= {y["review_id"] for y in shown["reviews"]}
+    assert named[0]["keyword_phrase"] == "om shanti packers and movers hadapsar pune"
     assert report["signals"]["T10"]["flagged"] and report["level"]["level"] == "Elevated"
     assert "keyword_style" in report["sieve"]["set_aside_by_default"]
+    assert "names_area" not in report["sieve"]["set_aside_by_default"]
     one, ids1 = keyword_world(n_keyword=1)
     lone = next(r for r in analyze(one.build())["reviews"] if r["review_id"] == ids1[0])
     assert "keyword_style" not in lone["signs"]  # one customer writing it means nothing
@@ -311,7 +360,34 @@ def test_keyword_reviewers_are_opened_first():
     assert score(boosted).parts.get("keyword_style") == 2 and score(boosted).score == score(plain).score + 2
 
 
-# ---------------------------------------------------------------------- not in the reviewer's own voice
+def test_search_phrases_need_the_bare_term_or_a_repeat():
+    from reviewring.engine.textstyle import brand_tokens, keyword_phrases, place_tokens, start_tokens
+    from reviewring.model import Place
+
+    place = Place(
+        "x",
+        title="Porter Packers and Movers",
+        type="Moving service",
+        address="12, Green Woods Society, MSP Layout, Kada Agrahara, Bengaluru, Karnataka 560049",
+        area="Bengaluru",
+    )
+    starts, places = start_tokens(place), place_tokens(place)
+    assert "green" not in places and "woods" not in places and "bengaluru" in places  # only the address's end
+    assert keyword_phrases("Porter's packers and movers in Bengaluru were fine.", starts, places) == [
+        "porter packers and movers in bengaluru"
+    ]
+    assert not {"porter"} & set(keyword_phrases("best moving services in bengaluru", starts, places)[0].split())
+    assert brand_tokens(place) == {"porter"}
+
+
+@pytest.fixture
+def voice_on(monkeypatch):
+    t = config.load_tunables()
+    monkeypatch.setitem(t["voice"], "enabled", True)
+    monkeypatch.setitem(t["signs"], "order", [*t["signs"]["order"][:5], "voice_mismatch", *t["signs"]["order"][5:]])
+
+
+# ---------------------------------------------------------------------- not in the reviewer's own voice (off)
 
 
 def voice_world():
@@ -329,6 +405,18 @@ def voice_world():
     return w, cid, r
 
 
+def test_voice_check_is_off_by_default():
+    from reviewring.llm import judge_voices
+
+    w, cid, r = voice_world()
+    inp = w.build()
+    assert judge_voices(inp, gw(FakeTransport("{}")), set()) == {}
+    inp.voice_judgements = {cid: {"verdict": "different_voice", "here": "a", "elsewhere": "b", "model": "m"}}
+    row = next(x for x in analyze(inp)["reviews"] if x["review_id"] == r.review_id)
+    assert row["voice"] is None and "voice_mismatch" not in row["signs"]  # stored opinions are ignored too
+
+
+@pytest.mark.usefixtures("voice_on")
 def test_voice_mismatch_needs_a_quote_from_each_side():
     from reviewring.llm import judge_voices
 
@@ -339,10 +427,11 @@ def test_voice_mismatch_needs_a_quote_from_each_side():
         items = []
         for it in payload["items"]:
             good = "nice miting" in " ".join(it["other_reviews"])
+            n = len(it["other_reviews"])
             items.append(
                 {
                     "index": it["index"],
-                    "verdict": "different_voice",
+                    "votes": ["different"] * n,
                     "here": "Everything arrived damage free" if good else "not in the text",
                     "elsewhere": "nice miting and company" if good else "nor this",
                 }
@@ -358,6 +447,7 @@ def test_voice_mismatch_needs_a_quote_from_each_side():
     assert all("contributor" not in json.dumps(it) for it in sent)
 
 
+@pytest.mark.usefixtures("voice_on")
 def test_voice_mismatch_sign_report_and_privacy():
     w, cid, r = voice_world()
     inp = w.build()
@@ -381,3 +471,29 @@ def test_voice_mismatch_sign_report_and_privacy():
     assert cid not in pseudo.voice_judgements and len(pseudo.voice_judgements) == 1
     again = input_from_dict(json.loads(json.dumps(input_to_dict(pseudo), default=str)))
     assert analyze(again)["sieve"]["signs"]["voice_mismatch"]["count"] == 1
+
+
+@pytest.mark.usefixtures("voice_on")
+def test_one_odd_review_is_not_a_different_voice():
+    from reviewring.llm import judge_voices
+
+    w, cid, _ = voice_world()
+    inp = w.build()
+
+    def reply(payload):
+        return json.dumps(
+            {
+                "items": [
+                    {
+                        "index": it["index"],
+                        "votes": ["different"] + ["same"] * (len(it["other_reviews"]) - 1),
+                        "here": "Everything arrived damage free",
+                        "elsewhere": "nice miting and company",
+                    }
+                    for it in payload["items"]
+                ]
+            }
+        )
+
+    out = judge_voices(inp, gw(FakeTransport(reply)), set())
+    assert out[cid]["verdict"] == "same_voice"  # the others match; one short outlier proves nothing

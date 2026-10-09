@@ -14,6 +14,7 @@ import hashlib
 import re
 import secrets
 import string
+from collections.abc import Callable
 from typing import Any
 
 from . import config
@@ -51,14 +52,44 @@ def letters(i: int) -> str:
     return out
 
 
-def scrub_text(text: str, business_words: set[str]) -> str:
+def business_terms(title: str | None) -> set[str]:
+    """What names a business in free text: each word of its title with 3+ letters (not "and", "pvt"), and each run
+    of its distinctive words as one phrase however short they are ("Om Sai" in "Om Sai Packers And Movers")."""
+    from .engine.textstyle import CONNECT, GENERIC, NOT_NAME
+
+    words = [w for w in re.split(r"\W+", title or "") if w]
+    out = {w for w in words if len(w) >= 3 and w.casefold() not in NOT_NAME | CONNECT}
+    run: list[str] = []
+    for w in [*words, ""]:
+        if w and w.casefold() not in GENERIC | NOT_NAME | CONNECT:
+            run.append(w)
+            continue
+        if len(run) >= 2:
+            out.add(" ".join(run))
+        run = []
+    return out
+
+
+def scrub_text(text: str, business_words: set[str], area_words: set[str] | frozenset[str] = frozenset()) -> str:
+    """Links, emails, phones and handles removed; the business's name becomes [business] and the listing's
+    neighbourhood [area]. A multi-word term matches across any punctuation ("Om-Sai", "om sai")."""
     text = URL.sub("[link]", text)
     text = EMAIL.sub("[email]", text)
     text = PHONE.sub("[phone]", text)
     text = HANDLE.sub("[handle]", text)
-    for word in sorted(business_words, key=len, reverse=True):
-        if len(word) >= 3:
-            text = re.sub(rf"(?<!\w){re.escape(word)}(?!\w)", "[business]", text, flags=re.IGNORECASE)
+    return scrub_names(text, business_words, area_words)
+
+
+def scrub_names(text: str, business_words: set[str], area_words: set[str] | frozenset[str] = frozenset()) -> str:
+    """Only the business's name and its neighbourhood: for ReviewRing's own sentences, whose dates must survive."""
+    for term in sorted(business_words, key=len, reverse=True):
+        parts = term.split()
+        if len(parts) == 1 and len(term) < 3:
+            continue
+        pattern = r"\W+".join(re.escape(x) for x in parts)
+        text = re.sub(rf"(?<!\w){pattern}(?!\w)", "[business]", text, flags=re.IGNORECASE)
+    for word in sorted(area_words, key=len, reverse=True):
+        text = re.sub(rf"(?<!\w){re.escape(word)}(?!\w)", "[area]", text, flags=re.IGNORECASE)
     return text
 
 
@@ -101,8 +132,10 @@ def shift_dates(obj: Any, days: int, skip: frozenset[str] = frozenset({"analysis
 _EMBEDDED_DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
 
 
-def _scrub_sentences(r: dict[str, Any], original: dict[str, Any], days: int) -> dict[str, Any]:
-    """Evidence and reasons are prose: shift the dates inside them and blur exact review counts."""
+def _scrub_sentences(
+    r: dict[str, Any], original: dict[str, Any], days: int, names: Callable[[str], str] = lambda t: t
+) -> dict[str, Any]:
+    """Evidence and reasons are prose: hide the names in them, shift their dates and blur exact review counts."""
     total = original.get("place", {}).get("total_reviews")
     gap = original.get("signals", {}).get("T7") or {}
     swaps: list[tuple[str, str]] = []
@@ -114,6 +147,7 @@ def _scrub_sentences(r: dict[str, Any], original: dict[str, Any], days: int) -> 
         swaps.append((f"{n:,}", f"about {approx_count(n):,}"))
 
     def fix(text: str) -> str:
+        text = names(text)
         for a, b in swaps:
             text = text.replace(a, b)
         return _EMBEDDED_DATE.sub(lambda m: shift_iso(m.group(0), days), text)
@@ -212,8 +246,11 @@ def pseudonymize_report(report: dict[str, Any], salt_value: str | None = None) -
     """A copy of the report safe to show in a demo or commit as a fixture."""
     ps = Pseudonymizer(report, salt_value)
     r = copy.deepcopy(report)
-    title = report["place"].get("title") or ""
-    business_words = {w for w in re.split(r"\W+", title) if len(w) >= 4}
+    business_words = business_terms(report["place"].get("title"))
+    area_words = set(r["place"].pop("locality", None) or [])  # the neighbourhood: scrubbed, never shown
+
+    def scrub(text: str) -> str:
+        return scrub_text(text, business_words, area_words)
 
     tk = report["place"]["place_key"]
     r["place"].update(
@@ -281,7 +318,7 @@ def pseudonymize_report(report: dict[str, Any], salt_value: str | None = None) -
     for row, orig in zip(r.get("reviews", []), report.get("reviews", []), strict=True):
         text = orig.get("text") or ""
         if keep_text(orig, counts):
-            row["text"] = scrub_text(text, business_words)[:TEXT_KEEP_CHARS]
+            row["text"] = scrub(text)[:TEXT_KEEP_CHARS]
             row["text_included"] = True
         else:
             row["text"] = None
@@ -291,37 +328,39 @@ def pseudonymize_report(report: dict[str, Any], salt_value: str | None = None) -
         row["display_name"] = ps.reviewers.get(orig.get("contributor_id") or "")
         row["contributor_id"] = ps.person(orig.get("contributor_id"))
         row["cluster"] = ps.cluster(orig.get("cluster"))
+        row["copied_with"] = [ps.review(x) for x in orig.get("copied_with") or []]
         if orig.get("excerpt"):
-            row["excerpt"] = scrub_text(orig["excerpt"], business_words)[:EXCERPT_KEEP_CHARS]
+            row["excerpt"] = scrub(orig["excerpt"])[:EXCERPT_KEEP_CHARS]
         if orig.get("voice"):
             row["voice"] = {
                 **orig["voice"],
-                "here": scrub_text(orig["voice"].get("here", ""), business_words)[:CUE_KEEP_CHARS],
-                "elsewhere": scrub_text(orig["voice"].get("elsewhere", ""), business_words)[:CUE_KEEP_CHARS],
+                "here": scrub(orig["voice"].get("here", ""))[:CUE_KEEP_CHARS],
+                "elsewhere": scrub(orig["voice"].get("elsewhere", ""))[:CUE_KEEP_CHARS],
                 "others": [],  # the reviewer's own words elsewhere stay private in a recording
             }
         if orig.get("keyword_phrase"):
-            row["keyword_phrase"] = scrub_text(orig["keyword_phrase"], business_words)
+            row["keyword_phrase"] = scrub(orig["keyword_phrase"])
         if orig.get("ai"):
             row["ai"] = {
                 **orig["ai"],
-                "cues": [scrub_text(c, business_words)[:CUE_KEEP_CHARS] for c in orig["ai"].get("cues", [])],
+                "cues": [scrub(c)[:CUE_KEEP_CHARS] for c in orig["ai"].get("cues", [])],
             }
     t4 = r.get("signals", {}).get("T4", {})
     if t4:
         t4["clusters"] = {ps.cluster(c): [ps.review(x) for x in ids] for c, ids in t4.get("clusters", {}).items()}
         t4["stock_phrase_clusters"] = [ps.cluster(c) for c in t4.get("stock_phrase_clusters", [])]
-    for b in r.get("signals", {}).get("T6", {}).get("single_use_bursts", []):
-        b["review_ids"] = [ps.review(x) for x in b.get("review_ids", [])]
+    for c in r.get("signals", {}).get("T11", {}).get("clusters", []):
+        c["review_ids"] = [ps.review(x) for x in c.get("review_ids", [])]  # its times are shifted with every date
     t8 = r.get("signals", {}).get("T8", {})
     for hit in t8.get("generated", []) if t8.get("available") else []:
         hit["review_id"] = ps.review(hit["review_id"])
         if hit.get("excerpt"):
-            hit["excerpt"] = scrub_text(hit["excerpt"], business_words)[:EXCERPT_KEEP_CHARS]
+            hit["excerpt"] = scrub(hit["excerpt"])[:EXCERPT_KEEP_CHARS]
     t10 = r.get("signals", {}).get("T10")
     if t10:
         t10["review_ids"] = [ps.review(x) for x in t10.get("review_ids", [])]
-        t10["phrases"] = {scrub_text(k, business_words): v for k, v in t10.get("phrases", {}).items()}
+        t10["named_ids"] = [ps.review(x) for x in t10.get("named_ids", [])]
+        t10["phrases"] = {scrub(k): v for k, v in t10.get("phrases", {}).items()}
     t1 = r.get("signals", {}).get("T1", {})
     for b in t1.get("bursts", []):
         b["review_ids"] = [ps.review(x) for x in b.get("review_ids", [])]
@@ -334,7 +373,7 @@ def pseudonymize_report(report: dict[str, Any], salt_value: str | None = None) -
         row.pop("date", None)  # exact timestamps; the shifted day is enough
     days = date_offset_days(ps.salt, tk)
     r = shift_dates(r, days)
-    r = _scrub_sentences(r, report, days)
+    r = _scrub_sentences(r, report, days, lambda t: scrub_names(t, business_words, area_words))
     r["pseudonymized"] = True
     r["dates_shifted"] = True
     return r

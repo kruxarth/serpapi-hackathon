@@ -336,6 +336,7 @@ class Collector:
     # ------------------------------------------------------------------ run
 
     def run(self) -> Outcome:
+        self.state.pop("missing", None)  # describes this run's gaps; refilled as they're met
         self._update(status="running", error=None)
         try:
             outcome = self._run()
@@ -395,8 +396,17 @@ class Collector:
         candidates = score_reviews(inp.target_reviews, bursts, features, keyword_ids)
         selection = select_round1(candidates, data_id, self.params.k1, self.params.baseline)
         add_voice_picks(selection, inp.target_reviews, self.params.voice_picks, keyword_ids)
+        stored = self.state.get("selection")
+        if stored:
+            # A resumed or re-run analysis keeps the reviewers it already chose: newer scoring rules would pick others,
+            # whose histories aren't cached, and the report would no longer describe the same evidence.
+            selection.round1, selection.baseline = list(stored["round1"]), list(stored["baseline"])
+            selection.voice = list(stored.get("voice", []))
+            chosen = set(selection.round1) | set(selection.baseline) | set(selection.voice)
+            selection.remaining = [c for c in selection.remaining if c.contributor_id not in chosen]
         round1 = selection.round1 + selection.baseline + selection.voice
         self.state["selection"] = {
+            **(stored or {}),
             "round1": selection.round1,
             "baseline": selection.baseline,
             "voice": selection.voice,
@@ -427,7 +437,9 @@ class Collector:
             if not found:
                 self.emit("early_stop", "No ring-like pattern among the highest-priority reviewers", saved=saved)
         else:
-            round2 = select_round2(selection, inp.target_reviews, features, self.params.k2)
+            round2 = (stored or {}).get("round2") or select_round2(
+                selection, inp.target_reviews, features, self.params.k2
+            )
             self.state["selection"]["round2"] = round2
             self._show_picks([(c, "priority", 2) for c in round2])
             self._expand(round2, 2)

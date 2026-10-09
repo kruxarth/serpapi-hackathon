@@ -943,7 +943,7 @@
    "p02dd11608e77": {
     "place_key": "p02dd11608e77",
     "data_id": null,
-    "title": "Restaurant BH",
+    "title": "Restaurant AZ",
     "address": null,
     "lat": 18.6,
     "lng": 73.9,
@@ -955,7 +955,7 @@
    "p02e2ab119b0c": {
     "place_key": "p02e2ab119b0c",
     "data_id": null,
-    "title": "Restaurant BL",
+    "title": "Restaurant BD",
     "address": null,
     "lat": 18.5,
     "lng": 73.8,
@@ -1003,7 +1003,7 @@
    "p15e0c1448fcc": {
     "place_key": "p15e0c1448fcc",
     "data_id": null,
-    "title": "Corporate office BK",
+    "title": "Corporate office BC",
     "address": null,
     "lat": 18.5,
     "lng": 73.8,
@@ -1020,18 +1020,6 @@
     "lat": 18.5,
     "lng": 73.9,
     "type": "Bakery",
-    "area": "Pune",
-    "rating": null,
-    "total_reviews": null
-   },
-   "p16329aaf85e5": {
-    "place_key": "p16329aaf85e5",
-    "data_id": null,
-    "title": "Corporate office BA",
-    "address": null,
-    "lat": 18.5,
-    "lng": 73.9,
-    "type": "Corporate office",
     "area": "Pune",
     "rating": null,
     "total_reviews": null
@@ -1135,7 +1123,7 @@
    "p31f90756ddcf": {
     "place_key": "p31f90756ddcf",
     "data_id": null,
-    "title": "Corporate office BE",
+    "title": "Corporate office AW",
     "address": null,
     "lat": 18.5,
     "lng": 73.8,
@@ -1147,7 +1135,7 @@
    "p394182691bbe": {
     "place_key": "p394182691bbe",
     "data_id": null,
-    "title": "Corporate office BI",
+    "title": "Corporate office BA",
     "address": null,
     "lat": 18.6,
     "lng": 73.9,
@@ -1171,7 +1159,7 @@
    "p41540ded23bc": {
     "place_key": "p41540ded23bc",
     "data_id": null,
-    "title": "Restaurant BD",
+    "title": "Restaurant AV",
     "address": null,
     "lat": 18.5,
     "lng": 73.8,
@@ -1192,22 +1180,10 @@
     "rating": null,
     "total_reviews": null
    },
-   "p4ece045db05e": {
-    "place_key": "p4ece045db05e",
-    "data_id": null,
-    "title": "Corporate office AY",
-    "address": null,
-    "lat": 18.5,
-    "lng": 73.9,
-    "type": "Corporate office",
-    "area": "Pune",
-    "rating": null,
-    "total_reviews": null
-   },
    "p582b1bd83c52": {
     "place_key": "p582b1bd83c52",
     "data_id": null,
-    "title": "Restaurant BJ",
+    "title": "Restaurant BB",
     "address": null,
     "lat": 18.5,
     "lng": 73.8,
@@ -1231,7 +1207,7 @@
    "p5fec52f0ec1f": {
     "place_key": "p5fec52f0ec1f",
     "data_id": null,
-    "title": "Corporate office AS",
+    "title": "Corporate office AQ",
     "address": null,
     "lat": 18.5,
     "lng": 73.9,
@@ -1264,18 +1240,6 @@
     "rating": null,
     "total_reviews": null
    },
-   "p6cd98d278653": {
-    "place_key": "p6cd98d278653",
-    "data_id": null,
-    "title": "Restaurant AZ",
-    "address": null,
-    "lat": 18.5,
-    "lng": 73.9,
-    "type": "Restaurant",
-    "area": "Pune",
-    "rating": null,
-    "total_reviews": null
-   },
    "p7663f8fb7bc4": {
     "place_key": "p7663f8fb7bc4",
     "data_id": null,
@@ -1303,7 +1267,7 @@
    "p76b696bad760": {
     "place_key": "p76b696bad760",
     "data_id": null,
-    "title": "Corporate office BM",
+    "title": "Corporate office BE",
     "address": null,
     "lat": 18.6,
     "lng": 73.9,
@@ -1348,22 +1312,10 @@
     "rating": null,
     "total_reviews": null
    },
-   "p9283fab4c9f5": {
-    "place_key": "p9283fab4c9f5",
-    "data_id": null,
-    "title": "Corporate office AQ",
-    "address": null,
-    "lat": 18.5,
-    "lng": 73.8,
-    "type": "Corporate office",
-    "area": "Pune",
-    "rating": null,
-    "total_reviews": null
-   },
    "p9359e3e524c2": {
     "place_key": "p9359e3e524c2",
     "data_id": null,
-    "title": "Restaurant BF",
+    "title": "Restaurant AX",
     "address": null,
     "lat": 18.5,
     "lng": 73.8,
@@ -1387,7 +1339,7 @@
    "pa157da5cc37c": {
     "place_key": "pa157da5cc37c",
     "data_id": null,
-    "title": "Corporate office BG",
+    "title": "Corporate office AY",
     "address": null,
     "lat": 18.5,
     "lng": 73.8,
@@ -1471,7 +1423,7 @@
    "pb102d595114d": {
     "place_key": "pb102d595114d",
     "data_id": null,
-    "title": "Restaurant AR",
+    "title": "Restaurant AP",
     "address": null,
     "lat": 18.6,
     "lng": 73.9,
@@ -1492,30 +1444,6 @@
     "rating": null,
     "total_reviews": null
    },
-   "pb7d862d5252d": {
-    "place_key": "pb7d862d5252d",
-    "data_id": null,
-    "title": "Restaurant AV",
-    "address": null,
-    "lat": 18.5,
-    "lng": 73.9,
-    "type": "Restaurant",
-    "area": "Pune",
-    "rating": null,
-    "total_reviews": null
-   },
-   "pb7fde103a6fd": {
-    "place_key": "pb7fde103a6fd",
-    "data_id": null,
-    "title": "Corporate office AW",
-    "address": null,
-    "lat": 18.6,
-    "lng": 73.9,
-    "type": "Corporate office",
-    "area": "Pune",
-    "rating": null,
-    "total_reviews": null
-   },
    "pb9aa44d9dcf8": {
     "place_key": "pb9aa44d9dcf8",
     "data_id": null,
@@ -1531,7 +1459,7 @@
    "pbbf9c0e8e708": {
     "place_key": "pbbf9c0e8e708",
     "data_id": null,
-    "title": "Restaurant AT",
+    "title": "Restaurant AR",
     "address": null,
     "lat": 18.5,
     "lng": 73.9,
@@ -1576,18 +1504,6 @@
     "rating": null,
     "total_reviews": null
    },
-   "pc1789534dc3c": {
-    "place_key": "pc1789534dc3c",
-    "data_id": null,
-    "title": "Restaurant AX",
-    "address": null,
-    "lat": 18.5,
-    "lng": 73.9,
-    "type": "Restaurant",
-    "area": "Pune",
-    "rating": null,
-    "total_reviews": null
-   },
    "pd2f5c3ade389": {
     "place_key": "pd2f5c3ade389",
     "data_id": null,
@@ -1615,7 +1531,7 @@
    "pd9fcd2dd2480": {
     "place_key": "pd9fcd2dd2480",
     "data_id": null,
-    "title": "Corporate office AU",
+    "title": "Corporate office AS",
     "address": null,
     "lat": 18.5,
     "lng": 73.8,
@@ -1651,7 +1567,7 @@
    "pe9c0581c9838": {
     "place_key": "pe9c0581c9838",
     "data_id": null,
-    "title": "Restaurant BB",
+    "title": "Restaurant AT",
     "address": null,
     "lat": 18.6,
     "lng": 73.8,
@@ -1675,23 +1591,11 @@
    "pf86020c3550c": {
     "place_key": "pf86020c3550c",
     "data_id": null,
-    "title": "Corporate office BC",
+    "title": "Corporate office AU",
     "address": null,
     "lat": 18.6,
     "lng": 73.9,
     "type": "Corporate office",
-    "area": "Pune",
-    "rating": null,
-    "total_reviews": null
-   },
-   "pfa51482127c7": {
-    "place_key": "pfa51482127c7",
-    "data_id": null,
-    "title": "Restaurant AP",
-    "address": null,
-    "lat": 18.6,
-    "lng": 73.9,
-    "type": "Restaurant",
     "area": "Pune",
     "rating": null,
     "total_reviews": null
@@ -1711,7 +1615,7 @@
     "reviews_returned": 3,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
+    "fetched_at": "2026-06-29T16:27:03+00:00"
    },
    "u0fdf7cee6be3": {
     "contributor_id": "u0fdf7cee6be3",
@@ -1726,7 +1630,7 @@
     "reviews_returned": 12,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
+    "fetched_at": "2026-06-29T16:27:03+00:00"
    },
    "u269b4c586345": {
     "contributor_id": "u269b4c586345",
@@ -1741,22 +1645,7 @@
     "reviews_returned": 3,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
-   },
-   "u32e3286b84e6": {
-    "contributor_id": "u32e3286b84e6",
-    "name": null,
-    "level": null,
-    "points": null,
-    "local_guide": null,
-    "contributions": {
-     "reviews": 26,
-     "photos": 0
-    },
-    "reviews_returned": 3,
-    "truncated": true,
-    "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
+    "fetched_at": "2026-06-29T16:27:03+00:00"
    },
    "u3b65e056b7fa": {
     "contributor_id": "u3b65e056b7fa",
@@ -1771,7 +1660,7 @@
     "reviews_returned": 3,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
+    "fetched_at": "2026-06-29T16:27:03+00:00"
    },
    "u5ebec478cd77": {
     "contributor_id": "u5ebec478cd77",
@@ -1786,7 +1675,7 @@
     "reviews_returned": 3,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
+    "fetched_at": "2026-06-29T16:27:03+00:00"
    },
    "u6060bf430bcb": {
     "contributor_id": "u6060bf430bcb",
@@ -1801,7 +1690,7 @@
     "reviews_returned": 30,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
+    "fetched_at": "2026-06-29T16:27:03+00:00"
    },
    "u7d9ba6094dc7": {
     "contributor_id": "u7d9ba6094dc7",
@@ -1816,22 +1705,7 @@
     "reviews_returned": 3,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
-   },
-   "u7dc705c69109": {
-    "contributor_id": "u7dc705c69109",
-    "name": null,
-    "level": null,
-    "points": null,
-    "local_guide": null,
-    "contributions": {
-     "reviews": 40,
-     "photos": 5
-    },
-    "reviews_returned": 3,
-    "truncated": true,
-    "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
+    "fetched_at": "2026-06-29T16:27:03+00:00"
    },
    "u97867e5168cf": {
     "contributor_id": "u97867e5168cf",
@@ -1846,37 +1720,7 @@
     "reviews_returned": 3,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
-   },
-   "uba5e1166e8a3": {
-    "contributor_id": "uba5e1166e8a3",
-    "name": null,
-    "level": null,
-    "points": null,
-    "local_guide": null,
-    "contributions": {
-     "reviews": 27,
-     "photos": 6
-    },
-    "reviews_returned": 3,
-    "truncated": true,
-    "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
-   },
-   "ubab3eca84893": {
-    "contributor_id": "ubab3eca84893",
-    "name": null,
-    "level": null,
-    "points": null,
-    "local_guide": null,
-    "contributions": {
-     "reviews": 11,
-     "photos": 5
-    },
-    "reviews_returned": 3,
-    "truncated": true,
-    "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
+    "fetched_at": "2026-06-29T16:27:03+00:00"
    },
    "uc5c9e517e021": {
     "contributor_id": "uc5c9e517e021",
@@ -1891,7 +1735,7 @@
     "reviews_returned": 3,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
+    "fetched_at": "2026-06-29T16:27:03+00:00"
    },
    "udbd293748ffa": {
     "contributor_id": "udbd293748ffa",
@@ -1906,7 +1750,7 @@
     "reviews_returned": 3,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:12:01+00:00"
+    "fetched_at": "2026-06-29T16:27:03+00:00"
    }
   },
   "histories": {
@@ -2144,47 +1988,6 @@
      "relative_date": "3 weeks ago",
      "date_min": "2026-06-01",
      "date_max": "2026-06-08",
-     "edited": false,
-     "image_dates": [],
-     "text": null,
-     "travel_group": null
-    }
-   ],
-   "u32e3286b84e6": [
-    {
-     "contributor_id": "u32e3286b84e6",
-     "review_id": "r84b2c11ba42b",
-     "place_key": "p6cd98d278653",
-     "rating": 5,
-     "relative_date": "a year ago",
-     "date_min": "2024-06-29",
-     "date_max": "2025-06-29",
-     "edited": false,
-     "image_dates": [],
-     "text": "Best Hardware Showroom In Pune",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "u32e3286b84e6",
-     "review_id": "rdddbf7e2715f",
-     "place_key": "p16329aaf85e5",
-     "rating": 5,
-     "relative_date": "3 years ago",
-     "date_min": "2022-06-30",
-     "date_max": "2023-06-30",
-     "edited": false,
-     "image_dates": [],
-     "text": "nice",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "u32e3286b84e6",
-     "review_id": "r56a329341604",
-     "place_key": "pa8129cf95546",
-     "rating": 5,
-     "relative_date": "2 weeks ago",
-     "date_min": "2026-06-08",
-     "date_max": "2026-06-15",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2706,47 +2509,6 @@
      "travel_group": null
     }
    ],
-   "u7dc705c69109": [
-    {
-     "contributor_id": "u7dc705c69109",
-     "review_id": "r6724b34d69ff",
-     "place_key": "pfa51482127c7",
-     "rating": 5,
-     "relative_date": "a year ago",
-     "date_min": "2024-06-29",
-     "date_max": "2025-06-29",
-     "edited": false,
-     "image_dates": [],
-     "text": "nice miting and company",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "u7dc705c69109",
-     "review_id": "r67e94a5528e6",
-     "place_key": "p9283fab4c9f5",
-     "rating": 5,
-     "relative_date": "a year ago",
-     "date_min": "2024-06-29",
-     "date_max": "2025-06-29",
-     "edited": false,
-     "image_dates": [],
-     "text": "gud food",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "u7dc705c69109",
-     "review_id": "r431cfd3f756c",
-     "place_key": "pa8129cf95546",
-     "rating": 5,
-     "relative_date": "a week ago",
-     "date_min": "2026-06-15",
-     "date_max": "2026-06-22",
-     "edited": false,
-     "image_dates": [],
-     "text": null,
-     "travel_group": null
-    }
-   ],
    "u97867e5168cf": [
     {
      "contributor_id": "u97867e5168cf",
@@ -2782,88 +2544,6 @@
      "relative_date": "3 weeks ago",
      "date_min": "2026-06-01",
      "date_max": "2026-06-08",
-     "edited": false,
-     "image_dates": [],
-     "text": null,
-     "travel_group": null
-    }
-   ],
-   "uba5e1166e8a3": [
-    {
-     "contributor_id": "uba5e1166e8a3",
-     "review_id": "rabaf24b81b3d",
-     "place_key": "pb7d862d5252d",
-     "rating": 5,
-     "relative_date": "2 years ago",
-     "date_min": "2023-06-30",
-     "date_max": "2024-06-29",
-     "edited": false,
-     "image_dates": [],
-     "text": "Nicely treat and staff is dealing so politely",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "uba5e1166e8a3",
-     "review_id": "re422aac5e723",
-     "place_key": "pb7fde103a6fd",
-     "rating": 5,
-     "relative_date": "a year ago",
-     "date_min": "2024-06-29",
-     "date_max": "2025-06-29",
-     "edited": false,
-     "image_dates": [],
-     "text": "very gud",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "uba5e1166e8a3",
-     "review_id": "r4aaeda5c7b61",
-     "place_key": "pa8129cf95546",
-     "rating": 5,
-     "relative_date": "a week ago",
-     "date_min": "2026-06-15",
-     "date_max": "2026-06-22",
-     "edited": false,
-     "image_dates": [],
-     "text": null,
-     "travel_group": null
-    }
-   ],
-   "ubab3eca84893": [
-    {
-     "contributor_id": "ubab3eca84893",
-     "review_id": "r9b2510d662d8",
-     "place_key": "pc1789534dc3c",
-     "rating": 5,
-     "relative_date": "3 years ago",
-     "date_min": "2022-06-30",
-     "date_max": "2023-06-30",
-     "edited": false,
-     "image_dates": [],
-     "text": "Treated my knee very well, 100 percent result",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "ubab3eca84893",
-     "review_id": "r134bbc00a5c1",
-     "place_key": "p4ece045db05e",
-     "rating": 5,
-     "relative_date": "6 years ago",
-     "date_min": "2019-07-01",
-     "date_max": "2020-06-30",
-     "edited": false,
-     "image_dates": [],
-     "text": "good",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "ubab3eca84893",
-     "review_id": "r6379b763953b",
-     "place_key": "pa8129cf95546",
-     "rating": 5,
-     "relative_date": "2 weeks ago",
-     "date_min": "2026-06-08",
-     "date_max": "2026-06-15",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -2960,27 +2640,12 @@
     "reason": "priority"
    },
    {
-    "contributor_id": "u3b65e056b7fa",
-    "round": 1,
-    "reason": "priority"
-   },
-   {
-    "contributor_id": "u32e3286b84e6",
-    "round": 1,
-    "reason": "priority"
-   },
-   {
     "contributor_id": "uc5c9e517e021",
     "round": 1,
     "reason": "priority"
    },
    {
     "contributor_id": "u0270086d35bd",
-    "round": 1,
-    "reason": "priority"
-   },
-   {
-    "contributor_id": "u7dc705c69109",
     "round": 1,
     "reason": "priority"
    },
@@ -2995,6 +2660,21 @@
     "reason": "priority"
    },
    {
+    "contributor_id": "u3b65e056b7fa",
+    "round": 1,
+    "reason": "priority"
+   },
+   {
+    "contributor_id": "u269b4c586345",
+    "round": 1,
+    "reason": "priority"
+   },
+   {
+    "contributor_id": "u97867e5168cf",
+    "round": 1,
+    "reason": "priority"
+   },
+   {
     "contributor_id": "u0fdf7cee6be3",
     "round": 1,
     "reason": "baseline"
@@ -3003,35 +2683,15 @@
     "contributor_id": "u6060bf430bcb",
     "round": 1,
     "reason": "baseline"
-   },
-   {
-    "contributor_id": "ubab3eca84893",
-    "round": 1,
-    "reason": "voice"
-   },
-   {
-    "contributor_id": "uba5e1166e8a3",
-    "round": 1,
-    "reason": "voice"
-   },
-   {
-    "contributor_id": "u97867e5168cf",
-    "round": 1,
-    "reason": "voice"
-   },
-   {
-    "contributor_id": "u269b4c586345",
-    "round": 1,
-    "reason": "voice"
    }
   ],
-  "fetched_at": "2026-06-28T21:12:01.379284+00:00",
+  "fetched_at": "2026-06-29T16:27:03.361958+00:00",
   "params": {
    "n": 100,
    "k1": 8,
    "baseline": 2,
    "k2": 15,
-   "voice_picks": 4,
+   "voice_picks": 0,
    "stop_after_round1": false,
    "force_refresh": false,
    "pick": null
@@ -3167,24 +2827,6 @@
     "text_id": "h:u269b4c586345:r28ce2afb1582",
     "owner": "u269b4c586345",
     "length": 9,
-    "script": "latin",
-    "short": true,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:u32e3286b84e6:r84b2c11ba42b": {
-    "text_id": "h:u32e3286b84e6:r84b2c11ba42b",
-    "owner": "u32e3286b84e6",
-    "length": 30,
-    "script": "latin",
-    "short": true,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:u32e3286b84e6:rdddbf7e2715f": {
-    "text_id": "h:u32e3286b84e6:rdddbf7e2715f",
-    "owner": "u32e3286b84e6",
-    "length": 4,
     "script": "latin",
     "short": true,
     "cluster": null,
@@ -3505,24 +3147,6 @@
     "cluster": null,
     "target_cluster": null
    },
-   "h:u7dc705c69109:r6724b34d69ff": {
-    "text_id": "h:u7dc705c69109:r6724b34d69ff",
-    "owner": "u7dc705c69109",
-    "length": 23,
-    "script": "latin",
-    "short": true,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:u7dc705c69109:r67e94a5528e6": {
-    "text_id": "h:u7dc705c69109:r67e94a5528e6",
-    "owner": "u7dc705c69109",
-    "length": 8,
-    "script": "latin",
-    "short": true,
-    "cluster": null,
-    "target_cluster": null
-   },
    "h:u97867e5168cf:r0acf4d7b0084": {
     "text_id": "h:u97867e5168cf:r0acf4d7b0084",
     "owner": "u97867e5168cf",
@@ -3538,42 +3162,6 @@
     "length": 3,
     "script": "latin",
     "short": true,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:uba5e1166e8a3:rabaf24b81b3d": {
-    "text_id": "h:uba5e1166e8a3:rabaf24b81b3d",
-    "owner": "uba5e1166e8a3",
-    "length": 45,
-    "script": "latin",
-    "short": false,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:uba5e1166e8a3:re422aac5e723": {
-    "text_id": "h:uba5e1166e8a3:re422aac5e723",
-    "owner": "uba5e1166e8a3",
-    "length": 8,
-    "script": "latin",
-    "short": true,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:ubab3eca84893:r134bbc00a5c1": {
-    "text_id": "h:ubab3eca84893:r134bbc00a5c1",
-    "owner": "ubab3eca84893",
-    "length": 4,
-    "script": "latin",
-    "short": true,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:ubab3eca84893:r9b2510d662d8": {
-    "text_id": "h:ubab3eca84893:r9b2510d662d8",
-    "owner": "ubab3eca84893",
-    "length": 44,
-    "script": "latin",
-    "short": false,
     "cluster": null,
     "target_cluster": null
    },
@@ -4194,88 +3782,16 @@
   "top_rated": [],
   "text_judgements": {},
   "voice_judgements": {
-   "u0270086d35bd": {
-    "verdict": "different_voice",
-    "here": "transparent pricing and professional handling",
-    "elsewhere": "sweets r fresh",
-    "model": "synthetic example"
-   },
    "u0fdf7cee6be3": {
     "verdict": "same_voice",
     "here": "",
     "elsewhere": "",
     "model": "synthetic example"
    },
-   "u269b4c586345": {
-    "verdict": "different_voice",
-    "here": "a stress-free relocation experience",
-    "elsewhere": "good chai",
-    "model": "synthetic example"
-   },
-   "u32e3286b84e6": {
-    "verdict": "different_voice",
-    "here": "smooth, organised and completed within the promised time",
-    "elsewhere": "Best Hardware Showroom In Pune",
-    "model": "synthetic example"
-   },
-   "u3b65e056b7fa": {
-    "verdict": "different_voice",
-    "here": "Professional packing, safe transport and polite staff",
-    "elsewhere": "kal ka khana accha tha",
-    "model": "synthetic example"
-   },
-   "u5ebec478cd77": {
-    "verdict": "different_voice",
-    "here": "If you are looking for packers and movers in Pune",
-    "elsewhere": "bike service late hua but staff ne help kiya",
-    "model": "synthetic example"
-   },
    "u6060bf430bcb": {
     "verdict": "same_voice",
     "here": "",
     "elsewhere": "",
-    "model": "synthetic example"
-   },
-   "u7d9ba6094dc7": {
-    "verdict": "different_voice",
-    "here": "Most trusted and reliable Packers And Movers",
-    "elsewhere": "bahut badiya office hai staff bahut acha hai",
-    "model": "synthetic example"
-   },
-   "u7dc705c69109": {
-    "verdict": "different_voice",
-    "here": "the experience was excellent",
-    "elsewhere": "nice miting and company",
-    "model": "synthetic example"
-   },
-   "u97867e5168cf": {
-    "verdict": "different_voice",
-    "here": "reliable, affordable and timely service",
-    "elsewhere": "parking problem hai otherwise fine",
-    "model": "synthetic example"
-   },
-   "uba5e1166e8a3": {
-    "verdict": "different_voice",
-    "here": "smooth and hassle-free shifting experience",
-    "elsewhere": "Nicely treat and staff is dealing so politely",
-    "model": "synthetic example"
-   },
-   "ubab3eca84893": {
-    "verdict": "different_voice",
-    "here": "ensure safe shifting, packing and transport",
-    "elsewhere": "Treated my knee very well, 100 percent result",
-    "model": "synthetic example"
-   },
-   "uc5c9e517e021": {
-    "verdict": "different_voice",
-    "here": "punctual, courteous and handled fragile items with great car",
-    "elsewhere": "docter is very good and kind",
-    "model": "synthetic example"
-   },
-   "udbd293748ffa": {
-    "verdict": "different_voice",
-    "here": "a seamless local shifting",
-    "elsewhere": "nice experiance",
     "model": "synthetic example"
    }
   }
@@ -4291,14 +3807,20 @@
    "lat": 18.5,
    "lng": 73.9,
    "rating": 4.6,
-   "total_reviews": 2000
+   "total_reviews": 2000,
+   "locality": [
+    "chinchwad",
+    "kothrud",
+    "maharashtra",
+    "pimpri"
+   ]
   },
   "sample": {
    "examined": 64,
    "first": "2026-02-19",
    "last": "2026-06-17",
-   "expanded": 14,
-   "histories_ok": 14,
+   "expanded": 10,
+   "histories_ok": 10,
    "baseline": [
     "u0fdf7cee6be3",
     "u6060bf430bcb"
@@ -4309,8 +3831,7 @@
   "level": {
    "level": "Elevated",
    "reasons": [
-    "12 reviews are not written in their author's own voice: the same accounts write very differently everywhere else.",
-    "12 accounts wrote their review like a search ad, naming the business or its category with its neighbourhood or city."
+    "12 reviews read like search ads, using the bare search term with a place or repeating the business's name with its area."
    ]
   },
   "ratings": {
@@ -4321,7 +3842,7 @@
    "without_ring": 3.89,
    "without_ring_and_suspicious": 3.89,
    "ring_reviews": 0,
-   "single_use_burst_reviews": 0,
+   "burst_reviews": 0,
    "overall": null
   },
   "signals": {
@@ -4367,8 +3888,63 @@
     "total_reviews": 2000,
     "sample_span_days": 119
    },
-   "T6": {
-    "single_use_bursts": []
+   "T11": {
+    "examined": 64,
+    "clusters": [
+     {
+      "direction": "positive",
+      "stars": 5,
+      "count": 2,
+      "share": 0.031,
+      "start": "2026-03-24T15:31:15.328752+00:00",
+      "end": "2026-03-25T01:38:54.872838+00:00",
+      "minutes": 607.7,
+      "core": {
+       "count": 2,
+       "minutes": 607.7,
+       "start": "2026-03-24T15:31:15.328752+00:00",
+       "end": "2026-03-25T01:38:54.872838+00:00"
+      },
+      "usual_per_day": 0.5259,
+      "pace": 3.8,
+      "offsets": [
+       0.0,
+       607.7
+      ],
+      "first_time": 0,
+      "flagged": false,
+      "review_ids": [
+       "rb0833a51c156",
+       "re59127a8a859"
+      ]
+     },
+     {
+      "direction": "negative",
+      "stars": 1,
+      "count": 1,
+      "share": 0.016,
+      "start": "2026-03-05T03:57:18.892021+00:00",
+      "end": "2026-03-05T03:57:18.892021+00:00",
+      "minutes": 0.0,
+      "core": {
+       "count": 1,
+       "minutes": 0.0,
+       "start": "2026-03-05T03:57:18.892021+00:00",
+       "end": "2026-03-05T03:57:18.892021+00:00"
+      },
+      "usual_per_day": 0.5325,
+      "pace": 1.9,
+      "offsets": [
+       0.0
+      ],
+      "first_time": 0,
+      "flagged": false,
+      "review_ids": [
+       "rd2603eabb16f"
+      ]
+     }
+    ],
+    "pace_per_day": 0.541
    },
    "T7": {
     "available": true,
@@ -4398,6 +3974,7 @@
     "accounts": 12,
     "with_text": 64,
     "needed": 5.1,
+    "ads": 12,
     "review_ids": [
      "r1b1f7e4030c0",
      "r28f1b3492579",
@@ -4412,10 +3989,11 @@
      "rd1ab330debd7",
      "re383734c904d"
     ],
+    "named_ids": [],
     "phrases": {
      "packers and movers in kothrud pune": 6,
-     "packers and movers kothrud pune": 3,
-     "packers and movers in pune": 3
+     "packers and movers in pune": 3,
+     "packers and movers kothrud pune": 3
     }
    }
   },
@@ -4423,20 +4001,18 @@
    "order": [
     "chatbot_text",
     "copied_text",
-    "voice_mismatch",
     "keyword_style",
-    "first_time_burst",
+    "review_burst",
     "linked_group",
-    "ai_style",
     "review_spree",
+    "names_area",
     "first_time_account"
    ],
    "set_aside_by_default": [
     "chatbot_text",
     "copied_text",
-    "voice_mismatch",
     "keyword_style",
-    "first_time_burst",
+    "review_burst",
     "linked_group"
    ],
    "signs": {
@@ -4458,29 +4034,20 @@
      "mean": null,
      "set_aside_by_default": true
     },
-    "voice_mismatch": {
-     "name": "Not in the reviewer's own voice",
-     "short": "Not their own voice",
-     "strength": "strong",
-     "explain": "The reviewer's other reviews are written very differently. An AI model compared them and quotes the difference; both are shown side by side. Typical of scripted or incentivised reviews posted from real accounts.",
-     "count": 12,
-     "mean": 5.0,
-     "set_aside_by_default": true
-    },
     "keyword_style": {
      "name": "Written like a search ad",
      "short": "Search-ad phrasing",
      "strength": "strong",
-     "explain": "Names the business or its category together with its neighbourhood or city, the way search ads are written (“packers and movers in [area], [city]”), as several accounts here do.",
+     "explain": "Uses the bare search term with a place (“best packers and movers in [area]”), or names the business with its area again and again, the way search-ranking copy is written. Several accounts here do it.",
      "count": 12,
      "mean": 5.0,
      "set_aside_by_default": true
     },
-    "first_time_burst": {
-     "name": "First-time accounts in a burst",
-     "short": "Burst of first-time accounts",
+    "review_burst": {
+     "name": "Part of a burst of same-star reviews",
+     "short": "Review burst",
      "strength": "strong",
-     "explain": "Posted in a sudden burst of reviews that came mostly from accounts that have reviewed nothing else.",
+     "explain": "Posted within a few hours or days together with many other reviews of the same rating (all 5★, or all 1★): a quarter or more of the newest reviews, far faster than this listing usually gets any.",
      "count": 0,
      "mean": null,
      "set_aside_by_default": true
@@ -4494,20 +4061,20 @@
      "mean": null,
      "set_aside_by_default": true
     },
-    "ai_style": {
-     "name": "Reads as AI-written",
-     "short": "Reads as AI-written",
-     "strength": "opinion",
-     "explain": "An AI model thinks this reads as written by a chatbot, and quotes the phrases why. That's an opinion, not proof: real customers also polish honest reviews with AI.",
-     "count": 0,
-     "mean": null,
-     "set_aside_by_default": false
-    },
     "review_spree": {
      "name": "Reviewing spree",
      "short": "Reviewing spree",
      "strength": "context",
      "explain": "The reviewer rated many unrelated businesses in several cities within a month, nearly all 5★: the shape of “rate and earn” tasks, though some travellers review this way too.",
+     "count": 0,
+     "mean": null,
+     "set_aside_by_default": false
+    },
+    "names_area": {
+     "name": "Names the business with its area",
+     "short": "Name with area",
+     "strength": "context",
+     "explain": "Names the business together with its neighbourhood or city, as many reviews at this listing do. Customers refer to a business this way too, so on its own it isn't a warning sign.",
      "count": 0,
      "mean": null,
      "set_aside_by_default": false
@@ -4544,15 +4111,16 @@
     "ai_style": 0,
     "human_style": 0,
     "unclear": 0,
-    "model": null
+    "model": null,
+    "enabled": false
    },
    "voice": {
-    "eligible": 14,
-    "compared": 14,
-    "different_voice": 12,
-    "same_voice": 2,
+    "eligible": 0,
+    "compared": 0,
+    "different_voice": 0,
+    "same_voice": 0,
     "unclear": 0,
-    "model": "synthetic example"
+    "model": null
    }
   },
   "reviewers": [
@@ -4566,44 +4134,6 @@
     "truncated": true,
     "visible_reviews": 3,
     "total_reviews": 5,
-    "badges": [
-     {
-      "code": "A5",
-      "name": "Short texts",
-      "short_share": 0.667,
-      "texts": 3
-     }
-    ]
-   },
-   {
-    "contributor_id": "u3b65e056b7fa",
-    "round": 1,
-    "reason": "priority",
-    "status": "ok",
-    "label": "no_flags",
-    "group": null,
-    "truncated": false,
-    "visible_reviews": 3,
-    "total_reviews": 3,
-    "badges": [
-     {
-      "code": "A5",
-      "name": "Short texts",
-      "short_share": 0.667,
-      "texts": 3
-     }
-    ]
-   },
-   {
-    "contributor_id": "u32e3286b84e6",
-    "round": 1,
-    "reason": "priority",
-    "status": "ok",
-    "label": "no_flags",
-    "group": null,
-    "truncated": true,
-    "visible_reviews": 3,
-    "total_reviews": 26,
     "badges": [
      {
       "code": "A5",
@@ -4652,25 +4182,6 @@
     ]
    },
    {
-    "contributor_id": "u7dc705c69109",
-    "round": 1,
-    "reason": "priority",
-    "status": "ok",
-    "label": "no_flags",
-    "group": null,
-    "truncated": true,
-    "visible_reviews": 3,
-    "total_reviews": 40,
-    "badges": [
-     {
-      "code": "A5",
-      "name": "Short texts",
-      "short_share": 0.667,
-      "texts": 3
-     }
-    ]
-   },
-   {
     "contributor_id": "u7d9ba6094dc7",
     "round": 1,
     "reason": "priority",
@@ -4695,6 +4206,63 @@
     "badges": []
    },
    {
+    "contributor_id": "u3b65e056b7fa",
+    "round": 1,
+    "reason": "priority",
+    "status": "ok",
+    "label": "no_flags",
+    "group": null,
+    "truncated": false,
+    "visible_reviews": 3,
+    "total_reviews": 3,
+    "badges": [
+     {
+      "code": "A5",
+      "name": "Short texts",
+      "short_share": 0.667,
+      "texts": 3
+     }
+    ]
+   },
+   {
+    "contributor_id": "u269b4c586345",
+    "round": 1,
+    "reason": "priority",
+    "status": "ok",
+    "label": "no_flags",
+    "group": null,
+    "truncated": true,
+    "visible_reviews": 3,
+    "total_reviews": 13,
+    "badges": [
+     {
+      "code": "A5",
+      "name": "Short texts",
+      "short_share": 0.667,
+      "texts": 3
+     }
+    ]
+   },
+   {
+    "contributor_id": "u97867e5168cf",
+    "round": 1,
+    "reason": "priority",
+    "status": "ok",
+    "label": "no_flags",
+    "group": null,
+    "truncated": true,
+    "visible_reviews": 3,
+    "total_reviews": 26,
+    "badges": [
+     {
+      "code": "A5",
+      "name": "Short texts",
+      "short_share": 0.667,
+      "texts": 3
+     }
+    ]
+   },
+   {
     "contributor_id": "u0fdf7cee6be3",
     "round": 1,
     "reason": "baseline",
@@ -4717,68 +4285,6 @@
     "visible_reviews": 30,
     "total_reviews": 28,
     "badges": []
-   },
-   {
-    "contributor_id": "ubab3eca84893",
-    "round": 1,
-    "reason": "voice",
-    "status": "ok",
-    "label": "no_flags",
-    "group": null,
-    "truncated": true,
-    "visible_reviews": 3,
-    "total_reviews": 11,
-    "badges": []
-   },
-   {
-    "contributor_id": "uba5e1166e8a3",
-    "round": 1,
-    "reason": "voice",
-    "status": "ok",
-    "label": "no_flags",
-    "group": null,
-    "truncated": true,
-    "visible_reviews": 3,
-    "total_reviews": 27,
-    "badges": []
-   },
-   {
-    "contributor_id": "u97867e5168cf",
-    "round": 1,
-    "reason": "voice",
-    "status": "ok",
-    "label": "no_flags",
-    "group": null,
-    "truncated": true,
-    "visible_reviews": 3,
-    "total_reviews": 26,
-    "badges": [
-     {
-      "code": "A5",
-      "name": "Short texts",
-      "short_share": 0.667,
-      "texts": 3
-     }
-    ]
-   },
-   {
-    "contributor_id": "u269b4c586345",
-    "round": 1,
-    "reason": "voice",
-    "status": "ok",
-    "label": "no_flags",
-    "group": null,
-    "truncated": true,
-    "visible_reviews": 3,
-    "total_reviews": 13,
-    "badges": [
-     {
-      "code": "A5",
-      "name": "Short texts",
-      "short_share": 0.667,
-      "texts": 3
-     }
-    ]
    }
   ],
   "histories": {
@@ -4811,86 +4317,6 @@
      },
      {
       "day": "2026-05-28",
-      "rating": 5,
-      "place_key": "pa8129cf95546",
-      "this": true,
-      "area": "Pune",
-      "type_group": "Home & moving services",
-      "lat": 18.5,
-      "lng": 73.9,
-      "km": 0.0
-     }
-    ]
-   },
-   "u3b65e056b7fa": {
-    "total_reviews": 3,
-    "visible": 3,
-    "home_area": null,
-    "items": [
-     {
-      "day": "2022-12-29",
-      "rating": 5,
-      "place_key": "pe9c0581c9838",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Food & drink",
-      "lat": 18.6,
-      "lng": 73.8,
-      "km": 15.3
-     },
-     {
-      "day": "2024-12-28",
-      "rating": 5,
-      "place_key": "pf86020c3550c",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Other",
-      "lat": 18.6,
-      "lng": 73.9,
-      "km": 11.1
-     },
-     {
-      "day": "2026-06-04",
-      "rating": 5,
-      "place_key": "pa8129cf95546",
-      "this": true,
-      "area": "Pune",
-      "type_group": "Home & moving services",
-      "lat": 18.5,
-      "lng": 73.9,
-      "km": 0.0
-     }
-    ]
-   },
-   "u32e3286b84e6": {
-    "total_reviews": 26,
-    "visible": 3,
-    "home_area": null,
-    "items": [
-     {
-      "day": "2022-12-29",
-      "rating": 5,
-      "place_key": "p16329aaf85e5",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Other",
-      "lat": 18.5,
-      "lng": 73.9,
-      "km": 0.0
-     },
-     {
-      "day": "2024-12-28",
-      "rating": 5,
-      "place_key": "p6cd98d278653",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Food & drink",
-      "lat": 18.5,
-      "lng": 73.9,
-      "km": 0.0
-     },
-     {
-      "day": "2026-06-11",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -4982,46 +4408,6 @@
      }
     ]
    },
-   "u7dc705c69109": {
-    "total_reviews": 40,
-    "visible": 3,
-    "home_area": null,
-    "items": [
-     {
-      "day": "2024-12-28",
-      "rating": 5,
-      "place_key": "pfa51482127c7",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Food & drink",
-      "lat": 18.6,
-      "lng": 73.9,
-      "km": 11.1
-     },
-     {
-      "day": "2024-12-28",
-      "rating": 5,
-      "place_key": "p9283fab4c9f5",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Other",
-      "lat": 18.5,
-      "lng": 73.8,
-      "km": 10.5
-     },
-     {
-      "day": "2026-06-18",
-      "rating": 5,
-      "place_key": "pa8129cf95546",
-      "this": true,
-      "area": "Pune",
-      "type_group": "Home & moving services",
-      "lat": 18.5,
-      "lng": 73.9,
-      "km": 0.0
-     }
-    ]
-   },
    "u7d9ba6094dc7": {
     "total_reviews": 40,
     "visible": 3,
@@ -5091,6 +4477,126 @@
      },
      {
       "day": "2026-06-18",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Home & moving services",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u3b65e056b7fa": {
+    "total_reviews": 3,
+    "visible": 3,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2022-12-29",
+      "rating": 5,
+      "place_key": "pe9c0581c9838",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.6,
+      "lng": 73.8,
+      "km": 15.3
+     },
+     {
+      "day": "2024-12-28",
+      "rating": 5,
+      "place_key": "pf86020c3550c",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.6,
+      "lng": 73.9,
+      "km": 11.1
+     },
+     {
+      "day": "2026-06-04",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Home & moving services",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u269b4c586345": {
+    "total_reviews": 13,
+    "visible": 3,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2021-12-29",
+      "rating": 5,
+      "place_key": "p41540ded23bc",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2024-12-28",
+      "rating": 5,
+      "place_key": "p31f90756ddcf",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-06-04",
+      "rating": 5,
+      "place_key": "pa8129cf95546",
+      "this": true,
+      "area": "Pune",
+      "type_group": "Home & moving services",
+      "lat": 18.5,
+      "lng": 73.9,
+      "km": 0.0
+     }
+    ]
+   },
+   "u97867e5168cf": {
+    "total_reviews": 26,
+    "visible": 3,
+    "home_area": null,
+    "items": [
+     {
+      "day": "2020-12-29",
+      "rating": 5,
+      "place_key": "p9359e3e524c2",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Food & drink",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2020-12-29",
+      "rating": 5,
+      "place_key": "pa157da5cc37c",
+      "this": false,
+      "area": "Pune",
+      "type_group": "Other",
+      "lat": 18.5,
+      "lng": 73.8,
+      "km": 10.5
+     },
+     {
+      "day": "2026-06-04",
       "rating": 5,
       "place_key": "pa8129cf95546",
       "this": true,
@@ -5577,180 +5083,12 @@
       "km": 11.1
      }
     ]
-   },
-   "ubab3eca84893": {
-    "total_reviews": 11,
-    "visible": 3,
-    "home_area": null,
-    "items": [
-     {
-      "day": "2019-12-30",
-      "rating": 5,
-      "place_key": "p4ece045db05e",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Other",
-      "lat": 18.5,
-      "lng": 73.9,
-      "km": 0.0
-     },
-     {
-      "day": "2022-12-29",
-      "rating": 5,
-      "place_key": "pc1789534dc3c",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Food & drink",
-      "lat": 18.5,
-      "lng": 73.9,
-      "km": 0.0
-     },
-     {
-      "day": "2026-06-11",
-      "rating": 5,
-      "place_key": "pa8129cf95546",
-      "this": true,
-      "area": "Pune",
-      "type_group": "Home & moving services",
-      "lat": 18.5,
-      "lng": 73.9,
-      "km": 0.0
-     }
-    ]
-   },
-   "uba5e1166e8a3": {
-    "total_reviews": 27,
-    "visible": 3,
-    "home_area": null,
-    "items": [
-     {
-      "day": "2023-12-29",
-      "rating": 5,
-      "place_key": "pb7d862d5252d",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Food & drink",
-      "lat": 18.5,
-      "lng": 73.9,
-      "km": 0.0
-     },
-     {
-      "day": "2024-12-28",
-      "rating": 5,
-      "place_key": "pb7fde103a6fd",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Other",
-      "lat": 18.6,
-      "lng": 73.9,
-      "km": 11.1
-     },
-     {
-      "day": "2026-06-18",
-      "rating": 5,
-      "place_key": "pa8129cf95546",
-      "this": true,
-      "area": "Pune",
-      "type_group": "Home & moving services",
-      "lat": 18.5,
-      "lng": 73.9,
-      "km": 0.0
-     }
-    ]
-   },
-   "u97867e5168cf": {
-    "total_reviews": 26,
-    "visible": 3,
-    "home_area": null,
-    "items": [
-     {
-      "day": "2020-12-29",
-      "rating": 5,
-      "place_key": "p9359e3e524c2",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Food & drink",
-      "lat": 18.5,
-      "lng": 73.8,
-      "km": 10.5
-     },
-     {
-      "day": "2020-12-29",
-      "rating": 5,
-      "place_key": "pa157da5cc37c",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Other",
-      "lat": 18.5,
-      "lng": 73.8,
-      "km": 10.5
-     },
-     {
-      "day": "2026-06-04",
-      "rating": 5,
-      "place_key": "pa8129cf95546",
-      "this": true,
-      "area": "Pune",
-      "type_group": "Home & moving services",
-      "lat": 18.5,
-      "lng": 73.9,
-      "km": 0.0
-     }
-    ]
-   },
-   "u269b4c586345": {
-    "total_reviews": 13,
-    "visible": 3,
-    "home_area": null,
-    "items": [
-     {
-      "day": "2021-12-29",
-      "rating": 5,
-      "place_key": "p41540ded23bc",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Food & drink",
-      "lat": 18.5,
-      "lng": 73.8,
-      "km": 10.5
-     },
-     {
-      "day": "2024-12-28",
-      "rating": 5,
-      "place_key": "p31f90756ddcf",
-      "this": false,
-      "area": "Pune",
-      "type_group": "Other",
-      "lat": 18.5,
-      "lng": 73.8,
-      "km": 10.5
-     },
-     {
-      "day": "2026-06-04",
-      "rating": 5,
-      "place_key": "pa8129cf95546",
-      "this": true,
-      "area": "Pune",
-      "type_group": "Home & moving services",
-      "lat": 18.5,
-      "lng": 73.9,
-      "km": 0.0
-     }
-    ]
    }
   },
   "graph": {
    "nodes": [
     {
      "id": "udbd293748ffa",
-     "label": "no_flags"
-    },
-    {
-     "id": "u3b65e056b7fa",
-     "label": "no_flags"
-    },
-    {
-     "id": "u32e3286b84e6",
      "label": "no_flags"
     },
     {
@@ -5762,10 +5100,6 @@
      "label": "no_flags"
     },
     {
-     "id": "u7dc705c69109",
-     "label": "no_flags"
-    },
-    {
      "id": "u7d9ba6094dc7",
      "label": "no_flags"
     },
@@ -5774,19 +5108,11 @@
      "label": "no_flags"
     },
     {
-     "id": "u0fdf7cee6be3",
+     "id": "u3b65e056b7fa",
      "label": "no_flags"
     },
     {
-     "id": "u6060bf430bcb",
-     "label": "no_flags"
-    },
-    {
-     "id": "ubab3eca84893",
-     "label": "no_flags"
-    },
-    {
-     "id": "uba5e1166e8a3",
+     "id": "u269b4c586345",
      "label": "no_flags"
     },
     {
@@ -5794,7 +5120,11 @@
      "label": "no_flags"
     },
     {
-     "id": "u269b4c586345",
+     "id": "u0fdf7cee6be3",
+     "label": "no_flags"
+    },
+    {
+     "id": "u6060bf430bcb",
      "label": "no_flags"
     }
    ],
@@ -5823,6 +5153,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -5846,6 +5178,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -5854,10 +5188,8 @@
     "rating": 5,
     "date": "2026-06-16T06:00:00+00:00",
     "day": "2026-06-16",
-    "label": "no_flags",
-    "badges": [
-     "A5"
-    ],
+    "label": "not_checked",
+    "badges": [],
     "text": "I recently shifted my household items with Shubh Yatra Packers and Movers, Kothrud, Pune, and the experience was excellent. The team arrived on time and handled every item with care.",
     "text_length": 177,
     "script": "latin",
@@ -5869,19 +5201,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "voice_mismatch",
      "keyword_style"
     ],
     "ai": null,
     "keyword_phrase": "packers and movers kothrud pune",
-    "voice": {
-     "verdict": "different_voice",
-     "here": "the experience was excellent",
-     "elsewhere": "nice miting and company",
-     "others": [
-      "nice miting and company"
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r28f6b7b0e651",
@@ -5904,6 +5230,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -5925,19 +5253,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "voice_mismatch",
      "keyword_style"
     ],
     "ai": null,
     "keyword_phrase": "packers and movers in kothrud pune",
-    "voice": {
-     "verdict": "different_voice",
-     "here": "Most trusted and reliable Packers And Movers",
-     "elsewhere": "bahut badiya office hai staff bahut acha hai",
-     "others": [
-      "bahut badiya office hai staff bahut acha hai"
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r8dafad2d61d6",
@@ -5960,6 +5282,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -5981,19 +5305,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "voice_mismatch",
      "keyword_style"
     ],
     "ai": null,
     "keyword_phrase": "packers and movers in pune",
-    "voice": {
-     "verdict": "different_voice",
-     "here": "If you are looking for packers and movers in Pune",
-     "elsewhere": "bike service late hua but staff ne help kiya",
-     "others": [
-      "bike service late hua but staff ne help kiya"
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r1cd1d8bca214",
@@ -6016,6 +5334,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6024,7 +5344,7 @@
     "rating": 5,
     "date": "2026-06-07T03:00:00+00:00",
     "day": "2026-06-07",
-    "label": "no_flags",
+    "label": "not_checked",
     "badges": [],
     "text": "I had a smooth and hassle-free shifting experience with Shubh Yatra Packers and Movers in Kothrud, Pune. The team was professional, punctual and polite.",
     "text_length": 148,
@@ -6037,19 +5357,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "voice_mismatch",
      "keyword_style"
     ],
     "ai": null,
     "keyword_phrase": "packers and movers in kothrud pune",
-    "voice": {
-     "verdict": "different_voice",
-     "here": "smooth and hassle-free shifting experience",
-     "elsewhere": "Nicely treat and staff is dealing so politely",
-     "others": [
-      "Nicely treat and staff is dealing so politely"
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r123d7acf0099",
@@ -6072,6 +5386,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6080,7 +5396,7 @@
     "rating": 5,
     "date": "2026-06-04T02:00:00+00:00",
     "day": "2026-06-04",
-    "label": "no_flags",
+    "label": "not_checked",
     "badges": [],
     "text": "Shubh Yatra Packers And Movers In Kothrud, Pune ensure safe shifting, packing and transport with minimal downtime and timely delivery. Highly recommended for office relocation.",
     "text_length": 172,
@@ -6093,19 +5409,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "voice_mismatch",
      "keyword_style"
     ],
     "ai": null,
     "keyword_phrase": "packers and movers in kothrud pune",
-    "voice": {
-     "verdict": "different_voice",
-     "here": "ensure safe shifting, packing and transport",
-     "elsewhere": "Treated my knee very well, 100 percent result",
-     "others": [
-      "Treated my knee very well, 100 percent result"
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r02b1e2296092",
@@ -6128,6 +5438,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6136,10 +5448,8 @@
     "rating": 5,
     "date": "2026-06-01T01:00:00+00:00",
     "day": "2026-06-01",
-    "label": "no_flags",
-    "badges": [
-     "A5"
-    ],
+    "label": "not_checked",
+    "badges": [],
     "text": "The entire moving process with Shubh Yatra Packers and Movers Kothrud Pune was smooth, organised and completed within the promised time. Pricing was transparent.",
     "text_length": 158,
     "script": "latin",
@@ -6151,19 +5461,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "voice_mismatch",
      "keyword_style"
     ],
     "ai": null,
     "keyword_phrase": "packers and movers kothrud pune",
-    "voice": {
-     "verdict": "different_voice",
-     "here": "smooth, organised and completed within the promised time",
-     "elsewhere": "Best Hardware Showroom In Pune",
-     "others": [
-      "Best Hardware Showroom In Pune"
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r7d7d2af96e5b",
@@ -6186,6 +5490,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6209,6 +5515,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6232,19 +5540,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "voice_mismatch",
      "keyword_style"
     ],
     "ai": null,
     "keyword_phrase": "packers and movers in kothrud pune",
-    "voice": {
-     "verdict": "different_voice",
-     "here": "Professional packing, safe transport and polite staff",
-     "elsewhere": "kal ka khana accha tha",
-     "others": [
-      "kal ka khana accha tha"
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r77baa15ab0f3",
@@ -6267,19 +5569,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "voice_mismatch",
      "keyword_style"
     ],
     "ai": null,
     "keyword_phrase": "packers and movers in kothrud pune",
-    "voice": {
-     "verdict": "different_voice",
-     "here": "a stress-free relocation experience",
-     "elsewhere": "good chai",
-     "others": [
-      "staff ok not much rush"
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r433c36c33ffe",
@@ -6302,19 +5598,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "voice_mismatch",
      "keyword_style"
     ],
     "ai": null,
     "keyword_phrase": "packers and movers in pune",
-    "voice": {
-     "verdict": "different_voice",
-     "here": "reliable, affordable and timely service",
-     "elsewhere": "parking problem hai otherwise fine",
-     "others": [
-      "parking problem hai otherwise fine"
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r105e3779cad2",
@@ -6337,6 +5627,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6360,6 +5652,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6383,6 +5677,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6406,6 +5702,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6429,19 +5727,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "voice_mismatch",
      "keyword_style"
     ],
     "ai": null,
     "keyword_phrase": "packers and movers kothrud pune",
-    "voice": {
-     "verdict": "different_voice",
-     "here": "a seamless local shifting",
-     "elsewhere": "nice experiance",
-     "others": [
-      "price thoda jyada"
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r3319aa68c76e",
@@ -6464,19 +5756,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "voice_mismatch",
      "keyword_style"
     ],
     "ai": null,
     "keyword_phrase": "packers and movers in kothrud pune",
-    "voice": {
-     "verdict": "different_voice",
-     "here": "punctual, courteous and handled fragile items with great car",
-     "elsewhere": "docter is very good and kind",
-     "others": [
-      "docter is very good and kind"
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r8214f7eac023",
@@ -6499,6 +5785,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6522,19 +5810,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "voice_mismatch",
      "keyword_style"
     ],
     "ai": null,
     "keyword_phrase": "packers and movers in pune",
-    "voice": {
-     "verdict": "different_voice",
-     "here": "transparent pricing and professional handling",
-     "elsewhere": "sweets r fresh",
-     "others": [
-      "sweets r fresh"
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "rc59538d2a5c2",
@@ -6557,6 +5839,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6580,6 +5864,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6603,6 +5889,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6626,6 +5914,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6649,6 +5939,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6672,6 +5964,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6695,6 +5989,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6718,6 +6014,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6741,6 +6039,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6764,6 +6064,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6787,6 +6089,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6810,6 +6114,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6833,6 +6139,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6856,16 +6164,9 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
-    "voice": {
-     "verdict": "same_voice",
-     "here": "",
-     "elsewhere": "",
-     "others": [
-      "The music was painfully slow, the security guard freshly renovated. We came late evening, prices felt a little high. Mixed feelings.",
-      "The security guard was a bit noisy, the receptionist quite outdated. Went here on a rainy day, everything was neat and clean and the location is easy to find. Average experience.",
-      "The signboard was too cold, the manager a bit noisy. Went here before a flight, they fixed our issue quickly. Would come again."
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r28f85c5e31dd",
@@ -6888,6 +6189,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6911,6 +6214,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6934,6 +6239,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6957,6 +6264,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6980,6 +6289,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7003,6 +6314,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7026,6 +6339,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7049,6 +6364,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7072,16 +6389,9 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
-    "voice": {
-     "verdict": "same_voice",
-     "here": "",
-     "elsewhere": "",
-     "others": [
-      "The waiting area was freshly renovated, the washroom friendly enough. I tried this place on a weekday, the staff were polite but slow and everything was neat and clean. Not sure I will return.",
-      "The chai was painfully slow, the AC painfully slow. Our second visit late evening, the staff were polite but slow. Decent enough.",
-      "The lift was confusing, the queue surprisingly good. Our second visit before a flight, the waiting time was long and service could be better. Would come again."
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r108db550b742",
@@ -7104,6 +6414,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7127,6 +6439,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7150,6 +6464,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7173,6 +6489,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7196,6 +6514,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7219,6 +6539,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7242,6 +6564,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7265,6 +6589,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7288,6 +6614,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7311,6 +6639,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7334,6 +6664,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7357,6 +6689,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7380,6 +6714,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7403,6 +6739,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7426,6 +6764,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    }
   ],
@@ -7435,8 +6775,8 @@
    "suspicious": 0,
    "single_use_burst": 0,
    "group_trip": 0,
-   "no_flags": 14,
-   "not_checked": 50
+   "no_flags": 10,
+   "not_checked": 54
   },
   "client_lists": {},
   "places": {
@@ -7452,19 +6792,14 @@
   },
   "evidence": [
    {
-    "kind": "voice_mismatch",
-    "visual": "reviews",
-    "text": "12 of the 14 checked reviewers wrote their review of this business in a different voice from all their other reviews. Scripted or incentivised reviews are often posted from real accounts this way."
-   },
-   {
     "kind": "keyword_style",
     "visual": "reviews",
-    "text": "12 of the 64 reviews with text read like search ads, naming the business or its category with its neighbourhood or city (“packers and movers in kothrud pune”). Customers rarely write that way; search-ranking copy does."
+    "text": "12 reviews read like search ads (“packers and movers in kothrud pune”), and 12 of the 64 reviews with text name the business or its category together with its neighbourhood or city. Customers do name a place that way; search-ranking copy repeats it."
    }
   ],
   "caveats": [
    "This is a pattern, not proof.",
-   "Only the newest 64 reviews and the 14 highest-priority reviewers were examined.",
+   "Only the newest 64 reviews and the 10 highest-priority reviewers were examined.",
    "Private profiles can't be checked.",
    "Dates in reviewer histories are approximate.",
    "Rings within a single city aren't detected.",
@@ -7491,13 +6826,6 @@
     "true_date": "2026-05-26",
     "estimated_from": "2026-06-01",
     "estimated_to": "2026-06-08",
-    "inside": false
-   },
-   {
-    "relative": "2 weeks ago",
-    "true_date": "2026-06-01",
-    "estimated_from": "2026-06-08",
-    "estimated_to": "2026-06-15",
     "inside": false
    },
    {
@@ -7529,31 +6857,10 @@
     "inside": false
    },
    {
-    "relative": "a week ago",
-    "true_date": "2026-06-16",
-    "estimated_from": "2026-06-15",
-    "estimated_to": "2026-06-22",
-    "inside": true
-   },
-   {
     "relative": "3 weeks ago",
     "true_date": "2026-05-23",
     "estimated_from": "2026-06-01",
     "estimated_to": "2026-06-08",
-    "inside": false
-   },
-   {
-    "relative": "a week ago",
-    "true_date": "2026-06-07",
-    "estimated_from": "2026-06-15",
-    "estimated_to": "2026-06-22",
-    "inside": false
-   },
-   {
-    "relative": "2 weeks ago",
-    "true_date": "2026-06-04",
-    "estimated_from": "2026-06-08",
-    "estimated_to": "2026-06-15",
     "inside": false
    },
    {

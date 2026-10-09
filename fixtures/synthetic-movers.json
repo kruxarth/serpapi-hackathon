@@ -1418,18 +1418,6 @@
     "rating": null,
     "total_reviews": null
    },
-   "p03b93e40faf8": {
-    "place_key": "p03b93e40faf8",
-    "data_id": null,
-    "title": "Restaurant BF",
-    "address": null,
-    "lat": 12.9,
-    "lng": 77.6,
-    "type": "Restaurant",
-    "area": "Bengaluru",
-    "rating": null,
-    "total_reviews": null
-   },
    "p06f2ac0302bd": {
     "place_key": "p06f2ac0302bd",
     "data_id": null,
@@ -1514,18 +1502,6 @@
     "rating": null,
     "total_reviews": null
    },
-   "p381b43aa4b8f": {
-    "place_key": "p381b43aa4b8f",
-    "data_id": null,
-    "title": "Bakery BD",
-    "address": null,
-    "lat": 12.9,
-    "lng": 77.5,
-    "type": "Bakery",
-    "area": "Bengaluru",
-    "rating": null,
-    "total_reviews": null
-   },
    "p3f55fa814337": {
     "place_key": "p3f55fa814337",
     "data_id": null,
@@ -1546,18 +1522,6 @@
     "lat": 12.9,
     "lng": 77.6,
     "type": "Cafe",
-    "area": "Bengaluru",
-    "rating": null,
-    "total_reviews": null
-   },
-   "p48e6a89548ae": {
-    "place_key": "p48e6a89548ae",
-    "data_id": null,
-    "title": "Electronics store BC",
-    "address": null,
-    "lat": 12.9,
-    "lng": 77.6,
-    "type": "Electronics store",
     "area": "Bengaluru",
     "rating": null,
     "total_reviews": null
@@ -1646,18 +1610,6 @@
     "rating": null,
     "total_reviews": null
    },
-   "p739819061ff0": {
-    "place_key": "p739819061ff0",
-    "data_id": null,
-    "title": "Dentist AZ",
-    "address": null,
-    "lat": 13.0,
-    "lng": 77.5,
-    "type": "Dentist",
-    "area": "Bengaluru",
-    "rating": null,
-    "total_reviews": null
-   },
    "p73d8d69860a0": {
     "place_key": "p73d8d69860a0",
     "data_id": null,
@@ -1670,18 +1622,6 @@
     "rating": null,
     "total_reviews": null
    },
-   "p79417ab74570": {
-    "place_key": "p79417ab74570",
-    "data_id": null,
-    "title": "Cafe BE",
-    "address": null,
-    "lat": 13.0,
-    "lng": 77.5,
-    "type": "Cafe",
-    "area": "Bengaluru",
-    "rating": null,
-    "total_reviews": null
-   },
    "p7a31cdf21c5b": {
     "place_key": "p7a31cdf21c5b",
     "data_id": null,
@@ -1690,18 +1630,6 @@
     "lat": 13.0,
     "lng": 77.6,
     "type": "Bookstore",
-    "area": "Bengaluru",
-    "rating": null,
-    "total_reviews": null
-   },
-   "p96aa02171d6a": {
-    "place_key": "p96aa02171d6a",
-    "data_id": null,
-    "title": "Grocery store BG",
-    "address": null,
-    "lat": 12.9,
-    "lng": 77.6,
-    "type": "Grocery store",
     "area": "Bengaluru",
     "rating": null,
     "total_reviews": null
@@ -1826,18 +1754,6 @@
     "rating": null,
     "total_reviews": null
    },
-   "pb2daba11047f": {
-    "place_key": "pb2daba11047f",
-    "data_id": null,
-    "title": "Restaurant BA",
-    "address": null,
-    "lat": 13.0,
-    "lng": 77.7,
-    "type": "Restaurant",
-    "area": "Bengaluru",
-    "rating": null,
-    "total_reviews": null
-   },
    "pb4d08f92744a": {
     "place_key": "pb4d08f92744a",
     "data_id": null,
@@ -1846,18 +1762,6 @@
     "lat": 13.0,
     "lng": 77.6,
     "type": "Restaurant",
-    "area": "Bengaluru",
-    "rating": null,
-    "total_reviews": null
-   },
-   "pb7e4e1938136": {
-    "place_key": "pb7e4e1938136",
-    "data_id": null,
-    "title": "Bakery BB",
-    "address": null,
-    "lat": 12.9,
-    "lng": 77.6,
-    "type": "Bakery",
     "area": "Bengaluru",
     "rating": null,
     "total_reviews": null
@@ -2090,18 +1994,6 @@
     "rating": null,
     "total_reviews": null
    },
-   "pff00100d7f7d": {
-    "place_key": "pff00100d7f7d",
-    "data_id": null,
-    "title": "Cafe AY",
-    "address": null,
-    "lat": 12.9,
-    "lng": 77.7,
-    "type": "Cafe",
-    "area": "Bengaluru",
-    "rating": null,
-    "total_reviews": null
-   },
    "pffe727a9f81e": {
     "place_key": "pffe727a9f81e",
     "data_id": null,
@@ -2129,7 +2021,7 @@
     "reviews_returned": 22,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
+    "fetched_at": "2026-06-29T16:27:00+00:00"
    },
    "u325fe16b1fb9": {
     "contributor_id": "u325fe16b1fb9",
@@ -2144,7 +2036,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
+    "fetched_at": "2026-06-29T16:27:00+00:00"
    },
    "u4eb65ae7ef18": {
     "contributor_id": "u4eb65ae7ef18",
@@ -2159,7 +2051,7 @@
     "reviews_returned": 29,
     "truncated": true,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
+    "fetched_at": "2026-06-29T16:27:00+00:00"
    },
    "u54120ec6c92c": {
     "contributor_id": "u54120ec6c92c",
@@ -2174,7 +2066,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
+    "fetched_at": "2026-06-29T16:27:00+00:00"
    },
    "u5ca0908f928e": {
     "contributor_id": "u5ca0908f928e",
@@ -2189,7 +2081,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
+    "fetched_at": "2026-06-29T16:27:00+00:00"
    },
    "u6334e32dd1a5": {
     "contributor_id": "u6334e32dd1a5",
@@ -2204,37 +2096,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
-   },
-   "u68ed51848b68": {
-    "contributor_id": "u68ed51848b68",
-    "name": null,
-    "level": null,
-    "points": null,
-    "local_guide": null,
-    "contributions": {
-     "reviews": 3,
-     "photos": 0
-    },
-    "reviews_returned": 1,
-    "truncated": true,
-    "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
-   },
-   "u7ef11f75e990": {
-    "contributor_id": "u7ef11f75e990",
-    "name": null,
-    "level": null,
-    "points": null,
-    "local_guide": null,
-    "contributions": {
-     "reviews": 3,
-     "photos": 0
-    },
-    "reviews_returned": 1,
-    "truncated": true,
-    "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
+    "fetched_at": "2026-06-29T16:27:00+00:00"
    },
    "u80d2332b641d": {
     "contributor_id": "u80d2332b641d",
@@ -2249,7 +2111,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
+    "fetched_at": "2026-06-29T16:27:00+00:00"
    },
    "u9707a84a7599": {
     "contributor_id": "u9707a84a7599",
@@ -2264,22 +2126,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
-   },
-   "uae33cf26c736": {
-    "contributor_id": "uae33cf26c736",
-    "name": null,
-    "level": null,
-    "points": null,
-    "local_guide": null,
-    "contributions": {
-     "reviews": 3,
-     "photos": 0
-    },
-    "reviews_returned": 1,
-    "truncated": true,
-    "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
+    "fetched_at": "2026-06-29T16:27:00+00:00"
    },
    "uafefa88f1318": {
     "contributor_id": "uafefa88f1318",
@@ -2294,22 +2141,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
-   },
-   "uce9aba5a804e": {
-    "contributor_id": "uce9aba5a804e",
-    "name": null,
-    "level": null,
-    "points": null,
-    "local_guide": null,
-    "contributions": {
-     "reviews": 12,
-     "photos": 5
-    },
-    "reviews_returned": 10,
-    "truncated": true,
-    "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
+    "fetched_at": "2026-06-29T16:27:00+00:00"
    },
    "uf329bd9411cd": {
     "contributor_id": "uf329bd9411cd",
@@ -2324,7 +2156,7 @@
     "reviews_returned": 1,
     "truncated": false,
     "status": "ok",
-    "fetched_at": "2026-06-28T21:11:58+00:00"
+    "fetched_at": "2026-06-29T16:27:00+00:00"
    }
   },
   "histories": {
@@ -3055,36 +2887,6 @@
      "travel_group": null
     }
    ],
-   "u68ed51848b68": [
-    {
-     "contributor_id": "u68ed51848b68",
-     "review_id": "r5a74dd6341f2",
-     "place_key": "pa8129cf95546",
-     "rating": 5,
-     "relative_date": "10 weeks ago",
-     "date_min": "2026-04-13",
-     "date_max": "2026-04-20",
-     "edited": false,
-     "image_dates": [],
-     "text": null,
-     "travel_group": null
-    }
-   ],
-   "u7ef11f75e990": [
-    {
-     "contributor_id": "u7ef11f75e990",
-     "review_id": "r564bf6fec88c",
-     "place_key": "pa8129cf95546",
-     "rating": 5,
-     "relative_date": "8 weeks ago",
-     "date_min": "2026-04-27",
-     "date_max": "2026-05-04",
-     "edited": false,
-     "image_dates": [],
-     "text": null,
-     "travel_group": null
-    }
-   ],
    "u80d2332b641d": [
     {
      "contributor_id": "u80d2332b641d",
@@ -3115,21 +2917,6 @@
      "travel_group": null
     }
    ],
-   "uae33cf26c736": [
-    {
-     "contributor_id": "uae33cf26c736",
-     "review_id": "rb09e52ab7233",
-     "place_key": "pa8129cf95546",
-     "rating": 5,
-     "relative_date": "a week ago",
-     "date_min": "2026-06-15",
-     "date_max": "2026-06-22",
-     "edited": false,
-     "image_dates": [],
-     "text": null,
-     "travel_group": null
-    }
-   ],
    "uafefa88f1318": [
     {
      "contributor_id": "uafefa88f1318",
@@ -3139,138 +2926,6 @@
      "relative_date": "8 weeks ago",
      "date_min": "2026-04-27",
      "date_max": "2026-05-04",
-     "edited": false,
-     "image_dates": [],
-     "text": null,
-     "travel_group": null
-    }
-   ],
-   "uce9aba5a804e": [
-    {
-     "contributor_id": "uce9aba5a804e",
-     "review_id": "rbc7035dcef75",
-     "place_key": "pff00100d7f7d",
-     "rating": 3,
-     "relative_date": "19 months ago",
-     "date_min": "2024-11-06",
-     "date_max": "2024-12-06",
-     "edited": false,
-     "image_dates": [],
-     "text": "The washroom was a little dusty, the lighting friendly enough. Booked in advance late evening, the location is easy to find. Not sure I will return.",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "uce9aba5a804e",
-     "review_id": "r0bb4570d783e",
-     "place_key": "p739819061ff0",
-     "rating": 3,
-     "relative_date": "14 months ago",
-     "date_min": "2025-04-05",
-     "date_max": "2025-05-05",
-     "edited": false,
-     "image_dates": [],
-     "text": "The seating was friendly enough, the payment process painfully slow. Stopped by last weekend, quality was consistent with before and service could be better. Mixed feelings.",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "uce9aba5a804e",
-     "review_id": "r3e1f0ca3ad19",
-     "place_key": "pb2daba11047f",
-     "rating": 4,
-     "relative_date": "17 months ago",
-     "date_min": "2025-01-05",
-     "date_max": "2025-02-04",
-     "edited": false,
-     "image_dates": [],
-     "text": "The manager was freshly renovated, the signboard a bit noisy. I tried this place on a rainy day, the location is easy to find. Not sure I will return.",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "uce9aba5a804e",
-     "review_id": "rb5e55d19af92",
-     "place_key": "pb7e4e1938136",
-     "rating": 4,
-     "relative_date": "a month ago",
-     "date_min": "2026-04-30",
-     "date_max": "2026-05-30",
-     "edited": false,
-     "image_dates": [],
-     "text": "The lobby was very efficient, the waiting area too cold. First time here before a flight, the staff were polite but slow and everything was neat and clean. Might try once more.",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "uce9aba5a804e",
-     "review_id": "rded9d6994022",
-     "place_key": "p48e6a89548ae",
-     "rating": 3,
-     "relative_date": "2 months ago",
-     "date_min": "2026-03-31",
-     "date_max": "2026-04-30",
-     "edited": false,
-     "image_dates": [],
-     "text": "The billing counter was painfully slow, the signboard very efficient. Came with family for a birthday, quality was consistent with before. Might try once more.",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "uce9aba5a804e",
-     "review_id": "rd73a3d058149",
-     "place_key": "p381b43aa4b8f",
-     "rating": 5,
-     "relative_date": "a month ago",
-     "date_min": "2026-04-30",
-     "date_max": "2026-05-30",
-     "edited": false,
-     "image_dates": [],
-     "text": "The menu card was confusing, the payment process quite outdated. Stopped by on a rainy day, it was crowded but manageable. Mixed feelings.",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "uce9aba5a804e",
-     "review_id": "rf9dabf380791",
-     "place_key": "p79417ab74570",
-     "rating": 3,
-     "relative_date": "16 months ago",
-     "date_min": "2025-02-04",
-     "date_max": "2025-03-06",
-     "edited": false,
-     "image_dates": [],
-     "text": "The lift was surprisingly good, the payment process quite outdated. Our second visit for a birthday, the location is easy to find and they fixed our issue quickly. Okay overall.",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "uce9aba5a804e",
-     "review_id": "re978cdbe5d01",
-     "place_key": "p03b93e40faf8",
-     "rating": 4,
-     "relative_date": "15 months ago",
-     "date_min": "2025-03-06",
-     "date_max": "2025-04-05",
-     "edited": false,
-     "image_dates": [],
-     "text": "The chai was a little dusty, the lighting friendly enough. Dropped in after work, service could be better. Okay overall.",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "uce9aba5a804e",
-     "review_id": "rca6e9bcad781",
-     "place_key": "p96aa02171d6a",
-     "rating": 4,
-     "relative_date": "19 months ago",
-     "date_min": "2024-11-06",
-     "date_max": "2024-12-06",
-     "edited": false,
-     "image_dates": [],
-     "text": "The music was well organised, the queue surprisingly good. Our second visit with friends, it was crowded but manageable and the staff were polite but slow. Would come again.",
-     "travel_group": null
-    },
-    {
-     "contributor_id": "uce9aba5a804e",
-     "review_id": "r34cef379abf6",
-     "place_key": "pa8129cf95546",
-     "rating": 4,
-     "relative_date": "12 weeks ago",
-     "date_min": "2026-03-30",
-     "date_max": "2026-04-06",
      "edited": false,
      "image_dates": [],
      "text": null,
@@ -3343,35 +2998,15 @@
     "contributor_id": "u2ac3d3b4fc6d",
     "round": 1,
     "reason": "baseline"
-   },
-   {
-    "contributor_id": "uae33cf26c736",
-    "round": 1,
-    "reason": "voice"
-   },
-   {
-    "contributor_id": "u68ed51848b68",
-    "round": 1,
-    "reason": "voice"
-   },
-   {
-    "contributor_id": "u7ef11f75e990",
-    "round": 1,
-    "reason": "voice"
-   },
-   {
-    "contributor_id": "uce9aba5a804e",
-    "round": 1,
-    "reason": "voice"
    }
   ],
-  "fetched_at": "2026-06-28T21:11:58.884231+00:00",
+  "fetched_at": "2026-06-29T16:27:00.135111+00:00",
   "params": {
    "n": 100,
    "k1": 8,
    "baseline": 2,
    "k2": 15,
-   "voice_picks": 4,
+   "voice_picks": 0,
    "stop_after_round1": false,
    "force_refresh": false,
    "pick": null
@@ -3813,87 +3448,6 @@
     "text_id": "h:u4eb65ae7ef18:rfbe5cbf1e9ec",
     "owner": "u4eb65ae7ef18",
     "length": 134,
-    "script": "latin",
-    "short": false,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:uce9aba5a804e:r0bb4570d783e": {
-    "text_id": "h:uce9aba5a804e:r0bb4570d783e",
-    "owner": "uce9aba5a804e",
-    "length": 168,
-    "script": "latin",
-    "short": false,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:uce9aba5a804e:r3e1f0ca3ad19": {
-    "text_id": "h:uce9aba5a804e:r3e1f0ca3ad19",
-    "owner": "uce9aba5a804e",
-    "length": 145,
-    "script": "latin",
-    "short": false,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:uce9aba5a804e:rb5e55d19af92": {
-    "text_id": "h:uce9aba5a804e:rb5e55d19af92",
-    "owner": "uce9aba5a804e",
-    "length": 171,
-    "script": "latin",
-    "short": false,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:uce9aba5a804e:rbc7035dcef75": {
-    "text_id": "h:uce9aba5a804e:rbc7035dcef75",
-    "owner": "uce9aba5a804e",
-    "length": 143,
-    "script": "latin",
-    "short": false,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:uce9aba5a804e:rca6e9bcad781": {
-    "text_id": "h:uce9aba5a804e:rca6e9bcad781",
-    "owner": "uce9aba5a804e",
-    "length": 168,
-    "script": "latin",
-    "short": false,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:uce9aba5a804e:rd73a3d058149": {
-    "text_id": "h:uce9aba5a804e:rd73a3d058149",
-    "owner": "uce9aba5a804e",
-    "length": 133,
-    "script": "latin",
-    "short": false,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:uce9aba5a804e:rded9d6994022": {
-    "text_id": "h:uce9aba5a804e:rded9d6994022",
-    "owner": "uce9aba5a804e",
-    "length": 154,
-    "script": "latin",
-    "short": false,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:uce9aba5a804e:re978cdbe5d01": {
-    "text_id": "h:uce9aba5a804e:re978cdbe5d01",
-    "owner": "uce9aba5a804e",
-    "length": 115,
-    "script": "latin",
-    "short": false,
-    "cluster": null,
-    "target_cluster": null
-   },
-   "h:uce9aba5a804e:rf9dabf380791": {
-    "text_id": "h:uce9aba5a804e:rf9dabf380791",
-    "owner": "uce9aba5a804e",
-    "length": 172,
     "script": "latin",
     "short": false,
     "cluster": null,
@@ -4893,12 +4447,6 @@
     "here": "",
     "elsewhere": "",
     "model": "synthetic example"
-   },
-   "uce9aba5a804e": {
-    "verdict": "same_voice",
-    "here": "",
-    "elsewhere": "",
-    "model": "synthetic example"
    }
   }
  },
@@ -4913,14 +4461,19 @@
    "lat": 13.0,
    "lng": 77.6,
    "rating": 4.9,
-   "total_reviews": 400
+   "total_reviews": 400,
+   "locality": [
+    "bangalore",
+    "invented",
+    "karnataka"
+   ]
   },
   "sample": {
    "examined": 99,
    "first": "2026-02-19",
    "last": "2026-06-18",
-   "expanded": 14,
-   "histories_ok": 14,
+   "expanded": 10,
+   "histories_ok": 10,
    "baseline": [
     "u4eb65ae7ef18",
     "u2ac3d3b4fc6d"
@@ -4932,18 +4485,18 @@
    "level": "Elevated",
    "reasons": [
     "1 review contains text that only a chatbot or an unfilled template would produce, pasted in as a customer review.",
-    "A burst of 31 5★ reviews (2026-04-21 to 2026-04-25): 27 came from accounts that have reviewed nothing else."
+    "27 five-star reviews arrived in 2 days between 2026-04-22 and 2026-04-24: 27% of the newest 99. This listing usually gets about 4 reviews a week. 26 came from accounts that have reviewed nothing else."
    ]
   },
   "ratings": {
    "examined": 99,
    "sample_mean": 4.24,
-   "kept_mean": 3.96,
+   "kept_mean": 3.94,
    "kept_count": 70,
    "without_ring": 4.24,
-   "without_ring_and_suspicious": 3.97,
+   "without_ring_and_suspicious": 3.96,
    "ring_reviews": 0,
-   "single_use_burst_reviews": 27,
+   "burst_reviews": 27,
    "overall": null
   },
   "signals": {
@@ -5040,15 +4593,55 @@
     "total_reviews": 400,
     "sample_span_days": 120
    },
-   "T6": {
-    "single_use_bursts": [
+   "T11": {
+    "examined": 99,
+    "clusters": [
      {
-      "start": "2026-04-21",
-      "end": "2026-04-25",
       "direction": "positive",
-      "count": 31,
-      "single_use": 27,
-      "share": 0.871,
+      "stars": 5,
+      "count": 27,
+      "share": 0.273,
+      "start": "2026-04-22T06:00:00+00:00",
+      "end": "2026-04-24T06:00:00+00:00",
+      "minutes": 2880.0,
+      "core": {
+       "count": 22,
+       "minutes": 2268.0,
+       "start": "2026-04-22T06:00:00+00:00",
+       "end": "2026-04-23T19:48:00+00:00"
+      },
+      "usual_per_day": 0.6144,
+      "pace": 22.0,
+      "offsets": [
+       0.0,
+       108.0,
+       216.0,
+       324.0,
+       432.0,
+       540.0,
+       648.0,
+       756.0,
+       864.0,
+       972.0,
+       1080.0,
+       1188.0,
+       1296.0,
+       1404.0,
+       1512.0,
+       1620.0,
+       1728.0,
+       1836.0,
+       1944.0,
+       2052.0,
+       2160.0,
+       2268.0,
+       2376.0,
+       2484.0,
+       2592.0,
+       2700.0,
+       2880.0
+      ],
+      "first_time": 26,
       "flagged": true,
       "review_ids": [
        "r0082109c4d86",
@@ -5059,6 +4652,7 @@
        "r0fa1745c013e",
        "r1b1f7e4030c0",
        "r244acd3f9739",
+       "r27309a0f75ee",
        "r31a5cc2c0d33",
        "r36ef64f39098",
        "r414e54155f78",
@@ -5074,13 +4668,40 @@
        "r9553017cf5c2",
        "r9b5fa29ec30b",
        "ra351dba6db41",
-       "rb563aaba624a",
        "rc192e04e5d75",
        "rc549dfa60542",
        "rf18b8406fef5"
       ]
+     },
+     {
+      "direction": "positive",
+      "stars": 5,
+      "count": 2,
+      "share": 0.02,
+      "start": "2026-04-17T06:00:00+00:00",
+      "end": "2026-04-17T17:43:41.415550+00:00",
+      "minutes": 703.7,
+      "core": {
+       "count": 2,
+       "minutes": 703.7,
+       "start": "2026-04-17T06:00:00+00:00",
+       "end": "2026-04-17T17:43:41.415550+00:00"
+      },
+      "usual_per_day": 0.8171,
+      "pace": 2.4,
+      "offsets": [
+       0.0,
+       703.7
+      ],
+      "first_time": 1,
+      "flagged": false,
+      "review_ids": [
+       "r8ea33298c254",
+       "ra77af0332906"
+      ]
      }
-    ]
+    ],
+    "pace_per_day": 0.8306
    },
    "T7": {
     "available": true,
@@ -5110,7 +4731,9 @@
     "accounts": 0,
     "with_text": 97,
     "needed": 7.8,
+    "ads": 0,
     "review_ids": [],
+    "named_ids": [],
     "phrases": {}
    }
   },
@@ -5118,20 +4741,18 @@
    "order": [
     "chatbot_text",
     "copied_text",
-    "voice_mismatch",
     "keyword_style",
-    "first_time_burst",
+    "review_burst",
     "linked_group",
-    "ai_style",
     "review_spree",
+    "names_area",
     "first_time_account"
    ],
    "set_aside_by_default": [
     "chatbot_text",
     "copied_text",
-    "voice_mismatch",
     "keyword_style",
-    "first_time_burst",
+    "review_burst",
     "linked_group"
    ],
    "signs": {
@@ -5153,31 +4774,22 @@
      "mean": 4.86,
      "set_aside_by_default": true
     },
-    "voice_mismatch": {
-     "name": "Not in the reviewer's own voice",
-     "short": "Not their own voice",
-     "strength": "strong",
-     "explain": "The reviewer's other reviews are written very differently. An AI model compared them and quotes the difference; both are shown side by side. Typical of scripted or incentivised reviews posted from real accounts.",
-     "count": 0,
-     "mean": null,
-     "set_aside_by_default": true
-    },
     "keyword_style": {
      "name": "Written like a search ad",
      "short": "Search-ad phrasing",
      "strength": "strong",
-     "explain": "Names the business or its category together with its neighbourhood or city, the way search ads are written (“packers and movers in [area], [city]”), as several accounts here do.",
+     "explain": "Uses the bare search term with a place (“best packers and movers in [area]”), or names the business with its area again and again, the way search-ranking copy is written. Several accounts here do it.",
      "count": 0,
      "mean": null,
      "set_aside_by_default": true
     },
-    "first_time_burst": {
-     "name": "First-time accounts in a burst",
-     "short": "Burst of first-time accounts",
+    "review_burst": {
+     "name": "Part of a burst of same-star reviews",
+     "short": "Review burst",
      "strength": "strong",
-     "explain": "Posted in a sudden burst of reviews that came mostly from accounts that have reviewed nothing else.",
+     "explain": "Posted within a few hours or days together with many other reviews of the same rating (all 5★, or all 1★): a quarter or more of the newest reviews, far faster than this listing usually gets any.",
      "count": 27,
-     "mean": 4.96,
+     "mean": 5.0,
      "set_aside_by_default": true
     },
     "linked_group": {
@@ -5189,20 +4801,20 @@
      "mean": null,
      "set_aside_by_default": true
     },
-    "ai_style": {
-     "name": "Reads as AI-written",
-     "short": "Reads as AI-written",
-     "strength": "opinion",
-     "explain": "An AI model thinks this reads as written by a chatbot, and quotes the phrases why. That's an opinion, not proof: real customers also polish honest reviews with AI.",
-     "count": 7,
-     "mean": 4.86,
-     "set_aside_by_default": false
-    },
     "review_spree": {
      "name": "Reviewing spree",
      "short": "Reviewing spree",
      "strength": "context",
      "explain": "The reviewer rated many unrelated businesses in several cities within a month, nearly all 5★: the shape of “rate and earn” tasks, though some travellers review this way too.",
+     "count": 0,
+     "mean": null,
+     "set_aside_by_default": false
+    },
+    "names_area": {
+     "name": "Names the business with its area",
+     "short": "Name with area",
+     "strength": "context",
+     "explain": "Names the business together with its neighbourhood or city, as many reviews at this listing do. Customers refer to a business this way too, so on its own it isn't a warning sign.",
      "count": 0,
      "mean": null,
      "set_aside_by_default": false
@@ -5220,11 +4832,11 @@
    "examined": 99,
    "kept": {
     "count": 70,
-    "mean": 3.96
+    "mean": 3.94
    },
    "no_signs": {
-    "count": 55,
-    "mean": 3.89
+    "count": 60,
+    "mean": 3.97
    },
    "all": {
     "count": 99,
@@ -5233,21 +4845,22 @@
    "ai": {
     "min_words": 40,
     "eligible": 13,
-    "judged": 13,
+    "judged": 0,
     "too_short": 84,
     "no_text": 2,
-    "ai_style": 7,
-    "human_style": 6,
+    "ai_style": 0,
+    "human_style": 0,
     "unclear": 0,
-    "model": "synthetic example"
+    "model": null,
+    "enabled": false
    },
    "voice": {
-    "eligible": 3,
-    "compared": 3,
+    "eligible": 0,
+    "compared": 0,
     "different_voice": 0,
-    "same_voice": 3,
+    "same_voice": 0,
     "unclear": 0,
-    "model": "synthetic example"
+    "model": null
    }
   },
   "reviewers": [
@@ -5529,78 +5142,6 @@
     "truncated": false,
     "visible_reviews": 22,
     "total_reviews": 16,
-    "badges": []
-   },
-   {
-    "contributor_id": "uae33cf26c736",
-    "round": 1,
-    "reason": "voice",
-    "status": "ok",
-    "label": "no_flags",
-    "group": null,
-    "truncated": true,
-    "visible_reviews": 1,
-    "total_reviews": 3,
-    "badges": [
-     {
-      "code": "A1",
-      "name": "Thin profile",
-      "total_reviews": 3,
-      "photos": 0,
-      "level": null
-     }
-    ]
-   },
-   {
-    "contributor_id": "u68ed51848b68",
-    "round": 1,
-    "reason": "voice",
-    "status": "ok",
-    "label": "no_flags",
-    "group": null,
-    "truncated": true,
-    "visible_reviews": 1,
-    "total_reviews": 3,
-    "badges": [
-     {
-      "code": "A1",
-      "name": "Thin profile",
-      "total_reviews": 3,
-      "photos": 0,
-      "level": null
-     }
-    ]
-   },
-   {
-    "contributor_id": "u7ef11f75e990",
-    "round": 1,
-    "reason": "voice",
-    "status": "ok",
-    "label": "no_flags",
-    "group": null,
-    "truncated": true,
-    "visible_reviews": 1,
-    "total_reviews": 3,
-    "badges": [
-     {
-      "code": "A1",
-      "name": "Thin profile",
-      "total_reviews": 3,
-      "photos": 0,
-      "level": null
-     }
-    ]
-   },
-   {
-    "contributor_id": "uce9aba5a804e",
-    "round": 1,
-    "reason": "voice",
-    "status": "ok",
-    "label": "no_flags",
-    "group": null,
-    "truncated": true,
-    "visible_reviews": 10,
-    "total_reviews": 12,
     "badges": []
    }
   ],
@@ -6323,177 +5864,6 @@
       "km": 0.0
      }
     ]
-   },
-   "uae33cf26c736": {
-    "total_reviews": 3,
-    "visible": 1,
-    "home_area": null,
-    "items": [
-     {
-      "day": "2026-06-18",
-      "rating": 5,
-      "place_key": "pa8129cf95546",
-      "this": true,
-      "area": "Bengaluru",
-      "type_group": "Home & moving services",
-      "lat": 13.0,
-      "lng": 77.6,
-      "km": 0.0
-     }
-    ]
-   },
-   "u68ed51848b68": {
-    "total_reviews": 3,
-    "visible": 1,
-    "home_area": null,
-    "items": [
-     {
-      "day": "2026-04-16",
-      "rating": 5,
-      "place_key": "pa8129cf95546",
-      "this": true,
-      "area": "Bengaluru",
-      "type_group": "Home & moving services",
-      "lat": 13.0,
-      "lng": 77.6,
-      "km": 0.0
-     }
-    ]
-   },
-   "u7ef11f75e990": {
-    "total_reviews": 3,
-    "visible": 1,
-    "home_area": null,
-    "items": [
-     {
-      "day": "2026-04-30",
-      "rating": 5,
-      "place_key": "pa8129cf95546",
-      "this": true,
-      "area": "Bengaluru",
-      "type_group": "Home & moving services",
-      "lat": 13.0,
-      "lng": 77.6,
-      "km": 0.0
-     }
-    ]
-   },
-   "uce9aba5a804e": {
-    "total_reviews": 12,
-    "visible": 10,
-    "home_area": "Bengaluru",
-    "items": [
-     {
-      "day": "2024-11-21",
-      "rating": 3,
-      "place_key": "pff00100d7f7d",
-      "this": false,
-      "area": "Bengaluru",
-      "type_group": "Food & drink",
-      "lat": 12.9,
-      "lng": 77.7,
-      "km": 15.5
-     },
-     {
-      "day": "2024-11-21",
-      "rating": 4,
-      "place_key": "p96aa02171d6a",
-      "this": false,
-      "area": "Bengaluru",
-      "type_group": "Retail",
-      "lat": 12.9,
-      "lng": 77.6,
-      "km": 11.1
-     },
-     {
-      "day": "2025-01-20",
-      "rating": 4,
-      "place_key": "pb2daba11047f",
-      "this": false,
-      "area": "Bengaluru",
-      "type_group": "Food & drink",
-      "lat": 13.0,
-      "lng": 77.7,
-      "km": 10.8
-     },
-     {
-      "day": "2025-02-19",
-      "rating": 3,
-      "place_key": "p79417ab74570",
-      "this": false,
-      "area": "Bengaluru",
-      "type_group": "Food & drink",
-      "lat": 13.0,
-      "lng": 77.5,
-      "km": 10.8
-     },
-     {
-      "day": "2025-03-21",
-      "rating": 4,
-      "place_key": "p03b93e40faf8",
-      "this": false,
-      "area": "Bengaluru",
-      "type_group": "Food & drink",
-      "lat": 12.9,
-      "lng": 77.6,
-      "km": 11.1
-     },
-     {
-      "day": "2025-04-20",
-      "rating": 3,
-      "place_key": "p739819061ff0",
-      "this": false,
-      "area": "Bengaluru",
-      "type_group": "Health",
-      "lat": 13.0,
-      "lng": 77.5,
-      "km": 10.8
-     },
-     {
-      "day": "2026-04-02",
-      "rating": 4,
-      "place_key": "pa8129cf95546",
-      "this": true,
-      "area": "Bengaluru",
-      "type_group": "Home & moving services",
-      "lat": 13.0,
-      "lng": 77.6,
-      "km": 0.0
-     },
-     {
-      "day": "2026-04-15",
-      "rating": 3,
-      "place_key": "p48e6a89548ae",
-      "this": false,
-      "area": "Bengaluru",
-      "type_group": "Retail",
-      "lat": 12.9,
-      "lng": 77.6,
-      "km": 11.1
-     },
-     {
-      "day": "2026-05-15",
-      "rating": 4,
-      "place_key": "pb7e4e1938136",
-      "this": false,
-      "area": "Bengaluru",
-      "type_group": "Food & drink",
-      "lat": 12.9,
-      "lng": 77.6,
-      "km": 11.1
-     },
-     {
-      "day": "2026-05-15",
-      "rating": 5,
-      "place_key": "p381b43aa4b8f",
-      "this": false,
-      "area": "Bengaluru",
-      "type_group": "Food & drink",
-      "lat": 12.9,
-      "lng": 77.5,
-      "km": 15.5
-     }
-    ]
    }
   },
   "graph": {
@@ -6537,22 +5907,6 @@
     {
      "id": "u2ac3d3b4fc6d",
      "label": "no_flags"
-    },
-    {
-     "id": "uae33cf26c736",
-     "label": "no_flags"
-    },
-    {
-     "id": "u68ed51848b68",
-     "label": "no_flags"
-    },
-    {
-     "id": "u7ef11f75e990",
-     "label": "no_flags"
-    },
-    {
-     "id": "uce9aba5a804e",
-     "label": "no_flags"
     }
    ],
    "edges": []
@@ -6580,6 +5934,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6601,11 +5957,10 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": {
-     "verdict": "human_style",
-     "cues": []
-    },
+    "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6629,6 +5984,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6654,6 +6011,8 @@
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6662,10 +6021,8 @@
     "rating": 5,
     "date": "2026-06-11T06:00:00+00:00",
     "day": "2026-06-11",
-    "label": "no_flags",
-    "badges": [
-     "A1"
-    ],
+    "label": "not_checked",
+    "badges": [],
     "text": "I recently used their packing and moving services for my relocation, and I must say the experience was absolutely seamless. From the initial survey to the final delivery, the team demonstrated impeccable professionalism and attention to detail. Every item was packed with care and arrived in perfect condition. Overall, I can't recommend them enough for anyone looking for a stress-free move!",
     "text_length": 385,
     "script": "latin",
@@ -6676,17 +6033,11 @@
     "local_guide": null,
     "generated_marker": null,
     "excerpt": null,
-    "signs": [
-     "ai_style"
-    ],
-    "ai": {
-     "verdict": "ai_style",
-     "cues": [
-      "the experience was absolutely seamless",
-      "impeccable professionalism and attention to detail"
-     ]
-    },
+    "signs": [],
+    "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6710,6 +6061,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6733,6 +6086,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6756,6 +6111,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6776,17 +6133,11 @@
     "local_guide": null,
     "generated_marker": null,
     "excerpt": null,
-    "signs": [
-     "ai_style"
-    ],
-    "ai": {
-     "verdict": "ai_style",
-     "cues": [
-      "made the entire process effortless",
-      "Whether you're moving across the city or across the country"
-     ]
-    },
+    "signs": [],
+    "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6808,11 +6159,10 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": {
-     "verdict": "human_style",
-     "cues": []
-    },
+    "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6836,6 +6186,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6859,6 +6211,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6879,17 +6233,11 @@
     "local_guide": null,
     "generated_marker": null,
     "excerpt": null,
-    "signs": [
-     "ai_style"
-    ],
-    "ai": {
-     "verdict": "ai_style",
-     "cues": [
-      "Overall, the experience was smooth and well-coordinated",
-      "Communication was prompt and professional throughout"
-     ]
-    },
+    "signs": [],
+    "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6913,6 +6261,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6936,6 +6286,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6959,6 +6311,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -6982,6 +6336,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7003,17 +6359,12 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "ai_style",
      "first_time_account"
     ],
-    "ai": {
-     "verdict": "ai_style",
-     "cues": [
-      "Exceptional service from start to finish",
-      "Truly a hassle-free experience that exceeded my expectations"
-     ]
-    },
+    "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7037,6 +6388,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7060,6 +6413,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7081,11 +6436,10 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": {
-     "verdict": "human_style",
-     "cues": []
-    },
+    "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7106,17 +6460,11 @@
     "local_guide": null,
     "generated_marker": null,
     "excerpt": null,
-    "signs": [
-     "ai_style"
-    ],
-    "ai": {
-     "verdict": "ai_style",
-     "cues": [
-      "Cons: None that I can think of",
-      "A testament to their commitment to quality"
-     ]
-    },
+    "signs": [],
+    "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7140,6 +6488,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7163,6 +6513,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7186,6 +6538,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7209,6 +6563,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7217,7 +6573,7 @@
     "rating": 4,
     "date": "2026-04-25T15:52:14.635006+00:00",
     "day": "2026-04-25",
-    "label": "single_use_burst",
+    "label": "not_checked",
     "badges": [],
     "text": "The entrance was quite outdated, the music well organised. Went here after work, they fixed our issue quickly. Decent enough.",
     "text_length": 120,
@@ -7230,11 +6586,12 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7258,6 +6615,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7281,6 +6640,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7289,7 +6650,7 @@
     "rating": 5,
     "date": "2026-04-24T06:00:00+00:00",
     "day": "2026-04-24",
-    "label": "not_checked",
+    "label": "single_use_burst",
     "badges": [],
     "text": "bhai log ne ekdum mast kaam kiya, saman sab safe pahuch gaya. bike bhi bheji thi Hyderabad, 6 din me aa gayi bina scratch ke. rate thoda zyada laga but chalta hai, service acchi thi. Ramesh ji ka number save karke rakho next time ke liye, bahut helpful hai.",
     "text_length": 249,
@@ -7301,12 +6662,13 @@
     "local_guide": null,
     "generated_marker": null,
     "excerpt": null,
-    "signs": [],
-    "ai": {
-     "verdict": "human_style",
-     "cues": []
-    },
+    "signs": [
+     "review_burst"
+    ],
+    "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7333,11 +6695,17 @@
     "excerpt": null,
     "signs": [
      "copied_text",
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [
+     "r0bfbe94ac1a6",
+     "r1b1f7e4030c0",
+     "r4815528aab01"
+    ],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7363,11 +6731,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7393,11 +6763,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7419,11 +6791,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7445,11 +6819,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7476,11 +6852,17 @@
     "excerpt": null,
     "signs": [
      "copied_text",
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [
+     "r0bfbe94ac1a6",
+     "r1b1f7e4030c0",
+     "r507dc44c7900"
+    ],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7502,11 +6884,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7528,11 +6912,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7554,11 +6940,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7580,11 +6968,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7611,11 +7001,17 @@
     "excerpt": null,
     "signs": [
      "copied_text",
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [
+     "r0bfbe94ac1a6",
+     "r4815528aab01",
+     "r507dc44c7900"
+    ],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7637,11 +7033,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7663,11 +7061,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7689,11 +7089,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7715,11 +7117,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7746,11 +7150,17 @@
     "excerpt": null,
     "signs": [
      "copied_text",
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [
+     "r0bfbe94ac1a6",
+     "r1b1f7e4030c0",
+     "r4815528aab01"
+    ],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7772,11 +7182,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7798,11 +7210,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7824,11 +7238,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7852,6 +7268,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7873,11 +7291,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7904,11 +7324,17 @@
     "excerpt": null,
     "signs": [
      "copied_text",
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [
+     "r0bfbe94ac1a6",
+     "r1b1f7e4030c0",
+     "r4815528aab01"
+    ],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7930,11 +7356,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7956,11 +7384,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -7982,11 +7412,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8008,11 +7440,13 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8039,11 +7473,17 @@
     "excerpt": null,
     "signs": [
      "copied_text",
-     "first_time_burst",
+     "review_burst",
      "first_time_account"
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [
+     "r1b1f7e4030c0",
+     "r4815528aab01",
+     "r507dc44c7900"
+    ],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8052,10 +7492,8 @@
     "rating": 5,
     "date": "2026-04-20T02:00:00+00:00",
     "day": "2026-04-20",
-    "label": "no_flags",
-    "badges": [
-     "A1"
-    ],
+    "label": "not_checked",
+    "badges": [],
     "text": "I was nervous about shifting my entire household, but this company turned what could have been a stressful ordeal into a smooth and seamless experience. The team arrived on time, wrapped everything meticulously, and unpacked with remarkable efficiency. Their dedication to customer satisfaction is evident in every step. In conclusion, an excellent choice for anyone relocating.",
     "text_length": 370,
     "script": "latin",
@@ -8066,17 +7504,11 @@
     "local_guide": null,
     "generated_marker": null,
     "excerpt": null,
-    "signs": [
-     "ai_style"
-    ],
-    "ai": {
-     "verdict": "ai_style",
-     "cues": [
-      "a smooth and seamless experience",
-      "Their dedication to customer satisfaction is evident in ever"
-     ]
-    },
+    "signs": [],
+    "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8100,6 +7532,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8125,6 +7559,8 @@
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 1,
     "voice": null
    },
    {
@@ -8151,6 +7587,8 @@
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8174,6 +7612,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8197,6 +7637,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8220,6 +7662,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8243,6 +7687,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8266,6 +7712,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8289,6 +7737,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8312,6 +7762,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8333,11 +7785,10 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": {
-     "verdict": "human_style",
-     "cues": []
-    },
+    "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8346,10 +7797,8 @@
     "rating": 5,
     "date": "2026-04-07T01:00:00+00:00",
     "day": "2026-04-07",
-    "label": "no_flags",
-    "badges": [
-     "A1"
-    ],
+    "label": "not_checked",
+    "badges": [],
     "text": "From the moment I contacted them, I knew I was in good hands. The representative patiently answered all my questions and provided a detailed quotation. On moving day, the crew worked like a well-oiled machine, packing, loading, and transporting everything with precision. Not a single scratch on my furniture! Truly a five-star service that I would wholeheartedly recommend.",
     "text_length": 364,
     "script": "latin",
@@ -8360,17 +7809,11 @@
     "local_guide": null,
     "generated_marker": null,
     "excerpt": null,
-    "signs": [
-     "ai_style"
-    ],
-    "ai": {
-     "verdict": "ai_style",
-     "cues": [
-      "the crew worked like a well-oiled machine",
-      "a five-star service that I would wholeheartedly recommend"
-     ]
-    },
+    "signs": [],
+    "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8394,6 +7837,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8417,6 +7862,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8442,6 +7889,8 @@
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8467,6 +7916,8 @@
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8490,6 +7941,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8513,6 +7966,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8536,6 +7991,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8559,6 +8016,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8584,6 +8043,8 @@
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8609,6 +8070,8 @@
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8632,16 +8095,9 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
-    "voice": {
-     "verdict": "same_voice",
-     "here": "",
-     "elsewhere": "",
-     "others": [
-      "The lift was a bit noisy, the billing counter a bit noisy. Stopped by with friends, the menu had fewer options now and quality was consistent with before. Mixed feelings.",
-      "The receptionist was a bit noisy, the AC freshly renovated. Stopped by before a flight, they fixed our issue quickly and prices felt a little high. Not sure I will return.",
-      "The lighting was friendly enough, the lift very efficient. Visited with friends, the menu had fewer options now and the staff were polite but slow. Mixed feelings."
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r81189e4d3726",
@@ -8666,6 +8122,8 @@
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8689,6 +8147,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8712,6 +8172,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8720,7 +8182,7 @@
     "rating": 4,
     "date": "2026-03-21T06:00:00+00:00",
     "day": "2026-03-21",
-    "label": "no_flags",
+    "label": "not_checked",
     "badges": [],
     "text": "Was a little skeptical after reading mixed reviews but the experience was decent. They gave written quotation of Rs 18,000 for 2BHK to Chennai with insurance. Truck came one day late due to some issue at the state border, they informed in advance though. All items reached fine except a small dent on the washing machine.",
     "text_length": 316,
@@ -8733,21 +8195,11 @@
     "generated_marker": null,
     "excerpt": null,
     "signs": [],
-    "ai": {
-     "verdict": "human_style",
-     "cues": []
-    },
+    "ai": null,
     "keyword_phrase": null,
-    "voice": {
-     "verdict": "same_voice",
-     "here": "",
-     "elsewhere": "",
-     "others": [
-      "The washroom was a little dusty, the lighting friendly enough. Booked in advance late evening, the location is easy to find. Not sure I will return.",
-      "The seating was friendly enough, the payment process painfully slow. Stopped by last weekend, quality was consistent with before and service could be better. Mixed feelings.",
-      "The manager was freshly renovated, the signboard a bit noisy. I tried this place on a rainy day, the location is easy to find. Not sure I will return."
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r621a85fe4970",
@@ -8770,6 +8222,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8795,6 +8249,8 @@
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8818,6 +8274,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8841,6 +8299,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8864,6 +8324,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8889,6 +8351,8 @@
     ],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8912,6 +8376,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8935,6 +8401,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8958,6 +8426,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -8981,16 +8451,9 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
-    "voice": {
-     "verdict": "same_voice",
-     "here": "",
-     "elsewhere": "",
-     "others": [
-      "The waiting area was a bit noisy, the seating surprisingly good. First time here late evening, quality was consistent with before and the location is easy to find. Mixed feelings.",
-      "The washroom was better than expected, the signboard better than expected. Came with family for a birthday, the waiting time was long and value for money is decent. Okay overall.",
-      "The lobby was painfully slow, the manager better than expected. Came with family late evening, the location is easy to find. Not sure I will return."
-     ]
-    }
+    "copied_with": [],
+    "copied_elsewhere": 0,
+    "voice": null
    },
    {
     "review_id": "r8723f4b9ef44",
@@ -9013,6 +8476,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -9036,6 +8501,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -9059,6 +8526,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    },
    {
@@ -9082,6 +8551,8 @@
     "signs": [],
     "ai": null,
     "keyword_phrase": null,
+    "copied_with": [],
+    "copied_elsewhere": 0,
     "voice": null
    }
   ],
@@ -9091,8 +8562,8 @@
    "suspicious": 6,
    "single_use_burst": 21,
    "group_trip": 0,
-   "no_flags": 6,
-   "not_checked": 66
+   "no_flags": 2,
+   "not_checked": 70
   },
   "client_lists": {},
   "places": {
@@ -9113,14 +8584,9 @@
     "text": "A 5★ review from 2026-04-17 contains \"here's a review\", text that only a chatbot or an unfilled template would produce, pasted in as a customer review."
    },
    {
-    "kind": "single_use_burst",
-    "visual": "timeline",
-    "text": "27 of the 31 reviews in the 2026-04-21 to 2026-04-25 burst came from accounts that have reviewed nothing else on Google Maps. Bursts of first-time accounts are a common pattern in coordinated review campaigns, though a business can also be targeted without its knowledge."
-   },
-   {
-    "kind": "ai_style",
-    "visual": "sieve",
-    "text": "7 of the 13 reviews long enough to judge read as AI-written to an AI model, which quotes the phrases behind each opinion. Real customers also polish honest reviews with AI, so these are shown, not counted."
+    "kind": "review_burst",
+    "visual": "burst",
+    "text": "27 five-star reviews arrived in 2 days between 2026-04-22 and 2026-04-24: 27% of the newest 99. This listing usually gets about 4 reviews a week. 26 came from accounts that have reviewed nothing else."
    },
    {
     "kind": "first_time_skew",
@@ -9131,22 +8597,16 @@
     "kind": "duplicates",
     "visual": "reviews",
     "text": "6 review texts are near-identical."
-   },
-   {
-    "kind": "burst",
-    "visual": "timeline",
-    "text": "31 of the latest 99 reviews arrived within 5 days (normally about 4 a week); 29 of them are 5★. Consistent with an in-store review drive or a campaign."
    }
   ],
   "caveats": [
    "This is a pattern, not proof.",
-   "Only the newest 99 reviews and the 14 highest-priority reviewers were examined.",
+   "Only the newest 99 reviews and the 10 highest-priority reviewers were examined.",
    "Private profiles can't be checked.",
    "Dates in reviewer histories are approximate.",
    "Rings within a single city aren't detected.",
    "Google may already have removed some reviews.",
-   "A business can be targeted without its knowledge: review-task scams hand recruits real businesses to review.",
-   "“Reads as AI-written” is an AI model's opinion. AI-text detectors are unreliable on short texts and over-flag people writing in a second language, so only longer reviews were judged."
+   "A business can be targeted without its knowledge: review-task scams hand recruits real businesses to review."
   ],
   "calibration": [
    {
@@ -9192,15 +8652,8 @@
     "inside": false
    },
    {
-    "relative": "10 weeks ago",
-    "true_date": "2026-04-07",
-    "estimated_from": "2026-04-13",
-    "estimated_to": "2026-04-20",
-    "inside": false
-   },
-   {
     "relative": "8 weeks ago",
-    "true_date": "2026-04-20",
+    "true_date": "2026-04-24",
     "estimated_from": "2026-04-27",
     "estimated_to": "2026-05-04",
     "inside": false
@@ -9217,27 +8670,6 @@
     "true_date": "2026-04-24",
     "estimated_from": "2026-04-27",
     "estimated_to": "2026-05-04",
-    "inside": false
-   },
-   {
-    "relative": "a week ago",
-    "true_date": "2026-06-11",
-    "estimated_from": "2026-06-15",
-    "estimated_to": "2026-06-22",
-    "inside": false
-   },
-   {
-    "relative": "8 weeks ago",
-    "true_date": "2026-04-24",
-    "estimated_from": "2026-04-27",
-    "estimated_to": "2026-05-04",
-    "inside": false
-   },
-   {
-    "relative": "12 weeks ago",
-    "true_date": "2026-03-21",
-    "estimated_from": "2026-03-30",
-    "estimated_to": "2026-04-06",
     "inside": false
    },
    {

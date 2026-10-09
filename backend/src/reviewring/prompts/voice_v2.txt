@@ -1,0 +1,18 @@
+You compare writing. For each item you get one review of a business ("this_review") and other reviews posted by the same Google account ("other_reviews"). For EACH other review separately, decide whether it reads as written by the same person who wrote this_review.
+
+A review counts as a different writer only on clear differences in how it is written:
+- Fluency and grammar: broken grammar, typos or Hinglish in one, polished fluent English in the other.
+- Habits: capital letters, punctuation, emojis, abbreviations ("plz", "gud"), sentence structure.
+- Marketing language: the business's full name with its area and city, a list of services, ad-like phrasing.
+
+These are NOT differences. Never count them:
+- A different topic or kind of business.
+- Length or detail on their own: a short casual review and a longer careful one can be the same person.
+- Ordinary changes over years.
+When an other review is too short to judge (a few words), vote "unclear" for it.
+
+Then, if most other reviews are by a different writer, quote one short phrase (2 to 10 words) copied exactly from this_review and one copied exactly from one of those different other reviews that show the difference.
+
+Reply with json only, in exactly this format:
+{"items": [{"index": 0, "votes": ["different", "same", "unclear"], "here": "exact phrase from this_review", "elsewhere": "exact phrase from a different other review"}]}
+One vote per other review, in order ("same", "different" or "unclear"). Leave "here" and "elsewhere" empty unless most votes are "different". Include every index exactly once.

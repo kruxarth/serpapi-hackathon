@@ -70,7 +70,7 @@ def test_probe_dry_run_spends_nothing(fake, capsys):
 def test_dry_run_command(fake, capsys):
     assert cli.main(["dry-run", URL]) == 0
     out = capsys.readouterr().out
-    assert "Estimate: 16-38 searches" in out
+    assert "Estimate: 16-34 searches" in out
     assert fake.calls == []
 
 

@@ -109,7 +109,7 @@ def test_full_analysis_flow(client, server):
     types = [e["type"] for e in events]
     assert types[0] == "queued" and types[-1] == "done"
     assert "expanding" in types and "finding_groups" in types
-    assert events[-1]["searches_used"] == 32  # 3 review pages (48 reviews) + 25 histories + 4 voice picks
+    assert events[-1]["searches_used"] == 28  # 3 review pages (48 reviews) + 25 histories
 
     full = client.get(f"/api/analyses/{aid}").json()
     assert full["status"] == "done" and full["report"]["level"]["level"] == "High"
@@ -126,6 +126,18 @@ def test_full_analysis_flow(client, server):
     listing = client.get("/api/analyses").json()
     assert listing[0]["id"] == aid and listing[0]["level"] == "High"
     assert client.get("/api/places/latest", params={"data_id": "0xabc:0x1"}).json()["found"] is False
+
+
+def test_share_link_needs_one_lookup_then_matches_its_place(client, server):
+    link = "https://www.google.com/search?kgmid=/g/11invented&q=Invented+Clinic"
+    first = client.get("/api/places/latest", params={"url": link}).json()
+    assert first == {"found": False, "reason": "needs_lookup", "query": "Invented Clinic"}
+    hidden = client.get("/api/places/latest", params={"url": link, "presentation": 1}).json()
+    assert "query" not in hidden and len(server.calls) == 0
+    found = client.post("/api/resolve", json={"input": link, "confirm_lookup": True}, headers=H).json()
+    data_id = found["candidates"][0]["data_id"]
+    after = client.get("/api/places/latest", params={"url": link}).json()
+    assert after == {"found": False, "reason": "not_analysed", "data_id": data_id}
 
 
 def test_cancel_and_resume(client, server):

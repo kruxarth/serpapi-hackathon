@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+import math
 from collections import Counter
 from dataclasses import asdict, dataclass, field
-from datetime import date, timedelta
+from datetime import UTC, date, datetime, timedelta
 from typing import Any
 
 from scipy.stats import poisson
@@ -179,27 +180,122 @@ def young_business(inp: AnalysisInput, bursts: BurstResult) -> dict[str, Any]:
     return {"young": bool(few or short), "total_reviews": total, "sample_span_days": bursts.span_days}
 
 
-def single_use_bursts(reviews: list[TargetReview], bursts: BurstResult) -> list[dict[str, Any]]:
-    """For each burst: how many of its reviews come from accounts that have reviewed nothing else."""
-    cfg = config.load_tunables()["single_use"]
-    by_id = {r.review_id: r for r in reviews}
-    out = []
-    for b in bursts.bursts:
-        rows = [by_id[i] for i in b.review_ids if i in by_id]
-        single = [r for r in rows if r.reviewer_reviews is not None and r.reviewer_reviews <= cfg["max_reviews"]]
-        share = len(single) / len(rows) if rows else 0.0
-        out.append(
-            {
-                "start": b.start.isoformat(),
-                "end": b.end.isoformat(),
-                "direction": b.direction,
-                "count": len(rows),
-                "single_use": len(single),
-                "share": round(share, 3),
-                "flagged": len(single) >= cfg["min_in_burst"] and share >= cfg["min_share"],
-                "review_ids": sorted(r.review_id for r in single),
-            }
-        )
+def _utc(moment: datetime) -> datetime:
+    return moment if moment.tzinfo is not None else moment.replace(tzinfo=UTC)
+
+
+def span_text(minutes: float) -> str:
+    """'89 minutes', '18 hours', '3 days': how long a burst took, in the unit a reader would use."""
+    if minutes < 120:
+        n = max(1, round(minutes))
+        return f"{n} minute{'s' if n != 1 else ''}"
+    if minutes < 48 * 60:
+        return f"{round(minutes / 60)} hours"
+    return f"{round(minutes / 1440)} days"
+
+
+def pace_text(per_day: float) -> str:
+    """'about 3 reviews a day', 'about one review a week', 'about one review every 10 days'."""
+    if per_day >= 1.5:
+        return f"about {round(per_day)} reviews a day"
+    if per_day >= 0.9:
+        return "about one review a day"
+    per_week = per_day * 7
+    if per_week >= 1.5:
+        return f"about {round(per_week)} reviews a week"
+    if per_week >= 0.9:
+        return "about one review a week"
+    return f"about one review every {round(1 / per_day)} days" if per_day > 0 else "almost no reviews"
+
+
+def review_bursts(reviews: list[TargetReview]) -> dict[str, Any]:
+    """Bursts of same-star reviews: what a business buying praise (5★) or someone attacking it (1★) produces.
+
+    For each of 5★ and 1★: the stretch of at most ``max_span_hours`` holding the most reviews of that rating. It
+    is flagged when it holds at least ``min_share`` of the reviews examined (and ``min_count``), and arrives at least
+    ``min_pace`` times faster than the listing's other reviews. Only reviews of that rating count, and the
+    account behind each review doesn't decide anything (first-time accounts are reported, not required). Exact
+    timestamps are used, so "43 reviews in 89 minutes" is told as that, not as a 3-day window.
+    """
+    cfg = config.load_tunables()["review_burst"]
+    dated = sorted((r for r in reviews if r.posted_at is not None), key=lambda r: _utc(r.posted_at))  # type: ignore[arg-type]
+    n = len(dated)
+    out: dict[str, Any] = {"examined": n, "clusters": []}
+    if n < int(cfg["min_count"]):
+        return out
+    first, last = _utc(dated[0].posted_at), _utc(dated[-1].posted_at)  # type: ignore[arg-type]
+    span_days = max((last - first).total_seconds() / 86400, 1.0)
+    out["pace_per_day"] = round(n / span_days, 4)
+    window = timedelta(hours=float(cfg["max_span_hours"]))
+    need = max(int(cfg["min_count"]), cfg["min_share"] * n)
+    max_first = int(config.tunable("single_use", "max_reviews"))
+    for stars, direction in ((5, "positive"), (1, "negative")):
+        pool = [r for r in dated if r.rating == stars]
+        for _ in range(int(cfg["max_rounds"])):
+            if len(pool) < int(cfg["min_count"]):
+                break
+            times = [_utc(r.posted_at) for r in pool]  # type: ignore[arg-type]
+            best_i, best_j, j = 0, 0, 0
+            for i in range(len(times)):
+                while j + 1 < len(times) and times[j + 1] - times[i] <= window:
+                    j += 1
+                if j - i > best_j - best_i:
+                    best_i, best_j = i, j
+            # A review cut off from the rest by a long gap belongs to the listing's ordinary flow, not the burst.
+            gap = timedelta(hours=float(cfg["max_gap_hours"]))
+            while best_j > best_i and times[best_j] - times[best_j - 1] > gap:
+                best_j -= 1
+            while best_i < best_j and times[best_i + 1] - times[best_i] > gap:
+                best_i += 1
+            members = pool[best_i : best_j + 1]
+            start, end = times[best_i], times[best_j]
+            minutes = (end - start).total_seconds() / 60
+            # The usual pace, from every other review in the sample; a burst is measured over at least a day.
+            others = n - len(members)
+            other_days = max(span_days - minutes / 1440, 1.0)
+            usual = others / other_days
+            pace = (len(members) / max(minutes / 1440, 1.0)) / usual if usual > 0 else None
+            k = min(len(members), max(2, math.ceil(len(members) * float(cfg["core_share"]))))
+            core = min(
+                ((times[best_i + a + k - 1] - times[best_i + a], a) for a in range(len(members) - k + 1)),
+                default=(end - start, 0),
+            )
+            flagged = (
+                len(members) >= need
+                and others >= int(cfg["min_others"])
+                and pace is not None
+                and pace >= float(cfg["min_pace"])
+            )
+            out["clusters"].append(
+                {
+                    "direction": direction,
+                    "stars": stars,
+                    "count": len(members),
+                    "share": round(len(members) / n, 3),
+                    "start": start.isoformat(),
+                    "end": end.isoformat(),
+                    "minutes": round(minutes, 1),
+                    "core": {
+                        "count": k,
+                        "minutes": round(core[0].total_seconds() / 60, 1),
+                        "start": times[best_i + core[1]].isoformat(),
+                        "end": times[best_i + core[1] + k - 1].isoformat(),
+                    },
+                    "usual_per_day": round(usual, 4),
+                    "pace": round(pace, 1) if pace is not None else None,
+                    # Minutes after the start, one per review: enough to draw the burst, with no timestamps.
+                    "offsets": [round((t - start).total_seconds() / 60, 1) for t in times[best_i : best_j + 1]],
+                    "first_time": sum(
+                        1 for r in members if r.reviewer_reviews is not None and r.reviewer_reviews <= max_first
+                    ),
+                    "flagged": flagged,
+                    "review_ids": sorted(r.review_id for r in members),
+                }
+            )
+            if not flagged:
+                break
+            taken = {r.review_id for r in members}
+            pool = [r for r in pool if r.review_id not in taken]
     return out
 
 

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import statistics
 from collections import Counter, defaultdict
+from datetime import datetime
 from typing import Any
 
 from .. import ALGORITHM_VERSION, config
@@ -25,15 +26,17 @@ from .target_signals import (
     detect_bursts,
     generated_excerpt,
     generated_marker,
+    pace_text,
     rating_gap,
     rating_histogram,
-    single_use_bursts,
+    review_bursts,
+    span_text,
     target_duplicate_clusters,
     thin_profile_skew,
     top_rated_sample,
     young_business,
 )
-from .textstyle import keyword_style
+from .textstyle import keyword_style, locality_tokens
 
 EVIDENCE_ORDER = {
     k: i
@@ -44,7 +47,7 @@ EVIDENCE_ORDER = {
             "generated_text",
             "voice_mismatch",
             "keyword_style",
-            "single_use_burst",
+            "review_burst",
             "rating_gap",
             "top_rated",
             "ai_style",
@@ -63,7 +66,7 @@ LABEL_TEXT = {
     "ring": "Ring-like group",
     "possible_ring_trip": "Possible ring-like group (trip-like)",
     "suspicious": "Suspicious",
-    "single_use_burst": "First-time account in a burst",
+    "single_use_burst": "In a burst of same-star reviews",
     "group_trip": "Trip or social group",
     "no_flags": "No flags",
     "not_checked": "Not checked",
@@ -136,32 +139,47 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
         else:
             reviewer_label[cid] = "no_flags"
 
-    single_bursts = single_use_bursts(inp.target_reviews, bursts)
-    single_ids = {i for b in single_bursts if b["flagged"] for i in b["review_ids"]}
+    same_star = review_bursts(inp.target_reviews)
+    burst_ids = {i for c in same_star["clusters"] if c["flagged"] for i in c["review_ids"]}
 
     kw = keyword_style(inp.target_reviews, inp.target)
-    kw_ids = set(kw["review_ids"])
-    voice_others = _voice_others(inp)
+    kw_ids, kw_named = set(kw["review_ids"]), set(kw["named_ids"])
+    ai_on = bool(config.load_tunables()["ai_text"].get("enabled", True))
+    judgements = inp.text_judgements if ai_on else {}  # stored opinions are ignored once the check is off
+    voice_on = bool(config.tunable("voice", "enabled"))
+    voices = inp.voice_judgements if voice_on else {}
+    voice_others = _voice_others(inp) if voice_on else {}
+    # Copied text: the other reviews of this business each copy matches, and how many matches were elsewhere.
+    twins: dict[str, list[str]] = {}
+    copies_elsewhere: Counter[str] = Counter()
+    for tid, tf in sorted(features.items()):
+        if tf.cluster and tf.cluster not in stock:
+            if tid.startswith("t:"):
+                twins.setdefault(tf.cluster, []).append(tid[2:])
+            else:
+                copies_elsewhere[tf.cluster] += 1
     review_rows = []
     for r in inp.target_reviews:
         label = reviewer_label.get(r.contributor_id or "", "not_checked")
-        if r.review_id in single_ids and label in ("no_flags", "not_checked", "group_trip"):
+        if r.review_id in burst_ids and label in ("no_flags", "not_checked", "group_trip"):
             label = "single_use_burst"
         f = features.get(target_text_id(r.review_id))
         marker = generated_marker(r)
-        judgement = inp.text_judgements.get(r.review_id)
+        judgement = judgements.get(r.review_id)
         signs = review_signs(
             r,
             marker=marker,
             copied=bool(f and f.cluster and f.cluster not in stock),
-            in_first_time_burst=r.review_id in single_ids,
+            in_burst=r.review_id in burst_ids,
             label=label,
             judgement=judgement,
             spree=bool(r.contributor_id in signals and signals[r.contributor_id].has("A9")),
             keyword=r.review_id in kw_ids,
-            voice=inp.voice_judgements.get(r.contributor_id or ""),
+            voice=voices.get(r.contributor_id or ""),
+            named=r.review_id in kw_named,
         )
-        voice = inp.voice_judgements.get(r.contributor_id or "")
+        voice = voices.get(r.contributor_id or "")
+        copied = "copied_text" in signs and f is not None and f.cluster is not None
         review_rows.append(
             {
                 "review_id": r.review_id,
@@ -185,7 +203,9 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
                 "ai": None
                 if judgement is None
                 else {"verdict": judgement.get("verdict"), "cues": judgement.get("cues", [])},
-                "keyword_phrase": kw["hits"].get(r.review_id) if r.review_id in kw_ids else None,
+                "keyword_phrase": kw["hits"].get(r.review_id) if r.review_id in kw_ids | kw_named else None,
+                "copied_with": [x for x in twins.get(f.cluster, []) if x != r.review_id][:3] if copied else [],
+                "copied_elsewhere": copies_elsewhere[f.cluster] if copied else 0,
                 "voice": None
                 if voice is None
                 else {
@@ -227,8 +247,8 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             "high": round(hi, 2),
             "no_visible_change": lo <= displayed <= hi,
         }
-    sieve = sieve_summary(review_rows, ai_coverage(inp.target_reviews, inp.text_judgements))
-    sieve["voice"] = voice_coverage(inp.voice_judgements, len(voice_others))
+    sieve = sieve_summary(review_rows, {**ai_coverage(inp.target_reviews, judgements), "enabled": ai_on})
+    sieve["voice"] = voice_coverage(voices, len(voice_others))
     ratings = {
         "examined": examined,
         "sample_mean": sample_mean,
@@ -237,7 +257,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
         "without_ring": without_ring,
         "without_ring_and_suspicious": strict,
         "ring_reviews": len(ring_rows),
-        "single_use_burst_reviews": len(single_ids),
+        "burst_reviews": len(burst_ids),
         "overall": overall,
     }
 
@@ -248,9 +268,14 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
     generated = [row for row in review_rows if row["generated_marker"]] + (top.get("generated") or [])
     generated_ids = {g["review_id"] for g in generated}
     raise_generated = bool(generated_ids) and config.tunable("generated_text", "raises_level")
-    raise_keyword = kw["flagged"] and config.tunable("keyword_style", "raises_level")
+    raise_keyword = (
+        kw["flagged"]
+        and kw["ads"] >= int(config.tunable("keyword_style", "min_ad_reviews"))
+        and config.tunable("keyword_style", "raises_level")
+    )
     voice_reviews = [row for row in review_rows if "voice_mismatch" in row["signs"]]
-    raise_voice = len(voice_reviews) >= int(config.tunable("voice", "raises_level_at"))
+    voice_at = int(config.tunable("voice", "raises_level_at"))
+    raise_voice = voice_at > 0 and len(voice_reviews) >= voice_at
     rings = [g for g in groups if g.verdict == "ring"]
     possibles = [g for g in groups if g.verdict in ("possible_ring", "possible_ring_trip")]
     level_cfg = config.load_tunables()["level"]
@@ -270,7 +295,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
         rings
         or possibles
         or suspicious_share >= level_cfg["elevated_suspicious_share"]
-        or (single_ids and config.tunable("single_use", "raises_level"))
+        or (burst_ids and config.tunable("review_burst", "raises_level"))
         or raise_generated
         or raise_keyword
         or raise_voice
@@ -298,16 +323,12 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             )
         if raise_keyword:
             reasons.append(
-                f"{kw['accounts']} accounts wrote their review like a search ad, naming the business or its category "
-                "with its neighbourhood or city."
+                f"{kw['ads']} reviews read like search ads, using the bare search term with a place or repeating the "
+                "business's name with its area."
             )
-        for b in single_bursts:
-            if b["flagged"]:
-                star = "5★" if b["direction"] == "positive" else "1★"
-                reasons.append(
-                    f"A burst of {b['count']} {star} reviews ({b['start']} to {b['end']}): {b['single_use']} came "
-                    "from accounts that have reviewed nothing else."
-                )
+        for c in same_star["clusters"]:
+            if c["flagged"]:
+                reasons.append(burst_sentence(c, examined))
     elif expanded and ok_histories == 0:
         level = "Not enough history"
         reasons.append("Every reviewer history checked was empty or private, so nothing could be compared.")
@@ -326,7 +347,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
     # ---------------------------------------------------------------- evidence
     t4 = target_duplicate_clusters(inp.target_reviews, features, target_only=False)
     t4 = {k: v for k, v in t4.items() if k not in stock}
-    evidence = evidence_sentences(inp, groups, client_lists, bursts, t4, ratings, expanded, edge_pairs)
+    evidence = evidence_sentences(inp, groups, client_lists, bursts, t4, ratings, expanded, edge_pairs, same_star)
     evidence += rating_evidence(gap, top, [row for row in review_rows if row["generated_marker"]])
     skew = first_time_skew(inp.target_reviews)
     evidence += review_text_evidence(sieve, skew)
@@ -355,6 +376,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             "lng": inp.target.lng,
             "rating": inp.target.rating,
             "total_reviews": inp.target.total_reviews,
+            "locality": sorted(locality_tokens(inp.target)),  # for presentation mode's scrubbing; never shown
         },
         "sample": {
             "examined": examined,
@@ -374,7 +396,7 @@ def analyze(inp: AnalysisInput, paraphrase_groups: dict[str, int] | None = None)
             "T3": thin_profile_skew(inp.target_reviews),
             "T4": {"clusters": t4, "stock_phrase_clusters": sorted(stock)},
             "T5": young,
-            "T6": {"single_use_bursts": single_bursts},
+            "T11": same_star,
             "T7": gap,
             "T8": top,
             "T9": skew,
@@ -539,7 +561,9 @@ def places_payload(
     return out
 
 
-def evidence_sentences(inp, groups, client_lists, bursts, t4, ratings, expanded, edge_pairs) -> list[dict[str, Any]]:
+def evidence_sentences(
+    inp, groups, client_lists, bursts, t4, ratings, expanded, edge_pairs, same_star
+) -> list[dict[str, Any]]:
     out: list[dict[str, Any]] = []
     examined = ratings["examined"]
     for g in groups:
@@ -574,7 +598,11 @@ def evidence_sentences(inp, groups, client_lists, bursts, t4, ratings, expanded,
                     "their histories look like ordinary travellers'. Consistent with a group trip; not counted.",
                 }
             )
+    flagged = [c for c in same_star["clusters"] if c["flagged"]]
+    told = {i for c in flagged for i in c["review_ids"]}
     for b in bursts.bursts:
+        if told & set(b.review_ids):
+            continue  # the same reviews are told below, minute by minute
         weekly = bursts.baseline_per_window / 3 * 7 if bursts.baseline_per_window else None
         normal = f" (normally about {max(1, round(weekly))} a week)" if weekly else ""
         star = "5★" if b.direction == "positive" else "1★"
@@ -588,18 +616,8 @@ def evidence_sentences(inp, groups, client_lists, bursts, t4, ratings, expanded,
                 f"{b.matching} of them are {star}. Consistent with an in-store review drive or a campaign.",
             }
         )
-    for b in single_use_bursts(inp.target_reviews, bursts):
-        if b["flagged"]:
-            out.append(
-                {
-                    "kind": "single_use_burst",
-                    "visual": "timeline",
-                    "text": f"{b['single_use']} of the {b['count']} reviews in the {b['start']} to {b['end']} "
-                    "burst came from accounts that have reviewed nothing else on Google Maps. Bursts of "
-                    "first-time accounts are a common pattern in coordinated review campaigns, though a business "
-                    "can also be targeted without its knowledge.",
-                }
-            )
+    for c in flagged:
+        out.append({"kind": "review_burst", "visual": "burst", "text": burst_sentence(c, examined)})
     dup_reviews = sum(len(v) for v in t4.values())
     if dup_reviews:
         out.append(
@@ -622,6 +640,26 @@ def evidence_sentences(inp, groups, client_lists, bursts, t4, ratings, expanded,
             )
         break
     return out
+
+
+def burst_sentence(c: dict[str, Any], examined: int) -> str:
+    """One burst in words: how many, how fast, against the usual pace. Dates stay ISO so presentation mode shifts
+    them."""
+    star = "five-star" if c["stars"] == 5 else "one-star"
+    start, end = ist_date(datetime.fromisoformat(c["start"])), ist_date(datetime.fromisoformat(c["end"]))
+    when = f"on {start.isoformat()}" if start == end else f"between {start.isoformat()} and {end.isoformat()}"
+    core = c["core"]
+    tighter = (
+        f" ({core['count']} of them within {span_text(core['minutes'])})"
+        if core["count"] < c["count"] and core["minutes"] < c["minutes"] * 0.5
+        else ""
+    )
+    who = f" {c['first_time']} came from accounts that have reviewed nothing else." if c["first_time"] else ""
+    return (
+        f"{c['count']} {star} reviews arrived in {span_text(c['minutes'])} {when}{tighter}: "
+        f"{round(c['share'] * 100)}% of the newest {examined}. This listing usually gets "
+        f"{pace_text(c['usual_per_day'])}.{who}"
+    )
 
 
 def rating_evidence(gap: dict[str, Any], top: dict[str, Any], recent_generated: list[dict[str, Any]]) -> list:
@@ -756,20 +794,20 @@ def voice_keyword_evidence(voice_reviews: list[dict[str, Any]], voice: dict[str,
             {
                 "kind": "voice_mismatch",
                 "visual": "reviews",
-                "text": f"{len(voice_reviews)} of the {voice['compared']} checked reviewers wrote their review of this "
-                "business in a different voice from all their other reviews. Scripted or incentivised reviews are "
-                "often posted from real accounts this way.",
+                "text": f"An AI model thinks {len(voice_reviews)} of the {voice['compared']} checked reviewers wrote "
+                "their review of this business in a different voice from their other reviews. An opinion: compare the "
+                "texts yourself, shown side by side.",
             }
         )
-    if kw["flagged"]:
+    if kw["flagged"] and kw["ads"]:
         top = next(iter(kw["phrases"]), "")
         out.append(
             {
                 "kind": "keyword_style",
                 "visual": "reviews",
-                "text": f"{kw['accounts']} of the {kw['with_text']} reviews with text read like search ads, naming the "
-                f"business or its category with its neighbourhood or city (\u201c{top}\u201d). Customers rarely "
-                "write that way; search-ranking copy does.",
+                "text": f"{kw['ads']} reviews read like search ads (\u201c{top}\u201d), and {kw['accounts']} of the "
+                f"{kw['with_text']} reviews with text name the business or its category together with its "
+                "neighbourhood or city. Customers do name a place that way; search-ranking copy repeats it.",
             }
         )
     return out

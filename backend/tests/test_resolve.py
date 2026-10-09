@@ -131,6 +131,37 @@ def test_short_link_too_many_redirects():
         expand_short_link("https://maps.app.goo.gl/0", FakeSession(hops))
 
 
+SEARCH = (
+    "https://www.google.com/search?sca_esv=x&output=search&kgmid=/g/11invented&q=Invented+Clinic+Pvt.+Ltd."
+    "&source=sh/x/loc/uni/m1/1"
+)
+
+
+def test_share_google_link_becomes_a_name_search():
+    session = FakeSession(
+        {
+            "https://share.google/AbC123": "https://www.google.com/share.google?q=AbC123",
+            "https://www.google.com/share.google?q=AbC123": SEARCH,
+        }
+    )
+    r = parse_input("share.google/AbC123", session=session)
+    assert (r.kind, r.cost, r.query) == ("name", 1, "Invented Clinic Pvt. Ltd.")
+    assert r.expanded_from == "https://share.google/AbC123" and len(session.calls) == 2
+
+
+def test_share_link_to_a_maps_place_keeps_its_data_id():
+    r = parse_input("https://g.co/kgs/xyz", session=FakeSession({"https://g.co/kgs/xyz": PLACE}))
+    assert r.kind == "data_id" and r.data_id == DID
+
+
+def test_search_links_need_a_knowledge_graph_id():
+    assert parse_input(SEARCH).query == "Invented Clinic Pvt. Ltd."
+    with pytest.raises(InputRefused, match="Google search, not a place"):
+        parse_input("https://www.google.com/search?q=invented+clinic+pune")
+    with pytest.raises(InputRefused):
+        parse_input("https://g.co/other")
+
+
 def test_candidates_from_lookup_bodies():
     single = {
         "place_results": {"title": "T", "data_id": "0xAA:0xBB", "gps_coordinates": {"latitude": 1, "longitude": 2}}

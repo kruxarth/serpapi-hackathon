@@ -13,7 +13,7 @@ n_reviews = 100              # newest target reviews: 6 pages (8 + 5 x 20 = 108)
 k1 = 8                       # round-1 reviewers
 baseline = 2                 # B: random baseline reviewers
 k2 = 15                      # round-2 reviewers
-voice_picks = 4              # round 1 also opens the authors of the longest 4-5 star reviews, to compare their voice
+voice_picks = 0              # extra round-1 histories for the voice check (off: see [voice])
 history_concurrency = 3
 seed = 20261010
 
@@ -58,10 +58,19 @@ max_rounds = 3
 negative_bursts = true
 
 [single_use]
-# A burst made mostly of accounts that have reviewed nothing else: the cheapest kind of bought review.
-max_reviews = 1              # an account showing at most this many reviews is "single-use"
-min_in_burst = 5
-min_share = 0.6
+max_reviews = 1              # an account showing at most this many reviews is "single-use" (reported, never required)
+
+[review_burst]
+# A burst of same-star reviews: many 5-star reviews (bought praise) or 1-star reviews (an attack) packed into a few
+# hours or days. Only reviews of that rating count; whose accounts they are doesn't matter. Exact timestamps.
+max_span_hours = 72          # the stretch searched: at most 3 days
+max_gap_hours = 12           # a review more than 12 hours from the rest, at either end, isn't part of the burst
+min_share = 0.25             # it must hold at least a quarter of the reviews examined...
+min_count = 8                # ...and at least this many
+min_pace = 10                # ...arriving at least 10x faster than the listing's other reviews (busy places get many)
+min_others = 5               # with fewer other reviews, the usual pace is unknown and nothing is flagged
+core_share = 0.8             # also report the tightest stretch holding this share of the burst ("34 in 37 minutes")
+max_rounds = 2               # a second burst of the same rating is looked for after the first
 raises_level = true          # a flagged burst makes the level at least Elevated (never High)
 
 [rating_gap]
@@ -83,10 +92,11 @@ markers = [
 raises_level = true          # a matched marker makes the level at least Elevated (never High)
 
 [ai_text]
-# An AI model's opinion on whether a review reads as AI-written. Shown, never counted towards the level.
-# Detectors are unreliable on short texts and over-flag second-language writers, so only longer reviews are
-# judged, and an "AI-written" opinion must quote at least min_cues phrases that are really in the review.
-enabled = true
+# An AI model's opinion on whether a review reads as AI-written. Off since 2026-10-08: it mostly singles out people
+# who write in a second language and polish an honest review with AI, which is not a warning sign. Pasted chatbot
+# replies are still caught by the deterministic "chatbot_text" sign. When on: only longer reviews are judged, and
+# an "AI-written" opinion must quote at least min_cues phrases that are really in the review.
+enabled = false
 min_words = 40
 batch_size = 12
 max_chars = 1500             # per review sent
@@ -94,8 +104,8 @@ min_cues = 2
 
 [signs]
 # Per-review warning signs, strongest first. A review is drawn in the first branch that is set aside.
-order = ["chatbot_text", "copied_text", "voice_mismatch", "keyword_style", "first_time_burst", "linked_group", "ai_style", "review_spree", "first_time_account"]
-set_aside_by_default = ["chatbot_text", "copied_text", "voice_mismatch", "keyword_style", "first_time_burst", "linked_group"]
+order = ["chatbot_text", "copied_text", "keyword_style", "review_burst", "linked_group", "review_spree", "names_area", "first_time_account"]
+set_aside_by_default = ["chatbot_text", "copied_text", "keyword_style", "review_burst", "linked_group"]
 first_time_max_reviews = 1   # an account showing at most this many reviews is "first-time"
 skew_min_ratio = 2.0         # 5-star reviews this many times as likely to be first-time as other reviews...
 skew_min_five_star = 10      # ...with at least this many 5-star and
@@ -107,21 +117,25 @@ skew_min_share = 0.35        # and at least this share of the 5-star reviews (a 
 # ("packers and movers in [area], [city]"). Counts only when several accounts at the listing write this way.
 min_accounts = 3
 min_share = 0.08             # of the reviews with text
+min_ad_reviews = 2           # the level rises only with at least this many ad-like reviews, not just name-with-area ones
 raises_level = true          # flagged: the level is at least Elevated (never High)
 priority_points = 2          # open these reviewers' histories first, so their voice can be compared
 
 [voice]
-# Not in the reviewer's own voice: an AI model compares a checked reviewer's review of this business with their own
-# other reviews and must quote one phrase from each side that shows the difference. Real data: scripted reviews posted
-# from real, aged accounts (docs/research-2026-10-08.md).
-enabled = true
+# Not in the reviewer's own voice: an AI model compared a checked reviewer's review of this business with their own
+# other reviews. Off since 2026-10-08: on real data nearly every flag was wrong. Most "other reviews" are one-line
+# notes about a restaurant or a salon, so the model read a change of topic and length as a different writer, and no
+# prompt fixed it. Authorship needs far more of a person's writing than Google profiles show.
+enabled = false
 min_words_here = 12          # the review of this business needs this many words to compare
 min_other_words = 3          # an other review counts as their writing with this many words
 max_others = 5               # other reviews sent per reviewer
+min_others = 2               # a reviewer needs this many other written reviews to compare
+min_different_votes = 2      # a mismatch needs at least this many of their other reviews judged a different writer, and none the same
 batch_size = 6               # reviewers per call
 pick_min_words = 20          # a voice pick's review needs this many words...
 pick_min_account_reviews = 3 # ...and its author at least this many reviews (some writing to compare)
-raises_level_at = 3          # this many reviews not in their author's voice make the level at least Elevated
+raises_level_at = 0          # 0: never raises the level. On real data the AI's "different writer" calls were mostly wrong (2026-10-08)
 
 [spree]
 # A checked reviewer who rated many unrelated businesses in several cities within a month, almost all 5 stars:

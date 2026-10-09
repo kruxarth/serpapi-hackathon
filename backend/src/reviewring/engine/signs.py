@@ -6,8 +6,8 @@ strongest first, and the reader decides which to set aside. A review is drawn in
 aside; the rest are the reviews "worth reading". Nothing here calls a review fake.
 
 Strengths:
-- strong: near-certain to be inauthentic text or behaviour (chatbot text, copied text, a burst of first-time
-  accounts, a linked reviewer group). Set aside by default.
+- strong: near-certain to be inauthentic text or behaviour (chatbot text, copied text, search-ad phrasing, a
+  burst of same-star reviews, a linked reviewer group). Set aside by default.
 - opinion: an AI model's reading of the text. Shown with its quoted cues, kept by default.
 - context: true of many real customers too. Kept by default.
 """
@@ -37,24 +37,31 @@ SIGNS: dict[str, dict[str, str]] = {
     "voice_mismatch": {
         "name": "Not in the reviewer's own voice",
         "short": "Not their own voice",
-        "strength": "strong",
-        "explain": "The reviewer's other reviews are written very differently. An AI model compared them and quotes "
-        "the difference; both are shown side by side. Typical of scripted or incentivised reviews posted from real "
-        "accounts.",
+        "strength": "opinion",
+        "explain": "An AI model thinks the reviewer's other reviews are written very differently, and quotes why; both "
+        "are shown side by side. An opinion, and often wrong on short reviews: judge the texts yourself.",
     },
     "keyword_style": {
         "name": "Written like a search ad",
         "short": "Search-ad phrasing",
         "strength": "strong",
-        "explain": "Names the business or its category together with its neighbourhood or city, the way search ads are "
-        "written (\u201cpackers and movers in [area], [city]\u201d), as several accounts here do.",
+        "explain": "Uses the bare search term with a place (\u201cbest packers and movers in [area]\u201d), or names "
+        "the business with its area again and again, the way search-ranking copy is written. Several accounts here "
+        "do it.",
     },
-    "first_time_burst": {
-        "name": "First-time accounts in a burst",
-        "short": "Burst of first-time accounts",
+    "names_area": {
+        "name": "Names the business with its area",
+        "short": "Name with area",
+        "strength": "context",
+        "explain": "Names the business together with its neighbourhood or city, as many reviews at this listing do. "
+        "Customers refer to a business this way too, so on its own it isn't a warning sign.",
+    },
+    "review_burst": {
+        "name": "Part of a burst of same-star reviews",
+        "short": "Review burst",
         "strength": "strong",
-        "explain": "Posted in a sudden burst of reviews that came mostly from accounts that have reviewed "
-        "nothing else.",
+        "explain": "Posted within a few hours or days together with many other reviews of the same rating (all 5★, or "
+        "all 1★): a quarter or more of the newest reviews, far faster than this listing usually gets any.",
     },
     "linked_group": {
         "name": "Linked reviewer group",
@@ -104,12 +111,13 @@ def review_signs(
     *,
     marker: str | None,
     copied: bool,
-    in_first_time_burst: bool,
+    in_burst: bool,
     label: str,
     judgement: dict[str, Any] | None,
     spree: bool,
     keyword: bool = False,
     voice: dict[str, Any] | None = None,
+    named: bool = False,
 ) -> list[str]:
     """Every sign that applies to one review, in sieve order."""
     found = {
@@ -117,7 +125,8 @@ def review_signs(
         "copied_text": copied,
         "voice_mismatch": bool(voice and voice.get("verdict") == "different_voice"),
         "keyword_style": keyword,
-        "first_time_burst": in_first_time_burst,
+        "names_area": named and not keyword,
+        "review_burst": in_burst,
         "linked_group": label in ("ring", "possible_ring_trip"),
         "ai_style": bool(judgement and judgement.get("verdict") == "ai_style"),
         "review_spree": spree,

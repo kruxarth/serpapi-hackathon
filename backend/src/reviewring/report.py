@@ -4,14 +4,14 @@ from __future__ import annotations
 
 import json
 import logging
-import re
 from collections.abc import Callable
 from typing import Any
 
-from . import db, settings
+from . import config, db, settings
 from .engine.analyze import LABEL_TEXT, analyze
 from .llm import LLMGateway, LLMRefused, judge_texts, judge_voices, paraphrase_groups, summarize
 from .model import AnalysisInput
+from .privacy import business_terms
 from .serp.gateway import Gateway
 from .store import save_parsed
 
@@ -67,12 +67,12 @@ def store_report(
     conn = db.connect()
     llm = LLMGateway(mode="live" if mode == "live" else "offline")
     texts = {r.review_id: r.text for r in inp.target_reviews if r.text}
-    words = {w for w in re.split(r"\W+", inp.target.title or "") if len(w) >= 4}
-    if texts and not inp.text_judgements:
+    words = business_terms(inp.target.title)
+    if texts and not inp.text_judgements and config.load_tunables()["ai_text"].get("enabled", True):
         if on_progress and llm.can_call:
             on_progress("Reading the longer reviews for AI-written style")
         inp.text_judgements = judge_texts(texts, llm, words)
-    if inp.expansions and not inp.voice_judgements:
+    if inp.expansions and not inp.voice_judgements and config.tunable("voice", "enabled"):
         if on_progress and llm.can_call:
             on_progress("Comparing reviewers' writing with their other reviews")
         inp.voice_judgements = judge_voices(inp, llm, words)
