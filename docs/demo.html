@@ -406,7 +406,7 @@ button { font: inherit; color: inherit; }
     [41.3, 'Among its highest-rated reviews, a five-star review reads…'],
     [47.2, 'That\'s a chatbot\'s reply, pasted in as a customer review. No customer writes that sentence.'],
     [51.3, 'A mover in Bengaluru, rated 5.0.'],
-    [54, '31 five-star reviews arrived in three days.'],
+    [54, '31 five-star reviews arrived in 65 minutes, one evening.'],
     [58.5, 'ReviewRing opens each reviewer\'s public history. 27 of those accounts have never reviewed anything else.'],
     [65.3, 'This needs SerpApi. Google\'s official Places API gives at most five reviews per place, and no reviewer histories.'],
     [71.5, 'SerpApi\'s Contributor Reviews API returns a reviewer\'s whole history in one search. That history is the whole method.'],
@@ -473,7 +473,7 @@ button { font: inherit; color: inherit; }
   const hatchH = (27 / 31) * 200
   const hatch = svgEl('rect', { x: spikeX, y: 230 - hatchH, width: bw - 3, height: hatchH, rx: 2, fill: 'url(#hatch)', stroke: '#4b93ec', 'stroke-width': 1.5 }, s6)
   const spikeLab = svgEl('text', { x: spikeX - 12, y: 22, 'text-anchor': 'end', 'font-size': 22, 'font-weight': 700, fill: '#e8ecf2' }, s6)
-  spikeLab.textContent = '31 five-star reviews in 3 days'
+  spikeLab.textContent = '31 five-star reviews in 65 minutes'
   const hatchLab = svgEl('text', { x: spikeX - 14, y: 230 - hatchH / 2, 'text-anchor': 'end', 'font-size': 20, 'font-weight': 700, fill: '#4b93ec' }, s6)
   hatchLab.textContent = '27 from accounts with no other review'
   const cardsBox = $('s6cards')
